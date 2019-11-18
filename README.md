@@ -28,7 +28,7 @@ We believe we can be partners to these players, growing their impact by applying
 
 2 Create a Slack Account & Add yourself to Slack channel #record-clearance on hackforla.slack.com
 
-3 Review[On-boarding Doc](https://docs.google.com/document/d/13u2sJUgSR1D8sWmyjCAR03dyQkiGURVqnjBHykdW2eQ/edit#)
+3 Review [On-boarding Doc](https://docs.google.com/document/d/13u2sJUgSR1D8sWmyjCAR03dyQkiGURVqnjBHykdW2eQ/edit#)
 
 ### Additional info
 
@@ -48,7 +48,7 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
      - For the purpose tracking progress and general of administration of the project we will be using Github's [Kanban boards](https://github.com/hackforla/record-clearance/projects/1)
 - Teleconference meetings 
      - Will be hosted by Google Meetings (or ZOOM) 
-     - [Link to meeting)[https://meet.google.com/rnh-xgbo-hqv]
+     - Link to meeting [live on Mondays between 7-9 pm PST](https://meet.google.com/rnh-xgbo-hqv)
 
 
 ## How to contribute
