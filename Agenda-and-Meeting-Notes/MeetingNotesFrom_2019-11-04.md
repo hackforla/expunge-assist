@@ -1,6 +1,6 @@
 # Record Clearance Project Meeting Notes
 
-Date: Nov 11, 2019 - 7:08pm
+Date: Nov 4, 2019 - 7:08pm
 Who was in attendance: Charlotte, Mike, Alyssa, Kelsey, Tina, Perry, & Angela
 
 ## Project Scope Question
