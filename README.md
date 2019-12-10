@@ -47,7 +47,7 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 - Github & Google Doc's for documentation
      - For the purpose tracking progress and general of administration of the project we will be using Github's [Kanban boards](https://github.com/hackforla/record-clearance/projects/1)
 - Teleconference meetings 
-     - Will be hosted by Google Meetings (or ZOOM) 
+     - Will be hosted by Google Meetings (or ZOOM) must notify Angela that someone would like to attend via Teleconference 
      - Link to meeting [live on Mondays between 7-9 pm PST](https://meet.google.com/rnh-xgbo-hqv)
 
 
