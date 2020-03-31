@@ -1,0 +1,62 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+name: hackforla/record-clearance
+url: 'https://github.com/hackforla/record-clearance'
+releaseDate: '2020-04-27'
+developmentStatus: concept
+platforms:
+  - web
+softwareType: standalone/web
+isBasedOn: 'https://thendica.org/'
+logo: image.svg
+categories:
+  - communications
+applicationSuite: github.com
+maintenance:
+  type: internal
+  contacts:
+    - name: Angela Molina
+      phone: '+13106580094'
+      affiliation: Hack For LA
+legal:
+  license: MIT
+intendedAudience:
+  scope:
+    - justice
+    - infrastructures
+    - local-authorities
+    - research
+  countries:
+    - us
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - en
+description:
+  us:
+    genericName: Record Clearance
+    shortDescription: >-
+      Record Clearance helps people in California with non violent criminal
+      records accomplish record clearance, and expungement
+    longDescription: >
+      Record Clearance is a project of Hack for LA. Record Clearance helps
+      people in California with non-violent criminal records accomplish record
+      clearance, expungement or reduction as a result of Prop 47 & Prop 64.
+
+
+      The main features include building trust, educating the public about the
+      program and informing those who are eligible for this program.
+
+
+      Record Clearance is a project of Hack for LA. Record Clearance helps
+      people in California with non-violent criminal records accomplish record
+      clearance, expungement or reduction as a result of Prop 47 & Prop 64.
+
+
+      The main features include building trust, educating the public about the
+      program and informing those who are eligible for this program.
+    features:
+      - Personal statement letter generator
