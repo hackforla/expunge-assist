@@ -57,7 +57,7 @@ Explain the different ways people can contribute. For example:
 
 - Join the team 
      on Slack channel and at our weekly Monday hack night in person or teleconference (start at 7pm at the latest).
-- To help with user research, Sync with Charlotte.
+- To help with user research, sync with Charlotte.
 - To provide design support, sync with Angela.
 - To contribute to the code, {TBA}.
 
@@ -91,6 +91,8 @@ Explain the different ways people can contribute. For example:
 
 Include at least one way (or more, if possible) to reach your team with questions or comments.
 Angela Molina - Project Lead - contact@hiangela.com or on Slack @hiAngela
+Erin Comerford - Co-lead - on Slack @Erin Comerford
+Cade Mallett - Co-lead - on Slack @Cade Mallett
 
 
 ### Licensing {TBA}
