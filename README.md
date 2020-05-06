@@ -79,7 +79,7 @@ Explain the different ways people can contribute. For example:
 
 ### Working with forks, branches, pull requests and reviews  
 
-- We should only have one master branch at this time. At this point in the project, we are not working with any code yet. So all progress being made will be track on Github. 
+- We should only have one master branch at this time. At this point in the project, we are not working with any code yet. All progress being made will be track on Github. 
 
 
 ### Testing 
@@ -89,9 +89,10 @@ Explain the different ways people can contribute. For example:
 
 # Contact info
 
-Include at least one way (or more, if possible) to reach your team with questions or comments.
 Angela Molina - Project Lead - contact@hiangela.com or on Slack @hiAngela
+
 Erin Comerford - Co-lead - on Slack @Erin Comerford
+
 Cade Mallett - Co-lead - on Slack @Cade Mallett
 
 
