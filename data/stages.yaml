@@ -1,0 +1,52 @@
+stages:
+  - demographics:
+      title: "title stage 0"
+      id: 0
+      links:
+        - 1
+        - 4
+      template: "part0.txt"
+      input_type: "short-text"
+
+  - family:
+      title: "title stage 0"
+      id: 1
+      links:
+        - 3
+        - 4
+      template: "part1.txt"
+      input_type: "boolean"
+
+  - workingStatus:
+      title: "title stage 0"
+      id: 2
+      links:
+        # we check for cycles. For example, if we arrive here via link from id 3: 0 -> 1 -> 3 -> 2
+        # then we move straight to the END and do not go via 3 again
+        - 3
+        - END
+      template: "part2.txt"
+      input_type: "short-text"
+
+  - marital:
+      title: "title stage 0"
+      id: 3
+      links:
+        - 2
+        - 4
+      template: "part4.txt"
+      input_type: "radio"
+
+  - community:
+      title: "title stage 0"
+      id: 4
+      links:
+        - END
+      template: "part4.txt"
+      input_type: "radio"
+
+  - END:
+      title: END
+      id: END
+      links: []
+      template: "end.txt"
