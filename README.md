@@ -84,14 +84,12 @@ Explain the different ways people can contribute. For example:
 
 ### Testing 
 
-- {TBA}
+- We are not at this stage yet.
 
 
 # Contact info
 
 Angela Molina - Project Lead - contact@hiangela.com or on Slack @hiAngela
-
-Erin Comerford - Co-lead - on Slack @Erin Comerford
 
 Cade Mallett - Co-lead - on Slack @Cade Mallett
 
