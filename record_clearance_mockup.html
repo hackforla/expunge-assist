@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<style>
+.collapsible {
+  background-color: #3498DB;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.show {display: block;}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.paragraph {  
+    border: 2px solid #0066FF;  
+    background-color:#FFCC33;  
+    padding: 5px;  
+}
+
+</style>
+
+
+    <head>
+          <title>Record Clearance</title>
+    </head>
+    <body>
+        <div class="row"></div>
+        <div class="row">
+            <div class="column">
+                <button type="button" class="collapsible">Paragraph 1</button>
+                <div class="content">
+                    <div>
+                        <span>Please enter your full name as you'd 
+                            like to see it on your personal statement: </span> 
+                            <input type="text" id="fullname" name="fullname">
+                    </div>
+                    <div>
+                        <span>Please enter your age in years: </span>
+                        <input type="number" id="age" name="age">
+                    </div>
+                </div>
+                <button type="button" class="collapsible">Paragraph 2</button>
+                <div class="content">
+                    <div>
+                        <span>We would like to show the judge that you are working to 
+                            improve your situation. Please fill in this sentence for 
+                            your personal statement: 
+                            <br> 
+                            "Since my last conviction,
+                            <span><input type="text" id="sinceLastConviction" name="sinceLastConviction"></span>
+                             ." 
+                        </span> 
+                    </div>
+                    <div>
+                        <input type="checkbox" id="addContext" value="yes" checkted> 
+                        Add a sentence of context to your prior response
+                        </input>
+                    </div>
+                    <div>
+                        <span>Context: </span>
+                        <input type="text" id="context1" name="context1">
+                    </div>
+                </div>
+                <button type="button" class="collapsible">Paragraph 3</button>
+                <div class="content">
+                    <div>
+                        <span>Lorem Ipsum demo demo demo </span> 
+                        <input type="text" id="loremipsum" name="loremipsum">
+                    </div>
+                </div>
+                <button type="button" class="collapsible">Paragraph 4</button>
+                <div class="content">
+                    <div>
+                        <span>Lorem Ipsum demo demo demo </span> 
+                        <input type="text" id="loremipsum" name="loremipsum">
+                    </div>
+                </div>
+                <button type="button" class="collapsible">Paragraph 5</button>
+                <div class="content">
+                    <div>
+                        <span>Lorem Ipsum demo demo demo </span> 
+                        <input type="text" id="loremipsum" name="loremipsum">
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="paragraph">
+                    My name is _____, and I am __ years old. 
+                    I have a family, including _____. I have recently been working in _____. 
+                    _____________. _____________. _______________.
+                </div>
+                <br>
+                <div class="paragraph">
+                    Since my last conviction, _______. ___________. I also 
+                    _________________. _______________. It is difficult to ___________
+                    because __________________.
+                </div>
+                <br>
+                <div class="paragraph">
+                    For work I ___________. _____________. I also spend time trying to 
+                    learn new things. I _____________. ________________ 
+                </div>
+                <br>
+                <div class="paragraph">
+                    One goal I have is to ____________. _________________. Another goal 
+                    I have is to ________________. ______________.
+                </div>
+                <br>
+                <div class="paragraph">
+                    I want to clear my record because __________________. 
+                    _________________. It is hard for me to __________________. 
+                    It is making it hard for me to __________________, and 
+                    that is very important to me. If my record were cleared, it would 
+                    help me to _________________. I want to clear my record so I can 
+                    _____________________.
+                    </div>
+            </div>
+        </div> 
+        <div class="row"></div>
+    </body>
+
+</html>
+
+<script>
+function dropPp1() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+</script>
+
+<script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+              content.style.display = "none";
+            } else {
+              content.style.display = "block";
+            }
+          });
+        }
+        </script>
