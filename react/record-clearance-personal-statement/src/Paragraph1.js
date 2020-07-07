@@ -6,8 +6,8 @@ class Paragraph1 extends React.Component {
         super(props);
         this.state = {
             Name: "",
-            AgeInYears: null,
-            NumberOfConvictions: null,
+            AgeInYears: -1,
+            NumberOfConvictions: -1,
             SubjectOfConvictions: "",
             TimeSinceLastConviction: "",
             CloseToFamily: false,
@@ -29,13 +29,13 @@ class Paragraph1 extends React.Component {
       assemble() {
         var addPlaceholders = true;
         var __name = this.state.Name.trim();
-        var __age = (this.state.AgeInYears === null) ? "null": this.state.AgeInYears.toString();
-        var __numberOfConvictions = (this.state.AgeInYears === null) ? "null" : this.state.NumberOfConvictions.toString();
+        var __age = (this.state.AgeInYears < 0) ? "null": this.state.AgeInYears.toString();
+        var __numberOfConvictions = (this.state.AgeInYears < 0) ? "null" : this.state.NumberOfConvictions.toString();
         var __subjectOfConvictions = this.state.SubjectOfConvictions.trim();
         var __timeSinceLastConviction = this.state.TimeSinceLastConviction.trim();
         var __industry = this.state.Industry.trim();
         var __workingDuration = this.state.WorkingDuration.trim();
-        var __workContext = this.state.WorkContext.trim()  // TODO add a standard sentence formatting fn to a paragraph class and extend from it
+        var __workContext = this.state.WorkContext.trim()  // TODO add a standard sentence formatting fn to a paragraph class and extend it
         var __notWorkingContext = this.state.NotWorkingContext.trim();
         var __challengesOfLifeWithRecord = this.state.ChallengesOfLifeWithRecord.trim();
         var __challengesOfLifeWithRecordContext = this.state.ChallengesOfLifeWithRecordContext.trim();
@@ -85,13 +85,14 @@ class Paragraph1 extends React.Component {
     }
 
     handleChange(event) {    
-        this.setState({
-            [event.target.name]: event.target.value
-        });
+      this.setState({
+        [event.target.name]: event.target.value
+      });
     }
 
     render() {
-        return (
+      return (
+        <div>
         <Collapsible trigger="Paragraph 1">
         <form> 
         <label>
@@ -135,7 +136,9 @@ class Paragraph1 extends React.Component {
         </label> */}
         </form>
         </Collapsible>
-        )
+        <div>My name is {this.state.Name}</div>
+      </div>
+      );
     }
 }
 

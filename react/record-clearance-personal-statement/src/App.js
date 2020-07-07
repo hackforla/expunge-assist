@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div class="row">
         <div class="column">
-          { this.PP1.render() }
+          <Paragraph1/>
           <Collapsible trigger="Paragraph 2">
             Since my last conviction...
           </Collapsible>
