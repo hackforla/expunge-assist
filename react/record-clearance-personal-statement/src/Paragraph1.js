@@ -90,7 +90,7 @@ class Paragraph1 extends React.Component {
       });
     }
 
-    render() {
+    showInputs() {
       return (
         <div>
         <Collapsible trigger="Paragraph 1">
@@ -142,4 +142,14 @@ class Paragraph1 extends React.Component {
     }
 }
 
-export default Paragraph1;
+// export default Paragraph1;
+
+class Context extends React.Component {
+  render() {
+    return (
+      <button>Add context to the prior response? </button>
+    )
+  }
+}
+
+export default Context;
