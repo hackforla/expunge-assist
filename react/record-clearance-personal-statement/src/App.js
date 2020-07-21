@@ -59,6 +59,19 @@ class App extends Component {
     }
   }
 
+  WorkBlock() {
+    if (this.state.IsWorking === "Yes") {
+      return (
+        <div>
+          <label>In what industry are you working? </label>
+          <input type="text" name="Industry" value={this.state.Industry} onChange={this.handleChange} /> 
+          <br/>
+                
+        </div>
+      );
+    }
+  }
+
   assemblePP1() {
     var addPlaceholders = true;
     var __name = this.state.Name.trim();
@@ -198,14 +211,9 @@ class App extends Component {
         </label>
         <br/>
         { this.FamilyBlock() }
-        {/* add the work stuff here TODO */ }
         <label>Are you currently working? Choose the closest answer: <br/>
           <input type="radio" name="IsWorking" value={"Yes"} checked={this.state.IsWorking === "Yes"} onChange={this.handleChange} />      
           <label> Yes 
-          </label>
-          <br/>
-          <input type="radio" name="IsWorking" value={"Yes, inconsistently"} checked={this.state.IsWorking === "Yes, inconsistently"} onChange={this.handleChange} />  
-          <label> Yes, inconsistently
           </label>
           <br/>
           <input type="radio" name="IsWorking" value={"No, but I was until recently"} checked={this.state.IsWorking === "No, but I was until recently"} onChange={this.handleChange} />  
@@ -216,6 +224,7 @@ class App extends Component {
           <label> No
           </label>
           <br/>
+        { this.WorkBlock() }
         </label>
         <label> Please write a sentence describing the challenges of life with a record: </label> <br/>
         <textarea name="ChallengesOfLifeWithRecord" value={this.state.ChallengesOfLifeWithRecord} onChange={this.handleChange} />
