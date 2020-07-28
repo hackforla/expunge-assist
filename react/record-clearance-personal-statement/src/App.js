@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Collapsible from './Collapsible.js';
 import './main.css';
 
-import Context from './Paragraph1';
+//import Context from './Paragraph1';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // PP1
       Name: "",
       AgeInYears: -1,
       NumberOfConvictions: -1,
@@ -15,8 +16,9 @@ class App extends Component {
       TimeSinceLastConviction: "",
       CloseToFamily: false,
       Family: [""],
+      FmailyMember: "",
       AddAnotherFamilyMember: "No",
-      IsWorking: "No",  // choose from "Yes", "No, but I was recently", "No"
+      IsWorking: "",  // choose from "Yes", "No, but I was recently", "No"
       Industry: "",
       WorkingDuration: "",
       AddContextToNotWorking: false,
@@ -26,7 +28,14 @@ class App extends Component {
       ChallengesOfLifeWithRecord: "",
       ChallengesOfLifeWithRecordContext: "",
       WhyWantsToClearRecord: "",
-      SinceMyLastConviction: "",
+      // PP2
+      SinceMyLastConviction: "", 
+      AddSinceMyLastConvictionContext: false,
+      SinceMyLastConvictionContext: "", 
+      WhyItMatters: "",
+      LifeChanges: [],
+      LifeChangesContext: [],
+      AddAnotherLifeChange: "",
     };
     this.handleChange = this.handleChange.bind(this);  
   }
@@ -36,24 +45,38 @@ class App extends Component {
     return (str === "") ? "(your family)" : str;
   } 
 
+  MoreLifeChangesBlock() {
+    return (
+      <div>
+        { this.state.LifeChanges.map((_, index) => { 
+          return (
+            <div> Please complete this sentence with another change from your life: <br/> Also, <br/>
+              <textarea name={"LifeChange" + index.toString()} value={this.state.LifeChange} onChange={this.handleChange} />       
+              <br/>
+              Context for your prior response (optional): <br/>
+              <textarea name={"LifeChangeContext" + index.toString()} value={this.state.LifeChangeContext} onChange={this.handleChange} />
+              <br/>
+            </div>
+        )})}
+        Has anything else changed in your life that you would like to share?
+        <input type="button" name="AddAnotherLifeChange" value={"Yes"} onClick={this.handleChange} />
+      </div>);
+  }
+
   FamilyBlock() {
     if (this.state.CloseToFamily) {
       return (
         <div>
-          { this.state.Family.map((familyMember, index) => { 
+          { this.state.Family.map((_, index) => { 
             return (
               <label> Add a family member and your relationship to them:
-                <input type="text" name={"Family" + index.toString()} value={this.state.familyMember} onChange={this.handleChange} />       
+                <input type="text" name={"Family" + index.toString()} value={this.state.familyMember} onClick={this.handleChange} /> 
+                <input type="button" name={"RemoveFamily"  + index.toString()} value={"Remove"} onClick={this.handleChange} />      
                 <br/>
               </label>
           )})}
           Would you like to add another family member?
-          <label> Yes 
-          <input type="radio" name="AddAnotherFamilyMember" value={"Yes"} checked={this.state.AddAnotherFamilyMember === "Yes"} onChange={this.handleChange} />      
-          </label>
-          <label> No
-          <input type="radio" name="AddAnotherFamilyMember" value={"No"} checked={this.state.AddAnotherFamilyMember === "No"} />  
-          </label>
+          <input type="button" name="AddAnotherFamilyMember" value={"Yes"} onClick={this.handleChange} />
           <br/>
         </div>);
     }
@@ -66,7 +89,40 @@ class App extends Component {
           <label>In what industry are you working? </label>
           <input type="text" name="Industry" value={this.state.Industry} onChange={this.handleChange} /> 
           <br/>
-                
+          <label>Complete this sentence: I have been working in {this.state.Industry === "" ? "this industry" : this.state.Industry} for </label>
+          <input type="text" name="WorkingDuration" value={this.state.WorkingDuration} onChange={this.handleChange} /> 
+          <br/>    
+        </div>
+      );
+    } else if (this.state.IsWorking === "No, but I was until recently") {
+      return (
+        <div>
+          <label>In what industry were you working? </label>
+          <input type="text" name="Industry" value={this.state.Industry} onChange={this.handleChange} /> 
+          <br/>
+          <label>Complete this sentence: Until recently I worked in {this.state.Industry === "" ? "this industry" : this.state.Industry} for </label>
+          <input type="text" name="WorkingDuration" value={this.state.WorkingDuration} onChange={this.handleChange} /> 
+          <br/>    
+        </div>
+      );
+    } else if (this.state.IsWorking === "No") {
+      return (
+        <div>
+          <label>Would you like to add a sentence explaining your work situation to the judge? We recommend this
+                 if you think it adds context, particularly if the reason that you are having trouble finding 
+                 work is related to your conviction. </label>
+                 <label> Yes 
+          <input type="radio" name="AddContextToNotWorking" value={"Yes"} checked={this.state.AddContextToNotWorking === "Yes"} onChange={this.handleChange} />      
+          </label>
+          <label> No
+          <input type="radio" name="AddContextToNotWorking" value={"No"} checked={this.state.AddContextToNotWorking === "No"} />  
+          </label>
+          <br/>
+          { this.state.AddContextToNotWorking &&
+              <label><label> Please write a sentence of context about your work situation: </label> <br/>
+              <textarea name="NotWorkingContext" value={this.state.NotWorkingContext} onChange={this.handleChange} />   
+              </label>
+          } 
         </div>
       );
     }
@@ -112,7 +168,7 @@ class App extends Component {
         pp1 += "I have a close family, including " + this.formatFamilyString() + ". ";
     }
     if (this.state.IsWorking === "No" && this.state.AddContextToNotWorking) {
-        pp1 += __notWorkingContext;  // TODO should add punctuation if not already present. multiple instances of this
+        pp1 += __notWorkingContext + " ";  // TODO should add punctuation if not already present. multiple instances of this
     } else {
         if (this.state.IsWorking === "Yes") {
             pp1 += "I have been working in " + __industry + " for " + __workingDuration + ". "
@@ -139,12 +195,24 @@ class App extends Component {
     if (addPlaceholders) {
       __sinceMyLastConviction = (__sinceMyLastConviction === "") ? "(your response)" : __sinceMyLastConviction;
       if (this.state.SinceMyLastConvictionAddContext) {
-        __sinceMyLastConvictionContext = (__sinceMyLastConvictionContext === "") ? "(your sentence). " : __sinceMyLastConvictionContext;
+        __sinceMyLastConvictionContext = (__sinceMyLastConvictionContext === "") ? "(your sentence)." : __sinceMyLastConvictionContext;
       }
-      this.__whyItMatters = (__whyItMatters === "") ? "(your sentence). " : __whyItMatters;
+      __whyItMatters = (__whyItMatters === "") ? "(your sentence)." : __whyItMatters;
     }
 
     var pp2 = "Since my last conviction, " + __sinceMyLastConviction + ". ";
+    if (this.state.AddContextToSinceMyLastConviction === "Yes") {
+      pp2 += __sinceMyLastConvictionContext;
+    }
+
+    this.state.LifeChanges.forEach((__lifeChange, index) => {
+      pp2 += "Also, " + __lifeChange + ". ";
+      if (this.state.LifeChangesContext[index] !== "") {
+        pp2 += this.state.LifeChangesContext[index] + ". ";
+      } 
+    })
+
+    pp2 += __whyItMatters + " ";
 
     return pp2;
   }
@@ -157,15 +225,44 @@ class App extends Component {
       this.setState({
         "Family": items
       });
+    } else if (event.target.name.startsWith("RemoveFamily")) {
+      let index = parseInt(event.target.name.substring(12));
+      let items = [...this.state.Family];
+      items.splice(index, 1);
+      this.setState({
+        "Family": items
+      });
     } else if (event.target.name === "AddAnotherFamilyMember") {
       this.setState({
         "Family": [...this.state.Family, ""]
+      });
+    } else if (event.target.name.startsWith("LifeChange")) {
+      if (event.target.name.startsWith("LifeChangeContext")) {
+        let index = parseInt(event.target.name.substring(17))
+        let items = [...this.state.LifeChangesContext];
+        items[index] = event.target.value
+        this.setState({
+          "LifeChangesContext": items
+        });
+      } else {
+        let index = parseInt(event.target.name.substring(10))
+        let items = [...this.state.LifeChanges];
+        items[index] = event.target.value
+        this.setState({
+          "LifeChanges": items
+        });
+      }  
+    } else if (event.target.name === "AddAnotherLifeChange") {
+      this.setState({
+        "LifeChanges": [...this.state.LifeChanges, ""],
+        "LifeChangesContext": [...this.state.LifeChangesContext, ""]
       });
     } else {  
       this.setState({
         [event.target.name]: event.target.value
       });
     }
+    //alert(event.target.name + " : " + event.target.value);
   }
 
   render () {
@@ -243,23 +340,29 @@ class App extends Component {
         <label> Complete the sentence: <br/>"Since my last conviction, </label> 
         <input type="text" name="SinceMyLastConviction" value={this.state.SinceMyLastConviction} onChange={this.handleChange} />
         <br/>
-        <Context/>     
+        Would you like to add a sentence of context to your prior response?       
+        <label> Yes </label>
+        <input type="radio" name="AddContextToSinceMyLastConviction" value={"Yes"} checked={this.state.AddContextToSinceMyLastConviction === "Yes"} onChange={this.handleChange} />      
+        <label> No  </label>
+        <input type="radio" name="AddContextToSinceMyLastConviction" value={"No"} checked={this.state.AddContextToSinceMyLastConviction === "No"} />  
         <br/>
-        <label>
-          Would you like to add another life change?
-          <label> Yes 
-          <input type="radio" name="AddAnotherLifeChange" value={"Yes"} checked={this.state.AddAnotherLifeChange === "Yes"} onChange={this.handleChange} />      
-          </label>
-          <label> No
-          <input type="radio" name="AddAnotherLifeChange" value={"No"} checked={this.state.AddAnotherLifeChange === "No"} onChange={this.handleChange} />  
-          </label>
-        </label>
+        { this.state.AddContextToSinceMyLastConviction &&
+            <label><label> Okay, add your context here: </label> <br/>
+            <textarea name="SinceMyLastConvictionContext" value={this.state.SinceMyLastConvictionContext} onChange={this.handleChange} />   
+            <br/>
+            </label>
+        } 
+        { this.MoreLifeChangesBlock() }
+        <label> Please write a sentence that talks about why these changes matter to you: </label> <br/>
+        <textarea name="WhyItMatters" value={this.state.WhyItMatters} onChange={this.handleChange} />
         </form>
         </Collapsible>
         </div>
         </div>
         <div class="column">
           { this.assemblePP1() }
+          <br/><br/>
+          { this.assemblePP2() }
         </div>
       </div>
     );
