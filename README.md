@@ -1,6 +1,7 @@
 # Hack For LA
 We are a local Brigade of the national non-profit Code for America, called Hack For LA. We organize project teams to work on specific projects, and the teams run out of weekly “hack nights” in Santa Monica, DTLA, and Inglewood.
 
+
 # Record Clearance Project
 
 Record Clearance is a project of Hack for LA. Record Clearance helps people in California with non-violent criminal records accomplish record clearance, expungement or reduction as a result of Prop 47 & Prop 64.
