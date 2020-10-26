@@ -34,7 +34,7 @@ We believe we can be partners to these players, growing their impact by applying
 ### Additional info
 
 Besides the On-boarding doc you can find insight on this project by reviewing; 
-- [Project One Sheet]((https://docs.google.com/document/d/1JFZGKxeEBWVak_GATgIt0Knyr9_gJ15CBirynebb4tg/edit))
+- [Project One Sheet](https://docs.google.com/document/d/1JFZGKxeEBWVak_GATgIt0Knyr9_gJ15CBirynebb4tg/edit)
 - [Google drive](https://drive.google.com/drive/folders/1hBhOeNyjjEaHcWAKSu9eW--FF9HnKNqe)
      - [background](https://docs.google.com/document/d/1-6XFcuhQpv-pBi-QWUcV_kkXFfvJktC0qp0aiJv4KA8/edit#) 
      - [Research & Rights on record clearance](https://docs.google.com/document/d/16IEFZysYDwzF0MMrLWO40Fvp3RppnKoimxw464kG4R4/edit#heading=h.aoqes017iz2b) 
