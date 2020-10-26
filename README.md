@@ -48,8 +48,8 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 - Github & Google Doc's for documentation
      - For the purpose tracking progress and general of administration of the project we will be using Github's [Kanban boards](https://github.com/hackforla/record-clearance/projects/1)
 - Teleconference meetings 
-     - Will be hosted by Google Meetings (or ZOOM) must notify Angela that someone would like to attend via Teleconference 
-     - Link to meeting [live on Mondays between 7-9 pm PST](https://meet.google.com/rnh-xgbo-hqv)
+     - Will be hosted by Google Meetings (or ZOOM) must notify Daniel that someone would like to attend via Teleconference 
+     - Link to meeting [live on Mondays between 6:30-7:30 pm PST](Check Record Clearance slack channel for the Google meet invite at the designated meeting time)
 
 
 ## How to contribute
@@ -57,10 +57,10 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 Explain the different ways people can contribute. For example:
 
 - Join the team 
-     on Slack channel and at our weekly Monday hack night in person or teleconference (start at 7pm at the latest).
-- To help with user research, sync with Charlotte.
-- To provide design support, sync with Angela.
-- To contribute to the code, {TBA}.
+     on Slack channel and at our weekly Monday hack night in person or teleconference (start at 6:30pm at the latest).
+- To help with user research, sync with Cade.
+- To provide design support, sync with Daniel.
+- To contribute to the code, Cade.
 
 
 ### Process for meetings:
