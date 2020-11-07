@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import device from './breakpoints';
-
+import { color, space, fontSize } from 'styled-system'
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -38,8 +38,9 @@ li {
 `
 
 export const Button = styled.button`
-  background:black;
-  color:white;
+  ${color};
+  ${space};
+  ${fontSize};
   border:none;
   width:143px;
   height:40px;
@@ -48,6 +49,7 @@ export const Button = styled.button`
   justify-content:center;
   align-items:center;
   font-size:.875em;
+  box-shadow: 4px 4px 16px 0px #3D0066 25%;
   & :nth-child(1) {
     margin-right:10px;
   }
