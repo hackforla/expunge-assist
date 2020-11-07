@@ -1,8 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { color } from 'styled-system';
+import device from './breakpoints';
+
 
 export const GlobalStyle = createGlobalStyle`
 * {
+  margin:0;
+  pardding:0;
   box-sizing: border-box;
 }
 
@@ -14,13 +17,24 @@ body {
 
 h1 {
   font-weight: 400;
-  font-size: 2.125em;
+  font-size: 2.125rem;
+  margin: 1rem 0;
+  @media only screen and ${device.md} {
+    font-size:3rem;
+  }
 }
 
 h2 {
   font-weight:500;
-  font-size:1.25em;
+  font-size:1.25rem;
+  margin: 1rem 0;
+
 }
+
+li {
+  list-style-type:none;
+}
+
 `
 
 export const Button = styled.button`

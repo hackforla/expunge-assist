@@ -8,6 +8,7 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy'
 import TermsOfUse from './components/pages/TermsOfUse'
 import FAQ from './components/pages/FAQ'
 import AboutUs from './components/pages/AboutUs'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/FAQ' component={FAQ} />
         <Route path='/AboutUs' component={AboutUs} />
       </Switch>
+      <Navbar />
       <GlobalStyle />
     </Router>
   );
