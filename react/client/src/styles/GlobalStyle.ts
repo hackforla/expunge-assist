@@ -21,6 +21,7 @@ h1 {
   margin: 1rem 0;
   @media only screen and ${device.md} {
     font-size:3rem;
+    font-weight:700;
   }
 }
 
@@ -38,9 +39,8 @@ li {
 `
 
 export const Button = styled.button`
-  ${color};
-  ${space};
-  ${fontSize};
+  background:black;
+  color:white;
   border:none;
   width:143px;
   height:40px;
