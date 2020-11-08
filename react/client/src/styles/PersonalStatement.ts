@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import device from './breakpoints'
-import {flexbox, space} from 'styled-system';
+import { flexbox, space } from 'styled-system';
 
 export const Wrapper = styled.div`
   margin:24px;

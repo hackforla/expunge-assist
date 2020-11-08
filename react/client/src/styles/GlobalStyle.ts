@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import device from './breakpoints';
-import { color, space, fontSize } from 'styled-system'
+import { color } from 'styled-system'
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -39,8 +39,7 @@ li {
 `
 
 export const Button = styled.button`
-  background:black;
-  color:white;
+  ${color}
   border:none;
   width:143px;
   height:40px;

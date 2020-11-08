@@ -24,7 +24,7 @@ const PersonalStatement: React.FC = () => {
         <h1>Start fresh with a record expungement</h1>
         <h2>Generate a personal statement in just 20 minutes</h2>
         <FlexWrapper>
-          <Button color="blue" onClick={handleClick}>
+          <Button bg="black" color="white" onClick={handleClick}>
             <span>START NOW</span>
             <img src = {arrowRight} alt="arrow right"/>
           </Button>
