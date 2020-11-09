@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import device from './breakpoints';
-import { color } from 'styled-system'
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -38,8 +37,17 @@ li {
 
 `
 
+export const Flex = styled.div`
+  display:flex;
+  justify-content:flex-end;
+  @media only screen and ${device.md} {
+    justify-content:flex-start;
+  }
+`
+
 export const Button = styled.button`
-  ${color}
+  background:black;
+  color:white;
   border:none;
   width:143px;
   height:40px;
@@ -53,3 +61,4 @@ export const Button = styled.button`
     margin-right:10px;
   }
 `
+
