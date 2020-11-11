@@ -7,7 +7,7 @@ import { Wrapper } from '../styles/Header'
 const Header: React.FC = () => {
   return (
     <Wrapper className="Header">
-      <img src={icon} alt=""/>
+      <img src={icon} alt="" />
       <div>
         <p>The Record</p>
         <p>Clearance Project</p>

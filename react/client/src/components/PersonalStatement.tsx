@@ -19,7 +19,7 @@ const PersonalStatement: React.FC = () => {
         <Flex>
           <Button onClick={handleClick}>
             <span>START NOW</span>
-            <img src = {arrowRight} alt="arrow right"/>
+            <img src={arrowRight} alt="arrow right" />
           </Button>
         </Flex>
       </ContentWrapper>
