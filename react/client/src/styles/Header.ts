@@ -4,7 +4,6 @@ import device from './breakpoints'
 export const Wrapper = styled.div`
   color:white;
   display:flex;
-  margin: 1.5em;
   @media only screen and ${device.md} {
     margin: 1.5em 0 0 2.5em;
   }

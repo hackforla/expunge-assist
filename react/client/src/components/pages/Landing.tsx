@@ -1,0 +1,26 @@
+import React from 'react';
+
+import arrowRight from '../../assets/arrowRight.svg'
+import { Button, Flex } from '../../styles/GlobalStyle'
+import { Wrapper } from '../../styles/Landing'
+
+interface LandingProps {
+  handleClick: () => void;
+}
+
+const Landing: React.FC<LandingProps> = ({ handleClick }) => {
+  return (
+    <Wrapper>
+      <h1> Start fresh with a record expungement</h1>
+      <h2>Generate a personal statement in just 20 minutes</h2>
+      <Flex>
+        <Button onClick={handleClick}>
+          <span>START NOW</span>
+          <img src={arrowRight} alt="arrow right" />
+        </Button>
+      </Flex>
+    </Wrapper>
+  )
+}
+
+export default Landing;
