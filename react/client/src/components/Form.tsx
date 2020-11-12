@@ -1,19 +1,19 @@
 import React from 'react';
 
-import FormHeader from './FormHeader'
 import BeforeYouBegin from './formPages/BeforeYouBegin'
+import Step1 from './formPages/Step1';
 import { Wrapper } from '../styles/Form';
 
 interface FormProps {
-  formStep: number;
+  pageNumber: number;
 }
 
-const Form: React.FC<FormProps> = ({formStep}) => {
+const Form: React.FC<FormProps> = ({pageNumber}) => {
   return (
     <Wrapper>
-      <FormHeader formStep={formStep}/>
-      {formStep === 1 && <BeforeYouBegin />}
-      {formStep === 2 && <p>Welcome!</p>}
+      {pageNumber === 1 && <BeforeYouBegin />}
+      {pageNumber === 2 && <p>Welcome!</p>}
+      {pageNumber === 3 && <Step1 /> }
     </Wrapper>
   )
 }

@@ -15,31 +15,31 @@ interface PersonalStatementProps {
   },
   match: {
     params: {
-      step: string
+      page: string
     }
   }
 }
 
 const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match }) => {
-  let formStep: number = Number(match.params.step);
+  let pageNumber: number = Number(match.params.page);
   let background: string;
-  if (isNaN(formStep)) formStep = 0;
-  console.log(formStep)
+  if (isNaN(pageNumber)) pageNumber = 0;
+  console.log(pageNumber)
   
   const handleClick = () => {
     console.log('click')
     history.push('/form/1')
   }
 
-  formStep === 0 ? background='#9903ff' : background='white';
+  pageNumber === 0 ? background='#9903ff' : background='white';
 
   return (
     <Wrapper background={background} className="PersonalStatementContainer">
-      <Header formStep={formStep} />
+      <Header pageNumber={pageNumber} />
       <ContentWrapper>
-        { formStep === 0 ? <Landing handleClick={handleClick}/>
+        { pageNumber === 0 ? <Landing handleClick={handleClick}/>
          : 
-        <Form formStep={formStep}/> }
+        <Form pageNumber={pageNumber}/> }
       </ContentWrapper>
     </Wrapper>
   )

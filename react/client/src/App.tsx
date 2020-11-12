@@ -17,7 +17,7 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <Route exact path='/' component={PersonalStatementContainer} history={history}/>
-        <Route path='/form/:step?' component={PersonalStatementContainer} history={history}/>
+        <Route path='/form/:page?' component={PersonalStatementContainer} history={history}/>
         <Route path='/PrivacyPolicy' component={PrivacyPolicy} />
         <Route path='/TermsOfUse' component={TermsOfUse} />
         <Route path='/FAQ' component={FAQ} />

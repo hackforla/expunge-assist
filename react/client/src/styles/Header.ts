@@ -6,7 +6,7 @@ interface Props {
   color?: string;
 }
 
-export const Wrapper = styled.div<Props>`
+export const LandingHeader = styled.div<Props>`
   background: ${props => props.background};
   display:flex;
   padding: 1.5em 0 0 1.5em;
@@ -22,5 +22,18 @@ export const Wrapper = styled.div<Props>`
       display:flex;
       flex-direction:column;
     }
+  }
+`
+
+export const FormHeader = styled.div`
+  background:#F7EBFF;
+  color:black;
+  height:200px;
+  h2 {
+    margin: 0;
+  }
+  p {
+    color:3D0066;
+    opacity:30%;
   }
 `
