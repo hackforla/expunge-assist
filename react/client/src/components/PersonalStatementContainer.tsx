@@ -39,7 +39,7 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
       <ContentWrapper>
         { pageNumber === 0 ? <Landing handleClick={handleClick}/>
          : 
-        <Form pageNumber={pageNumber}/> }
+        <Form pageNumber={pageNumber} handleClick={handleClick} /> }
       </ContentWrapper>
     </Wrapper>
   )
