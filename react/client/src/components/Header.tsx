@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ formStep }) => {
-  let icon, background;
+  let icon: string, background: string;
   formStep === 0 ? icon = iconWhite : icon = iconBlack;
   formStep === 0 ? background = '#9903ff' : background = 'white';
 

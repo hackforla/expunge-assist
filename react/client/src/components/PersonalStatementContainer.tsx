@@ -22,7 +22,7 @@ interface PersonalStatementProps {
 
 const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match }) => {
   let formStep: number = Number(match.params.step);
-  let background;
+  let background: string;
   if (isNaN(formStep)) formStep = 0;
   console.log(formStep)
   
