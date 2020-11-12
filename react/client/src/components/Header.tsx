@@ -12,7 +12,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   let icon: string, background: string, formStep: number;
   pageNumber === 0 ? icon = iconWhite : icon = iconBlack;
-  pageNumber === 0 ? background = '#9903ff' : background = 'white';
+  pageNumber < 1 ? background = '#9903ff' : background = 'white';
   pageNumber > 2 ? formStep = 1 : formStep = 2;
 
   return (
