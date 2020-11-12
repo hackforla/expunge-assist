@@ -7,7 +7,6 @@ interface Props {
 
 export const Wrapper = styled.div<Props>`
   background: ${props => props.background};
-  padding:24px;
   color:white;
   @media only screen and ${device.md} {
     height:850px;

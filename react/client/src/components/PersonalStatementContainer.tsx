@@ -21,8 +21,9 @@ interface PersonalStatementProps {
 }
 
 const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match }) => {
-  const formStep: string = match.params.step;
+  let formStep: number = Number(match.params.step);
   let background;
+  if (isNaN(formStep)) formStep = 0;
   console.log(formStep)
   
   const handleClick = () => {
@@ -30,16 +31,15 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
     history.push('/form/1')
   }
 
-  const onLandingPage = history.location.pathname=== '/';
-  onLandingPage ? background='#9903ff' : background='white';
+  formStep === 0 ? background='#9903ff' : background='white';
 
   return (
     <Wrapper background={background} className="PersonalStatementContainer">
-      { onLandingPage && <Header /> }
+      <Header formStep={formStep} />
       <ContentWrapper>
-        { onLandingPage ? <Landing handleClick={handleClick}/>
+        { formStep === 0 ? <Landing handleClick={handleClick}/>
          : 
-        <Form formStep={Number(formStep)}/> }
+        <Form formStep={formStep}/> }
       </ContentWrapper>
     </Wrapper>
   )

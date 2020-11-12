@@ -1,12 +1,21 @@
 import React from 'react';
 
-import icon from '../assets/icon.svg'
+import iconBlack from '../assets/iconBlack.svg'
+import iconWhite from '../assets/iconWhite.svg'
 
 import { Wrapper } from '../styles/Header'
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  formStep: number;
+}
+
+const Header: React.FC<HeaderProps> = ({ formStep }) => {
+  let icon, background;
+  formStep === 0 ? icon = iconWhite : icon = iconBlack;
+  formStep === 0 ? background = '#9903ff' : background = 'white';
+
   return (
-    <Wrapper className="Header">
+    <Wrapper background={background} className="Header">
       <img src={icon} alt="" />
       <div>
         <p>The Record</p>

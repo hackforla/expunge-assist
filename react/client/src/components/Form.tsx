@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Header from './Header'
 import FormHeader from './FormHeader'
 import BeforeYouBegin from './formPages/BeforeYouBegin'
+import { Wrapper } from '../styles/Form';
 
 interface FormProps {
   formStep: number;
@@ -10,12 +10,11 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({formStep}) => {
   return (
-    <div>
-      <Header />
+    <Wrapper>
       <FormHeader formStep={formStep}/>
       {formStep === 1 && <BeforeYouBegin />}
       {formStep === 2 && <p>Welcome!</p>}
-    </div>
+    </Wrapper>
   )
 }
 
