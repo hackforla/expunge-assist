@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 import device from './breakpoints'
 
-export const Wrapper = styled.div`
-  margin:24px;
+interface Props {
+  background?: string;
+}
+
+export const Wrapper = styled.div<Props>`
+  background: ${props => props.background};
+  padding:24px;
   color:white;
   @media only screen and ${device.md} {
     height:850px;

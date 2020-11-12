@@ -22,22 +22,24 @@ interface PersonalStatementProps {
 
 const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match }) => {
   const formStep: string = match.params.step;
+  let background;
+  console.log(formStep)
   
   const handleClick = () => {
     console.log('click')
     history.push('/form/1')
   }
 
+  const onLandingPage = history.location.pathname=== '/';
+  onLandingPage ? background='#9903ff' : background='white';
+
   return (
-    <Wrapper className="PersonalStatementContainer">
+    <Wrapper background={background} className="PersonalStatementContainer">
+      { onLandingPage && <Header /> }
       <ContentWrapper>
-        { history.location.pathname === '/' ? <>
-          <Header />
-          <Landing handleClick={handleClick}/>
-          </>
-        :
-        <Form formStep={Number(formStep)}/>
-        }
+        { onLandingPage ? <Landing handleClick={handleClick}/>
+         : 
+        <Form formStep={Number(formStep)}/> }
       </ContentWrapper>
     </Wrapper>
   )

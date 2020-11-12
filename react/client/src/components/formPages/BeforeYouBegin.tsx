@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { Wrapper } from '../../styles/BeforeYouBegin'
+
 const BeforeYouBegin: React.FC = () => {
   return (
-    <div>
+    <Wrapper>
       <p>Before you begin</p>
-    </div>
+    </Wrapper>
   )
 }
 
