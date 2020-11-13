@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
-  let icon: string, background: string, formStep: number, showFormHeader: boolean;
+  let icon: string, background: string, formStep: number, showFormHeader: boolean, showLandingHeader: boolean;
   pageNumber === 0 ? icon = iconWhite : icon = iconBlack;
   pageNumber < 1 ? background = '#9903ff' : background = 'white';
   if (pageNumber === 3 ) { formStep=1; showFormHeader=true; }
@@ -21,9 +21,11 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   else if (pageNumber === 13) { formStep = 6; showFormHeader=true; }
   else { formStep = 0; showFormHeader=false }
 
+  if (pageNumber < 4) { showLandingHeader = true; } else { showLandingHeader = false; }
+
   return (
     <>
-    { showFormHeader ? 
+    { showFormHeader &&
       <FormHeader>
         {formStep === 1 && <h2>Introduce Yourself!</h2>}
         {formStep === 2 && <h2>Life Changes</h2>}
@@ -35,14 +37,16 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
         {formStep < 6 && <p>Step {formStep} of 5</p> }
         {formStep === 6 && <p>Completed</p> }
       </FormHeader>
-    : 
+    }
+    { showLandingHeader && 
       <LandingHeader background={background} className="Header">
-      <img src={icon} alt="" />
-      <div>
-        <p>The Record</p>
-        <p>Clearance Project</p>
-      </div>
-    </LandingHeader>
+        <img src={icon} alt="" />
+        <div>
+          <p>The Record</p>
+          <p>Clearance Project</p>
+        </div>
+      </LandingHeader>
+
     }
     
     </>
