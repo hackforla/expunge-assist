@@ -8,6 +8,7 @@ interface Props {
 
 export const LandingHeader = styled.div<Props>`
   background: ${props => props.background};
+  color: ${props => props.color};
   display:flex;
   padding: 1.5em 0 0 1.5em;
   @media only screen and ${device.md} {

@@ -11,14 +11,15 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   const [showLandingHeader, setShowLandingHeader] = useState(true);
-  let icon: string, background: string, formStep: number, showFormHeader: boolean;
+  let icon: string, background: string, formStep: number, showFormHeader: boolean, color: string;
 
   useEffect(() => {
     showLandingHeaderOnResize(window.innerWidth)
   },)
 
   pageNumber === 0 ? icon = iconWhite : icon = iconBlack;
-  pageNumber === 0 ? background = '#9903ff' : background = 'white';
+  // pageNumber === 0 ? background = '#9903ff' : background = 'white';
+  if (pageNumber === 0) { background = '#9903ff'; color='white' } else {background = 'white'; color = 'black'}
   if (pageNumber === 3 ) { formStep=1; showFormHeader=true; }
   else if (pageNumber === 5) { formStep = 2; showFormHeader=true; }
   else if (pageNumber === 7) { formStep = 3; showFormHeader=true; }
@@ -37,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   return (
     <>
     { showLandingHeader && 
-      <LandingHeader background={background} className="Header">
+      <LandingHeader background={background} color={color} className="Header">
         <img src={icon} alt="" />
         <div>
           <p>The Record</p>
