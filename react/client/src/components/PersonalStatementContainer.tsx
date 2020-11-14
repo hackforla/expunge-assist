@@ -4,7 +4,7 @@ import Header from './Header'
 import Form from './Form'
 import Landing from './pages/Landing';
 
-import { Wrapper, ContentWrapper } from '../styles/PersonalStatementContainer'
+import { Wrapper, FormWrapper } from '../styles/PersonalStatementContainer'
 
 interface PersonalStatementProps {
   history: {
@@ -36,11 +36,11 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
   return (
     <Wrapper background={background} className="PersonalStatementContainer">
       <Header pageNumber={pageNumber} />
-      <ContentWrapper>
+      <FormWrapper>
         { pageNumber === 0 ? <Landing handleClick={handleClick}/>
          : 
         <Form pageNumber={pageNumber} handleClick={handleClick} /> }
-      </ContentWrapper>
+      </FormWrapper>
     </Wrapper>
   )
 }

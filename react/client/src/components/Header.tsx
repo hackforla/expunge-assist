@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import iconBlack from '../assets/iconBlack.svg'
 import iconWhite from '../assets/iconWhite.svg'
@@ -10,9 +10,15 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
-  let icon: string, background: string, formStep: number, showFormHeader: boolean, showLandingHeader: boolean;
+  const [showLandingHeader, setShowLandingHeader] = useState(true);
+  let icon: string, background: string, formStep: number, showFormHeader: boolean;
+
+  useEffect(() => {
+    showLandingHeaderOnResize(window.innerWidth)
+  },)
+
   pageNumber === 0 ? icon = iconWhite : icon = iconBlack;
-  pageNumber < 1 ? background = '#9903ff' : background = 'white';
+  pageNumber === 0 ? background = '#9903ff' : background = 'white';
   if (pageNumber === 3 ) { formStep=1; showFormHeader=true; }
   else if (pageNumber === 5) { formStep = 2; showFormHeader=true; }
   else if (pageNumber === 7) { formStep = 3; showFormHeader=true; }
@@ -21,10 +27,25 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   else if (pageNumber === 13) { formStep = 6; showFormHeader=true; }
   else { formStep = 0; showFormHeader=false }
 
-  if (pageNumber < 4) { showLandingHeader = true; } else { showLandingHeader = false; }
+  const showLandingHeaderOnResize = (viewWidth :number) => {
+    if (pageNumber > 2) {
+      viewWidth > 960 ?  setShowLandingHeader(true) : setShowLandingHeader(false);
+    }
+  }
+  window.addEventListener("resize", () => showLandingHeaderOnResize(window.innerWidth))
 
   return (
     <>
+    { showLandingHeader && 
+      <LandingHeader background={background} className="Header">
+        <img src={icon} alt="" />
+        <div>
+          <p>The Record</p>
+          <p>Clearance Project</p>
+        </div>
+      </LandingHeader>
+
+    }
     { showFormHeader &&
       <FormHeader>
         {formStep === 1 && <h2>Introduce Yourself!</h2>}
@@ -38,17 +59,7 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
         {formStep === 6 && <p>Completed</p> }
       </FormHeader>
     }
-    { showLandingHeader && 
-      <LandingHeader background={background} className="Header">
-        <img src={icon} alt="" />
-        <div>
-          <p>The Record</p>
-          <p>Clearance Project</p>
-        </div>
-      </LandingHeader>
 
-    }
-    
     </>
   )
 }

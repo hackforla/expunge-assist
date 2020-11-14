@@ -26,8 +26,8 @@ export const FlexWrapper = styled.div`
   }
 `
 
-export const ContentWrapper = styled.div`
+export const FormWrapper = styled.div`
   @media only screen and ${device.md} {
-    margin: 130px 0 0 130px;
+    padding: 130px 0 0 130px;
   }
 `
