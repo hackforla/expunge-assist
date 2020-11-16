@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import device from './breakpoints'
 
-export const Wrapper = styled.div`
-  margin:24px;
+interface Props {
+  background?: string;
+}
+
+export const Wrapper = styled.div<Props>`
+  background: ${props => props.background};
   color:white;
   @media only screen and ${device.md} {
     height:850px;
@@ -22,8 +26,8 @@ export const FlexWrapper = styled.div`
   }
 `
 
-export const ContentWrapper = styled.div`
+export const FormWrapper = styled.div`
   @media only screen and ${device.md} {
-    margin: 130px 0 0 130px;
+    padding: 130px 0 0 130px;
   }
 `

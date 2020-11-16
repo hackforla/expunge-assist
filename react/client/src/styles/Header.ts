@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 import device from './breakpoints'
 
-export const Wrapper = styled.div`
-  color:white;
+interface Props {
+  background?: string;
+  color?: string;
+}
+
+export const LandingHeader = styled.div<Props>`
+  background: ${props => props.background};
+  color: ${props => props.color};
   display:flex;
-  margin: 1.5em;
+  padding: 1.5em 0 0 1.5em;
   @media only screen and ${device.md} {
-    margin: 1.5em 0 0 2.5em;
+    margin: 0 0 0 2.5em;
   }
   div {
     display:none;
@@ -17,5 +23,18 @@ export const Wrapper = styled.div`
       display:flex;
       flex-direction:column;
     }
+  }
+`
+
+export const FormHeader = styled.div`
+  background:#F7EBFF;
+  color:black;
+  height:200px;
+  h2 {
+    margin: 0;
+  }
+  p {
+    color:3D0066;
+    opacity:30%;
   }
 `
