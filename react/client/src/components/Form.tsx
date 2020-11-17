@@ -9,10 +9,18 @@ interface FormProps {
   handleClick: () => void;
 }
 
+interface userInputs {
+  name:string;
+  age:number;
+  introduction:string;
+}
+
 const Form: React.FC<FormProps> = ({ pageNumber, handleClick }) => {
-  const [ name, setName ] = useState<string>('');
-  const [ age, setAge ] = useState<number | null>(null);
-  const [ introduction, setIntroduction ] = useState<string>('');
+  const [inputs, setInputs] = useState<userInputs>({
+    name: 'Hi',
+    age: 18,
+    introduction: 'hi'
+  })
 
   return (
     <Wrapper>
@@ -20,11 +28,11 @@ const Form: React.FC<FormProps> = ({ pageNumber, handleClick }) => {
       {pageNumber === 2 && <p>Welcome!</p>}
       {pageNumber === 3 && 
       <>
-        <Step1 setName={setName} setAge={setAge} setIntroduction={setIntroduction}/>
+        <Step1 inputs={inputs} setInputs={setInputs} />
         <h2>{`<Form>`} state: **for development purposes**</h2>
-        <h2>Name: {name}</h2>
-        <h2>Age: {age}</h2>
-        <h2>Introduction: {introduction} </h2>
+        <h2>Name: {inputs.name}</h2>
+        <h2>Age: {inputs.age}</h2>
+        <h2>Intro: {inputs.introduction}</h2>
       </> }
       {pageNumber === 4 && <p>Congrats!</p> }
       {pageNumber === 5 && <p>Finish this sentence</p> }
