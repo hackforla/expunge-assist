@@ -14,24 +14,20 @@ interface FormProps {
   handleClick: () => void;
 }
 
-interface userInputs {
-  name:string;
-  age:number | null;
-  introduction:string;
-  lifeChanges: string;
-
-  goals: string;
-  goalsHow: string;
-  clearRecordWhy: string;
-  clearRecordHow: string;
-}
-
 const Form: React.FC<FormProps> = ({ pageNumber, handleClick }) => {
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
     introduction: '',
+
     lifeChanges: '',
+
+    communityServiceOrgName: '',
+    communityServiceDescription: '',
+    jobName: '',
+    jobTitle: '',
+    jobDescription: '',
+    difficultyFindingWorkDescription:'',
 
     goals: '',
     goalsHow: '',

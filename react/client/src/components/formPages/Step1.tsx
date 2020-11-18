@@ -1,10 +1,5 @@
 import React from 'react';
 
-interface StepProps {
-  setInputs: (value: any) => void;
-  inputs: {};
-}
-
 const Step1: React.FC<StepProps> = ({ inputs, setInputs }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
