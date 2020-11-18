@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 
 import BeforeYouBegin from './formPages/BeforeYouBegin'
 import Step1 from './formPages/Step1';
+import Step2 from './formPages/Step2';
+import Step3 from './formPages/Step3';
+import Step4 from './formPages/Step4';
+import Step5 from './formPages/Step5';
+
 import { Wrapper } from '../styles/Form';
 
 interface FormProps {
@@ -10,30 +15,50 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ pageNumber, handleClick }) => {
-  const [ name, setName ] = useState<string>('');
-  const [ age, setAge ] = useState<number | null>(null);
-  const [ introduction, setIntroduction ] = useState<string>('');
+  const [inputs, setInputs] = useState<userInputs>({
+    name: '',
+    age: null,
+    introduction: '',
+
+    lifeChanges: '',
+
+    communityServiceOrgName: '',
+    communityServiceDescription: '',
+    jobName: '',
+    jobTitle: '',
+    jobDescription: '',
+    difficultyFindingWorkDescription:'',
+
+    goals: '',
+    goalsHow: '',
+    
+    clearRecordWhy: '',
+    clearRecordHow: '',
+  })
 
   return (
     <Wrapper>
       {pageNumber === 1 && <BeforeYouBegin />}
       {pageNumber === 2 && <p>Welcome!</p>}
       {pageNumber === 3 && 
-      <>
-        <Step1 setName={setName} setAge={setAge} setIntroduction={setIntroduction}/>
-        <h2>{`<Form>`} state: **for development purposes**</h2>
-        <h2>Name: {name}</h2>
-        <h2>Age: {age}</h2>
-        <h2>Introduction: {introduction} </h2>
-      </> }
+        <Step1 inputs={inputs} setInputs={setInputs} />
+      }
       {pageNumber === 4 && <p>Congrats!</p> }
-      {pageNumber === 5 && <p>Finish this sentence</p> }
+      {pageNumber === 5 && 
+        <Step2 inputs={inputs} setInputs={setInputs} />
+      }
       {pageNumber === 6 && <p>Way to Go!</p> }
-      {pageNumber === 7 && <p>Please check all that apply:</p> }
+      {pageNumber === 7 && 
+        <Step3 inputs={inputs} setInputs={setInputs} />
+      }
       {pageNumber === 8 && <p>Hooray!</p> }
-      {pageNumber === 9 && <p>Please describe what goals you are working towards acheiving right now. (2 sentences maximum)</p> }
+      {pageNumber === 9 && 
+        <Step4 inputs={inputs} setInputs={setInputs} />
+      }
       {pageNumber === 10 && <p>Great job!</p> }
-      {pageNumber === 11 && <p>Please finish this sentence: I want to clear my record because...</p> }
+      {pageNumber === 11 && 
+        <Step5 inputs={inputs} setInputs={setInputs} />
+      }
       {pageNumber === 12 && <p>Fabulous!</p> }
       {pageNumber === 13 && <p>Previewing Final Statement</p> }
     </Wrapper>
