@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface Step1Props {
+interface StepProps {
   setInputs: (value: any) => void;
   inputs: {};
 }
 
-const Step1: React.FC<Step1Props> = ({ setInputs, inputs }) => {
+const Step1: React.FC<StepProps> = ({ inputs, setInputs }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
@@ -19,6 +19,7 @@ const Step1: React.FC<Step1Props> = ({ setInputs, inputs }) => {
       setInputs({ ...inputs, introduction: inputValue})
     }
   }
+  
   return (
     <div className="Step1">
       <form>
