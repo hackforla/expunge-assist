@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  font-size:12px;
-  background:#9903ff;
-  color:white;
-  width:500px;
+  font-size:10px;
+  color:black;
+  max-width:350px;
 `
