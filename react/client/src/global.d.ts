@@ -18,4 +18,5 @@ interface userInputs {
   goalsHow: string;
   clearRecordWhy: string;
   clearRecordHow: string;
+  pdf:{} | undefined;
 }
