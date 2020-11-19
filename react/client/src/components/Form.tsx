@@ -6,6 +6,7 @@ import Step2 from './formPages/Step2';
 import Step3 from './formPages/Step3';
 import Step4 from './formPages/Step4';
 import Step5 from './formPages/Step5';
+import Download from './formPages/Download';
 
 import { Wrapper } from '../styles/Form';
 
@@ -34,6 +35,8 @@ const Form: React.FC<FormProps> = ({ pageNumber, handleClick }) => {
     
     clearRecordWhy: '',
     clearRecordHow: '',
+
+    pdf:undefined
   })
 
   return (
@@ -60,7 +63,11 @@ const Form: React.FC<FormProps> = ({ pageNumber, handleClick }) => {
         <Step5 inputs={inputs} setInputs={setInputs} />
       }
       {pageNumber === 12 && <p>Fabulous!</p> }
-      {pageNumber === 13 && <p>Previewing Final Statement</p> }
+      {pageNumber === 13 && <p>Previewing Final Statement</p>}
+      {pageNumber === 14 && <p>Editing</p>}
+      {pageNumber === 15 &&  
+        <Download inputs={inputs} setInputs={setInputs} />
+      }
     </Wrapper>
   )
 }

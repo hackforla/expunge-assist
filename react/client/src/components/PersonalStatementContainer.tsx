@@ -24,7 +24,6 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
   let pageNumber: number = Number(match.params.page);
   let background: string;
   if (isNaN(pageNumber)) pageNumber = 0;
-  console.log(pageNumber)
   
   const handleClick = () => {
     console.log('click')
