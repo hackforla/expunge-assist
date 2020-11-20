@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useHistory, HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import { GlobalStyle } from './styles/GlobalStyle';
 
@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const history = useHistory();
 
   return (
-    <Router basename={ process.env.PUBLIC_URL }>
+    <Router >
       <Switch>
         <Route exact path='/' component={PersonalStatementContainer} history={history}/>
         <Route path='/form/:page?' component={PersonalStatementContainer} history={history}/>
