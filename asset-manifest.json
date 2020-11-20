@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/record-clearance/static/css/main.884a7e02.chunk.css",
-    "main.js": "/record-clearance/static/js/main.cef58400.chunk.js",
-    "main.js.map": "/record-clearance/static/js/main.cef58400.chunk.js.map",
+    "main.js": "/record-clearance/static/js/main.ce2771ac.chunk.js",
+    "main.js.map": "/record-clearance/static/js/main.ce2771ac.chunk.js.map",
     "runtime-main.js": "/record-clearance/static/js/runtime-main.8ea7400a.js",
     "runtime-main.js.map": "/record-clearance/static/js/runtime-main.8ea7400a.js.map",
     "static/js/2.881ab84f.chunk.js": "/record-clearance/static/js/2.881ab84f.chunk.js",
     "static/js/2.881ab84f.chunk.js.map": "/record-clearance/static/js/2.881ab84f.chunk.js.map",
-    "static/js/3.7001b7d4.chunk.js": "/record-clearance/static/js/3.7001b7d4.chunk.js",
-    "static/js/3.7001b7d4.chunk.js.map": "/record-clearance/static/js/3.7001b7d4.chunk.js.map",
+    "static/js/3.e339d213.chunk.js": "/record-clearance/static/js/3.e339d213.chunk.js",
+    "static/js/3.e339d213.chunk.js.map": "/record-clearance/static/js/3.e339d213.chunk.js.map",
     "static/js/4.69979e44.chunk.js": "/record-clearance/static/js/4.69979e44.chunk.js",
     "static/js/4.69979e44.chunk.js.map": "/record-clearance/static/js/4.69979e44.chunk.js.map",
     "static/js/5.f9aa4617.chunk.js": "/record-clearance/static/js/5.f9aa4617.chunk.js",
@@ -16,7 +16,7 @@
     "index.html": "/record-clearance/index.html",
     "static/css/main.884a7e02.chunk.css.map": "/record-clearance/static/css/main.884a7e02.chunk.css.map",
     "static/js/2.881ab84f.chunk.js.LICENSE.txt": "/record-clearance/static/js/2.881ab84f.chunk.js.LICENSE.txt",
-    "static/js/3.7001b7d4.chunk.js.LICENSE.txt": "/record-clearance/static/js/3.7001b7d4.chunk.js.LICENSE.txt",
+    "static/js/3.e339d213.chunk.js.LICENSE.txt": "/record-clearance/static/js/3.e339d213.chunk.js.LICENSE.txt",
     "static/js/4.69979e44.chunk.js.LICENSE.txt": "/record-clearance/static/js/4.69979e44.chunk.js.LICENSE.txt",
     "static/media/arrowRight.e592bd13.svg": "/record-clearance/static/media/arrowRight.e592bd13.svg",
     "static/media/hackForLALogo.1329edab.svg": "/record-clearance/static/media/hackForLALogo.1329edab.svg",
@@ -25,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8ea7400a.js",
-    "static/js/3.7001b7d4.chunk.js",
+    "static/js/3.e339d213.chunk.js",
     "static/css/main.884a7e02.chunk.css",
-    "static/js/main.cef58400.chunk.js"
+    "static/js/main.ce2771ac.chunk.js"
   ]
 }
