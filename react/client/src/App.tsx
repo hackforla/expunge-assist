@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const history = useHistory();
 
   return (
-    <Router>
+    <Router basename={ process.env.PUBLIC_URL }>
       <Switch>
         <Route exact path='/' component={PersonalStatementContainer} history={history}/>
         <Route path='/form/:page?' component={PersonalStatementContainer} history={history}/>
