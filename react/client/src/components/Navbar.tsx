@@ -11,10 +11,10 @@ const Navbar: React.FC = () => {
         <img src={hackForLALogo} alt='Hack for LA Logo' />
       </ImageWrapper>
       <LinkWrapper>
-        <li><a href='/PrivacyPolicy'>Privacy Policy</a></li>
-        <li><a href='/TermsOfUse'>Terms Of Use</a></li>
-        <li><a href='/FAQ'>FAQ</a></li>
-        <li><a href='/AboutUs'>About Us</a></li>
+        <li><a href='/#/PrivacyPolicy'>Privacy Policy</a></li>
+        <li><a href='/#/TermsOfUse'>Terms Of Use</a></li>
+        <li><a href='/#/FAQ'>FAQ</a></li>
+        <li><a href='/#/AboutUs'>About Us</a></li>
       </LinkWrapper>
       <span>COPYRIGHT 2020 HACK FOR LA</span>
     </Wrapper>
