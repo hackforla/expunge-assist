@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, HashRouter as Router, Route, Switch } from "react-router-dom";
+import { useHistory, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { GlobalStyle } from './styles/GlobalStyle';
 
@@ -17,11 +17,11 @@ const App: React.FC = () => {
     <Router>
       <Switch>
         <Route exact path='/' component={PersonalStatementContainer} history={history}/>
-        <Route exact path='/form/:page?' component={PersonalStatementContainer} history={history}/>
-        <Route exact path='/PrivacyPolicy' component={PrivacyPolicy} />
-        <Route exact path='/TermsOfUse' component={TermsOfUse} />
-        <Route exact path='/FAQ' component={FAQ} />
-        <Route exact path='/AboutUs' component={AboutUs} />
+        <Route path='/form/:page?' component={PersonalStatementContainer} history={history}/>
+        <Route path='/PrivacyPolicy' component={PrivacyPolicy} />
+        <Route path='/TermsOfUse' component={TermsOfUse} />
+        <Route path='/FAQ' component={FAQ} />
+        <Route path='/AboutUs' component={AboutUs} />
       </Switch>
       <Navbar />
       <GlobalStyle />
