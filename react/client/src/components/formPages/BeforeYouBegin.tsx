@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Wrapper } from '../../styles/BeforeYouBegin'
 
-const BeforeYouBegin: React.FC = () => {
+const BeforeYouBegin: React.FC<GlobalProps> = ({ goToPage }) => {
   return (
     <Wrapper>
       <h2>Before you begin</h2>
@@ -12,6 +12,7 @@ const BeforeYouBegin: React.FC = () => {
       <p>Please also review our Privacy Policy and Terms of Use before beginning.</p>
       <p>Please allocate at least 30 minutes of time to complete this.</p>
       <p>If at anytime you are confused please click the question mark button for guidance.</p>
+      <button onClick={() => goToPage(2)}>I UNDERSTAND</button>
     </Wrapper>
   )
 }

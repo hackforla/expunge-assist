@@ -1,6 +1,11 @@
+interface GlobalProps {
+  goToPage: (pageNumber: number) => void;
+}
+
 interface StepProps {
   setInputs: (value: any) => void;
   inputs: {};
+  goToPage: (pageNumber: number) => void;
 }
 
 interface userInputs {

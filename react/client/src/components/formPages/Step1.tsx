@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Step1: React.FC<StepProps> = ({ inputs, setInputs }) => {
+const Step1: React.FC<StepProps> = ({ inputs, setInputs, goToPage }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
@@ -24,8 +24,8 @@ const Step1: React.FC<StepProps> = ({ inputs, setInputs }) => {
         <input type="number" name="age" onChange={handleChange}/><span>years old</span>
         <p>Please describe what has been going on in your life recently. (2 sentences maximum)</p>
         <input type="textarea" name="introduction" onChange={handleChange}/>
-        <button>BACK</button>
-        <button>NEXT</button>
+        <button onClick={() => goToPage(1)}>BACK</button>
+        <button onClick={() => goToPage(4)}>LOOKS GOOD</button>
       </form>
     </div>
   )

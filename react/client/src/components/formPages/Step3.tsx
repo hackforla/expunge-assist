@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Step3: React.FC<StepProps> = ({ inputs, setInputs }) => {
+const Step3: React.FC<StepProps> = ({ inputs, setInputs, goToPage }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name;
     const inputValue = e.target.value;
@@ -38,7 +38,8 @@ const Step3: React.FC<StepProps> = ({ inputs, setInputs }) => {
       <p>Please describe why you are having trouble finding work. (2 sentences maximum)</p>
       <input type='text' name='difficultyFindingWorkDescription' onChange={handleChange} />
       <p>Do you believe that having your record cleared would help you find a job and be more involved in your community?</p>
-
+      <button onClick={() => goToPage(5)}>BACK</button>
+      <button onClick={() => goToPage(8)}>LOOKS GOOD</button>
     </div>
   )
 }
