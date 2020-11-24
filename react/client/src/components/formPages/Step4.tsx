@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Step4: React.FC<StepProps> = ({ inputs, setInputs}) => {
+const Step4: React.FC<StepProps> = ({ inputs, setInputs, goToPage}) => {
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const inputName=e.currentTarget.name;
     const inputValue=e.currentTarget.value;
@@ -16,6 +16,8 @@ const Step4: React.FC<StepProps> = ({ inputs, setInputs}) => {
       <input type="text" name="goals" placeholder="I am working towards..." onChange={handleChange}/>
       <p>How are you working towards acheiving these goals? (2 sentences maximum)</p>
       <input type="text" name="goalsHow" placeholder="I have been..." onChange={handleChange}/>
+      <button onClick={() => goToPage(7)}>BACK</button>
+      <button onClick={() => goToPage(10)}>LOOKS GOOD</button>
     </div>
   )
 }

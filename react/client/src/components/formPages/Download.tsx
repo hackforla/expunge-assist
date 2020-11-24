@@ -4,7 +4,7 @@ import { jsPDF } from 'jspdf';
 
 import { Wrapper } from '../../styles/Download';
 
-const Download: React.FC<StepProps> = ({ inputs, setInputs }) => {
+const Download: React.FC<StepProps> = ({ inputs, setInputs, goToPage }) => {
   const savePDF = () => {
     html2canvas(document.getElementById('personalStatementElement') as HTMLElement )
       .then((canvas) => {
@@ -50,6 +50,7 @@ const Download: React.FC<StepProps> = ({ inputs, setInputs }) => {
       </Wrapper>
       <button onClick={savePDF}>Save PDF</button>
       <button onClick={downloadPDF}>Download PDF</button>
+      <button onClick={() => goToPage(14)}>BACK</button>
     </div>
   )
 }
