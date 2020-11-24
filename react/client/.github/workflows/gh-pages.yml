@@ -1,0 +1,28 @@
+name: Publish to github pages
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        run: |
+          git config --global user.email ${{secrets.GITHUB_EMAIL}}
+          git config --global user.name ${{secrets.GITHUB_USERNAME}}
+          git remote set-url origin https://${secrets.GITHUB_ACCESS_TOKEN}@github.com/record-clearance.git
+          npm run deploy
