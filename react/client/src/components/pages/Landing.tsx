@@ -15,7 +15,7 @@ const Landing: React.FC<LandingProps> = ({ goToPage }) => {
       <h2>Generate a personal statement in just 20 minutes</h2>
       <Flex>
         <Button onClick={() => goToPage(1)}>
-          <span>START NOW 01</span>
+          <span>START NOW 02</span>
           <img src={arrowRight} alt="arrow right" />
         </Button>
       </Flex>
