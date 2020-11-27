@@ -24,11 +24,9 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
   let pageNumber: number = Number(match.params.page);
   let background: string;
   if (isNaN(pageNumber)) pageNumber = 0;
-  console.log(pageNumber)
   
-  const handleClick = () => {
-    console.log('click')
-    history.push('/form/1')
+  const goToPage = (pageNumber: number) => {
+    history.push(`/form/${pageNumber}`)
   }
 
   pageNumber === 0 ? background='#9903ff' : background='white';
@@ -37,9 +35,9 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
     <Wrapper background={background} className="PersonalStatementContainer">
       <Header pageNumber={pageNumber} />
       <FormWrapper>
-        { pageNumber === 0 ? <Landing handleClick={handleClick}/>
+        { pageNumber === 0 ? <Landing goToPage={goToPage}/>
          : 
-        <Form pageNumber={pageNumber} handleClick={handleClick} /> }
+        <Form pageNumber={pageNumber} goToPage={goToPage} /> }
       </FormWrapper>
     </Wrapper>
   )

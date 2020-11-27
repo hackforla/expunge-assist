@@ -1,19 +1,20 @@
 import React from 'react';
 
-interface Step1Props {
-  setName: (value: string) => void ;
-  setAge: (value: number) => void ;
-  setIntroduction: (value: string) => void ;
-}
-
-const Step1: React.FC<Step1Props> = ({ setName, setAge, setIntroduction }) => {
+const Step1: React.FC<StepProps> = ({ inputs, setInputs, goToPage }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
-    if (inputName === 'name') { setName(inputValue) }
-    else if (inputName === 'age') { setAge(Number(inputValue)) }
-    else if (inputName === 'introduction') {setIntroduction(inputValue)}
+    if (inputName === 'name') { 
+       setInputs({ ...inputs, name: inputValue })
+     }
+    else if (inputName === 'age') { 
+      setInputs({ ...inputs, age: inputValue })
+     }
+    else if (inputName === 'introduction') {
+      setInputs({ ...inputs, introduction: inputValue})
+    }
   }
+  
   return (
     <div className="Step1">
       <form>
@@ -23,8 +24,8 @@ const Step1: React.FC<Step1Props> = ({ setName, setAge, setIntroduction }) => {
         <input type="number" name="age" onChange={handleChange}/><span>years old</span>
         <p>Please describe what has been going on in your life recently. (2 sentences maximum)</p>
         <input type="textarea" name="introduction" onChange={handleChange}/>
-        <button>BACK</button>
-        <button>NEXT</button>
+        <button onClick={() => goToPage(1)}>BACK</button>
+        <button onClick={() => goToPage(4)}>LOOKS GOOD</button>
       </form>
     </div>
   )
