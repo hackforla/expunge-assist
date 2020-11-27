@@ -30,6 +30,6 @@ jobs:
       - name: Publish generated content to GitHub Pages
         uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
         with:
-          dir: build
+          dir: react/client/build
           branch: gh-pages
           token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
