@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Generate your awesome content
+      - name: Build client files
         run: |
           cd react/client
           npm install
