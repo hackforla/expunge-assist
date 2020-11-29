@@ -41,8 +41,8 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
       <LandingHeader background={background} color={color} className="Header">
         <img src={icon} alt="" />
         <div>
-          <p>The Record</p>
-          <p>Clearance Project</p>
+          <body>The Record</body>
+          <body>Clearance Project</body>
         </div>
       </LandingHeader>
 
