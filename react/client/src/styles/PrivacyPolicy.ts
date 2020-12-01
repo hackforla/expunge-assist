@@ -17,16 +17,16 @@ export const Wrapper = styled.div`
   
   h3 {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
+    font-size: 1.25rem;
+    line-height: 1.3rem;
     letter-spacing: 0.0015em;
     margin-bottom: 1em;
   }
 
-  p {
+  .content {
     font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1rem;
+    line-height: 1.2rem;
     letter-spacing: 0.005em;
     margin-bottom: 1em;
   }
@@ -35,8 +35,8 @@ export const Wrapper = styled.div`
 export const Button = styled.button`
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
+  line-height: 1.2rem;
   text-align: left;
 
   letter-spacing: 0.0125em;
