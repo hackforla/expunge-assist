@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import device from './breakpoints'
 
 export const Wrapper = styled.div`
+  position: absolute;
+  bottom:0px;
+  width:100%;
   background:none;
   color:white;
   display:flex;
