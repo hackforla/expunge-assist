@@ -16,7 +16,7 @@ interface FormProps {
   goToPage: (pageNumber: number) => void;
 }
 
-const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
+const Form = ({ pageNumber, goToPage }: FormProps) => {
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
@@ -103,14 +103,20 @@ const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
       {pageNumber === 13 && (
         <>
           <p>Previewing Final Statement</p>
-          <button type="button" onClick={() => goToPage(14)}>EDIT</button>
-          <button type="button" onClick={() => goToPage(14)}>NEXT</button>
+          <button type="button" onClick={() => goToPage(14)}>
+            EDIT
+          </button>
+          <button type="button" onClick={() => goToPage(14)}>
+            NEXT
+          </button>
         </>
       )}
       {pageNumber === 14 && (
         <>
           <p>Editing</p>
-          <button type="button" onClick={() => goToPage(15)}>SAVE</button>
+          <button type="button" onClick={() => goToPage(15)}>
+            SAVE
+          </button>
         </>
       )}
       {pageNumber === 15 && (

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import arrowRight from '../../assets/arrowRight.svg'
-import { Button, Flex } from '../../styles/GlobalStyle'
-import { Wrapper } from '../../styles/Landing'
+import arrowRight from '../../assets/arrowRight.svg';
+import { Button, Flex } from '../../styles/GlobalStyle';
+import { Wrapper } from '../../styles/Landing';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
 }
 
-const Landing: React.FC<LandingProps> = ({ goToPage }) => {
+const Landing = ({ goToPage }: LandingProps) => {
   return (
     <Wrapper>
       <h1>Start fresh with a record expungement</h1>
@@ -20,7 +20,7 @@ const Landing: React.FC<LandingProps> = ({ goToPage }) => {
         </Button>
       </Flex>
     </Wrapper>
-  )
-}
+  );
+};
 
 export default Landing;

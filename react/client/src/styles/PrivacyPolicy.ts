@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   .centered {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 528px;
     height: 266px;
     margin: 0 auto;
   }
-  
+
   h3 {
     font-weight: 500;
     font-size: 1.25rem;
@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
     letter-spacing: 0.005em;
     margin-bottom: 1em;
   }
-`
+`;
 
 export const Button = styled.button`
   font-style: normal;
@@ -42,7 +42,7 @@ export const Button = styled.button`
   letter-spacing: 0.0125em;
   text-transform: uppercase;
 
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: transparent;
   border: none;
-`
+`;
