@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import device from './breakpoints'
+import device from './breakpoints';
 
 interface Props {
   background?: string;
@@ -7,34 +7,34 @@ interface Props {
 }
 
 export const LandingHeader = styled.div<Props>`
-  background: ${props => props.background};
-  color: ${props => props.color};
-  display:flex;
+  background: ${(props) => props.background};
+  color: ${(props) => props.color};
+  display: flex;
   padding: 1.5em 0 0 1.5em;
   @media only screen and ${device.md} {
     margin: 0 0 0 2.5em;
   }
   div {
-    display:none;
+    display: none;
     margin-left: 1.8em;
-    text-transform:uppercase;
-    font-size:.75rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
     @media only screen and ${device.md} {
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
     }
   }
-`
+`;
 
 export const FormHeader = styled.div`
-  background:#F7EBFF;
-  color:black;
-  height:200px;
+  background: #f7ebff;
+  color: black;
+  height: 200px;
   h2 {
     margin: 0;
   }
   p {
-    color:3D0066;
-    opacity:30%;
+    color: 3d0066;
+    opacity: 30%;
   }
-`
+`;

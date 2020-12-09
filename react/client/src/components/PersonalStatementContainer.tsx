@@ -1,46 +1,48 @@
 import React from 'react';
 
-import Header from './Header'
-import Form from './Form'
+import Header from './Header';
+import Form from './Form';
 import Landing from './pages/Landing';
 
-import { Wrapper, FormWrapper } from '../styles/PersonalStatementContainer'
+import { Wrapper, FormWrapper } from '../styles/PersonalStatementContainer';
 
 interface PersonalStatementProps {
   history: {
     location: {
-      pathname: string
-    }, 
-    push: (address: string) => void
-  },
+      pathname: string;
+    };
+    push: (address: string) => void;
+  };
   match: {
     params: {
-      page: string
-    }
-  }
+      page: string;
+    };
+  };
 }
 
-const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match }) => {
+const PersonalStatement = ({ history, match }: PersonalStatementProps) => {
   let pageNumber: number = Number(match.params.page);
   let background: string;
-  if (isNaN(pageNumber)) pageNumber = 0;
-  
-  const goToPage = (pageNumber: number) => {
-    history.push(`/form/${pageNumber}`)
-  }
+  if (Number.isNaN(pageNumber)) pageNumber = 0;
 
-  pageNumber === 0 ? background='#9903ff' : background='white';
+  const goToPage = (destinationPageNumber: number) => {
+    history.push(`/form/${destinationPageNumber}`);
+  };
+
+  pageNumber === 0 ? (background = '#9903ff') : (background = 'white');
 
   return (
     <Wrapper background={background} className="PersonalStatementContainer">
       <Header pageNumber={pageNumber} />
       <FormWrapper>
-        { pageNumber === 0 ? <Landing goToPage={goToPage}/>
-         : 
-        <Form pageNumber={pageNumber} goToPage={goToPage} /> }
+        {pageNumber === 0 ? (
+          <Landing goToPage={goToPage} />
+        ) : (
+          <Form pageNumber={pageNumber} goToPage={goToPage} />
+        )}
       </FormWrapper>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default PersonalStatement
+export default PersonalStatement;
