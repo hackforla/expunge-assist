@@ -2,7 +2,7 @@ import React from 'react';
 
 import arrowRight from '../../assets/arrowRight.svg'
 import { Flex } from '../../styles/GlobalStyle'
-import { PrimaryButton } from '../Button';
+import { PrimaryButton } from 'components/Button';
 import { Wrapper } from '../../styles/Landing'
 
 interface LandingProps {
