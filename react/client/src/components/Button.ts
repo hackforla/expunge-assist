@@ -22,7 +22,7 @@ const commonButtonStyles = `
   }
 `
 
-export const Button = styled.button`
+export const BasicButton = styled.button`
   ${commonButtonStyles}
   background: #9903FF;
 
@@ -39,5 +39,3 @@ export const PrimaryButton = styled.button`
     background: #330652;
   }
 `
-
-export default Button;
