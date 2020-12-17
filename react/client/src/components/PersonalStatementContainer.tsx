@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Header from './Header'
 import Form from './Form'
 import Landing from './pages/Landing';
 
@@ -10,7 +9,7 @@ interface PersonalStatementProps {
   history: {
     location: {
       pathname: string
-    }, 
+    },
     push: (address: string) => void
   },
   match: {
@@ -24,7 +23,7 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
   let pageNumber: number = Number(match.params.page);
   let background: string;
   if (isNaN(pageNumber)) pageNumber = 0;
-  
+
   const goToPage = (pageNumber: number) => {
     history.push(`/form/${pageNumber}`)
   }
@@ -33,10 +32,9 @@ const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match })
 
   return (
     <Wrapper background={background} className="PersonalStatementContainer">
-      <Header pageNumber={pageNumber} />
       <FormWrapper>
         { pageNumber === 0 ? <Landing goToPage={goToPage}/>
-         : 
+         :
         <Form pageNumber={pageNumber} goToPage={goToPage} /> }
       </FormWrapper>
     </Wrapper>
