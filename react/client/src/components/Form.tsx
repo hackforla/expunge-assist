@@ -45,7 +45,7 @@ const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
   })
 
   return (
-    <ContentContainer>
+    <ContentContainer className='content-page'>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
       {pageNumber === 2 && <Affirmation pageNumber={pageNumber} message="Welcome!" goToPage={goToPage} />}
       {pageNumber === 3 && <Step1 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />}

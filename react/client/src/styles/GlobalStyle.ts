@@ -47,11 +47,6 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 700;
     }
   }
-
-  .section-title {
-    font-size: 36px;
-    font-weight: 700;
-  }
 `
 
 export const Flex = styled.div`
