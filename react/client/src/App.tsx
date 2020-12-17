@@ -3,7 +3,7 @@ import { useHistory, BrowserRouter as Router, Route, Switch } from "react-router
 
 import { GlobalStyle } from './styles/GlobalStyle';
 
-import PersonalStatementContainer from './components/PersonalStatementContainer'
+import PageContainer from 'components/PageContainer'
 import PrivacyPolicy from './components/pages/PrivacyPolicy'
 import TermsOfUse from './components/pages/TermsOfUse'
 import FAQ from './components/pages/FAQ'
@@ -16,8 +16,8 @@ const App: React.FC = () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route exact path='/' component={PersonalStatementContainer} history={history}/>
-        <Route path='/form/:page?' component={PersonalStatementContainer} history={history}/>
+        <Route exact path='/' component={PageContainer} history={history}/>
+        <Route path='/form/:page?' component={PageContainer} history={history}/>
         <Route path='/PrivacyPolicy' component={PrivacyPolicy} />
         <Route path='/TermsOfUse' component={TermsOfUse} />
         <Route path='/FAQ' component={FAQ} />
