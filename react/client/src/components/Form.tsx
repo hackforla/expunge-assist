@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import Button from 'components/Button'
 import ContentContainer from 'components/ContentContainer'
 
 import BeforeYouBegin from './formPages/BeforeYouBegin'
@@ -10,6 +11,9 @@ import Step4 from './formPages/Step4';
 import Step5 from './formPages/Step5';
 import Download from './formPages/Download';
 import Affirmation from './formPages/Affirmation'
+
+import { Flex } from 'styles/GlobalStyle'
+
 
 interface FormProps {
   pageNumber: number;
@@ -55,17 +59,17 @@ const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
       {pageNumber === 11 && <Step5 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />}
       {pageNumber === 12 && <Affirmation pageNumber={pageNumber} message="Fabulous!" goToPage={goToPage} />}
       {pageNumber === 13 &&
-        <>
+        <Flex className='adjacent-margin'>
           <p>Previewing Final Statement</p>
-          <button onClick={() => goToPage(14)}>EDIT</button>
-          <button onClick={() => goToPage(14)}>NEXT</button>
-        </>
+          <Button onClick={() => goToPage(14)}>EDIT</Button>
+          <Button onClick={() => goToPage(14)}>NEXT</Button>
+        </Flex>
       }
       {pageNumber === 14 &&
-        <>
+        <Flex className='adjacent-margin'>
           <p>Editing</p>
-          <button onClick={() => goToPage(15)}>SAVE</button>
-        </>
+          <Button onClick={() => goToPage(15)}>SAVE</Button>
+        </Flex>
       }
       {pageNumber === 15 &&
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
