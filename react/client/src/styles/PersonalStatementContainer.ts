@@ -8,26 +8,16 @@ interface Props {
 export const Wrapper = styled.div<Props>`
   background: ${props => props.background};
   color:white;
-  @media only screen and ${device.md} {
-    height:850px;
-    > img {
-      margin-left:40px;
-    }
-  }
   height:570px;
+  flex: 1 0 auto;
 `
 
 export const FlexWrapper = styled.div`
   display:flex;
   justify-content:flex-end;
-  @media only screen and ${device.md} {
-    justify-content:flex-start;
-    margin-top:40px;
-  }
+
 `
 
 export const FormWrapper = styled.div`
-  @media only screen and ${device.md} {
-    padding: 130px 0 0 130px;
-  }
+
 `
