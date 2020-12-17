@@ -2,7 +2,7 @@ import React from 'react';
 
 import arrowRight from '../../assets/arrowRight.svg'
 
-import { BasicButton } from 'components/Button';
+import Button from 'components/Button';
 import { Wrapper } from '../../styles/BeforeYouBegin'
 
 const BeforeYouBegin: React.FC<GlobalProps> = ({ goToPage }) => {
@@ -15,10 +15,10 @@ const BeforeYouBegin: React.FC<GlobalProps> = ({ goToPage }) => {
       <p>Please also review our Privacy Policy and Terms of Use before beginning.</p>
       <p>Please allocate at least 30 minutes of time to complete this.</p>
       <p>If at anytime you are confused please click the question mark button for guidance.</p>
-      <BasicButton onClick={() => goToPage(2)}>
+      <Button onClick={() => goToPage(2)}>
         <span>I understand</span>
         <img src={arrowRight} alt="arrow right" />
-      </BasicButton>
+      </Button>
     </Wrapper>
   )
 }
