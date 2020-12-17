@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Header from 'components/Header'
 import Form from 'components/Form'
+import FormHeader from 'components/FormHeader'
 import Landing from 'components/pages/Landing'
 import { FormWrapper } from '../styles/PersonalStatementContainer'
 
@@ -50,6 +51,11 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   return (
     <PageStyled background={background} className="PersonalStatementContainer">
       <Header pageNumber={pageNumber} />
+
+      { pageNumber !== 0 &&
+        <FormHeader pageNumber={pageNumber} />
+      }
+
       <FormWrapper>
         { pageNumber === 0 ? <Landing goToPage={goToPage}/>
          :
