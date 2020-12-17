@@ -12,8 +12,8 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ goToPage }) => {
   return (
     <Wrapper>
-      <h1>Start fresh with a record expungement</h1>
-      <h2>Generate a personal statement in just 20 minutes</h2>
+      <h1 className='page-title'>Start fresh with a record expungement</h1>
+      <div>Generate a personal statement in just 20 minutes</div>
       <Flex>
         <PrimaryButton onClick={() => goToPage(1)}>
           <span>START NOW</span>
