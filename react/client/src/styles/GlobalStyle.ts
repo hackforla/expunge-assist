@@ -6,6 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     background: #9903ff;
     font-family: Roboto;
     font-weight: 400;
+    height: 100vh;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   h2 {
