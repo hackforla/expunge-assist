@@ -104,7 +104,7 @@ const Form = ({ pageNumber, goToPage }: FormProps) => {
         />
       )}
       {pageNumber === 13 && (
-        <Flex className='adjacent-margin'>
+        <Flex className='adjacent-mar-top'>
           <p>Previewing Final Statement</p>
           <Button type="button" onClick={() => goToPage(14)}>
             EDIT
@@ -115,7 +115,7 @@ const Form = ({ pageNumber, goToPage }: FormProps) => {
         </Flex>
       )}
       {pageNumber === 14 && (
-        <Flex type="button" className='adjacent-margin'>
+        <Flex className='adjacent-mar-top'>
           <p>Editing</p>
           <Button onClick={() => goToPage(15)}>SAVE</Button>
         </Flex>

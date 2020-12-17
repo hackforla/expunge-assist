@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 1rem 0;
   }
 
-  .adjacent-margin + .adjacent-margin {
+  .adjacent-mar-top + .adjacent-mar-top {
     margin-top: 10px;
 
     @media only screen and ${device.md} {
@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .app-header + .content-page,
-  .page-title + .adjacent-margin {
+  .page-title + .adjacent-mar-top {
     margin-top: 15px;
 
     @media only screen and ${device.md} {
