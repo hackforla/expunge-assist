@@ -21,8 +21,12 @@ export const GlobalStyle = createGlobalStyle`
     margin: 1rem 0;
   }
 
-  li {
-    list-style-type:none;
+  .app-header + .content-page {
+    margin-top: 30px;
+  }
+
+  .adjacent-margin + .adjacent-margin {
+    margin-top: 20px;
   }
 
   .page-title {

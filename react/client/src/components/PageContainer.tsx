@@ -12,7 +12,7 @@ interface StyleProps {
   background?: string;
 }
 
-const PageStyled = styled.div<StyleProps>`
+const StyledContainer = styled.div<StyleProps>`
   background: ${props => props.background};
   color:white;
   padding: 18px;
@@ -46,7 +46,7 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const background = isLandingPage ? '#9903ff' : 'white';
 
   return (
-    <PageStyled background={background} className='page-container'>
+    <StyledContainer background={background} className='page-container'>
       <Header pageNumber={pageNumber} />
 
       { !isLandingPage &&
@@ -60,7 +60,7 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
       { !isLandingPage &&
         <Form pageNumber={pageNumber} goToPage={goToPage} />
       }
-    </PageStyled>
+    </StyledContainer>
   )
 }
 
