@@ -9,7 +9,7 @@ interface AffirmationProps {
 const Affirmation = ({ message, goToPage, pageNumber }: AffirmationProps) => {
   return (
     <div className="Affirmation">
-      <h1>{message}</h1>
+      <h1 className='page-title'>{message}</h1>
       <button
         type="button"
         onClick={() => {
