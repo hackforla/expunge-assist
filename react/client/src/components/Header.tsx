@@ -14,7 +14,7 @@ interface StyleProps {
 export const StyledContainer = styled.div<StyleProps>`
   background: ${props => props.background};
   color: ${props => props.color};
-  display:flex;
+  display: flex;
 
   .logo-title {
     display: flex;
@@ -23,7 +23,7 @@ export const StyledContainer = styled.div<StyleProps>`
     text-transform: uppercase;
     font-size: 12px;
 
-    @media ${device.sm} {
+    ${device.sm} {
       display: none;
     }
   }
@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   }
 
   return (
-    <StyledContainer background={background} color={color} className="Header">
+    <StyledContainer background={background} color={color} className='app-header'>
       <img src={icon} alt="" />
       <div className='logo-title'>
         <p>The Record</p>
