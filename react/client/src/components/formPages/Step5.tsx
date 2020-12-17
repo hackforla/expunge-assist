@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from 'components/Button'
+
 const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
@@ -29,8 +31,8 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="Clearing my record will..."
         onChange={handleChange}
       />
-      <button onClick={() => goToPage(9)}>BACK</button>
-      <button onClick={() => goToPage(12)}>LOOKS GOOD</button>
+      <Button onClick={() => goToPage(9)}>BACK</Button>
+      <Button onClick={() => goToPage(12)}>LOOKS GOOD</Button>
     </div>
   );
 };

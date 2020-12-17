@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from 'components/Button'
+
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
@@ -31,8 +33,8 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           sentences maximum)
         </p>
         <input type="textarea" name="introduction" onChange={handleChange} />
-        <button onClick={() => goToPage(1)}>BACK</button>
-        <button onClick={() => goToPage(4)}>LOOKS GOOD</button>
+        <Button onClick={() => goToPage(1)}>BACK</Button>
+        <Button onClick={() => goToPage(4)}>LOOKS GOOD</Button>
       </form>
     </div>
   );

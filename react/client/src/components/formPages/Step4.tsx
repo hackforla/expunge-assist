@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from 'components/Button'
+
 const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
@@ -10,6 +12,7 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
       setInputs({ ...inputs, goalsHow: inputValue });
     }
   };
+
   return (
     <div className="Step4">
       <p>
@@ -31,8 +34,8 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="I have been..."
         onChange={handleChange}
       />
-      <button onClick={() => goToPage(7)}>BACK</button>
-      <button onClick={() => goToPage(10)}>LOOKS GOOD</button>
+      <Button onClick={() => goToPage(7)}>BACK</Button>
+      <Button onClick={() => goToPage(10)}>LOOKS GOOD</Button>
     </div>
   );
 };
