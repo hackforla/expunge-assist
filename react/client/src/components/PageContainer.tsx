@@ -36,29 +36,30 @@ interface PageProps {
 };
 
 const PageContainer: React.FC<PageProps> = ({ history, match }) => {
-  let pageNumber: number = Number(match.params.page);
-  let background: string;
-  if (isNaN(pageNumber)) pageNumber = 0;
+  const pageNumber: number = Number(match.params.page) || 0;
+  const isLandingPage = pageNumber === 0;
 
   const goToPage = (pageNumber: number) => {
     history.push(`/form/${pageNumber}`)
   }
 
-  pageNumber === 0 ? background='#9903ff' : background='white';
+  const background = isLandingPage ? '#9903ff' : 'white';
 
   return (
     <PageStyled background={background} className='page-container'>
       <Header pageNumber={pageNumber} />
 
-      { pageNumber !== 0 &&
+      { !isLandingPage &&
         <FormHeader pageNumber={pageNumber} />
       }
 
-      <div>
-        { pageNumber === 0 ? <Landing goToPage={goToPage}/>
-         :
-        <Form pageNumber={pageNumber} goToPage={goToPage} /> }
-      </div>
+      { isLandingPage &&
+        <Landing goToPage={goToPage}/>
+      }
+
+      { !isLandingPage &&
+        <Form pageNumber={pageNumber} goToPage={goToPage} />
+      }
     </PageStyled>
   )
 }
