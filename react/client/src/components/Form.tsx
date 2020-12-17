@@ -44,7 +44,7 @@ const Form = ({ pageNumber, goToPage }: FormProps) => {
   });
 
   return (
-    <ContentContainer>
+    <ContentContainer className='content-page'>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
       {pageNumber === 2 && (
         <Affirmation
