@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 import iconBlack from '../assets/iconBlack.svg'
@@ -50,10 +51,16 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   return (
     <StyledContainer background={background} color={color} className='app-header'>
       <img src={icon} alt="" />
-      <div className='logo-title'>
+      <Link
+        to='/'
+        style={{
+          textDecoration: 'none',
+          color: color,
+        }}
+        className='logo-title'>
         <p>The Record</p>
         <p>Clearance Project</p>
-      </div>
+      </Link>
     </StyledContainer>
   )
 }
