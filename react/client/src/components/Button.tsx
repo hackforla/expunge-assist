@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-// import device from 'styles/breakpoints'
+import device from 'styles/breakpoints'
 
 interface StyleProps {
   theme?: string,
-  hasArrow?: boolean,
+  hasArrow?: boolean, // todo
 }
 
 const commonButtonStyles = `

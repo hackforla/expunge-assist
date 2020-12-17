@@ -21,12 +21,21 @@ export const GlobalStyle = createGlobalStyle`
     margin: 1rem 0;
   }
 
-  .app-header + .content-page {
-    margin-top: 30px;
+  .adjacent-margin + .adjacent-margin {
+    margin-top: 10px;
+
+    @media only screen and ${device.md} {
+      margin-top: 15px;
+    }
   }
 
-  .adjacent-margin + .adjacent-margin {
-    margin-top: 20px;
+  .app-header + .content-page,
+  .page-title + .adjacent-margin {
+    margin-top: 15px;
+
+    @media only screen and ${device.md} {
+      margin-top: 30px;
+    }
   }
 
   .page-title {

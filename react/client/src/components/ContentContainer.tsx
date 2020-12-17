@@ -12,7 +12,7 @@ const ContentContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  ${device.sm} {
+  ${device.sm_only} {
     margin-left: initial;
     margin-right: initial;
   }

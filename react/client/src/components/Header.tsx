@@ -23,7 +23,7 @@ export const StyledContainer = styled.div<StyleProps>`
     text-transform: uppercase;
     font-size: 12px;
 
-    ${device.sm} {
+    ${device.sm_only} {
       display: none;
     }
   }
