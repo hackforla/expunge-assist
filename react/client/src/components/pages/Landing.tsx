@@ -13,10 +13,10 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ goToPage }) => {
   return (
     <ContentContainer className='content-page'>
-      <h1 className='page-title adjacent-margin'>Start fresh with a record expungement</h1>
-      <div className='adjacent-margin'>Generate a personal statement in just 20 minutes</div>
+      <h1 className='page-title adjacent-mar-top'>Start fresh with a record expungement</h1>
+      <div className='adjacent-mar-top'>Generate a personal statement in just 20 minutes</div>
 
-      <Flex className='adjacent-margin'>
+      <Flex className='adjacent-mar-top'>
         <Button
           onClick={() => goToPage(1)}
           theme='dark'>

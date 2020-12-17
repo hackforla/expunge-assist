@@ -59,14 +59,14 @@ const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
       {pageNumber === 11 && <Step5 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />}
       {pageNumber === 12 && <Affirmation pageNumber={pageNumber} message="Fabulous!" goToPage={goToPage} />}
       {pageNumber === 13 &&
-        <Flex className='adjacent-margin'>
+        <Flex className='adjacent-mar-top'>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goToPage(14)}>EDIT</Button>
           <Button onClick={() => goToPage(14)}>NEXT</Button>
         </Flex>
       }
       {pageNumber === 14 &&
-        <Flex className='adjacent-margin'>
+        <Flex className='adjacent-mar-top'>
           <p>Editing</p>
           <Button onClick={() => goToPage(15)}>SAVE</Button>
         </Flex>
