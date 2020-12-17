@@ -1,10 +1,10 @@
 import React from 'react';
 
+import Button from 'components/Button';
 import ContentContainer from 'components/ContentContainer'
 
 import arrowRight from '../../assets/arrowRight.svg'
 import { Flex } from '../../styles/GlobalStyle'
-import Button from 'components/Button';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
