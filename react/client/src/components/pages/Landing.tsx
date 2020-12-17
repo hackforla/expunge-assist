@@ -4,7 +4,7 @@ import ContentContainer from 'components/ContentContainer'
 
 import arrowRight from '../../assets/arrowRight.svg'
 import { Flex } from '../../styles/GlobalStyle'
-import { PrimaryButton } from 'components/Button';
+import Button from 'components/Button';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
@@ -16,10 +16,14 @@ const Landing = ({ goToPage }: LandingProps) => {
       <h1 className='page-title adjacent-margin'>Start fresh with a record expungement</h1>
       <div className='adjacent-margin'>Generate a personal statement in just 20 minutes</div>
 
-      <PrimaryButton onClick={() => goToPage(1)}>
-        <span>START NOW</span>
-        <img src={arrowRight} alt="arrow right" />
-      </PrimaryButton>
+      <Flex className='adjacent-margin'>
+        <Button
+          onClick={() => goToPage(1)}
+          theme='dark'>
+          <span>START NOW</span>
+          <img src={arrowRight} alt="arrow right" />
+        </Button>
+      </Flex>
     </ContentContainer>
   );
 };
