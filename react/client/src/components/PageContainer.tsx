@@ -19,7 +19,6 @@ const PageStyled = styled.div<StyleProps>`
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
-  max-width: 850px;
 `
 
 interface PageProps {
