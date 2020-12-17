@@ -15,18 +15,16 @@ export const StyledContainer = styled.div<StyleProps>`
   background: ${props => props.background};
   color: ${props => props.color};
   display:flex;
-  padding: 1.5em 0 0 1.5em;
-  @media only screen and ${device.md} {
-    margin: 0 0 0 2.5em;
-  }
-  div {
-    display:none;
-    margin-left: 1.8em;
-    text-transform:uppercase;
-    font-size:.75rem;
-    @media only screen and ${device.md} {
-      display:flex;
-      flex-direction:column;
+
+  .logo-title {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+
+    @media ${device.sm} {
+      display: none;
     }
   }
 `
@@ -52,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ pageNumber }) => {
   return (
     <StyledContainer background={background} color={color} className="Header">
       <img src={icon} alt="" />
-      <div>
+      <div className='logo-title'>
         <p>The Record</p>
         <p>Clearance Project</p>
       </div>
