@@ -9,8 +9,19 @@ import Landing from 'components/pages/Landing'
 // import device from 'styles/breakpoints'
 
 interface StyleProps {
+  theme?: string,
   background?: string;
 }
+
+const basicStyles = `
+  background: white;
+  color: #131313;
+`
+
+const purpleStyles = `
+  background: #9903ff;
+  color: white;
+`
 
 const StyledContainer = styled.div<StyleProps>`
   background: ${props => props.background};
@@ -19,6 +30,17 @@ const StyledContainer = styled.div<StyleProps>`
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
+
+  ${props => {
+    switch (props.theme) {
+      case 'purple':
+        return purpleStyles;
+
+      case 'basic':
+      default:
+        return basicStyles;
+    }
+  }}
 `
 
 interface PageProps {
@@ -43,10 +65,10 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
     history.push(`/form/${pageNumber}`)
   }
 
-  const background = isLandingPage ? '#9903ff' : 'white';
-
   return (
-    <StyledContainer background={background} className='page-container'>
+    <StyledContainer
+      theme={isLandingPage ? 'purple' : 'basic'}
+      className='page-container'>
       <Header pageNumber={pageNumber} />
 
       { !isLandingPage &&

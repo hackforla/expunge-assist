@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import ContentContainer from 'components/ContentContainer'
+
 import BeforeYouBegin from './formPages/BeforeYouBegin'
 import Step1 from './formPages/Step1';
 import Step2 from './formPages/Step2';
@@ -8,8 +10,6 @@ import Step4 from './formPages/Step4';
 import Step5 from './formPages/Step5';
 import Download from './formPages/Download';
 import Affirmation from './formPages/Affirmation'
-
-import { Wrapper } from '../styles/Form';
 
 interface FormProps {
   pageNumber: number;
@@ -33,7 +33,7 @@ const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
 
     goals: '',
     goalsHow: '',
-    
+
     clearRecordWhy: '',
     clearRecordHow: '',
 
@@ -41,7 +41,7 @@ const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
   })
 
   return (
-    <Wrapper>
+    <ContentContainer>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
       {pageNumber === 2 && <Affirmation pageNumber={pageNumber} message="Welcome!" goToPage={goToPage} />}
       {pageNumber === 3 && <Step1 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />}
@@ -61,16 +61,16 @@ const Form: React.FC<FormProps> = ({ pageNumber, goToPage }) => {
           <button onClick={() => goToPage(14)}>NEXT</button>
         </>
       }
-      {pageNumber === 14 && 
+      {pageNumber === 14 &&
         <>
           <p>Editing</p>
           <button onClick={() => goToPage(15)}>SAVE</button>
         </>
       }
-      {pageNumber === 15 &&  
+      {pageNumber === 15 &&
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       }
-    </Wrapper>
+    </ContentContainer>
   )
 }
 
