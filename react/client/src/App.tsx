@@ -8,12 +8,12 @@ import {
 
 import { GlobalStyle } from './styles/GlobalStyle';
 
-import PersonalStatementContainer from './components/PersonalStatementContainer';
-import PrivacyPolicy from './components/pages/PrivacyPolicy';
-import TermsOfUse from './components/pages/TermsOfUse';
-import FAQ from './components/pages/FAQ';
-import AboutUs from './components/pages/AboutUs';
-import Navbar from './components/Navbar';
+import PageContainer from 'components/PageContainer'
+import PrivacyPolicy from './components/pages/PrivacyPolicy'
+import TermsOfUse from './components/pages/TermsOfUse'
+import FAQ from './components/pages/FAQ'
+import AboutUs from './components/pages/AboutUs'
+import Navbar from './components/Navbar'
 
 const App: React.FC = () => {
   const history = useHistory();
@@ -24,12 +24,12 @@ const App: React.FC = () => {
         <Route
           exact
           path="/"
-          component={PersonalStatementContainer}
+          component={PageContainer}
           history={history}
         />
         <Route
           path="/form/:page?"
-          component={PersonalStatementContainer}
+          component={PageContainer}
           history={history}
         />
         <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
