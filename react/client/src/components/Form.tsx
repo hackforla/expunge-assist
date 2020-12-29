@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-import BeforeYouBegin from './formPages/BeforeYouBegin';
+import Button from 'components/Button'
+import ContentContainer from 'components/ContentContainer'
+
+import BeforeYouBegin from './formPages/BeforeYouBegin'
 import Step1 from './formPages/Step1';
 import Step2 from './formPages/Step2';
 import Step3 from './formPages/Step3';
@@ -9,7 +12,7 @@ import Step5 from './formPages/Step5';
 import Download from './formPages/Download';
 import Affirmation from './formPages/Affirmation';
 
-import { Wrapper } from '../styles/Form';
+import { Flex } from 'styles/GlobalStyle'
 
 interface FormProps {
   pageNumber: number;
@@ -41,7 +44,7 @@ const Form = ({ pageNumber, goToPage }: FormProps) => {
   });
 
   return (
-    <Wrapper>
+    <ContentContainer className='content-page'>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
       {pageNumber === 2 && (
         <Affirmation
@@ -101,28 +104,26 @@ const Form = ({ pageNumber, goToPage }: FormProps) => {
         />
       )}
       {pageNumber === 13 && (
-        <>
+        <Flex className='adjacent-mar-top'>
           <p>Previewing Final Statement</p>
-          <button type="button" onClick={() => goToPage(14)}>
+          <Button type="button" onClick={() => goToPage(14)}>
             EDIT
-          </button>
-          <button type="button" onClick={() => goToPage(14)}>
+          </Button>
+          <Button type="button" onClick={() => goToPage(14)}>
             NEXT
-          </button>
-        </>
+          </Button>
+        </Flex>
       )}
       {pageNumber === 14 && (
-        <>
+        <Flex className='adjacent-mar-top'>
           <p>Editing</p>
-          <button type="button" onClick={() => goToPage(15)}>
-            SAVE
-          </button>
-        </>
+          <Button onClick={() => goToPage(15)}>SAVE</Button>
+        </Flex>
       )}
       {pageNumber === 15 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-    </Wrapper>
+    </ContentContainer>
   );
 };
 

@@ -33,7 +33,6 @@ const PersonalStatement = ({ history, match }: PersonalStatementProps) => {
 
   return (
     <Wrapper background={background} className="PersonalStatementContainer">
-      <Header pageNumber={pageNumber} />
       <FormWrapper>
         {pageNumber === 0 ? (
           <Landing goToPage={goToPage} />

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from 'components/Button'
+
 interface AffirmationProps {
   message: string;
   goToPage: (pageNumber: number) => void;
@@ -9,15 +11,15 @@ interface AffirmationProps {
 const Affirmation = ({ message, goToPage, pageNumber }: AffirmationProps) => {
   return (
     <div className="Affirmation">
-      <h1>{message}</h1>
-      <button
+      <h1 className='page-title'>{message}</h1>
+      <Button
         type="button"
         onClick={() => {
           goToPage(pageNumber + 1);
         }}
       >
         NEXT
-      </button>
+      </Button>
     </div>
   );
 };

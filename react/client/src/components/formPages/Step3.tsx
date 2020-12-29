@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from 'components/Button'
+
 const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name;
@@ -64,8 +66,8 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         Do you believe that having your record cleared would help you find a job
         and be more involved in your community?
       </p>
-      <button onClick={() => goToPage(5)}>BACK</button>
-      <button onClick={() => goToPage(8)}>LOOKS GOOD</button>
+      <Button onClick={() => goToPage(5)}>BACK</Button>
+      <Button onClick={() => goToPage(8)}>LOOKS GOOD</Button>
     </div>
   );
 };

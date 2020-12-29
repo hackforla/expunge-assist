@@ -2,39 +2,51 @@ import styled, { createGlobalStyle } from 'styled-components';
 import device from './breakpoints';
 
 export const GlobalStyle = createGlobalStyle`
-* {
-  margin:0;
-  pardding:0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #9903ff;
-  font-family: Roboto;
-  font-weight: 400;
-}
-
-h1 {
-  font-weight: 400;
-  font-size: 2.125rem;
-  margin: 1rem 0;
-  @media only screen and ${device.md} {
-    font-size:3rem;
-    font-weight:700;
+  body {
+    background: #9903ff;
+    font-family: Roboto;
+    font-weight: 400;
+    height: 100vh;
   }
-}
 
-h2 {
-  font-weight:500;
-  font-size:1.25rem;
-  margin: 1rem 0;
+  #root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-}
+  h2 {
+    font-weight:500;
+    font-size:1.25rem;
+    margin: 1rem 0;
+  }
 
-li {
-  list-style-type:none;
-}
+  .adjacent-mar-top + .adjacent-mar-top {
+    margin-top: 10px;
 
+    @media only screen and ${device.md} {
+      margin-top: 15px;
+    }
+  }
+
+  .app-header + .content-page,
+  .page-title + .adjacent-mar-top {
+    margin-top: 15px;
+
+    @media only screen and ${device.md} {
+      margin-top: 30px;
+    }
+  }
+
+  .page-title {
+    font-size: 36px;
+    font-weight: 400;
+
+    @media only screen and ${device.md} {
+      font-size: 48px;
+      font-weight: 700;
+    }
+  }
 `;
 
 export const Flex = styled.div`
