@@ -61,8 +61,8 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const pageNumber: number = Number(match.params.page) || 0;
   const isLandingPage = pageNumber === 0;
 
-  const goToPage = (pageNumber: number) => {
-    history.push(`/form/${pageNumber}`);
+  const goToPage = (nextPage: number) => {
+    history.push(`/form/${nextPage}`);
   };
 
   return (
