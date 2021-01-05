@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from 'components/Button'
+import Button from 'components/Button';
 
 const Step2 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

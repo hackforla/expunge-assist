@@ -1,7 +1,7 @@
 // import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import device from 'styles/breakpoints'
+import device from 'styles/breakpoints';
 
 const ContentContainer = styled.div`
   display: flex;
@@ -16,6 +16,6 @@ const ContentContainer = styled.div`
     margin-left: initial;
     margin-right: initial;
   }
-`
+`;
 
 export default ContentContainer;
