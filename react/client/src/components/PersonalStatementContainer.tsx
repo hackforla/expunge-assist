@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Header from './Header';
 import Form from './Form';
 import Landing from './pages/Landing';
 
