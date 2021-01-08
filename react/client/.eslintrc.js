@@ -35,5 +35,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'new-cap': 'off',
     'react/button-has-type': 'off',
+
+    // currently forces double define for arrow functions https://github.com/yannickcr/eslint-plugin-react/issues/2353
+    'react/prop-types': 'off',
   },
 };

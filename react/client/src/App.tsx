@@ -6,14 +6,14 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import PageContainer from 'components/PageContainer';
 import { GlobalStyle } from './styles/GlobalStyle';
 
-import PageContainer from 'components/PageContainer'
-import PrivacyPolicy from './components/pages/PrivacyPolicy'
-import TermsOfUse from './components/pages/TermsOfUse'
-import FAQ from './components/pages/FAQ'
-import AboutUs from './components/pages/AboutUs'
-import Navbar from './components/Navbar'
+import PrivacyPolicy from './components/pages/PrivacyPolicy';
+import TermsOfUse from './components/pages/TermsOfUse';
+import FAQ from './components/pages/FAQ';
+import AboutUs from './components/pages/AboutUs';
+import Navbar from './components/Navbar';
 
 const App: React.FC = () => {
   const history = useHistory();
@@ -21,12 +21,7 @@ const App: React.FC = () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route
-          exact
-          path="/"
-          component={PageContainer}
-          history={history}
-        />
+        <Route exact path="/" component={PageContainer} history={history} />
         <Route
           path="/form/:page?"
           component={PageContainer}
