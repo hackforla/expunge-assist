@@ -1,11 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import styled from 'styled-components'
-
-import iconBlack from '../assets/iconBlack.svg';
-import iconWhite from '../assets/iconWhite.svg';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import device from 'styles/breakpoints';
+import iconBlack from '../assets/iconBlack.svg';
+import iconWhite from '../assets/iconWhite.svg';
 
 interface StyleProps {
   background?: string;
@@ -13,8 +12,8 @@ interface StyleProps {
 }
 
 export const StyledContainer = styled.div<StyleProps>`
-  background: ${props => props.background};
-  color: ${props => props.color};
+  background: ${(props) => props.background};
+  color: ${(props) => props.color};
   display: flex;
 
   .logo-title {
@@ -28,7 +27,7 @@ export const StyledContainer = styled.div<StyleProps>`
       display: none;
     }
   }
-`
+`;
 
 interface HeaderProps {
   pageNumber: number;
@@ -43,7 +42,6 @@ const Header = ({ pageNumber }: HeaderProps) => {
     background = '#9903ff';
     color = 'white';
     icon = iconWhite;
-
   } else {
     background = 'white';
     color = 'black';
@@ -51,20 +49,25 @@ const Header = ({ pageNumber }: HeaderProps) => {
   }
 
   return (
-    <StyledContainer background={background} color={color} className='app-header'>
+    <StyledContainer
+      background={background}
+      color={color}
+      className="app-header"
+    >
       <img src={icon} alt="" />
       <Link
-        to='/'
+        to="/"
         style={{
           textDecoration: 'none',
-          color: color,
+          color,
         }}
-        className='logo-title'>
+        className="logo-title"
+      >
         <p>The Record</p>
         <p>Clearance Project</p>
       </Link>
     </StyledContainer>
-  )
-}
+  );
+};
 
 export default Header;

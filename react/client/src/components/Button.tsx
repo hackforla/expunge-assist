@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import device from 'styles/breakpoints'
+// import device from 'styles/breakpoints';
 
 interface StyleProps {
-  theme?: string,
-  hasArrow?: boolean, // todo
+  theme?: string;
+  hasArrow?: boolean; // todo
 }
 
 const commonButtonStyles = `
@@ -27,7 +27,7 @@ const commonButtonStyles = `
   & :nth-child(1) {
     margin-right:10px;
   }
-`
+`;
 
 const basicStyles = `
   background: #9903FF;
@@ -35,7 +35,7 @@ const basicStyles = `
   &:hover {
     background: #a224f7;
   }
-`
+`;
 
 const darkStyles = `
   background: #25003F;
@@ -43,11 +43,11 @@ const darkStyles = `
   &:hover {
     background: #330652;
   }
-`
+`;
 
 const Button = styled.button<StyleProps>`
   ${commonButtonStyles}
-  ${props => {
+  ${(props) => {
     switch (props.theme) {
       case 'dark':
         return darkStyles;
@@ -57,5 +57,5 @@ const Button = styled.button<StyleProps>`
         return basicStyles;
     }
   }}
-`
+`;
 export default Button;
