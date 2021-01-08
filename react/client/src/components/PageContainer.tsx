@@ -1,37 +1,39 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react/prop-types */
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import Header from 'components/Header'
-import Form from 'components/Form'
-import FormHeader from 'components/FormHeader'
-import Landing from 'components/pages/Landing'
+import Header from 'components/Header';
+import Form from 'components/Form';
+import FormHeader from 'components/FormHeader';
+import Landing from 'components/pages/Landing';
 
 // import device from 'styles/breakpoints'
 
 interface StyleProps {
-  theme?: string,
+  theme?: string;
   background?: string;
 }
 
 const basicStyles = `
   background: white;
   color: #131313;
-`
+`;
 
 const purpleStyles = `
   background: #9903ff;
   color: white;
-`
+`;
 
 const StyledContainer = styled.div<StyleProps>`
-  background: ${props => props.background};
-  color:white;
+  background: ${(props) => props.background};
+  color: white;
   padding: 18px;
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
 
-  ${props => {
+  ${(props) => {
     switch (props.theme) {
       case 'purple':
         return purpleStyles;
@@ -41,49 +43,44 @@ const StyledContainer = styled.div<StyleProps>`
         return basicStyles;
     }
   }}
-`
+`;
 
 interface PageProps {
   history: {
     location: {
-      pathname: string
-    },
-    push: (address: string) => void
-  },
+      pathname: string;
+    };
+    push: (address: string) => void;
+  };
   match: {
     params: {
-      page: string
-    }
-  }
-};
+      page: string;
+    };
+  };
+}
 
 const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const pageNumber: number = Number(match.params.page) || 0;
   const isLandingPage = pageNumber === 0;
 
   const goToPage = (pageNumber: number) => {
-    history.push(`/form/${pageNumber}`)
-  }
+    history.push(`/form/${pageNumber}`);
+  };
 
   return (
     <StyledContainer
       theme={isLandingPage ? 'purple' : 'basic'}
-      className='page-container'>
+      className="page-container"
+    >
       <Header pageNumber={pageNumber} />
 
-      { !isLandingPage &&
-        <FormHeader pageNumber={pageNumber} />
-      }
+      {!isLandingPage && <FormHeader pageNumber={pageNumber} />}
 
-      { isLandingPage &&
-        <Landing goToPage={goToPage}/>
-      }
+      {isLandingPage && <Landing goToPage={goToPage} />}
 
-      { !isLandingPage &&
-        <Form pageNumber={pageNumber} goToPage={goToPage} />
-      }
+      {!isLandingPage && <Form pageNumber={pageNumber} goToPage={goToPage} />}
     </StyledContainer>
-  )
-}
+  );
+};
 
 export default PageContainer;

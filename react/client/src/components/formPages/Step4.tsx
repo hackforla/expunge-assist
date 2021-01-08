@@ -1,6 +1,6 @@
 import React from 'react';
-
-import Button from 'components/Button'
+import Textarea from 'components/Textarea';
+import Button from 'components/Button';
 
 const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,20 +19,18 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         Please describe what goals you are working towards acheiving right now.
         (2 sentences maximum)
       </p>
-      <input
-        type="text"
-        name="goals"
+      <Textarea
+        inputName="goals"
+        handleChange={handleChange}
         placeholder="I am working towards..."
-        onChange={handleChange}
       />
       <p>
         How are you working towards acheiving these goals? (2 sentences maximum)
       </p>
-      <input
-        type="text"
-        name="goalsHow"
+      <Textarea
+        inputName="goalsHow"
+        handleChange={handleChange}
         placeholder="I have been..."
-        onChange={handleChange}
       />
       <Button onClick={() => goToPage(7)}>BACK</Button>
       <Button onClick={() => goToPage(10)}>LOOKS GOOD</Button>
