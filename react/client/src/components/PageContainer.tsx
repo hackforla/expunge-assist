@@ -71,7 +71,10 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
       theme={isLandingPage ? 'purple' : 'basic'}
       className="page-container"
     >
-      <AffirmationComponent />
+      <AffirmationComponent
+        buttonText="Begin"
+        onClickAffirmation={() => console.log('click')}
+      />
 
       <Header pageNumber={pageNumber} />
 

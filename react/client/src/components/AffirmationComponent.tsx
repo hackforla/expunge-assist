@@ -1,6 +1,16 @@
 import React from 'react';
 
-const AffirmationComponent = (/* props: React.FC */) => {
+import Button from 'components/Button';
+
+interface AffirmationProps {
+  buttonText: string;
+  onClickAffirmation: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const AffirmationComponent = ({
+  buttonText,
+  onClickAffirmation,
+}: AffirmationProps) => {
   return (
     <div
       style={{
@@ -17,10 +27,28 @@ const AffirmationComponent = (/* props: React.FC */) => {
         zIndex: 1,
       }}
     >
-      <div style={{ height: 375, background: '#bf9ed6' }}>[image]</div>
+      <div
+        className="adjacent-mar-top"
+        style={{ height: 375, background: '#bf9ed6' }}
+      >
+        [image]
+      </div>
+
       <div className="page-title adjacent-mar-top">Welcome!</div>
       <div className="adjacent-mar-top">
         This is a tool to generate a personal statement.
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+        className="adjacent-mar-top"
+      >
+        <Button type="button" onClick={onClickAffirmation}>
+          {buttonText}
+        </Button>
       </div>
     </div>
   );
