@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import AffirmationComponent from 'components/AffirmationComponent';
 import Header from 'components/Header';
 import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
@@ -70,6 +71,8 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
       theme={isLandingPage ? 'purple' : 'basic'}
       className="page-container"
     >
+      <AffirmationComponent />
+
       <Header pageNumber={pageNumber} />
 
       {!isLandingPage && <FormHeader pageNumber={pageNumber} />}
