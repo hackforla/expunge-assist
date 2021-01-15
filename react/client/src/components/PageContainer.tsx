@@ -108,7 +108,7 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
         <Form
           pageNumber={pageNumber}
           goToPage={goToPage}
-          // onChangeAffirmation={updateAffirmationData}
+          onChangeAffirmation={updateAffirmationData}
         />
       )}
     </StyledContainer>

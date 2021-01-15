@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Button from 'components/Button';
 import ContentContainer from 'components/ContentContainer';
@@ -16,10 +16,10 @@ import Affirmation from './formPages/Affirmation';
 interface FormProps {
   pageNumber: number;
   goToPage: (pageNumber: number) => void;
-  // onChangeAffirmation?: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeAffirmation: (newState: object) => void;
 }
 
-const Form = ({ pageNumber, goToPage }: FormProps) => {
+const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
@@ -42,6 +42,34 @@ const Form = ({ pageNumber, goToPage }: FormProps) => {
 
     pdf: undefined,
   });
+
+  useEffect(() => {
+    switch (pageNumber) {
+      case 1:
+        onChangeAffirmation({
+          isActive: true,
+          buttonText: 'Welcome',
+          description: 'Page 1',
+        });
+        break;
+      case 2:
+        onChangeAffirmation({
+          isActive: true,
+          buttonText: 'Congrats!',
+          description: 'Page 2',
+        });
+        break;
+      case 3:
+        onChangeAffirmation({
+          isActive: true,
+          buttonText: 'Way to Go!',
+          description: 'Page 3',
+        });
+        break;
+      default:
+        break;
+    }
+  }, [pageNumber]);
 
   return (
     <ContentContainer className="content-page">
