@@ -3,11 +3,13 @@ import React from 'react';
 import Button from 'components/Button';
 
 interface AffirmationProps {
+  isActive: boolean;
   buttonText: string;
-  onClickAffirmation: (evt: React.MouseEvent<HTMLButtonElement>) => void;
+  onClickAffirmation: (evt: any) => void;
 }
 
 const AffirmationComponent = ({
+  isActive,
   buttonText,
   onClickAffirmation,
 }: AffirmationProps) => {
@@ -21,10 +23,10 @@ const AffirmationComponent = ({
         top: 60,
         width: '100%',
         color: '#3D0066',
-        // paddingTop: 24,
-        // paddingBottom: 24,
         padding: 24,
         zIndex: 1,
+        transition: 'transform 1000ms',
+        transform: isActive ? 'translateY(0%)' : 'translateY(-150%)',
       }}
     >
       <div
@@ -46,7 +48,7 @@ const AffirmationComponent = ({
         }}
         className="adjacent-mar-top"
       >
-        <Button type="button" onClick={onClickAffirmation}>
+        <Button type="button" onClick={() => onClickAffirmation(false)}>
           {buttonText}
         </Button>
       </div>

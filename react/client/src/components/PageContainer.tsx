@@ -62,6 +62,8 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const pageNumber: number = Number(match.params.page) || 0;
   const isLandingPage = pageNumber === 0;
 
+  const [isAffirmationActive, setAffirmationActive] = React.useState(true);
+
   const goToPage = (nextPage: number) => {
     history.push(`/form/${nextPage}`);
   };
@@ -73,7 +75,8 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
     >
       <AffirmationComponent
         buttonText="Begin"
-        onClickAffirmation={() => console.log('click')}
+        isActive={isAffirmationActive}
+        onClickAffirmation={setAffirmationActive}
       />
 
       <Header pageNumber={pageNumber} />
