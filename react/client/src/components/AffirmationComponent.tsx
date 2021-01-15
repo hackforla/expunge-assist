@@ -4,6 +4,7 @@ import Button from 'components/Button';
 
 interface AffirmationProps {
   isActive: boolean;
+  titleText: string;
   buttonText: string;
   description: string;
   onChangeAffirmation: (newState: object) => void;
@@ -11,7 +12,8 @@ interface AffirmationProps {
 
 const AffirmationComponent = ({
   isActive,
-  buttonText,
+  titleText,
+  buttonText = 'Next',
   description,
   onChangeAffirmation,
 }: AffirmationProps) => {
@@ -38,7 +40,7 @@ const AffirmationComponent = ({
         [image]
       </div>
 
-      <div className="page-title adjacent-mar-top">Welcome!</div>
+      <div className="page-title adjacent-mar-top">{titleText}</div>
       <div className="adjacent-mar-top">{description}</div>
 
       <div

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import AffirmationComponent from 'components/AffirmationComponent';
@@ -55,11 +55,13 @@ interface PageProps {
     params: {
       page: string;
     };
+    path: string;
   };
 }
 
 interface AffirmationProps {
   isActive: boolean;
+  titleText: string;
   buttonText: string;
   description: string;
 }
@@ -69,11 +71,9 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const isLandingPage = pageNumber === 0;
 
   // create state just for the Affirmation component
-  const [
-    affirmationData,
-    setAffirmationData,
-  ] = React.useState<AffirmationProps>({
-    isActive: true,
+  const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
+    isActive: false,
+    titleText: 'Welcome!',
     buttonText: 'Begin',
     description: 'This is a tool to generate a personal statement.',
   });
@@ -86,6 +86,13 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
     history.push(`/form/${nextPage}`);
   };
 
+  useEffect(() => {
+    // handle closing the affirmation on home page
+    if (match.path === '/') {
+      updateAffirmationData({ isActive: false });
+    }
+  }, [match]);
+
   return (
     <StyledContainer
       theme={isLandingPage ? 'purple' : 'basic'}
@@ -93,6 +100,7 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
     >
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
+        titleText={affirmationData.titleText}
         description={affirmationData.description}
         isActive={affirmationData.isActive}
         onChangeAffirmation={updateAffirmationData}
