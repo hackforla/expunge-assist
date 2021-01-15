@@ -29,8 +29,9 @@ const AffirmationComponent = ({
         color: '#3D0066',
         padding: 24,
         zIndex: 1,
-        transition: 'transform 600ms',
-        transform: isActive ? 'translateY(0%)' : 'translateY(-150%)',
+        display: isActive ? 'block' : 'none',
+        // transition: 'transform 600ms',
+        // transform: isActive ? 'translateY(0%)' : 'translateY(-150%)',
       }}
     >
       <div
