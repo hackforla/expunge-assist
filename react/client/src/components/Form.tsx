@@ -11,7 +11,6 @@ import Step3 from './formPages/Step3';
 import Step4 from './formPages/Step4';
 import Step5 from './formPages/Step5';
 import Download from './formPages/Download';
-import Affirmation from './formPages/Affirmation';
 
 interface FormProps {
   pageNumber: number;
@@ -43,30 +42,40 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
     pdf: undefined,
   });
 
+  // todo: move text into a json for localization
   useEffect(() => {
     switch (pageNumber) {
       case 1:
         onChangeAffirmation({
           isActive: true,
-          buttonText: 'Welcome',
-          description: 'Page 1',
+          titleText: 'Welcome!',
+          buttonText: 'Begin',
+          description: 'This is a tool to generate a personal statement.',
         });
         break;
       case 2:
         onChangeAffirmation({
           isActive: true,
-          buttonText: 'Congrats!',
+          titleText: 'Congrats!',
+          buttonText: 'Next',
           description: 'Page 2',
         });
         break;
       case 3:
         onChangeAffirmation({
           isActive: true,
-          buttonText: 'Way to Go!',
+          titleText: 'Way to Go!',
+          buttonText: 'Next',
           description: 'Page 3',
         });
         break;
       default:
+        onChangeAffirmation({
+          isActive: true,
+          titleText: 'Default Text',
+          buttonText: 'Next',
+          description: `Page ${pageNumber}`,
+        });
         break;
     }
   }, [pageNumber]);
@@ -74,81 +83,45 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   return (
     <ContentContainer className="content-page">
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
+
       {pageNumber === 2 && (
-        <Affirmation
-          pageNumber={pageNumber}
-          message="Welcome!"
-          goToPage={goToPage}
-        />
-      )}
-      {pageNumber === 3 && (
         <Step1 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-      {pageNumber === 4 && (
-        <Affirmation
-          pageNumber={pageNumber}
-          message="Congrats!"
-          goToPage={goToPage}
-        />
-      )}
-      {pageNumber === 5 && (
+
+      {pageNumber === 3 && (
         <Step2 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-      {pageNumber === 6 && (
-        <Affirmation
-          pageNumber={pageNumber}
-          message="Way to Go!"
-          goToPage={goToPage}
-        />
-      )}
-      {pageNumber === 7 && (
+
+      {pageNumber === 4 && (
         <Step3 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-      {pageNumber === 8 && (
-        <Affirmation
-          pageNumber={pageNumber}
-          message="Hooray!"
-          goToPage={goToPage}
-        />
-      )}
-      {pageNumber === 9 && (
+
+      {pageNumber === 5 && (
         <Step4 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-      {pageNumber === 10 && (
-        <Affirmation
-          pageNumber={pageNumber}
-          message="Great Job!"
-          goToPage={goToPage}
-        />
-      )}
-      {pageNumber === 11 && (
+
+      {pageNumber === 6 && (
         <Step5 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-      {pageNumber === 12 && (
-        <Affirmation
-          pageNumber={pageNumber}
-          message="Fabulous!"
-          goToPage={goToPage}
-        />
-      )}
-      {pageNumber === 13 && (
+
+      {pageNumber === 7 && (
         <Flex className="adjacent-mar-top">
           <p>Previewing Final Statement</p>
-          <Button type="button" onClick={() => goToPage(14)}>
+          <Button type="button" onClick={() => goToPage(8)}>
             EDIT
           </Button>
-          <Button type="button" onClick={() => goToPage(14)}>
+          <Button type="button" onClick={() => goToPage(8)}>
             NEXT
           </Button>
         </Flex>
       )}
-      {pageNumber === 14 && (
+      {pageNumber === 8 && (
         <Flex className="adjacent-mar-top">
           <p>Editing</p>
-          <Button onClick={() => goToPage(15)}>SAVE</Button>
+          <Button onClick={() => goToPage(9)}>SAVE</Button>
         </Flex>
       )}
-      {pageNumber === 15 && (
+      {pageNumber === 9 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
     </ContentContainer>
