@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -6,13 +5,13 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      width: '80%',
       '& .MuiTextField-root': {
         margin: theme.spacing(1),
       },
       '& .MuiOutlinedInput-root': {
         '& fieldset': {
           borderRadius: '15px',
-          width: '20rem',
         },
       },
       '& .MuiOutlinedInput-multiline': {
@@ -21,7 +20,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     input: {
       fontSize: '1rem',
-      width: '18rem',
     },
   })
 );
@@ -39,22 +37,20 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
 }) => {
   const classes = useStyles();
   return (
-    <div>
-      <TextField
-        className={classes.root}
-        onChange={handleChange}
-        name={inputName}
-        placeholder={placeholder}
-        id="outlined-textarea"
-        multiline
-        variant="outlined"
-        InputProps={{
-          classes: {
-            input: classes.input,
-          },
-        }}
-      />
-    </div>
+    <TextField
+      className={classes.root}
+      onChange={handleChange}
+      name={inputName}
+      placeholder={placeholder}
+      id="outlined-textarea"
+      multiline
+      variant="outlined"
+      InputProps={{
+        classes: {
+          input: classes.input,
+        },
+      }}
+    />
   );
 };
 
