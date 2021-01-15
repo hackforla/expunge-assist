@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from 'components/Button';
+import Textarea from 'components/Textarea';
 
 const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,11 +26,10 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         How will clearing your record change your life or help you? (2 sentences
         maximum)
       </p>
-      <input
-        type="text"
-        name="clearRecordHow"
+      <Textarea
+        inputName="clearRecordHow"
+        handleChange={handleChange}
         placeholder="Clearing my record will..."
-        onChange={handleChange}
       />
       <Button onClick={() => goToPage(9)}>BACK</Button>
       <Button onClick={() => goToPage(12)}>LOOKS GOOD</Button>

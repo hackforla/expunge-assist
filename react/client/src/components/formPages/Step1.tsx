@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
@@ -32,7 +32,11 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           Please describe what has been going on in your life recently. (2
           sentences maximum)
         </p>
-        <input type="textarea" name="introduction" onChange={handleChange} />
+        <Textarea
+          inputName="introduction"
+          handleChange={handleChange}
+          placeholder="I've been..."
+        />
         <Button onClick={() => goToPage(1)}>BACK</Button>
         <Button onClick={() => goToPage(4)}>LOOKS GOOD</Button>
       </form>

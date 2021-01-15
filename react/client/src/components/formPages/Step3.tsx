@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
 const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
@@ -38,12 +38,11 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         Please describe what you do at this community service organization (2
         sentences maximum)
       </p>
-      <input
-        type="text"
-        name="communityServiceDescription"
-        onChange={handleChange}
+      <Textarea
+        inputName="communityServiceDescription"
+        handleChange={handleChange}
+        placeholder="Currently, I..."
       />
-
       <p>What is the name of the company you work for?</p>
       <input type="text" name="jobName" onChange={handleChange} />
       <p>What is your current job title?</p>
@@ -51,16 +50,19 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
       <p>
         Please describe what you do at your current job. (2 sentences maximum)
       </p>
-      <input type="text" name="jobDescription" onChange={handleChange} />
-
+      <Textarea
+        inputName="jobDescription"
+        handleChange={handleChange}
+        placeholder="At my current job, I ..."
+      />
       <p>
         Please describe why you are having trouble finding work. (2 sentences
         maximum)
       </p>
-      <input
-        type="text"
-        name="difficultyFindingWorkDescription"
-        onChange={handleChange}
+      <Textarea
+        inputName="difficultyFindingWorkDescription"
+        handleChange={handleChange}
+        placeholder="I'm having difficulty finding work because..."
       />
       <p>
         Do you believe that having your record cleared would help you find a job
