@@ -58,11 +58,29 @@ interface PageProps {
   };
 }
 
+interface AffirmationProps {
+  isActive: boolean;
+  buttonText: string;
+  description: string;
+}
+
 const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const pageNumber: number = Number(match.params.page) || 0;
   const isLandingPage = pageNumber === 0;
 
-  const [isAffirmationActive, setAffirmationActive] = React.useState(true);
+  // create state just for the Affirmation component
+  const [
+    affirmationData,
+    setAffirmationData,
+  ] = React.useState<AffirmationProps>({
+    isActive: true,
+    buttonText: 'Begin',
+    description: 'This is a tool to generate a personal statement.',
+  });
+
+  const updateAffirmationData = (newState: object) => {
+    setAffirmationData({ ...affirmationData, ...newState });
+  };
 
   const goToPage = (nextPage: number) => {
     history.push(`/form/${nextPage}`);
@@ -74,10 +92,10 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
       className="page-container"
     >
       <AffirmationComponent
-        buttonText="Begin"
-        description="This is a tool to generate a personal statement."
-        isActive={isAffirmationActive}
-        onClickAffirmation={setAffirmationActive}
+        buttonText={affirmationData.buttonText}
+        description={affirmationData.description}
+        isActive={affirmationData.isActive}
+        onChangeAffirmation={updateAffirmationData}
       />
 
       <Header pageNumber={pageNumber} />
@@ -86,7 +104,13 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
 
       {isLandingPage && <Landing goToPage={goToPage} />}
 
-      {!isLandingPage && <Form pageNumber={pageNumber} goToPage={goToPage} />}
+      {!isLandingPage && (
+        <Form
+          pageNumber={pageNumber}
+          goToPage={goToPage}
+          // onChangeAffirmation={updateAffirmationData}
+        />
+      )}
     </StyledContainer>
   );
 };

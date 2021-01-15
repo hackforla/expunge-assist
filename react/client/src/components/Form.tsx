@@ -16,6 +16,7 @@ import Affirmation from './formPages/Affirmation';
 interface FormProps {
   pageNumber: number;
   goToPage: (pageNumber: number) => void;
+  // onChangeAffirmation?: (evt: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Form = ({ pageNumber, goToPage }: FormProps) => {

@@ -6,14 +6,14 @@ interface AffirmationProps {
   isActive: boolean;
   buttonText: string;
   description: string;
-  onClickAffirmation: (evt: any) => void;
+  onChangeAffirmation: (newState: object) => void;
 }
 
 const AffirmationComponent = ({
   isActive,
   buttonText,
   description,
-  onClickAffirmation,
+  onChangeAffirmation,
 }: AffirmationProps) => {
   return (
     <div
@@ -48,7 +48,10 @@ const AffirmationComponent = ({
         }}
         className="adjacent-mar-top"
       >
-        <Button type="button" onClick={() => onClickAffirmation(false)}>
+        <Button
+          type="button"
+          onClick={() => onChangeAffirmation({ isActive: false })}
+        >
           {buttonText}
         </Button>
       </div>
