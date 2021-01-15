@@ -19,7 +19,7 @@ module.exports = {
     },
   },
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': 'warn',
     'no-use-before-define': 'off',
     'import/extensions': 'off',
     'react/jsx-filename-extension': [
