@@ -75,6 +75,7 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
     >
       <AffirmationComponent
         buttonText="Begin"
+        description="This is a tool to generate a personal statement."
         isActive={isAffirmationActive}
         onClickAffirmation={setAffirmationActive}
       />

@@ -5,12 +5,14 @@ import Button from 'components/Button';
 interface AffirmationProps {
   isActive: boolean;
   buttonText: string;
+  description: string;
   onClickAffirmation: (evt: any) => void;
 }
 
 const AffirmationComponent = ({
   isActive,
   buttonText,
+  description,
   onClickAffirmation,
 }: AffirmationProps) => {
   return (
@@ -37,9 +39,7 @@ const AffirmationComponent = ({
       </div>
 
       <div className="page-title adjacent-mar-top">Welcome!</div>
-      <div className="adjacent-mar-top">
-        This is a tool to generate a personal statement.
-      </div>
+      <div className="adjacent-mar-top">{description}</div>
 
       <div
         style={{
