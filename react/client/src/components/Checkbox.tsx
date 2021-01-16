@@ -27,7 +27,7 @@ interface CheckProps {
 
 const CheckboxLabels: React.FC<CheckProps> = ({ label }) => {
   const [state, setState] = React.useState({
-    checked: true,
+    checked: false,
   });
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({ ...state, [event.target.name]: event.target.checked });
