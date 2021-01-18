@@ -6,7 +6,7 @@ We are a local Brigade of the national non-profit Code for America, called Hack 
 
 Record Clearance is a project of Hack for LA. Record Clearance helps people in California with non-violent criminal records accomplish record clearance, expungement or reduction as a result of Prop 47 & Prop 64.
 
-The main features include building trust, educating the public about the program and informing those who are eligible for this program.
+The main features include building trust, educating the public about the program and informing those who are eligible for this program. We are currently building a Personal Statement Generator to facilitate the record expungement petitioning process.
 
 
 ## Project context
@@ -48,8 +48,8 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 - Github & Google Doc's for documentation
      - For the purpose tracking progress and general of administration of the project we will be using Github's [Kanban boards](https://github.com/hackforla/record-clearance/projects/1)
 - Teleconference meetings 
-     - Will be hosted by Google Meetings (or ZOOM) must notify Daniel that someone would like to attend via Teleconference 
-     - Link to meeting [live on Mondays between 6:30-7:30 pm PST](Check Record Clearance slack channel for the Google meet invite at the designated meeting time)
+     - Will be hosted by Google Meetings (or ZOOM) must notify Gretchen that someone would like to attend via Teleconference 
+     - Link to meeting [live on Mondays between 6-7 pm PST](Check Record Clearance slack channel for the Zoom invite at the designated meeting time)
 
 
 ## How to contribute
@@ -57,10 +57,10 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 Explain the different ways people can contribute. For example:
 
 - Join the team 
-     on Slack channel and at our weekly Monday hack night in person or teleconference (start at 6:30pm at the latest).
-- To help with user research, sync with Cade.
-- To provide design support, sync with Daniel.
-- To contribute to the code, Cade.
+     on Slack channel and at our weekly Monday hack night in person or teleconference (start at 6pm).
+- To help with user research, sync with Gretchen.
+- To provide design support, sync with Gretchen.
+- To contribute to the code, sync with Daniel.
 
 
 ### Process for meetings:
@@ -90,14 +90,14 @@ Explain the different ways people can contribute. For example:
 
 # Contact info
 
-Daniel Lee - Project Lead - j100892@gmail.com or on Slack @Daniel Lee 
+Gretchen Howard - Product Manager - gretchenschwab@gmail.com or on Slack @Gretchen Howard
 
-Cade Mallett - Co-lead - on Slack @Cade Mallett
+Daniel Xiao - Tech Lead - on Slack @Daniel Xiao
 
 
 ### Licensing {TBA}
 
-Copyright 2020 Hack for LA 
+Copyright 2021 Hack for LA 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
