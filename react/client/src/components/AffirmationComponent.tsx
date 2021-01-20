@@ -1,10 +1,31 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import AffirmationIllustration from 'assets/affirmation-illustration.svg';
 
 import Button from 'components/Button';
 
-interface AffirmationProps {
+interface StyleProps {
+  isActive: boolean;
+}
+
+const AffirmationContainer = styled.div<StyleProps>`
+  position: fixed;
+  background: #f7ebff;
+  left: 0;
+  bottom: 0;
+  top: 60px;
+  width: 100%;
+  color: #3d0066;
+  padding: 24px;
+  zindex: 1px;
+  flex-direction: column;
+  align-items: center;
+
+  ${(props) => (props.isActive ? 'display: flex' : 'display: none')};
+`;
+
+interface ComponentProps {
   isActive: boolean;
   titleText: string;
   buttonText: string;
@@ -18,26 +39,9 @@ const AffirmationComponent = ({
   buttonText = 'Next',
   description,
   onChangeAffirmation,
-}: AffirmationProps) => {
+}: ComponentProps) => {
   return (
-    <div
-      style={{
-        position: 'fixed',
-        background: '#F7EBFF',
-        left: 0,
-        bottom: 0,
-        top: 60,
-        width: '100%',
-        color: '#3D0066',
-        padding: 24,
-        zIndex: 1,
-        display: isActive ? 'flex' : 'none',
-        flexDirection: 'column',
-        alignItems: 'center',
-        // transition: 'transform 600ms',
-        // transform: isActive ? 'translateY(0%)' : 'translateY(-150%)',
-      }}
-    >
+    <AffirmationContainer isActive={isActive}>
       <img
         src={AffirmationIllustration}
         alt="affirmation illustration"
@@ -62,7 +66,7 @@ const AffirmationComponent = ({
           {buttonText}
         </Button>
       </div>
-    </div>
+    </AffirmationContainer>
   );
 };
 
