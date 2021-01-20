@@ -1,5 +1,7 @@
 import React from 'react';
 
+import AffirmationIllustration from 'assets/affirmation-illustration.svg';
+
 import Button from 'components/Button';
 
 interface AffirmationProps {
@@ -29,17 +31,19 @@ const AffirmationComponent = ({
         color: '#3D0066',
         padding: 24,
         zIndex: 1,
-        display: isActive ? 'block' : 'none',
+        display: isActive ? 'flex' : 'none',
+        flexDirection: 'column',
+        alignItems: 'center',
         // transition: 'transform 600ms',
         // transform: isActive ? 'translateY(0%)' : 'translateY(-150%)',
       }}
     >
-      <div
+      <img
+        src={AffirmationIllustration}
+        alt="affirmation illustration"
+        style={{ height: 375 }}
         className="adjacent-mar-top"
-        style={{ height: 375, background: '#bf9ed6' }}
-      >
-        [image]
-      </div>
+      />
 
       <div className="page-title adjacent-mar-top">{titleText}</div>
       <div className="adjacent-mar-top">{description}</div>
