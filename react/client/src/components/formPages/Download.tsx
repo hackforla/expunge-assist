@@ -1,19 +1,26 @@
 import React from 'react';
 import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
+import jsPDF from 'jspdf';
 
 import { Wrapper } from '../../styles/Download';
 
 const Download = ({ inputs, setInputs, goToPage }: StepProps) => {
   const savePDF = () => {
+    const viewport = document.getElementById('viewport');
+    console.log(viewport);
+    viewport?.setAttribute('content', 'width=1920');
+    viewport?.setAttribute('content', 'height=1080');
     html2canvas(
       document.getElementById('personalStatementElement') as HTMLElement
     ).then((canvas) => {
       const imgdata = canvas.toDataURL('image/png');
-      const doc = new jsPDF();
+      const pdf = new jsPDF();
       // @ts-ignore
-      doc.addImage(imgdata, 'PNG', 10, 10);
-      setInputs({ ...inputs, pdf: doc });
+      pdf.addImage(imgdata, 'PNG', 0, 0);
+      pdf.save('hi.pdf');
+      // pdf.output('dataurlnewwindow');
+
+      setInputs({ ...inputs, pdf });
     });
   };
 
