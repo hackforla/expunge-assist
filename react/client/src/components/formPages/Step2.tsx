@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
 const Step2 = ({ inputs, setInputs, goToPage }: StepProps) => {
@@ -17,11 +17,11 @@ const Step2 = ({ inputs, setInputs, goToPage }: StepProps) => {
         Finish the sentence: Since my last conviction my life has changed for
         the...
       </p>
-      <input
-        type="text"
+      <Textarea
+        inputName="lifeChanges"
         placeholder="I have experienced..."
-        name="lifeChanges"
-        onChange={handleChange}
+        handleChange={handleChange}
+        multi={false}
       />
       <Button onClick={() => goToPage(3)}>BACK</Button>
       <Button onClick={() => goToPage(6)}>LOOKS GOOD</Button>
