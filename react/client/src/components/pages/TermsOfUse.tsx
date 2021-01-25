@@ -17,7 +17,7 @@ const ContentContainer = styled.div`
   line-height: 1.17rem;
 `;
 
-const TermsOfUse: React.FC = () => {
+const TermsOfUse = () => {
   return (
     <StyledContainer className="TermsOfUse">
       <Header pageNumber={0} />
