@@ -14,6 +14,7 @@ import TermsOfUse from './components/pages/TermsOfUse';
 import FAQ from './components/pages/FAQ';
 import AboutUs from './components/pages/AboutUs';
 import Navbar from './components/Navbar';
+import PDF from './components/PDF';
 
 const App: React.FC = () => {
   const history = useHistory();
@@ -31,6 +32,7 @@ const App: React.FC = () => {
         <Route path="/TermsOfUse" component={TermsOfUse} />
         <Route path="/FAQ" component={FAQ} />
         <Route path="/AboutUs" component={AboutUs} />
+        <Route path="/pdf" component={PDF} />
       </Switch>
       <Navbar />
       <GlobalStyle />
