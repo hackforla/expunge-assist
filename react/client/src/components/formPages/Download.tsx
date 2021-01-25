@@ -6,21 +6,26 @@ import { Wrapper } from '../../styles/Download';
 
 const Download = ({ inputs, setInputs, goToPage }: StepProps) => {
   const savePDF = () => {
-    const viewport = document.getElementById('viewport');
-    console.log(viewport);
-    viewport?.setAttribute('content', 'width=1920');
-    viewport?.setAttribute('content', 'height=1080');
-    html2canvas(
-      document.getElementById('personalStatementElement') as HTMLElement
-    ).then((canvas) => {
+    // const viewport = document.getElementById('viewport');
+    // viewport?.setAttribute('content', 'width=1920');
+    // viewport?.setAttribute('content', 'height=1080');
+    if (window.innerWidth < 1920) {
+      const PS: any = document.getElementById('PSElement');
+      PS.style.backgroundColor = 'red';
+    }
+    html2canvas(document.getElementById('PSElement') as HTMLElement, {
+      width: 693,
+      height: 900,
+    }).then((canvas) => {
       const imgdata = canvas.toDataURL('image/png');
+
       const pdf = new jsPDF();
+
       // @ts-ignore
       pdf.addImage(imgdata, 'PNG', 0, 0);
       pdf.save('hi.pdf');
       // pdf.output('dataurlnewwindow');
-
-      setInputs({ ...inputs, pdf });
+      // setInputs({ ...inputs, pdf });
     });
   };
 
@@ -34,8 +39,19 @@ const Download = ({ inputs, setInputs, goToPage }: StepProps) => {
 
   return (
     <div className="Download">
+      <button onClick={savePDF}>Save PDF</button>
       <p>Previewing Final Statement</p>
-      <Wrapper id="personalStatementElement">
+
+      {/* <iframe
+        id="PSiframe"
+        src="/record-clearance/pdf"
+        // height="1122px"
+        height="922px"
+        width="693px"
+        title="unique"
+      /> */}
+
+      <Wrapper id="PSElement">
         <p>
           October 26th, 2020
           <br />
