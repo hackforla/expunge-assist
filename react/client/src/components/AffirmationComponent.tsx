@@ -57,7 +57,7 @@ const AffirmationComponent = ({
           display: 'flex',
           justifyContent: 'flex-end',
         }}
-        className="adjacent-mar-top"
+        className="adjacent-mar-top align-right-sm"
       >
         <Button
           type="button"

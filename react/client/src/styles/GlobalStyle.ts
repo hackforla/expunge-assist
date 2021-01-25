@@ -41,11 +41,24 @@ export const GlobalStyle = createGlobalStyle`
   .page-title {
     font-size: 36px;
     font-weight: 400;
+    margin-right: auto;
+
 
     @media only screen and ${device.md} {
       font-size: 48px;
       font-weight: 700;
     }
+
+    @media only screen and ${device.sm} {
+      margin-right: 0;
+    }
+  }
+
+  .align-right-sm {
+    @media only screen and ${device.sm} {
+      margin-left: 0;
+    }
+      margin-left: auto;
   }
 `;
 
