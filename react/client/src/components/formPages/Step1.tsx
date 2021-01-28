@@ -1,5 +1,6 @@
 import React from 'react';
 import Textarea from 'components/Textarea';
+import Input from 'components/Input'
 import Button from 'components/Button';
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
@@ -26,11 +27,11 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           multi={false}
         />
         <p>How old are you?</p>
-        <Textarea
+        <Input
+          type="number"
           inputName="age"
           placeholder="25"
           handleChange={handleChange}
-          multi={false}
         />
         <p>
           Please describe what has been going on in your life recently. (2

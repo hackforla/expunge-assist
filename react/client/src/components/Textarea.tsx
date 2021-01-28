@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Icon from '@material-ui/core/Icon';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { teal } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
     input: {
       fontSize: '1rem',
     },
+    icon: {
+      color: teal.A400,
+    },
   })
 );
 
@@ -51,37 +54,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
   };
   const [valid, isValid] = useState(false);
   const classes = useStyles();
-  return inputName === 'age' ? (
-    <TextField
-      type="number"
-      className={classes.root}
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-        checkValid(e.currentTarget.value);
-        handleChange(e);
-      }}
-      name={inputName}
-      placeholder={placeholder}
-      id="outlined-textarea"
-      multiline={multi}
-      variant="outlined"
-      InputProps={{
-        style: { textAlign: 'right', width: '10%' },
-        classes: {
-          input: classes.input,
-        },
-        endAdornment: (
-          <InputAdornment position="end">
-            years old
-            {valid ? (
-              <Icon style={{ color: teal.A400 }}>check_circle</Icon>
-            ) : (
-              <Icon />
-            )}
-          </InputAdornment>
-        ),
-      }}
-    />
-  ) : (
+  return (
     <TextField
       className={classes.root}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,15 +70,11 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
         classes: {
           input: classes.input,
         },
-        endAdornment: (
+        endAdornment: valid ? (
           <InputAdornment position="end">
-            {valid ? (
-              <Icon style={{ color: teal.A400 }}>check_circle</Icon>
-            ) : (
-              <Icon />
-            )}
+            <CheckCircleIcon className={classes.icon} />
           </InputAdornment>
-        ),
+        ) : null,
       }}
     />
   );
