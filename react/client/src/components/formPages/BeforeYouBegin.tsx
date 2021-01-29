@@ -1,12 +1,11 @@
 import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
 import arrowRight from '../../assets/arrowRight.svg';
 
-const useStyles = makeStyles((theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     flex: {
       display: 'flex',
@@ -34,8 +33,7 @@ If at anytime you are confused please click the question mark button for guidanc
 `;
 
 const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
-  const theme = useTheme();
-  const classes = useStyles(theme);
+  const classes = useStyles();
   return (
     <>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>

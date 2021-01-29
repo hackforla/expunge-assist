@@ -1,16 +1,73 @@
 import React from 'react';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import hackForLALogo from '../assets/hackForLALogo.svg';
 
-import { Wrapper, ImageWrapper, LinkWrapper } from '../styles/Navbar';
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      position: 'absolute',
+      bottom: '0px',
+      width: '100%',
+      background: 'none',
+      color: 'white',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      '& img, span': {
+        display: 'none',
+        margin: '0 20px',
+      },
+      [theme.breakpoints.up('md')]: {
+        background: 'black',
+        height: '50px',
+        '& img, span': {
+          display: 'block',
+        },
+      },
+      [theme.breakpoints.up('lg')]: {
+        '& img, span': {
+          margin: '0 45px',
+        },
+      },
+    },
+    imageWrapper: {
+      [theme.breakpoints.up('md')]: {
+        width: '230px',
+      },
+    },
+    linkWrapper: {
+      display: 'flex',
+      margin: '0 auto',
+      justifyContent: 'space-between',
+      width: '300px',
+      textTransform: 'uppercase',
+      '& a': {
+        color: 'white',
+        fontSize: '0.625rem',
+      },
+      [theme.breakpoints.up('md')]: {
+        '& :nth-child(n+3)': {
+          display: 'none',
+        },
+        width: '260px',
+        '& a': {
+          fontWeight: '700',
+          fontSize: '1rem',
+        },
+      },
+    },
+  })
+);
 
 const Navbar: React.FC = () => {
+  const classes = useStyles();
   return (
-    <Wrapper className="Navbar">
-      <ImageWrapper>
+    <div className={classes.root}>
+      <div className={classes.imageWrapper}>
         <img src={hackForLALogo} alt="Hack for LA Logo" />
-      </ImageWrapper>
-      <LinkWrapper>
+      </div>
+      <div className={classes.linkWrapper}>
         <li>
           <a href={`${process.env.PUBLIC_URL}/PrivacyPolicy`}>Privacy Policy</a>
         </li>
@@ -23,9 +80,9 @@ const Navbar: React.FC = () => {
         <li>
           <a href={`${process.env.PUBLIC_URL}/AboutUs`}>About Us</a>
         </li>
-      </LinkWrapper>
+      </div>
       <span>COPYRIGHT 2020 HACK FOR LA</span>
-    </Wrapper>
+    </div>
   );
 };
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { createStyles, makeStyles } from '@material-ui/core';
+import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
 import AffirmationIllustration from 'assets/affirmation-illustration.svg';
 
 import Button from 'components/Button';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles<Theme, StyleProps>(() =>
   createStyles({
     root: {
       position: 'fixed',
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() =>
       zIndex: 1,
       flexDirection: 'column',
       alignItems: 'center',
-      display: (isActive) => (isActive ? 'flex' : 'none'),
+      display: (props) => (props.isActive ? 'flex' : 'none'),
     },
   })
 );
@@ -32,6 +32,10 @@ interface ComponentProps {
   onChangeAffirmation: (newState: object) => void;
 }
 
+interface StyleProps {
+  isActive: boolean;
+}
+
 const AffirmationComponent = ({
   isActive,
   titleText,
@@ -39,7 +43,8 @@ const AffirmationComponent = ({
   description,
   onChangeAffirmation,
 }: ComponentProps) => {
-  const classes = useStyles(isActive);
+  const styleProps: StyleProps = { isActive };
+  const classes = useStyles(styleProps);
 
   return (
     <div className={classes.root}>

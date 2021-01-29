@@ -1,0 +1,58 @@
+body {
+  background: #9903ff;
+  font-family: Roboto;
+  font-weight: 400;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+.adjacent-mar-top + .adjacent-mar-top {
+  margin-top: 10px;
+
+  @media only screen and (min-width: 960px) {
+    margin-top: 15px;
+  }
+}
+
+.app-header + .content-page,
+.page-title + .adjacent-mar-top {
+  margin-top: 15px;
+
+  @media only screen and (min-width: 960px) {
+    margin-top: 30px;
+    color: red;
+  }
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: 400;
+  margin-right: auto;
+
+  @media only screen and (min-width: 960px) {
+    font-size: 48px;
+    font-weight: 700;
+  }
+
+  @media only screen and (min-width: 320px) {
+    margin-right: 0;
+  }
+}
+
+.align-right-sm {
+  @media only screen and (min-width: 320px) {
+    margin-left: 0;
+  }
+  margin-left: auto;
+}

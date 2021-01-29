@@ -60,14 +60,7 @@ export const GlobalStyle = createGlobalStyle`
     }
       margin-left: auto;
   }
-`;
 
-export const Flex = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  @media only screen and ${device.md} {
-    justify-content: flex-start;
-  }
 `;
 
 export const Button = styled.button`
