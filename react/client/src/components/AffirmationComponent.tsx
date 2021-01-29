@@ -18,7 +18,7 @@ const AffirmationContainer = styled.div<StyleProps>`
   width: 100%;
   color: #3d0066;
   padding: 24px;
-  zindex: 1px;
+  z-index: 1;
   flex-direction: column;
   align-items: center;
 
