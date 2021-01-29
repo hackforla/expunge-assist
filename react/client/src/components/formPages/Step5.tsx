@@ -16,11 +16,11 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
   return (
     <div className="Step5">
       <p>Please finish this sentence: I want to clear my record because...</p>
-      <input
-        type="text"
-        name="clearRecordWhy"
+      <Textarea
+        inputName="clearRecordWhy"
         placeholder="I am..."
-        onChange={handleChange}
+        handleChange={handleChange}
+        multi={false}
       />
       <p>
         How will clearing your record change your life or help you? (2 sentences
@@ -30,6 +30,7 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         inputName="clearRecordHow"
         handleChange={handleChange}
         placeholder="Clearing my record will..."
+        multi
       />
       <Button onClick={() => goToPage(9)}>BACK</Button>
       <Button onClick={() => goToPage(12)}>LOOKS GOOD</Button>
