@@ -4,13 +4,15 @@ import Button from 'components/Button';
 import ContentContainer from 'components/ContentContainer';
 
 import arrowRight from '../../assets/arrowRight.svg';
-import { Flex } from '../../styles/GlobalStyle';
+
+import { useStyles } from '../../styles/useStyles';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
 }
 
 const Landing = ({ goToPage }: LandingProps) => {
+  const classes = useStyles();
   return (
     <ContentContainer className="content-page">
       <h1 className="page-title adjacent-mar-top">
@@ -20,12 +22,12 @@ const Landing = ({ goToPage }: LandingProps) => {
         Generate a personal statement in just 20 minutes
       </div>
 
-      <Flex className="adjacent-mar-top">
+      <div className={`${classes.flex} adjacent-mar-top`}>
         <Button onClick={() => goToPage(1)} theme="dark">
           <span>START NOW</span>
           <img src={arrowRight} alt="arrow right" />
         </Button>
-      </Flex>
+      </div>
     </ContentContainer>
   );
 };

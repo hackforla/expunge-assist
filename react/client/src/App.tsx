@@ -17,6 +17,8 @@ import FAQ from './components/pages/FAQ';
 import AboutUs from './components/pages/AboutUs';
 import Navbar from './components/Navbar';
 
+// import 'styles/App.css';
+
 const theme = createMuiTheme({
   palette: {
     primary: {

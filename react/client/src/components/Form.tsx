@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Button from 'components/Button';
 import ContentContainer from 'components/ContentContainer';
 
-import { Flex } from 'styles/GlobalStyle';
+import { useStyles } from 'styles/useStyles';
 import BeforeYouBegin from './formPages/BeforeYouBegin';
 import Step1 from './formPages/Step1';
 import Step2 from './formPages/Step2';
@@ -19,6 +19,7 @@ interface FormProps {
 }
 
 const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
+  const classes = useStyles();
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
@@ -105,7 +106,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       )}
 
       {pageNumber === 7 && (
-        <Flex className="adjacent-mar-top">
+        <div className={`${classes.flex} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button type="button" onClick={() => goToPage(8)}>
             EDIT
@@ -113,13 +114,13 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
           <Button type="button" onClick={() => goToPage(8)}>
             NEXT
           </Button>
-        </Flex>
+        </div>
       )}
       {pageNumber === 8 && (
-        <Flex className="adjacent-mar-top">
+        <div className={`${classes.flex} adjacent-mar-top`}>
           <p>Editing</p>
           <Button onClick={() => goToPage(9)}>SAVE</Button>
-        </Flex>
+        </div>
       )}
       {pageNumber === 9 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />

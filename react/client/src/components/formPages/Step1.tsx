@@ -1,6 +1,6 @@
 import React from 'react';
 import Textarea from 'components/Textarea';
-import Input from 'components/Input'
+import Input from 'components/Input';
 import Button from 'components/Button';
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {

@@ -1,15 +1,64 @@
 import React from 'react';
+import { makeStyles, createStyles } from '@material-ui/core';
 
 import Header from '../Header';
-import { Button, Wrapper } from '../../styles/PrivacyPolicy';
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      padding: '18px',
+      color: '#ffffff',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      '& .centered': {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyCOntent: 'flex-start',
+        width: '528px',
+        height: '266px',
+        margin: '0 auto',
+      },
+      '& h3': {
+        fontWeight: 500,
+        fontSize: '1.25rem',
+        lineHeight: '1.3rem',
+        letterSpacing: '0.0015em',
+        marginBottom: '1em',
+      },
+      '& .content': {
+        fontWeight: 'bold',
+        fontSize: '1rem',
+        lineHeight: '1.2rem',
+        letterSpacing: '0.005em',
+        marginBottom: '1em',
+      },
+    },
+    button: {
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: '1rem',
+      lineHeight: '1.2rem',
+      textAlign: 'left',
+
+      letterSpacing: '0.0125em',
+      textTransform: 'uppercase',
+
+      color: '#ffffff',
+      backgroundColor: 'transparent',
+      border: 'none',
+    },
+  })
+);
 
 interface PrivacyPolicyProps {
   handleClick: () => void;
 }
 
 const PrivacyPolicy = ({ handleClick }: PrivacyPolicyProps) => {
+  const classes = useStyles();
   return (
-    <Wrapper>
+    <div className={classes.root}>
       <Header pageNumber={0} />
       <div className="centered">
         &nbsp;
@@ -33,11 +82,11 @@ const PrivacyPolicy = ({ handleClick }: PrivacyPolicyProps) => {
           CONFIDENTIAL.
         </p>
         &nbsp;
-        <Button onClick={handleClick}>
+        <button className={classes.button} onClick={handleClick}>
           <span>BACK</span>
-        </Button>
+        </button>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 
