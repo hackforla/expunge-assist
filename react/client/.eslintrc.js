@@ -27,7 +27,7 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-unused-vars': 'warn',
     'no-undef': 'off',
     'no-unused-expressions': 'off',
     'no-shadow': 'off',

@@ -1,9 +1,22 @@
 import React from 'react';
+import { createStyles, makeStyles } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 
 import Button from 'components/Button';
 
-import { Flex } from 'styles/GlobalStyle';
 import arrowRight from '../../assets/arrowRight.svg';
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    flex: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      [theme.breakpoints.up('md')]: {
+        justifyContent: 'flex-start',
+      },
+    },
+  })
+);
 
 // this is kind of funky but will need to be updated when text is changed
 const disclaimerText = `
@@ -21,6 +34,8 @@ If at anytime you are confused please click the question mark button for guidanc
 `;
 
 const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
+  const theme = useTheme();
+  const classes = useStyles(theme);
   return (
     <>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
@@ -30,12 +45,12 @@ const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
         {disclaimerText}
       </div>
 
-      <Flex className="adjacent-mar-top">
+      <div className={`${classes.flex} adjacent-mar-top`}>
         <Button onClick={() => goToPage(2)}>
           <span>I understand</span>
           <img src={arrowRight} alt="arrow right" />
         </Button>
-      </Flex>
+      </div>
     </>
   );
 };

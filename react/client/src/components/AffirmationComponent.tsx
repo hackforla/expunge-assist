@@ -1,29 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
+import { createStyles, makeStyles } from '@material-ui/core';
 
 import AffirmationIllustration from 'assets/affirmation-illustration.svg';
 
 import Button from 'components/Button';
 
-interface StyleProps {
-  isActive: boolean;
-}
-
-const AffirmationContainer = styled.div<StyleProps>`
-  position: fixed;
-  background: #f7ebff;
-  left: 0;
-  bottom: 0;
-  top: 60px;
-  width: 100%;
-  color: #3d0066;
-  padding: 24px;
-  z-index: 1;
-  flex-direction: column;
-  align-items: center;
-
-  ${(props) => (props.isActive ? 'display: flex' : 'display: none')};
-`;
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      position: 'fixed',
+      background: '#f7ebff',
+      left: '0',
+      bottom: '0',
+      top: '60px',
+      width: '100%',
+      color: '#3d0066',
+      padding: '24px',
+      zIndex: 1,
+      flexDirection: 'column',
+      alignItems: 'center',
+      display: (isActive) => (isActive ? 'flex' : 'none'),
+    },
+  })
+);
 
 interface ComponentProps {
   isActive: boolean;
@@ -40,8 +39,10 @@ const AffirmationComponent = ({
   description,
   onChangeAffirmation,
 }: ComponentProps) => {
+  const classes = useStyles(isActive);
+
   return (
-    <AffirmationContainer isActive={isActive}>
+    <div className={classes.root}>
       <img
         src={AffirmationIllustration}
         alt="affirmation illustration"
@@ -66,7 +67,7 @@ const AffirmationComponent = ({
           {buttonText}
         </Button>
       </div>
-    </AffirmationContainer>
+    </div>
   );
 };
 
