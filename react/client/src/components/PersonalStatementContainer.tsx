@@ -36,7 +36,7 @@ const PersonalStatement = ({ history, match }: PersonalStatementProps) => {
         {pageNumber === 0 ? (
           <Landing goToPage={goToPage} />
         ) : (
-          <Form pageNumber={pageNumber} goToPage={goToPage} />
+          <Form pageNumber={pageNumber} goToPage={goToPage} onChangeAffirmation={() => {}} />
         )}
       </FormWrapper>
     </Wrapper>

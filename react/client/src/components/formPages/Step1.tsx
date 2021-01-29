@@ -1,5 +1,6 @@
 import React from 'react';
 import Textarea from 'components/Textarea';
+import Input from 'components/Input'
 import Button from 'components/Button';
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
@@ -19,15 +20,19 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
     <div className="Step1">
       <form>
         <p>What is your name?</p>
-        <input
-          type="text"
-          placeholder="Firstname Lastname"
-          name="name"
-          onChange={handleChange}
+        <Textarea
+          inputName="name"
+          placeholder="FirstName LastName"
+          handleChange={handleChange}
+          multi={false}
         />
         <p>How old are you?</p>
-        <input type="number" name="age" onChange={handleChange} />
-        <span>years old</span>
+        <Input
+          type="number"
+          inputName="age"
+          placeholder="25"
+          handleChange={handleChange}
+        />
         <p>
           Please describe what has been going on in your life recently. (2
           sentences maximum)
@@ -36,6 +41,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           inputName="introduction"
           handleChange={handleChange}
           placeholder="I've been..."
+          multi
         />
         <Button onClick={() => goToPage(1)}>BACK</Button>
         <Button onClick={() => goToPage(4)}>LOOKS GOOD</Button>

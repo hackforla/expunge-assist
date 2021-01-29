@@ -23,6 +23,7 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         inputName="goals"
         handleChange={handleChange}
         placeholder="I am working towards..."
+        multi
       />
       <p>
         How are you working towards acheiving these goals? (2 sentences maximum)
@@ -31,6 +32,7 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         inputName="goalsHow"
         handleChange={handleChange}
         placeholder="I have been..."
+        multi
       />
       <Button onClick={() => goToPage(7)}>BACK</Button>
       <Button onClick={() => goToPage(10)}>LOOKS GOOD</Button>
