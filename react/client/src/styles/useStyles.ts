@@ -10,7 +10,20 @@ const useStyles = makeStyles((theme) =>
         justifyContent: 'flex-start',
       },
     },
+    contentContainer: {
+      display: 'flex',
+      flex: '1 0 auto',
+      flexDirection: 'column',
+      maxWidth: '850px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+
+      [theme.breakpoints.down('xs')]: {
+        marginLeft: 'initial',
+        marginRight: 'initial',
+      },
+    },
   })
 );
 
-export { useStyles };
+export default useStyles;

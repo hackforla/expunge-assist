@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import Button from 'components/Button';
-import ContentContainer from 'components/ContentContainer';
 
-import { useStyles } from 'styles/useStyles';
+import useStyles from 'styles/useStyles';
 import BeforeYouBegin from './formPages/BeforeYouBegin';
 import Step1 from './formPages/Step1';
 import Step2 from './formPages/Step2';
@@ -83,7 +82,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   }, [pageNumber]);
 
   return (
-    <ContentContainer className="content-page">
+    <div className={`${classes.contentContainer} content-page`}>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
 
       {pageNumber === 2 && (
@@ -126,6 +125,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       {pageNumber === 9 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
+<<<<<<< HEAD
       <PopUp
         title="Some advice for your personal statement"
         info={
@@ -139,6 +139,9 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
         }
       />
     </ContentContainer>
+=======
+    </div>
+>>>>>>> second pass - converted most things to material ui except button component
   );
 };
 
