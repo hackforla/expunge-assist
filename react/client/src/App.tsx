@@ -9,7 +9,6 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { purple } from '@material-ui/core/colors';
 
 import PageContainer from 'components/PageContainer';
-import { GlobalStyle } from './styles/GlobalStyle';
 
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from './components/pages/TermsOfUse';
@@ -17,7 +16,7 @@ import FAQ from './components/pages/FAQ';
 import AboutUs from './components/pages/AboutUs';
 import Navbar from './components/Navbar';
 
-// import 'styles/App.css';
+import 'styles/App.css';
 
 const theme = createMuiTheme({
   palette: {
@@ -55,7 +54,6 @@ const App: React.FC = () => {
           <Route path="/AboutUs" component={AboutUs} />
         </Switch>
         <Navbar />
-        <GlobalStyle />
       </Router>
     </ThemeProvider>
   );

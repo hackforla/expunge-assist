@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import Button from 'components/Button';
-
 import useUtilityStyles from 'styles/utilityStyles';
 import BeforeYouBegin from './formPages/BeforeYouBegin';
 import Step1 from './formPages/Step1';
@@ -18,7 +16,7 @@ interface FormProps {
 }
 
 const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
-  const classes = useUtilityStyles({});
+  const utilityClasses = useUtilityStyles({});
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
@@ -81,7 +79,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   }, [pageNumber]);
 
   return (
-    <div className={`${classes.contentContainer} content-page`}>
+    <div className={`${utilityClasses.contentContainer} content-page`}>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
 
       {pageNumber === 2 && (
@@ -105,20 +103,34 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       )}
 
       {pageNumber === 7 && (
-        <div className={`${classes.flex} adjacent-mar-top`}>
+        <div className={`${utilityClasses.flex} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
-          <Button type="button" onClick={() => goToPage(8)}>
+          <button
+            type="button"
+            onClick={() => goToPage(8)}
+            className={utilityClasses.button}
+          >
             EDIT
-          </Button>
-          <Button type="button" onClick={() => goToPage(8)}>
+          </button>
+          <button
+            type="button"
+            onClick={() => goToPage(8)}
+            className={utilityClasses.button}
+          >
             NEXT
-          </Button>
+          </button>
         </div>
       )}
       {pageNumber === 8 && (
-        <div className={`${classes.flex} adjacent-mar-top`}>
+        <div className={`${utilityClasses.flex} adjacent-mar-top`}>
           <p>Editing</p>
-          <Button onClick={() => goToPage(9)}>SAVE</Button>
+          <button
+            type="button"
+            onClick={() => goToPage(9)}
+            className={utilityClasses.button}
+          >
+            SAVE
+          </button>
         </div>
       )}
       {pageNumber === 9 && (

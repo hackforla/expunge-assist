@@ -1,21 +1,7 @@
 import React from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
-
-import Button from 'components/Button';
+import useUtilityStyles from 'styles/utilityStyles';
 
 import arrowRight from '../../assets/arrowRight.svg';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    flex: {
-      display: 'flex',
-      justifyContent: 'flex-end',
-      [theme.breakpoints.up('md')]: {
-        justifyContent: 'flex-start',
-      },
-    },
-  })
-);
 
 // this is kind of funky but will need to be updated when text is changed
 const disclaimerText = `
@@ -33,7 +19,7 @@ If at anytime you are confused please click the question mark button for guidanc
 `;
 
 const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
-  const classes = useStyles();
+  const utilityClasses = useUtilityStyles({});
   return (
     <>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
@@ -43,11 +29,15 @@ const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
         {disclaimerText}
       </div>
 
-      <div className={`${classes.flex} adjacent-mar-top`}>
-        <Button onClick={() => goToPage(2)}>
+      <div className={`${utilityClasses.flex} adjacent-mar-top`}>
+        <button
+          type="button"
+          onClick={() => goToPage(2)}
+          className={utilityClasses.button}
+        >
           <span>I understand</span>
           <img src={arrowRight} alt="arrow right" />
-        </Button>
+        </button>
       </div>
     </>
   );
