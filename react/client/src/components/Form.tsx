@@ -1,16 +1,36 @@
 import React, { useState, useEffect } from 'react';
 
-import Button from 'components/Button';
-
 import useUtilityStyles from 'styles/utilityStyles';
-import BeforeYouBegin from './formPages/BeforeYouBegin';
-import Step1 from './formPages/Step1';
-import Step2 from './formPages/Step2';
-import Step3 from './formPages/Step3';
-import Step4 from './formPages/Step4';
-import Step5 from './formPages/Step5';
-import Download from './formPages/Download';
-import PopUp from './PopUp';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
+
+import Button from 'components/Button';
+import PopUp from 'components/PopUp';
+
+import BeforeYouBegin from 'flows/BeforeYouBegin';
+import Step1 from 'flows/Step1';
+import Step2 from 'flows/Step2';
+import Step3 from 'flows/Step3';
+import Step4 from 'flows/Step4';
+import Step5 from 'flows/Step5';
+import Download from 'flows/Download';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flex: '1 0 auto',
+      flexDirection: 'column',
+      maxWidth: '850px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+
+      [theme.breakpoints.down('xs')]: {
+        marginLeft: 'initial',
+        marginRight: 'initial',
+      },
+    },
+  })
+);
 
 interface FormProps {
   pageNumber: number;
@@ -19,7 +39,8 @@ interface FormProps {
 }
 
 const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
-  const classes = useUtilityStyles({});
+  const classes = useStyles();
+  const utilityClasses = useUtilityStyles({});
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
@@ -82,7 +103,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   }, [pageNumber]);
 
   return (
-    <div className={`${classes.contentContainer} content-page`}>
+    <div className={`${classes.root} content-page`}>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
 
       {pageNumber === 2 && (
@@ -106,26 +127,21 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       )}
 
       {pageNumber === 7 && (
-        <div className={`${classes.flex} adjacent-mar-top`}>
+        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
-          <Button type="button" onClick={() => goToPage(8)}>
-            EDIT
-          </Button>
-          <Button type="button" onClick={() => goToPage(8)}>
-            NEXT
-          </Button>
+          <Button onClick={() => goToPage(8)} buttonText="EDIT" />
+          <Button onClick={() => goToPage(8)} buttonText="NEXT" />
         </div>
       )}
       {pageNumber === 8 && (
-        <div className={`${classes.flex} adjacent-mar-top`}>
+        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
-          <Button onClick={() => goToPage(9)}>SAVE</Button>
+          <Button onClick={() => goToPage(9)} buttonText="SAVE" />
         </div>
       )}
       {pageNumber === 9 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-<<<<<<< HEAD
       <PopUp
         title="Some advice for your personal statement"
         info={
@@ -138,10 +154,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
           '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
         }
       />
-    </ContentContainer>
-=======
     </div>
->>>>>>> second pass - converted most things to material ui except button component
   );
 };
 

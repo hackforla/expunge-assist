@@ -5,6 +5,7 @@ import Button from 'components/Button';
 import TextPreview from 'components/TextPreview';
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
+  const utilityClasses = useUtilityStyles({});
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;

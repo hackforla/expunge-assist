@@ -19,8 +19,10 @@ h2 {
 
 .adjacent-mar-top + .adjacent-mar-top {
   margin-top: 10px;
+}
 
-  @media only screen and (min-width: 960px) {
+@media only screen and (min-width: 960px) {
+  .adjacent-mar-top + .adjacent-mar-top {
     margin-top: 15px;
   }
 }
@@ -28,10 +30,12 @@ h2 {
 .app-header + .content-page,
 .page-title + .adjacent-mar-top {
   margin-top: 15px;
+}
 
-  @media only screen and (min-width: 960px) {
+@media only screen and (min-width: 960px) {
+  .app-header + .content-page,
+  .page-title + .adjacent-mar-top {
     margin-top: 30px;
-    color: red;
   }
 }
 
@@ -39,20 +43,27 @@ h2 {
   font-size: 36px;
   font-weight: 400;
   margin-right: auto;
+}
 
-  @media only screen and (min-width: 960px) {
-    font-size: 48px;
-    font-weight: 700;
-  }
-
-  @media only screen and (min-width: 320px) {
+@media only screen and (min-width: 320px) {
+  .page-title {
     margin-right: 0;
   }
 }
 
+@media only screen and (min-width: 960px) {
+  .page-title {
+    font-size: 48px;
+    font-weight: 700;
+  }
+}
+
 .align-right-sm {
-  @media only screen and (min-width: 320px) {
+  margin-left: auto;
+}
+
+@media only screen and (min-width: 320px) {
+  .align-right-sm {
     margin-left: 0;
   }
-  margin-left: auto;
 }

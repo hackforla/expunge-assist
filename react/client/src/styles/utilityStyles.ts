@@ -7,7 +7,7 @@ interface StyleProps {
 
 const useUtilityStyles = makeStyles<Theme, StyleProps>((theme) =>
   createStyles({
-    // I think I named this, but I'd like to name this better because it's not simply a flexbox container - Alex
+    // I think I named this, but I'd like to rename this better because it's not simply a flexbox container, if anyone has ideas - Alex
     flex: {
       display: 'flex',
       justifyContent: 'flex-end',
