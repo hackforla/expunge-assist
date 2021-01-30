@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Button from 'components/Button';
 
-import useStyles from 'styles/useStyles';
+import useUtilityStyles from 'styles/utilityStyles';
 import BeforeYouBegin from './formPages/BeforeYouBegin';
 import Step1 from './formPages/Step1';
 import Step2 from './formPages/Step2';
@@ -19,7 +19,7 @@ interface FormProps {
 }
 
 const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
-  const classes = useStyles();
+  const classes = useUtilityStyles({});
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
