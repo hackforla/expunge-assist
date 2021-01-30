@@ -1,11 +1,10 @@
 import React from 'react';
 
 import Button from 'components/Button';
-import ContentContainer from 'components/ContentContainer';
 
 import arrowRight from '../../assets/arrowRight.svg';
 
-import { useStyles } from '../../styles/useStyles';
+import useStyles from '../../styles/useStyles';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
@@ -14,7 +13,7 @@ interface LandingProps {
 const Landing = ({ goToPage }: LandingProps) => {
   const classes = useStyles();
   return (
-    <ContentContainer className="content-page">
+    <div className={`${classes.contentContainer} content-page`}>
       <h1 className="page-title adjacent-mar-top">
         Start fresh with a record expungement
       </h1>
@@ -28,7 +27,7 @@ const Landing = ({ goToPage }: LandingProps) => {
           <img src={arrowRight} alt="arrow right" />
         </Button>
       </div>
-    </ContentContainer>
+    </div>
   );
 };
 
