@@ -1,9 +1,8 @@
 import React from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
+import useUtilityStyles from 'styles/utilityStyles';
 
 import AffirmationIllustration from 'assets/affirmation-illustration.svg';
-
-import Button from 'components/Button';
 
 const useStyles = makeStyles<Theme, StyleProps>(() =>
   createStyles({
@@ -45,6 +44,7 @@ const AffirmationComponent = ({
 }: ComponentProps) => {
   const styleProps: StyleProps = { isActive };
   const classes = useStyles(styleProps);
+  const utilityClasses = useUtilityStyles({});
 
   return (
     <div className={classes.root}>
@@ -65,12 +65,12 @@ const AffirmationComponent = ({
         }}
         className="adjacent-mar-top align-right-sm"
       >
-        <Button
-          type="button"
+        <button
           onClick={() => onChangeAffirmation({ isActive: false })}
+          className={utilityClasses.button}
         >
           {buttonText}
-        </Button>
+        </button>
       </div>
     </div>
   );

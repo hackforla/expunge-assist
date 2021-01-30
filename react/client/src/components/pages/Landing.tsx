@@ -1,17 +1,14 @@
 import React from 'react';
 
-import Button from 'components/Button';
-
+import useUtilityStyles from 'styles/utilityStyles';
 import arrowRight from '../../assets/arrowRight.svg';
-
-import useStyles from '../../styles/useStyles';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
 }
 
 const Landing = ({ goToPage }: LandingProps) => {
-  const classes = useStyles();
+  const classes = useUtilityStyles({ theme: 'dark' });
   return (
     <div className={`${classes.contentContainer} content-page`}>
       <h1 className="page-title adjacent-mar-top">
@@ -22,10 +19,10 @@ const Landing = ({ goToPage }: LandingProps) => {
       </div>
 
       <div className={`${classes.flex} adjacent-mar-top`}>
-        <Button onClick={() => goToPage(1)} theme="dark">
+        <button onClick={() => goToPage(1)} className={classes.button}>
           <span>START NOW</span>
           <img src={arrowRight} alt="arrow right" />
-        </Button>
+        </button>
       </div>
     </div>
   );
