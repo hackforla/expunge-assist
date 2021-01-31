@@ -1,7 +1,7 @@
 import React from 'react';
+import Button from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
-import arrowRight from '../../assets/arrowRight.svg';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
@@ -19,10 +19,12 @@ const Landing = ({ goToPage }: LandingProps) => {
       </div>
 
       <div className={`${classes.flex} adjacent-mar-top`}>
-        <button onClick={() => goToPage(1)} className={classes.button}>
-          <span>START NOW</span>
-          <img src={arrowRight} alt="arrow right" />
-        </button>
+        <Button
+          onClick={() => goToPage(1)}
+          theme="dark"
+          hasArrow
+          buttonText="START NOW"
+        />
       </div>
     </div>
   );
