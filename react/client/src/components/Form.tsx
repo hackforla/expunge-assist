@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import Button from './Button';
 import BeforeYouBegin from './formPages/BeforeYouBegin';
 import Step1 from './formPages/Step1';
 import Step2 from './formPages/Step2';
@@ -9,6 +11,24 @@ import Step4 from './formPages/Step4';
 import Step5 from './formPages/Step5';
 import Download from './formPages/Download';
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'flex',
+      flex: '1 0 auto',
+      flexDirection: 'column',
+      maxWidth: '850px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+
+      [theme.breakpoints.down('xs')]: {
+        marginLeft: 'initial',
+        marginRight: 'initial',
+      },
+    },
+  })
+);
+
 interface FormProps {
   pageNumber: number;
   goToPage: (pageNumber: number) => void;
@@ -16,6 +36,7 @@ interface FormProps {
 }
 
 const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
+  const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
@@ -79,7 +100,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   }, [pageNumber]);
 
   return (
-    <div className={`${utilityClasses.contentContainer} content-page`}>
+    <div className={`${classes.root} content-page`}>
       {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
 
       {pageNumber === 2 && (
@@ -105,32 +126,14 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       {pageNumber === 7 && (
         <div className={`${utilityClasses.flex} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
-          <button
-            type="button"
-            onClick={() => goToPage(8)}
-            className={utilityClasses.button}
-          >
-            EDIT
-          </button>
-          <button
-            type="button"
-            onClick={() => goToPage(8)}
-            className={utilityClasses.button}
-          >
-            NEXT
-          </button>
+          <Button onClick={() => goToPage(8)} buttonText="EDIT" />
+          <Button onClick={() => goToPage(8)} buttonText="NEXT" />
         </div>
       )}
       {pageNumber === 8 && (
         <div className={`${utilityClasses.flex} adjacent-mar-top`}>
           <p>Editing</p>
-          <button
-            type="button"
-            onClick={() => goToPage(9)}
-            className={utilityClasses.button}
-          >
-            SAVE
-          </button>
+          <Button onClick={() => goToPage(9)} buttonText="SAVE" />
         </div>
       )}
       {pageNumber === 9 && (

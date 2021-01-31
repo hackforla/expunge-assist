@@ -1,10 +1,8 @@
 import React from 'react';
 import Textarea from 'components/Textarea';
-import useUtilityStyles from 'styles/utilityStyles';
+import Button from 'components/Button';
 
 const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
-  const utilityClasses = useUtilityStyles({});
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
@@ -36,20 +34,8 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="I have been..."
         multi
       />
-      <button
-        type="button"
-        onClick={() => goToPage(7)}
-        className={utilityClasses.button}
-      >
-        BACK
-      </button>
-      <button
-        type="button"
-        onClick={() => goToPage(10)}
-        className={utilityClasses.button}
-      >
-        LOOKS GOOD
-      </button>
+      <Button onClick={() => goToPage(7)} buttonText="BACK" />
+      <Button onClick={() => goToPage(10)} buttonText="LOOKS GOOD" />
     </div>
   );
 };

@@ -1,16 +1,18 @@
 import React from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
+import arrowRight from '../assets/arrowRight.svg';
+
 interface ComponentProps {
   theme?: string;
-  hasArrow?: boolean; // todo
+  hasArrow?: boolean;
   buttonText: string;
   onClick: () => void;
 }
 
 interface StyleProps {
   theme?: string;
-  hasArrow?: boolean; // todo
+  hasArrow?: boolean;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>(() =>
@@ -30,12 +32,13 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       letterSpacing: '0.0125em',
       textTrasnform: 'uppercase',
       cursor: 'pointer',
-      '& :nth-child(1)': {
-        marginRight: '10px',
-      },
       background: (props) => (props.theme === 'dark' ? '#25003F' : '#9903FF'),
       '&:hover': {
         background: (props) => (props.theme === 'dark' ? '#330652' : '#a224f7'),
+      },
+      '& img': {
+        marginLeft: '10px',
+        marginRight: '0px',
       },
     },
   })
@@ -47,6 +50,7 @@ const Button = ({ theme, hasArrow, buttonText, onClick }: ComponentProps) => {
   return (
     <button type="button" className={classes.root} onClick={onClick}>
       {buttonText}
+      {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </button>
   );
 };

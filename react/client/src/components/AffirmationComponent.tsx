@@ -1,6 +1,5 @@
 import React from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
-import useUtilityStyles from 'styles/utilityStyles';
 
 import AffirmationIllustration from 'assets/affirmation-illustration.svg';
 import Button from './Button';
@@ -45,7 +44,6 @@ const AffirmationComponent = ({
 }: ComponentProps) => {
   const styleProps: StyleProps = { isActive };
   const classes = useStyles(styleProps);
-  const utilityClasses = useUtilityStyles({});
 
   return (
     <div className={classes.root}>

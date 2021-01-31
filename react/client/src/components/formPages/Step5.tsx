@@ -1,12 +1,9 @@
 import React from 'react';
 
-import useUtilityStyles from 'styles/utilityStyles';
-
 import Textarea from 'components/Textarea';
+import Button from 'components/Button';
 
 const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
-  const utilityClasses = useUtilityStyles({});
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
@@ -35,20 +32,8 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="Clearing my record will..."
         multi
       />
-      <button
-        type="button"
-        onClick={() => goToPage(9)}
-        className={utilityClasses.button}
-      >
-        BACK
-      </button>
-      <button
-        type="button"
-        onClick={() => goToPage(12)}
-        className={utilityClasses.button}
-      >
-        LOOKS GOOD
-      </button>
+      <Button onClick={() => goToPage(9)} buttonText="BACK" />
+      <Button onClick={() => goToPage(12)} buttonText="LOOKS GOOD" />
     </div>
   );
 };
