@@ -23,8 +23,8 @@ const Step2 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         multi={false}
       />
-      <Button onClick={() => goToPage(3)}>BACK</Button>
-      <Button onClick={() => goToPage(6)}>LOOKS GOOD</Button>
+      <Button onClick={() => goToPage(2)}>BACK</Button>
+      <Button onClick={() => goToPage(4)}>LOOKS GOOD</Button>
     </div>
   );
 };

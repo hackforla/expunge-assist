@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import AffirmationComponent from 'components/AffirmationComponent';
 import Header from 'components/Header';
 import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
@@ -54,29 +55,70 @@ interface PageProps {
     params: {
       page: string;
     };
+    path: string;
   };
+}
+
+interface AffirmationProps {
+  isActive: boolean;
+  titleText: string;
+  buttonText: string;
+  description: string;
 }
 
 const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const pageNumber: number = Number(match.params.page) || 0;
   const isLandingPage = pageNumber === 0;
 
+  // create state just for the Affirmation component
+  const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
+    isActive: false,
+    titleText: 'Welcome!',
+    buttonText: 'Begin',
+    description: 'This is a tool to generate a personal statement.',
+  });
+
+  const updateAffirmationData = (newState: object) => {
+    setAffirmationData({ ...affirmationData, ...newState });
+  };
+
   const goToPage = (nextPage: number) => {
     history.push(`/form/${nextPage}`);
   };
+
+  useEffect(() => {
+    // handle closing the affirmation on home page
+    if (match.path === '/') {
+      updateAffirmationData({ isActive: false });
+    }
+  }, [match]);
 
   return (
     <StyledContainer
       theme={isLandingPage ? 'purple' : 'basic'}
       className="page-container"
     >
+      <AffirmationComponent
+        buttonText={affirmationData.buttonText}
+        titleText={affirmationData.titleText}
+        description={affirmationData.description}
+        isActive={affirmationData.isActive}
+        onChangeAffirmation={updateAffirmationData}
+      />
+
       <Header pageNumber={pageNumber} />
 
       {!isLandingPage && <FormHeader pageNumber={pageNumber} />}
 
       {isLandingPage && <Landing goToPage={goToPage} />}
 
-      {!isLandingPage && <Form pageNumber={pageNumber} goToPage={goToPage} />}
+      {!isLandingPage && (
+        <Form
+          pageNumber={pageNumber}
+          goToPage={goToPage}
+          onChangeAffirmation={updateAffirmationData}
+        />
+      )}
     </StyledContainer>
   );
 };

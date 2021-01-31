@@ -82,8 +82,8 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         Do you believe that having your record cleared would help you find a job
         and be more involved in your community?
       </p>
-      <Button onClick={() => goToPage(5)}>BACK</Button>
-      <Button onClick={() => goToPage(8)}>LOOKS GOOD</Button>
+      <Button onClick={() => goToPage(3)}>BACK</Button>
+      <Button onClick={() => goToPage(5)}>LOOKS GOOD</Button>
     </div>
   );
 };
