@@ -1,10 +1,8 @@
 import React from 'react';
 import Textarea from 'components/Textarea';
-import useUtilityStyles from 'styles/utilityStyles';
+import Button from 'components/Button';
 
 const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
-  const utilityClasses = useUtilityStyles({});
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name;
     const inputValue = e.target.value;
@@ -84,20 +82,8 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         Do you believe that having your record cleared would help you find a job
         and be more involved in your community?
       </p>
-      <button
-        type="button"
-        onClick={() => goToPage(3)}
-        className={utilityClasses.button}
-      >
-        BACK
-      </button>
-      <button
-        type="button"
-        onClick={() => goToPage(5)}
-        className={utilityClasses.button}
-      >
-        LOOKS GOOD
-      </button>
+      <Button onClick={() => goToPage(3)} buttonText="BACK" />
+      <Button onClick={() => goToPage(5)} buttonText="LOOKS GOOD" />
     </div>
   );
 };
