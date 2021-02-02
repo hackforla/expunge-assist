@@ -1,61 +1,58 @@
-import styled from 'styled-components';
+import React from 'react';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-// import device from 'styles/breakpoints';
+import arrowRight from '../assets/arrowRight.svg';
+
+interface ComponentProps {
+  theme?: string;
+  hasArrow?: boolean;
+  buttonText: string;
+  onClick: () => void;
+}
 
 interface StyleProps {
   theme?: string;
-  hasArrow?: boolean; // todo
+  hasArrow?: boolean;
 }
 
-const commonButtonStyles = `
-  color: #FFFFFF;
-  padding: 12px 16px;
-  box-shadow: 4px 4px 16px rgba(61, 0, 102, 0.25);
+const useStyles = makeStyles<Theme, StyleProps>(() =>
+  createStyles({
+    root: {
+      color: '#FFFFFF',
+      padding: '12px 16px',
+      boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
+      display: 'flex',
+      border: 'none',
+      borderRadius: '24px',
+      fontFamily: 'Roboto',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: '14px',
+      lineHeight: '16px',
+      letterSpacing: '0.0125em',
+      textTrasnform: 'uppercase',
+      cursor: 'pointer',
+      background: (props) => (props.theme === 'dark' ? '#25003F' : '#9903FF'),
+      '&:hover': {
+        background: (props) => (props.theme === 'dark' ? '#330652' : '#a224f7'),
+      },
+      '& img': {
+        marginLeft: '10px',
+        marginRight: '0px',
+      },
+    },
+  })
+);
 
-  display: flex;
-  border: none;
-  border-radius: 24px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 0.0125em;
-  text-transform: uppercase;
-  cursor: pointer;
+const Button = ({ theme, hasArrow, buttonText, onClick }: ComponentProps) => {
+  const styleProps = { theme, hasArrow };
+  const classes = useStyles(styleProps);
+  return (
+    <button type="button" className={classes.root} onClick={onClick}>
+      {buttonText}
+      {hasArrow && <img src={arrowRight} alt="arrow right" />}
+    </button>
+  );
+};
 
-  & :nth-child(1) {
-    margin-right:10px;
-  }
-`;
-
-const basicStyles = `
-  background: #9903FF;
-
-  &:hover {
-    background: #a224f7;
-  }
-`;
-
-const darkStyles = `
-  background: #25003F;
-
-  &:hover {
-    background: #330652;
-  }
-`;
-
-const Button = styled.button<StyleProps>`
-  ${commonButtonStyles}
-  ${(props) => {
-    switch (props.theme) {
-      case 'dark':
-        return darkStyles;
-
-      case 'basic':
-      default:
-        return basicStyles;
-    }
-  }}
-`;
 export default Button;

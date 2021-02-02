@@ -1,24 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
+import { makeStyles, createStyles } from '@material-ui/core';
 
-const StyledContainer = styled.div`
-  background: #f7ebff;
-  color: black;
-  height: 200px;
-  h2 {
-    margin: 0;
-  }
-  p {
-    color: 3d0066;
-    opacity: 30%;
-  }
-`;
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      background: '#f7ebff',
+      color: 'black',
+      height: '200px',
+      '& h2': {
+        margin: '0',
+      },
+      '& p': {
+        color: '3d0066',
+        opacity: '30%',
+      },
+    },
+  })
+);
 
 interface Props {
   pageNumber: number;
 }
 
 const FormHeader: React.FC<Props> = ({ pageNumber }) => {
+  const classes = useStyles();
   let showFormHeader: boolean;
   let formStep: number;
 
@@ -50,7 +55,7 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
   }
 
   return (
-    <StyledContainer>
+    <div className={classes.root}>
       {formStep === 1 && <h2>Introduce Yourself!</h2>}
       {formStep === 2 && <h2>Life Changes</h2>}
       {formStep === 3 && <h2>Involvement</h2>}
@@ -60,7 +65,7 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
 
       {formStep < 6 && <p>Step {formStep} of 5</p>}
       {formStep === 6 && <p>Completed</p>}
-    </StyledContainer>
+    </div>
   );
 };
 
