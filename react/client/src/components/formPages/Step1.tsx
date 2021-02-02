@@ -1,6 +1,6 @@
 import React from 'react';
 import Textarea from 'components/Textarea';
-import Input from 'components/Input'
+import Input from 'components/Input';
 import Button from 'components/Button';
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
@@ -43,8 +43,8 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           placeholder="I've been..."
           multi
         />
-        <Button onClick={() => goToPage(1)}>BACK</Button>
-        <Button onClick={() => goToPage(4)}>LOOKS GOOD</Button>
+        <Button onClick={() => goToPage(1)} buttonText="BACK" />
+        <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
       </form>
     </div>
   );

@@ -1,9 +1,33 @@
 import React from 'react';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Form from './Form';
 import Landing from './pages/Landing';
 
-import { Wrapper, FormWrapper } from '../styles/PersonalStatementContainer';
+interface StyleProps {
+  background?: string;
+}
+
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
+  createStyles({
+    root: {
+      background: (props) => props.background,
+      color: 'white',
+      [theme.breakpoints.up('md')]: {
+        height: '850px',
+        '& > img': {
+          marginLeft: '40px',
+        },
+      },
+      height: '570px',
+    },
+    formWrapper: {
+      [theme.breakpoints.up('md')]: {
+        padding: '130px 0 0 130px',
+      },
+    },
+  })
+);
 
 interface PersonalStatementProps {
   history: {
@@ -30,16 +54,23 @@ const PersonalStatement = ({ history, match }: PersonalStatementProps) => {
 
   pageNumber === 0 ? (background = '#9903ff') : (background = 'white');
 
+  const styleProps: StyleProps = { background };
+  const classes = useStyles(styleProps);
+
   return (
-    <Wrapper background={background} className="PersonalStatementContainer">
-      <FormWrapper>
+    <div className={classes.root}>
+      <div className={classes.formWrapper}>
         {pageNumber === 0 ? (
           <Landing goToPage={goToPage} />
         ) : (
-          <Form pageNumber={pageNumber} goToPage={goToPage} onChangeAffirmation={() => {}} />
+          <Form
+            pageNumber={pageNumber}
+            goToPage={goToPage}
+            onChangeAffirmation={() => {}}
+          />
         )}
-      </FormWrapper>
-    </Wrapper>
+      </div>
+    </div>
   );
 };
 

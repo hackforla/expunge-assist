@@ -34,8 +34,8 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="I have been..."
         multi
       />
-      <Button onClick={() => goToPage(7)}>BACK</Button>
-      <Button onClick={() => goToPage(10)}>LOOKS GOOD</Button>
+      <Button onClick={() => goToPage(7)} buttonText="BACK" />
+      <Button onClick={() => goToPage(10)} buttonText="LOOKS GOOD" />
     </div>
   );
 };
