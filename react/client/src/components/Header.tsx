@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-import device from 'styles/breakpoints';
 import iconBlack from '../assets/iconBlack.svg';
 import iconWhite from '../assets/iconWhite.svg';
 
@@ -11,23 +10,28 @@ interface StyleProps {
   color?: string;
 }
 
-export const StyledContainer = styled.div<StyleProps>`
-  background: ${(props) => props.background};
-  color: ${(props) => props.color};
-  display: flex;
-
-  .logo-title {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    text-transform: uppercase;
-    font-size: 12px;
-
-    ${device.sm_only} {
-      display: none;
-    }
-  }
-`;
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
+  createStyles({
+    root: {
+      background: (props) => props.background,
+      color: (props) => props.color,
+      display: 'flex',
+      '& .logo-title': {
+        display: 'flex',
+        flexDirection: 'column',
+        marginLeft: '20px',
+        textTransform: 'uppercase',
+        fontSize: '12px',
+        [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+          display: 'none',
+        },
+      },
+      [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
+        display: 'none',
+      },
+    },
+  })
+);
 
 interface HeaderProps {
   pageNumber: number;
@@ -48,12 +52,15 @@ const Header = ({ pageNumber }: HeaderProps) => {
     icon = iconBlack;
   }
 
+  const styleProps = {
+    background,
+    color,
+  };
+
+  const classes = useStyles(styleProps);
+
   return (
-    <StyledContainer
-      background={background}
-      color={color}
-      className="app-header"
-    >
+    <div className={`${classes.root} app-header`}>
       <img src={icon} alt="" />
       <Link
         to="/"
@@ -66,7 +73,7 @@ const Header = ({ pageNumber }: HeaderProps) => {
         <p>The Record</p>
         <p>Clearance Project</p>
       </Link>
-    </StyledContainer>
+    </div>
   );
 };
 

@@ -1,18 +1,16 @@
 import React from 'react';
-
 import Button from 'components/Button';
-import ContentContainer from 'components/ContentContainer';
 
-import arrowRight from '../../assets/arrowRight.svg';
-import { Flex } from '../../styles/GlobalStyle';
+import useUtilityStyles from 'styles/utilityStyles';
 
 interface LandingProps {
   goToPage: (pageNumber: number) => void;
 }
 
 const Landing = ({ goToPage }: LandingProps) => {
+  const utilityClasses = useUtilityStyles({ theme: 'dark' });
   return (
-    <ContentContainer className="content-page">
+    <div className={`${utilityClasses.contentContainer} content-page`}>
       <h1 className="page-title adjacent-mar-top">
         Start fresh with a record expungement
       </h1>
@@ -20,13 +18,15 @@ const Landing = ({ goToPage }: LandingProps) => {
         Generate a personal statement in just 20 minutes
       </div>
 
-      <Flex className="adjacent-mar-top">
-        <Button onClick={() => goToPage(1)} theme="dark">
-          <span>START NOW</span>
-          <img src={arrowRight} alt="arrow right" />
-        </Button>
-      </Flex>
-    </ContentContainer>
+      <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
+        <Button
+          onClick={() => goToPage(1)}
+          theme="dark"
+          hasArrow
+          buttonText="START NOW"
+        />
+      </div>
+    </div>
   );
 };
 

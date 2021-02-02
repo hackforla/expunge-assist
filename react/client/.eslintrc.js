@@ -27,7 +27,7 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-unused-vars': 'warn',
     'no-undef': 'off',
     'no-unused-expressions': 'off',
     'no-shadow': 'off',
@@ -38,5 +38,6 @@ module.exports = {
 
     // currently forces double define for arrow functions https://github.com/yannickcr/eslint-plugin-react/issues/2353
     'react/prop-types': 'off',
+    'react/require-default-props': 'off',
   },
 };
