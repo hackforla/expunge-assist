@@ -124,14 +124,14 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       )}
 
       {pageNumber === 7 && (
-        <div className={`${utilityClasses.flex} adjacent-mar-top`}>
+        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goToPage(8)} buttonText="EDIT" />
           <Button onClick={() => goToPage(8)} buttonText="NEXT" />
         </div>
       )}
       {pageNumber === 8 && (
-        <div className={`${utilityClasses.flex} adjacent-mar-top`}>
+        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
           <Button onClick={() => goToPage(9)} buttonText="SAVE" />
         </div>
