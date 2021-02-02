@@ -1,9 +1,7 @@
 import React from 'react';
+import useUtilityStyles from 'styles/utilityStyles';
 
-import Button from 'components/Button';
-
-import { Flex } from 'styles/GlobalStyle';
-import arrowRight from '../../assets/arrowRight.svg';
+import Button from '../Button';
 
 // this is kind of funky but will need to be updated when text is changed
 const disclaimerText = `
@@ -21,6 +19,7 @@ If at anytime you are confused please click the question mark button for guidanc
 `;
 
 const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
+  const utilityClasses = useUtilityStyles({});
   return (
     <>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
@@ -30,12 +29,13 @@ const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
         {disclaimerText}
       </div>
 
-      <Flex className="adjacent-mar-top">
-        <Button onClick={() => goToPage(2)}>
-          <span>I understand</span>
-          <img src={arrowRight} alt="arrow right" />
-        </Button>
-      </Flex>
+      <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
+        <Button
+          onClick={() => goToPage(2)}
+          buttonText="I understand"
+          hasArrow
+        />
+      </div>
     </>
   );
 };

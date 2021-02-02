@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from 'components/Button';
 import Textarea from 'components/Textarea';
+import Button from 'components/Button';
 
 const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +32,8 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="Clearing my record will..."
         multi
       />
-      <Button onClick={() => goToPage(9)}>BACK</Button>
-      <Button onClick={() => goToPage(12)}>LOOKS GOOD</Button>
+      <Button onClick={() => goToPage(9)} buttonText="BACK" />
+      <Button onClick={() => goToPage(12)} buttonText="LOOKS GOOD" />
     </div>
   );
 };

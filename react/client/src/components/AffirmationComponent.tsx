@@ -1,29 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
 import AffirmationIllustration from 'assets/affirmation-illustration.svg';
+import Button from './Button';
 
-import Button from 'components/Button';
-
-interface StyleProps {
-  isActive: boolean;
-}
-
-const AffirmationContainer = styled.div<StyleProps>`
-  position: fixed;
-  background: #f7ebff;
-  left: 0;
-  bottom: 0;
-  top: 60px;
-  width: 100%;
-  color: #3d0066;
-  padding: 24px;
-  z-index: 1;
-  flex-direction: column;
-  align-items: center;
-
-  ${(props) => (props.isActive ? 'display: flex' : 'display: none')};
-`;
+const useStyles = makeStyles<Theme, StyleProps>(() =>
+  createStyles({
+    root: {
+      position: 'fixed',
+      background: '#f7ebff',
+      left: '0',
+      bottom: '0',
+      top: '60px',
+      width: '100%',
+      color: '#3d0066',
+      padding: '24px',
+      zIndex: 1,
+      flexDirection: 'column',
+      alignItems: 'center',
+      display: (props) => (props.isActive ? 'flex' : 'none'),
+    },
+  })
+);
 
 interface ComponentProps {
   isActive: boolean;
@@ -33,6 +31,10 @@ interface ComponentProps {
   onChangeAffirmation: (newState: object) => void;
 }
 
+interface StyleProps {
+  isActive: boolean;
+}
+
 const AffirmationComponent = ({
   isActive,
   titleText,
@@ -40,8 +42,11 @@ const AffirmationComponent = ({
   description,
   onChangeAffirmation,
 }: ComponentProps) => {
+  const styleProps: StyleProps = { isActive };
+  const classes = useStyles(styleProps);
+
   return (
-    <AffirmationContainer isActive={isActive}>
+    <div className={classes.root}>
       <img
         src={AffirmationIllustration}
         alt="affirmation illustration"
@@ -60,13 +65,11 @@ const AffirmationComponent = ({
         className="adjacent-mar-top align-right-sm"
       >
         <Button
-          type="button"
           onClick={() => onChangeAffirmation({ isActive: false })}
-        >
-          {buttonText}
-        </Button>
+          buttonText={buttonText}
+        />
       </div>
-    </AffirmationContainer>
+    </div>
   );
 };
 
