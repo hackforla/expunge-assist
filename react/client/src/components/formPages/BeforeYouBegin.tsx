@@ -29,7 +29,7 @@ const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
         {disclaimerText}
       </div>
 
-      <div className={`${utilityClasses.flex} adjacent-mar-top`}>
+      <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
         <Button
           onClick={() => goToPage(2)}
           buttonText="I understand"
