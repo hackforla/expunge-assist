@@ -1,27 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
+import { makeStyles, createStyles } from '@material-ui/core';
 
 import Header from '../Header';
 
-const StyledContainer = styled.div`
-  color: white;
-  padding: 18px;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-`;
-
-const ContentContainer = styled.div`
-  margin-top: 50px;
-  padding: 0 5px;
-  line-height: 1.17rem;
-`;
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      color: 'white',
+      padding: '18px',
+      display: 'flex',
+      flex: '1 0 auto',
+      flexDirection: 'column',
+    },
+    content: {
+      marginTop: '50px',
+      padding: '0 5px',
+      lineHeight: '1.17rem',
+    },
+  })
+);
 
 const TermsOfUse = () => {
+  const classes = useStyles();
   return (
-    <StyledContainer className="TermsOfUse">
+    <div className={classes.root}>
       <Header pageNumber={0} />
-      <ContentContainer>
+      <div className={classes.content}>
         <h2>Terms of Use</h2>
         <br />
         <p>
@@ -68,8 +72,8 @@ const TermsOfUse = () => {
           The laws of the State of California excluding its conflicts of law
           rules govern this license agreement.
         </p>
-      </ContentContainer>
-    </StyledContainer>
+      </div>
+    </div>
   );
 };
 

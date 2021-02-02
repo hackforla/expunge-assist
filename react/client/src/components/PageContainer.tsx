@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import AffirmationComponent from 'components/AffirmationComponent';
 import Header from 'components/Header';
@@ -7,42 +7,22 @@ import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 import Landing from 'components/pages/Landing';
 
-// import device from 'styles/breakpoints'
-
-interface StyleProps {
-  theme?: string;
-  background?: string;
+interface styleProps {
+  isLandingPage: boolean;
 }
 
-const basicStyles = `
-  background: white;
-  color: #131313;
-`;
-
-const purpleStyles = `
-  background: #9903ff;
-  color: white;
-`;
-
-const StyledContainer = styled.div<StyleProps>`
-  background: ${(props) => props.background};
-  color: white;
-  padding: 18px;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-
-  ${(props) => {
-    switch (props.theme) {
-      case 'purple':
-        return purpleStyles;
-
-      case 'basic':
-      default:
-        return basicStyles;
-    }
-  }}
-`;
+const useStyles = makeStyles<Theme, styleProps>(() =>
+  createStyles({
+    root: {
+      background: (props) => (props.isLandingPage ? '#9903ff' : 'white'),
+      color: (props) => (props.isLandingPage ? 'white' : '#131313'),
+      padding: '18px',
+      display: 'flex',
+      flex: '1 0 auto',
+      flexDirection: 'column',
+    },
+  })
+);
 
 interface PageProps {
   history: {
@@ -70,6 +50,9 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const pageNumber: number = Number(match.params.page) || 0;
   const isLandingPage = pageNumber === 0;
 
+  const styleProps = { isLandingPage };
+  const classes = useStyles(styleProps);
+
   // create state just for the Affirmation component
   const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
     isActive: false,
@@ -94,10 +77,7 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   }, [match]);
 
   return (
-    <StyledContainer
-      theme={isLandingPage ? 'purple' : 'basic'}
-      className="page-container"
-    >
+    <div className={`${classes.root} page-container`}>
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
         titleText={affirmationData.titleText}
@@ -119,7 +99,7 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
           onChangeAffirmation={updateAffirmationData}
         />
       )}
-    </StyledContainer>
+    </div>
   );
 };
 
