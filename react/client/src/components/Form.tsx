@@ -32,24 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-      maxWidth: '850px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-
-      [theme.breakpoints.down('xs')]: {
-        marginLeft: 'initial',
-        marginRight: 'initial',
-      },
-    },
-  })
-);
-
 interface FormProps {
   pageNumber: number;
   goToPage: (pageNumber: number) => void;
