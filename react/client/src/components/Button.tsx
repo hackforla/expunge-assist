@@ -18,9 +18,7 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(() =>
   createStyles({
     root: {
-      color: '#FFFFFF',
       padding: '12px 16px',
-      boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       display: 'flex',
       border: 'none',
       borderRadius: '24px',
@@ -30,11 +28,48 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       fontSize: '14px',
       lineHeight: '16px',
       letterSpacing: '0.0125em',
-      textTrasnform: 'uppercase',
+      textTransform: 'uppercase',
       cursor: 'pointer',
-      background: (props) => (props.theme === 'dark' ? '#25003F' : '#9903FF'),
+
+      boxShadow: (props) => {
+        switch (props.theme) {
+          case 'white':
+            return 'none';
+          default:
+            return `4px 4px 16px rgba(61, 0, 102, 0.25)`;
+        }
+      },
+
+      color: (props) => {
+        switch (props.theme) {
+          case 'white':
+            return 'black';
+          default:
+            return '#FFFFFF';
+        }
+      },
+
+      background: (props) => {
+        switch (props.theme) {
+          case 'dark':
+            return '#25003F';
+          case 'white':
+            return 'white';
+          default:
+            return '#9903FF';
+        }
+      },
       '&:hover': {
-        background: (props) => (props.theme === 'dark' ? '#330652' : '#a224f7'),
+        background: (props) => {
+          switch (props.theme) {
+            case 'dark':
+              return '#330652';
+            case 'white':
+              return 'white';
+            default:
+              return '#a224f7';
+          }
+        },
       },
       '& img': {
         marginLeft: '10px',
