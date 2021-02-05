@@ -1,0 +1,11 @@
+.div-age,
+.div-veteran,
+.div-preview {
+  visibility: hidden;
+}
+
+.div-age > p,
+.div-veteran > p {
+  visibility: visible;
+  color: grey;
+}
