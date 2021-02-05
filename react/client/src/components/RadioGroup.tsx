@@ -52,6 +52,7 @@ const RadioGroup = ({
             activeRadio={activeRadio}
             handleChange={handleChange}
             inputName={inputName}
+            key={label}
           />
         );
       })}
