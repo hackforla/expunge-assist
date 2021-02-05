@@ -1,7 +1,12 @@
 .div-age,
 .div-veteran,
-.div-preview {
+.div-looksGoodButton,
+.div-nextButton {
   visibility: hidden;
+}
+
+.div-preview {
+  display: none;
 }
 
 .div-age > p,
