@@ -8,7 +8,7 @@ const useStyles = makeStyles(() =>
     root: {
       margin: '25px 15px',
       padding: '15px',
-      boxShadow: '7px 7px 25px -15px #3D0066',
+      boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
       '& h2': {
         color: '#9903FF',
