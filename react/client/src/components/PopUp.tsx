@@ -8,7 +8,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
-import arrowRight from '../assets/arrowRight.svg';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -69,10 +68,7 @@ const AlertDialog: React.FC<AlertDialogProps> = ({ title, info }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button type="button" onClick={handleClose}>
-            <span>OK</span>
-            <img src={arrowRight} alt="arrow right" />
-          </Button>
+          <Button onClick={() => handleClose()} buttonText="OK" hasArrow />
         </DialogActions>
       </Dialog>
     </div>
