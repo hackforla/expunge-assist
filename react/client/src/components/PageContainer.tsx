@@ -7,6 +7,8 @@ import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 import Landing from 'components/pages/Landing';
 
+import Context from 'components/contexts/Context';
+
 interface styleProps {
   isLandingPage: boolean;
 }
@@ -45,6 +47,8 @@ interface AffirmationProps {
   buttonText: string;
   description: string;
 }
+
+// const useProvider = () => React.useContext(Context);
 
 const PageContainer: React.FC<PageProps> = ({ history, match }) => {
   const pageNumber: number = Number(match.params.page) || 0;
