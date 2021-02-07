@@ -1,5 +1,6 @@
 import React from 'react';
 import useUtilityStyles from 'styles/utilityStyles';
+import { Context } from 'components/contexts/Context';
 
 import Button from '../Button';
 
@@ -17,11 +18,16 @@ Please allocate at least 30 minutes of time to complete this.
 
 If at anytime you are confused please click the question mark button for guidance.
 `;
+const useTheme = () => React.useContext(Context);
 
-const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
+const BeforeYouBegin = () => {
+  const { theme, setTheme, goToPage } = useTheme();
+
   const utilityClasses = useUtilityStyles({});
   return (
     <>
+      <p>{theme}</p>
+      <button onClick={() => setTheme('blue')}>Set blue</button>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
         Before you begin
       </div>

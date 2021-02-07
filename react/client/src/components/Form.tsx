@@ -104,7 +104,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
 
   return (
     <div className={`${classes.root} content-page`}>
-      {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
+      {pageNumber === 1 && <BeforeYouBegin />}
 
       {pageNumber === 2 && (
         <Step1 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
