@@ -1,6 +1,6 @@
 import React from 'react';
 import useUtilityStyles from 'styles/utilityStyles';
-import { Context } from 'components/contexts/Context';
+import { RoutingContext } from 'components/contexts/RoutingContext';
 
 import Button from '../Button';
 
@@ -19,10 +19,10 @@ Please allocate at least 30 minutes of time to complete this.
 If at anytime you are confused please click the question mark button for guidance.
 `;
 
-const useStore = () => React.useContext(Context);
-
 const BeforeYouBegin = () => {
-  const { goToPage } = useStore();
+  const useRoutingContext = () => React.useContext(RoutingContext);
+
+  const { goToPage } = useRoutingContext();
   const utilityClasses = useUtilityStyles({});
 
   return (

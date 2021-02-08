@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import AffirmationComponent from 'components/AffirmationComponent';
@@ -7,7 +7,8 @@ import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 import Landing from 'components/pages/Landing';
 
-import { Context } from 'components/contexts/Context';
+import { RoutingContext } from 'components/contexts/RoutingContext';
+import { AffirmationContext } from 'components/contexts/AffirmationContext';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -35,34 +36,17 @@ interface PageProps {
   };
 }
 
-interface AffirmationProps {
-  isActive: boolean;
-  titleText: string;
-  buttonText: string;
-  description: string;
-}
+const PageContainer = ({ match }: PageProps) => {
+  const useRoutingContext = () => React.useContext(RoutingContext);
+  const useAffirmationContext = () => React.useContext(AffirmationContext);
 
-const useStore = () => React.useContext(Context);
-
-const PageContainer: React.FC<PageProps> = ({ match }) => {
-  const { pageNumber, goToPage } = useStore();
+  const { pageNumber, goToPage } = useRoutingContext();
+  const { affirmationData, updateAffirmationData } = useAffirmationContext();
 
   const isLandingPage = pageNumber === 0;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);
-
-  // create state just for the Affirmation component
-  const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
-    isActive: false,
-    titleText: 'Welcome!',
-    buttonText: 'Begin',
-    description: 'This is a tool to generate a personal statement.',
-  });
-
-  const updateAffirmationData = (newState: object) => {
-    setAffirmationData({ ...affirmationData, ...newState });
-  };
 
   useEffect(() => {
     // handle closing the affirmation on home page
