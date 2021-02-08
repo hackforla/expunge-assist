@@ -7,7 +7,10 @@ interface RoutingProviderProps extends RouteComponentProps<any> {
 
 export const RoutingContext = React.createContext<any>(undefined);
 
-const ContextProvider = ({ children, history }: RoutingProviderProps) => {
+const RoutingContextProvider = ({
+  children,
+  history,
+}: RoutingProviderProps) => {
   const url = history.location.pathname;
   const pageNumber = Number(url.slice(url.indexOf('/form') + 6)) || 0;
 
@@ -22,4 +25,4 @@ const ContextProvider = ({ children, history }: RoutingProviderProps) => {
   );
 };
 
-export default withRouter(ContextProvider);
+export default withRouter(RoutingContextProvider);
