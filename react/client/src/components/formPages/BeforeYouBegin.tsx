@@ -1,8 +1,11 @@
 import React from 'react';
 import useUtilityStyles from 'styles/utilityStyles';
-import { RoutingContext } from 'components/contexts/RoutingContext';
 
 import Button from '../Button';
+
+interface ComponentProps {
+  goToPage: (pageNumber: number) => void;
+}
 
 // this is kind of funky but will need to be updated when text is changed
 const disclaimerText = `
@@ -19,10 +22,7 @@ Please allocate at least 30 minutes of time to complete this.
 If at anytime you are confused please click the question mark button for guidance.
 `;
 
-const BeforeYouBegin = () => {
-  const useRoutingContext = () => React.useContext(RoutingContext);
-
-  const { goToPage } = useRoutingContext();
+const BeforeYouBegin = ({ goToPage }: ComponentProps) => {
   const utilityClasses = useUtilityStyles({});
 
   return (
