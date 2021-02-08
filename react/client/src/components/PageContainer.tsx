@@ -7,7 +7,7 @@ import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 import Landing from 'components/pages/Landing';
 
-import Context from 'components/contexts/Context';
+import { Context } from 'components/contexts/Context';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -27,12 +27,6 @@ const useStyles = makeStyles<Theme, styleProps>(() =>
 );
 
 interface PageProps {
-  history: {
-    location: {
-      pathname: string;
-    };
-    push: (address: string) => void;
-  };
   match: {
     params: {
       page: string;
@@ -48,10 +42,11 @@ interface AffirmationProps {
   description: string;
 }
 
-// const useProvider = () => React.useContext(Context);
+const useStore = () => React.useContext(Context);
 
-const PageContainer: React.FC<PageProps> = ({ history, match }) => {
-  const pageNumber: number = Number(match.params.page) || 0;
+const PageContainer: React.FC<PageProps> = ({ match }) => {
+  const { pageNumber, goToPage } = useStore();
+
   const isLandingPage = pageNumber === 0;
 
   const styleProps = { isLandingPage };
@@ -67,10 +62,6 @@ const PageContainer: React.FC<PageProps> = ({ history, match }) => {
 
   const updateAffirmationData = (newState: object) => {
     setAffirmationData({ ...affirmationData, ...newState });
-  };
-
-  const goToPage = (nextPage: number) => {
-    history.push(`/form/${nextPage}`);
   };
 
   useEffect(() => {
