@@ -42,7 +42,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router basename={process.env.PUBLIC_URL}>
-        <ContextProvider history={history}>
+        <ContextProvider>
           <Switch>
             <Route exact path="/" component={PageContainer} history={history} />
             <Route

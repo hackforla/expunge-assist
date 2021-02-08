@@ -1,34 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-type ContextProviderProps = {
+interface ContextProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
-  history: {
-    location: {
-      pathname: string;
-    };
-    push: (address: string) => void;
-  };
-};
-
-// const pageNumber: number = Number(match.params.page) || 0;
+}
 
 // Create Context
-const defaultTheme = 'white';
 export const Context = React.createContext<any>(undefined);
 
 // Create Provider
 const ContextProvider = ({ children, history }: ContextProviderProps) => {
-  console.log(history);
-  const [theme, setTheme] = useState(defaultTheme);
-  const goToPage = (nextPage: number) => {
-    history.push(`/form/${nextPage}`);
+  const url = history.location.pathname;
+  const pageNumber = Number(url.slice(url.indexOf('/form') + 6)) || 0;
+
+  const goToPage = (pageNum: number) => {
+    history.push(`/form/${pageNum}`);
   };
 
   return (
-    <Context.Provider value={{ theme, setTheme, goToPage }}>
+    <Context.Provider value={{ goToPage, pageNumber }}>
       {children}
     </Context.Provider>
   );
 };
 
-export default ContextProvider;
+export default withRouter(ContextProvider);

@@ -18,16 +18,15 @@ Please allocate at least 30 minutes of time to complete this.
 
 If at anytime you are confused please click the question mark button for guidance.
 `;
-const useTheme = () => React.useContext(Context);
+
+const useStore = () => React.useContext(Context);
 
 const BeforeYouBegin = () => {
-  const { theme, setTheme, goToPage } = useTheme();
-
+  const { goToPage } = useStore();
   const utilityClasses = useUtilityStyles({});
+
   return (
     <>
-      <p>{theme}</p>
-      <button onClick={() => setTheme('blue')}>Set blue</button>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
         Before you begin
       </div>
