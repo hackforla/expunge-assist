@@ -10,6 +10,8 @@ import { purple } from '@material-ui/core/colors';
 
 import PageContainer from 'components/PageContainer';
 
+import RoutingContextProvider from 'components/contexts/RoutingContext';
+import AffirmationContextProvider from 'components/contexts/AffirmationContext';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfUse from './components/pages/TermsOfUse';
 import FAQ from './components/pages/FAQ';
@@ -41,18 +43,27 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router basename={process.env.PUBLIC_URL}>
-        <Switch>
-          <Route exact path="/" component={PageContainer} history={history} />
-          <Route
-            path="/form/:page?"
-            component={PageContainer}
-            history={history}
-          />
-          <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
-          <Route path="/TermsOfUse" component={TermsOfUse} />
-          <Route path="/FAQ" component={FAQ} />
-          <Route path="/AboutUs" component={AboutUs} />
-        </Switch>
+        <RoutingContextProvider>
+          <AffirmationContextProvider>
+            <Switch>
+              <Route
+                exact
+                path="/"
+                component={PageContainer}
+                history={history}
+              />
+              <Route
+                path="/form/:page?"
+                component={PageContainer}
+                history={history}
+              />
+              <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
+              <Route path="/TermsOfUse" component={TermsOfUse} />
+              <Route path="/FAQ" component={FAQ} />
+              <Route path="/AboutUs" component={AboutUs} />
+            </Switch>
+          </AffirmationContextProvider>
+        </RoutingContextProvider>
         <Navbar />
       </Router>
     </ThemeProvider>

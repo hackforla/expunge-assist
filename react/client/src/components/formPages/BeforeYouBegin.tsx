@@ -3,6 +3,10 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 import Button from '../Button';
 
+interface ComponentProps {
+  goToPage: (pageNumber: number) => void;
+}
+
 // this is kind of funky but will need to be updated when text is changed
 const disclaimerText = `
 Please make sure you are eligible for getting your record cleared. If you need help with this please email placeholder@website.com.
@@ -18,8 +22,9 @@ Please allocate at least 30 minutes of time to complete this.
 If at anytime you are confused please click the question mark button for guidance.
 `;
 
-const BeforeYouBegin = ({ goToPage }: GlobalProps) => {
+const BeforeYouBegin = ({ goToPage }: ComponentProps) => {
   const utilityClasses = useUtilityStyles({});
+
   return (
     <>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>

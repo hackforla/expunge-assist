@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import AffirmationComponent from 'components/AffirmationComponent';
@@ -6,6 +6,9 @@ import Header from 'components/Header';
 import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 import Landing from 'components/pages/Landing';
+
+import { RoutingContext } from 'components/contexts/RoutingContext';
+import { AffirmationContext } from 'components/contexts/AffirmationContext';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -25,12 +28,6 @@ const useStyles = makeStyles<Theme, styleProps>(() =>
 );
 
 interface PageProps {
-  history: {
-    location: {
-      pathname: string;
-    };
-    push: (address: string) => void;
-  };
   match: {
     params: {
       page: string;
@@ -39,35 +36,17 @@ interface PageProps {
   };
 }
 
-interface AffirmationProps {
-  isActive: boolean;
-  titleText: string;
-  buttonText: string;
-  description: string;
-}
+const PageContainer = ({ match }: PageProps) => {
+  const useRoutingContext = () => React.useContext(RoutingContext);
+  const useAffirmationContext = () => React.useContext(AffirmationContext);
 
-const PageContainer: React.FC<PageProps> = ({ history, match }) => {
-  const pageNumber: number = Number(match.params.page) || 0;
+  const { pageNumber, goToPage } = useRoutingContext();
+  const { affirmationData, updateAffirmationData } = useAffirmationContext();
+
   const isLandingPage = pageNumber === 0;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);
-
-  // create state just for the Affirmation component
-  const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
-    isActive: false,
-    titleText: 'Welcome!',
-    buttonText: 'Begin',
-    description: 'This is a tool to generate a personal statement.',
-  });
-
-  const updateAffirmationData = (newState: object) => {
-    setAffirmationData({ ...affirmationData, ...newState });
-  };
-
-  const goToPage = (nextPage: number) => {
-    history.push(`/form/${nextPage}`);
-  };
 
   useEffect(() => {
     // handle closing the affirmation on home page
