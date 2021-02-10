@@ -5,10 +5,10 @@ import AffirmationComponent from 'components/AffirmationComponent';
 import Header from 'components/Header';
 import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
-import Landing from 'components/pages/Landing';
+import Landing from 'pages/Landing';
 
-import { RoutingContext } from 'components/contexts/RoutingContext';
-import { AffirmationContext } from 'components/contexts/AffirmationContext';
+import { RoutingContext } from 'contexts/RoutingContext';
+import { AffirmationContext } from 'contexts/AffirmationContext';
 
 interface styleProps {
   isLandingPage: boolean;

@@ -1,7 +1,7 @@
 import React from 'react';
 import useUtilityStyles from 'styles/utilityStyles';
 
-import Button from '../Button';
+import Button from 'components/Button';
 
 interface ComponentProps {
   goToPage: (pageNumber: number) => void;

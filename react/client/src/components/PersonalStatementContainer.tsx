@@ -1,8 +1,8 @@
 import React from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-import Form from './Form';
-import Landing from './pages/Landing';
+import Form from 'components/Form';
+import Landing from 'pages/Landing';
 
 interface StyleProps {
   background?: string;

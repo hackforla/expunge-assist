@@ -8,15 +8,16 @@ import {
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { purple } from '@material-ui/core/colors';
 
-import PageContainer from 'components/PageContainer';
+import RoutingContextProvider from 'contexts/RoutingContext';
+import AffirmationContextProvider from 'contexts/AffirmationContext';
 
-import RoutingContextProvider from 'components/contexts/RoutingContext';
-import AffirmationContextProvider from 'components/contexts/AffirmationContext';
-import PrivacyPolicy from './components/pages/PrivacyPolicy';
-import TermsOfUse from './components/pages/TermsOfUse';
-import FAQ from './components/pages/FAQ';
-import AboutUs from './components/pages/AboutUs';
-import Navbar from './components/Navbar';
+import PageContainer from 'components/PageContainer';
+import Navbar from 'components/Navbar';
+
+import PrivacyPolicy from 'pages/PrivacyPolicy';
+import TermsOfUse from 'pages/TermsOfUse';
+import FAQ from 'pages/FAQ';
+import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
 

@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
-import Button from './Button';
-import BeforeYouBegin from './formPages/BeforeYouBegin';
-import Step1 from './formPages/Step1';
-import Step2 from './formPages/Step2';
-import Step3 from './formPages/Step3';
-import Step4 from './formPages/Step4';
-import Step5 from './formPages/Step5';
-import Download from './formPages/Download';
-import PopUp from './PopUp';
+
+import Button from 'components/Button';
+import PopUp from 'components/PopUp';
+
+import BeforeYouBegin from 'flows/BeforeYouBegin';
+import Step1 from 'flows/Step1';
+import Step2 from 'flows/Step2';
+import Step3 from 'flows/Step3';
+import Step4 from 'flows/Step4';
+import Step5 from 'flows/Step5';
+import Download from 'flows/Download';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
