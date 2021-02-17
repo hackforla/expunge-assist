@@ -34,19 +34,26 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         multi
         isValid={goalsFilled}
       />
-      <p>
-        How are you working towards acheiving these goals? What are the concrete
-        steps you are taking? (2-3 sentences suggested)
-      </p>
       {goalsFilled ? (
-        <Textarea
-          inputName="goalsHow"
-          handleChange={handleChange}
-          placeholder="I have been..."
-          multi
-          isValid={goalsHowFilled}
-        />
-      ) : null}
+        <>
+          <p>
+            How are you working towards acheiving these goals? What are the
+            concrete steps you are taking? (2-3 sentences suggested)
+          </p>
+          <Textarea
+            inputName="goalsHow"
+            handleChange={handleChange}
+            placeholder="I have been..."
+            multi
+            isValid={goalsHowFilled}
+          />
+        </>
+      ) : (
+        <p className="greyedOut">
+          How are you working towards acheiving these goals? What are the
+          concrete steps you are taking? (2-3 sentences suggested)
+        </p>
+      )}
       <Button onClick={() => goToPage(7)} buttonText="BACK" />
       {goalsHowFilled ? (
         <Button onClick={() => goToPage(11)} buttonText="NEXT" />
