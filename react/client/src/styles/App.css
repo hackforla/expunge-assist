@@ -18,13 +18,9 @@ h2 {
   margin: 1rem 0;
 }
 
-/* .Forms{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  min-height: 40vh;
-  height: 100%;
-} */
+.greyedOut {
+  opacity: 0.6;
+}
 
 .adjacent-mar-top + .adjacent-mar-top {
   margin-top: 10px;
