@@ -21,6 +21,7 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="I am..."
         handleChange={handleChange}
         multi={false}
+        isValid
       />
       <p>
         How will clearing your record change your life or help you? (2 sentences
@@ -31,6 +32,7 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         placeholder="Clearing my record will..."
         multi
+        isValid
       />
       <Button onClick={() => goToPage(9)} buttonText="BACK" />
       <Button onClick={() => goToPage(12)} buttonText="LOOKS GOOD" />

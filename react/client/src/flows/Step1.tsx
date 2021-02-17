@@ -2,7 +2,10 @@ import React from 'react';
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
 import Button from 'components/Button';
+<<<<<<< HEAD:react/client/src/flows/Step1.tsx
 import TextPreview from 'components/TextPreview';
+=======
+>>>>>>> c64fe68... Future Goals Flow:react/client/src/components/formPages/Step1.tsx
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +29,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           placeholder="FirstName LastName"
           handleChange={handleChange}
           multi={false}
+          isValid
         />
         <p>How old are you?</p>
         <Input
@@ -43,7 +47,9 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           handleChange={handleChange}
           placeholder="I've been..."
           multi
+          isValid
         />
+<<<<<<< HEAD:react/client/src/flows/Step1.tsx
         <Button onClick={() => goToPage(1)} buttonText="BACK" />
         <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
         <TextPreview
@@ -51,6 +57,10 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           onAdjustClick={() => console.log('adjust clicked')}
           nameOfStep="Introduction"
         />
+=======
+        <Button onClick={() => goToPage(2)} buttonText="BACK" />
+        <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
+>>>>>>> c64fe68... Future Goals Flow:react/client/src/components/formPages/Step1.tsx
       </form>
     </div>
   );
