@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -41,6 +41,7 @@ interface TextFieldProps {
   inputName: string;
   placeholder: string;
   multi: boolean;
+  isValid: boolean;
 }
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
@@ -48,19 +49,17 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
   inputName,
   placeholder,
   multi,
+  isValid
 }) => {
-  const checkValid = (e: string) => {
-    isValid(e.length > 0);
-  };
-  const [valid, isValid] = useState(false);
+  // const checkValid = (e: string) => {
+  //   isValid(e.length > 0);
+  // };
+  // const [valid, isValid] = useState(false);
   const classes = useStyles();
   return (
     <TextField
       className={classes.root}
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-        checkValid(e.currentTarget.value);
-        handleChange(e);
-      }}
+      onChange={handleChange}
       name={inputName}
       placeholder={placeholder}
       id="outlined-textarea"
@@ -70,7 +69,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
         classes: {
           input: classes.input,
         },
-        endAdornment: valid ? (
+        endAdornment: isValid ? (
           <InputAdornment position="end">
             <CheckCircleIcon className={classes.icon} />
           </InputAdornment>

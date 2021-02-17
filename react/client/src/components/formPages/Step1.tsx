@@ -2,10 +2,6 @@ import React from 'react';
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
 import Button from 'components/Button';
-<<<<<<< HEAD
-import TextPreview from 'components/TextPreview';
-=======
->>>>>>> replace button utility classes with Button component
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +25,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           placeholder="FirstName LastName"
           handleChange={handleChange}
           multi={false}
+          isValid
         />
         <p>How old are you?</p>
         <Input
@@ -46,19 +43,10 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           handleChange={handleChange}
           placeholder="I've been..."
           multi
+          isValid
         />
-<<<<<<< HEAD
-        <Button onClick={() => goToPage(1)}>BACK</Button>
-        <Button onClick={() => goToPage(4)}>LOOKS GOOD</Button>
-        <TextPreview
-          content="Thank you so much for taking the time to read my personal statement. My name is Jenna Smith, and I am 27 years old. I am also a proud veteran of the United States Armed Forces."
-          onAdjustClick={() => console.log('adjust clicked')}
-          nameOfStep="Introduction"
-        />
-=======
-        <Button onClick={() => goToPage(1)} buttonText="BACK" />
+        <Button onClick={() => goToPage(2)} buttonText="BACK" />
         <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
->>>>>>> replace button utility classes with Button component
       </form>
     </div>
   );

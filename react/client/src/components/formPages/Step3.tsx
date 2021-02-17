@@ -34,6 +34,7 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder=""
         handleChange={handleChange}
         multi={false}
+        isValid
       />
       <p>
         Please describe what you do at this community service organization (2
@@ -44,6 +45,7 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         placeholder="Currently, I..."
         multi
+        isValid
       />
       <p>What is the name of the company you work for?</p>
       <Textarea
@@ -51,6 +53,7 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder=""
         handleChange={handleChange}
         multi={false}
+        isValid
       />
       <p>What is your current job title?</p>
       <Textarea
@@ -58,6 +61,7 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder=""
         handleChange={handleChange}
         multi={false}
+        isValid
       />
       <p>
         Please describe what you do at your current job. (2 sentences maximum)
@@ -67,6 +71,7 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         placeholder="At my current job, I ..."
         multi
+        isValid
       />
       <p>
         Please describe why you are having trouble finding work. (2 sentences
@@ -77,6 +82,7 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         placeholder="I'm having difficulty finding work because..."
         multi
+        isValid
       />
       <p>
         Do you believe that having your record cleared would help you find a job

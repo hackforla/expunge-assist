@@ -6,13 +6,14 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 import PopUp from 'components/PopUp';
 
-import BeforeYouBegin from 'flows/BeforeYouBegin';
-import Step1 from 'flows/Step1';
-import Step2 from 'flows/Step2';
-import Step3 from 'flows/Step3';
-import Step4 from 'flows/Step4';
-import Step5 from 'flows/Step5';
-import Download from 'flows/Download';
+import BeforeYouBegin from 'components/formPages/BeforeYouBegin';
+import Step1 from 'components/formPages/Step1';
+import Step2 from 'components/formPages/Step2';
+import Step3 from 'components/formPages/Step3';
+import Step4 from 'components/formPages/Step4';
+import Step5 from 'components/formPages/Step5';
+import Download from 'components/formPages/Download';
+import Preview from 'components/formPages/Preview';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,6 +42,7 @@ interface FormProps {
 const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
+  const [currentPrev, setCurrentPrev] = useState('');
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
@@ -63,9 +65,17 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
 
     pdf: undefined,
   });
-
   // todo: move text into a json for localization
   useEffect(() => {
+    if (pageNumber === 2) {
+      setCurrentPrev('Introduction');
+    } else if (pageNumber === 4) {
+      setCurrentPrev('Involvement');
+    } else if (pageNumber === 5) {
+      setCurrentPrev('Future Goals');
+    } else if (pageNumber === 6) {
+      setCurrentPrev('Why');
+    }
     switch (pageNumber) {
       case 1:
         onChangeAffirmation({
@@ -141,6 +151,13 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       )}
       {pageNumber === 9 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
+      )}
+      {pageNumber === 11 && (
+        <Preview
+          currentPrev={currentPrev}
+          inputs={inputs}
+          goToPage={goToPage}
+        />
       )}
       <PopUp
         title="Some advice for your personal statement"
