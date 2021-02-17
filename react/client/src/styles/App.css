@@ -2,7 +2,8 @@ body {
   background: #9903ff;
   font-family: Roboto;
   font-weight: 400;
-  height: 100vh;
+  min-height: 100vh;
+  position: relative;
 }
 
 #root {
@@ -17,10 +18,17 @@ h2 {
   margin: 1rem 0;
 }
 
+/* .Forms{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 40vh;
+  height: 100%;
+} */
+
 .adjacent-mar-top + .adjacent-mar-top {
   margin-top: 10px;
 }
-
 @media only screen and (min-width: 960px) {
   .adjacent-mar-top + .adjacent-mar-top {
     margin-top: 15px;

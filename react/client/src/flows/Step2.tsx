@@ -12,7 +12,7 @@ const Step2 = ({ inputs, setInputs, goToPage }: StepProps) => {
   };
 
   return (
-    <div className="Step2">
+    <div>
       <p>
         Finish the sentence: Since my last conviction my life has changed for
         the...

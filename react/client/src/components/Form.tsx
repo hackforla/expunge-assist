@@ -4,16 +4,15 @@ import useUtilityStyles from 'styles/utilityStyles';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
-import PopUp from 'components/PopUp';
 
-import BeforeYouBegin from 'components/formPages/BeforeYouBegin';
-import Step1 from 'components/formPages/Step1';
-import Step2 from 'components/formPages/Step2';
-import Step3 from 'components/formPages/Step3';
-import Step4 from 'components/formPages/Step4';
-import Step5 from 'components/formPages/Step5';
-import Download from 'components/formPages/Download';
-import Preview from 'components/formPages/Preview';
+import Preview from 'flows/Preview';
+import BeforeYouBegin from 'flows/BeforeYouBegin';
+import Step1 from 'flows/Step1';
+import Step2 from 'flows/Step2';
+import Step3 from 'flows/Step3';
+import Step4 from 'flows/Step4';
+import Step5 from 'flows/Step5';
+import Download from 'flows/Download';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,7 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: '850px',
       marginLeft: 'auto',
       marginRight: 'auto',
-
       [theme.breakpoints.down('xs')]: {
         marginLeft: 'initial',
         marginRight: 'initial',
@@ -159,18 +157,6 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
           goToPage={goToPage}
         />
       )}
-      <PopUp
-        title="Some advice for your personal statement"
-        info={
-          '1. Remember that you are writing for a judge, so refrain from using informal language such as abbreviations or slang' +
-          '\n' +
-          '2. Write in complete sentences when given the option' +
-          '\n' +
-          '3. Use the first person when answering questions. This means telling the story from your point of view.' +
-          '\n' +
-          '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
-        }
-      />
     </div>
   );
 };

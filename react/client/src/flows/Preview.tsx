@@ -36,6 +36,7 @@ const Preview = ({ currentPrev, inputs, goToPage }: PreviewProps) => {
         `I want to clear my record because ${inputs.clearRecordWhy}. ${inputs.clearRecordHow}`
       );
       setPrevPage(6);
+      setNextPage(7);
     }
   }, [currentPrev]);
 

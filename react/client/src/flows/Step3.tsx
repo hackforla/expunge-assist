@@ -22,9 +22,8 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
   };
 
   return (
-    <div className="Step3">
+    <div>
       <p>Please check all that apply: I am involved with...</p>
-
       <p>
         What is the name of the community service organization that you are
         involved with?

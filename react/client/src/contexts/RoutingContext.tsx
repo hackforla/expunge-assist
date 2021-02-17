@@ -13,6 +13,7 @@ const RoutingContextProvider = ({
 }: RoutingProviderProps) => {
   const url = history.location.pathname;
   const pageNumber = Number(url.slice(url.indexOf('/form') + 6)) || 0;
+
   const goToPage = (pageNum: number) => {
     history.push(`/form/${pageNum}`);
   };

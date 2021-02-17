@@ -32,6 +32,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       letterSpacing: '0.0125em',
       textTrasnform: 'uppercase',
       cursor: 'pointer',
+      marginTop: '1rem',
+      marginBottom: '1rem',
       background: (props) => (props.theme === 'dark' ? '#25003F' : '#9903FF'),
       '&:hover': {
         background: (props) => (props.theme === 'dark' ? '#330652' : '#a224f7'),

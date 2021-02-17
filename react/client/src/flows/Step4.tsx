@@ -21,7 +21,7 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
   };
 
   return (
-    <div className="Step4">
+    <div>
       <p>
         Please describe what goals you have to improve your life even further,
         like attending school, getting specialized training, etc. (2-3 sentences

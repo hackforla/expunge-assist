@@ -26,18 +26,17 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
   const classes = useStyles();
   let showFormHeader: boolean;
   let formStep: number;
-
-  if (pageNumber === 3) {
+  if (pageNumber === 2) {
     formStep = 1;
     showFormHeader = true;
-  } else if (pageNumber === 5) {
-    formStep = 2;
-    showFormHeader = true;
-  } else if (pageNumber === 7) {
+  } else if (pageNumber === 4) {
     formStep = 3;
     showFormHeader = true;
-  } else if (pageNumber === 9) {
+  } else if (pageNumber === 5) {
     formStep = 4;
+    showFormHeader = true;
+  } else if (pageNumber === 6) {
+    formStep = 5;
     showFormHeader = true;
   } else if (pageNumber === 11) {
     formStep = 5;
@@ -53,7 +52,6 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
   if (!showFormHeader) {
     return null;
   }
-
   return (
     <div className={classes.root}>
       {formStep === 1 && <h2>Introduce Yourself!</h2>}

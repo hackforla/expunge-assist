@@ -7,13 +7,15 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       position: 'absolute',
-      bottom: '0px',
+      bottom: '0',
       width: '100%',
       background: 'none',
       color: 'white',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      backgroundColor: '#25003F',
+      height: '2rem',
       '& img, span': {
         display: 'none',
         margin: '0 20px',

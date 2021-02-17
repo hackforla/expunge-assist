@@ -14,7 +14,7 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
     }
   };
   return (
-    <div className="Step5">
+    <div>
       <p>Please finish this sentence: I want to clear my record because...</p>
       <Textarea
         inputName="clearRecordWhy"
@@ -34,8 +34,8 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         multi
         isValid
       />
-      <Button onClick={() => goToPage(9)} buttonText="BACK" />
-      <Button onClick={() => goToPage(12)} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goToPage(6)} buttonText="BACK" />
+      <Button onClick={() => goToPage(11)} buttonText="LOOKS GOOD" />
     </div>
   );
 };

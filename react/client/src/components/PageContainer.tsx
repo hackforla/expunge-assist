@@ -5,10 +5,11 @@ import AffirmationComponent from 'components/AffirmationComponent';
 import Header from 'components/Header';
 import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
-import Landing from 'components/pages/Landing';
+import Landing from 'pages/Landing';
+import PopUp from 'components/PopUp';
 
-import { RoutingContext } from 'components/contexts/RoutingContext';
-import { AffirmationContext } from 'components/contexts/AffirmationContext';
+import { RoutingContext } from 'contexts/RoutingContext';
+import { AffirmationContext } from 'contexts/AffirmationContext';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -23,6 +24,7 @@ const useStyles = makeStyles<Theme, styleProps>(() =>
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
+      minHeight: '100vh',
     },
   })
 );
@@ -53,7 +55,7 @@ const PageContainer = ({ match }: PageProps) => {
       updateAffirmationData({ isActive: false });
     }
   }, [match]);
-
+  console.log(isLandingPage)
   return (
     <div className={`${classes.root} page-container`}>
       <AffirmationComponent
@@ -65,7 +67,6 @@ const PageContainer = ({ match }: PageProps) => {
       />
 
       <Header pageNumber={pageNumber} />
-
       {!isLandingPage && <FormHeader pageNumber={pageNumber} />}
 
       {isLandingPage && <Landing goToPage={goToPage} />}
@@ -77,6 +78,18 @@ const PageContainer = ({ match }: PageProps) => {
           onChangeAffirmation={updateAffirmationData}
         />
       )}
+      <PopUp
+        title="Some advice for your personal statement"
+        info={
+          '1. Remember that you are writing for a judge, so refrain from using informal language such as abbreviations or slang' +
+          '\n' +
+          '2. Write in complete sentences when given the option' +
+          '\n' +
+          '3. Use the first person when answering questions. This means telling the story from your point of view.' +
+          '\n' +
+          '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
+        }
+      />
     </div>
   );
 };
