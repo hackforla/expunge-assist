@@ -43,6 +43,7 @@ interface TextFieldProps {
   placeholder: string;
   multi: boolean;
   isValid: boolean;
+  defaultValue: string;
 }
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
@@ -50,12 +51,9 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
   inputName,
   placeholder,
   multi,
-  isValid
+  isValid,
+  defaultValue,
 }) => {
-  // const checkValid = (e: string) => {
-  //   isValid(e.length > 0);
-  // };
-  // const [valid, isValid] = useState(false);
   const classes = useStyles();
   return (
     <TextField
@@ -66,6 +64,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
       id="outlined-textarea"
       multiline={multi}
       variant="outlined"
+      defaultValue={defaultValue}
       InputProps={{
         classes: {
           input: classes.input,

@@ -5,7 +5,6 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
-import Preview from 'flows/Preview';
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import Step1 from 'flows/Step1';
 import Step2 from 'flows/Step2';
@@ -40,7 +39,6 @@ interface FormProps {
 const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
-  const [currentPrev, setCurrentPrev] = useState('');
   const [inputs, setInputs] = useState<userInputs>({
     name: '',
     age: null,
@@ -65,15 +63,6 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   });
   // todo: move text into a json for localization
   useEffect(() => {
-    if (pageNumber === 2) {
-      setCurrentPrev('Introduction');
-    } else if (pageNumber === 4) {
-      setCurrentPrev('Involvement');
-    } else if (pageNumber === 5) {
-      setCurrentPrev('Future Goals');
-    } else if (pageNumber === 6) {
-      setCurrentPrev('Why');
-    }
     switch (pageNumber) {
       case 1:
         onChangeAffirmation({
@@ -149,13 +138,6 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       )}
       {pageNumber === 9 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
-      )}
-      {pageNumber === 11 && (
-        <Preview
-          currentPrev={currentPrev}
-          inputs={inputs}
-          goToPage={goToPage}
-        />
       )}
     </div>
   );

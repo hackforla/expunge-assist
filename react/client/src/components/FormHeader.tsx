@@ -29,6 +29,9 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
   if (pageNumber === 2) {
     formStep = 1;
     showFormHeader = true;
+  } else if (pageNumber === 3) {
+    formStep = 2;
+    showFormHeader = true;
   } else if (pageNumber === 4) {
     formStep = 3;
     showFormHeader = true;
@@ -38,8 +41,8 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
   } else if (pageNumber === 6) {
     formStep = 5;
     showFormHeader = true;
-  } else if (pageNumber === 11) {
-    formStep = 5;
+  } else if (pageNumber === 7) {
+    formStep = 6;
     showFormHeader = true;
   } else if (pageNumber === 13) {
     formStep = 6;

@@ -26,6 +26,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         multi={false}
         isValid
+        defaultValue={inputs.name}
       />
       <p>How old are you?</p>
       <Input
@@ -44,9 +45,10 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
         placeholder="I've been..."
         multi
         isValid
+        defaultValue={inputs.introduction}
       />
       <Button onClick={() => goToPage(2)} buttonText="BACK" />
-      <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goToPage(3)} buttonText="LOOKS GOOD" />
     </div>
   );
 };
