@@ -21,6 +21,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="Step1">
       <form>
         <p>What is your name?</p>
@@ -62,6 +63,39 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
         <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
 >>>>>>> c64fe68... Future Goals Flow:react/client/src/components/formPages/Step1.tsx
       </form>
+=======
+    <div>
+      <p>What is your name?</p>
+      <Textarea
+        inputName="name"
+        placeholder="FirstName LastName"
+        handleChange={handleChange}
+        multi={false}
+        isValid
+        defaultValue={inputs.name}
+      />
+      <p>How old are you?</p>
+      <Input
+        type="number"
+        inputName="age"
+        placeholder="25"
+        handleChange={handleChange}
+      />
+      <p>
+        Please describe what has been going on in your life recently. (2
+        sentences maximum)
+      </p>
+      <Textarea
+        inputName="introduction"
+        handleChange={handleChange}
+        placeholder="I've been..."
+        multi
+        isValid
+        defaultValue={inputs.introduction}
+      />
+      <Button onClick={() => goToPage(2)} buttonText="BACK" />
+      <Button onClick={() => goToPage(3)} buttonText="LOOKS GOOD" />
+>>>>>>> bf5a736... Preview on goal flow page
     </div>
   );
 };

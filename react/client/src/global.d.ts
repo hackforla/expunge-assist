@@ -2,12 +2,6 @@ interface GlobalProps {
   goToPage: (pageNumber: number) => void;
 }
 
-interface StepProps {
-  setInputs: (value: any) => void;
-  inputs: {};
-  goToPage: (pageNumber: number) => void;
-}
-
 interface userInputs {
   name: string;
   age: number | null;
@@ -24,4 +18,10 @@ interface userInputs {
   clearRecordWhy: string;
   clearRecordHow: string;
   pdf: {} | undefined;
+}
+
+interface StepProps {
+  setInputs: (value: any) => void;
+  inputs: userInputs;
+  goToPage: (pageNumber: number) => void;
 }

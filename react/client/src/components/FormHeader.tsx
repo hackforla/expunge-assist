@@ -30,17 +30,32 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
   if (pageNumber === 3) {
     formStep = 1;
     showFormHeader = true;
+<<<<<<< HEAD
   } else if (pageNumber === 5) {
     formStep = 2;
     showFormHeader = true;
   } else if (pageNumber === 7) {
+=======
+  } else if (pageNumber === 3) {
+    formStep = 2;
+    showFormHeader = true;
+  } else if (pageNumber === 4) {
+>>>>>>> bf5a736... Preview on goal flow page
     formStep = 3;
     showFormHeader = true;
   } else if (pageNumber === 9) {
     formStep = 4;
     showFormHeader = true;
+<<<<<<< HEAD
   } else if (pageNumber === 11) {
     formStep = 5;
+=======
+  } else if (pageNumber === 6) {
+    formStep = 5;
+    showFormHeader = true;
+  } else if (pageNumber === 7) {
+    formStep = 6;
+>>>>>>> bf5a736... Preview on goal flow page
     showFormHeader = true;
   } else if (pageNumber === 13) {
     formStep = 6;

@@ -23,6 +23,7 @@ const Step2 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         multi={false}
         isValid
+        defaultValue={inputs.lifeChanges}
       />
       <Button onClick={() => goToPage(2)} buttonText="BACK" />
       <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
