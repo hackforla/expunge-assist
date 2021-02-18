@@ -1,5 +1,5 @@
 # Hack For LA
-We are a local Brigade of the national non-profit Code for America, called Hack For LA. We organize project teams to work on specific projects, and the teams run out of weekly “hack nights” in Santa Monica, DTLA, and Inglewood.
+We are a local Brigade of the national non-profit Code for America, called Hack For LA. We organize project teams to work on specific projects, and the teams run out of weekly “hack nights” in Santa Monica, DTLA, and Inglewood
 
 
 # Record Clearance Project
