@@ -36,13 +36,8 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         isValid
         defaultValue={inputs.clearRecordHow}
       />
-<<<<<<< HEAD
-      <Button onClick={() => goToPage(9)} buttonText="BACK" />
-      <Button onClick={() => goToPage(12)} buttonText="LOOKS GOOD" />
-=======
       <Button onClick={() => goToPage(5)} buttonText="BACK" />
       <Button onClick={() => goToPage(7)} buttonText="LOOKS GOOD" />
->>>>>>> bf5a736... Preview on goal flow page
     </div>
   );
 };

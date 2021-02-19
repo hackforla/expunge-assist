@@ -6,16 +6,6 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 import PopUp from 'components/PopUp';
 
-<<<<<<< HEAD
-import BeforeYouBegin from 'components/formPages/BeforeYouBegin';
-import Step1 from 'components/formPages/Step1';
-import Step2 from 'components/formPages/Step2';
-import Step3 from 'components/formPages/Step3';
-import Step4 from 'components/formPages/Step4';
-import Step5 from 'components/formPages/Step5';
-import Download from 'components/formPages/Download';
-import Preview from 'components/formPages/Preview';
-=======
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import Step1 from 'flows/Step1';
 import Step2 from 'flows/Step2';
@@ -23,7 +13,6 @@ import Step3 from 'flows/Step3';
 import Step4 from 'flows/Step4';
 import Step5 from 'flows/Step5';
 import Download from 'flows/Download';
->>>>>>> bf5a736... Preview on goal flow page
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -152,14 +141,6 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
       {pageNumber === 9 && (
         <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
       )}
-<<<<<<< HEAD
-      {pageNumber === 11 && (
-        <Preview
-          currentPrev={currentPrev}
-          inputs={inputs}
-          goToPage={goToPage}
-        />
-      )}
       <PopUp
         title="Some advice for your personal statement"
         info={
@@ -172,8 +153,6 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
           '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
         }
       />
-=======
->>>>>>> bf5a736... Preview on goal flow page
     </div>
   );
 };
