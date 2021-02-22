@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
@@ -33,6 +34,7 @@ const InvolvementFlow = ({ inputs, setInputs, goToPage }: StepProps) => {
 };
 
 const ConvictionStep = () => {
+  const classes = useStyles();
   const [checkState, setCheckState] = useState({
     isJobChecked: false,
     isRecoveryChecked: false,
@@ -50,7 +52,7 @@ const ConvictionStep = () => {
     <div>
       <div>What things have you been involved with since your conviction?</div>
       <div>Please check all that apply:</div>
-      <div>
+      <div className={classes.flexColumn}>
         <Checkbox
           checked={checkState.isJobChecked}
           onChange={() =>
@@ -108,5 +110,14 @@ const ConvictionStep = () => {
     </div>
   );
 };
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    flexColumn: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  })
+);
 
 export default InvolvementFlow;
