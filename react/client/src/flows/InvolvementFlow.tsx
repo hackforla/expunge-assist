@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core';
 
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
@@ -15,94 +15,106 @@ interface ICheckState {
   isNoneChecked: boolean;
 }
 
-interface IInvolvementFormState {
-  convictionCheckboxes: string[];
-}
+// interface IInvolvementFormState {
+//   convictionCheckState: ICheckState;
+// }
 
 const InvolvementFlow = ({ inputs, setInputs, goToPage }: StepProps) => {
   const [flowState, setFlowState] = useState({
-    convictionCheckboxes: [],
+    convictionCheckState: {
+      isJobChecked: false,
+      isRecoveryChecked: false,
+      isSchoolChecked: false,
+      isParentingChecked: false,
+      isCommunityChecked: false,
+      isNoneChecked: false,
+    },
   });
+
+  const handleStateChange = (newState: object) => {
+    setFlowState({ ...flowState, ...newState });
+  };
 
   return (
     <form>
-      <ConvictionStep />
+      <ConvictionStep
+        state={flowState.convictionCheckState}
+        onChangeState={(newState) => {
+          handleStateChange({...flowState, convictionCheckState: {
+            ...flowState.convictionCheckState,
+            ...newState,
+          }})
+        }} />
+
       <Button onClick={() => goToPage(2)} buttonText="BACK" />
       <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
     </form>
   );
 };
 
-const ConvictionStep = () => {
-  const classes = useStyles();
-  const [checkState, setCheckState] = useState({
-    isJobChecked: false,
-    isRecoveryChecked: false,
-    isSchoolChecked: false,
-    isParentingChecked: false,
-    isCommunityChecked: false,
-    isNoneChecked: false,
-  });
+interface IConvictionState {
+  state: ICheckState;
+  onChangeState: (newState: object) => void;
+}
 
-  const updateCheckState = (newState: object) => {
-    setCheckState({ ...checkState, ...newState });
-  };
+const ConvictionStep = ({ state, onChangeState }: IConvictionState) => {
+  const classes = useStyles();
 
   return (
-    <div>
-      <div>What things have you been involved with since your conviction?</div>
-      <div>Please check all that apply:</div>
+    <div className={classes.root}>
+      <div className='adjacent-mar-top'>What things have you been involved with since your conviction?</div>
+      <div className='adjacent-mar-top'>Please check all that apply:</div>
       <div className={classes.flexColumn}>
         <Checkbox
-          checked={checkState.isJobChecked}
+          checked={state.isJobChecked}
           onChange={() =>
-            updateCheckState({ isJobChecked: !checkState.isJobChecked })
+            onChangeState({ isJobChecked: !state.isJobChecked })
           }
           label="Jobs"
         />
 
         <Checkbox
-          checked={checkState.isRecoveryChecked}
+          checked={state.isRecoveryChecked}
           onChange={() =>
-            updateCheckState({
-              isRecoveryChecked: !checkState.isRecoveryChecked,
+            onChangeState({
+              isRecoveryChecked: !state.isRecoveryChecked,
             })
           }
           label="Recovery"
         />
 
         <Checkbox
-          checked={checkState.isSchoolChecked}
+          checked={state.isSchoolChecked}
           onChange={() =>
-            updateCheckState({ isSchoolChecked: !checkState.isSchoolChecked })
+            onChangeState({ isSchoolChecked: !state.isSchoolChecked })
           }
           label="School"
         />
 
         <Checkbox
-          checked={checkState.isParentingChecked}
+          checked={state.isParentingChecked}
           onChange={() =>
-            updateCheckState({
-              isParentingChecked: !checkState.isParentingChecked,
+            onChangeState({
+              isParentingChecked: !state.isParentingChecked,
             })
           }
           label="Parenting"
         />
 
         <Checkbox
-          checked={checkState.isCommunityChecked}
+          checked={state.isCommunityChecked}
           onChange={() =>
-            updateCheckState({
-              isCommunityChecked: !checkState.isCommunityChecked,
+            onChangeState({
+              isCommunityChecked: !state.isCommunityChecked,
             })
           }
           label="Community Service"
         />
 
         <Checkbox
-          checked={checkState.isNoneChecked}
+          checked={state.isNoneChecked}
           onChange={() =>
-            updateCheckState({ isNoneChecked: !checkState.isNoneChecked })
+            onChangeState({ isNoneChecked: !state.isNoneChecked })
           }
           label="None of the above"
         />
@@ -111,8 +123,11 @@ const ConvictionStep = () => {
   );
 };
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
+    root: {
+      paddingTop: 24,
+    },
     flexColumn: {
       display: 'flex',
       flexDirection: 'column',
