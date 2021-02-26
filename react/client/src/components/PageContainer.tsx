@@ -42,7 +42,6 @@ const PageContainer = ({ match }: PageProps) => {
 
   const { pageNumber, goToPage } = useRoutingContext();
   const { affirmationData, updateAffirmationData } = useAffirmationContext();
-
   const isLandingPage = pageNumber === 0;
 
   const styleProps = { isLandingPage };

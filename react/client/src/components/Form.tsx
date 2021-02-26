@@ -63,7 +63,6 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
 
     pdf: undefined,
   });
-
   // todo: move text into a json for localization
   useEffect(() => {
     switch (pageNumber) {

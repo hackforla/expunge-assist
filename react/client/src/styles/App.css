@@ -17,6 +17,10 @@ h2 {
   margin: 1rem 0;
 }
 
+.greyedOut {
+  opacity: 0.6;
+}
+
 .adjacent-mar-top + .adjacent-mar-top {
   margin-top: 10px;
 }
