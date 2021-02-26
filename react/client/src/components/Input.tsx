@@ -12,6 +12,7 @@ const useStyles = makeStyles(() =>
       minWidth: '10rem',
       height: '2.5rem',
       borderRadius: '15px',
+      marginBottom: '1rem',
     },
     icon: {
       color: teal.A400,

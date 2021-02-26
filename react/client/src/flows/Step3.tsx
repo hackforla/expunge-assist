@@ -31,9 +31,11 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
       </p>
       <Textarea
         inputName="communityServiceOrgName"
-        placeholder=""
+        placeholder="Hack For LA"
         handleChange={handleChange}
         multi={false}
+        isValid
+        defaultValue={inputs.communityServiceOrgName}
       />
       <p>
         Please describe what you do at this community service organization (2
@@ -44,20 +46,26 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         placeholder="Currently, I..."
         multi
+        isValid
+        defaultValue={inputs.communityServiceDescription}
       />
       <p>What is the name of the company you work for?</p>
       <Textarea
         inputName="jobName"
-        placeholder=""
+        placeholder="X Company"
         handleChange={handleChange}
         multi={false}
+        isValid
+        defaultValue={inputs.jobName}
       />
       <p>What is your current job title?</p>
       <Textarea
         inputName="jobTitle"
-        placeholder=""
+        placeholder="Barista"
         handleChange={handleChange}
         multi={false}
+        isValid
+        defaultValue={inputs.jobTitle}
       />
       <p>
         Please describe what you do at your current job. (2 sentences maximum)
@@ -67,6 +75,8 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         placeholder="At my current job, I ..."
         multi
+        isValid
+        defaultValue={inputs.jobDescription}
       />
       <p>
         Please describe why you are having trouble finding work. (2 sentences
@@ -77,6 +87,8 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         handleChange={handleChange}
         placeholder="I'm having difficulty finding work because..."
         multi
+        isValid
+        defaultValue={inputs.difficultyFindingWorkDescription}
       />
       <p>
         Do you believe that having your record cleared would help you find a job
