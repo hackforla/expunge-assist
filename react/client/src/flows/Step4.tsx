@@ -4,8 +4,10 @@ import Button from 'components/Button';
 import TextPreview from 'components/TextPreview';
 
 const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
-  const [goalsFilled, setGoals] = useState(inputs.goals.split('.').length >= 3);
-  const [goalsHowFilled, setGoalsHow] = useState(
+  const [goalsFilled, setGoalsFilled] = useState(
+    inputs.goals.split('.').length >= 3
+  );
+  const [goalsHowFilled, setGoalsHowFilled] = useState(
     inputs.goalsHow.split('.').length >= 3
   );
   const [previewPage, setPreview] = useState(false);
@@ -15,12 +17,12 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
     const sentences = inputValue.split('.');
     if (inputName === 'goals') {
       setInputs({ ...inputs, goals: inputValue });
-      if (sentences.length >= 3) setGoals(true);
-      else setGoals(false);
+      if (sentences.length >= 3) setGoalsFilled(true);
+      else setGoalsFilled(false);
     } else if (inputName === 'goalsHow') {
       setInputs({ ...inputs, goalsHow: inputValue });
-      if (sentences.length >= 3) setGoalsHow(true);
-      else setGoalsHow(false);
+      if (sentences.length >= 3) setGoalsHowFilled(true);
+      else setGoalsHowFilled(false);
     }
   };
   return previewPage ? (
