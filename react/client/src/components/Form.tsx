@@ -7,7 +7,6 @@ import Button from 'components/Button';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import Step1 from 'flows/Step1';
-import Step2 from 'flows/Step2';
 import Step3 from 'flows/Step3';
 import Step4 from 'flows/Step4';
 import Step5 from 'flows/Step5';

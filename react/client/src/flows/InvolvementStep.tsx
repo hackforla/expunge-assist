@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Textarea from 'components/Textarea';
-import Input from 'components/Input';
 import Button from 'components/Button';
 import Checkbox from 'components/Checkbox';
 
@@ -13,12 +11,6 @@ interface ICheckState {
   isParentingChecked: boolean;
   isCommunityChecked: boolean;
   isNoneChecked: boolean;
-}
-
-interface IJobState {
-  companyName: string;
-  jobTitle: string;
-  jobDescription: string;
 }
 
 const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
@@ -35,6 +27,7 @@ const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
 
   const handleStateChange = (newState: object) => {
     setFlowState({ ...flowState, ...newState });
+    setInputs(inputs); // todo
   };
 
   return (
@@ -42,11 +35,15 @@ const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
       <ConvictionFlow
         state={flowState.convictionCheckState}
         onChangeState={(newState) => {
-          handleStateChange({...flowState, convictionCheckState: {
-            ...flowState.convictionCheckState,
-            ...newState,
-          }})
-        }} />
+          handleStateChange({
+            ...flowState,
+            convictionCheckState: {
+              ...flowState.convictionCheckState,
+              ...newState,
+            },
+          });
+        }}
+      />
 
       <Button onClick={() => goToPage(2)} buttonText="BACK" />
       <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
@@ -64,14 +61,14 @@ const ConvictionFlow = ({ state, onChangeState }: IConvictionFlowProps) => {
 
   return (
     <div className={classes.root}>
-      <div className='adjacent-mar-top'>What things have you been involved with since your conviction?</div>
-      <div className='adjacent-mar-top'>Please check all that apply:</div>
+      <div className="adjacent-mar-top">
+        What things have you been involved with since your conviction?
+      </div>
+      <div className="adjacent-mar-top">Please check all that apply:</div>
       <div className={classes.flexColumn}>
         <Checkbox
           checked={state.isJobChecked}
-          onChange={() =>
-            onChangeState({ isJobChecked: !state.isJobChecked })
-          }
+          onChange={() => onChangeState({ isJobChecked: !state.isJobChecked })}
           label="Jobs"
         />
 
