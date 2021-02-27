@@ -12,7 +12,7 @@ import Step3 from 'flows/Step3';
 import Step4 from 'flows/Step4';
 import Step5 from 'flows/Step5';
 import Download from 'flows/Download';
-import InvolvementFlow from 'flows/InvolvementFlow';
+import InvolvementStep from 'flows/InvolvementStep';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -127,7 +127,7 @@ const Form = ({
       )}
 
       {pageNumber === 3 && (
-        <InvolvementFlow
+        <InvolvementStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}

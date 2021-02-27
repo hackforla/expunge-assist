@@ -15,11 +15,13 @@ interface ICheckState {
   isNoneChecked: boolean;
 }
 
-// interface IInvolvementFormState {
-//   convictionCheckState: ICheckState;
-// }
+interface IJobState {
+  companyName: string;
+  jobTitle: string;
+  jobDescription: string;
+}
 
-const InvolvementFlow = ({ inputs, setInputs, goToPage }: StepProps) => {
+const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
   const [flowState, setFlowState] = useState({
     convictionCheckState: {
       isJobChecked: false,
@@ -37,7 +39,7 @@ const InvolvementFlow = ({ inputs, setInputs, goToPage }: StepProps) => {
 
   return (
     <form>
-      <ConvictionStep
+      <ConvictionFlow
         state={flowState.convictionCheckState}
         onChangeState={(newState) => {
           handleStateChange({...flowState, convictionCheckState: {
@@ -52,12 +54,12 @@ const InvolvementFlow = ({ inputs, setInputs, goToPage }: StepProps) => {
   );
 };
 
-interface IConvictionState {
+interface IConvictionFlowProps {
   state: ICheckState;
   onChangeState: (newState: object) => void;
 }
 
-const ConvictionStep = ({ state, onChangeState }: IConvictionState) => {
+const ConvictionFlow = ({ state, onChangeState }: IConvictionFlowProps) => {
   const classes = useStyles();
 
   return (
@@ -135,4 +137,4 @@ const useStyles = makeStyles(() =>
   })
 );
 
-export default InvolvementFlow;
+export default InvolvementStep;
