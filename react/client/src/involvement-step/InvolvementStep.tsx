@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import Button from 'components/Button';
 
-import InvolvementFlow1 from 'involvement-step/InvolvementFlow1';
+import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 
 const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
   const [flowState, setFlowState] = useState({
@@ -24,7 +24,7 @@ const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
 
   return (
     <form>
-      <InvolvementFlow1
+      <InvolvementInitialFlow
         state={flowState.convictionCheckState}
         onChangeState={(newState) => {
           handleStateChange({

@@ -3,9 +3,9 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import Checkbox from 'components/Checkbox';
 
-import { IFlow1Props } from 'involvement-step/InvolvementFlowCommon';
+import { ICheckboxFlowProps } from 'involvement-step/InvolvementCommon';
 
-const InvolvementFlow1 = ({ state, onChangeState }: IFlow1Props) => {
+const InvolvementFlow1 = ({ state, onChangeState }: ICheckboxFlowProps) => {
   const classes = useStyles();
 
   return (
