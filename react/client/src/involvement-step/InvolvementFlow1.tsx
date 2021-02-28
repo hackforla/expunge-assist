@@ -1,62 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Button from 'components/Button';
 import Checkbox from 'components/Checkbox';
 
-interface ICheckState {
-  isJobChecked: boolean;
-  isRecoveryChecked: boolean;
-  isSchoolChecked: boolean;
-  isParentingChecked: boolean;
-  isCommunityChecked: boolean;
-  isNoneChecked: boolean;
-}
+import { IFlow1Props } from 'involvement-step/InvolvementFlowCommon';
 
-const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
-  const [flowState, setFlowState] = useState({
-    convictionCheckState: {
-      isJobChecked: false,
-      isRecoveryChecked: false,
-      isSchoolChecked: false,
-      isParentingChecked: false,
-      isCommunityChecked: false,
-      isNoneChecked: false,
-    },
-  });
-
-  const handleStateChange = (newState: object) => {
-    setFlowState({ ...flowState, ...newState });
-    setInputs(inputs); // todo
-  };
-
-  return (
-    <form>
-      <ConvictionFlow
-        state={flowState.convictionCheckState}
-        onChangeState={(newState) => {
-          handleStateChange({
-            ...flowState,
-            convictionCheckState: {
-              ...flowState.convictionCheckState,
-              ...newState,
-            },
-          });
-        }}
-      />
-
-      <Button onClick={() => goToPage(2)} buttonText="BACK" />
-      <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
-    </form>
-  );
-};
-
-interface IConvictionFlowProps {
-  state: ICheckState;
-  onChangeState: (newState: object) => void;
-}
-
-const ConvictionFlow = ({ state, onChangeState }: IConvictionFlowProps) => {
+const InvolvementFlow1 = ({ state, onChangeState }: IFlow1Props) => {
   const classes = useStyles();
 
   return (
@@ -134,4 +83,4 @@ const useStyles = makeStyles(() =>
   })
 );
 
-export default InvolvementStep;
+export default InvolvementFlow1;

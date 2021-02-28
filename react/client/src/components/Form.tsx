@@ -11,7 +11,7 @@ import Step3 from 'flows/Step3';
 import Step4 from 'flows/Step4';
 import Step5 from 'flows/Step5';
 import Download from 'flows/Download';
-import InvolvementStep from 'flows/InvolvementStep';
+import InvolvementStep from 'involvement-step/InvolvementStep';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
