@@ -24,7 +24,7 @@ import 'styles/App.css';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: '#9903FF',
     },
     secondary: {
       main: '#0AEBA0',

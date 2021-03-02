@@ -1,5 +1,5 @@
 import React from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import arrowRight from '../assets/arrowRight.svg';
 
@@ -34,7 +34,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
 
       boxShadow: (props) => {
         switch (props.theme) {
-          case 'white':
+          case 'transparent':
             return 'none';
           default:
             return `4px 4px 16px rgba(61, 0, 102, 0.25)`;
@@ -43,8 +43,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
 
       color: (props) => {
         switch (props.theme) {
-          case 'white':
-            return 'black';
+          case 'transparent':
+            return '#25003F, 100%';
           default:
             return '#FFFFFF';
         }
@@ -54,7 +54,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         switch (props.theme) {
           case 'dark':
             return '#25003F';
-          case 'white':
+          case 'transparent':
             return 'white';
           default:
             return '#9903FF';
@@ -65,7 +65,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           switch (props.theme) {
             case 'dark':
               return '#330652';
-            case 'white':
+            case 'transparent':
               return 'white';
             default:
               return '#a224f7';
@@ -80,15 +80,20 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
   })
 );
 
-const Button = ({ theme, hasArrow, buttonText, onClick }: ComponentProps) => {
+const ButtonComponent = ({
+  theme,
+  hasArrow,
+  buttonText,
+  onClick,
+}: ComponentProps) => {
   const styleProps = { theme, hasArrow };
   const classes = useStyles(styleProps);
   return (
-    <button type="button" className={classes.root} onClick={onClick}>
+    <Button type="button" className={classes.root} onClick={onClick}>
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
-    </button>
+    </Button>
   );
 };
 
-export default Button;
+export default ButtonComponent;
