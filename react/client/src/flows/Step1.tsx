@@ -3,6 +3,7 @@ import Textarea from 'components/Textarea';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import TextPreview from 'components/TextPreview';
+import FormFooter from 'components/FormFooter';
 
 const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +56,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
           onAdjustClick={() => console.log('adjust clicked')}
           nameOfStep="Introduction"
         />
+        <FormFooter isFormIncomplete={false} isPreviewing />
       </form>
     </div>
   );
