@@ -1,7 +1,7 @@
 import React from 'react';
 import jsPDF from 'jspdf';
 
-const Download = ({ inputs, goToPage }: StepProps) => {
+const Download = ({ inputs, goBackPage }: StepProps) => {
   const savePDF = () => {
     const doc = new jsPDF('p', 'mm', 'letter');
     doc.setFontSize(12);
@@ -20,7 +20,7 @@ const Download = ({ inputs, goToPage }: StepProps) => {
     <div className="Download">
       <p>Previewing Final Statement</p>
       <button onClick={savePDF}>Save PDF</button>
-      <button onClick={() => goToPage(14)}>BACK</button>
+      <button onClick={() => goBackPage()}>BACK</button>
     </div>
   );
 };

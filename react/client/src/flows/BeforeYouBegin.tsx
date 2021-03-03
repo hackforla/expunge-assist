@@ -4,7 +4,7 @@ import useUtilityStyles from 'styles/utilityStyles';
 import Button from 'components/Button';
 
 interface ComponentProps {
-  goToPage: (pageNumber: number) => void;
+  goNextPage: () => void;
 }
 
 // this is kind of funky but will need to be updated when text is changed
@@ -22,7 +22,7 @@ Please allocate at least 30 minutes of time to complete this.
 If at anytime you are confused please click the question mark button for guidance.
 `;
 
-const BeforeYouBegin = ({ goToPage }: ComponentProps) => {
+const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
   const utilityClasses = useUtilityStyles({});
 
   return (
@@ -36,7 +36,7 @@ const BeforeYouBegin = ({ goToPage }: ComponentProps) => {
 
       <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
         <Button
-          onClick={() => goToPage(2)}
+          onClick={() => goNextPage()}
           buttonText="I understand"
           hasArrow
         />

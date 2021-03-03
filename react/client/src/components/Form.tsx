@@ -33,11 +33,17 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface FormProps {
   pageNumber: number;
-  goToPage: (pageNumber: number) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
 }
 
-const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
+const Form = ({
+  pageNumber,
+  goNextPage,
+  goBackPage,
+  onChangeAffirmation,
+}: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
   const [inputs, setInputs] = useState<userInputs>({
@@ -62,6 +68,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
 
     pdf: undefined,
   });
+
   // todo: move text into a json for localization
   useEffect(() => {
     switch (pageNumber) {
@@ -102,43 +109,73 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
 
   return (
     <div className={`${classes.root} content-page`}>
-      {pageNumber === 1 && <BeforeYouBegin goToPage={goToPage} />}
+      {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
 
       {pageNumber === 2 && (
-        <Step1 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
+        <Step1
+          inputs={inputs}
+          setInputs={setInputs}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
+        />
       )}
 
       {pageNumber === 3 && (
-        <Step2 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
+        <Step2
+          inputs={inputs}
+          setInputs={setInputs}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
+        />
       )}
 
       {pageNumber === 4 && (
-        <Step3 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
+        <Step3
+          inputs={inputs}
+          setInputs={setInputs}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
+        />
       )}
 
       {pageNumber === 5 && (
-        <Step4 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
+        <Step4
+          inputs={inputs}
+          setInputs={setInputs}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
+        />
       )}
 
       {pageNumber === 6 && (
-        <Step5 inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
+        <Step5
+          inputs={inputs}
+          setInputs={setInputs}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
+        />
       )}
 
       {pageNumber === 7 && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
-          <Button onClick={() => goToPage(8)} buttonText="EDIT" />
-          <Button onClick={() => goToPage(8)} buttonText="NEXT" />
+          <Button onClick={() => goBackPage()} buttonText="EDIT" />
+          <Button onClick={() => goNextPage()} buttonText="NEXT" />
         </div>
       )}
       {pageNumber === 8 && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
-          <Button onClick={() => goToPage(9)} buttonText="SAVE" />
+          <Button onClick={() => goNextPage()} buttonText="SAVE" />
         </div>
       )}
       {pageNumber === 9 && (
-        <Download inputs={inputs} setInputs={setInputs} goToPage={goToPage} />
+        <Download
+          inputs={inputs}
+          setInputs={setInputs}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
+        />
       )}
     </div>
   );

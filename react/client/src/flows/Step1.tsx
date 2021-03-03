@@ -6,7 +6,7 @@ import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
 import PopUp from 'components/PopUp';
 
-const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
+const Step1 = ({ inputs, setInputs, goNextPage, goBackPage }: StepProps) => {
   const [step1Inputs, setStep1Inputs] = useState({
     fullName: '',
     age: '',
@@ -75,7 +75,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
         )}
       </form>
 
-      <Button onClick={() => goToPage(1)} buttonText="BACK" theme="white" />
+      <Button onClick={() => goBackPage()} buttonText="BACK" theme="white" />
       {step1Inputs.isVeteran === '' ? (
         <div className="div-popUp">
           <PopUp
@@ -111,7 +111,7 @@ const Step1 = ({ inputs, setInputs, goToPage }: StepProps) => {
         />
       </div>
       <div>
-        <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" hasArrow />
+        <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" hasArrow />
       </div>
     </div>
   );

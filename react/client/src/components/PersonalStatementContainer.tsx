@@ -4,6 +4,8 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Form from 'components/Form';
 import Landing from 'pages/Landing';
 
+import { RoutingContext } from 'contexts/RoutingContext';
+
 interface StyleProps {
   background?: string;
 }
@@ -48,11 +50,10 @@ const PersonalStatement = ({ history, match }: PersonalStatementProps) => {
   let background: string;
   if (Number.isNaN(pageNumber)) pageNumber = 0;
 
-  const goToPage = (destinationPageNumber: number) => {
-    history.push(`/form/${destinationPageNumber}`);
-  };
-
   pageNumber === 0 ? (background = '#9903ff') : (background = 'white');
+
+  const useRoutingContext = () => React.useContext(RoutingContext);
+  const { goNextPage, goBackPage } = useRoutingContext();
 
   const styleProps: StyleProps = { background };
   const classes = useStyles(styleProps);
@@ -61,11 +62,12 @@ const PersonalStatement = ({ history, match }: PersonalStatementProps) => {
     <div className={classes.root}>
       <div className={classes.formWrapper}>
         {pageNumber === 0 ? (
-          <Landing goToPage={goToPage} />
+          <Landing goNextPage={goNextPage} />
         ) : (
           <Form
             pageNumber={pageNumber}
-            goToPage={goToPage}
+            goNextPage={goNextPage}
+            goBackPage={goBackPage}
             onChangeAffirmation={() => {}}
           />
         )}

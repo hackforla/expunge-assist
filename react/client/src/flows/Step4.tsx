@@ -3,7 +3,7 @@ import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 import TextPreview from 'components/TextPreview';
 
-const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
+const Step4 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   const [goalsFilled, setGoalsFilled] = useState(
     inputs.goals.split('.').length >= 3
   );
@@ -33,7 +33,7 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
         nameOfStep="Future Goals"
       />
       <Button onClick={() => setPreview(false)} buttonText="BACK" />
-      <Button onClick={() => goToPage(6)} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
     </div>
   ) : (
     <div>
@@ -71,7 +71,7 @@ const Step4 = ({ inputs, setInputs, goToPage }: StepProps) => {
           concrete steps you are taking? (2-3 sentences suggested)
         </p>
       )}
-      <Button onClick={() => goToPage(4)} buttonText="BACK" />
+      <Button onClick={() => goBackPage()} buttonText="BACK" />
       {goalsHowFilled ? (
         <Button onClick={() => setPreview(true)} buttonText="NEXT" />
       ) : null}

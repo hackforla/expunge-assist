@@ -13,12 +13,16 @@ const RoutingContextProvider = ({
 }: RoutingProviderProps) => {
   const url = history.location.pathname;
   const pageNumber = Number(url.slice(url.indexOf('/form') + 6)) || 0;
-  const goToPage = (pageNum: number) => {
-    history.push(`/form/${pageNum}`);
+
+  const goNextPage = () => {
+    history.push(`/form/${pageNumber + 1}`);
+  };
+  const goBackPage = () => {
+    history.push(`/form/${pageNumber - 1}`);
   };
 
   return (
-    <RoutingContext.Provider value={{ goToPage, pageNumber }}>
+    <RoutingContext.Provider value={{ goNextPage, goBackPage, pageNumber }}>
       {children}
     </RoutingContext.Provider>
   );
