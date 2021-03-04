@@ -65,7 +65,7 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
   // todo: move text into a json for localization
   useEffect(() => {
     switch (pageNumber) {
-      case 1:
+      case 2:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Welcome!',
@@ -73,25 +73,36 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
           description: 'This is a tool to generate a personal statement.',
         });
         break;
-      case 2:
+      case 4:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Congrats!',
           buttonText: 'Next',
-          description: 'Page 2',
+          description:
+            'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
         });
         break;
-      case 3:
+      case 5:
         onChangeAffirmation({
           isActive: true,
-          titleText: 'Way to Go!',
+          titleText: 'Hooray!',
           buttonText: 'Next',
-          description: 'Page 3',
+          description:
+            'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
+        });
+        break;
+      case 6:
+        onChangeAffirmation({
+          isActive: true,
+          titleText: 'Great Job!',
+          buttonText: 'Next',
+          description:
+            'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
         });
         break;
       default:
         onChangeAffirmation({
-          isActive: true,
+          isActive: false,
           titleText: 'Default Text',
           buttonText: 'Next',
           description: `Page ${pageNumber}`,

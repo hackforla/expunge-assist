@@ -16,9 +16,14 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       color: '#3d0066',
       padding: '24px',
       zIndex: 1,
+      display: (props) => (props.isActive ? 'block' : 'none'),
+    },
+    container: {
+      display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      display: (props) => (props.isActive ? 'flex' : 'none'),
+      width: '375px',
+      margin: '0 auto',
     },
   })
 );
@@ -47,27 +52,29 @@ const AffirmationComponent = ({
 
   return (
     <div className={classes.root}>
-      <img
-        src={AffirmationIllustration}
-        alt="affirmation illustration"
-        style={{ height: 375 }}
-        className="adjacent-mar-top"
-      />
-
-      <div className="page-title adjacent-mar-top">{titleText}</div>
-      <div className="adjacent-mar-top">{description}</div>
-
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-        }}
-        className="adjacent-mar-top align-right-sm"
-      >
-        <Button
-          onClick={() => onChangeAffirmation({ isActive: false })}
-          buttonText={buttonText}
+      <div className={classes.container}>
+        <img
+          src={AffirmationIllustration}
+          alt="affirmation illustration"
+          style={{ height: 375 }}
+          className="adjacent-mar-top"
         />
+
+        <div className="page-title adjacent-mar-top">{titleText}</div>
+        <div className="adjacent-mar-top">{description}</div>
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+          }}
+          className="adjacent-mar-top align-right-sm"
+        >
+          <Button
+            onClick={() => onChangeAffirmation({ isActive: false })}
+            buttonText={buttonText}
+          />
+        </div>
       </div>
     </div>
   );
