@@ -26,6 +26,9 @@ const theme = createMuiTheme({
     primary: {
       main: purple[500],
     },
+    secondary: {
+      main: '#0AEBA0',
+    },
   },
   breakpoints: {
     values: {

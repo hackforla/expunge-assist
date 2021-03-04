@@ -25,6 +25,7 @@ interface InputFieldProps {
   inputName: string;
   placeholder: string;
   type: string;
+  defaultValue?: string;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -32,6 +33,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   inputName,
   placeholder,
   type,
+  defaultValue,
 }) => {
   const checkValid = (e: string) => {
     isValid(e.length > 0);
@@ -48,6 +50,7 @@ const InputArea: React.FC<InputFieldProps> = ({
       }}
       name={inputName}
       placeholder={placeholder}
+      defaultValue={defaultValue}
       endAdornment={
         <InputAdornment position="end">
           years old
