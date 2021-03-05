@@ -40,7 +40,7 @@ const PageContainer = ({ match }: PageProps) => {
   const useRoutingContext = () => React.useContext(RoutingContext);
   const useAffirmationContext = () => React.useContext(AffirmationContext);
 
-  const { pageNumber, goToPage } = useRoutingContext();
+  const { pageNumber, goNextPage, goBackPage } = useRoutingContext();
   const { affirmationData, updateAffirmationData } = useAffirmationContext();
   const isLandingPage = pageNumber === 0;
 
@@ -68,12 +68,13 @@ const PageContainer = ({ match }: PageProps) => {
 
       {!isLandingPage && <FormHeader pageNumber={pageNumber} />}
 
-      {isLandingPage && <Landing goToPage={goToPage} />}
+      {isLandingPage && <Landing goNextPage={goNextPage} />}
 
       {!isLandingPage && (
         <Form
           pageNumber={pageNumber}
-          goToPage={goToPage}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
           onChangeAffirmation={updateAffirmationData}
         />
       )}

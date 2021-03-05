@@ -4,10 +4,10 @@ import Button from 'components/Button';
 import useUtilityStyles from 'styles/utilityStyles';
 
 interface LandingProps {
-  goToPage: (pageNumber: number) => void;
+  goNextPage: () => void;
 }
 
-const Landing = ({ goToPage }: LandingProps) => {
+const Landing = ({ goNextPage }: LandingProps) => {
   const utilityClasses = useUtilityStyles({ theme: 'dark' });
   return (
     <div className={`${utilityClasses.contentContainer} content-page`}>
@@ -20,7 +20,7 @@ const Landing = ({ goToPage }: LandingProps) => {
 
       <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
         <Button
-          onClick={() => goToPage(1)}
+          onClick={() => goNextPage()}
           theme="dark"
           hasArrow
           buttonText="START NOW"

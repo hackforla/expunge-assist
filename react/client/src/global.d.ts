@@ -1,7 +1,3 @@
-interface GlobalProps {
-  goToPage: (pageNumber: number) => void;
-}
-
 interface userInputs {
   name: string;
   age: number | null;
@@ -23,5 +19,6 @@ interface userInputs {
 interface StepProps {
   setInputs: (value: any) => void;
   inputs: userInputs;
-  goToPage: (pageNumber: number) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
 }

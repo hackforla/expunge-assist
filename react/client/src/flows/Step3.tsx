@@ -2,7 +2,7 @@ import React from 'react';
 import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
-const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
+const Step3 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name;
     const inputValue = e.target.value;
@@ -94,8 +94,8 @@ const Step3 = ({ inputs, setInputs, goToPage }: StepProps) => {
         Do you believe that having your record cleared would help you find a job
         and be more involved in your community?
       </p>
-      <Button onClick={() => goToPage(3)} buttonText="BACK" />
-      <Button onClick={() => goToPage(5)} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goBackPage()} buttonText="BACK" />
+      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
-const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
+const Step5 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
@@ -36,8 +36,8 @@ const Step5 = ({ inputs, setInputs, goToPage }: StepProps) => {
         isValid
         defaultValue={inputs.clearRecordHow}
       />
-      <Button onClick={() => goToPage(5)} buttonText="BACK" />
-      <Button onClick={() => goToPage(7)} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goBackPage()} buttonText="BACK" />
+      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
     </div>
   );
 };
