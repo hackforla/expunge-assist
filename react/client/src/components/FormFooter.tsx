@@ -22,17 +22,30 @@ const useStyles = makeStyles<Theme>(() =>
 interface FormFooterProps {
   isFormComplete: boolean;
   isPreviewing: boolean;
+  goBackPage: () => void;
+  goNextPage: () => void;
+  togglePreview?: () => void;
 }
 
-const FormFooter = ({ isFormComplete, isPreviewing }: FormFooterProps) => {
+const FormFooter = ({
+  isFormComplete,
+  isPreviewing,
+  goBackPage,
+  goNextPage,
+  togglePreview,
+}: FormFooterProps) => {
   const classes = useStyles();
   return isPreviewing ? (
     <div className={classes.flexEnd}>
-      <Button onClick={() => null} buttonText="LOOKS GOOD" hasArrow />
+      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" hasArrow />
     </div>
   ) : (
     <div className={classes.root}>
-      <Button onClick={() => null} buttonText="BACK" />
+      <Button
+        onClick={() => goBackPage()}
+        buttonText="BACK"
+        theme="transparent"
+      />
       {!isFormComplete && (
         <PopUp
           title="Some advice for your personal statement"
@@ -47,8 +60,8 @@ const FormFooter = ({ isFormComplete, isPreviewing }: FormFooterProps) => {
           }
         />
       )}
-      {isFormComplete && (
-        <Button onClick={() => null} buttonText="NEXT" hasArrow />
+      {isFormComplete && togglePreview && (
+        <Button onClick={() => togglePreview()} buttonText="NEXT" hasArrow />
       )}
     </div>
   );

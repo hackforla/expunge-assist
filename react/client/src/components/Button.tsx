@@ -44,7 +44,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       color: (props) => {
         switch (props.theme) {
           case 'transparent':
-            return '#25003F, 100%';
+            return 'black';
           default:
             return '#FFFFFF';
         }
@@ -55,7 +55,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           case 'dark':
             return '#25003F';
           case 'transparent':
-            return 'white';
+            return '#FFFFFF';
           default:
             return '#9903FF';
         }
@@ -66,7 +66,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
             case 'dark':
               return '#330652';
             case 'transparent':
-              return 'white';
+              return '#FFFFFF';
             default:
               return '#a224f7';
           }
