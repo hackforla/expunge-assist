@@ -1,6 +1,6 @@
 // entire thing
 export interface IInvolvementState {
-  checkboxState: IInvolvementCheckboxState;
+  involvementState: IInvolvementCheckboxState;
   jobState: IInvolvementJobState;
   serviceState: IInvolvementServiceState;
   recoveryState: IInvolvementRecoveryState;
