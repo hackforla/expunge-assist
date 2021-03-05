@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 
 import Button from 'components/Button';
 
+import { IInvolvementState, StepEnum } from 'involvement-step/InvolvementCommon';
 import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 
 const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
-  const [flowState, setFlowState] = useState({
+  const [flowState, setFlowState] = useState<IInvolvementState>({
+    currentStep: StepEnum.INITIAL,
     involvementState: {
       isJobChecked: false,
       isRecoveryChecked: false,
