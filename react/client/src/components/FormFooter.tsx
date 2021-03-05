@@ -20,11 +20,11 @@ const useStyles = makeStyles<Theme>(() =>
 );
 
 interface FormFooterProps {
-  isFormIncomplete: boolean;
+  isFormComplete: boolean;
   isPreviewing: boolean;
 }
 
-const FormFooter = ({ isFormIncomplete, isPreviewing }: FormFooterProps) => {
+const FormFooter = ({ isFormComplete, isPreviewing }: FormFooterProps) => {
   const classes = useStyles();
   return isPreviewing ? (
     <div className={classes.flexEnd}>
@@ -33,7 +33,7 @@ const FormFooter = ({ isFormIncomplete, isPreviewing }: FormFooterProps) => {
   ) : (
     <div className={classes.root}>
       <Button onClick={() => null} buttonText="BACK" />
-      {isFormIncomplete && (
+      {!isFormComplete && (
         <PopUp
           title="Some advice for your personal statement"
           info={
@@ -47,7 +47,7 @@ const FormFooter = ({ isFormIncomplete, isPreviewing }: FormFooterProps) => {
           }
         />
       )}
-      {!isFormIncomplete && (
+      {isFormComplete && (
         <Button onClick={() => null} buttonText="NEXT" hasArrow />
       )}
     </div>
