@@ -101,12 +101,6 @@ const Form = ({ pageNumber, goToPage, onChangeAffirmation }: FormProps) => {
         });
         break;
       default:
-        onChangeAffirmation({
-          isActive: false,
-          titleText: 'Default Text',
-          buttonText: 'Next',
-          description: `Page ${pageNumber}`,
-        });
         break;
     }
   }, [pageNumber]);
