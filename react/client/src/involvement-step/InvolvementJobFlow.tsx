@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Input from 'components/Input';
+import Textarea from 'components/Textarea';
 
 import { IJobFlowProps } from 'involvement-step/InvolvementCommon';
 
@@ -10,16 +10,44 @@ const InvolvementJobFlow = ({ state, onChangeState }: IJobFlowProps) => {
 
   return (
     <div className={classes.root}>
-      <div className="adjacent-mar-top">
+      <div className={classes.flexColumn}>
         What is the name of the company you work for?
+        <Textarea
+          handleChange={() =>
+            onChangeState({ companyName: !state.companyName })
+          }
+          inputName="companyName"
+          placeholder="Name of company"
+          multi={false}
+          isValid
+          defaultValue={state.companyName}
+        />
       </div>
 
       <div className={classes.flexColumn}>
-        <Input
-          placeholder='Name of company'
-          handleChange={() => onChangeState({ companyName: !state.companyName })}
-          type='text'
-          inputName='companyName'
+        What is your current job title?
+        <Textarea
+          handleChange={() => onChangeState({ jobTitle: !state.jobTitle })}
+          inputName="jobTitle"
+          placeholder="Job Title"
+          multi={false}
+          isValid
+          defaultValue={state.jobTitle}
+        />
+      </div>
+
+      <div className={classes.flexColumn}>
+        What do you do at this job? Why is this important to you? (2-3 sentences
+        suggested)
+        <Textarea
+          handleChange={() =>
+            onChangeState({ jobDescription: !state.jobDescription })
+          }
+          inputName="jobDescription"
+          placeholder="I have had the chance to..."
+          multi
+          isValid
+          defaultValue={state.jobDescription}
         />
       </div>
     </div>
