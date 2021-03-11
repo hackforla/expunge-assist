@@ -29,7 +29,7 @@ const Step4 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
     <div>
       <TextPreview
         content={`${inputs.goals}. To work towards my goals; ${inputs.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
-        onAdjustClick={() => console.log('adjust clicked')}
+        onAdjustClick={() => null}
         nameOfStep="Future Goals"
       />
       <Button onClick={() => setPreview(false)} buttonText="BACK" />

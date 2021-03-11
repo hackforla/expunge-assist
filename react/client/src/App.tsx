@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { purple } from '@material-ui/core/colors';
 
 import RoutingContextProvider from 'contexts/RoutingContext';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
