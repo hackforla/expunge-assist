@@ -4,23 +4,33 @@ We are a local Brigade of the national non-profit Code for America, called Hack 
 
 # Record Clearance Project
 
-Record Clearance is a project of Hack for LA. Record Clearance helps people in California with non-violent criminal records accomplish record clearance, expungement or reduction as a result of Prop 47 & Prop 64.
+Record Clearance is a project of Hack for LA. Record Clearance helps people in California with criminal records accomplish record clearance, expungement or reduction as a result of Prop 47 & Prop 64.
 
-The main features include building trust, educating the public about the program and informing those who are eligible for this program. We are currently building a Personal Statement Generator to facilitate the record expungement petitioning process.
+We are currently building a Personal Statement Generator to facilitate the record expungement petitioning process.
 
 
 ## Project context
 
-Record clearance or reduction in California is only possible as a result of [Prop 64](https://post.ca.gov/proposition-64-the-control-regulate-and-tax-adult-use-of-marijuana-act) & [Prop 47](https://www.courts.ca.gov/prop47.htm). 
+Record clearance or reduction in California is possible as a result of legislation which includes [Prop 64](https://post.ca.gov/proposition-64-the-control-regulate-and-tax-adult-use-of-marijuana-act) & [Prop 47](https://www.courts.ca.gov/prop47.htm). 
 
-Community organizers and non-profits are already working in this space and getting results 
+Community organizers and non-profits are already working in this space to clear records for millions of eligible cases. New legislation under AB 1793 has initiated the process of automation for many of these records. Still, many Californians will still have to submit a petition to have their record cleared.
 
-- We’ve met organizers and public defenders, 
-- We have or will attended an NDICA clinic to see the process first-hand. 
+In early discovery research, we...
+- met organizers and public defenders
+- attended an expungement clinic run by our partner [NDICA](https://www.thendica.org/) to map clinic attendee experiences first-hand
+- created service blueprints and identified pain points for petition applicants
 
-We believe we can be partners to these players, growing their impact by applying our skills in the digital and service design realms. In particular we have heard that help is needed in outreach. The project team’s first goal is to understand the human side of the situation today. The most critical questions we need answers to are:
-- Why hasn’t relief/expungement been pursued by most of the 200,000+ residents of LA County who are eligible? 
-- And what information or outreach got some people to pursue relief?
+Next, we...
+- designed wireframes and a clickable prototype in Figma
+- created a functional survey to test the initial design structure and content
+- began development of the tool, with plans for a soft launch in April 2021
+
+Currently, we are in the process of...
+- learning what changes in process due to pandemic-related constraints on holding clinics in person
+- mapping the experience journeys of legal experts who assist with clinics
+- identifying ways to refine our product design to met the most urgent needs of expungement experts
+
+After we roll out the first MVP this spring, we will conduct usability testing and iterate the product design and build, map potential expansion of end user base, and localize the tool into other language, Spanish as priority.
 
 
 ## Onboarding Process
@@ -58,7 +68,7 @@ Explain the different ways people can contribute. For example:
 
 - Join the team 
      on Slack channel and at our weekly Monday hack night in person or teleconference (start at 6pm).
-- To help with user research, sync with Gretchen.
+- To help with user research, sync with Myranda.
 - To provide design support, sync with Gretchen.
 - To contribute to the code, sync with Daniel.
 
@@ -93,6 +103,10 @@ Explain the different ways people can contribute. For example:
 Gretchen Howard - Product Manager - gretchenschwab@gmail.com or on Slack @Gretchen Howard
 
 Daniel Xiao - Tech Lead - on Slack @Daniel Xiao
+
+Myranda Pierce - Product Manager, Research & Design - piercemyranda@gmail.com or on Slack @Myranda Pierce
+
+Andan Eddy - Product Manager - andaneddy@gmail.com - or on Slack @Andan Eddy
 
 
 ### Licensing {TBA}
