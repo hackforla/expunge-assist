@@ -3,11 +3,19 @@ import React, { useState } from 'react';
 
 import Button from 'components/Button';
 
-import { IInvolvementState, StepEnum } from 'involvement-step/InvolvementCommon';
+import {
+  IInvolvementState,
+  StepEnum,
+} from 'involvement-step/InvolvementCommon';
 import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 
-const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
+const InvolvementStep = ({
+  inputs,
+  setInputs,
+  goNextPage,
+  goBackPage,
+}: StepProps) => {
   const [flowState, setFlowState] = useState<IInvolvementState>({
     currentStep: StepEnum.INITIAL,
     involvementState: {
@@ -58,8 +66,8 @@ const InvolvementStep = ({ inputs, setInputs, goToPage }: StepProps) => {
         }}
       />
 
-      <Button onClick={() => goToPage(2)} buttonText="BACK" />
-      <Button onClick={() => goToPage(4)} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goBackPage()} buttonText="BACK" />
+      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
     </form>
   );
 };
