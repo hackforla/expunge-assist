@@ -7,8 +7,8 @@ import Button from 'components/Button';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import Step1 from 'flows/Step1';
-import Step3 from 'flows/Step3';
-import Step4 from 'flows/Step4';
+import UnemployedStep from 'flows/UnemployedStep';
+import GoalsStep from 'flows/GoalsStep';
 import Step5 from 'flows/Step5';
 import Download from 'flows/Download';
 import InvolvementStep from 'involvement-step/InvolvementStep';
@@ -135,7 +135,7 @@ const Form = ({
       )}
 
       {pageNumber === 4 && (
-        <Step3
+        <UnemployedStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}
@@ -144,7 +144,7 @@ const Form = ({
       )}
 
       {pageNumber === 5 && (
-        <Step4
+        <GoalsStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}
