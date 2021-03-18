@@ -9,7 +9,7 @@ import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import UnemployedStep from 'flows/UnemployedStep';
 import GoalsStep from 'flows/GoalsStep';
-import Step5 from 'flows/Step5';
+import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 import InvolvementStep from 'involvement-step/InvolvementStep';
 
@@ -153,7 +153,7 @@ const Form = ({
       )}
 
       {pageNumber === 6 && (
-        <Step5
+        <WhyStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}

@@ -4,7 +4,7 @@ import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
 import FormFooter from 'components/FormFooter';
 
-const Step5 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
+const WhyStep = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   const [step5Inputs, setStep5Inputs] = useState({
     clearRecordWhy: '',
     clearRecordHow: '',
@@ -90,4 +90,4 @@ const Step5 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   );
 };
 
-export default Step5;
+export default WhyStep;
