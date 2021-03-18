@@ -6,7 +6,7 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
-import Step1 from 'flows/Step1';
+import IntroductionStep from 'flows/IntroductionStep';
 import UnemployedStep from 'flows/UnemployedStep';
 import GoalsStep from 'flows/GoalsStep';
 import Step5 from 'flows/Step5';
@@ -117,7 +117,7 @@ const Form = ({
       {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
 
       {pageNumber === 2 && (
-        <Step1
+        <IntroductionStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}
