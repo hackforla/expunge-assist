@@ -2,7 +2,7 @@ import React from 'react';
 import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
-const Step3 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
+const UnemployedStep = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name;
     const inputValue = e.target.value;
@@ -100,4 +100,4 @@ const Step3 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   );
 };
 
-export default Step3;
+export default UnemployedStep;

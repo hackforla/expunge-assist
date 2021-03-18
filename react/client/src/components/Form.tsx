@@ -6,10 +6,10 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
-import Step1 from 'flows/Step1';
-import Step3 from 'flows/Step3';
-import Step4 from 'flows/Step4';
-import Step5 from 'flows/Step5';
+import IntroductionStep from 'flows/IntroductionStep';
+import UnemployedStep from 'flows/UnemployedStep';
+import GoalsStep from 'flows/GoalsStep';
+import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 import InvolvementStep from 'involvement-step/InvolvementStep';
 
@@ -117,7 +117,7 @@ const Form = ({
       {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
 
       {pageNumber === 2 && (
-        <Step1
+        <IntroductionStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}
@@ -135,7 +135,7 @@ const Form = ({
       )}
 
       {pageNumber === 4 && (
-        <Step3
+        <UnemployedStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}
@@ -144,7 +144,7 @@ const Form = ({
       )}
 
       {pageNumber === 5 && (
-        <Step4
+        <GoalsStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}
@@ -153,7 +153,7 @@ const Form = ({
       )}
 
       {pageNumber === 6 && (
-        <Step5
+        <WhyStep
           inputs={inputs}
           setInputs={setInputs}
           goNextPage={goNextPage}

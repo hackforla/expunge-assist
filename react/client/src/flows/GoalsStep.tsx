@@ -3,7 +3,7 @@ import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 import TextPreview from 'components/TextPreview';
 
-const Step4 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
+const GoalsStep = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   const [goalsFilled, setGoalsFilled] = useState(
     inputs.goals.split('.').length >= 3
   );
@@ -79,4 +79,4 @@ const Step4 = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
   );
 };
 
-export default Step4;
+export default GoalsStep;
