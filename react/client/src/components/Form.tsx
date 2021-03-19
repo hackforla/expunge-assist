@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface FormProps {
   pageNumber: number;
+  formStep?: string;
   goNextPage: () => void;
   goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
@@ -40,6 +41,7 @@ interface FormProps {
 
 const Form = ({
   pageNumber,
+  formStep,
   goNextPage,
   goBackPage,
   onChangeAffirmation,
