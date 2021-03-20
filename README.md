@@ -1,10 +1,10 @@
 # Hack For LA
-We are a local Brigade of the national non-profit Code for America, called Hack For LA. We organize project teams to work on specific projects, and the teams run out of weekly “hack nights” in Santa Monica, DTLA, and Inglewood
+We are a local Brigade of the national non-profit Code for America, called Hack For LA. We organize project teams to work on specific projects, and the teams run out of weekly “hack nights” in Santa Monica, DTLA, and Inglewood. These meetings have been held virtually since March 2020.
 
 
-# Record Clearance Project
+# Expunge Assist
 
-Record Clearance is a project of Hack for LA. Record Clearance helps people in California with criminal records accomplish record clearance, expungement or reduction as a result of Prop 47 & Prop 64.
+Expunge Assist (formerly known as the Record Clearance Project) is a project of Hack for LA. Expunge Assist helps people in California with criminal records accomplish record clearance, expungement or reduction as a result of Prop 47 & Prop 64.
 
 We are currently building a Personal Statement Generator to facilitate the record expungement petitioning process.
 
@@ -30,14 +30,14 @@ Currently, we are in the process of...
 - mapping the experience journeys of legal experts who assist with clinics
 - identifying ways to refine our product design to met the most urgent needs of expungement experts
 
-After we roll out the first MVP this spring, we will conduct usability testing and iterate the product design and build, map potential expansion of end user base, and localize the tool into other language, Spanish as priority.
+After we roll out the first MVP this spring, we will conduct usability testing and iterate the product design and build, map potential expansion of end user base, and localize the tool into other languages, Spanish as priority.
 
 
 ## Onboarding Process
 
 1 Add your info to the [team roster](https://docs.google.com/spreadsheets/d/1l9fUahKh_Rm1oiWxpYNNhMdSb1Xv8NG9d8K472kmfC0/edit#gid=0) 
 
-2 Create a Slack Account & Add yourself to Slack channel #record-clearance on hackforla.slack.com
+2 Create a Slack Account & Add yourself to Slack channel #expunge-assist on hackforla.slack.com
 
 3 Review [On-boarding Doc](https://docs.google.com/document/d/13u2sJUgSR1D8sWmyjCAR03dyQkiGURVqnjBHykdW2eQ/edit#)
 
@@ -55,11 +55,11 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 ### Technology used
 
 - Slack for instant message communication
-- Github & Google Doc's for documentation
+- Github & Google Drive for documentation
      - For the purpose tracking progress and general of administration of the project we will be using Github's [Kanban boards](https://github.com/hackforla/record-clearance/projects/1)
 - Teleconference meetings 
-     - Will be hosted by Google Meetings (or ZOOM) must notify Gretchen that someone would like to attend via Teleconference 
-     - Link to meeting [live on Mondays between 6-7 pm PST](Check Record Clearance slack channel for the Zoom invite at the designated meeting time)
+     - Hosted on Zoom – notify Gretchen on Slack that you would like to attend via Teleconference 
+     - Link to meeting [live on alternating Mondays between 6-7 pm PST](Check Expunge Assist slack channel for the Zoom invite at the designated meeting time)
 
 
 ## How to contribute
@@ -67,7 +67,7 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 Explain the different ways people can contribute. For example:
 
 - Join the team 
-     on Slack channel and at our weekly Monday hack night in person or teleconference (start at 6pm).
+     on Slack channel and at our biweekly Monday hack night in person or teleconference (start at 6pm).
 - To help with user research, sync with Myranda.
 - To provide design support, sync with Gretchen.
 - To contribute to the code, sync with Daniel.
@@ -102,11 +102,11 @@ Explain the different ways people can contribute. For example:
 
 Gretchen Howard - Product Manager - gretchenschwab@gmail.com or on Slack @Gretchen Howard
 
-Daniel Xiao - Tech Lead - on Slack @Daniel Xiao
-
 Myranda Pierce - Product Manager, Research & Design - piercemyranda@gmail.com or on Slack @Myranda Pierce
 
 Andan Eddy - Product Manager - andaneddy@gmail.com - or on Slack @Andan Eddy
+
+Daniel Xiao - Tech Lead - on Slack @Daniel Xiao
 
 
 ### Licensing {TBA}
