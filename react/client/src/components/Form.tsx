@@ -5,6 +5,8 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
+import { FORM_STEPS } from 'contexts/RoutingProps';
+
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import UnemployedStep from 'flows/UnemployedStep';
@@ -116,9 +118,11 @@ const Form = ({
 
   return (
     <div className={`${classes.root} content-page`}>
-      {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
+      {formStep === FORM_STEPS.BEFORE_YOU_BEGIN && (
+        <BeforeYouBegin goNextPage={goNextPage} />
+      )}
 
-      {pageNumber === 2 && (
+      {formStep === FORM_STEPS.INTRODUCTION && (
         <IntroductionStep
           inputs={inputs}
           setInputs={setInputs}
