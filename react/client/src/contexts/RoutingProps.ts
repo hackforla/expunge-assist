@@ -16,6 +16,8 @@ export const FORM_STEPS = {
   GOALS: 'FORM_STEPS.GOALS',
   WHY: 'FORM_STEPS.WHY',
   FINALIZE: 'FORM_STEPS.FINALIZE',
+  EDITING: 'FORM_STEPS.EDITING',
+  DOWNLOAD: 'FORM_STEPS.DOWNLOAD',
 };
 
 /**
@@ -63,6 +65,18 @@ export function initFormSteps() {
     data: FORM_STEPS.FINALIZE,
   });
   WhyNode.next = FinalizeNode;
+
+  const EditingNode = new LinkedListNode({
+    prev: FinalizeNode,
+    data: FORM_STEPS.EDITING,
+  });
+  FinalizeNode.next = EditingNode;
+
+  const DownloadNode = new LinkedListNode({
+    prev: EditingNode,
+    data: FORM_STEPS.DOWNLOAD,
+  });
+  EditingNode.next = DownloadNode;
 
   return NullNode;
 }

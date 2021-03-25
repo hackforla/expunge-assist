@@ -131,7 +131,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 3 && (
+      {formStep === FORM_STEPS.INVOLVEMENT_GENERIC && (
         <InvolvementStep
           inputs={inputs}
           setInputs={setInputs}
@@ -140,7 +140,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 4 && (
+      {formStep === FORM_STEPS.INTRODUCTION && (
         <UnemployedStep
           inputs={inputs}
           setInputs={setInputs}
@@ -149,7 +149,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 5 && (
+      {formStep === FORM_STEPS.GOALS && (
         <GoalsStep
           inputs={inputs}
           setInputs={setInputs}
@@ -158,7 +158,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 6 && (
+      {formStep === FORM_STEPS.WHY && (
         <WhyStep
           inputs={inputs}
           setInputs={setInputs}
@@ -167,20 +167,20 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 7 && (
+      {formStep === FORM_STEPS.FINALIZE && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackPage()} buttonText="EDIT" />
           <Button onClick={() => goNextPage()} buttonText="NEXT" />
         </div>
       )}
-      {pageNumber === 8 && (
+      {formStep === FORM_STEPS.EDITING && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
           <Button onClick={() => goNextPage()} buttonText="SAVE" />
         </div>
       )}
-      {pageNumber === 9 && (
+      {formStep === FORM_STEPS.DOWNLOAD && (
         <Download
           inputs={inputs}
           setInputs={setInputs}
