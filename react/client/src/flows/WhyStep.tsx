@@ -24,14 +24,14 @@ const WhyStep = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
     const inputValue = e.currentTarget.value;
     if (inputName === 'clearRecordWhy') {
       setStep5Inputs({ ...step5Inputs, clearRecordWhy: inputValue });
-      inputValue.split('.').length > 1
-        ? setClearRecordWhyFilled(true)
-        : setClearRecordWhyFilled(false);
+      inputValue === ''
+        ? setClearRecordWhyFilled(false)
+        : setClearRecordWhyFilled(true);
     } else if (inputName === 'clearRecordHow') {
       setStep5Inputs({ ...step5Inputs, clearRecordHow: inputValue });
-      inputValue.split('.').length === 2 || inputValue.split('.').length === 3
-        ? setClearRecordHowFilled(true)
-        : setClearRecordHowFilled(false);
+      inputValue === ''
+        ? setClearRecordHowFilled(false)
+        : setClearRecordHowFilled(true);
     }
   };
 
