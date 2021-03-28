@@ -3,7 +3,12 @@ import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 import TextPreview from 'components/TextPreview';
 
-const GoalsStep = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => {
+const GoalsStep = ({
+  inputs,
+  setInputs,
+  goBackPage,
+  goNextPage,
+}: StepProps) => {
   const [goalsFilled, setGoalsFilled] = useState(
     inputs.goals.split('.').length >= 3
   );
@@ -14,15 +19,13 @@ const GoalsStep = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps) => 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
-    const sentences = inputValue.split('.');
+
     if (inputName === 'goals') {
       setInputs({ ...inputs, goals: inputValue });
-      if (sentences.length >= 3) setGoalsFilled(true);
-      else setGoalsFilled(false);
+      inputValue === '' ? setGoalsFilled(false) : setGoalsFilled(true);
     } else if (inputName === 'goalsHow') {
       setInputs({ ...inputs, goalsHow: inputValue });
-      if (sentences.length >= 3) setGoalsHowFilled(true);
-      else setGoalsHowFilled(false);
+      inputValue === '' ? setGoalsHowFilled(false) : setGoalsHowFilled(true);
     }
   };
   return previewPage ? (

@@ -23,14 +23,12 @@ const Step1 = ({ inputs, setInputs, goNextPage, goBackPage }: StepProps) => {
 
     if (inputName === 'name') {
       setStep1Inputs({ ...step1Inputs, fullName: inputValue });
-      step1Inputs.fullName.split(' ').length >= 2
-        ? setNameFilled(true)
-        : setNameFilled(false);
-    } else if (inputName === 'age') {
-      setStep1Inputs({ ...step1Inputs, age: inputValue });
-    } else if (inputName === 'isVeteran') {
-      setStep1Inputs({ ...step1Inputs, isVeteran: inputValue });
+      inputValue === '' ? setNameFilled(false) : setNameFilled(true);
     }
+    if (inputName === 'age')
+      setStep1Inputs({ ...step1Inputs, age: inputValue });
+    if (inputName === 'isVeteran')
+      setStep1Inputs({ ...step1Inputs, isVeteran: inputValue });
   };
 
   let veteranSentence;
