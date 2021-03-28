@@ -80,7 +80,7 @@ const Form = ({
           description: 'This is a tool to generate a personal statement.',
         });
         break;
-      case 4:
+      case 3:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Congrats!',
