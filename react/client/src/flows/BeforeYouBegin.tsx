@@ -14,6 +14,9 @@ const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
 
   return (
     <>
+      <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
+        {t('disclaimerHeader.0')}
+      </div>
       <div className="adjacent-mar-top" style={{ whiteSpace: 'pre-wrap' }}>
         {t('disclaimerText.0')}
         <br />
