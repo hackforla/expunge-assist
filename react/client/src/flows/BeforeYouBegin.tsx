@@ -15,25 +15,10 @@ const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
   return (
     <>
       <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
-        {t('disclaimerHeader.0')}
+        {t('disclaimer.header')}
       </div>
-      <div className="adjacent-mar-top" style={{ whiteSpace: 'pre-wrap' }}>
-        {t('disclaimerText.0')}
-        <br />
-        <br />
-        {t('disclaimerText.1')}
-        <br />
-        <br />
-        {t('disclaimerText.2')}
-        <br />
-        <br />
-        {t('disclaimerText.3')}
-        <br />
-        <br />
-        {t('disclaimerText.4')}
-        <br />
-        <br />
-        {t('disclaimerText.5')}
+      <div className="adjacent-mar-top" style={{ whiteSpace: 'pre-line' }}>
+        {t('disclaimer.text')}
       </div>
 
       <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>

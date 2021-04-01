@@ -1,13 +1,6 @@
 {
-  "disclaimerText": {
-    "0": "Asegúrese de ser elegible para que se borre su registro. Si necesita ayuda con esto, envíe un correo electrónico a placeholder@website.com.",
-    "1": "Tenga en cuenta que su estado de cuenta se almacena localmente en su dispositivo y nunca se transmite a nuestros servidores ni a ningún tercero.",
-    "2": "Este software está desarrollado por un tercero no gubernamental, Code for America.",
-    "3": "Revise también nuestra Política de privacidad y Términos de uso antes de comenzar.",
-    "4": "Por favor, asigne al menos 30 minutos de tiempo para completar esto.",
-    "5": "Si en algún momento está confundido, haga clic en el botón del signo de interrogación para obtener orientación."
-  },
-  "disclaimerHeader": {
-    "0": "Antes de que empieces"
+  "disclaimer": {
+    "header": "Antes de que empieces",
+    "text": "Asegúrese de ser elegible para que se borre su registro. Si necesita ayuda con esto, envíe un correo electrónico a placeholder@website.com. \n\n Tenga en cuenta que su estado de cuenta se almacena localmente en su dispositivo y nunca se transmite a nuestros servidores ni a ningún tercero. \n\n Este software está desarrollado por un tercero no gubernamental, Code for America. \n\n Revise también nuestra Política de privacidad y Términos de uso antes de comenzar. \n\nPor favor, asigne al menos 30 minutos de tiempo para completar esto. \n\n Si en algún momento está confundido, haga clic en el botón del signo de interrogación para obtener orientación."
   }
 }
