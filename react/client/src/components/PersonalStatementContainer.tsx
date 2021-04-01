@@ -1,46 +1,79 @@
 import React from 'react';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-import Header from './Header'
-import Form from './Form'
-import Landing from './pages/Landing';
+import Form from 'components/Form';
+import Landing from 'pages/Landing';
 
-import { Wrapper, FormWrapper } from '../styles/PersonalStatementContainer'
+import { RoutingContext } from 'contexts/RoutingContext';
+
+interface StyleProps {
+  background?: string;
+}
+
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
+  createStyles({
+    root: {
+      background: (props) => props.background,
+      color: 'white',
+      [theme.breakpoints.up('md')]: {
+        height: '850px',
+        '& > img': {
+          marginLeft: '40px',
+        },
+      },
+      height: '570px',
+    },
+    formWrapper: {
+      [theme.breakpoints.up('md')]: {
+        padding: '130px 0 0 130px',
+      },
+    },
+  })
+);
 
 interface PersonalStatementProps {
   history: {
     location: {
-      pathname: string
-    }, 
-    push: (address: string) => void
-  },
+      pathname: string;
+    };
+    push: (address: string) => void;
+  };
   match: {
     params: {
-      page: string
-    }
-  }
+      page: string;
+    };
+  };
 }
 
-const PersonalStatement: React.FC<PersonalStatementProps> = ({ history, match }) => {
+const PersonalStatement = ({ history, match }: PersonalStatementProps) => {
   let pageNumber: number = Number(match.params.page);
   let background: string;
-  if (isNaN(pageNumber)) pageNumber = 0;
-  
-  const goToPage = (pageNumber: number) => {
-    history.push(`/form/${pageNumber}`)
-  }
+  if (Number.isNaN(pageNumber)) pageNumber = 0;
 
-  pageNumber === 0 ? background='#9903ff' : background='white';
+  pageNumber === 0 ? (background = '#9903ff') : (background = 'white');
+
+  const useRoutingContext = () => React.useContext(RoutingContext);
+  const { goNextPage, goBackPage } = useRoutingContext();
+
+  const styleProps: StyleProps = { background };
+  const classes = useStyles(styleProps);
 
   return (
-    <Wrapper background={background} className="PersonalStatementContainer">
-      <Header pageNumber={pageNumber} />
-      <FormWrapper>
-        { pageNumber === 0 ? <Landing goToPage={goToPage}/>
-         : 
-        <Form pageNumber={pageNumber} goToPage={goToPage} /> }
-      </FormWrapper>
-    </Wrapper>
-  )
-}
+    <div className={classes.root}>
+      <div className={classes.formWrapper}>
+        {pageNumber === 0 ? (
+          <Landing goNextPage={goNextPage} />
+        ) : (
+          <Form
+            pageNumber={pageNumber}
+            goNextPage={goNextPage}
+            goBackPage={goBackPage}
+            onChangeAffirmation={() => {}}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
 
-export default PersonalStatement
+export default PersonalStatement;
