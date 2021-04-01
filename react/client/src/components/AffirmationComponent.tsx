@@ -1,8 +1,7 @@
 import React from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
-import AffirmationIllustration from 'assets/affirmation-illustration.svg';
-import AffirmationBG from 'assets/affirmation-bg.svg';
+import AffirmationImage from 'assets/affirmation-img.svg';
 import Button from './Button';
 
 const useStyles = makeStyles<Theme, StyleProps>(() =>
@@ -28,27 +27,16 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       margin: '5rem auto 0',
       position: 'relative',
     },
-    cropBG: {
-      width: '374px',
-      overflow: 'hidden',
-      position: 'absolute',
-      zIndex: -1,
-      top: '-52px',
-      height: '351px',
-      maxWidth: '446px',
-    },
     cropIllustration: {
       overflow: 'hidden',
       position: 'absolute',
-      width: '374px',
-      top: '-236px',
-      justifyContent: 'center',
-      display: 'flex',
+      width: '348px',
     },
     illustration: {
-      width: '1074px',
+      width: '600px',
       position: 'relative',
-      left: '-46px',
+      left: '-111px',
+      top: '-12px',
     },
     messageContainer: {
       display: 'flex',
@@ -65,10 +53,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         content: '""',
         position: 'absolute',
         top: '-40px',
-        left: '-5px',
+        left: '8px',
         height: '40px',
         width: '40px',
-        borderBottomLeftRadius: '64px',
+        borderBottomLeftRadius: '200px',
         boxShadow: '0 20px 0 0 #f7ebff',
       },
     },
@@ -100,12 +88,9 @@ const AffirmationComponent = ({
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <div className={classes.cropBG}>
-          <img src={AffirmationBG} alt="affirmation background" />
-        </div>
         <div className={classes.cropIllustration}>
           <img
-            src={AffirmationIllustration}
+            src={AffirmationImage}
             alt="affirmation illustration"
             className={`${classes.illustration} adjacent-mar-top`}
           />
