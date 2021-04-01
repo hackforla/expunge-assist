@@ -7,6 +7,7 @@ const useStyles = makeStyles(() =>
       background: '#f7ebff',
       color: 'black',
       height: '200px',
+      marginTop: '20px',
       '& h2': {
         margin: '0',
       },
@@ -27,7 +28,7 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
   let showFormHeader: boolean;
   let formStep: number;
 
-  if (pageNumber === 3) {
+  if (pageNumber === 2) {
     formStep = 1;
     showFormHeader = true;
   } else if (pageNumber === 3) {

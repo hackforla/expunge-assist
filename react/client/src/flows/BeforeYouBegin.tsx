@@ -5,6 +5,7 @@ import Button from 'components/Button';
 
 interface ComponentProps {
   goNextPage: () => void;
+  updateAffirmation: (newState: object) => void;
 }
 
 // this is kind of funky but will need to be updated when text is changed
@@ -22,7 +23,7 @@ Please allocate at least 30 minutes of time to complete this.
 If at anytime you are confused please click the question mark button for guidance.
 `;
 
-const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
+const BeforeYouBegin = ({ goNextPage, updateAffirmation }: ComponentProps) => {
   const utilityClasses = useUtilityStyles({});
 
   return (
@@ -36,7 +37,10 @@ const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
 
       <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
         <Button
-          onClick={() => goNextPage()}
+          onClick={() => {
+            updateAffirmation({ isActive: true });
+            goNextPage();
+          }}
           buttonText="I understand"
           hasArrow
         />

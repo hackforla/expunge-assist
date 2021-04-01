@@ -114,7 +114,12 @@ const Form = ({
 
   return (
     <div className={`${classes.root} content-page`}>
-      {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
+      {pageNumber === 1 && (
+        <BeforeYouBegin
+          goNextPage={goNextPage}
+          updateAffirmation={onChangeAffirmation}
+        />
+      )}
 
       {pageNumber === 2 && (
         <IntroductionStep

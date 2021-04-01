@@ -47,15 +47,17 @@ const PageContainer = ({ match }: PageProps) => {
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);
 
+  console.log(affirmationData.isActive);
+
   useEffect(() => {
     // handle closing the affirmation on home page
-    if (match.path === '/') {
-      updateAffirmationData({ isActive: false });
-    }
+    if (match.path === '/') updateAffirmationData({ isActive: false });
   }, [match]);
 
   return (
     <div className={`${classes.root} page-container`}>
+      <Header pageNumber={pageNumber} />
+
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
         titleText={affirmationData.titleText}
@@ -64,19 +66,18 @@ const PageContainer = ({ match }: PageProps) => {
         onChangeAffirmation={updateAffirmationData}
       />
 
-      <Header pageNumber={pageNumber} />
-
-      {!isLandingPage && <FormHeader pageNumber={pageNumber} />}
-
       {isLandingPage && <Landing goNextPage={goNextPage} />}
 
-      {!isLandingPage && (
-        <Form
-          pageNumber={pageNumber}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-          onChangeAffirmation={updateAffirmationData}
-        />
+      {!affirmationData.isActive && !isLandingPage && (
+        <>
+          <FormHeader pageNumber={pageNumber} />
+          <Form
+            pageNumber={pageNumber}
+            goNextPage={goNextPage}
+            goBackPage={goBackPage}
+            onChangeAffirmation={updateAffirmationData}
+          />
+        </>
       )}
     </div>
   );
