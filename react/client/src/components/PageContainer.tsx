@@ -9,6 +9,7 @@ import Landing from 'pages/Landing';
 
 import { RoutingContext } from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
+import { FORM_STEPS } from 'contexts/RoutingProps';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -44,7 +45,7 @@ const PageContainer = ({ match }: PageProps) => {
   const { substep } = match.params;
   const { pageNumber, goNextPage, goBackPage, mainPage } = useRoutingContext();
   const { affirmationData, updateAffirmationData } = useAffirmationContext();
-  const isLandingPage = pageNumber === 0;
+  const isLandingPage = mainPage === FORM_STEPS.NONE;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);

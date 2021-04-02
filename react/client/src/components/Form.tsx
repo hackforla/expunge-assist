@@ -118,11 +118,15 @@ const Form = ({
     }
   }, [pageNumber]);
 
+  console.log('mainPage', mainPage, mainPage === FORM_STEPS.BEFORE_YOU_BEGIN);
+
   return (
     <div className={`${classes.root} content-page`}>
-      {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
+      {mainPage === FORM_STEPS.BEFORE_YOU_BEGIN && (
+        <BeforeYouBegin goNextPage={goNextPage} />
+      )}
 
-      {pageNumber === 2 && (
+      {mainPage === FORM_STEPS.INTRODUCTION && (
         <IntroductionStep
           inputs={inputs}
           setInputs={setInputs}
@@ -131,7 +135,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 3 && (
+      {mainPage === FORM_STEPS.INVOLVEMENT_GENERIC && (
         <InvolvementStep
           inputs={inputs}
           setInputs={setInputs}
@@ -140,7 +144,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 4 && (
+      {mainPage === FORM_STEPS.INVOLVEMENT.UNEMPLOYED && (
         <UnemployedStep
           inputs={inputs}
           setInputs={setInputs}
@@ -149,7 +153,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 5 && (
+      {mainPage === FORM_STEPS.GOALS && (
         <GoalsStep
           inputs={inputs}
           setInputs={setInputs}
@@ -158,7 +162,7 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 6 && (
+      {mainPage === FORM_STEPS.WHY && (
         <WhyStep
           inputs={inputs}
           setInputs={setInputs}
@@ -167,20 +171,20 @@ const Form = ({
         />
       )}
 
-      {pageNumber === 7 && (
+      {mainPage === FORM_STEPS.PREVIEWING && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackPage()} buttonText="EDIT" />
           <Button onClick={() => goNextPage()} buttonText="NEXT" />
         </div>
       )}
-      {pageNumber === 8 && (
+      {mainPage === FORM_STEPS.FINALIZE && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
           <Button onClick={() => goNextPage()} buttonText="SAVE" />
         </div>
       )}
-      {pageNumber === 9 && (
+      {mainPage === FORM_STEPS.DOWNLOAD && (
         <Download
           inputs={inputs}
           setInputs={setInputs}
