@@ -1,15 +1,14 @@
 import React from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 interface ProgressBarProps {
   percentage: number;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      margin: theme.spacing(1),
       borderRadius: 10,
       backgroundColor: '#FFFFFF',
       '& .MuiLinearProgress-bar': {
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     box: {
-      width: '100%',
+      width: '90%',
     },
   })
 );
