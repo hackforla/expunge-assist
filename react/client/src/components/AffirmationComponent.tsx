@@ -1,7 +1,7 @@
 import React from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
-import AffirmationIllustration from 'assets/affirmation-illustration.svg';
+import AffirmationImage from 'assets/affirmation-img.svg';
 import Button from './Button';
 
 const useStyles = makeStyles<Theme, StyleProps>(() =>
@@ -22,8 +22,43 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      width: '375px',
-      margin: '0 auto',
+      justifyContent: 'center',
+      maxWidth: '375px',
+      margin: '5rem auto 0',
+      position: 'relative',
+    },
+    cropIllustration: {
+      overflow: 'hidden',
+      position: 'absolute',
+      width: '348px',
+    },
+    illustration: {
+      width: '600px',
+      position: 'relative',
+      left: '-111px',
+      top: '-12px',
+    },
+    messageContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      background: '#f7ebff',
+      height: '350px',
+      position: 'relative',
+      top: '277px',
+      paddingTop: '20px',
+      borderTopRightRadius: '64px',
+      minWidth: '375px',
+      padding: '24px',
+      '&:before': {
+        content: '""',
+        position: 'absolute',
+        top: '-40px',
+        left: '8px',
+        height: '40px',
+        width: '40px',
+        borderBottomLeftRadius: '200px',
+        boxShadow: '0 20px 0 0 #f7ebff',
+      },
     },
   })
 );
@@ -53,27 +88,30 @@ const AffirmationComponent = ({
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <img
-          src={AffirmationIllustration}
-          alt="affirmation illustration"
-          style={{ height: 375 }}
-          className="adjacent-mar-top"
-        />
-
-        <div className="page-title adjacent-mar-top">{titleText}</div>
-        <div className="adjacent-mar-top">{description}</div>
-
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-          }}
-          className="adjacent-mar-top align-right-sm"
-        >
-          <Button
-            onClick={() => onChangeAffirmation({ isActive: false })}
-            buttonText={buttonText}
+        <div className={classes.cropIllustration}>
+          <img
+            src={AffirmationImage}
+            alt="affirmation illustration"
+            className={`${classes.illustration} adjacent-mar-top`}
           />
+        </div>
+
+        <div className={classes.messageContainer}>
+          <div className="page-title adjacent-mar-top">{titleText}</div>
+          <div className="adjacent-mar-top">{description}</div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+            }}
+            className="adjacent-mar-top align-right-sm"
+          >
+            <Button
+              onClick={() => onChangeAffirmation({ isActive: false })}
+              buttonText={buttonText}
+              hasArrow
+            />
+          </div>
         </div>
       </div>
     </div>

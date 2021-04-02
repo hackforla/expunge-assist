@@ -20,6 +20,8 @@ import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
 
+import { useTranslation } from 'react-i18next';
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -42,12 +44,31 @@ const theme = createMuiTheme({
 
 const App: React.FC = () => {
   const history = useHistory();
+  const { i18n } = useTranslation();
+
+  const handleClick = (language: any) => {
+    i18n.changeLanguage(language);
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
+            {/* <nav
+              style={{
+                width: '100%',
+                padding: '2rem 0',
+                backgroundColor: 'gray',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              <button onClick={() => handleClick('en')}>ENG</button>
+              <button onClick={() => handleClick('esp')}>ESP</button>
+              <button onClick={() => handleClick('ko')}>KO</button>
+            </nav> */}
+
             <Switch>
               <Route
                 exact
