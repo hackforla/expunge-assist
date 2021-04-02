@@ -6,9 +6,13 @@ import Button from 'components/Button';
 
 interface ComponentProps {
   goNextPage: () => void;
+  onChangeAffirmation: (newState: object) => void;
 }
 
-const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
+const BeforeYouBegin = ({
+  goNextPage,
+  onChangeAffirmation,
+}: ComponentProps) => {
   const utilityClasses = useUtilityStyles({});
   const { t } = useTranslation();
 
@@ -24,6 +28,7 @@ const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
       <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
         <Button
           onClick={() => {
+            onChangeAffirmation({ isActive: true });
             goNextPage();
           }}
           buttonText="I understand"
