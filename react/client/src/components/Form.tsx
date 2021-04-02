@@ -5,6 +5,8 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
+import { FORM_STEPS } from 'contexts/RoutingProps';
+
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import UnemployedStep from 'flows/UnemployedStep';
@@ -33,6 +35,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface FormProps {
   pageNumber: number;
+  mainPage: string;
+  substep?: string;
   goNextPage: () => void;
   goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
@@ -40,6 +44,8 @@ interface FormProps {
 
 const Form = ({
   pageNumber,
+  mainPage,
+  substep,
   goNextPage,
   goBackPage,
   onChangeAffirmation,
