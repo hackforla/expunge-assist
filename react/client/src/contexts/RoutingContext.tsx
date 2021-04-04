@@ -35,7 +35,7 @@ const RoutingContextProvider = ({
   const goBackPage = () => {
     const prevStepIdx = Math.max(currentStepIdx - 1, 0);
     setCurrentStepIdx(prevStepIdx);
-    setFormSteps(formSteps.slice(0, prevStepIdx));
+    setFormSteps(formSteps.slice(0, prevStepIdx + 1));
     navigateToFormPage();
   };
 
