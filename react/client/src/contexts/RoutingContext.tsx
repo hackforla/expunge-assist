@@ -43,10 +43,19 @@ const RoutingContextProvider = ({
     const pathMatcher = pathname.match(/(?<=\/form\/)\w*/) || [];
     const stepFromPathName = pathMatcher[0] || '';
 
+    // redirect back to the first page when accessing another random page
+    // (in the future we would first check what data is currently cached before
+    // deciding if we redirect or not)
     if (stepFromPathName !== PAGES[FORM_STEPS.NONE] && formSteps.length <= 1) {
       // setCurrentStepIdx(0);
       // setFormSteps([FORM_STEPS.NONE]);
       // navigateToFormPage(PAGES[FORM_STEPS.NONE]);
+    }
+
+    // when going back to home page, clear out steps
+    if (pathname === '/' && formSteps.length > 1) {
+      setCurrentStepIdx(0);
+      setFormSteps([FORM_STEPS.NONE]);
     }
   }, [pathname]);
 

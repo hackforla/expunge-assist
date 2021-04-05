@@ -1,3 +1,9 @@
+
+/**
+ * this constant that references a step in the form
+ *
+ * @type FORM_STEP
+ */
 export const FORM_STEPS = {
   NONE: 'FORM_STEPS.NONE',
   BEFORE_YOU_BEGIN: 'FORM_STEPS.BEFORE_YOU_BEGIN',
@@ -19,6 +25,11 @@ export const FORM_STEPS = {
   DOWNLOAD: 'FORM_STEPS.DOWNLOAD',
 };
 
+/**
+ * map of a constant to the page url
+ *
+ * @type PAGES
+ */
 export const PAGES = {
   [FORM_STEPS.NONE]: '',
   [FORM_STEPS.BEFORE_YOU_BEGIN]: 'start',
@@ -36,6 +47,11 @@ export const PAGES = {
   [FORM_STEPS.DOWNLOAD]: 'download',
 }
 
+/**
+ * map of PAGES to a FORM_STEP
+ *
+ * @type URL
+ */
 export const URL : { [key: string]: string} = {};
 Object.keys(PAGES).forEach((pageKey) => {
   const pageValue = PAGES[pageKey];
