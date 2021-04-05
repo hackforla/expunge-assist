@@ -26,16 +26,17 @@ const RoutingContextProvider = ({
     const nextStep = getNextFormStep(currentStep);
     setCurrentStepIdx(currentStepIdx + 1);
     setFormSteps([...formSteps, nextStep]);
-    const currentPageName = PAGES[currentStep];
-    navigateToFormPage(currentPageName);
+    const nextPageUrl = PAGES[nextStep];
+    navigateToFormPage(nextPageUrl);
   };
 
   const goBackPage = () => {
     const prevStepIdx = Math.max(currentStepIdx - 1, 0);
+    const prevStep = formSteps[prevStepIdx];
     setCurrentStepIdx(prevStepIdx);
     setFormSteps(formSteps.slice(0, prevStepIdx + 1));
-    const currentPageName = PAGES[currentStep];
-    navigateToFormPage(currentPageName);
+    const prevPageUrl = PAGES[prevStep];
+    navigateToFormPage(prevPageUrl);
   };
 
   // handle arriving directly from a url
@@ -53,7 +54,7 @@ const RoutingContextProvider = ({
     }
 
     // when going back to home page, clear out steps
-    if (pathname === '/' && formSteps.length > 1) {
+    if ((pathname === '/' || pathname === '/form') && formSteps.length > 1) {
       setCurrentStepIdx(0);
       setFormSteps([FORM_STEPS.NONE]);
     }

@@ -1,4 +1,3 @@
-
 /**
  * this constant that references a step in the form
  *
@@ -45,18 +44,18 @@ export const PAGES = {
   [FORM_STEPS.FINALIZE]: 'finalize',
   [FORM_STEPS.EDITING]: 'edit',
   [FORM_STEPS.DOWNLOAD]: 'download',
-}
+};
 
 /**
  * map of PAGES to a FORM_STEP
  *
  * @type URL
  */
-export const URL : { [key: string]: string} = {};
+export const URL: { [key: string]: string } = {};
 Object.keys(PAGES).forEach((pageKey) => {
   const pageValue = PAGES[pageKey];
   URL[pageValue] = pageKey;
-})
+});
 
 /**
  * @param {FORM_STEPS} step
@@ -102,4 +101,3 @@ export function getNextFormStep(step: string) {
       return FORM_STEPS.NONE;
   }
 }
-
