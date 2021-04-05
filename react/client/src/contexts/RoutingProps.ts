@@ -36,6 +36,12 @@ export const PAGES = {
   [FORM_STEPS.DOWNLOAD]: 'download',
 }
 
+export const URL : { [key: string]: string} = {};
+Object.keys(PAGES).forEach((pageKey) => {
+  const pageValue = PAGES[pageKey];
+  URL[pageValue] = pageKey;
+})
+
 /**
  * @param {FORM_STEPS} step
  * @returns {FORM_STEPS}

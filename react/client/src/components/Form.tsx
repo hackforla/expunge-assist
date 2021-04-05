@@ -118,8 +118,6 @@ const Form = ({
     }
   }, [pageNumber]);
 
-  console.log('mainPage', mainPage, mainPage === FORM_STEPS.BEFORE_YOU_BEGIN);
-
   return (
     <div className={`${classes.root} content-page`}>
       {mainPage === FORM_STEPS.BEFORE_YOU_BEGIN && (

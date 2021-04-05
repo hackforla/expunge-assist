@@ -57,8 +57,6 @@ const PageContainer = ({ match }: PageProps) => {
     }
   }, [match]);
 
-  console.log('mainPage', mainPage)
-
   return (
     <div className={`${classes.root} page-container`}>
       <AffirmationComponent
