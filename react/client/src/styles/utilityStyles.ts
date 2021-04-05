@@ -16,6 +16,7 @@ const useUtilityStyles = makeStyles((theme) =>
       maxWidth: '850px',
       marginLeft: 'auto',
       marginRight: 'auto',
+      marginTop: '49px',
 
       [theme.breakpoints.down('xs')]: {
         marginLeft: 'initial',
