@@ -133,7 +133,7 @@ const Form = ({
         />
       )}
 
-      {mainPage === FORM_STEPS.INVOLVEMENT_GENERIC && (
+      {mainPage === FORM_STEPS.INVOLVEMENT.INITIAL && (
         <InvolvementStep
           inputs={inputs}
           setInputs={setInputs}
