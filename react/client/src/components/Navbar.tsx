@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme: Theme) =>
           fontSize: '1rem',
         },
       },
+      [theme.breakpoints.down('sm')]: {
+        position: 'relative',
+        bottom: '17px',
+      },
     },
   })
 );
