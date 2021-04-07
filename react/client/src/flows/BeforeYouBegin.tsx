@@ -18,7 +18,10 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
+const BeforeYouBegin = ({
+  goNextPage,
+  onChangeAffirmation,
+}: ComponentProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
   const { t } = useTranslation();
