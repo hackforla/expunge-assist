@@ -6,7 +6,7 @@ import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
 import PopUp from 'components/PopUp';
 
-const Step1 = ({ inputs, setInputs, goNextPage, goBackPage }: StepProps) => {
+const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
   const [step1Inputs, setStep1Inputs] = useState({
     fullName: '',
     age: '',
