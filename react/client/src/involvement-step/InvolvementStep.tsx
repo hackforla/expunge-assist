@@ -67,7 +67,7 @@ const InvolvementStep = ({
       />
 
       <Button onClick={() => goBackPage()} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goNextPage()} buttonText="NEXT" />
     </form>
   );
 };

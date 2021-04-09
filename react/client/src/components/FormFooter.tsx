@@ -9,8 +9,9 @@ const useStyles = makeStyles<Theme>(() =>
   createStyles({
     root: {
       display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
     },
     flexEnd: {
       display: 'flex',
@@ -44,7 +45,6 @@ const FormFooter = ({
       <Button
         onClick={() => goBackPage()}
         buttonText="BACK"
-        theme="transparent"
       />
       {!isFormComplete && (
         <PopUp
