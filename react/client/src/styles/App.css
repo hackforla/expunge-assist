@@ -31,8 +31,7 @@ h2 {
   }
 }
 
-.app-header + .content-page,
-.page-title + .adjacent-mar-top {
+.app-header + .page-title + .adjacent-mar-top {
   margin-top: 15px;
 }
 

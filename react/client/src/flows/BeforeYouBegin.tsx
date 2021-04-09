@@ -1,4 +1,6 @@
 import React from 'react';
+import { makeStyles, createStyles } from '@material-ui/core';
+
 import useUtilityStyles from 'styles/utilityStyles';
 import { useTranslation } from 'react-i18next';
 
@@ -8,16 +10,27 @@ interface ComponentProps {
   goNextPage: () => void;
 }
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    content: {
+      margin: '23px 0 50px',
+    },
+  })
+);
 const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
+  const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
   const { t } = useTranslation();
 
   return (
-    <>
-      <div className="adjacent-mar-top" style={{ fontWeight: 500 }}>
+    <div className={utilityClasses.contentContainer}>
+      <div
+        className="adjacent-mar-top"
+        style={{ fontWeight: 500, fontSize: '20px' }}
+      >
         {t('disclaimer.header')}
       </div>
-      <div className="adjacent-mar-top" style={{ whiteSpace: 'pre-line' }}>
+      <div className={classes.content} style={{ whiteSpace: 'pre-line' }}>
         {t('disclaimer.text')}
       </div>
 
@@ -28,7 +41,7 @@ const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
           hasArrow
         />
       </div>
-    </>
+    </div>
   );
 };
 
