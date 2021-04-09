@@ -35,7 +35,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://hackforla.github.io/record-clearance",
+  "homepage": "https://hackforla.github.io/expunge-assist",
   "eslintConfig": {
     "extends": [
       "react-app",
