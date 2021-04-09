@@ -95,7 +95,7 @@ const UnemployedStep = ({ inputs, setInputs, goBackPage, goNextPage }: StepProps
         and be more involved in your community?
       </p>
       <Button onClick={() => goBackPage()} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goNextPage()} buttonText="NEXT" />
     </div>
   );
 };
