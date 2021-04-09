@@ -61,7 +61,9 @@ const Header = ({ pageNumber }: HeaderProps) => {
 
   return (
     <div className={`${classes.root} app-header`}>
-      <img src={icon} alt="" />
+      <Link to="/">
+        <img src={icon} alt="" />
+      </Link>
       <Link
         to="/"
         style={{
