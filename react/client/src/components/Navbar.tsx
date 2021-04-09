@@ -6,14 +6,13 @@ import hackForLALogo from '../assets/hackForLALogo.svg';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      position: 'absolute',
-      bottom: '0px',
       width: '100%',
       background: 'none',
       color: 'white',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      flexShrink: 0,
       '& img, span': {
         display: 'none',
         margin: '0 20px',
