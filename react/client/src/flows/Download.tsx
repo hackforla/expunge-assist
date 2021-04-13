@@ -1,7 +1,7 @@
 import React from 'react';
 import jsPDF from 'jspdf';
 
-const Download = ({ inputs, goBackPage }: StepProps) => {
+const Download = ({ goBackPage }: StepProps) => {
   const savePDF = () => {
     const doc = new jsPDF('p', 'mm', 'letter');
     doc.setFontSize(12);
