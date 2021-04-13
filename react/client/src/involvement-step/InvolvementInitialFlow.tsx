@@ -5,7 +5,10 @@ import Checkbox from 'components/Checkbox';
 
 import { ICheckboxFlowProps } from 'involvement-step/InvolvementCommon';
 
-const InvolvementInitialFlow = ({ state, onChangeState }: ICheckboxFlowProps) => {
+const InvolvementInitialFlow = ({
+  state,
+  onChangeState,
+}: ICheckboxFlowProps) => {
   const classes = useStyles();
 
   return (

@@ -55,19 +55,20 @@ const App: React.FC = () => {
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
-            {/* <nav
+            <nav
               style={{
                 width: '100%',
                 padding: '2rem 0',
                 backgroundColor: 'gray',
-                display: 'flex',
+                display: 'none',
+                // display: 'flex',
                 justifyContent: 'center',
               }}
             >
               <button onClick={() => handleClick('en')}>ENG</button>
               <button onClick={() => handleClick('esp')}>ESP</button>
               <button onClick={() => handleClick('ko')}>KO</button>
-            </nav> */}
+            </nav>
 
             <Switch>
               <Route
