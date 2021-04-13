@@ -1,5 +1,3 @@
-// CI/CD test 003
-
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 
