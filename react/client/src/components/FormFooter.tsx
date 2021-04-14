@@ -42,10 +42,7 @@ const FormFooter = ({
     </div>
   ) : (
     <div className={classes.root}>
-      <Button
-        onClick={() => goBackPage()}
-        buttonText="BACK"
-      />
+      <Button onClick={() => goBackPage()} buttonText="BACK" />
       {!isFormComplete && (
         <PopUp
           title="Some advice for your personal statement"
