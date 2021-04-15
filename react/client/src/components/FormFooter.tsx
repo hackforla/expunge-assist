@@ -9,8 +9,9 @@ const useStyles = makeStyles<Theme>(() =>
   createStyles({
     root: {
       display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
     },
     flexEnd: {
       display: 'flex',
@@ -41,11 +42,7 @@ const FormFooter = ({
     </div>
   ) : (
     <div className={classes.root}>
-      <Button
-        onClick={() => goBackPage()}
-        buttonText="BACK"
-        theme="transparent"
-      />
+      <Button onClick={() => goBackPage()} buttonText="BACK" />
       {!isFormComplete && (
         <PopUp
           title="Some advice for your personal statement"

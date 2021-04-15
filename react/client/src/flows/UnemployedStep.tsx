@@ -100,7 +100,7 @@ const UnemployedStep = ({
         and be more involved in your community?
       </p>
       <Button onClick={() => goBackPage()} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goNextPage()} buttonText="NEXT" />
     </div>
   );
 };
