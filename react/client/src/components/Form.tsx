@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface FormProps {
   mainPage: string;
-  substep?: string;
   goNextPage: () => void;
   goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
@@ -43,7 +42,6 @@ interface FormProps {
 
 const Form = ({
   mainPage,
-  substep,
   goNextPage,
   goBackPage,
   onChangeAffirmation,

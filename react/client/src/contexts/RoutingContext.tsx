@@ -41,7 +41,7 @@ const RoutingContextProvider = ({
 
   // handle arriving directly from a url
   useEffect(() => {
-    const pathMatcher = pathname.match(/(?<=\/form\/)\w*/) || [];
+    const pathMatcher = pathname.match(/(?<=\/form\/).*/) || [];
     const stepFromPathName = pathMatcher[0] || '';
 
     // redirect back to the first page when accessing another random page
