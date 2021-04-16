@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
+import { FORM_STEPS } from 'contexts/RoutingProps';
+
 import ProgressBar from 'components/ProgressBar';
 
 const useStyles = makeStyles(() =>
@@ -25,42 +27,42 @@ const useStyles = makeStyles(() =>
 );
 
 interface Props {
-  pageNumber: number;
+  mainPage: string;
 }
 
-const FormHeader: React.FC<Props> = ({ pageNumber }) => {
+const FormHeader: React.FC<Props> = ({ mainPage }) => {
   const classes = useStyles();
   let showFormHeader: boolean;
-  let formStep: number;
   let percentageComplete: number;
+  let formStep = 0;
 
-  if (pageNumber === 2) {
+  if (mainPage === FORM_STEPS.INTRODUCTION) {
     formStep = 1;
     showFormHeader = true;
     percentageComplete = 20;
-  } else if (pageNumber === 3) {
+  } else if (mainPage === FORM_STEPS.INVOLVEMENT.INITIAL) {
     formStep = 2;
     showFormHeader = true;
     percentageComplete = 40;
-  } else if (pageNumber === 5) {
+  } else if (mainPage === FORM_STEPS.INVOLVEMENT.UNEMPLOYED) {
     formStep = 3;
     showFormHeader = true;
-    percentageComplete = 60;
-  } else if (pageNumber === 6) {
+    percentageComplete = 40;
+  } else if (mainPage === FORM_STEPS.GOALS) {
     formStep = 5;
     showFormHeader = true;
-    percentageComplete = 20;
-  } else if (pageNumber === 7) {
+    percentageComplete = 60;
+  } else if (mainPage === FORM_STEPS.WHY) {
     formStep = 6;
     showFormHeader = true;
-    percentageComplete = 20;
-  } else if (pageNumber === 13) {
+    percentageComplete = 80;
+  } else if (mainPage === FORM_STEPS.FINALIZE) {
     formStep = 6;
     showFormHeader = true;
-    percentageComplete = 20;
+    percentageComplete = 100;
   } else {
     formStep = 0;
-    percentageComplete = 20;
+    percentageComplete = 0;
     showFormHeader = false;
   }
 
@@ -70,12 +72,27 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
 
   return (
     <div className={classes.root}>
-      {formStep === 1 && <h2>Introduce Yourself!</h2>}
-      {formStep === 2 && <h2>Life Changes</h2>}
-      {formStep === 3 && <h2>Involvement</h2>}
-      {formStep === 4 && <h2>Goals</h2>}
-      {formStep === 5 && <h2>Why</h2>}
-      {formStep === 6 && <h2>My Personal Statement</h2>}
+      {mainPage === FORM_STEPS.INTRODUCTION && <h2>Introduce Yourself!</h2>}
+      {mainPage === FORM_STEPS.INVOLVEMENT.INITIAL && <h2>Involvement</h2>}
+      {mainPage === FORM_STEPS.INVOLVEMENT.JOB && <h2>Involvement: Job</h2>}
+      {mainPage === FORM_STEPS.INVOLVEMENT.COMMUNITY_SERVICE && (
+        <h2>Involvement: Community Service</h2>
+      )}
+      {mainPage === FORM_STEPS.INVOLVEMENT.RECOVERY && (
+        <h2>Involvement: Recovery</h2>
+      )}
+      {mainPage === FORM_STEPS.INVOLVEMENT.SCHOOL && (
+        <h2>Involvement: School</h2>
+      )}
+      {mainPage === FORM_STEPS.INVOLVEMENT.PARENTING && (
+        <h2>Involvement: Parenting</h2>
+      )}
+      {mainPage === FORM_STEPS.INVOLVEMENT.UNEMPLOYED && (
+        <h2>Involvement: Unemployment</h2>
+      )}
+      {mainPage === FORM_STEPS.GOALS && <h2>Goals</h2>}
+      {mainPage === FORM_STEPS.WHY && <h2>Why</h2>}
+      {mainPage === FORM_STEPS.FINALIZE && <h2>My Personal Statement</h2>}
       <ProgressBar percentage={percentageComplete} />
       {formStep < 6 && <p>Step {formStep} of 5</p>}
       {formStep === 6 && <p>Completed</p>}
