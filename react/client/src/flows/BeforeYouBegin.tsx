@@ -8,6 +8,7 @@ import Button from 'components/Button';
 
 interface ComponentProps {
   goNextPage: () => void;
+  onChangeAffirmation: (newState: object) => void;
 }
 
 const useStyles = makeStyles(() =>
@@ -17,7 +18,10 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
+const BeforeYouBegin = ({
+  goNextPage,
+  onChangeAffirmation,
+}: ComponentProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
   const { t } = useTranslation();
@@ -36,7 +40,10 @@ const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
 
       <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
         <Button
-          onClick={() => goNextPage()}
+          onClick={() => {
+            onChangeAffirmation({ isActive: true });
+            goNextPage();
+          }}
           buttonText="I understand"
           hasArrow
         />

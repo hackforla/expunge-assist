@@ -49,13 +49,56 @@ const PageContainer = ({ match }: PageProps) => {
 
   useEffect(() => {
     // handle closing the affirmation on home page
-    if (match.path === '/') {
-      updateAffirmationData({ isActive: false });
-    }
+    if (match.path === '/') updateAffirmationData({ isActive: false });
   }, [match]);
+
+  // todo: move text into a json for localization
+  useEffect(() => {
+    switch (pageNumber) {
+      case 2:
+        updateAffirmationData({
+          isActive: true,
+          titleText: 'Welcome!',
+          buttonText: 'Begin',
+          description: 'This is a tool to generate a personal statement.',
+        });
+        break;
+      case 3:
+        updateAffirmationData({
+          isActive: true,
+          titleText: 'Congrats!',
+          buttonText: 'Next',
+          description:
+            'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
+        });
+        break;
+      case 5:
+        updateAffirmationData({
+          isActive: true,
+          titleText: 'Hooray!',
+          buttonText: 'Next',
+          description:
+            'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
+        });
+        break;
+      case 6:
+        updateAffirmationData({
+          isActive: true,
+          titleText: 'Great Job!',
+          buttonText: 'Next',
+          description:
+            'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
+        });
+        break;
+      default:
+        break;
+    }
+  }, [pageNumber]);
 
   return (
     <div className={`${classes.root} page-container`}>
+      <Header pageNumber={pageNumber} />
+
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
         titleText={affirmationData.titleText}
@@ -64,19 +107,19 @@ const PageContainer = ({ match }: PageProps) => {
         onChangeAffirmation={updateAffirmationData}
       />
 
-      <Header pageNumber={pageNumber} />
-
-      {!isLandingPage && <FormHeader pageNumber={pageNumber} />}
-
       {isLandingPage && <Landing goNextPage={goNextPage} />}
 
-      {!isLandingPage && (
-        <Form
-          pageNumber={pageNumber}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-          onChangeAffirmation={updateAffirmationData}
-        />
+      {!affirmationData.isActive && !isLandingPage && (
+        <>
+          <FormHeader pageNumber={pageNumber} />
+          <Form
+            pageNumber={pageNumber}
+            goNextPage={goNextPage}
+            goBackPage={goBackPage}
+            onChangeAffirmation={updateAffirmationData}
+            affirmationIsActive={affirmationData.isActive}
+          />
+        </>
       )}
     </div>
   );

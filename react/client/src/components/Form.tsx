@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
@@ -36,6 +36,7 @@ interface FormProps {
   goNextPage: () => void;
   goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
+  affirmationIsActive: boolean;
 }
 
 const Form = ({
@@ -43,6 +44,7 @@ const Form = ({
   goNextPage,
   goBackPage,
   onChangeAffirmation,
+  affirmationIsActive,
 }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
@@ -69,120 +71,92 @@ const Form = ({
     pdf: undefined,
   });
 
-  // todo: move text into a json for localization
-  useEffect(() => {
-    switch (pageNumber) {
-      case 2:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Welcome!',
-          buttonText: 'Begin',
-          description: 'This is a tool to generate a personal statement.',
-        });
-        break;
-      case 4:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Congrats!',
-          buttonText: 'Next',
-          description:
-            'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
-        });
-        break;
-      case 5:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Hooray!',
-          buttonText: 'Next',
-          description:
-            'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
-        });
-        break;
-      case 6:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Great Job!',
-          buttonText: 'Next',
-          description:
-            'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
-        });
-        break;
-      default:
-        break;
-    }
-  }, [pageNumber]);
-
   return (
-    <div className={`${classes.root} content-page`}>
-      {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
+    <>
+      {affirmationIsActive ? (
+        <></>
+      ) : (
+        <div className={`${classes.root} content-page`}>
+          {pageNumber === 1 && (
+            <BeforeYouBegin
+              goNextPage={goNextPage}
+              onChangeAffirmation={onChangeAffirmation}
+            />
+          )}
 
-      {pageNumber === 2 && (
-        <IntroductionStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-        />
-      )}
+          {pageNumber === 2 && (
+            <IntroductionStep
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
 
-      {pageNumber === 3 && (
-        <InvolvementStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-        />
-      )}
+          {pageNumber === 3 && (
+            <InvolvementStep
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
 
-      {pageNumber === 4 && (
-        <UnemployedStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-        />
-      )}
+          {pageNumber === 4 && (
+            <UnemployedStep
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
 
-      {pageNumber === 5 && (
-        <GoalsStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-        />
-      )}
+          {pageNumber === 5 && (
+            <GoalsStep
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
 
-      {pageNumber === 6 && (
-        <WhyStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-        />
-      )}
+          {pageNumber === 6 && (
+            <WhyStep
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
 
-      {pageNumber === 7 && (
-        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
-          <p>Previewing Final Statement</p>
-          <Button onClick={() => goBackPage()} buttonText="EDIT" />
-          <Button onClick={() => goNextPage()} buttonText="NEXT" />
+          {pageNumber === 7 && (
+            <div
+              className={`${utilityClasses.buttonContainer} adjacent-mar-top`}
+            >
+              <p>Previewing Final Statement</p>
+              <Button onClick={() => goBackPage()} buttonText="EDIT" />
+              <Button onClick={() => goNextPage()} buttonText="NEXT" />
+            </div>
+          )}
+          {pageNumber === 8 && (
+            <div
+              className={`${utilityClasses.buttonContainer} adjacent-mar-top`}
+            >
+              <p>Editing</p>
+              <Button onClick={() => goNextPage()} buttonText="SAVE" />
+            </div>
+          )}
+          {pageNumber === 9 && (
+            <Download
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
         </div>
       )}
-      {pageNumber === 8 && (
-        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
-          <p>Editing</p>
-          <Button onClick={() => goNextPage()} buttonText="SAVE" />
-        </div>
-      )}
-      {pageNumber === 9 && (
-        <Download
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-        />
-      )}
-    </div>
+    </>
   );
 };
 
