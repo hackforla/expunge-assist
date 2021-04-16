@@ -5,7 +5,7 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
-import { FORM_STEPS } from 'contexts/RoutingProps';
+import { PAGE_ENUMS } from 'contexts/RoutingProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
@@ -34,14 +34,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface FormProps {
-  mainPage: string;
+  pageEnum: string;
   goNextPage: () => void;
   goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
 }
 
 const Form = ({
-  mainPage,
+  pageEnum,
   goNextPage,
   goBackPage,
   onChangeAffirmation,
@@ -72,16 +72,16 @@ const Form = ({
   });
 
   const isAnInvolvementPage =
-    mainPage === FORM_STEPS.INVOLVEMENT.JOB ||
-    mainPage === FORM_STEPS.INVOLVEMENT.COMMUNITY_SERVICE ||
-    mainPage === FORM_STEPS.INVOLVEMENT.RECOVERY ||
-    mainPage === FORM_STEPS.INVOLVEMENT.SCHOOL ||
-    mainPage === FORM_STEPS.INVOLVEMENT.PARENTING;
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING;
 
   // todo: move text into a json for localization
   useEffect(() => {
-    switch (mainPage) {
-      case FORM_STEPS.BEFORE_YOU_BEGIN:
+    switch (pageEnum) {
+      case PAGE_ENUMS.BEFORE_YOU_BEGIN:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Welcome!',
@@ -89,7 +89,7 @@ const Form = ({
           description: 'This is a tool to generate a personal statement.',
         });
         break;
-      case FORM_STEPS.INTRODUCTION:
+      case PAGE_ENUMS.INTRODUCTION:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Congrats!',
@@ -98,7 +98,7 @@ const Form = ({
             'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
         });
         break;
-      case FORM_STEPS.INVOLVEMENT.INITIAL:
+      case PAGE_ENUMS.INVOLVEMENT.INITIAL:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Hooray!',
@@ -107,7 +107,7 @@ const Form = ({
             'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
         });
         break;
-      case FORM_STEPS.GOALS:
+      case PAGE_ENUMS.GOALS:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Great Job!',
@@ -119,15 +119,15 @@ const Form = ({
       default:
         break;
     }
-  }, [mainPage]);
+  }, [pageEnum]);
 
   return (
     <div className={`${classes.root} content-page`}>
-      {mainPage === FORM_STEPS.BEFORE_YOU_BEGIN && (
+      {pageEnum === PAGE_ENUMS.BEFORE_YOU_BEGIN && (
         <BeforeYouBegin goNextPage={goNextPage} />
       )}
 
-      {mainPage === FORM_STEPS.INTRODUCTION && (
+      {pageEnum === PAGE_ENUMS.INTRODUCTION && (
         <IntroductionStep
           inputs={inputs}
           setInputs={setInputs}
@@ -136,7 +136,7 @@ const Form = ({
         />
       )}
 
-      {mainPage === FORM_STEPS.INVOLVEMENT.INITIAL && (
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
         <InvolvementStep
           inputs={inputs}
           setInputs={setInputs}
@@ -155,7 +155,7 @@ const Form = ({
         />
       )}
 
-      {mainPage === FORM_STEPS.INVOLVEMENT.UNEMPLOYED && (
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
         <UnemployedStep
           inputs={inputs}
           setInputs={setInputs}
@@ -164,7 +164,7 @@ const Form = ({
         />
       )}
 
-      {mainPage === FORM_STEPS.GOALS && (
+      {pageEnum === PAGE_ENUMS.GOALS && (
         <GoalsStep
           inputs={inputs}
           setInputs={setInputs}
@@ -173,7 +173,7 @@ const Form = ({
         />
       )}
 
-      {mainPage === FORM_STEPS.WHY && (
+      {pageEnum === PAGE_ENUMS.WHY && (
         <WhyStep
           inputs={inputs}
           setInputs={setInputs}
@@ -182,20 +182,20 @@ const Form = ({
         />
       )}
 
-      {mainPage === FORM_STEPS.PREVIEWING && (
+      {pageEnum === PAGE_ENUMS.PREVIEWING && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackPage()} buttonText="EDIT" />
           <Button onClick={() => goNextPage()} buttonText="NEXT" />
         </div>
       )}
-      {mainPage === FORM_STEPS.FINALIZE && (
+      {pageEnum === PAGE_ENUMS.FINALIZE && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
           <Button onClick={() => goNextPage()} buttonText="SAVE" />
         </div>
       )}
-      {mainPage === FORM_STEPS.DOWNLOAD && (
+      {pageEnum === PAGE_ENUMS.DOWNLOAD && (
         <Download
           inputs={inputs}
           setInputs={setInputs}

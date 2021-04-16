@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { FORM_STEPS, PAGES, getNextFormStep } from 'contexts/RoutingProps';
+import { PAGE_ENUMS, PAGES, getNextFormStep } from 'contexts/RoutingProps';
 
 interface RoutingProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ const RoutingContextProvider = ({
   children,
   history,
 }: RoutingProviderProps) => {
-  const [formSteps, setFormSteps] = useState([FORM_STEPS.NONE]);
+  const [formSteps, setFormSteps] = useState([PAGE_ENUMS.NONE]);
   const [currentStepIdx, setCurrentStepIdx] = useState(0);
   const currentStep = formSteps[currentStepIdx];
   const { pathname } = history.location;
@@ -47,16 +47,16 @@ const RoutingContextProvider = ({
     // redirect back to the first page when accessing another random page
     // (in the future we would first check what data is currently cached before
     // deciding if we redirect or not)
-    if (stepFromPathName !== PAGES[FORM_STEPS.NONE] && formSteps.length <= 1) {
+    if (stepFromPathName !== PAGES[PAGE_ENUMS.NONE] && formSteps.length <= 1) {
       // setCurrentStepIdx(0);
-      // setFormSteps([FORM_STEPS.NONE]);
-      // navigateToFormPage(PAGES[FORM_STEPS.NONE]);
+      // setFormSteps([PAGE_ENUMS.NONE]);
+      // navigateToFormPage(PAGES[PAGE_ENUMS.NONE]);
     }
 
     // when going back to home page, clear out steps
     if ((pathname === '/' || pathname === '/form') && formSteps.length > 1) {
       setCurrentStepIdx(0);
-      setFormSteps([FORM_STEPS.NONE]);
+      setFormSteps([PAGE_ENUMS.NONE]);
     }
   }, [pathname]);
 
@@ -65,7 +65,7 @@ const RoutingContextProvider = ({
       value={{
         goNextPage,
         goBackPage,
-        mainPage: currentStep,
+        pageEnum: currentStep,
       }}
     >
       {children}

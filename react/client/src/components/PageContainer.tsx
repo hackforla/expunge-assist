@@ -9,7 +9,7 @@ import Landing from 'pages/Landing';
 
 import { RoutingContext } from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
-import { FORM_STEPS } from 'contexts/RoutingProps';
+import { PAGE_ENUMS } from 'contexts/RoutingProps';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -41,9 +41,9 @@ const PageContainer = ({ match }: PageProps) => {
   const useRoutingContext = () => React.useContext(RoutingContext);
   const useAffirmationContext = () => React.useContext(AffirmationContext);
 
-  const { goNextPage, goBackPage, mainPage } = useRoutingContext();
+  const { goNextPage, goBackPage, pageEnum } = useRoutingContext();
   const { affirmationData, updateAffirmationData } = useAffirmationContext();
-  const isLandingPage = mainPage === FORM_STEPS.NONE;
+  const isLandingPage = pageEnum === PAGE_ENUMS.NONE;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);
@@ -65,15 +65,15 @@ const PageContainer = ({ match }: PageProps) => {
         onChangeAffirmation={updateAffirmationData}
       />
 
-      <Header isMainPage={mainPage === FORM_STEPS.NONE} />
+      <Header isMainPage={pageEnum === PAGE_ENUMS.NONE} />
 
-      {!isLandingPage && <FormHeader mainPage={mainPage} />}
+      {!isLandingPage && <FormHeader pageEnum={pageEnum} />}
 
       {isLandingPage && <Landing goNextPage={goNextPage} />}
 
       {!isLandingPage && (
         <Form
-          mainPage={mainPage}
+          pageEnum={pageEnum}
           goNextPage={goNextPage}
           goBackPage={goBackPage}
           onChangeAffirmation={updateAffirmationData}
