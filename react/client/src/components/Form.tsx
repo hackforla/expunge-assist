@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface FormProps {
-  pageNumber: number;
   mainPage: string;
   substep?: string;
   goNextPage: () => void;
@@ -43,7 +42,6 @@ interface FormProps {
 }
 
 const Form = ({
-  pageNumber,
   mainPage,
   substep,
   goNextPage,
@@ -75,10 +73,17 @@ const Form = ({
     pdf: undefined,
   });
 
+  const isAnInvolvementPage =
+    mainPage === FORM_STEPS.INVOLVEMENT.JOB ||
+    mainPage === FORM_STEPS.INVOLVEMENT.COMMUNITY_SERVICE ||
+    mainPage === FORM_STEPS.INVOLVEMENT.RECOVERY ||
+    mainPage === FORM_STEPS.INVOLVEMENT.SCHOOL ||
+    mainPage === FORM_STEPS.INVOLVEMENT.PARENTING;
+
   // todo: move text into a json for localization
   useEffect(() => {
-    switch (pageNumber) {
-      case 2:
+    switch (mainPage) {
+      case FORM_STEPS.BEFORE_YOU_BEGIN:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Welcome!',
@@ -86,7 +91,7 @@ const Form = ({
           description: 'This is a tool to generate a personal statement.',
         });
         break;
-      case 4:
+      case FORM_STEPS.INTRODUCTION:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Congrats!',
@@ -95,7 +100,7 @@ const Form = ({
             'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
         });
         break;
-      case 5:
+      case FORM_STEPS.INVOLVEMENT.INITIAL:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Hooray!',
@@ -104,7 +109,7 @@ const Form = ({
             'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
         });
         break;
-      case 6:
+      case FORM_STEPS.GOALS:
         onChangeAffirmation({
           isActive: true,
           titleText: 'Great Job!',
@@ -116,7 +121,7 @@ const Form = ({
       default:
         break;
     }
-  }, [pageNumber]);
+  }, [mainPage]);
 
   return (
     <div className={`${classes.root} content-page`}>
@@ -134,6 +139,16 @@ const Form = ({
       )}
 
       {mainPage === FORM_STEPS.INVOLVEMENT.INITIAL && (
+        <InvolvementStep
+          inputs={inputs}
+          setInputs={setInputs}
+          goNextPage={goNextPage}
+          goBackPage={goBackPage}
+        />
+      )}
+
+      {/* temporary, replace with appropriate forms */}
+      {isAnInvolvementPage && (
         <InvolvementStep
           inputs={inputs}
           setInputs={setInputs}

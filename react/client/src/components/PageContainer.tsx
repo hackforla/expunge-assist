@@ -75,7 +75,6 @@ const PageContainer = ({ match }: PageProps) => {
 
       {!isLandingPage && (
         <Form
-          pageNumber={pageNumber}
           mainPage={mainPage}
           substep={substep}
           goNextPage={goNextPage}
