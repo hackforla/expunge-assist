@@ -77,6 +77,11 @@ export interface ICheckboxFlowProps {
 }
 
 export interface IJobFlowProps {
-  state: IInvolvementJobState;
-  onChangeState: (newState: object) => void;
+  setInputs: (value: any) => void;
+  inputs: userInputs;
+  goNextPage: () => void;
+  goBackPage: () => void;
+
+  // state: IInvolvementJobState;
+  // onChangeState: (newState: object) => void;
 }

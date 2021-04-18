@@ -1,20 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import Textarea from 'components/Textarea';
 
-import { IJobFlowProps } from 'involvement-step/InvolvementCommon';
+import { IJobFlowProps, IInvolvementJobState } from 'involvement-step/InvolvementCommon';
 
-const InvolvementJobFlow = ({ state, onChangeState }: IJobFlowProps) => {
+const InvolvementJobFlow = ({
+  inputs,
+  setInputs,
+  goNextPage,
+  goBackPage,
+}: IJobFlowProps) => {
   const classes = useStyles();
+  const [state, setState] = useState<IInvolvementJobState>({
+    companyName: '',
+    jobTitle: '',
+    jobDescription: '',
+  });
+
+  const updateFlowState = (changes: object) => {
+    setState({
+      ...state,
+      ...changes,
+    });
+  }
 
   return (
     <div className={classes.root}>
       <div className={classes.flexColumn}>
         What is the name of the company you work for?
         <Textarea
-          handleChange={() =>
-            onChangeState({ companyName: !state.companyName })
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            updateFlowState({ companyName: evt.target.value })
           }
           inputName="companyName"
           placeholder="Name of company"
@@ -27,7 +44,9 @@ const InvolvementJobFlow = ({ state, onChangeState }: IJobFlowProps) => {
       <div className={classes.flexColumn}>
         What is your current job title?
         <Textarea
-          handleChange={() => onChangeState({ jobTitle: !state.jobTitle })}
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            updateFlowState({ jobTitle: evt.target.value })
+          }
           inputName="jobTitle"
           placeholder="Job Title"
           multi={false}
@@ -40,8 +59,8 @@ const InvolvementJobFlow = ({ state, onChangeState }: IJobFlowProps) => {
         What do you do at this job? Why is this important to you? (2-3 sentences
         suggested)
         <Textarea
-          handleChange={() =>
-            onChangeState({ jobDescription: !state.jobDescription })
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            updateFlowState({ jobDescription: evt.target.value })
           }
           inputName="jobDescription"
           placeholder="I have had the chance to..."
