@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
+import Button from 'components/Button';
 import Textarea from 'components/Textarea';
 
-import { IJobFlowProps, IInvolvementJobState } from 'involvement-step/InvolvementCommon';
+import {
+  IJobFlowProps,
+  IInvolvementJobState,
+} from 'involvement-step/InvolvementCommon';
 
 const InvolvementJobFlow = ({
   inputs,
@@ -19,11 +23,13 @@ const InvolvementJobFlow = ({
   });
 
   const updateFlowState = (changes: object) => {
-    setState({
+    const newState = {
       ...state,
       ...changes,
-    });
-  }
+    };
+    setState(newState);
+    setInputs(inputs); // todo
+  };
 
   return (
     <div className={classes.root}>
@@ -69,6 +75,9 @@ const InvolvementJobFlow = ({
           defaultValue={state.jobDescription}
         />
       </div>
+
+      <Button onClick={() => goBackPage()} buttonText="BACK" />
+      <Button onClick={() => goNextPage()} buttonText="NEXT" />
     </div>
   );
 };
