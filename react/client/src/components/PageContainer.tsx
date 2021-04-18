@@ -55,7 +55,7 @@ const PageContainer = ({ match }: PageProps) => {
 
   // todo: move text into a json for localization
   useEffect(() => {
-    switch (pageNumber) {
+    switch (pageEnum) {
       case 2:
         updateAffirmationData({
           isActive: true,
@@ -94,11 +94,11 @@ const PageContainer = ({ match }: PageProps) => {
       default:
         break;
     }
-  }, [pageNumber]);
+  }, [pageEnum]);
 
   return (
     <div className={`${classes.root} page-container`}>
-      <Header pageNumber={pageNumber} />
+      <Header isMainPage={isLandingPage} />
 
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
