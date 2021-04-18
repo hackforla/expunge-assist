@@ -72,7 +72,7 @@ const Form = ({
 
     pdf: undefined,
   });
-  
+
   const isAnInvolvementPage =
     pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB ||
     pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
@@ -86,7 +86,7 @@ const Form = ({
         <></>
       ) : (
         <div className={`${classes.root} content-page`}>
-          {pageEnum === PAGE_ENUMS.BEFORE_YOU_BEGIN  && (
+          {pageEnum === PAGE_ENUMS.BEFORE_YOU_BEGIN && (
             <BeforeYouBegin
               goNextPage={goNextPage}
               onChangeAffirmation={onChangeAffirmation}

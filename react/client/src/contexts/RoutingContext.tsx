@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { PAGE_ENUMS, PAGES, getNextFormStep } from 'contexts/RoutingProps';
+import { PAGE_ENUMS, PAGES, URL, getNextFormStep } from 'contexts/RoutingProps';
 
 interface RoutingProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
@@ -57,6 +57,13 @@ const RoutingContextProvider = ({
     if ((pathname === '/' || pathname === '/form') && formSteps.length > 1) {
       setCurrentStepIdx(0);
       setFormSteps([PAGE_ENUMS.NONE]);
+    }
+
+    // for testing: treat current page as the landing page
+    if (stepFromPathName) {
+      const pageEnumFromPath = URL[stepFromPathName];
+      setCurrentStepIdx(0);
+      setFormSteps([pageEnumFromPath]);
     }
   }, [pathname]);
 
