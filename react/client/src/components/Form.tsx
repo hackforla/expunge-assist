@@ -9,12 +9,12 @@ import { PAGE_ENUMS } from 'contexts/RoutingProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
-import UnemployedStep from 'flows/UnemployedStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 import InvolvementStep from 'involvement-step/InvolvementStep';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
+import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -130,8 +130,17 @@ const Form = ({
             />
           )}
 
+          {pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB && (
+            <InvolvementJobFlow
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
+
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
-            <UnemployedStep
+            <InvolvementUnemployedFlow
               inputs={inputs}
               setInputs={setInputs}
               goNextPage={goNextPage}

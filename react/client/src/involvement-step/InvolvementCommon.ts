@@ -68,7 +68,7 @@ export interface IInvolvementParentingState {
 // step 2f
 export interface IInvolvementUnemployedState {
   unemploymentDescription: string;
-  wouldClearanceHelp: boolean;
+  wouldClearanceHelp: string;
 }
 
 export interface ICheckboxFlowProps {
@@ -84,4 +84,11 @@ export interface IJobFlowProps {
 
   // state: IInvolvementJobState;
   // onChangeState: (newState: object) => void;
+}
+
+export interface IInvolvementUnemployedFlowProps {
+  setInputs: (value: any) => void;
+  inputs: userInputs;
+  goNextPage: () => void;
+  goBackPage: () => void;
 }
