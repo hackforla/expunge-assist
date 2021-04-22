@@ -35,6 +35,7 @@ export const PAGES = {
   [PAGE_ENUMS.INTRODUCTION]: 'intro',
   [PAGE_ENUMS.INVOLVEMENT.INITIAL]: 'involvement/initial',
   [PAGE_ENUMS.INVOLVEMENT.JOB]: 'involvement/job',
+  [PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE]: 'involvement/service',
   [PAGE_ENUMS.INVOLVEMENT.RECOVERY]: 'involvement/recovery',
   [PAGE_ENUMS.INVOLVEMENT.SCHOOL]: 'involvement/school',
   [PAGE_ENUMS.INVOLVEMENT.PARENTING]: 'involvement/parenting',

@@ -13,6 +13,7 @@ import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 import InvolvementStep from 'involvement-step/InvolvementStep';
+import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -75,7 +76,6 @@ const Form = ({
 
   const isAnInvolvementPage =
     pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
     pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
     pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
     pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING;
@@ -104,6 +104,15 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
             <InvolvementStep
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
+
+          {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
+            <InvolvementCommunityServiceFlow
               inputs={inputs}
               setInputs={setInputs}
               goNextPage={goNextPage}
