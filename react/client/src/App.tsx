@@ -1,5 +1,3 @@
-// Test CICD 01 - use Alex as actor
-
 import React from 'react';
 import {
   useHistory,
