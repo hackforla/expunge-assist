@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
+import { PAGE_ENUMS } from 'contexts/RoutingProps';
+
 import ProgressBar from 'components/ProgressBar';
 
 const useStyles = makeStyles(() =>
@@ -25,42 +27,42 @@ const useStyles = makeStyles(() =>
 );
 
 interface Props {
-  pageNumber: number;
+  pageEnum: string;
 }
 
-const FormHeader: React.FC<Props> = ({ pageNumber }) => {
+const FormHeader: React.FC<Props> = ({ pageEnum }) => {
   const classes = useStyles();
   let showFormHeader: boolean;
-  let formStep: number;
   let percentageComplete: number;
+  let formStep = 0;
 
-  if (pageNumber === 2) {
+  if (pageEnum === PAGE_ENUMS.INTRODUCTION) {
     formStep = 1;
     showFormHeader = true;
     percentageComplete = 20;
-  } else if (pageNumber === 3) {
+  } else if (pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL) {
     formStep = 2;
     showFormHeader = true;
     percentageComplete = 40;
-  } else if (pageNumber === 5) {
+  } else if (pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED) {
     formStep = 3;
     showFormHeader = true;
-    percentageComplete = 60;
-  } else if (pageNumber === 6) {
+    percentageComplete = 40;
+  } else if (pageEnum === PAGE_ENUMS.GOALS) {
     formStep = 5;
     showFormHeader = true;
-    percentageComplete = 20;
-  } else if (pageNumber === 7) {
+    percentageComplete = 60;
+  } else if (pageEnum === PAGE_ENUMS.WHY) {
     formStep = 6;
     showFormHeader = true;
-    percentageComplete = 20;
-  } else if (pageNumber === 13) {
+    percentageComplete = 80;
+  } else if (pageEnum === PAGE_ENUMS.FINALIZE) {
     formStep = 6;
     showFormHeader = true;
-    percentageComplete = 20;
+    percentageComplete = 100;
   } else {
     formStep = 0;
-    percentageComplete = 20;
+    percentageComplete = 0;
     showFormHeader = false;
   }
 
@@ -70,12 +72,27 @@ const FormHeader: React.FC<Props> = ({ pageNumber }) => {
 
   return (
     <div className={classes.root}>
-      {formStep === 1 && <h2>Introduce Yourself!</h2>}
-      {formStep === 2 && <h2>Life Changes</h2>}
-      {formStep === 3 && <h2>Involvement</h2>}
-      {formStep === 4 && <h2>Goals</h2>}
-      {formStep === 5 && <h2>Why</h2>}
-      {formStep === 6 && <h2>My Personal Statement</h2>}
+      {pageEnum === PAGE_ENUMS.INTRODUCTION && <h2>Introduce Yourself!</h2>}
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && <h2>Involvement</h2>}
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB && <h2>Involvement: Job</h2>}
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
+        <h2>Involvement: Community Service</h2>
+      )}
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY && (
+        <h2>Involvement: Recovery</h2>
+      )}
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL && (
+        <h2>Involvement: School</h2>
+      )}
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING && (
+        <h2>Involvement: Parenting</h2>
+      )}
+      {pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
+        <h2>Involvement: Unemployment</h2>
+      )}
+      {pageEnum === PAGE_ENUMS.GOALS && <h2>Goals</h2>}
+      {pageEnum === PAGE_ENUMS.WHY && <h2>Why</h2>}
+      {pageEnum === PAGE_ENUMS.FINALIZE && <h2>My Personal Statement</h2>}
       <ProgressBar percentage={percentageComplete} />
       {formStep < 6 && <p>Step {formStep} of 5</p>}
       {formStep === 6 && <p>Completed</p>}

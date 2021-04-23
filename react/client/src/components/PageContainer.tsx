@@ -9,6 +9,7 @@ import Landing from 'pages/Landing';
 
 import { RoutingContext } from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
+import { PAGE_ENUMS } from 'contexts/RoutingProps';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -40,9 +41,9 @@ const PageContainer = ({ match }: PageProps) => {
   const useRoutingContext = () => React.useContext(RoutingContext);
   const useAffirmationContext = () => React.useContext(AffirmationContext);
 
-  const { pageNumber, goNextPage, goBackPage } = useRoutingContext();
+  const { goNextPage, goBackPage, pageEnum } = useRoutingContext();
   const { affirmationData, updateAffirmationData } = useAffirmationContext();
-  const isLandingPage = pageNumber === 0;
+  const isLandingPage = pageEnum === PAGE_ENUMS.NONE;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);
@@ -54,7 +55,7 @@ const PageContainer = ({ match }: PageProps) => {
 
   // todo: move text into a json for localization
   useEffect(() => {
-    switch (pageNumber) {
+    switch (pageEnum) {
       case 2:
         updateAffirmationData({
           isActive: true,
@@ -93,11 +94,11 @@ const PageContainer = ({ match }: PageProps) => {
       default:
         break;
     }
-  }, [pageNumber]);
+  }, [pageEnum]);
 
   return (
     <div className={`${classes.root} page-container`}>
-      <Header pageNumber={pageNumber} />
+      <Header isMainPage={isLandingPage} />
 
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
@@ -111,9 +112,9 @@ const PageContainer = ({ match }: PageProps) => {
 
       {!affirmationData.isActive && !isLandingPage && (
         <>
-          <FormHeader pageNumber={pageNumber} />
+          <FormHeader pageEnum={pageEnum} />
           <Form
-            pageNumber={pageNumber}
+            pageEnum={pageEnum}
             goNextPage={goNextPage}
             goBackPage={goBackPage}
             onChangeAffirmation={updateAffirmationData}

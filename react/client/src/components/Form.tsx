@@ -5,6 +5,8 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
+import { PAGE_ENUMS } from 'contexts/RoutingProps';
+
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import UnemployedStep from 'flows/UnemployedStep';
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface FormProps {
-  pageNumber: number;
+  pageEnum: string;
   goNextPage: () => void;
   goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
@@ -40,7 +42,7 @@ interface FormProps {
 }
 
 const Form = ({
-  pageNumber,
+  pageEnum,
   goNextPage,
   goBackPage,
   onChangeAffirmation,
@@ -71,20 +73,27 @@ const Form = ({
     pdf: undefined,
   });
 
+  const isAnInvolvementPage =
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING;
+
   return (
     <>
       {affirmationIsActive ? (
         <></>
       ) : (
         <div className={`${classes.root} content-page`}>
-          {pageNumber === 1 && (
+          {pageEnum === PAGE_ENUMS.BEFORE_YOU_BEGIN && (
             <BeforeYouBegin
               goNextPage={goNextPage}
               onChangeAffirmation={onChangeAffirmation}
             />
           )}
 
-          {pageNumber === 2 && (
+          {pageEnum === PAGE_ENUMS.INTRODUCTION && (
             <IntroductionStep
               inputs={inputs}
               setInputs={setInputs}
@@ -93,7 +102,7 @@ const Form = ({
             />
           )}
 
-          {pageNumber === 3 && (
+          {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
             <InvolvementStep
               inputs={inputs}
               setInputs={setInputs}
@@ -102,7 +111,17 @@ const Form = ({
             />
           )}
 
-          {pageNumber === 4 && (
+          {/* temporary, replace with appropriate forms */}
+          {isAnInvolvementPage && (
+            <InvolvementStep
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
+
+          {pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
             <UnemployedStep
               inputs={inputs}
               setInputs={setInputs}
@@ -111,7 +130,7 @@ const Form = ({
             />
           )}
 
-          {pageNumber === 5 && (
+          {pageEnum === PAGE_ENUMS.GOALS && (
             <GoalsStep
               inputs={inputs}
               setInputs={setInputs}
@@ -120,7 +139,7 @@ const Form = ({
             />
           )}
 
-          {pageNumber === 6 && (
+          {pageEnum === PAGE_ENUMS.WHY && (
             <WhyStep
               inputs={inputs}
               setInputs={setInputs}
@@ -129,7 +148,7 @@ const Form = ({
             />
           )}
 
-          {pageNumber === 7 && (
+          {pageEnum === PAGE_ENUMS.PREVIEWING && (
             <div
               className={`${utilityClasses.buttonContainer} adjacent-mar-top`}
             >
@@ -138,7 +157,7 @@ const Form = ({
               <Button onClick={() => goNextPage()} buttonText="NEXT" />
             </div>
           )}
-          {pageNumber === 8 && (
+          {pageEnum === PAGE_ENUMS.FINALIZE && (
             <div
               className={`${utilityClasses.buttonContainer} adjacent-mar-top`}
             >
@@ -146,7 +165,7 @@ const Form = ({
               <Button onClick={() => goNextPage()} buttonText="SAVE" />
             </div>
           )}
-          {pageNumber === 9 && (
+          {pageEnum === PAGE_ENUMS.DOWNLOAD && (
             <Download
               inputs={inputs}
               setInputs={setInputs}
