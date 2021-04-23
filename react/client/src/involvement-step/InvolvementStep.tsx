@@ -8,7 +8,6 @@ import {
   StepEnum,
 } from 'involvement-step/InvolvementCommon';
 import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
-import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 
 const InvolvementStep = ({
   inputs,
@@ -47,19 +46,6 @@ const InvolvementStep = ({
             ...flowState,
             involvementState: {
               ...flowState.involvementState,
-              ...newState,
-            },
-          });
-        }}
-      />
-
-      <InvolvementJobFlow
-        state={flowState.jobState}
-        onChangeState={(newState) => {
-          handleStateChange({
-            ...flowState,
-            jobState: {
-              ...flowState.jobState,
               ...newState,
             },
           });

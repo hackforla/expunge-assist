@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import { PAGE_ENUMS } from 'contexts/RoutingProps';
+import { PAGE_ENUMS, isAnInvolvementPage } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
@@ -44,8 +44,8 @@ const FormHeader: React.FC<Props> = ({ pageEnum }) => {
     formStep = 2;
     showFormHeader = true;
     percentageComplete = 40;
-  } else if (pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED) {
-    formStep = 3;
+  } else if (isAnInvolvementPage(pageEnum)) {
+    formStep = 2;
     showFormHeader = true;
     percentageComplete = 40;
   } else if (pageEnum === PAGE_ENUMS.GOALS) {

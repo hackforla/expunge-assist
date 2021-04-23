@@ -54,13 +54,13 @@ const RoutingContextProvider = ({
     }
 
     // when going back to home page, clear out steps
-    if ((pathname === '/' || pathname === '/form') && formSteps.length > 1) {
+    if (pathname === '/' || pathname === '/form') {
       setCurrentStepIdx(0);
       setFormSteps([PAGE_ENUMS.NONE]);
     }
 
     // for testing: treat current page as the landing page
-    if (stepFromPathName) {
+    if (stepFromPathName && formSteps.length <= 1) {
       const pageEnumFromPath = URL[stepFromPathName];
       setCurrentStepIdx(0);
       setFormSteps([pageEnumFromPath]);

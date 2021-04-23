@@ -1,7 +1,7 @@
 /**
  * this constant that references a step in the form
  *
- * @type PAGE_ENUM
+ * @type PageEnum
  */
 export const PAGE_ENUMS = {
   NONE: 'PAGE_ENUMS.NONE',
@@ -35,6 +35,7 @@ export const PAGES = {
   [PAGE_ENUMS.INTRODUCTION]: 'intro',
   [PAGE_ENUMS.INVOLVEMENT.INITIAL]: 'involvement/initial',
   [PAGE_ENUMS.INVOLVEMENT.JOB]: 'involvement/job',
+  [PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE]: 'involvement/service',
   [PAGE_ENUMS.INVOLVEMENT.RECOVERY]: 'involvement/recovery',
   [PAGE_ENUMS.INVOLVEMENT.SCHOOL]: 'involvement/school',
   [PAGE_ENUMS.INVOLVEMENT.PARENTING]: 'involvement/parenting',
@@ -58,8 +59,8 @@ Object.keys(PAGES).forEach((pageKey) => {
 });
 
 /**
- * @param {PAGE_ENUMS} step
- * @returns {PAGE_ENUMS}
+ * @param {PageEnum} step
+ * @returns {PageEnum}
  */
 export function getNextFormStep(step: string) {
   switch (step) {
@@ -103,4 +104,20 @@ export function getNextFormStep(step: string) {
     default:
       return PAGE_ENUMS.NONE;
   }
+}
+
+/**
+ * @param {PageEnum} pageEnum
+ * @returns {Boolean}
+ */
+export function isAnInvolvementPage(pageEnum: string) {
+  return (
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING ||
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED
+  );
 }
