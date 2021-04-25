@@ -14,6 +14,7 @@ import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 import InvolvementStep from 'involvement-step/InvolvementStep';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
+import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
 import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
@@ -77,8 +78,7 @@ const Form = ({
 
   const isAnInvolvementPage =
     pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING;
+    pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL;
 
   return (
     <>
@@ -118,9 +118,19 @@ const Form = ({
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
+          )}
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
             <InvolvementCommunityServiceFlow
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
+
+          {pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING && (
+            <InvolvementParentingFlow
               inputs={inputs}
               setInputs={setInputs}
               goNextPage={goNextPage}

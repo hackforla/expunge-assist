@@ -6,7 +6,6 @@ import Textarea from 'components/Textarea';
 import RadioGroup from 'components/RadioGroup';
 
 import {
-  IInvolvementUnemployedFlowProps,
   IInvolvementUnemployedState,
 } from 'involvement-step/InvolvementCommon';
 
@@ -15,7 +14,7 @@ const InvolvementUnemployedFlow = ({
   setInputs,
   goNextPage,
   goBackPage,
-}: IInvolvementUnemployedFlowProps) => {
+}: StepProps) => {
   const classes = useStyles();
   const [state, setState] = useState<IInvolvementUnemployedState>({
     unemploymentDescription: '',

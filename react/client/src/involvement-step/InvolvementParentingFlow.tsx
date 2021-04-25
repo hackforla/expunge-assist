@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
+import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import { IInvolvementServiceState } from 'involvement-step/InvolvementCommon';
+import { IInvolvementParentingState } from 'involvement-step/InvolvementCommon';
 
-const InvolvementCommunityServiceFlow = ({
+const InvolvementParentingFlow = ({
   inputs,
   setInputs,
   goNextPage,
   goBackPage,
 }: StepProps) => {
   const classes = useStyles();
-  const [state, setState] = useState<IInvolvementServiceState>({
-    organizationName: '',
-    serviceDescription: '',
+  const [state, setState] = useState<IInvolvementParentingState>({
+    childName: '',
+    parentYears: '',
+    parentDescription: '',
   });
 
   const updateFlowState = (changes: object) => {
@@ -30,32 +32,43 @@ const InvolvementCommunityServiceFlow = ({
   return (
     <div className={classes.root}>
       <div className={classes.flexColumn}>
-        What is the name of the community service organization that you are
-        involved with?
+        What is the name of your child?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ organizationName: evt.target.value })
+            updateFlowState({ childName: evt.target.value })
           }
-          inputName="organizationName"
-          placeholder="Name of Organization"
+          inputName="childName"
+          placeholder="Name of Child"
           multi={false}
           isValid
-          defaultValue={state.organizationName}
+          defaultValue={state.childName}
         />
       </div>
 
       <div className={classes.flexColumn}>
-        What do you do at this community service organization? Why is this
-        important to you? (2-3 sentences suggested)
+        How long have you been a parent?
+        <Input
+          type="number"
+          inputName="age"
+          placeholder="1"
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            updateFlowState({ parentYears: evt.target.value })
+          }
+          defaultValue={state.parentYears}
+        />
+      </div>
+
+      <div className={classes.flexColumn}>
+        Why is being a good parent important to you? (2-3 sentences suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ serviceDescription: evt.target.value })
+            updateFlowState({ parentDescription: evt.target.value })
           }
-          inputName="serviceDescription"
-          placeholder="I have taken on responsibilities including..."
+          inputName="parentDescription"
+          placeholder="Being a good parent is important to me because..."
           multi={false}
           isValid
-          defaultValue={state.serviceDescription}
+          defaultValue={state.parentDescription}
         />
       </div>
 
@@ -79,4 +92,4 @@ const useStyles = makeStyles(() =>
   })
 );
 
-export default InvolvementCommunityServiceFlow;
+export default InvolvementParentingFlow;
