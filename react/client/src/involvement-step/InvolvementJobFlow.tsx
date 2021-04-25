@@ -5,7 +5,6 @@ import Button from 'components/Button';
 import Textarea from 'components/Textarea';
 
 import {
-  IJobFlowProps,
   IInvolvementJobState,
 } from 'involvement-step/InvolvementCommon';
 
@@ -14,7 +13,7 @@ const InvolvementJobFlow = ({
   setInputs,
   goNextPage,
   goBackPage,
-}: IJobFlowProps) => {
+}: StepProps) => {
   const classes = useStyles();
   const [state, setState] = useState<IInvolvementJobState>({
     companyName: '',

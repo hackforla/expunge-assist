@@ -75,27 +75,3 @@ export interface ICheckboxFlowProps {
   state: IInvolvementCheckboxState;
   onChangeState: (newState: object) => void;
 }
-
-export interface IJobFlowProps {
-  setInputs: (value: any) => void;
-  inputs: userInputs;
-  goNextPage: () => void;
-  goBackPage: () => void;
-
-  // state: IInvolvementJobState;
-  // onChangeState: (newState: object) => void;
-}
-
-export interface IInvolvementCommunityServiceFlowProps {
-  setInputs: (value: any) => void;
-  inputs: userInputs;
-  goNextPage: () => void;
-  goBackPage: () => void;
-}
-
-export interface IInvolvementUnemployedFlowProps {
-  setInputs: (value: any) => void;
-  inputs: userInputs;
-  goNextPage: () => void;
-  goBackPage: () => void;
-}

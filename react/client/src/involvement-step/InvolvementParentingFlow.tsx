@@ -4,18 +4,19 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 import Textarea from 'components/Textarea';
 
-import { IInvolvementServiceState } from 'involvement-step/InvolvementCommon';
+import { IInvolvementParentingState } from 'involvement-step/InvolvementCommon';
 
-const InvolvementCommunityServiceFlow = ({
+const InvolvementParentingFlow = ({
   inputs,
   setInputs,
   goNextPage,
   goBackPage,
 }: StepProps) => {
   const classes = useStyles();
-  const [state, setState] = useState<IInvolvementServiceState>({
-    organizationName: '',
-    serviceDescription: '',
+  const [state, setState] = useState<IInvolvementParentingState>({
+    childName: '',
+    parentYears: 0,
+    parentDescription: '',
   });
 
   const updateFlowState = (changes: object) => {
@@ -34,28 +35,13 @@ const InvolvementCommunityServiceFlow = ({
         involved with?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ organizationName: evt.target.value })
+            updateFlowState({ childName: evt.target.value })
           }
-          inputName="organizationName"
+          inputName="childName"
           placeholder="Name of Organization"
           multi={false}
           isValid
-          defaultValue={state.organizationName}
-        />
-      </div>
-
-      <div className={classes.flexColumn}>
-        What do you do at this community service organization? Why is this
-        important to you? (2-3 sentences suggested)
-        <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ serviceDescription: evt.target.value })
-          }
-          inputName="serviceDescription"
-          placeholder="I have taken on responsibilities including..."
-          multi={false}
-          isValid
-          defaultValue={state.serviceDescription}
+          defaultValue={state.childName}
         />
       </div>
 
@@ -79,4 +65,4 @@ const useStyles = makeStyles(() =>
   })
 );
 
-export default InvolvementCommunityServiceFlow;
+export default InvolvementParentingFlow;
