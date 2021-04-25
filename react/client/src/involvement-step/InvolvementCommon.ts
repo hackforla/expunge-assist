@@ -61,7 +61,7 @@ export interface IInvolvementSchoolState {
 // step 2e
 export interface IInvolvementParentingState {
   childName: string;
-  parentYears: number;
+  parentYears: string;
   parentDescription: string;
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
+import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
 import { IInvolvementParentingState } from 'involvement-step/InvolvementCommon';
@@ -15,7 +16,7 @@ const InvolvementParentingFlow = ({
   const classes = useStyles();
   const [state, setState] = useState<IInvolvementParentingState>({
     childName: '',
-    parentYears: 0,
+    parentYears: '',
     parentDescription: '',
   });
 
@@ -31,17 +32,43 @@ const InvolvementParentingFlow = ({
   return (
     <div className={classes.root}>
       <div className={classes.flexColumn}>
-        What is the name of the community service organization that you are
-        involved with?
+        What is the name of your child?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateFlowState({ childName: evt.target.value })
           }
           inputName="childName"
-          placeholder="Name of Organization"
+          placeholder="Name of Child"
           multi={false}
           isValid
           defaultValue={state.childName}
+        />
+      </div>
+
+      <div className={classes.flexColumn}>
+        How long have you been a parent?
+        <Input
+          type="number"
+          inputName="age"
+          placeholder="1"
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            updateFlowState({ parentYears: evt.target.value })
+          }
+          defaultValue={state.parentYears}
+        />
+      </div>
+
+      <div className={classes.flexColumn}>
+        Why is being a good parent important to you? (2-3 sentences suggested)
+        <Textarea
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
+            updateFlowState({ parentDescription: evt.target.value })
+          }
+          inputName="parentDescription"
+          placeholder="Being a good parent is important to me because..."
+          multi={false}
+          isValid
+          defaultValue={state.parentDescription}
         />
       </div>
 
