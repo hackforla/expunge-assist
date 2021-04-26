@@ -5,9 +5,7 @@ import Button from 'components/Button';
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
-import {
-  IInvolvementJobState,
-} from 'involvement-step/InvolvementCommon';
+import { IInvolvementJobState } from 'involvement-step/InvolvementCommon';
 
 const InvolvementJobFlow = ({
   inputs,

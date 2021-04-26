@@ -5,9 +5,7 @@ import Button from 'components/Button';
 import Textarea from 'components/Textarea';
 import RadioGroup from 'components/RadioGroup';
 
-import {
-  IInvolvementUnemployedState,
-} from 'involvement-step/InvolvementCommon';
+import { IInvolvementUnemployedState } from 'involvement-step/InvolvementCommon';
 
 const InvolvementUnemployedFlow = ({
   inputs,
