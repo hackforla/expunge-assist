@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
+import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
 import {
@@ -74,6 +75,11 @@ const InvolvementJobFlow = ({
           defaultValue={state.jobDescription}
         />
       </div>
+
+      <FlowNavigation
+        goBackPage={goBackPage}
+        goNextPage={goNextPage}
+      />
 
       <Button onClick={() => goBackPage()} buttonText="BACK" />
       <Button onClick={() => goNextPage()} buttonText="NEXT" />
