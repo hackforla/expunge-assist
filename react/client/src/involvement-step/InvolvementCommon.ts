@@ -1,28 +1,4 @@
-// entire thing
-export interface IInvolvementState {
-  currentStep: string; // StepEnum
-
-  involvementState: IInvolvementCheckboxState;
-  jobState: IInvolvementJobState;
-  serviceState?: IInvolvementServiceState;
-  recoveryState?: IInvolvementRecoveryState;
-  schoolState?: IInvolvementSchoolState;
-  parentingState?: IInvolvementParentingState;
-  unemployedState?: IInvolvementUnemployedState;
-}
-
-//
-export const StepEnum = {
-  INITIAL: 'INVOLVEMENT.STEP.INITIAL',
-  JOB: 'INVOLVEMENT.STEP.JOB',
-  SERVICE: 'INVOLVEMENT.STEP.SERVICE',
-  RECOVERY: 'INVOLVEMENT.STEP.RECOVERY',
-  SCHOOL: 'INVOLVEMENT.STEP.SCHOOL',
-  PARENTING: 'INVOLVEMENT.STEP.PARENTING',
-  UNEMPLOYED: 'INVOLVEMENT.STEP.UNEMPLOYED',
-};
-
-// step 2 initial
+// involvement checkboxes
 export interface IInvolvementCheckboxState {
   isJobChecked: boolean;
   isRecoveryChecked: boolean;
@@ -69,9 +45,4 @@ export interface IInvolvementParentingState {
 export interface IInvolvementUnemployedState {
   unemploymentDescription: string;
   wouldClearanceHelp: string;
-}
-
-export interface ICheckboxFlowProps {
-  state: IInvolvementCheckboxState;
-  onChangeState: (newState: object) => void;
 }
