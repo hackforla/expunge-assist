@@ -34,11 +34,13 @@ export default function FlowNavigation({
         className={classes.buttonLeft}
         onClick={() => goBackPage()}
         buttonText="BACK"
+        theme="transparent"
       />
       <Button
         className={classes.buttonRight}
         onClick={() => goNextPage()}
         buttonText="NEXT"
+        hasArrow
       />
     </div>
   );

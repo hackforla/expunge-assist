@@ -80,9 +80,6 @@ const InvolvementJobFlow = ({
         goBackPage={goBackPage}
         goNextPage={goNextPage}
       />
-
-      <Button onClick={() => goBackPage()} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="NEXT" />
     </div>
   );
 };
