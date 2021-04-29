@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Button from 'components/Button';
 import Checkbox from 'components/Checkbox';
+import FlowNavigation from 'components/FlowNavigation';
 
 import { IInvolvementCheckboxState } from 'involvement-step/InvolvementCommon';
 
@@ -87,8 +87,7 @@ const InvolvementInitialFlow = ({
         />
       </div>
 
-      <Button onClick={() => goBackPage()} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="NEXT" />
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
