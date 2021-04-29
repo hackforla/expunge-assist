@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
-import Button from 'components/Button';
 import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
 import PopUp from 'components/PopUp';
+import FlowNavigation from 'components/FlowNavigation';
 
 const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
   const [step1Inputs, setStep1Inputs] = useState({
@@ -37,7 +37,23 @@ const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
     : (veteranSentence = ``);
   const textPreviewContent = `Thank you so much for taking the time to read my personal statement. My name is ${step1Inputs.fullName}, and I am ${step1Inputs.age} years old. ${veteranSentence}`;
 
-  return !showPreview ? (
+  if (showPreview) {
+    return (
+      <div className="Step1-Preview">
+        <div>
+          <TextPreview
+            content={textPreviewContent}
+            onAdjustClick={() => setShowPreview(false)}
+            nameOfStep="Introduction"
+          />
+        </div>
+
+        <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
+      </div>
+    );
+  }
+
+  return (
     <div className="Step1">
       <form>
         <p>What is your name?</p>
@@ -73,8 +89,9 @@ const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
         )}
       </form>
 
-      <Button onClick={() => goBackPage()} buttonText="BACK" theme="white" />
-      {step1Inputs.isVeteran === '' ? (
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
+
+      {step1Inputs.isVeteran === '' && (
         <div className="div-popUp">
           <PopUp
             title="Some advice for your personal statement"
@@ -89,28 +106,7 @@ const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
             }
           />
         </div>
-      ) : (
-        <div>
-          <Button
-            onClick={() => setShowPreview(true)}
-            buttonText="NEXT"
-            hasArrow
-          />
-        </div>
       )}
-    </div>
-  ) : (
-    <div className="Step1-Preview">
-      <div>
-        <TextPreview
-          content={textPreviewContent}
-          onAdjustClick={() => setShowPreview(false)}
-          nameOfStep="Introduction"
-        />
-      </div>
-      <div>
-        <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" hasArrow />
-      </div>
     </div>
   );
 };
