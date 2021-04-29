@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+import useUtilityStyles from 'styles/utilityStyles';
 
-import Button from 'components/Button';
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
@@ -13,6 +13,7 @@ const InvolvementJobFlow = ({
   goNextPage,
   goBackPage,
 }: StepProps) => {
+  const styles = useUtilityStyles();
   const classes = useStyles();
   const [state, setState] = useState<IInvolvementJobState>({
     companyName: '',
@@ -30,7 +31,7 @@ const InvolvementJobFlow = ({
   };
 
   return (
-    <div className={classes.root}>
+    <div className={styles.contentContainer}>
       <div className={classes.flexColumn}>
         What is the name of the company you work for?
         <Textarea
@@ -74,10 +75,7 @@ const InvolvementJobFlow = ({
         />
       </div>
 
-      <FlowNavigation
-        goBackPage={goBackPage}
-        goNextPage={goNextPage}
-      />
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
