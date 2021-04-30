@@ -31,6 +31,13 @@ const useUtilityStyles = makeStyles((theme) =>
       display: 'flex',
       flexDirection: 'column',
     },
+    flexRow: {
+      display: 'flex',
+      flexDirection: 'row',
+    },
+    buttonRight: {
+      marginLeft: 'auto',
+    }
   })
 );
 
