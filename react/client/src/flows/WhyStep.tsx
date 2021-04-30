@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import FlowNavigation from 'components/FlowNavigation';
 import FormFooter from 'components/FormFooter';
 import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
@@ -48,6 +49,11 @@ const WhyStep = ({ goBackPage, goNextPage }: StepProps) => {
           onAdjustClick={() => setShowPreview(false)}
           nameOfStep="Why"
         />
+
+        <FlowNavigation
+          goBackPage={() => setShowPreview(false)}
+          goNextPage={goNextPage}
+        />
       </div>
     );
   }
@@ -87,6 +93,11 @@ const WhyStep = ({ goBackPage, goNextPage }: StepProps) => {
         goBackPage={goBackPage}
         goNextPage={goNextPage}
         togglePreview={() => setShowPreview(!showPreview)}
+      />
+
+      <FlowNavigation
+        goBackPage={goBackPage}
+        goNextPage={() => setShowPreview(true)}
       />
     </div>
   );

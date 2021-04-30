@@ -17,10 +17,12 @@ const useUtilityStyles = makeStyles((theme) =>
       marginLeft: 'auto',
       marginRight: 'auto',
       marginTop: '49px',
+      minWidth: '300px',
 
       [theme.breakpoints.down('xs')]: {
         marginLeft: 'initial',
         marginRight: 'initial',
+        width: '100%',
       },
 
       '& .flow-navigation-container': {
