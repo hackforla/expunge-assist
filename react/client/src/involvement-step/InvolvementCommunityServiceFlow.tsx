@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Button from 'components/Button';
+import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
 import { IInvolvementServiceState } from 'involvement-step/InvolvementCommon';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementCommunityServiceFlow = ({
   inputs,
@@ -12,6 +14,7 @@ const InvolvementCommunityServiceFlow = ({
   goNextPage,
   goBackPage,
 }: StepProps) => {
+  const utilityClasses = useUtilityStyles({});
   const classes = useStyles();
   const [state, setState] = useState<IInvolvementServiceState>({
     organizationName: '',
@@ -28,7 +31,7 @@ const InvolvementCommunityServiceFlow = ({
   };
 
   return (
-    <div className={classes.root}>
+    <div className={utilityClasses.contentContainer}>
       <div className={classes.flexColumn}>
         What is the name of the community service organization that you are
         involved with?
@@ -59,19 +62,13 @@ const InvolvementCommunityServiceFlow = ({
         />
       </div>
 
-      <div>
-        <Button onClick={() => goBackPage()} buttonText="BACK" />
-        <Button onClick={() => goNextPage()} buttonText="NEXT" />
-      </div>
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
 
 const useStyles = makeStyles(() =>
   createStyles({
-    root: {
-      paddingTop: 24,
-    },
     flexColumn: {
       display: 'flex',
       flexDirection: 'column',
