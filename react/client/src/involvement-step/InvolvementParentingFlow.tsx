@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 
-import Button from 'components/Button';
+import FlowNavigation from 'components/FlowNavigation';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
 import { IInvolvementParentingState } from 'involvement-step/InvolvementCommon';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementParentingFlow = ({
   inputs,
@@ -13,7 +14,7 @@ const InvolvementParentingFlow = ({
   goNextPage,
   goBackPage,
 }: StepProps) => {
-  const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
   const [state, setState] = useState<IInvolvementParentingState>({
     childName: '',
     parentYears: '',
@@ -30,8 +31,8 @@ const InvolvementParentingFlow = ({
   };
 
   return (
-    <div className={classes.root}>
-      <div className={classes.flexColumn}>
+    <div className={utilityClasses.contentContainer}>
+      <div className={utilityClasses.flexColumn}>
         What is the name of your child?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -45,7 +46,7 @@ const InvolvementParentingFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         How long have you been a parent?
         <Input
           type="number"
@@ -58,7 +59,7 @@ const InvolvementParentingFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         Why is being a good parent important to you? (2-3 sentences suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -72,24 +73,9 @@ const InvolvementParentingFlow = ({
         />
       </div>
 
-      <div>
-        <Button onClick={() => goBackPage()} buttonText="BACK" />
-        <Button onClick={() => goNextPage()} buttonText="NEXT" />
-      </div>
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      paddingTop: 24,
-    },
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
-);
 
 export default InvolvementParentingFlow;
