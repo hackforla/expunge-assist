@@ -13,7 +13,7 @@ const InvolvementJobFlow = ({
   goNextPage,
   goBackPage,
 }: StepProps) => {
-  const styles = useUtilityStyles();
+  const utilityClasses = useUtilityStyles();
   const classes = useStyles();
   const [state, setState] = useState<IInvolvementJobState>({
     companyName: '',
@@ -31,7 +31,7 @@ const InvolvementJobFlow = ({
   };
 
   return (
-    <div className={styles.contentContainer}>
+    <div className={utilityClasses.contentContainer}>
       <div className={classes.flexColumn}>
         What is the name of the company you work for?
         <Textarea

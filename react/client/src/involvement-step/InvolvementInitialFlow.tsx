@@ -6,12 +6,15 @@ import FlowNavigation from 'components/FlowNavigation';
 
 import { IInvolvementCheckboxState } from 'involvement-step/InvolvementCommon';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 const InvolvementInitialFlow = ({
   inputs,
   setInputs,
   goNextPage,
   goBackPage,
 }: StepProps) => {
+  const utilityClasses = useUtilityStyles({});
   const classes = useStyles();
   const [state, setState] = useState<IInvolvementCheckboxState>({
     isJobChecked: false,
@@ -32,7 +35,7 @@ const InvolvementInitialFlow = ({
   };
 
   return (
-    <div className={classes.root}>
+    <div className={utilityClasses.contentContainer}>
       <div className={classes.flexColumn}>
         What things have you been involved with since your conviction?
       </div>

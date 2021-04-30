@@ -5,9 +5,8 @@ import Button from 'components/Button';
 
 const useStyles = makeStyles(() =>
   createStyles({
-    root: {
+    flowNavigationContainer: {
       display: 'flex',
-      flex: '1 0 auto',
       flexDirection: 'row',
     },
     buttonLeft: {},
@@ -29,7 +28,9 @@ export default function FlowNavigation({
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div
+      className={`flow-navigation-container ${classes.flowNavigationContainer}`}
+    >
       <Button
         className={classes.buttonLeft}
         onClick={() => goBackPage()}

@@ -22,6 +22,10 @@ const useUtilityStyles = makeStyles((theme) =>
         marginLeft: 'initial',
         marginRight: 'initial',
       },
+
+      '& .flow-navigation-container': {
+        marginTop: 'auto',
+      }
     },
   })
 );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
 import TextPreview from 'components/TextPreview';
@@ -6,12 +7,16 @@ import RadioGroup from 'components/RadioGroup';
 import PopUp from 'components/PopUp';
 import FlowNavigation from 'components/FlowNavigation';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
   const [step1Inputs, setStep1Inputs] = useState({
     fullName: '',
     age: '',
     isVeteran: '',
   });
+
+  const utilityClasses = useUtilityStyles({});
 
   const [nameFilled, setNameFilled] = useState(false);
 
@@ -39,7 +44,7 @@ const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
 
   if (showPreview) {
     return (
-      <div className="Step1-Preview">
+      <div className={utilityClasses.contentContainer}>
         <div>
           <TextPreview
             content={textPreviewContent}
@@ -54,7 +59,7 @@ const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
   }
 
   return (
-    <div className="Step1">
+    <div className={utilityClasses.contentContainer}>
       <form>
         <p>What is your name?</p>
         <Textarea
@@ -89,8 +94,6 @@ const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
         )}
       </form>
 
-      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
-
       {step1Inputs.isVeteran === '' && (
         <div className="div-popUp">
           <PopUp
@@ -107,6 +110,8 @@ const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
           />
         </div>
       )}
+
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
