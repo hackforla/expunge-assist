@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
-import useUtilityStyles from 'styles/utilityStyles';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
 import { IInvolvementJobState } from 'involvement-step/InvolvementCommon';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementJobFlow = ({
   inputs,
@@ -14,7 +14,6 @@ const InvolvementJobFlow = ({
   goBackPage,
 }: StepProps) => {
   const utilityClasses = useUtilityStyles();
-  const classes = useStyles();
   const [state, setState] = useState<IInvolvementJobState>({
     companyName: '',
     jobTitle: '',
@@ -32,7 +31,7 @@ const InvolvementJobFlow = ({
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What is the name of the company you work for?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -46,7 +45,7 @@ const InvolvementJobFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What is your current job title?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -60,7 +59,7 @@ const InvolvementJobFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What do you do at this job? Why is this important to you? (2-3 sentences
         suggested)
         <Textarea
@@ -79,17 +78,5 @@ const InvolvementJobFlow = ({
     </div>
   );
 };
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      paddingTop: 24,
-    },
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
-);
 
 export default InvolvementJobFlow;

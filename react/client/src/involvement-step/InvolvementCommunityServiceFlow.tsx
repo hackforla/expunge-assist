@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
@@ -15,7 +14,6 @@ const InvolvementCommunityServiceFlow = ({
   goBackPage,
 }: StepProps) => {
   const utilityClasses = useUtilityStyles({});
-  const classes = useStyles();
   const [state, setState] = useState<IInvolvementServiceState>({
     organizationName: '',
     serviceDescription: '',
@@ -32,7 +30,7 @@ const InvolvementCommunityServiceFlow = ({
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What is the name of the community service organization that you are
         involved with?
         <Textarea
@@ -47,7 +45,7 @@ const InvolvementCommunityServiceFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What do you do at this community service organization? Why is this
         important to you? (2-3 sentences suggested)
         <Textarea
@@ -66,14 +64,5 @@ const InvolvementCommunityServiceFlow = ({
     </div>
   );
 };
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
-);
 
 export default InvolvementCommunityServiceFlow;

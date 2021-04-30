@@ -27,6 +27,10 @@ const useUtilityStyles = makeStyles((theme) =>
         marginTop: 'auto',
       }
     },
+    flexColumn: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
   })
 );
 

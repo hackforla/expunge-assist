@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 
 import Checkbox from 'components/Checkbox';
 import FlowNavigation from 'components/FlowNavigation';
@@ -15,7 +14,6 @@ const InvolvementInitialFlow = ({
   goBackPage,
 }: StepProps) => {
   const utilityClasses = useUtilityStyles({});
-  const classes = useStyles();
   const [state, setState] = useState<IInvolvementCheckboxState>({
     isJobChecked: false,
     isRecoveryChecked: false,
@@ -36,11 +34,13 @@ const InvolvementInitialFlow = ({
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What things have you been involved with since your conviction?
       </div>
-      <div className={classes.flexColumn}>Please check all that apply:</div>
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
+        Please check all that apply:
+      </div>
+      <div className={utilityClasses.flexColumn}>
         <Checkbox
           checked={state.isJobChecked}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -94,17 +94,5 @@ const InvolvementInitialFlow = ({
     </div>
   );
 };
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      paddingTop: 24,
-    },
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
-);
 
 export default InvolvementInitialFlow;
