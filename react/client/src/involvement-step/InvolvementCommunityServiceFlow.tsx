@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 
-import Button from 'components/Button';
+import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
 import { IInvolvementServiceState } from 'involvement-step/InvolvementCommon';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementCommunityServiceFlow = ({
   inputs,
@@ -12,7 +13,7 @@ const InvolvementCommunityServiceFlow = ({
   goNextPage,
   goBackPage,
 }: StepProps) => {
-  const classes = useStyles();
+  const utilityClasses = useUtilityStyles({});
   const [state, setState] = useState<IInvolvementServiceState>({
     organizationName: '',
     serviceDescription: '',
@@ -28,8 +29,8 @@ const InvolvementCommunityServiceFlow = ({
   };
 
   return (
-    <div className={classes.root}>
-      <div className={classes.flexColumn}>
+    <div className={utilityClasses.contentContainer}>
+      <div className={utilityClasses.flexColumn}>
         What is the name of the community service organization that you are
         involved with?
         <Textarea
@@ -44,7 +45,7 @@ const InvolvementCommunityServiceFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What do you do at this community service organization? Why is this
         important to you? (2-3 sentences suggested)
         <Textarea
@@ -59,24 +60,9 @@ const InvolvementCommunityServiceFlow = ({
         />
       </div>
 
-      <div>
-        <Button onClick={() => goBackPage()} buttonText="BACK" />
-        <Button onClick={() => goNextPage()} buttonText="NEXT" />
-      </div>
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      paddingTop: 24,
-    },
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
-);
 
 export default InvolvementCommunityServiceFlow;

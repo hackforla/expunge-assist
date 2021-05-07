@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 
-import Button from 'components/Button';
+import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
-import {
-  IInvolvementJobState,
-} from 'involvement-step/InvolvementCommon';
+import { IInvolvementJobState } from 'involvement-step/InvolvementCommon';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementJobFlow = ({
   inputs,
@@ -14,7 +13,7 @@ const InvolvementJobFlow = ({
   goNextPage,
   goBackPage,
 }: StepProps) => {
-  const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
   const [state, setState] = useState<IInvolvementJobState>({
     companyName: '',
     jobTitle: '',
@@ -31,8 +30,8 @@ const InvolvementJobFlow = ({
   };
 
   return (
-    <div className={classes.root}>
-      <div className={classes.flexColumn}>
+    <div className={utilityClasses.contentContainer}>
+      <div className={utilityClasses.flexColumn}>
         What is the name of the company you work for?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -46,7 +45,7 @@ const InvolvementJobFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What is your current job title?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
@@ -60,7 +59,7 @@ const InvolvementJobFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         What do you do at this job? Why is this important to you? (2-3 sentences
         suggested)
         <Textarea
@@ -75,22 +74,9 @@ const InvolvementJobFlow = ({
         />
       </div>
 
-      <Button onClick={() => goBackPage()} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="NEXT" />
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      paddingTop: 24,
-    },
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
-);
 
 export default InvolvementJobFlow;

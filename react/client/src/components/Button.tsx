@@ -4,6 +4,7 @@ import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 import arrowRight from '../assets/arrowRight.svg';
 
 interface ComponentProps {
+  className?: string;
   theme?: string;
   hasArrow?: boolean;
   buttonText: string;
@@ -81,6 +82,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
 );
 
 const ButtonComponent = ({
+  className = '',
   theme,
   hasArrow,
   buttonText,
@@ -89,7 +91,7 @@ const ButtonComponent = ({
   const styleProps = { theme, hasArrow };
   const classes = useStyles(styleProps);
   return (
-    <Button type="button" className={classes.root} onClick={onClick}>
+    <Button type="button" className={`${classes.root} ${className}`} onClick={onClick}>
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </Button>

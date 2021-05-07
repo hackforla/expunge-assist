@@ -12,7 +12,7 @@ import IntroductionStep from 'flows/IntroductionStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
-import InvolvementStep from 'involvement-step/InvolvementStep';
+import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
 import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
@@ -103,7 +103,7 @@ const Form = ({
           )}
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
-            <InvolvementStep
+            <InvolvementInitialFlow
               inputs={inputs}
               setInputs={setInputs}
               goNextPage={goNextPage}
@@ -131,16 +131,6 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING && (
             <InvolvementParentingFlow
-              inputs={inputs}
-              setInputs={setInputs}
-              goNextPage={goNextPage}
-              goBackPage={goBackPage}
-            />
-          )}
-
-          {/* temporary, replace with appropriate forms */}
-          {isAnInvolvementPage && (
-            <InvolvementStep
               inputs={inputs}
               setInputs={setInputs}
               goNextPage={goNextPage}

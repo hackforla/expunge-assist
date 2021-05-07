@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import Textarea from 'components/Textarea';
+
+import FlowNavigation from 'components/FlowNavigation';
 import Button from 'components/Button';
+import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const GoalsStep = ({
   inputs,
@@ -9,6 +13,7 @@ const GoalsStep = ({
   goBackPage,
   goNextPage,
 }: StepProps) => {
+  const utilityClasses = useUtilityStyles();
   const [goalsFilled, setGoalsFilled] = useState(
     inputs.goals.split('.').length >= 3
   );
@@ -29,17 +34,29 @@ const GoalsStep = ({
     }
   };
   return previewPage ? (
-    <div>
+    <div className={utilityClasses.contentContainer}>
       <TextPreview
         content={`${inputs.goals}. To work towards my goals; ${inputs.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
         onAdjustClick={() => null}
         nameOfStep="Future Goals"
       />
-      <Button onClick={() => setPreview(false)} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
+
+      <div className={utilityClasses.flexRow}>
+        <Button
+          onClick={() => setPreview(false)}
+          buttonText="BACK"
+          theme="transparent"
+        />
+        <Button
+          className={utilityClasses.buttonRight}
+          onClick={() => goNextPage()}
+          buttonText="LOOKS GOOD"
+          hasArrow
+        />
+      </div>
     </div>
   ) : (
-    <div>
+    <div className={utilityClasses.contentContainer}>
       <p>
         Please describe what goals you have to improve your life even further,
         like attending school, getting specialized training, etc. (2-3 sentences
@@ -74,10 +91,11 @@ const GoalsStep = ({
           concrete steps you are taking? (2-3 sentences suggested)
         </p>
       )}
-      <Button onClick={() => goBackPage()} buttonText="BACK" />
-      {goalsHowFilled ? (
-        <Button onClick={() => setPreview(true)} buttonText="NEXT" />
-      ) : null}
+
+      <FlowNavigation
+        goBackPage={goBackPage}
+        goNextPage={() => setPreview(true)}
+      />
     </div>
   );
 };

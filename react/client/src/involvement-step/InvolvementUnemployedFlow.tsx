@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 
-import Button from 'components/Button';
+import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 import RadioGroup from 'components/RadioGroup';
 
-import {
-  IInvolvementUnemployedState,
-} from 'involvement-step/InvolvementCommon';
+import { IInvolvementUnemployedState } from 'involvement-step/InvolvementCommon';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementUnemployedFlow = ({
   inputs,
@@ -15,7 +14,7 @@ const InvolvementUnemployedFlow = ({
   goNextPage,
   goBackPage,
 }: StepProps) => {
-  const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
   const [state, setState] = useState<IInvolvementUnemployedState>({
     unemploymentDescription: '',
     wouldClearanceHelp: '',
@@ -31,8 +30,8 @@ const InvolvementUnemployedFlow = ({
   };
 
   return (
-    <div className={classes.root}>
-      <div className={classes.flexColumn}>
+    <div className={utilityClasses.contentContainer}>
+      <div className={utilityClasses.flexColumn}>
         Please describe why you are having trouble finding work. (2-3 sentences
         suggested)
         <Textarea
@@ -47,7 +46,7 @@ const InvolvementUnemployedFlow = ({
         />
       </div>
 
-      <div className={classes.flexColumn}>
+      <div className={utilityClasses.flexColumn}>
         Do you believe that having your record cleared would help you find a job
         and be more involved in your community?
         <RadioGroup
@@ -60,24 +59,9 @@ const InvolvementUnemployedFlow = ({
         />
       </div>
 
-      <div>
-        <Button onClick={() => goBackPage()} buttonText="BACK" />
-        <Button onClick={() => goNextPage()} buttonText="NEXT" />
-      </div>
+      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
     </div>
   );
 };
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      paddingTop: 24,
-    },
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
-);
 
 export default InvolvementUnemployedFlow;
