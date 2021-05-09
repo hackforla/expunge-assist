@@ -16,6 +16,7 @@ import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
 import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
+import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
@@ -119,6 +120,15 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
             <InvolvementCommunityServiceFlow
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
+
+          {pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY && (
+            <InvolvementRecoveryFlow
               inputs={inputs}
               setInputs={setInputs}
               goNextPage={goNextPage}
