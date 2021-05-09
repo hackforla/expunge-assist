@@ -16,6 +16,7 @@ import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
 import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
+import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -76,10 +77,6 @@ const Form = ({
     pdf: undefined,
   });
 
-  const isAnInvolvementPage =
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL;
-
   return (
     <>
       {affirmationIsActive ? (
@@ -122,6 +119,15 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
             <InvolvementCommunityServiceFlow
+              inputs={inputs}
+              setInputs={setInputs}
+              goNextPage={goNextPage}
+              goBackPage={goBackPage}
+            />
+          )}
+
+          {pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL && (
+            <InvolvementSchoolFlow
               inputs={inputs}
               setInputs={setInputs}
               goNextPage={goNextPage}
