@@ -29,9 +29,9 @@ export interface IStepState {
 
 export const defaultStepState = {
   introduction: {
-    name: '',
-    age: null,
-    isVeteran: false,
+    fullName: '',
+    age: '',
+    isVeteran: '',
   },
   goalsStep: {
     goals: '',
@@ -40,9 +40,9 @@ export const defaultStepState = {
 };
 
 export interface IIntroductionState {
-  name: string;
-  age: number | null;
-  isVeteran: boolean;
+  fullName: string;
+  age: string;
+  isVeteran: string;
 }
 
 export interface IGoalsState {

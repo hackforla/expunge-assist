@@ -76,8 +76,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INTRODUCTION && (
             <IntroductionStep
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.introduction}
+              setFormState={(stepState) =>
+                updateStepToForm({ introduction: stepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />

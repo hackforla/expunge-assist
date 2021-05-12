@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { IStepProps } from 'contexts/FormStateProps';
+import { IIntroductionState } from 'contexts/FormStateProps';
 
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
@@ -11,13 +11,20 @@ import FlowNavigation from 'components/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-const Step1 = ({ goNextPage, goBackPage }: IStepProps) => {
-  const [step1Inputs, setStep1Inputs] = useState({
-    fullName: '',
-    age: '',
-    isVeteran: '',
-  });
+interface IIntroductionStepProps {
+  stepState: IIntroductionState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
 
+const IntroductionStep = ({
+  stepState,
+  setFormState,
+  goBackPage,
+  goNextPage,
+}: IIntroductionStepProps) => {
+  console.log('IntroductionStep',stepState)
   const utilityClasses = useUtilityStyles({});
 
   const [nameFilled, setNameFilled] = useState(false);
@@ -29,20 +36,20 @@ const Step1 = ({ goNextPage, goBackPage }: IStepProps) => {
     const inputValue = e.currentTarget.value;
 
     if (inputName === 'name') {
-      setStep1Inputs({ ...step1Inputs, fullName: inputValue });
+      setFormState({ ...stepState, fullName: inputValue });
       inputValue === '' ? setNameFilled(false) : setNameFilled(true);
     }
     if (inputName === 'age')
-      setStep1Inputs({ ...step1Inputs, age: inputValue });
+      setFormState({ ...stepState, age: inputValue });
     if (inputName === 'isVeteran')
-      setStep1Inputs({ ...step1Inputs, isVeteran: inputValue });
+      setFormState({ ...stepState, isVeteran: inputValue });
   };
 
   let veteranSentence;
-  step1Inputs.isVeteran === 'Yes'
+  stepState.isVeteran === 'Yes'
     ? (veteranSentence = `I am also a proud veteran of the United States Armed Forces.`)
     : (veteranSentence = ``);
-  const textPreviewContent = `Thank you so much for taking the time to read my personal statement. My name is ${step1Inputs.fullName}, and I am ${step1Inputs.age} years old. ${veteranSentence}`;
+  const textPreviewContent = `Thank you so much for taking the time to read my personal statement. My name is ${stepState.fullName}, and I am ${stepState.age} years old. ${veteranSentence}`;
 
   if (showPreview) {
     return (
@@ -70,7 +77,7 @@ const Step1 = ({ goNextPage, goBackPage }: IStepProps) => {
           handleChange={handleChange}
           multi={false}
           isValid={nameFilled}
-          defaultValue={step1Inputs.fullName}
+          defaultValue={stepState.fullName}
         />
         <p className="greyedOut">How old are you?</p>
         {nameFilled && (
@@ -79,24 +86,24 @@ const Step1 = ({ goNextPage, goBackPage }: IStepProps) => {
             inputName="age"
             placeholder="25"
             handleChange={handleChange}
-            defaultValue={step1Inputs.age}
+            defaultValue={stepState.age}
           />
         )}
 
         <p className="greyedOut">
           Are you a veteran of the United States of America?
         </p>
-        {Number(step1Inputs.age) > 0 && (
+        {Number(stepState.age) > 0 && (
           <RadioGroup
             labels={['Yes', 'No']}
             inputName="isVeteran"
             handleChange={handleChange}
-            activeRadio={step1Inputs.isVeteran}
+            activeRadio={stepState.isVeteran}
           />
         )}
       </form>
 
-      {step1Inputs.isVeteran === '' && (
+      {stepState.isVeteran === '' && (
         <div className="div-popUp">
           <PopUp
             title="Some advice for your personal statement"
@@ -118,4 +125,4 @@ const Step1 = ({ goNextPage, goBackPage }: IStepProps) => {
   );
 };
 
-export default Step1;
+export default IntroductionStep;
