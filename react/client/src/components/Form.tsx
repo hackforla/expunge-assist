@@ -6,6 +6,7 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 
 import { PAGE_ENUMS } from 'contexts/RoutingProps';
+import { IStepState, defaultStepState } from 'contexts/FormStateProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
@@ -55,28 +56,7 @@ const Form = ({
 }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
-  const [inputs, setInputs] = useState<userInputs>({
-    name: '',
-    age: null,
-    introduction: '',
-
-    lifeChanges: '',
-
-    communityServiceOrgName: '',
-    communityServiceDescription: '',
-    jobName: '',
-    jobTitle: '',
-    jobDescription: '',
-    difficultyFindingWorkDescription: '',
-
-    goals: '',
-    goalsHow: '',
-
-    clearRecordWhy: '',
-    clearRecordHow: '',
-
-    pdf: undefined,
-  });
+  const [inputs, setInputs] = useState<IStepState>(defaultStepState);
 
   return (
     <>
@@ -190,6 +170,7 @@ const Form = ({
               <Button onClick={() => goNextPage()} buttonText="NEXT" />
             </div>
           )}
+
           {pageEnum === PAGE_ENUMS.FINALIZE && (
             <div
               className={`${utilityClasses.buttonContainer} adjacent-mar-top`}
@@ -198,6 +179,7 @@ const Form = ({
               <Button onClick={() => goNextPage()} buttonText="SAVE" />
             </div>
           )}
+
           {pageEnum === PAGE_ENUMS.DOWNLOAD && (
             <Download
               inputs={inputs}
