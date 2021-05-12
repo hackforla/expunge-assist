@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { IStepProps } from 'contexts/FormStateProps';
+
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
@@ -8,11 +10,11 @@ import { IInvolvementSchoolState } from 'involvement-step/InvolvementCommon';
 import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementSchoolFlow = ({
-  inputs,
-  setInputs,
+  formState,
+  setFormState,
   goNextPage,
   goBackPage,
-}: StepProps) => {
+}: IStepProps) => {
   const utilityClasses = useUtilityStyles();
   const [state, setState] = useState<IInvolvementSchoolState>({
     schoolName: '',
@@ -26,7 +28,7 @@ const InvolvementSchoolFlow = ({
       ...changes,
     };
     setState(newState);
-    setInputs(inputs); // todo
+    setFormState(formState); // todo
   };
 
   return (

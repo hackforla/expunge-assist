@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { IStepProps } from 'contexts/FormStateProps';
+
 import Textarea from 'components/Textarea';
 import Input from 'components/Input';
 import TextPreview from 'components/TextPreview';
@@ -9,7 +11,7 @@ import FlowNavigation from 'components/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-const Step1 = ({ goNextPage, goBackPage }: StepProps) => {
+const Step1 = ({ goNextPage, goBackPage }: IStepProps) => {
   const [step1Inputs, setStep1Inputs] = useState({
     fullName: '',
     age: '',

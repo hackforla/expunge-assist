@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { IStepProps } from 'contexts/FormStateProps';
+
 import FlowNavigation from 'components/FlowNavigation';
 import FormFooter from 'components/FormFooter';
 import Textarea from 'components/Textarea';
@@ -7,7 +9,7 @@ import TextPreview from 'components/TextPreview';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-const WhyStep = ({ goBackPage, goNextPage }: StepProps) => {
+const WhyStep = ({ goBackPage, goNextPage }: IStepProps) => {
   const [step5Inputs, setStep5Inputs] = useState({
     clearRecordWhy: '',
     clearRecordHow: '',

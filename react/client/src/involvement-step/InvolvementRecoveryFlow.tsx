@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { IStepProps } from 'contexts/FormStateProps';
+
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
@@ -8,11 +10,11 @@ import { IInvolvementRecoveryState } from 'involvement-step/InvolvementCommon';
 import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementRecoveryFlow = ({
-  inputs,
-  setInputs,
+  formState,
+  setFormState,
   goNextPage,
   goBackPage,
-}: StepProps) => {
+}: IStepProps) => {
   const utilityClasses = useUtilityStyles();
   const [state, setState] = useState<IInvolvementRecoveryState>({
     recoveryName: '',
@@ -25,7 +27,7 @@ const InvolvementRecoveryFlow = ({
       ...changes,
     };
     setState(newState);
-    setInputs(inputs); // todo
+    setFormState(formState); // todo
   };
 
   return (

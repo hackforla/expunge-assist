@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { IStepProps } from 'contexts/FormStateProps';
+
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 import RadioGroup from 'components/RadioGroup';
@@ -9,11 +11,11 @@ import { IInvolvementUnemployedState } from 'involvement-step/InvolvementCommon'
 import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementUnemployedFlow = ({
-  inputs,
-  setInputs,
+  formState,
+  setFormState,
   goNextPage,
   goBackPage,
-}: StepProps) => {
+}: IStepProps) => {
   const utilityClasses = useUtilityStyles();
   const [state, setState] = useState<IInvolvementUnemployedState>({
     unemploymentDescription: '',
@@ -26,7 +28,7 @@ const InvolvementUnemployedFlow = ({
       ...changes,
     };
     setState(newState);
-    setInputs(inputs); // todo
+    setFormState(formState); // todo
   };
 
   return (

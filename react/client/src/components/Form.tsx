@@ -56,7 +56,7 @@ const Form = ({
 }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
-  const [inputs, setInputs] = useState<IStepState>(defaultStepState);
+  const [formState, setFormState] = useState<IStepState>(defaultStepState);
 
   return (
     <>
@@ -73,8 +73,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INTRODUCTION && (
             <IntroductionStep
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -82,8 +82,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
             <InvolvementInitialFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -91,8 +91,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB && (
             <InvolvementJobFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -100,8 +100,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
             <InvolvementCommunityServiceFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -109,8 +109,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY && (
             <InvolvementRecoveryFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -118,8 +118,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL && (
             <InvolvementSchoolFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -127,8 +127,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING && (
             <InvolvementParentingFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -136,8 +136,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
             <InvolvementUnemployedFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -145,8 +145,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.GOALS && (
             <GoalsStep
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -154,8 +154,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.WHY && (
             <WhyStep
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -182,8 +182,8 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.DOWNLOAD && (
             <Download
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />

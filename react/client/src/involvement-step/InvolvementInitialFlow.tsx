@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { IStepProps } from 'contexts/FormStateProps';
+
 import Checkbox from 'components/Checkbox';
 import FlowNavigation from 'components/FlowNavigation';
 
@@ -8,11 +10,11 @@ import { IInvolvementCheckboxState } from 'involvement-step/InvolvementCommon';
 import useUtilityStyles from 'styles/utilityStyles';
 
 const InvolvementInitialFlow = ({
-  inputs,
-  setInputs,
+  formState,
+  setFormState,
   goNextPage,
   goBackPage,
-}: StepProps) => {
+}: IStepProps) => {
   const utilityClasses = useUtilityStyles({});
   const [state, setState] = useState<IInvolvementCheckboxState>({
     isJobChecked: false,
@@ -29,7 +31,7 @@ const InvolvementInitialFlow = ({
       ...changes,
     };
     setState(newState);
-    setInputs(inputs); // todo
+    setFormState(formState); // todo
   };
 
   return (
