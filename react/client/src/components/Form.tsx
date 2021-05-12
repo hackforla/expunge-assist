@@ -58,6 +58,9 @@ const Form = ({
   const utilityClasses = useUtilityStyles({});
   const [formState, setFormState] = useState<IStepState>(defaultStepState);
 
+  const updateStepToForm = (stepState: any) =>
+    setFormState({ ...formState, ...stepState });
+
   return (
     <>
       {affirmationIsActive ? (
@@ -145,8 +148,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.GOALS && (
             <GoalsStep
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.goalsStep}
+              setFormState={(stepState) =>
+                updateStepToForm({ goalsStep: stepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />

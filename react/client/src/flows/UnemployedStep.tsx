@@ -1,31 +1,29 @@
 import React from 'react';
 
-import { IStepProps } from 'contexts/FormStateProps';
-
 import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
 const UnemployedStep = ({
-  formState,
-  setFormState,
+  inputs,
+  setInputs,
   goBackPage,
   goNextPage,
-}: IStepProps) => {
+}: StepProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.target.name;
     const inputValue = e.target.value;
     if (inputName === 'communityServiceOrgName') {
-      setFormState({ ...formState, communityServiceOrgName: inputValue });
+      setInputs({ ...inputs, communityServiceOrgName: inputValue });
     } else if (inputName === 'communityServiceDescription') {
-      setFormState({ ...formState, communityServiceDescription: inputValue });
+      setInputs({ ...inputs, communityServiceDescription: inputValue });
     } else if (inputName === 'jobName') {
-      setFormState({ ...formState, jobName: inputValue });
+      setInputs({ ...inputs, jobName: inputValue });
     } else if (inputName === 'jobTitle') {
-      setFormState({ ...formState, jobTitle: inputValue });
+      setInputs({ ...inputs, jobTitle: inputValue });
     } else if (inputName === 'jobDescription') {
-      setFormState({ ...formState, jobDescription: inputValue });
+      setInputs({ ...inputs, jobDescription: inputValue });
     } else if (inputName === 'difficultyFindingWorkDescription') {
-      setFormState({ ...formState, difficultyFindingWorkDescription: inputValue });
+      setInputs({ ...inputs, difficultyFindingWorkDescription: inputValue });
     }
   };
 
@@ -43,7 +41,7 @@ const UnemployedStep = ({
         handleChange={handleChange}
         multi={false}
         isValid
-        defaultValue={formState.communityServiceOrgName}
+        defaultValue={inputs.communityServiceOrgName}
       />
       <p>
         Please describe what you do at this community service organization (2
@@ -55,7 +53,7 @@ const UnemployedStep = ({
         placeholder="Currently, I..."
         multi
         isValid
-        defaultValue={formState.communityServiceDescription}
+        defaultValue={inputs.communityServiceDescription}
       />
       <p>What is the name of the company you work for?</p>
       <Textarea
@@ -64,7 +62,7 @@ const UnemployedStep = ({
         handleChange={handleChange}
         multi={false}
         isValid
-        defaultValue={formState.jobName}
+        defaultValue={inputs.jobName}
       />
       <p>What is your current job title?</p>
       <Textarea
@@ -73,7 +71,7 @@ const UnemployedStep = ({
         handleChange={handleChange}
         multi={false}
         isValid
-        defaultValue={formState.jobTitle}
+        defaultValue={inputs.jobTitle}
       />
       <p>
         Please describe what you do at your current job. (2 sentences maximum)
@@ -84,7 +82,7 @@ const UnemployedStep = ({
         placeholder="At my current job, I ..."
         multi
         isValid
-        defaultValue={formState.jobDescription}
+        defaultValue={inputs.jobDescription}
       />
       <p>
         Please describe why you are having trouble finding work. (2 sentences
@@ -96,7 +94,7 @@ const UnemployedStep = ({
         placeholder="I'm having difficulty finding work because..."
         multi
         isValid
-        defaultValue={formState.difficultyFindingWorkDescription}
+        defaultValue={inputs.difficultyFindingWorkDescription}
       />
       <p>
         Do you believe that having your record cleared would help you find a job

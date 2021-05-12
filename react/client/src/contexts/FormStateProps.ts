@@ -9,8 +9,8 @@ import {
 } from 'involvement-step/InvolvementCommon';
 
 export interface IStepProps {
-  setFormState: (value: any) => void;
   formState: IStepState;
+  setFormState: (value: any) => void;
   goNextPage: () => void;
   goBackPage: () => void;
 }
@@ -24,6 +24,7 @@ export interface IStepState {
   involvementSchoolState?: IInvolvementSchoolState;
   involvementParentingState?: IInvolvementParentingState;
   involvementUnemployedState?: IInvolvementUnemployedState;
+  goalsStep: IGoalsState;
 }
 
 export const defaultStepState = {
@@ -32,10 +33,19 @@ export const defaultStepState = {
     age: null,
     isVeteran: false,
   },
+  goalsStep: {
+    goals: '',
+    goalsHow: '',
+  },
 };
 
 export interface IIntroductionState {
   name: string;
   age: number | null;
   isVeteran: boolean;
+}
+
+export interface IGoalsState {
+  goals: string;
+  goalsHow: string;
 }
