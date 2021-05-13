@@ -1,8 +1,3 @@
-import {
-  IInvolvementParentingState,
-  IInvolvementUnemployedState,
-} from 'involvement-step/InvolvementCommon';
-
 export interface IStepProps {
   formState: IStepState;
   setFormState: (value: any) => void;
@@ -17,8 +12,8 @@ export interface IStepState {
   involvementServiceState: IInvolvementServiceState;
   involvementRecoveryState: IInvolvementRecoveryState;
   involvementSchoolState: IInvolvementSchoolState;
-  involvementParentingState?: IInvolvementParentingState;
-  involvementUnemployedState?: IInvolvementUnemployedState;
+  involvementParentingState: IInvolvementParentingState;
+  involvementUnemployedState: IInvolvementUnemployedState;
   goalsStep: IGoalsState;
 }
 
@@ -53,6 +48,15 @@ export const defaultStepState = {
     schoolName: '',
     studyName: '',
     passionDescription: '',
+  },
+  involvementParentingState: {
+    childName: '',
+    parentYears: '',
+    parentDescription: '',
+  },
+  involvementUnemployedState: {
+    unemploymentDescription: '',
+    wouldClearanceHelp: '',
   },
   goalsStep: {
     goals: '',
@@ -97,6 +101,18 @@ export interface IInvolvementSchoolState {
   studyName: string;
   passionDescription: string;
 }
+// step 2e
+export interface IInvolvementParentingState {
+  childName: string;
+  parentYears: string;
+  parentDescription: string;
+}
+// step 2f
+export interface IInvolvementUnemployedState {
+  unemploymentDescription: string;
+  wouldClearanceHelp: string;
+}
+
 export interface IGoalsState {
   goals: string;
   goalsHow: string;

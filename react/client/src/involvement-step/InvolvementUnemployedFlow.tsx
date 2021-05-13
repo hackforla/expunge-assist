@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
 
-import { IStepProps } from 'contexts/FormStateProps';
+import { IInvolvementUnemployedState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 import RadioGroup from 'components/RadioGroup';
 
-import { IInvolvementUnemployedState } from 'involvement-step/InvolvementCommon';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
+interface IInvolvementUnemployedStepProps {
+  stepState: IInvolvementUnemployedState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
 const InvolvementUnemployedFlow = ({
-  formState,
+  stepState,
   setFormState,
   goNextPage,
   goBackPage,
-}: IStepProps) => {
+}: IInvolvementUnemployedStepProps) => {
   const utilityClasses = useUtilityStyles();
-  const [state, setState] = useState<IInvolvementUnemployedState>({
-    unemploymentDescription: '',
-    wouldClearanceHelp: '',
-  });
 
-  const updateFlowState = (changes: object) => {
-    const newState = {
-      ...state,
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
       ...changes,
-    };
-    setState(newState);
-    setFormState(formState); // todo
+    });
   };
 
   return (
@@ -38,13 +37,13 @@ const InvolvementUnemployedFlow = ({
         suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ unemploymentDescription: evt.target.value })
+            updateStepState({ unemploymentDescription: evt.target.value })
           }
           inputName="unemploymentDescription"
           placeholder="I have been having trouble finding work because..."
           multi={false}
           isValid
-          defaultValue={state.unemploymentDescription}
+          defaultValue={stepState.unemploymentDescription}
         />
       </div>
 
@@ -55,9 +54,9 @@ const InvolvementUnemployedFlow = ({
           labels={['Yes', 'No']}
           inputName="wouldClearanceHelp"
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ wouldClearanceHelp: evt.target.value })
+            updateStepState({ wouldClearanceHelp: evt.target.value })
           }
-          activeRadio={state.wouldClearanceHelp}
+          activeRadio={stepState.wouldClearanceHelp}
         />
       </div>
 

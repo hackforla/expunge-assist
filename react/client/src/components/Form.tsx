@@ -144,8 +144,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING && (
             <InvolvementParentingFlow
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.involvementParentingState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementParentingState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -153,8 +155,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
             <InvolvementUnemployedFlow
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.involvementUnemployedState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementUnemployedState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
