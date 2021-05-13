@@ -1,34 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { IStepProps } from 'contexts/FormStateProps';
+import { IInvolvementSchoolState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
-import { IInvolvementSchoolState } from 'involvement-step/InvolvementCommon';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
+interface IInvolvementSchoolStepProps {
+  stepState: IInvolvementSchoolState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
 const InvolvementSchoolFlow = ({
-  formState,
+  stepState,
   setFormState,
   goNextPage,
   goBackPage,
-}: IStepProps) => {
+}: IInvolvementSchoolStepProps) => {
   const utilityClasses = useUtilityStyles();
-  const [state, setState] = useState<IInvolvementSchoolState>({
-    schoolName: '',
-    studyName: '',
-    passionDescription: '',
-  });
 
-  const updateFlowState = (changes: object) => {
-    const newState = {
-      ...state,
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
       ...changes,
-    };
-    setState(newState);
-    setFormState(formState); // todo
+    });
   };
 
   return (
@@ -37,13 +35,13 @@ const InvolvementSchoolFlow = ({
         What is the name of the school you are attending?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ schoolName: evt.target.value })
+            updateStepState({ schoolName: evt.target.value })
           }
           inputName="schoolName"
           placeholder="Name of School"
           multi={false}
           isValid
-          defaultValue={state.schoolName}
+          defaultValue={stepState.schoolName}
         />
       </div>
 
@@ -51,13 +49,13 @@ const InvolvementSchoolFlow = ({
         What are you currently studying?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ studyName: evt.target.value })
+            updateStepState({ studyName: evt.target.value })
           }
           inputName="studyName"
           placeholder="Name of Subject/Study Area"
           multi={false}
           isValid
-          defaultValue={state.studyName}
+          defaultValue={stepState.studyName}
         />
       </div>
 
@@ -65,13 +63,13 @@ const InvolvementSchoolFlow = ({
         Why are you passionate about studying this? (2-3 sentences suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ passionDescription: evt.target.value })
+            updateStepState({ passionDescription: evt.target.value })
           }
           inputName="passionDescription"
           placeholder="I am passionate about..."
           multi
           isValid
-          defaultValue={state.passionDescription}
+          defaultValue={stepState.passionDescription}
         />
       </div>
 

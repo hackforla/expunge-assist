@@ -133,8 +133,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL && (
             <InvolvementSchoolFlow
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.involvementSchoolState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementSchoolState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
