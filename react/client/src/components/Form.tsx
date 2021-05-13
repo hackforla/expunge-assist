@@ -111,8 +111,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
             <InvolvementCommunityServiceFlow
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.involvementServiceState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementServiceState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />

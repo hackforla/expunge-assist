@@ -1,9 +1,3 @@
-// step 2b
-export interface IInvolvementServiceState {
-  organizationName: string;
-  serviceDescription: string;
-}
-
 // step 2c
 export interface IInvolvementRecoveryState {
   recoveryName: string;

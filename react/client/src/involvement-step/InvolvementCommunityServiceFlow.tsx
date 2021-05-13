@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { IStepProps } from 'contexts/FormStateProps';
+import { IInvolvementServiceState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
-import { IInvolvementServiceState } from 'involvement-step/InvolvementCommon';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
+interface IInvolvementInitialStepProps {
+  stepState: IInvolvementServiceState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
 const InvolvementCommunityServiceFlow = ({
-  formState,
+  stepState,
   setFormState,
   goNextPage,
   goBackPage,
-}: IStepProps) => {
+}: IInvolvementInitialStepProps) => {
   const utilityClasses = useUtilityStyles({});
-  const [state, setState] = useState<IInvolvementServiceState>({
-    organizationName: '',
-    serviceDescription: '',
-  });
 
-  const updateFlowState = (changes: object) => {
-    const newState = {
-      ...state,
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
       ...changes,
-    };
-    setState(newState);
-    setFormState(formState); // todo
+    });
   };
 
   return (
@@ -37,13 +36,13 @@ const InvolvementCommunityServiceFlow = ({
         involved with?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ organizationName: evt.target.value })
+            updateStepState({ organizationName: evt.target.value })
           }
           inputName="organizationName"
           placeholder="Name of Organization"
           multi={false}
           isValid
-          defaultValue={state.organizationName}
+          defaultValue={stepState.organizationName}
         />
       </div>
 
@@ -52,13 +51,13 @@ const InvolvementCommunityServiceFlow = ({
         important to you? (2-3 sentences suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ serviceDescription: evt.target.value })
+            updateStepState({ serviceDescription: evt.target.value })
           }
           inputName="serviceDescription"
           placeholder="I have taken on responsibilities including..."
           multi={false}
           isValid
-          defaultValue={state.serviceDescription}
+          defaultValue={stepState.serviceDescription}
         />
       </div>
 

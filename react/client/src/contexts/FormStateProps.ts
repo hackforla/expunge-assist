@@ -1,5 +1,4 @@
 import {
-  IInvolvementServiceState,
   IInvolvementRecoveryState,
   IInvolvementSchoolState,
   IInvolvementParentingState,
@@ -17,7 +16,7 @@ export interface IStepState {
   introduction: IIntroductionState;
   involvementInitialState: IInvolvementInitialState;
   involvementJobState: IInvolvementJobState;
-  involvementServiceState?: IInvolvementServiceState;
+  involvementServiceState: IInvolvementServiceState;
   involvementRecoveryState?: IInvolvementRecoveryState;
   involvementSchoolState?: IInvolvementSchoolState;
   involvementParentingState?: IInvolvementParentingState;
@@ -43,6 +42,10 @@ export const defaultStepState = {
     companyName: '',
     jobTitle: '',
     jobDescription: '',
+  },
+  involvementServiceState: {
+    organizationName: '',
+    serviceDescription: '',
   },
   goalsStep: {
     goals: '',
@@ -70,6 +73,11 @@ export interface IInvolvementJobState {
   companyName: string;
   jobTitle: string;
   jobDescription: string;
+}
+// step 2b
+export interface IInvolvementServiceState {
+  organizationName: string;
+  serviceDescription: string;
 }
 export interface IGoalsState {
   goals: string;
