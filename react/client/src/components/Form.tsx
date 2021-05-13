@@ -6,6 +6,7 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 
 import { PAGE_ENUMS } from 'contexts/RoutingProps';
+import { IStepState, defaultStepState } from 'contexts/FormStateProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
@@ -55,28 +56,12 @@ const Form = ({
 }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
-  const [inputs, setInputs] = useState<userInputs>({
-    name: '',
-    age: null,
-    introduction: '',
+  const [formState, setFormState] = useState<IStepState>(defaultStepState);
 
-    lifeChanges: '',
+  const updateStepToForm = (stepState: any) =>
+    setFormState({ ...formState, ...stepState });
 
-    communityServiceOrgName: '',
-    communityServiceDescription: '',
-    jobName: '',
-    jobTitle: '',
-    jobDescription: '',
-    difficultyFindingWorkDescription: '',
-
-    goals: '',
-    goalsHow: '',
-
-    clearRecordWhy: '',
-    clearRecordHow: '',
-
-    pdf: undefined,
-  });
+  console.log('formState', formState);
 
   return (
     <>
@@ -93,8 +78,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INTRODUCTION && (
             <IntroductionStep
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.introduction}
+              setFormState={(newStepState) =>
+                updateStepToForm({ introduction: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -102,8 +89,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
             <InvolvementInitialFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.involvementInitialState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementInitialState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -111,8 +100,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB && (
             <InvolvementJobFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.involvementJobState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementJobState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -120,8 +111,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
             <InvolvementCommunityServiceFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.involvementServiceState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementServiceState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -129,8 +122,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY && (
             <InvolvementRecoveryFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.involvementRecoveryState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementRecoveryState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -138,8 +133,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL && (
             <InvolvementSchoolFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.involvementSchoolState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementSchoolState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -147,8 +144,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING && (
             <InvolvementParentingFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.involvementParentingState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementParentingState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -156,8 +155,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
             <InvolvementUnemployedFlow
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.involvementUnemployedState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementUnemployedState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -165,8 +166,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.GOALS && (
             <GoalsStep
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.goalsStep}
+              setFormState={(newStepState) =>
+                updateStepToForm({ goalsStep: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -174,8 +177,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.WHY && (
             <WhyStep
-              inputs={inputs}
-              setInputs={setInputs}
+              stepState={formState.whyStep}
+              setFormState={(newStepState) =>
+                updateStepToForm({ whyStep: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -190,6 +195,7 @@ const Form = ({
               <Button onClick={() => goNextPage()} buttonText="NEXT" />
             </div>
           )}
+
           {pageEnum === PAGE_ENUMS.FINALIZE && (
             <div
               className={`${utilityClasses.buttonContainer} adjacent-mar-top`}
@@ -198,10 +204,11 @@ const Form = ({
               <Button onClick={() => goNextPage()} buttonText="SAVE" />
             </div>
           )}
+
           {pageEnum === PAGE_ENUMS.DOWNLOAD && (
             <Download
-              inputs={inputs}
-              setInputs={setInputs}
+              formState={formState}
+              setFormState={setFormState}
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />

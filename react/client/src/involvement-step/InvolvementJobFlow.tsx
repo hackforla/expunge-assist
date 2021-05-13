@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { IInvolvementJobState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
-import { IInvolvementJobState } from 'involvement-step/InvolvementCommon';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
+interface IInvolvementInitialStepProps {
+  stepState: IInvolvementJobState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
 const InvolvementJobFlow = ({
-  inputs,
-  setInputs,
+  stepState,
+  setFormState,
   goNextPage,
   goBackPage,
-}: StepProps) => {
+}: IInvolvementInitialStepProps) => {
   const utilityClasses = useUtilityStyles();
-  const [state, setState] = useState<IInvolvementJobState>({
-    companyName: '',
-    jobTitle: '',
-    jobDescription: '',
-  });
 
-  const updateFlowState = (changes: object) => {
-    const newState = {
-      ...state,
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
       ...changes,
-    };
-    setState(newState);
-    setInputs(inputs); // todo
+    });
   };
 
   return (
@@ -35,13 +35,13 @@ const InvolvementJobFlow = ({
         What is the name of the company you work for?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ companyName: evt.target.value })
+            updateStepState({ companyName: evt.target.value })
           }
           inputName="companyName"
           placeholder="Name of company"
           multi={false}
           isValid
-          defaultValue={state.companyName}
+          defaultValue={stepState.companyName}
         />
       </div>
 
@@ -49,13 +49,13 @@ const InvolvementJobFlow = ({
         What is your current job title?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ jobTitle: evt.target.value })
+            updateStepState({ jobTitle: evt.target.value })
           }
           inputName="jobTitle"
           placeholder="Job Title"
           multi={false}
           isValid
-          defaultValue={state.jobTitle}
+          defaultValue={stepState.jobTitle}
         />
       </div>
 
@@ -64,13 +64,13 @@ const InvolvementJobFlow = ({
         suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ jobDescription: evt.target.value })
+            updateStepState({ jobDescription: evt.target.value })
           }
           inputName="jobDescription"
           placeholder="I have had the chance to..."
           multi
           isValid
-          defaultValue={state.jobDescription}
+          defaultValue={stepState.jobDescription}
         />
       </div>
 

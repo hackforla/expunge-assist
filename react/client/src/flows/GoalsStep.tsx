@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { IGoalsState } from 'contexts/FormStateProps';
+
 import FlowNavigation from 'components/FlowNavigation';
 import Button from 'components/Button';
 import Textarea from 'components/Textarea';
@@ -7,18 +9,25 @@ import TextPreview from 'components/TextPreview';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
+interface IGoalsStepProps {
+  stepState: IGoalsState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
 const GoalsStep = ({
-  inputs,
-  setInputs,
+  stepState,
+  setFormState,
   goBackPage,
   goNextPage,
-}: StepProps) => {
+}: IGoalsStepProps) => {
   const utilityClasses = useUtilityStyles();
   const [goalsFilled, setGoalsFilled] = useState(
-    inputs.goals.split('.').length >= 3
+    stepState.goals.split('.').length >= 3
   );
   const [goalsHowFilled, setGoalsHowFilled] = useState(
-    inputs.goalsHow.split('.').length >= 3
+    stepState.goalsHow.split('.').length >= 3
   );
   const [previewPage, setPreview] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,17 +35,17 @@ const GoalsStep = ({
     const inputValue = e.currentTarget.value;
 
     if (inputName === 'goals') {
-      setInputs({ ...inputs, goals: inputValue });
+      setFormState({ ...stepState, goals: inputValue });
       inputValue === '' ? setGoalsFilled(false) : setGoalsFilled(true);
     } else if (inputName === 'goalsHow') {
-      setInputs({ ...inputs, goalsHow: inputValue });
+      setFormState({ ...stepState, goalsHow: inputValue });
       inputValue === '' ? setGoalsHowFilled(false) : setGoalsHowFilled(true);
     }
   };
   return previewPage ? (
     <div className={utilityClasses.contentContainer}>
       <TextPreview
-        content={`${inputs.goals}. To work towards my goals; ${inputs.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
+        content={`${stepState.goals}. To work towards my goals; ${stepState.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
         onAdjustClick={() => null}
         nameOfStep="Future Goals"
       />
@@ -68,7 +77,7 @@ const GoalsStep = ({
         placeholder="I have plans of..."
         multi
         isValid={goalsFilled}
-        defaultValue={inputs.goals}
+        defaultValue={stepState.goals}
       />
       {goalsFilled ? (
         <>
@@ -82,7 +91,7 @@ const GoalsStep = ({
             placeholder="I have been..."
             multi
             isValid={goalsHowFilled}
-            defaultValue={inputs.goalsHow}
+            defaultValue={stepState.goalsHow}
           />
         </>
       ) : (

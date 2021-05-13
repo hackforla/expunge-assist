@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { IInvolvementParentingState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import { IInvolvementParentingState } from 'involvement-step/InvolvementCommon';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
+interface IInvolvementParentingStepProps {
+  stepState: IInvolvementParentingState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
 const InvolvementParentingFlow = ({
-  inputs,
-  setInputs,
+  stepState,
+  setFormState,
   goNextPage,
   goBackPage,
-}: StepProps) => {
+}: IInvolvementParentingStepProps) => {
   const utilityClasses = useUtilityStyles();
-  const [state, setState] = useState<IInvolvementParentingState>({
-    childName: '',
-    parentYears: '',
-    parentDescription: '',
-  });
 
-  const updateFlowState = (changes: object) => {
-    const newState = {
-      ...state,
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
       ...changes,
-    };
-    setState(newState);
-    setInputs(inputs); // todo
+    });
   };
 
   return (
@@ -36,13 +36,13 @@ const InvolvementParentingFlow = ({
         What is the name of your child?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ childName: evt.target.value })
+            updateStepState({ childName: evt.target.value })
           }
           inputName="childName"
           placeholder="Name of Child"
           multi={false}
           isValid
-          defaultValue={state.childName}
+          defaultValue={stepState.childName}
         />
       </div>
 
@@ -53,9 +53,9 @@ const InvolvementParentingFlow = ({
           inputName="age"
           placeholder="1"
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ parentYears: evt.target.value })
+            updateStepState({ parentYears: evt.target.value })
           }
-          defaultValue={state.parentYears}
+          defaultValue={stepState.parentYears}
         />
       </div>
 
@@ -63,13 +63,13 @@ const InvolvementParentingFlow = ({
         Why is being a good parent important to you? (2-3 sentences suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ parentDescription: evt.target.value })
+            updateStepState({ parentDescription: evt.target.value })
           }
           inputName="parentDescription"
           placeholder="Being a good parent is important to me because..."
           multi={false}
           isValid
-          defaultValue={state.parentDescription}
+          defaultValue={stepState.parentDescription}
         />
       </div>
 
