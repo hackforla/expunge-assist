@@ -1,12 +1,3 @@
-// involvement checkboxes
-export interface IInvolvementCheckboxState {
-  isJobChecked: boolean;
-  isRecoveryChecked: boolean;
-  isSchoolChecked: boolean;
-  isParentingChecked: boolean;
-  isCommunityChecked: boolean;
-  isNoneChecked: boolean;
-}
 
 // step 2a
 export interface IInvolvementJobState {

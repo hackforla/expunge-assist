@@ -61,6 +61,8 @@ const Form = ({
   const updateStepToForm = (stepState: any) =>
     setFormState({ ...formState, ...stepState });
 
+  console.log('formState', formState);
+
   return (
     <>
       {affirmationIsActive ? (
@@ -87,8 +89,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
             <InvolvementInitialFlow
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.involvementInitialState}
+              setFormState={(stepState) =>
+                updateStepToForm({ involvementInitialState: stepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />

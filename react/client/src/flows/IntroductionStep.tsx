@@ -24,7 +24,6 @@ const IntroductionStep = ({
   goBackPage,
   goNextPage,
 }: IIntroductionStepProps) => {
-  console.log('IntroductionStep',stepState)
   const utilityClasses = useUtilityStyles({});
 
   const [nameFilled, setNameFilled] = useState(false);

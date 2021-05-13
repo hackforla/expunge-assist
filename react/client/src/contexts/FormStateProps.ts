@@ -1,5 +1,4 @@
 import {
-  IInvolvementCheckboxState,
   IInvolvementJobState,
   IInvolvementServiceState,
   IInvolvementRecoveryState,
@@ -17,7 +16,7 @@ export interface IStepProps {
 
 export interface IStepState {
   introduction: IIntroductionState;
-  involvementCheckboxState?: IInvolvementCheckboxState;
+  involvementInitialState: IInvolvementInitialState;
   involvementJobState?: IInvolvementJobState;
   involvementServiceState?: IInvolvementServiceState;
   involvementRecoveryState?: IInvolvementRecoveryState;
@@ -33,6 +32,14 @@ export const defaultStepState = {
     age: '',
     isVeteran: '',
   },
+  involvementInitialState: {
+    isJobChecked: false,
+    isRecoveryChecked: false,
+    isSchoolChecked: false,
+    isParentingChecked: false,
+    isCommunityChecked: false,
+    isNoneChecked: false,
+  },
   goalsStep: {
     goals: '',
     goalsHow: '',
@@ -43,6 +50,16 @@ export interface IIntroductionState {
   fullName: string;
   age: string;
   isVeteran: string;
+}
+
+// involvement checkboxes
+export interface IInvolvementInitialState {
+  isJobChecked: boolean;
+  isRecoveryChecked: boolean;
+  isSchoolChecked: boolean;
+  isParentingChecked: boolean;
+  isCommunityChecked: boolean;
+  isNoneChecked: boolean;
 }
 
 export interface IGoalsState {
