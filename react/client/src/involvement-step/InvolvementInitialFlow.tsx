@@ -22,12 +22,11 @@ const InvolvementInitialFlow = ({
 }: IInvolvementInitialStepProps) => {
   const utilityClasses = useUtilityStyles({});
 
-  const updateFlowState = (changes: object) => {
-    const newState = {
+  const updateStepState = (changes: object) => {
+    setFormState({
       ...stepState,
       ...changes,
-    };
-    setFormState(newState); // todo
+    });
   };
 
   return (
@@ -42,7 +41,7 @@ const InvolvementInitialFlow = ({
         <Checkbox
           checked={stepState.isJobChecked}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ isJobChecked: evt.target.checked })
+            updateStepState({ isJobChecked: evt.target.checked })
           }
           label="Jobs"
         />
@@ -50,7 +49,7 @@ const InvolvementInitialFlow = ({
         <Checkbox
           checked={stepState.isRecoveryChecked}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ isRecoveryChecked: evt.target.checked })
+            updateStepState({ isRecoveryChecked: evt.target.checked })
           }
           label="Recovery"
         />
@@ -58,7 +57,7 @@ const InvolvementInitialFlow = ({
         <Checkbox
           checked={stepState.isSchoolChecked}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ isSchoolChecked: evt.target.checked })
+            updateStepState({ isSchoolChecked: evt.target.checked })
           }
           label="School"
         />
@@ -66,7 +65,7 @@ const InvolvementInitialFlow = ({
         <Checkbox
           checked={stepState.isParentingChecked}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ isParentingChecked: evt.target.checked })
+            updateStepState({ isParentingChecked: evt.target.checked })
           }
           label="Parenting"
         />
@@ -74,7 +73,7 @@ const InvolvementInitialFlow = ({
         <Checkbox
           checked={stepState.isCommunityChecked}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ isCommunityChecked: evt.target.checked })
+            updateStepState({ isCommunityChecked: evt.target.checked })
           }
           label="Community Service"
         />
@@ -82,7 +81,7 @@ const InvolvementInitialFlow = ({
         <Checkbox
           checked={stepState.isNoneChecked}
           onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ isNoneChecked: evt.target.checked })
+            updateStepState({ isNoneChecked: evt.target.checked })
           }
           label="None of the above"
         />

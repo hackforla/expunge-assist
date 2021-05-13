@@ -1,5 +1,4 @@
 import {
-  IInvolvementJobState,
   IInvolvementServiceState,
   IInvolvementRecoveryState,
   IInvolvementSchoolState,
@@ -17,7 +16,7 @@ export interface IStepProps {
 export interface IStepState {
   introduction: IIntroductionState;
   involvementInitialState: IInvolvementInitialState;
-  involvementJobState?: IInvolvementJobState;
+  involvementJobState: IInvolvementJobState;
   involvementServiceState?: IInvolvementServiceState;
   involvementRecoveryState?: IInvolvementRecoveryState;
   involvementSchoolState?: IInvolvementSchoolState;
@@ -40,6 +39,11 @@ export const defaultStepState = {
     isCommunityChecked: false,
     isNoneChecked: false,
   },
+  involvementJobState: {
+    companyName: '',
+    jobTitle: '',
+    jobDescription: '',
+  },
   goalsStep: {
     goals: '',
     goalsHow: '',
@@ -61,7 +65,12 @@ export interface IInvolvementInitialState {
   isCommunityChecked: boolean;
   isNoneChecked: boolean;
 }
-
+// step 2a
+export interface IInvolvementJobState {
+  companyName: string;
+  jobTitle: string;
+  jobDescription: string;
+}
 export interface IGoalsState {
   goals: string;
   goalsHow: string;

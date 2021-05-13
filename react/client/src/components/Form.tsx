@@ -79,8 +79,8 @@ const Form = ({
           {pageEnum === PAGE_ENUMS.INTRODUCTION && (
             <IntroductionStep
               stepState={formState.introduction}
-              setFormState={(stepState) =>
-                updateStepToForm({ introduction: stepState })
+              setFormState={(newStepState) =>
+                updateStepToForm({ introduction: newStepState })
               }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
@@ -90,8 +90,8 @@ const Form = ({
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
             <InvolvementInitialFlow
               stepState={formState.involvementInitialState}
-              setFormState={(stepState) =>
-                updateStepToForm({ involvementInitialState: stepState })
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementInitialState: newStepState })
               }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
@@ -100,8 +100,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB && (
             <InvolvementJobFlow
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.involvementJobState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementJobState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
@@ -155,8 +157,8 @@ const Form = ({
           {pageEnum === PAGE_ENUMS.GOALS && (
             <GoalsStep
               stepState={formState.goalsStep}
-              setFormState={(stepState) =>
-                updateStepToForm({ goalsStep: stepState })
+              setFormState={(newStepState) =>
+                updateStepToForm({ goalsStep: newStepState })
               }
               goNextPage={goNextPage}
               goBackPage={goBackPage}

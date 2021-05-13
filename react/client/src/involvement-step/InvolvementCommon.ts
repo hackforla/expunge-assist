@@ -1,11 +1,3 @@
-
-// step 2a
-export interface IInvolvementJobState {
-  companyName: string;
-  jobTitle: string;
-  jobDescription: string;
-}
-
 // step 2b
 export interface IInvolvementServiceState {
   organizationName: string;
