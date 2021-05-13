@@ -15,6 +15,7 @@ export interface IStepState {
   involvementParentingState: IInvolvementParentingState;
   involvementUnemployedState: IInvolvementUnemployedState;
   goalsStep: IGoalsState;
+  whyStep: IWhyStepState;
 }
 
 export const defaultStepState = {
@@ -61,6 +62,10 @@ export const defaultStepState = {
   goalsStep: {
     goals: '',
     goalsHow: '',
+  },
+  whyStep: {
+    clearRecordWhy: '',
+    clearRecordHow: '',
   },
 };
 
@@ -116,4 +121,9 @@ export interface IInvolvementUnemployedState {
 export interface IGoalsState {
   goals: string;
   goalsHow: string;
+}
+
+export interface IWhyStepState {
+  clearRecordWhy: string;
+  clearRecordHow: string;
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { IStepProps } from 'contexts/FormStateProps';
+import { IWhyStepState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import FormFooter from 'components/FormFooter';
@@ -9,18 +9,33 @@ import TextPreview from 'components/TextPreview';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-const WhyStep = ({ goBackPage, goNextPage }: IStepProps) => {
-  const [step5Inputs, setStep5Inputs] = useState({
-    clearRecordWhy: '',
-    clearRecordHow: '',
-  });
-  const utilityClasses = useUtilityStyles({});
+interface IWhyStepProps {
+  stepState: IWhyStepState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
+const WhyStep = ({
+  stepState,
+  setFormState,
+  goNextPage,
+  goBackPage,
+}: IWhyStepProps) => {
+  const utilityClasses = useUtilityStyles();
+
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
+      ...changes,
+    });
+  };
 
   const [clearRecordWhyFilled, setClearRecordWhyFilled] = useState(
-    step5Inputs.clearRecordWhy.split('.').length > 1
+    stepState.clearRecordWhy.split('.').length > 1
   );
   const [clearRecordHowFilled, setClearRecordHowFilled] = useState(
-    step5Inputs.clearRecordHow.split('.').length === 2
+    stepState.clearRecordHow.split('.').length === 2
   );
 
   const [showPreview, setShowPreview] = useState(false);
@@ -29,19 +44,19 @@ const WhyStep = ({ goBackPage, goNextPage }: IStepProps) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
     if (inputName === 'clearRecordWhy') {
-      setStep5Inputs({ ...step5Inputs, clearRecordWhy: inputValue });
+      updateStepState({ ...stepState, clearRecordWhy: inputValue });
       inputValue === ''
         ? setClearRecordWhyFilled(false)
         : setClearRecordWhyFilled(true);
     } else if (inputName === 'clearRecordHow') {
-      setStep5Inputs({ ...step5Inputs, clearRecordHow: inputValue });
+      updateStepState({ ...stepState, clearRecordHow: inputValue });
       inputValue === ''
         ? setClearRecordHowFilled(false)
         : setClearRecordHowFilled(true);
     }
   };
 
-  const textPreviewContent = `${step5Inputs.clearRecordWhy} ${step5Inputs.clearRecordHow}`;
+  const textPreviewContent = `${stepState.clearRecordWhy} ${stepState.clearRecordHow}`;
 
   if (showPreview) {
     return (
@@ -70,7 +85,7 @@ const WhyStep = ({ goBackPage, goNextPage }: IStepProps) => {
         handleChange={handleChange}
         multi={false}
         isValid={clearRecordWhyFilled}
-        defaultValue={step5Inputs.clearRecordWhy}
+        defaultValue={stepState.clearRecordWhy}
       />
 
       <p className="greyedOut">
@@ -85,7 +100,7 @@ const WhyStep = ({ goBackPage, goNextPage }: IStepProps) => {
           placeholder="Clearing my record will..."
           multi
           isValid={clearRecordHowFilled}
-          defaultValue={step5Inputs.clearRecordHow}
+          defaultValue={stepState.clearRecordHow}
         />
       )}
 

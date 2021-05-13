@@ -177,8 +177,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.WHY && (
             <WhyStep
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.whyStep}
+              setFormState={(newStepState) =>
+                updateStepToForm({ whyStep: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
