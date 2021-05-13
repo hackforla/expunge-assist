@@ -1,8 +1,3 @@
-// step 2c
-export interface IInvolvementRecoveryState {
-  recoveryName: string;
-  recoveryDescription: string;
-}
 
 // step 2d
 export interface IInvolvementSchoolState {

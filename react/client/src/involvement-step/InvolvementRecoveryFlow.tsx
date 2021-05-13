@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { IStepProps } from 'contexts/FormStateProps';
+import { IInvolvementRecoveryState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
-import { IInvolvementRecoveryState } from 'involvement-step/InvolvementCommon';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
+interface IInvolvementRecoveryProps {
+  stepState: IInvolvementRecoveryState;
+  setFormState: (value: any) => void;
+  goNextPage: () => void;
+  goBackPage: () => void;
+}
+
 const InvolvementRecoveryFlow = ({
-  formState,
+  stepState,
   setFormState,
   goNextPage,
   goBackPage,
-}: IStepProps) => {
+}: IInvolvementRecoveryProps) => {
   const utilityClasses = useUtilityStyles();
-  const [state, setState] = useState<IInvolvementRecoveryState>({
-    recoveryName: '',
-    recoveryDescription: '',
-  });
 
-  const updateFlowState = (changes: object) => {
-    const newState = {
-      ...state,
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
       ...changes,
-    };
-    setState(newState);
-    setFormState(formState); // todo
+    });
   };
 
   return (
@@ -36,13 +35,13 @@ const InvolvementRecoveryFlow = ({
         What is the name of the recovery program you are involved with?
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ recoveryName: evt.target.value })
+            updateStepState({ recoveryName: evt.target.value })
           }
           inputName="recoveryName"
           placeholder="Name of Organization"
           multi={false}
           isValid
-          defaultValue={state.recoveryName}
+          defaultValue={stepState.recoveryName}
         />
       </div>
 
@@ -50,13 +49,13 @@ const InvolvementRecoveryFlow = ({
         Why is this recovery program important to you? (2-3 sentences suggested)
         <Textarea
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateFlowState({ recoveryDescription: evt.target.value })
+            updateStepState({ recoveryDescription: evt.target.value })
           }
           inputName="recoveryDescription"
           placeholder="This program is important to me because..."
           multi
           isValid
-          defaultValue={state.recoveryDescription}
+          defaultValue={stepState.recoveryDescription}
         />
       </div>
 

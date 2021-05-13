@@ -122,8 +122,10 @@ const Form = ({
 
           {pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY && (
             <InvolvementRecoveryFlow
-              formState={formState}
-              setFormState={setFormState}
+              stepState={formState.involvementRecoveryState}
+              setFormState={(newStepState) =>
+                updateStepToForm({ involvementRecoveryState: newStepState })
+              }
               goNextPage={goNextPage}
               goBackPage={goBackPage}
             />
