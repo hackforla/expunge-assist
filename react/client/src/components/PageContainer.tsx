@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import AffirmationComponent from 'components/AffirmationComponent';
@@ -39,10 +39,9 @@ interface PageProps {
 }
 
 const PageContainer = ({ match }: PageProps) => {
-  const useRoutingContext = () => React.useContext(RoutingContext);
   const useAffirmationContext = () => React.useContext(AffirmationContext);
 
-  const { goNextPage, goBackPage, pageEnum } = useRoutingContext();
+  const { goBackPage, pageEnum } = useContext(RoutingContext);
   const { affirmationData, updateAffirmationData } = useAffirmationContext();
   const isLandingPage = pageEnum === PAGE_ENUMS.NONE;
 
@@ -109,7 +108,7 @@ const PageContainer = ({ match }: PageProps) => {
         onChangeAffirmation={updateAffirmationData}
       />
 
-      {isLandingPage && <Landing goNextPage={goNextPage} />}
+      {isLandingPage && <Landing />}
 
       {!affirmationData.isActive && !isLandingPage && (
         <FormStateContextProvider>

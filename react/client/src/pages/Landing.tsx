@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'components/Button';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import useUtilityStyles from 'styles/utilityStyles';
+import { RoutingContext } from 'contexts/RoutingContext';
 
-interface LandingProps {
-  goNextPage: () => void;
-}
+import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -19,9 +17,11 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const Landing = ({ goNextPage }: LandingProps) => {
+const Landing = () => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({ theme: 'dark' });
+
+  const { goNextPage } = useContext(RoutingContext);
 
   return (
     <div className={`${utilityClasses.contentContainer} content-page`}>
