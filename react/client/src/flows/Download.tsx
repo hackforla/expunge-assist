@@ -3,7 +3,7 @@ import jsPDF from 'jspdf';
 
 import { IStepProps } from 'contexts/FormStateProps';
 
-const Download = ({ goBackPage }: IStepProps) => {
+const Download = () => {
   const savePDF = () => {
     const doc = new jsPDF('p', 'mm', 'letter');
     doc.setFontSize(12);
@@ -22,7 +22,7 @@ const Download = ({ goBackPage }: IStepProps) => {
     <div className="Download">
       <p>Previewing Final Statement</p>
       <button onClick={savePDF}>Save PDF</button>
-      <button onClick={() => goBackPage()}>BACK</button>
+      <button onClick={() => {}}>BACK</button>
     </div>
   );
 };

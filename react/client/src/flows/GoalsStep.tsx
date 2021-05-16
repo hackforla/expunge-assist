@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import FormStateContext from 'contexts/FormStateContext';
 import { IGoalsState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
@@ -12,17 +13,15 @@ import useUtilityStyles from 'styles/utilityStyles';
 interface IGoalsStepProps {
   stepState: IGoalsState;
   setFormState: (value: any) => void;
-  goNextPage: () => void;
-  goBackPage: () => void;
 }
 
 const GoalsStep = ({
   stepState,
   setFormState,
-  goBackPage,
-  goNextPage,
 }: IGoalsStepProps) => {
   const utilityClasses = useUtilityStyles();
+  const { goNextStep, goBackStep } = React.useContext(FormStateContext);
+
   const [goalsFilled, setGoalsFilled] = useState(
     stepState.goals.split('.').length >= 3
   );
@@ -58,7 +57,7 @@ const GoalsStep = ({
         />
         <Button
           className={utilityClasses.buttonRight}
-          onClick={() => goNextPage()}
+          onClick={goNextStep}
           buttonText="LOOKS GOOD"
           hasArrow
         />
@@ -102,8 +101,7 @@ const GoalsStep = ({
       )}
 
       <FlowNavigation
-        goBackPage={goBackPage}
-        goNextPage={() => setPreview(true)}
+        onNext={() => setPreview(true)}
       />
     </div>
   );

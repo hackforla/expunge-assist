@@ -10,15 +10,11 @@ import useUtilityStyles from 'styles/utilityStyles';
 interface IInvolvementSchoolStepProps {
   stepState: IInvolvementSchoolState;
   setFormState: (value: any) => void;
-  goNextPage: () => void;
-  goBackPage: () => void;
 }
 
 const InvolvementSchoolFlow = ({
   stepState,
   setFormState,
-  goNextPage,
-  goBackPage,
 }: IInvolvementSchoolStepProps) => {
   const utilityClasses = useUtilityStyles();
 
@@ -73,7 +69,7 @@ const InvolvementSchoolFlow = ({
         />
       </div>
 
-      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
+      <FlowNavigation />
     </div>
   );
 };

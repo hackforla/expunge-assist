@@ -12,15 +12,11 @@ import useUtilityStyles from 'styles/utilityStyles';
 interface IWhyStepProps {
   stepState: IWhyStepState;
   setFormState: (value: any) => void;
-  goNextPage: () => void;
-  goBackPage: () => void;
 }
 
 const WhyStep = ({
   stepState,
   setFormState,
-  goNextPage,
-  goBackPage,
 }: IWhyStepProps) => {
   const utilityClasses = useUtilityStyles();
 
@@ -68,8 +64,7 @@ const WhyStep = ({
         />
 
         <FlowNavigation
-          goBackPage={() => setShowPreview(false)}
-          goNextPage={goNextPage}
+          onBack={() => setShowPreview(false)}
         />
       </div>
     );
@@ -107,14 +102,11 @@ const WhyStep = ({
       <FormFooter
         isFormComplete={clearRecordWhyFilled && clearRecordHowFilled}
         isPreviewing={showPreview}
-        goBackPage={goBackPage}
-        goNextPage={goNextPage}
         togglePreview={() => setShowPreview(!showPreview)}
       />
 
       <FlowNavigation
-        goBackPage={goBackPage}
-        goNextPage={() => setShowPreview(true)}
+        onNext={() => setShowPreview(true)}
       />
     </div>
   );

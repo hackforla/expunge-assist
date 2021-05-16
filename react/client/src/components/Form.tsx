@@ -5,8 +5,9 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
-import { PAGE_ENUMS } from 'contexts/RoutingProps';
 import FormStateContext from 'contexts/FormStateContext';
+import RoutingContext from 'contexts/RoutingContext';
+import { PAGE_ENUMS } from 'contexts/RoutingProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
@@ -40,25 +41,18 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface FormProps {
-  pageEnum: string;
-  // goNextPage: () => void;
-  goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
   affirmationIsActive: boolean;
 }
 
-const Form = ({
-  pageEnum,
-  goBackPage,
-  onChangeAffirmation,
-  affirmationIsActive,
-}: FormProps) => {
+const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
 
-  const { formState, updateStepToForm, goNextStep } = useContext(
+  const { formState, updateStepToForm, goNextStep, goBackStep } = useContext(
     FormStateContext
   );
+  const { pageEnum } = useContext(RoutingContext);
 
   if (affirmationIsActive) {
     return <></>;
@@ -67,10 +61,7 @@ const Form = ({
   return (
     <div className={`${classes.root} content-page`}>
       {pageEnum === PAGE_ENUMS.BEFORE_YOU_BEGIN && (
-        <BeforeYouBegin
-          goNextPage={goNextStep}
-          onChangeAffirmation={onChangeAffirmation}
-        />
+        <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
       )}
 
       {pageEnum === PAGE_ENUMS.INTRODUCTION && (
@@ -79,8 +70,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ introduction: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -90,8 +79,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementInitialState: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -101,8 +88,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementJobState: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -112,8 +97,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementServiceState: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -123,8 +106,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementRecoveryState: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -134,8 +115,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementSchoolState: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -145,8 +124,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementParentingState: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -156,8 +133,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementUnemployedState: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -167,8 +142,6 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ goalsStep: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
@@ -178,15 +151,13 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ whyStep: newStepState })
           }
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
 
       {pageEnum === PAGE_ENUMS.PREVIEWING && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
-          <Button onClick={() => goBackPage()} buttonText="EDIT" />
+          <Button onClick={() => goBackStep()} buttonText="EDIT" />
           <Button onClick={() => goNextStep()} buttonText="NEXT" />
         </div>
       )}
@@ -200,10 +171,6 @@ const Form = ({
 
       {pageEnum === PAGE_ENUMS.DOWNLOAD && (
         <Download
-          formState={formState}
-          setFormState={updateStepToForm}
-          goNextPage={goNextStep}
-          goBackPage={goBackPage}
         />
       )}
     </div>

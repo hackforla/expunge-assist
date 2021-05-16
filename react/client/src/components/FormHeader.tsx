@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
+import RoutingContext from 'contexts/RoutingContext';
 import { PAGE_ENUMS, isAnInvolvementPage } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
@@ -26,12 +27,11 @@ const useStyles = makeStyles(() =>
   })
 );
 
-interface Props {
-  pageEnum: string;
-}
 
-const FormHeader: React.FC<Props> = ({ pageEnum }) => {
+const FormHeader = () => {
   const classes = useStyles();
+  const { pageEnum } = React.useContext(RoutingContext);
+
   let showFormHeader: boolean;
   let percentageComplete: number;
   let formStep = 0;

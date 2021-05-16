@@ -1,8 +1,6 @@
 export interface IStepProps {
   formState: IStepState;
   setFormState: (value: any) => void;
-  goNextPage: () => void;
-  goBackPage: () => void;
 }
 
 export interface IStepState {

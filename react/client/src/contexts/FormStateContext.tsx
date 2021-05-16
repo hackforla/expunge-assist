@@ -21,10 +21,11 @@ export const FormStateContextProvider = ({ children }: RoutingProviderProps) => 
 
   const goNextStep = () => {
     const suggestedNext = getNextFormStep(pageEnum);
+    console.log('suggestedNext', suggestedNext)
     goNextPage(suggestedNext);
   }
 
-  const goPrevStep = () => {
+  const goBackStep = () => {
     goBackPage();
   }
 
@@ -34,6 +35,7 @@ export const FormStateContextProvider = ({ children }: RoutingProviderProps) => 
         formState,
         updateStepToForm,
         goNextStep,
+        goBackStep,
       }}
     >
       {children}

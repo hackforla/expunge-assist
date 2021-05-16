@@ -14,15 +14,11 @@ import useUtilityStyles from 'styles/utilityStyles';
 interface IIntroductionStepProps {
   stepState: IIntroductionState;
   setFormState: (value: any) => void;
-  goNextPage: () => void;
-  goBackPage: () => void;
 }
 
 const IntroductionStep = ({
   stepState,
   setFormState,
-  goBackPage,
-  goNextPage,
 }: IIntroductionStepProps) => {
   const utilityClasses = useUtilityStyles({});
 
@@ -61,7 +57,7 @@ const IntroductionStep = ({
           />
         </div>
 
-        <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
+        <FlowNavigation />
       </div>
     );
   }
@@ -119,7 +115,7 @@ const IntroductionStep = ({
         </div>
       )}
 
-      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
+      <FlowNavigation />
     </div>
   );
 };

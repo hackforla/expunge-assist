@@ -113,10 +113,8 @@ const PageContainer = ({ match }: PageProps) => {
 
       {!affirmationData.isActive && !isLandingPage && (
         <FormStateContextProvider>
-          <FormHeader pageEnum={pageEnum} />
+          <FormHeader />
           <Form
-            pageEnum={pageEnum}
-            goBackPage={goBackPage}
             onChangeAffirmation={updateAffirmationData}
             affirmationIsActive={affirmationData.isActive}
           />
