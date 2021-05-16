@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
+
+import FormStateContext from 'contexts/FormStateContext';
 
 import Button from 'components/Button';
 import PopUp from 'components/PopUp';
@@ -23,26 +24,24 @@ const useStyles = makeStyles<Theme>(() =>
 interface FormFooterProps {
   isFormComplete: boolean;
   isPreviewing: boolean;
-  goBackPage: () => void;
-  goNextPage: () => void;
   togglePreview?: () => void;
 }
 
 const FormFooter = ({
   isFormComplete,
   isPreviewing,
-  goBackPage,
-  goNextPage,
   togglePreview,
 }: FormFooterProps) => {
   const classes = useStyles();
+  const { goNextStep, goBackStep } = React.useContext(FormStateContext);
+
   return isPreviewing ? (
     <div className={classes.flexEnd}>
-      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" hasArrow />
+      <Button onClick={goNextStep} buttonText="LOOKS GOOD" hasArrow />
     </div>
   ) : (
     <div className={classes.root}>
-      <Button onClick={() => goBackPage()} buttonText="BACK" />
+      <Button onClick={goBackStep} buttonText="BACK" />
       {!isFormComplete && (
         <PopUp
           title="Some advice for your personal statement"

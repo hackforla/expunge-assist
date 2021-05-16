@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import AffirmationComponent from 'components/AffirmationComponent';
@@ -7,9 +7,10 @@ import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 import Landing from 'pages/Landing';
 
-import { RoutingContext } from 'contexts/RoutingContext';
+import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
-import { PAGE_ENUMS } from 'contexts/RoutingProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { FormStateContextProvider } from 'contexts/FormStateContext';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -38,12 +39,12 @@ interface PageProps {
 }
 
 const PageContainer = ({ match }: PageProps) => {
-  const useRoutingContext = () => React.useContext(RoutingContext);
-  const useAffirmationContext = () => React.useContext(AffirmationContext);
+  const { currentStep } = useContext(RoutingContext);
+  const { affirmationData, updateAffirmationData } = useContext(
+    AffirmationContext
+  );
 
-  const { goNextPage, goBackPage, pageEnum } = useRoutingContext();
-  const { affirmationData, updateAffirmationData } = useAffirmationContext();
-  const isLandingPage = pageEnum === PAGE_ENUMS.NONE;
+  const isLandingPage = currentStep === STEP_ENUMS.NONE;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);
@@ -55,7 +56,7 @@ const PageContainer = ({ match }: PageProps) => {
 
   // todo: move text into a json for localization
   useEffect(() => {
-    switch (pageEnum) {
+    switch (currentStep) {
       case 2:
         updateAffirmationData({
           isActive: true,
@@ -94,7 +95,7 @@ const PageContainer = ({ match }: PageProps) => {
       default:
         break;
     }
-  }, [pageEnum]);
+  }, [currentStep]);
 
   return (
     <div className={`${classes.root} page-container`}>
@@ -108,19 +109,16 @@ const PageContainer = ({ match }: PageProps) => {
         onChangeAffirmation={updateAffirmationData}
       />
 
-      {isLandingPage && <Landing goNextPage={goNextPage} />}
+      {isLandingPage && <Landing />}
 
       {!affirmationData.isActive && !isLandingPage && (
-        <>
-          <FormHeader pageEnum={pageEnum} />
+        <FormStateContextProvider>
+          <FormHeader />
           <Form
-            pageEnum={pageEnum}
-            goNextPage={goNextPage}
-            goBackPage={goBackPage}
             onChangeAffirmation={updateAffirmationData}
             affirmationIsActive={affirmationData.isActive}
           />
-        </>
+        </FormStateContextProvider>
       )}
     </div>
   );

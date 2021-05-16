@@ -10,15 +10,11 @@ import useUtilityStyles from 'styles/utilityStyles';
 interface IInvolvementRecoveryProps {
   stepState: IInvolvementRecoveryState;
   setFormState: (value: any) => void;
-  goNextPage: () => void;
-  goBackPage: () => void;
 }
 
 const InvolvementRecoveryFlow = ({
   stepState,
   setFormState,
-  goNextPage,
-  goBackPage,
 }: IInvolvementRecoveryProps) => {
   const utilityClasses = useUtilityStyles();
 
@@ -59,7 +55,7 @@ const InvolvementRecoveryFlow = ({
         />
       </div>
 
-      <FlowNavigation goBackPage={goBackPage} goNextPage={goNextPage} />
+      <FlowNavigation />
     </div>
   );
 };
