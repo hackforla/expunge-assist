@@ -10,6 +10,7 @@ import Landing from 'pages/Landing';
 import { RoutingContext } from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 import { PAGE_ENUMS } from 'contexts/RoutingProps';
+import FormStateContextProvider from 'contexts/FormStateContext';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -111,7 +112,7 @@ const PageContainer = ({ match }: PageProps) => {
       {isLandingPage && <Landing goNextPage={goNextPage} />}
 
       {!affirmationData.isActive && !isLandingPage && (
-        <>
+        <FormStateContextProvider>
           <FormHeader pageEnum={pageEnum} />
           <Form
             pageEnum={pageEnum}
@@ -120,7 +121,7 @@ const PageContainer = ({ match }: PageProps) => {
             onChangeAffirmation={updateAffirmationData}
             affirmationIsActive={affirmationData.isActive}
           />
-        </>
+        </FormStateContextProvider>
       )}
     </div>
   );
