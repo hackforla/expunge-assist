@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 import { IStepState, defaultStepState } from 'contexts/FormStateProps';
 import { PAGE_ENUMS, getNextFormStep } from 'contexts/RoutingProps';
@@ -8,16 +8,16 @@ interface RoutingProviderProps {
   children: React.ReactNode;
 }
 
-export const FormStateContext = createContext<any>(undefined);
+const FormStateContext = createContext<any>(undefined);
+export default FormStateContext;
 
-const FormStateContextProvider = ({ children }: RoutingProviderProps) => {
+export const FormStateContextProvider = ({ children }: RoutingProviderProps) => {
   const [formState, setFormState] = useState<IStepState>(defaultStepState);
 
   const updateStepToForm = (stepState: any) =>
     setFormState({ ...formState, ...stepState });
 
-  const useRoutingContext = () => React.useContext(RoutingContext);
-  const { pageEnum, goNextPage, goBackPage } = useRoutingContext();
+  const { pageEnum, goNextPage, goBackPage } = useContext(RoutingContext);
 
   const goNextStep = () => {
     const suggestedNext = getNextFormStep(pageEnum);
@@ -40,5 +40,3 @@ const FormStateContextProvider = ({ children }: RoutingProviderProps) => {
     </FormStateContext.Provider>
   );
 };
-
-export default FormStateContextProvider;

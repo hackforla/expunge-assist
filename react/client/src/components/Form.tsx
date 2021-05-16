@@ -6,7 +6,7 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import Button from 'components/Button';
 
 import { PAGE_ENUMS } from 'contexts/RoutingProps';
-import { FormStateContext } from 'contexts/FormStateContext';
+import FormStateContext from 'contexts/FormStateContext';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';

@@ -10,7 +10,7 @@ import Landing from 'pages/Landing';
 import { RoutingContext } from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 import { PAGE_ENUMS } from 'contexts/RoutingProps';
-import FormStateContextProvider from 'contexts/FormStateContext';
+import { FormStateContextProvider } from 'contexts/FormStateContext';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -39,10 +39,11 @@ interface PageProps {
 }
 
 const PageContainer = ({ match }: PageProps) => {
-  const useAffirmationContext = () => React.useContext(AffirmationContext);
-
   const { goBackPage, pageEnum } = useContext(RoutingContext);
-  const { affirmationData, updateAffirmationData } = useAffirmationContext();
+  const { affirmationData, updateAffirmationData } = useContext(
+    AffirmationContext
+  );
+
   const isLandingPage = pageEnum === PAGE_ENUMS.NONE;
 
   const styleProps = { isLandingPage };
