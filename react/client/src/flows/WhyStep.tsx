@@ -14,10 +14,7 @@ interface IWhyStepProps {
   setFormState: (value: any) => void;
 }
 
-const WhyStep = ({
-  stepState,
-  setFormState,
-}: IWhyStepProps) => {
+const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
   const utilityClasses = useUtilityStyles();
 
   const updateStepState = (changes: object) => {
@@ -63,9 +60,7 @@ const WhyStep = ({
           nameOfStep="Why"
         />
 
-        <FlowNavigation
-          onBack={() => setShowPreview(false)}
-        />
+        <FlowNavigation onBack={() => setShowPreview(false)} />
       </div>
     );
   }
@@ -105,9 +100,7 @@ const WhyStep = ({
         togglePreview={() => setShowPreview(!showPreview)}
       />
 
-      <FlowNavigation
-        onNext={() => setShowPreview(true)}
-      />
+      <FlowNavigation onNext={() => setShowPreview(true)} />
     </div>
   );
 };
