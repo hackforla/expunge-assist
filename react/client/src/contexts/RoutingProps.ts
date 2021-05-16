@@ -1,5 +1,3 @@
-import { IStepState } from 'contexts/FormStateProps';
-
 /**
  * this constant that references a step in the form
  *
@@ -64,7 +62,7 @@ Object.keys(PAGES).forEach((pageKey) => {
  * @param {StepEnum} currentStep
  * @returns {StepEnum}
  */
-export function getNextFormStep(currentStep: string, formState?: IStepState) {
+export function getNextFormStep(currentStep: string) {
   switch (currentStep) {
     case STEP_ENUMS.NONE:
       return STEP_ENUMS.BEFORE_YOU_BEGIN;
@@ -91,7 +89,7 @@ export function getNextFormStep(currentStep: string, formState?: IStepState) {
       return STEP_ENUMS.INVOLVEMENT.PARENTING;
 
     case STEP_ENUMS.INVOLVEMENT.PARENTING:
-      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED;
+      return STEP_ENUMS.GOALS;
 
     case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
       return STEP_ENUMS.GOALS;
@@ -110,43 +108,11 @@ export function getNextFormStep(currentStep: string, formState?: IStepState) {
 
 /**
  * @param {StepEnum} currentStep
- * @returns {Array<StepEnum>}
- */
-export function getNextInvolvementStep(
-  currentStep: string,
-  formState: IStepState
-) {
-  if (formState?.involvementInitialState?.isNoneChecked) {
-    return [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED];
-  }
-
-  const availablePages = [];
-  if (formState?.involvementInitialState?.isJobChecked) {
-    availablePages.push(STEP_ENUMS.INVOLVEMENT.JOB);
-  }
-  if (formState?.involvementInitialState?.isRecoveryChecked) {
-    availablePages.push(STEP_ENUMS.INVOLVEMENT.RECOVERY);
-  }
-  if (formState?.involvementInitialState?.isSchoolChecked) {
-    availablePages.push(STEP_ENUMS.INVOLVEMENT.SCHOOL);
-  }
-  if (formState?.involvementInitialState?.isParentingChecked) {
-    availablePages.push(STEP_ENUMS.INVOLVEMENT.PARENTING);
-  }
-  if (formState?.involvementInitialState?.isCommunityChecked) {
-    availablePages.push(STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE);
-  }
-
-  return availablePages;
-}
-
-/**
- * @param {StepEnum} currentStep
  * @returns {Boolean}
  */
 export function isAnInvolvementPage(currentStep: string) {
   return (
-    currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL ||
+    // currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL ||
     currentStep === STEP_ENUMS.INVOLVEMENT.JOB ||
     currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
     currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY ||
