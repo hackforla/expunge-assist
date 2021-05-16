@@ -138,17 +138,17 @@ export function getNextInvolvementStep(currentStep: string, formState: IStepStat
 }
 
 /**
- * @param {PageEnum} pageEnum
+ * @param {PageEnum} currentStep
  * @returns {Boolean}
  */
-export function isAnInvolvementPage(pageEnum: string) {
+export function isAnInvolvementPage(currentStep: string) {
   return (
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.INITIAL ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.JOB ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.PARENTING ||
-    pageEnum === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED
+    currentStep === PAGE_ENUMS.INVOLVEMENT.INITIAL ||
+    currentStep === PAGE_ENUMS.INVOLVEMENT.JOB ||
+    currentStep === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
+    currentStep === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
+    currentStep === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
+    currentStep === PAGE_ENUMS.INVOLVEMENT.PARENTING ||
+    currentStep === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED
   );
 }

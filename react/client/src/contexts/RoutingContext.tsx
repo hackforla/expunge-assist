@@ -62,9 +62,9 @@ const _RoutingContextProvider = ({
 
     // for testing: treat current page as the landing page
     if (stepFromPathName && formSteps.length <= 1) {
-      const pageEnumFromPath = URL[stepFromPathName];
+      const currentStepFromPath = URL[stepFromPathName];
       setCurrentStepIdx(0);
-      setFormSteps([pageEnumFromPath]);
+      setFormSteps([currentStepFromPath]);
     }
   }, [pathname]);
 
@@ -73,7 +73,7 @@ const _RoutingContextProvider = ({
       value={{
         goNextPage,
         goBackPage,
-        pageEnum: currentStep,
+        currentStep,
       }}
     >
       {children}

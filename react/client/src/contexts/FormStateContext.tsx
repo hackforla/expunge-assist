@@ -17,10 +17,10 @@ export const FormStateContextProvider = ({ children }: RoutingProviderProps) => 
   const updateStepToForm = (stepState: any) =>
     setFormState({ ...formState, ...stepState });
 
-  const { pageEnum, goNextPage, goBackPage } = useContext(RoutingContext);
+  const { currentStep, goNextPage, goBackPage } = useContext(RoutingContext);
 
   const goNextStep = () => {
-    const suggestedNext = getNextFormStep(pageEnum);
+    const suggestedNext = getNextFormStep(currentStep);
     console.log('suggestedNext', suggestedNext)
     goNextPage(suggestedNext);
   }

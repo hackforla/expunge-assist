@@ -39,12 +39,12 @@ interface PageProps {
 }
 
 const PageContainer = ({ match }: PageProps) => {
-  const { goBackPage, pageEnum } = useContext(RoutingContext);
+  const { currentStep } = useContext(RoutingContext);
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
   );
 
-  const isLandingPage = pageEnum === PAGE_ENUMS.NONE;
+  const isLandingPage = currentStep === PAGE_ENUMS.NONE;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);
@@ -56,7 +56,7 @@ const PageContainer = ({ match }: PageProps) => {
 
   // todo: move text into a json for localization
   useEffect(() => {
-    switch (pageEnum) {
+    switch (currentStep) {
       case 2:
         updateAffirmationData({
           isActive: true,
@@ -95,7 +95,7 @@ const PageContainer = ({ match }: PageProps) => {
       default:
         break;
     }
-  }, [pageEnum]);
+  }, [currentStep]);
 
   return (
     <div className={`${classes.root} page-container`}>
