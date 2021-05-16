@@ -9,7 +9,7 @@ import Landing from 'pages/Landing';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
-import { PAGE_ENUMS } from 'contexts/RoutingProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
 interface styleProps {
@@ -44,7 +44,7 @@ const PageContainer = ({ match }: PageProps) => {
     AffirmationContext
   );
 
-  const isLandingPage = currentStep === PAGE_ENUMS.NONE;
+  const isLandingPage = currentStep === STEP_ENUMS.NONE;
 
   const styleProps = { isLandingPage };
   const classes = useStyles(styleProps);

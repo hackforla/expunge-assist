@@ -7,7 +7,7 @@ import Button from 'components/Button';
 
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
-import { PAGE_ENUMS } from 'contexts/RoutingProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
@@ -60,11 +60,11 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
 
   return (
     <div className={`${classes.root} content-page`}>
-      {currentStep === PAGE_ENUMS.BEFORE_YOU_BEGIN && (
+      {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && (
         <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
       )}
 
-      {currentStep === PAGE_ENUMS.INTRODUCTION && (
+      {currentStep === STEP_ENUMS.INTRODUCTION && (
         <IntroductionStep
           stepState={formState.introduction}
           setFormState={(newStepState) =>
@@ -73,7 +73,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.INVOLVEMENT.INITIAL && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL && (
         <InvolvementInitialFlow
           stepState={formState.involvementInitialState}
           setFormState={(newStepState) =>
@@ -82,7 +82,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.INVOLVEMENT.JOB && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.JOB && (
         <InvolvementJobFlow
           stepState={formState.involvementJobState}
           setFormState={(newStepState) =>
@@ -91,7 +91,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
         <InvolvementCommunityServiceFlow
           stepState={formState.involvementServiceState}
           setFormState={(newStepState) =>
@@ -100,7 +100,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.INVOLVEMENT.RECOVERY && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY && (
         <InvolvementRecoveryFlow
           stepState={formState.involvementRecoveryState}
           setFormState={(newStepState) =>
@@ -109,7 +109,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.INVOLVEMENT.SCHOOL && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL && (
         <InvolvementSchoolFlow
           stepState={formState.involvementSchoolState}
           setFormState={(newStepState) =>
@@ -118,7 +118,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.INVOLVEMENT.PARENTING && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING && (
         <InvolvementParentingFlow
           stepState={formState.involvementParentingState}
           setFormState={(newStepState) =>
@@ -127,7 +127,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED && (
         <InvolvementUnemployedFlow
           stepState={formState.involvementUnemployedState}
           setFormState={(newStepState) =>
@@ -136,7 +136,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.GOALS && (
+      {currentStep === STEP_ENUMS.GOALS && (
         <GoalsStep
           stepState={formState.goalsStep}
           setFormState={(newStepState) =>
@@ -145,7 +145,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.WHY && (
+      {currentStep === STEP_ENUMS.WHY && (
         <WhyStep
           stepState={formState.whyStep}
           setFormState={(newStepState) =>
@@ -154,7 +154,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === PAGE_ENUMS.PREVIEWING && (
+      {currentStep === STEP_ENUMS.PREVIEWING && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackStep()} buttonText="EDIT" />
@@ -162,14 +162,14 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         </div>
       )}
 
-      {currentStep === PAGE_ENUMS.FINALIZE && (
+      {currentStep === STEP_ENUMS.FINALIZE && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
           <Button onClick={() => goNextStep()} buttonText="SAVE" />
         </div>
       )}
 
-      {currentStep === PAGE_ENUMS.DOWNLOAD && (
+      {currentStep === STEP_ENUMS.DOWNLOAD && (
         <Download
         />
       )}

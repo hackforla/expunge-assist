@@ -3,27 +3,27 @@ import { IStepState } from 'contexts/FormStateProps';
 /**
  * this constant that references a step in the form
  *
- * @type PageEnum
+ * @type StepEnum
  */
-export const PAGE_ENUMS = {
-  NONE: 'PAGE_ENUMS.NONE',
-  BEFORE_YOU_BEGIN: 'PAGE_ENUMS.BEFORE_YOU_BEGIN',
-  INTRODUCTION: 'PAGE_ENUMS.INTRODUCTION',
+export const STEP_ENUMS = {
+  NONE: 'STEP_ENUMS.NONE',
+  BEFORE_YOU_BEGIN: 'STEP_ENUMS.BEFORE_YOU_BEGIN',
+  INTRODUCTION: 'STEP_ENUMS.INTRODUCTION',
   INVOLVEMENT: {
-    INITIAL: 'PAGE_ENUMS.INVOLVEMENT.INITIAL',
-    JOB: 'PAGE_ENUMS.INVOLVEMENT.JOB',
-    COMMUNITY_SERVICE: 'PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE',
-    RECOVERY: 'PAGE_ENUMS.INVOLVEMENT.RECOVERY',
-    SCHOOL: 'PAGE_ENUMS.INVOLVEMENT.SCHOOL',
-    PARENTING: 'PAGE_ENUMS.INVOLVEMENT.PARENTING',
-    UNEMPLOYED: 'PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED',
+    INITIAL: 'STEP_ENUMS.INVOLVEMENT.INITIAL',
+    JOB: 'STEP_ENUMS.INVOLVEMENT.JOB',
+    COMMUNITY_SERVICE: 'STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE',
+    RECOVERY: 'STEP_ENUMS.INVOLVEMENT.RECOVERY',
+    SCHOOL: 'STEP_ENUMS.INVOLVEMENT.SCHOOL',
+    PARENTING: 'STEP_ENUMS.INVOLVEMENT.PARENTING',
+    UNEMPLOYED: 'STEP_ENUMS.INVOLVEMENT.UNEMPLOYED',
   },
-  GOALS: 'PAGE_ENUMS.GOALS',
-  WHY: 'PAGE_ENUMS.WHY',
-  FINALIZE: 'PAGE_ENUMS.FINALIZE',
-  PREVIEWING: 'PAGE_ENUMS.PREVIEWING',
-  EDITING: 'PAGE_ENUMS.EDITING',
-  DOWNLOAD: 'PAGE_ENUMS.DOWNLOAD',
+  GOALS: 'STEP_ENUMS.GOALS',
+  WHY: 'STEP_ENUMS.WHY',
+  FINALIZE: 'STEP_ENUMS.FINALIZE',
+  PREVIEWING: 'STEP_ENUMS.PREVIEWING',
+  EDITING: 'STEP_ENUMS.EDITING',
+  DOWNLOAD: 'STEP_ENUMS.DOWNLOAD',
 };
 
 /**
@@ -32,21 +32,21 @@ export const PAGE_ENUMS = {
  * @type PAGES
  */
 export const PAGES = {
-  [PAGE_ENUMS.NONE]: '',
-  [PAGE_ENUMS.BEFORE_YOU_BEGIN]: 'start',
-  [PAGE_ENUMS.INTRODUCTION]: 'intro',
-  [PAGE_ENUMS.INVOLVEMENT.INITIAL]: 'involvement/initial',
-  [PAGE_ENUMS.INVOLVEMENT.JOB]: 'involvement/job',
-  [PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE]: 'involvement/service',
-  [PAGE_ENUMS.INVOLVEMENT.RECOVERY]: 'involvement/recovery',
-  [PAGE_ENUMS.INVOLVEMENT.SCHOOL]: 'involvement/school',
-  [PAGE_ENUMS.INVOLVEMENT.PARENTING]: 'involvement/parenting',
-  [PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED]: 'involvement/unemployed',
-  [PAGE_ENUMS.GOALS]: 'goals',
-  [PAGE_ENUMS.WHY]: 'why',
-  [PAGE_ENUMS.FINALIZE]: 'finalize',
-  [PAGE_ENUMS.EDITING]: 'edit',
-  [PAGE_ENUMS.DOWNLOAD]: 'download',
+  [STEP_ENUMS.NONE]: '',
+  [STEP_ENUMS.BEFORE_YOU_BEGIN]: 'start',
+  [STEP_ENUMS.INTRODUCTION]: 'intro',
+  [STEP_ENUMS.INVOLVEMENT.INITIAL]: 'involvement/initial',
+  [STEP_ENUMS.INVOLVEMENT.JOB]: 'involvement/job',
+  [STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE]: 'involvement/service',
+  [STEP_ENUMS.INVOLVEMENT.RECOVERY]: 'involvement/recovery',
+  [STEP_ENUMS.INVOLVEMENT.SCHOOL]: 'involvement/school',
+  [STEP_ENUMS.INVOLVEMENT.PARENTING]: 'involvement/parenting',
+  [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED]: 'involvement/unemployed',
+  [STEP_ENUMS.GOALS]: 'goals',
+  [STEP_ENUMS.WHY]: 'why',
+  [STEP_ENUMS.FINALIZE]: 'finalize',
+  [STEP_ENUMS.EDITING]: 'edit',
+  [STEP_ENUMS.DOWNLOAD]: 'download',
 };
 
 /**
@@ -61,94 +61,97 @@ Object.keys(PAGES).forEach((pageKey) => {
 });
 
 /**
- * @param {PageEnum} currentStep
- * @returns {PageEnum}
+ * @param {StepEnum} currentStep
+ * @returns {StepEnum}
  */
 export function getNextFormStep(currentStep: string, formState?: IStepState) {
   switch (currentStep) {
-    case PAGE_ENUMS.NONE:
-      return PAGE_ENUMS.BEFORE_YOU_BEGIN;
+    case STEP_ENUMS.NONE:
+      return STEP_ENUMS.BEFORE_YOU_BEGIN;
 
-    case PAGE_ENUMS.BEFORE_YOU_BEGIN:
-      return PAGE_ENUMS.INTRODUCTION;
+    case STEP_ENUMS.BEFORE_YOU_BEGIN:
+      return STEP_ENUMS.INTRODUCTION;
 
-    case PAGE_ENUMS.INTRODUCTION:
-      return PAGE_ENUMS.INVOLVEMENT.INITIAL;
+    case STEP_ENUMS.INTRODUCTION:
+      return STEP_ENUMS.INVOLVEMENT.INITIAL;
 
-    case PAGE_ENUMS.INVOLVEMENT.INITIAL:
-      return PAGE_ENUMS.INVOLVEMENT.JOB;
+    case STEP_ENUMS.INVOLVEMENT.INITIAL:
+      return STEP_ENUMS.INVOLVEMENT.JOB;
 
-    case PAGE_ENUMS.INVOLVEMENT.JOB:
-      return PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE;
+    case STEP_ENUMS.INVOLVEMENT.JOB:
+      return STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE;
 
-    case PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
-      return PAGE_ENUMS.INVOLVEMENT.RECOVERY;
+    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
+      return STEP_ENUMS.INVOLVEMENT.RECOVERY;
 
-    case PAGE_ENUMS.INVOLVEMENT.RECOVERY:
-      return PAGE_ENUMS.INVOLVEMENT.SCHOOL;
+    case STEP_ENUMS.INVOLVEMENT.RECOVERY:
+      return STEP_ENUMS.INVOLVEMENT.SCHOOL;
 
-    case PAGE_ENUMS.INVOLVEMENT.SCHOOL:
-      return PAGE_ENUMS.INVOLVEMENT.PARENTING;
+    case STEP_ENUMS.INVOLVEMENT.SCHOOL:
+      return STEP_ENUMS.INVOLVEMENT.PARENTING;
 
-    case PAGE_ENUMS.INVOLVEMENT.PARENTING:
-      return PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED;
+    case STEP_ENUMS.INVOLVEMENT.PARENTING:
+      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED;
 
-    case PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED:
-      return PAGE_ENUMS.GOALS;
+    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
+      return STEP_ENUMS.GOALS;
 
-    case PAGE_ENUMS.GOALS:
-      return PAGE_ENUMS.WHY;
+    case STEP_ENUMS.GOALS:
+      return STEP_ENUMS.WHY;
 
-    case PAGE_ENUMS.WHY:
-      return PAGE_ENUMS.FINALIZE;
+    case STEP_ENUMS.WHY:
+      return STEP_ENUMS.FINALIZE;
 
-    case PAGE_ENUMS.FINALIZE:
+    case STEP_ENUMS.FINALIZE:
     default:
-      return PAGE_ENUMS.NONE;
+      return STEP_ENUMS.NONE;
   }
 }
 
 /**
- * @param {PageEnum} currentStep
- * @returns {Array<PageEnum>}
+ * @param {StepEnum} currentStep
+ * @returns {Array<StepEnum>}
  */
-export function getNextInvolvementStep(currentStep: string, formState: IStepState) {
+export function getNextInvolvementStep(
+  currentStep: string,
+  formState: IStepState
+) {
   if (formState?.involvementInitialState?.isNoneChecked) {
-    return [PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED];
+    return [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED];
   }
 
   const availablePages = [];
   if (formState?.involvementInitialState?.isJobChecked) {
-    availablePages.push(PAGE_ENUMS.INVOLVEMENT.JOB);
+    availablePages.push(STEP_ENUMS.INVOLVEMENT.JOB);
   }
   if (formState?.involvementInitialState?.isRecoveryChecked) {
-    availablePages.push(PAGE_ENUMS.INVOLVEMENT.RECOVERY);
+    availablePages.push(STEP_ENUMS.INVOLVEMENT.RECOVERY);
   }
   if (formState?.involvementInitialState?.isSchoolChecked) {
-    availablePages.push(PAGE_ENUMS.INVOLVEMENT.SCHOOL);
+    availablePages.push(STEP_ENUMS.INVOLVEMENT.SCHOOL);
   }
   if (formState?.involvementInitialState?.isParentingChecked) {
-    availablePages.push(PAGE_ENUMS.INVOLVEMENT.PARENTING);
+    availablePages.push(STEP_ENUMS.INVOLVEMENT.PARENTING);
   }
   if (formState?.involvementInitialState?.isCommunityChecked) {
-    availablePages.push(PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE);
+    availablePages.push(STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE);
   }
 
   return availablePages;
 }
 
 /**
- * @param {PageEnum} currentStep
+ * @param {StepEnum} currentStep
  * @returns {Boolean}
  */
 export function isAnInvolvementPage(currentStep: string) {
   return (
-    currentStep === PAGE_ENUMS.INVOLVEMENT.INITIAL ||
-    currentStep === PAGE_ENUMS.INVOLVEMENT.JOB ||
-    currentStep === PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
-    currentStep === PAGE_ENUMS.INVOLVEMENT.RECOVERY ||
-    currentStep === PAGE_ENUMS.INVOLVEMENT.SCHOOL ||
-    currentStep === PAGE_ENUMS.INVOLVEMENT.PARENTING ||
-    currentStep === PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED
+    currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.JOB ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED
   );
 }
