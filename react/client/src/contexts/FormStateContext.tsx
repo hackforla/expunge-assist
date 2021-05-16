@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 
 import { IStepState, defaultStepState } from 'contexts/FormStateProps';
 import { PAGE_ENUMS, getNextFormStep } from 'contexts/RoutingProps';
-import { RoutingContext } from 'contexts/RoutingContext';
+import RoutingContext from 'contexts/RoutingContext';
 
 interface RoutingProviderProps {
   children: React.ReactNode;

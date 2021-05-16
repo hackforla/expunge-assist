@@ -7,7 +7,7 @@ import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 import Landing from 'pages/Landing';
 
-import { RoutingContext } from 'contexts/RoutingContext';
+import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 import { PAGE_ENUMS } from 'contexts/RoutingProps';
 import { FormStateContextProvider } from 'contexts/FormStateContext';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
@@ -56,8 +56,9 @@ const Form = ({
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
 
-  const useFormStateContext = () => React.useContext(FormStateContext);
-  const { formState, updateStepToForm, goNextStep } = useFormStateContext();
+  const { formState, updateStepToForm, goNextStep } = useContext(
+    FormStateContext
+  );
 
   if (affirmationIsActive) {
     return <></>;

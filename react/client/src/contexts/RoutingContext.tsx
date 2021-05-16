@@ -7,9 +7,10 @@ interface RoutingProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
 }
 
-export const RoutingContext = React.createContext<any>(undefined);
+const RoutingContext = React.createContext<any>(undefined);
+export default RoutingContext;
 
-const RoutingContextProvider = ({
+const _RoutingContextProvider = ({
   children,
   history,
 }: RoutingProviderProps) => {
@@ -80,4 +81,4 @@ const RoutingContextProvider = ({
   );
 };
 
-export default withRouter(RoutingContextProvider);
+export const RoutingContextProvider = withRouter(_RoutingContextProvider);

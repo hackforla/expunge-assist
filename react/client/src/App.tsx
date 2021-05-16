@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import RoutingContextProvider from 'contexts/RoutingContext';
+import { RoutingContextProvider } from 'contexts/RoutingContext';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 
 import PageContainer from 'components/PageContainer';
