@@ -1,3 +1,5 @@
+import { IStepState } from 'contexts/FormStateProps';
+
 /**
  * this constant that references a step in the form
  *
@@ -59,11 +61,11 @@ Object.keys(PAGES).forEach((pageKey) => {
 });
 
 /**
- * @param {PageEnum} step
+ * @param {PageEnum} currentStep
  * @returns {PageEnum}
  */
-export function getNextFormStep(step: string) {
-  switch (step) {
+export function getNextFormStep(currentStep: string, formState?: IStepState) {
+  switch (currentStep) {
     case PAGE_ENUMS.NONE:
       return PAGE_ENUMS.BEFORE_YOU_BEGIN;
 
@@ -104,6 +106,35 @@ export function getNextFormStep(step: string) {
     default:
       return PAGE_ENUMS.NONE;
   }
+}
+
+/**
+ * @param {PageEnum} currentStep
+ * @returns {Array<PageEnum>}
+ */
+export function getNextInvolvementStep(currentStep: string, formState: IStepState) {
+  if (formState?.involvementInitialState?.isNoneChecked) {
+    return [PAGE_ENUMS.INVOLVEMENT.UNEMPLOYED];
+  }
+
+  const availablePages = [];
+  if (formState?.involvementInitialState?.isJobChecked) {
+    availablePages.push(PAGE_ENUMS.INVOLVEMENT.JOB);
+  }
+  if (formState?.involvementInitialState?.isRecoveryChecked) {
+    availablePages.push(PAGE_ENUMS.INVOLVEMENT.RECOVERY);
+  }
+  if (formState?.involvementInitialState?.isSchoolChecked) {
+    availablePages.push(PAGE_ENUMS.INVOLVEMENT.SCHOOL);
+  }
+  if (formState?.involvementInitialState?.isParentingChecked) {
+    availablePages.push(PAGE_ENUMS.INVOLVEMENT.PARENTING);
+  }
+  if (formState?.involvementInitialState?.isCommunityChecked) {
+    availablePages.push(PAGE_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE);
+  }
+
+  return availablePages;
 }
 
 /**

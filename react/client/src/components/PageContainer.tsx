@@ -116,7 +116,6 @@ const PageContainer = ({ match }: PageProps) => {
           <FormHeader pageEnum={pageEnum} />
           <Form
             pageEnum={pageEnum}
-            goNextPage={goNextPage}
             goBackPage={goBackPage}
             onChangeAffirmation={updateAffirmationData}
             affirmationIsActive={affirmationData.isActive}

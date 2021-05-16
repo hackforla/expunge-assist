@@ -22,8 +22,8 @@ const RoutingContextProvider = ({
     history.push(`/form/${newPageUrl}`);
   };
 
-  const goNextPage = () => {
-    const nextStep = getNextFormStep(currentStep);
+  const goNextPage = (suggestedNext?: string) => {
+    const nextStep = suggestedNext || getNextFormStep(currentStep);
     setCurrentStepIdx(currentStepIdx + 1);
     setFormSteps([...formSteps, nextStep]);
     const nextPageUrl = PAGES[nextStep];

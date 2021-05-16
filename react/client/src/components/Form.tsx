@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface FormProps {
   pageEnum: string;
-  goNextPage: () => void;
+  // goNextPage: () => void;
   goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
   affirmationIsActive: boolean;
@@ -49,7 +49,6 @@ interface FormProps {
 
 const Form = ({
   pageEnum,
-  goNextPage,
   goBackPage,
   onChangeAffirmation,
   affirmationIsActive,
@@ -58,7 +57,7 @@ const Form = ({
   const utilityClasses = useUtilityStyles({});
 
   const useFormStateContext = () => React.useContext(FormStateContext);
-  const { formState, updateStepToForm } = useFormStateContext();
+  const { formState, updateStepToForm, goNextStep } = useFormStateContext();
 
   if (affirmationIsActive) {
     return <></>;
@@ -68,7 +67,7 @@ const Form = ({
     <div className={`${classes.root} content-page`}>
       {pageEnum === PAGE_ENUMS.BEFORE_YOU_BEGIN && (
         <BeforeYouBegin
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           onChangeAffirmation={onChangeAffirmation}
         />
       )}
@@ -79,7 +78,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ introduction: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -90,7 +89,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementInitialState: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -101,7 +100,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementJobState: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -112,7 +111,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementServiceState: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -123,7 +122,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementRecoveryState: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -134,7 +133,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementSchoolState: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -145,7 +144,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementParentingState: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -156,7 +155,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ involvementUnemployedState: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -167,7 +166,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ goalsStep: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -178,7 +177,7 @@ const Form = ({
           setFormState={(newStepState) =>
             updateStepToForm({ whyStep: newStepState })
           }
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
@@ -187,14 +186,14 @@ const Form = ({
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackPage()} buttonText="EDIT" />
-          <Button onClick={() => goNextPage()} buttonText="NEXT" />
+          <Button onClick={() => goNextStep()} buttonText="NEXT" />
         </div>
       )}
 
       {pageEnum === PAGE_ENUMS.FINALIZE && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
-          <Button onClick={() => goNextPage()} buttonText="SAVE" />
+          <Button onClick={() => goNextStep()} buttonText="SAVE" />
         </div>
       )}
 
@@ -202,7 +201,7 @@ const Form = ({
         <Download
           formState={formState}
           setFormState={updateStepToForm}
-          goNextPage={goNextPage}
+          goNextPage={goNextStep}
           goBackPage={goBackPage}
         />
       )}
