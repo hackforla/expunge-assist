@@ -25,7 +25,7 @@ interface IFlowNavigation {
   isBackDisabled?: boolean;
 }
 
-export default function FlowNavigation({ onNext, onBack, isNextDisabled = true, isBackDisabled = true }: IFlowNavigation) {
+export default function FlowNavigation({ onNext, onBack, isNextDisabled, isBackDisabled }: IFlowNavigation) {
   const classes = useStyles();
   const { goNextStep, goBackStep } = React.useContext(FormStateContext);
 
