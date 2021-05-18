@@ -52,6 +52,14 @@ const InvolvementInitialFlow = ({
     });
   };
 
+  const isNextEnabled =
+    stepState.isJobChecked ||
+    stepState.isRecoveryChecked ||
+    stepState.isSchoolChecked ||
+    stepState.isParentingChecked ||
+    stepState.isCommunityChecked ||
+    stepState.isNoneChecked;
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
@@ -110,7 +118,7 @@ const InvolvementInitialFlow = ({
         />
       </div>
 
-      <FlowNavigation />
+      <FlowNavigation isNextDisabled={!isNextEnabled} />
     </div>
   );
 };

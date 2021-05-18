@@ -7,6 +7,7 @@ interface ComponentProps {
   className?: string;
   theme?: string;
   hasArrow?: boolean;
+  disabled?: boolean;
   buttonText: string;
   onClick: () => void;
 }
@@ -85,13 +86,14 @@ const ButtonComponent = ({
   className = '',
   theme,
   hasArrow,
+  disabled = false,
   buttonText,
   onClick,
 }: ComponentProps) => {
   const styleProps = { theme, hasArrow };
   const classes = useStyles(styleProps);
   return (
-    <Button type="button" className={`${classes.root} ${className}`} onClick={onClick}>
+    <Button disabled={disabled} type="button" className={`${classes.root} ${className}`} onClick={onClick}>
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </Button>
