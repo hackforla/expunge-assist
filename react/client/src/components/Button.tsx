@@ -74,6 +74,26 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           }
         },
       },
+      '&:disabled': {
+        color: (props) => {
+          switch (props.theme) {
+            case 'dark':
+            case 'transparent':
+              return '#757575';
+            default:
+              return '#FFFFFF';
+          }
+        },
+        background: (props) => {
+          switch (props.theme) {
+            case 'dark':
+            case 'transparent':
+              return '#e4e4e4';
+            default:
+              return '#ba85de';
+          }
+        },
+      },
       '& img': {
         marginLeft: '10px',
         marginRight: '0px',
@@ -93,7 +113,12 @@ const ButtonComponent = ({
   const styleProps = { theme, hasArrow };
   const classes = useStyles(styleProps);
   return (
-    <Button disabled={disabled} type="button" className={`${classes.root} ${className}`} onClick={onClick}>
+    <Button
+      disabled={disabled}
+      type="button"
+      className={`${classes.root} ${className}`}
+      onClick={onClick}
+    >
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </Button>
