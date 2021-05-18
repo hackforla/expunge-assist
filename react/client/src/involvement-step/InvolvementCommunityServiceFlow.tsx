@@ -25,6 +25,10 @@ const InvolvementCommunityServiceFlow = ({
     });
   };
 
+  const organizationNameValid = stepState.organizationName !== '';
+  const serviceDescriptionValid = stepState.serviceDescription !== '';
+  const isNextDisabled = !organizationNameValid || !serviceDescriptionValid;
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
@@ -37,7 +41,7 @@ const InvolvementCommunityServiceFlow = ({
           inputName="organizationName"
           placeholder="Name of Organization"
           multi={false}
-          isValid
+          isValid={organizationNameValid}
           defaultValue={stepState.organizationName}
         />
       </div>
@@ -52,12 +56,13 @@ const InvolvementCommunityServiceFlow = ({
           inputName="serviceDescription"
           placeholder="I have taken on responsibilities including..."
           multi={false}
-          isValid
+          isValid={serviceDescriptionValid}
+          disabled={!organizationNameValid}
           defaultValue={stepState.serviceDescription}
         />
       </div>
 
-      <FlowNavigation />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </div>
   );
 };

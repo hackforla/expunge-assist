@@ -26,6 +26,11 @@ const InvolvementParentingFlow = ({
     });
   };
 
+  const childNameValid = stepState.childName !== '';
+  const parentYearsValid = stepState.parentYears !== '';
+  const parentDescriptionValid = stepState.parentDescription !== '';
+  const isNextDisabled = !childNameValid || !parentYearsValid || !parentDescriptionValid;
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
@@ -37,7 +42,7 @@ const InvolvementParentingFlow = ({
           inputName="childName"
           placeholder="Name of Child"
           multi={false}
-          isValid
+          isValid={childNameValid}
           defaultValue={stepState.childName}
         />
       </div>
@@ -51,6 +56,7 @@ const InvolvementParentingFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ parentYears: evt.target.value })
           }
+          disabled={!childNameValid}
           defaultValue={stepState.parentYears}
         />
       </div>
@@ -64,12 +70,14 @@ const InvolvementParentingFlow = ({
           inputName="parentDescription"
           placeholder="Being a good parent is important to me because..."
           multi={false}
-          isValid
+
+          isValid={parentDescriptionValid}
+          disabled={!parentYearsValid}
           defaultValue={stepState.parentDescription}
         />
       </div>
 
-      <FlowNavigation />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </div>
   );
 };
