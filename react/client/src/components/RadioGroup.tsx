@@ -6,6 +6,7 @@ interface RadioButtonProps {
   inputName: string;
   activeRadio: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 }
 
 const RadioButton = ({
@@ -13,6 +14,7 @@ const RadioButton = ({
   activeRadio,
   handleChange,
   inputName,
+  disabled = false,
 }: RadioButtonProps) => {
   return (
     <div>
@@ -24,6 +26,7 @@ const RadioButton = ({
         }}
         checked={activeRadio === label}
         name={inputName}
+        disabled={disabled}
       />
       <span>{label}</span>
     </div>
@@ -35,6 +38,7 @@ interface RadioGroupProps {
   inputName: string;
   activeRadio: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 }
 
 const RadioGroup = ({
@@ -42,6 +46,7 @@ const RadioGroup = ({
   inputName,
   handleChange,
   activeRadio,
+  disabled,
 }: RadioGroupProps) => {
   return (
     <div className="radio">
@@ -52,6 +57,7 @@ const RadioGroup = ({
             activeRadio={activeRadio}
             handleChange={handleChange}
             inputName={inputName}
+            disabled={disabled}
             key={label}
           />
         );
