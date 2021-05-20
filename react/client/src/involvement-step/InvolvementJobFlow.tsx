@@ -25,6 +25,11 @@ const InvolvementJobFlow = ({
     });
   };
 
+  const companyNameValid = stepState.companyName !== '';
+  const jobTitleValid = stepState.jobTitle !== '';
+  const jobDescriptionValid = stepState.jobDescription !== '';
+  const isNextDisabled = !companyNameValid || !jobTitleValid || !jobDescriptionValid;
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
@@ -36,7 +41,7 @@ const InvolvementJobFlow = ({
           inputName="companyName"
           placeholder="Name of company"
           multi={false}
-          isValid
+          isValid={companyNameValid}
           defaultValue={stepState.companyName}
         />
       </div>
@@ -50,7 +55,8 @@ const InvolvementJobFlow = ({
           inputName="jobTitle"
           placeholder="Job Title"
           multi={false}
-          isValid
+          disabled={!companyNameValid}
+          isValid={jobTitleValid}
           defaultValue={stepState.jobTitle}
         />
       </div>
@@ -65,12 +71,13 @@ const InvolvementJobFlow = ({
           inputName="jobDescription"
           placeholder="I have had the chance to..."
           multi
-          isValid
+          disabled={!jobTitleValid}
+          isValid={jobDescriptionValid}
           defaultValue={stepState.jobDescription}
         />
       </div>
 
-      <FlowNavigation />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </div>
   );
 };

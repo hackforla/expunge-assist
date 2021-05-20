@@ -25,6 +25,11 @@ const InvolvementSchoolFlow = ({
     });
   };
 
+  const schoolNameValid = stepState.schoolName !== '';
+  const studyNameValid = stepState.studyName !== '';
+  const passionDescriptionValid = stepState.passionDescription !== '';
+  const isNextDisabled = !schoolNameValid || !studyNameValid || !passionDescriptionValid;
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
@@ -36,7 +41,7 @@ const InvolvementSchoolFlow = ({
           inputName="schoolName"
           placeholder="Name of School"
           multi={false}
-          isValid
+          isValid={schoolNameValid}
           defaultValue={stepState.schoolName}
         />
       </div>
@@ -50,7 +55,8 @@ const InvolvementSchoolFlow = ({
           inputName="studyName"
           placeholder="Name of Subject/Study Area"
           multi={false}
-          isValid
+          isValid={studyNameValid}
+          disabled={!schoolNameValid}
           defaultValue={stepState.studyName}
         />
       </div>
@@ -64,12 +70,13 @@ const InvolvementSchoolFlow = ({
           inputName="passionDescription"
           placeholder="I am passionate about..."
           multi
-          isValid
+          isValid={passionDescriptionValid}
+          disabled={!studyNameValid}
           defaultValue={stepState.passionDescription}
         />
       </div>
 
-      <FlowNavigation />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </div>
   );
 };

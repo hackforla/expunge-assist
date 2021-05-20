@@ -25,6 +25,10 @@ const InvolvementRecoveryFlow = ({
     });
   };
 
+  const recoveryNameValid = stepState.recoveryName !== '';
+  const recoveryDescriptionValid = stepState.recoveryDescription !== '';
+  const isNextDisabled = !recoveryNameValid || !recoveryDescriptionValid;
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
@@ -36,7 +40,7 @@ const InvolvementRecoveryFlow = ({
           inputName="recoveryName"
           placeholder="Name of Organization"
           multi={false}
-          isValid
+          isValid={recoveryNameValid}
           defaultValue={stepState.recoveryName}
         />
       </div>
@@ -50,12 +54,13 @@ const InvolvementRecoveryFlow = ({
           inputName="recoveryDescription"
           placeholder="This program is important to me because..."
           multi
-          isValid
+          isValid={recoveryDescriptionValid}
+          disabled={!recoveryNameValid}
           defaultValue={stepState.recoveryDescription}
         />
       </div>
 
-      <FlowNavigation />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </div>
   );
 };

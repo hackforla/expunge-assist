@@ -22,8 +22,6 @@ const IntroductionStep = ({
 }: IIntroductionStepProps) => {
   const utilityClasses = useUtilityStyles({});
 
-  const [nameFilled, setNameFilled] = useState(false);
-
   const [showPreview, setShowPreview] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,10 +30,10 @@ const IntroductionStep = ({
 
     if (inputName === 'name') {
       setFormState({ ...stepState, fullName: inputValue });
-      inputValue === '' ? setNameFilled(false) : setNameFilled(true);
     }
-    if (inputName === 'age')
-      setFormState({ ...stepState, age: inputValue });
+
+    if (inputName === 'age') setFormState({ ...stepState, age: inputValue });
+
     if (inputName === 'isVeteran')
       setFormState({ ...stepState, isVeteran: inputValue });
   };
@@ -45,6 +43,10 @@ const IntroductionStep = ({
     ? (veteranSentence = `I am also a proud veteran of the United States Armed Forces.`)
     : (veteranSentence = ``);
   const textPreviewContent = `Thank you so much for taking the time to read my personal statement. My name is ${stepState.fullName}, and I am ${stepState.age} years old. ${veteranSentence}`;
+
+  const fullNameValid = stepState.fullName !== '';
+  const ageValid = Number(stepState.age) > 0;
+  const isNextDisabled = !fullNameValid || !ageValid;
 
   if (showPreview) {
     return (
@@ -57,65 +59,68 @@ const IntroductionStep = ({
           />
         </div>
 
-        <FlowNavigation />
+        <FlowNavigation
+          onBack={() => setShowPreview(false)}
+          isNextDisabled={isNextDisabled}
+        />
       </div>
     );
   }
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <form>
+      <form className={utilityClasses.flexGrow}>
         <p>What is your name?</p>
         <Textarea
           inputName="name"
           placeholder="Firstname Lastname"
           handleChange={handleChange}
           multi={false}
-          isValid={nameFilled}
+          isValid={fullNameValid}
           defaultValue={stepState.fullName}
         />
+
         <p className="greyedOut">How old are you?</p>
-        {nameFilled && (
-          <Input
-            type="number"
-            inputName="age"
-            placeholder="25"
-            handleChange={handleChange}
-            defaultValue={stepState.age}
-          />
-        )}
+        <Input
+          type="number"
+          inputName="age"
+          placeholder="25"
+          disabled={!fullNameValid}
+          handleChange={handleChange}
+          defaultValue={stepState.age}
+        />
 
         <p className="greyedOut">
           Are you a veteran of the United States of America?
         </p>
-        {Number(stepState.age) > 0 && (
-          <RadioGroup
-            labels={['Yes', 'No']}
-            inputName="isVeteran"
-            handleChange={handleChange}
-            activeRadio={stepState.isVeteran}
-          />
-        )}
+        <RadioGroup
+          labels={['Yes', 'No']}
+          inputName="isVeteran"
+          disabled={!ageValid}
+          handleChange={handleChange}
+          activeRadio={stepState.isVeteran}
+        />
       </form>
 
-      {stepState.isVeteran === '' && (
-        <div className="div-popUp">
-          <PopUp
-            title="Some advice for your personal statement"
-            info={
-              '1. Remember that you are writing for a judge, so refrain from using informal language such as abbreviations or slang' +
-              '\n' +
-              '2. Write in complete sentences when given the option' +
-              '\n' +
-              '3. Use the first person when answering questions. This means telling the story from your point of view.' +
-              '\n' +
-              '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
-            }
-          />
-        </div>
-      )}
+      <div className={utilityClasses.helpPopup}>
+        <PopUp
+          title="Some advice for your personal statement"
+          info={
+            '1. Remember that you are writing for a judge, so refrain from using informal language such as abbreviations or slang' +
+            '\n' +
+            '2. Write in complete sentences when given the option' +
+            '\n' +
+            '3. Use the first person when answering questions. This means telling the story from your point of view.' +
+            '\n' +
+            '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
+          }
+        />
+      </div>
 
-      <FlowNavigation />
+      <FlowNavigation
+        onNext={() => setShowPreview(true)}
+        isNextDisabled={isNextDisabled}
+      />
     </div>
   );
 };

@@ -20,10 +20,12 @@ const useStyles = makeStyles(() =>
 
 interface IFlowNavigation {
   onNext?: () => void;
+  isNextDisabled?: boolean;
   onBack?: () => void;
+  isBackDisabled?: boolean;
 }
 
-export default function FlowNavigation({ onNext, onBack }: IFlowNavigation) {
+export default function FlowNavigation({ onNext, onBack, isNextDisabled, isBackDisabled }: IFlowNavigation) {
   const classes = useStyles();
   const { goNextStep, goBackStep } = React.useContext(FormStateContext);
 
@@ -56,6 +58,7 @@ export default function FlowNavigation({ onNext, onBack }: IFlowNavigation) {
       <Button
         className={classes.buttonRight}
         onClick={handleNext}
+        disabled={isNextDisabled}
         buttonText="NEXT"
         hasArrow
       />

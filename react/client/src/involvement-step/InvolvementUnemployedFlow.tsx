@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { IInvolvementUnemployedState } from 'contexts/FormStateProps';
 
@@ -26,6 +26,11 @@ const InvolvementUnemployedFlow = ({
     });
   };
 
+  const unemploymentDescriptionValid = stepState.unemploymentDescription !== '';
+  const wouldClearanceHelpValid = stepState.wouldClearanceHelp !== '';
+  const isNextDisabled =
+    !unemploymentDescriptionValid || !wouldClearanceHelpValid;
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
@@ -38,7 +43,7 @@ const InvolvementUnemployedFlow = ({
           inputName="unemploymentDescription"
           placeholder="I have been having trouble finding work because..."
           multi={false}
-          isValid
+          isValid={unemploymentDescriptionValid}
           defaultValue={stepState.unemploymentDescription}
         />
       </div>
@@ -56,7 +61,7 @@ const InvolvementUnemployedFlow = ({
         />
       </div>
 
-      <FlowNavigation />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </div>
   );
 };
