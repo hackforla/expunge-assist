@@ -39,7 +39,16 @@ const useUtilityStyles = makeStyles((theme) =>
     },
     buttonRight: {
       marginLeft: 'auto',
-    }
+    },
+    flexGrow: {
+      flex: '1 1 auto',
+    },
+    flexNone: {
+      flex: '0 0 auto',
+    },
+    helpPopup: {
+      textAlign: 'right',
+    },
   })
 );
 
