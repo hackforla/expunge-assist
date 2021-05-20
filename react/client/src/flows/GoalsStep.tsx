@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 
-import FormStateContext from 'contexts/FormStateContext';
 import { IGoalsState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
-import Button from 'components/Button';
 import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
 
@@ -17,7 +15,6 @@ interface IGoalsStepProps {
 
 const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
   const utilityClasses = useUtilityStyles();
-  const { goNextStep } = React.useContext(FormStateContext);
 
   const [previewPage, setPreview] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,23 +37,14 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
       <div className={utilityClasses.contentContainer}>
         <TextPreview
           content={`${stepState.goals}. To work towards my goals; ${stepState.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
-          onAdjustClick={() => null}
+          onAdjustClick={() => setPreview(false)}
           nameOfStep="Future Goals"
         />
 
-        <div className={utilityClasses.flexRow}>
-          <Button
-            onClick={() => setPreview(false)}
-            buttonText="BACK"
-            theme="transparent"
-          />
-          <Button
-            className={utilityClasses.buttonRight}
-            onClick={goNextStep}
-            buttonText="LOOKS GOOD"
-            hasArrow
-          />
-        </div>
+        <FlowNavigation
+          onBack={() => setPreview(false)}
+          isNextDisabled={isNextDisabled}
+        />
       </div>
     );
   }
