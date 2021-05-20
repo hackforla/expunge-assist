@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { IWhyStepState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
-import FormFooter from 'components/FormFooter';
+import PopUp from 'components/PopUp';
 import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
 
@@ -24,13 +24,6 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
     });
   };
 
-  const [clearRecordWhyFilled, setClearRecordWhyFilled] = useState(
-    stepState.clearRecordWhy.split('.').length > 1
-  );
-  const [clearRecordHowFilled, setClearRecordHowFilled] = useState(
-    stepState.clearRecordHow.split('.').length === 2
-  );
-
   const [showPreview, setShowPreview] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,19 +31,16 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
     const inputValue = e.currentTarget.value;
     if (inputName === 'clearRecordWhy') {
       updateStepState({ ...stepState, clearRecordWhy: inputValue });
-      inputValue === ''
-        ? setClearRecordWhyFilled(false)
-        : setClearRecordWhyFilled(true);
     } else if (inputName === 'clearRecordHow') {
       updateStepState({ ...stepState, clearRecordHow: inputValue });
-      inputValue === ''
-        ? setClearRecordHowFilled(false)
-        : setClearRecordHowFilled(true);
     }
   };
 
-  const textPreviewContent = `${stepState.clearRecordWhy} ${stepState.clearRecordHow}`;
+  const clearRecordWhyValid = stepState.clearRecordWhy !== '';
+  const clearRecordHowValid = stepState.clearRecordHow !== '';
+  const isNextDisabled = !clearRecordWhyValid || !clearRecordHowValid;
 
+  const textPreviewContent = `${stepState.clearRecordWhy} ${stepState.clearRecordHow}`;
   if (showPreview) {
     return (
       <div className={utilityClasses.contentContainer}>
@@ -67,40 +57,51 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <p>Please finish this sentence: I want to clear my record because...</p>
+      <form className={utilityClasses.flexGrow}>
+        <p>Please finish this sentence: I want to clear my record because...</p>
+        <Textarea
+          inputName="clearRecordWhy"
+          placeholder="I am..."
+          handleChange={handleChange}
+          multi={false}
+          isValid={clearRecordWhyValid}
+          defaultValue={stepState.clearRecordWhy}
+        />
 
-      <Textarea
-        inputName="clearRecordWhy"
-        placeholder="I am..."
-        handleChange={handleChange}
-        multi={false}
-        isValid={clearRecordWhyFilled}
-        defaultValue={stepState.clearRecordWhy}
-      />
-
-      <p className="greyedOut">
-        How will clearing your record change your life or help you? (2 sentences
-        maximum)
-      </p>
-
-      {clearRecordWhyFilled && (
+        <p className="greyedOut">
+          How will clearing your record change your life or help you? (2
+          sentences maximum)
+        </p>
         <Textarea
           inputName="clearRecordHow"
           handleChange={handleChange}
           placeholder="Clearing my record will..."
           multi
-          isValid={clearRecordHowFilled}
+          isValid={clearRecordHowValid}
+          disabled={!clearRecordWhyValid}
           defaultValue={stepState.clearRecordHow}
         />
-      )}
+      </form>
 
-      <FormFooter
-        isFormComplete={clearRecordWhyFilled && clearRecordHowFilled}
-        isPreviewing={showPreview}
-        togglePreview={() => setShowPreview(!showPreview)}
+      <div className={utilityClasses.helpPopup}>
+        <PopUp
+          title="Some advice for your personal statement"
+          info={
+            '1. Remember that you are writing for a judge, so refrain from using informal language such as abbreviations or slang' +
+            '\n' +
+            '2. Write in complete sentences when given the option' +
+            '\n' +
+            '3. Use the first person when answering questions. This means telling the story from your point of view.' +
+            '\n' +
+            '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
+          }
+        />
+      </div>
+
+      <FlowNavigation
+        onNext={() => setShowPreview(true)}
+        isNextDisabled={isNextDisabled}
       />
-
-      <FlowNavigation onNext={() => setShowPreview(true)} />
     </div>
   );
 };
