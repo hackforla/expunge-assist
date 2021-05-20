@@ -28,7 +28,8 @@ const RadioButton = ({
         name={inputName}
         disabled={disabled}
       />
-      <span>{label}</span>
+
+      <span className={disabled ? 'greyedOut' : ''}>{label}</span>
     </div>
   );
 };
