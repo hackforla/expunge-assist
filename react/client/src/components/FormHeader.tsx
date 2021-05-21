@@ -27,7 +27,6 @@ const useStyles = makeStyles(() =>
   })
 );
 
-
 const FormHeader = () => {
   const classes = useStyles();
   const { currentStep } = React.useContext(RoutingContext);

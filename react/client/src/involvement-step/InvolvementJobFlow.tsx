@@ -28,7 +28,8 @@ const InvolvementJobFlow = ({
   const companyNameValid = stepState.companyName !== '';
   const jobTitleValid = stepState.jobTitle !== '';
   const jobDescriptionValid = stepState.jobDescription !== '';
-  const isNextDisabled = !companyNameValid || !jobTitleValid || !jobDescriptionValid;
+  const isNextDisabled =
+    !companyNameValid || !jobTitleValid || !jobDescriptionValid;
 
   return (
     <div className={utilityClasses.contentContainer}>

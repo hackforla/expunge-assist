@@ -19,9 +19,7 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-const BeforeYouBegin = ({
-  onChangeAffirmation,
-}: ComponentProps) => {
+const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
   const { t } = useTranslation();

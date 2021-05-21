@@ -29,7 +29,8 @@ const InvolvementParentingFlow = ({
   const childNameValid = stepState.childName !== '';
   const parentYearsValid = stepState.parentYears !== '';
   const parentDescriptionValid = stepState.parentDescription !== '';
-  const isNextDisabled = !childNameValid || !parentYearsValid || !parentDescriptionValid;
+  const isNextDisabled =
+    !childNameValid || !parentYearsValid || !parentDescriptionValid;
 
   return (
     <div className={utilityClasses.contentContainer}>
@@ -70,7 +71,6 @@ const InvolvementParentingFlow = ({
           inputName="parentDescription"
           placeholder="Being a good parent is important to me because..."
           multi={false}
-
           isValid={parentDescriptionValid}
           disabled={!parentYearsValid}
           defaultValue={stepState.parentDescription}

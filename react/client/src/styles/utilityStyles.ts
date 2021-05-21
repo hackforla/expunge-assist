@@ -27,7 +27,7 @@ const useUtilityStyles = makeStyles((theme) =>
 
       '& .flow-navigation-container': {
         marginTop: 'auto',
-      }
+      },
     },
     flexColumn: {
       display: 'flex',

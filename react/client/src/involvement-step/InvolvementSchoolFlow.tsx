@@ -28,7 +28,8 @@ const InvolvementSchoolFlow = ({
   const schoolNameValid = stepState.schoolName !== '';
   const studyNameValid = stepState.studyName !== '';
   const passionDescriptionValid = stepState.passionDescription !== '';
-  const isNextDisabled = !schoolNameValid || !studyNameValid || !passionDescriptionValid;
+  const isNextDisabled =
+    !schoolNameValid || !studyNameValid || !passionDescriptionValid;
 
   return (
     <div className={utilityClasses.contentContainer}>
