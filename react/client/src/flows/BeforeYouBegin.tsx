@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
-
-import useUtilityStyles from 'styles/utilityStyles';
 import { useTranslation } from 'react-i18next';
+
+import FormStateContext from 'contexts/FormStateContext';
 
 import Button from 'components/Button';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 interface ComponentProps {
-  goNextPage: () => void;
+  onChangeAffirmation: (newState: object) => void;
 }
 
 const useStyles = makeStyles(() =>
@@ -17,10 +19,14 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
+const BeforeYouBegin = ({
+  onChangeAffirmation,
+}: ComponentProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
   const { t } = useTranslation();
+
+  const { goNextStep } = useContext(FormStateContext);
 
   return (
     <div className={utilityClasses.contentContainer}>
@@ -36,7 +42,10 @@ const BeforeYouBegin = ({ goNextPage }: ComponentProps) => {
 
       <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
         <Button
-          onClick={() => goNextPage()}
+          onClick={() => {
+            onChangeAffirmation({ isActive: true });
+            goNextStep();
+          }}
           buttonText="I understand"
           hasArrow
         />

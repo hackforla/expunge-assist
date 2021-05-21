@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme: Theme) =>
         width: '100%',
         height: '100%',
       },
+      '& .MuiInputBase-root.Mui-disabled': {
+        borderRadius: '15px',
+        background: '#efefef',
+        color: '#b5b5b5',
+      },
     },
     input: {
       fontSize: '1rem',
@@ -44,6 +49,7 @@ interface TextFieldProps {
   multi: boolean;
   isValid: boolean;
   defaultValue: string;
+  disabled?: boolean;
 }
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
@@ -53,6 +59,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
   multi,
   isValid,
   defaultValue,
+  disabled = false,
 }) => {
   const classes = useStyles();
   return (
@@ -65,6 +72,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
       multiline={multi}
       variant="outlined"
       defaultValue={defaultValue}
+      disabled={disabled}
       InputProps={{
         classes: {
           input: classes.input,

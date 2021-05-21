@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 
+import { IWhyStepState } from 'contexts/FormStateProps';
+
+import FlowNavigation from 'components/FlowNavigation';
+import PopUp from 'components/PopUp';
 import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
-import FormFooter from 'components/FormFooter';
 
-const WhyStep = ({ goBackPage, goNextPage }: StepProps) => {
-  const [step5Inputs, setStep5Inputs] = useState({
-    clearRecordWhy: '',
-    clearRecordHow: '',
-  });
+import useUtilityStyles from 'styles/utilityStyles';
 
-  const [clearRecordWhyFilled, setClearRecordWhyFilled] = useState(
-    step5Inputs.clearRecordWhy.split('.').length > 1
-  );
-  const [clearRecordHowFilled, setClearRecordHowFilled] = useState(
-    step5Inputs.clearRecordHow.split('.').length === 2
-  );
+interface IWhyStepProps {
+  stepState: IWhyStepState;
+  setFormState: (value: any) => void;
+}
+
+const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
+  const utilityClasses = useUtilityStyles();
+
+  const updateStepState = (changes: object) => {
+    setFormState({
+      ...stepState,
+      ...changes,
+    });
+  };
 
   const [showPreview, setShowPreview] = useState(false);
 
@@ -23,68 +30,77 @@ const WhyStep = ({ goBackPage, goNextPage }: StepProps) => {
     const inputName = e.currentTarget.name;
     const inputValue = e.currentTarget.value;
     if (inputName === 'clearRecordWhy') {
-      setStep5Inputs({ ...step5Inputs, clearRecordWhy: inputValue });
-      inputValue === ''
-        ? setClearRecordWhyFilled(false)
-        : setClearRecordWhyFilled(true);
+      updateStepState({ ...stepState, clearRecordWhy: inputValue });
     } else if (inputName === 'clearRecordHow') {
-      setStep5Inputs({ ...step5Inputs, clearRecordHow: inputValue });
-      inputValue === ''
-        ? setClearRecordHowFilled(false)
-        : setClearRecordHowFilled(true);
+      updateStepState({ ...stepState, clearRecordHow: inputValue });
     }
   };
 
-  const textPreviewContent = `${step5Inputs.clearRecordWhy} ${step5Inputs.clearRecordHow}`;
+  const clearRecordWhyValid = stepState.clearRecordWhy !== '';
+  const clearRecordHowValid = stepState.clearRecordHow !== '';
+  const isNextDisabled = !clearRecordWhyValid || !clearRecordHowValid;
+
+  const textPreviewContent = `${stepState.clearRecordWhy} ${stepState.clearRecordHow}`;
+  if (showPreview) {
+    return (
+      <div className={utilityClasses.contentContainer}>
+        <TextPreview
+          content={textPreviewContent}
+          onAdjustClick={() => setShowPreview(false)}
+          nameOfStep="Why"
+        />
+
+        <FlowNavigation onBack={() => setShowPreview(false)} />
+      </div>
+    );
+  }
 
   return (
-    <div>
-      {!showPreview ? (
-        <div className="Step5">
-          <p>
-            Please finish this sentence: I want to clear my record because...
-          </p>
-          <Textarea
-            inputName="clearRecordWhy"
-            placeholder="I am..."
-            handleChange={handleChange}
-            multi={false}
-            isValid={clearRecordWhyFilled}
-            defaultValue={step5Inputs.clearRecordWhy}
-          />
-          <p className="greyedOut">
-            How will clearing your record change your life or help you? (2
-            sentences maximum)
-          </p>
-          {clearRecordWhyFilled && (
-            <Textarea
-              inputName="clearRecordHow"
-              handleChange={handleChange}
-              placeholder="Clearing my record will..."
-              multi
-              isValid={clearRecordHowFilled}
-              defaultValue={step5Inputs.clearRecordHow}
-            />
-          )}
-        </div>
-      ) : (
-        <div className="Step5-Preview">
-          <div>
-            <TextPreview
-              content={textPreviewContent}
-              onAdjustClick={() => setShowPreview(false)}
-              nameOfStep="Why"
-            />
-          </div>
-        </div>
-      )}
+    <div className={utilityClasses.contentContainer}>
+      <form className={utilityClasses.flexGrow}>
+        <p>Please finish this sentence: I want to clear my record because...</p>
+        <Textarea
+          inputName="clearRecordWhy"
+          placeholder="I am..."
+          handleChange={handleChange}
+          multi={false}
+          isValid={clearRecordWhyValid}
+          defaultValue={stepState.clearRecordWhy}
+        />
 
-      <FormFooter
-        isFormComplete={clearRecordWhyFilled && clearRecordHowFilled}
-        isPreviewing={showPreview}
-        goBackPage={goBackPage}
-        goNextPage={goNextPage}
-        togglePreview={() => setShowPreview(!showPreview)}
+        <p className="greyedOut">
+          How will clearing your record change your life or help you? (2
+          sentences maximum)
+        </p>
+        <Textarea
+          inputName="clearRecordHow"
+          handleChange={handleChange}
+          placeholder="Clearing my record will..."
+          multi
+          isValid={clearRecordHowValid}
+          disabled={!clearRecordWhyValid}
+          defaultValue={stepState.clearRecordHow}
+        />
+      </form>
+
+      <div className={utilityClasses.helpPopup}>
+        <PopUp
+          title="Some advice for your personal statement"
+          info={
+            '1. Remember that you are writing for a judge, so refrain from using informal language such as abbreviations or slang' +
+            '\n' +
+            '2. Write in complete sentences when given the option' +
+            '\n' +
+            '3. Use the first person when answering questions. This means telling the story from your point of view.' +
+            '\n' +
+            '4. Please try to limit your responses. We recommend each paragraph being 3-5 sentences.'
+          }
+        />
+      </div>
+
+      <FlowNavigation
+        onNext={() => setShowPreview(true)}
+        isNextDisabled={isNextDisabled}
       />
     </div>
   );

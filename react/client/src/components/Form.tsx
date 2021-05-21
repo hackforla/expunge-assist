@@ -1,17 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
+import FormStateContext from 'contexts/FormStateContext';
+import RoutingContext from 'contexts/RoutingContext';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
+
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
-import UnemployedStep from 'flows/UnemployedStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
-import InvolvementStep from 'involvement-step/InvolvementStep';
+import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
+import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
+import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
+import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
+import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
+import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
+import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,156 +41,135 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface FormProps {
-  pageNumber: number;
-  goNextPage: () => void;
-  goBackPage: () => void;
   onChangeAffirmation: (newState: object) => void;
+  affirmationIsActive: boolean;
 }
 
-const Form = ({
-  pageNumber,
-  goNextPage,
-  goBackPage,
-  onChangeAffirmation,
-}: FormProps) => {
+const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({});
-  const [inputs, setInputs] = useState<userInputs>({
-    name: '',
-    age: null,
-    introduction: '',
 
-    lifeChanges: '',
+  const { formState, updateStepToForm, goNextStep, goBackStep } = useContext(
+    FormStateContext
+  );
+  const { currentStep } = useContext(RoutingContext);
 
-    communityServiceOrgName: '',
-    communityServiceDescription: '',
-    jobName: '',
-    jobTitle: '',
-    jobDescription: '',
-    difficultyFindingWorkDescription: '',
-
-    goals: '',
-    goalsHow: '',
-
-    clearRecordWhy: '',
-    clearRecordHow: '',
-
-    pdf: undefined,
-  });
-
-  // todo: move text into a json for localization
-  useEffect(() => {
-    switch (pageNumber) {
-      case 2:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Welcome!',
-          buttonText: 'Begin',
-          description: 'This is a tool to generate a personal statement.',
-        });
-        break;
-      case 4:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Congrats!',
-          buttonText: 'Next',
-          description:
-            'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
-        });
-        break;
-      case 5:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Hooray!',
-          buttonText: 'Next',
-          description:
-            'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
-        });
-        break;
-      case 6:
-        onChangeAffirmation({
-          isActive: true,
-          titleText: 'Great Job!',
-          buttonText: 'Next',
-          description:
-            'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
-        });
-        break;
-      default:
-        break;
-    }
-  }, [pageNumber]);
+  if (affirmationIsActive) {
+    return <></>;
+  }
 
   return (
     <div className={`${classes.root} content-page`}>
-      {pageNumber === 1 && <BeforeYouBegin goNextPage={goNextPage} />}
+      {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && (
+        <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
+      )}
 
-      {pageNumber === 2 && (
+      {currentStep === STEP_ENUMS.INTRODUCTION && (
         <IntroductionStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
+          stepState={formState.introduction}
+          setFormState={(newStepState) =>
+            updateStepToForm({ introduction: newStepState })
+          }
         />
       )}
 
-      {pageNumber === 3 && (
-        <InvolvementStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
+      {currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL && (
+        <InvolvementInitialFlow
+          stepState={formState.involvementInitialState}
+          setFormState={(newStepState) =>
+            updateStepToForm({ involvementInitialState: newStepState })
+          }
         />
       )}
 
-      {pageNumber === 4 && (
-        <UnemployedStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
+      {currentStep === STEP_ENUMS.INVOLVEMENT.JOB && (
+        <InvolvementJobFlow
+          stepState={formState.involvementJobState}
+          setFormState={(newStepState) =>
+            updateStepToForm({ involvementJobState: newStepState })
+          }
         />
       )}
 
-      {pageNumber === 5 && (
+      {currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
+        <InvolvementCommunityServiceFlow
+          stepState={formState.involvementServiceState}
+          setFormState={(newStepState) =>
+            updateStepToForm({ involvementServiceState: newStepState })
+          }
+        />
+      )}
+
+      {currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY && (
+        <InvolvementRecoveryFlow
+          stepState={formState.involvementRecoveryState}
+          setFormState={(newStepState) =>
+            updateStepToForm({ involvementRecoveryState: newStepState })
+          }
+        />
+      )}
+
+      {currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL && (
+        <InvolvementSchoolFlow
+          stepState={formState.involvementSchoolState}
+          setFormState={(newStepState) =>
+            updateStepToForm({ involvementSchoolState: newStepState })
+          }
+        />
+      )}
+
+      {currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING && (
+        <InvolvementParentingFlow
+          stepState={formState.involvementParentingState}
+          setFormState={(newStepState) =>
+            updateStepToForm({ involvementParentingState: newStepState })
+          }
+        />
+      )}
+
+      {currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED && (
+        <InvolvementUnemployedFlow
+          stepState={formState.involvementUnemployedState}
+          setFormState={(newStepState) =>
+            updateStepToForm({ involvementUnemployedState: newStepState })
+          }
+        />
+      )}
+
+      {currentStep === STEP_ENUMS.GOALS && (
         <GoalsStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
+          stepState={formState.goalsStep}
+          setFormState={(newStepState) =>
+            updateStepToForm({ goalsStep: newStepState })
+          }
         />
       )}
 
-      {pageNumber === 6 && (
+      {currentStep === STEP_ENUMS.WHY && (
         <WhyStep
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
+          stepState={formState.whyStep}
+          setFormState={(newStepState) =>
+            updateStepToForm({ whyStep: newStepState })
+          }
         />
       )}
 
-      {pageNumber === 7 && (
+      {currentStep === STEP_ENUMS.PREVIEWING && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
-          <Button onClick={() => goBackPage()} buttonText="EDIT" />
-          <Button onClick={() => goNextPage()} buttonText="NEXT" />
+          <Button onClick={() => goBackStep()} buttonText="EDIT" />
+          <Button onClick={() => goNextStep()} buttonText="NEXT" />
         </div>
       )}
-      {pageNumber === 8 && (
+
+      {currentStep === STEP_ENUMS.FINALIZE && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Editing</p>
-          <Button onClick={() => goNextPage()} buttonText="SAVE" />
+          <Button onClick={() => goNextStep()} buttonText="SAVE" />
         </div>
       )}
-      {pageNumber === 9 && (
-        <Download
-          inputs={inputs}
-          setInputs={setInputs}
-          goNextPage={goNextPage}
-          goBackPage={goBackPage}
-        />
-      )}
+
+      {currentStep === STEP_ENUMS.DOWNLOAD && <Download />}
     </div>
   );
 };

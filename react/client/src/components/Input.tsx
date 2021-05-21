@@ -13,6 +13,12 @@ const useStyles = makeStyles(() =>
       height: '2.5rem',
       borderRadius: '15px',
       marginBottom: '1rem',
+
+      '&.MuiInputBase-root.Mui-disabled': {
+        borderRadius: '15px',
+        background: '#efefef',
+        color: '#b5b5b5',
+      },
     },
     icon: {
       color: teal.A400,
@@ -26,6 +32,7 @@ interface InputFieldProps {
   placeholder: string;
   type: string;
   defaultValue?: string;
+  disabled?: boolean;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -34,6 +41,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   placeholder,
   type,
   defaultValue,
+  disabled,
 }) => {
   const checkValid = (e: string) => {
     isValid(e.length > 0);
@@ -51,6 +59,7 @@ const InputArea: React.FC<InputFieldProps> = ({
       name={inputName}
       placeholder={placeholder}
       defaultValue={defaultValue}
+      disabled={disabled}
       endAdornment={
         <InputAdornment position="end">
           years old

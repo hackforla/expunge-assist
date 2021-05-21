@@ -34,15 +34,15 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
 );
 
 interface HeaderProps {
-  pageNumber: number;
+  isMainPage: boolean;
 }
 
-const Header = ({ pageNumber }: HeaderProps) => {
+const Header = ({ isMainPage }: HeaderProps) => {
   let icon: string;
   let background: string;
   let color: string;
 
-  if (pageNumber === 0) {
+  if (isMainPage) {
     background = '#9903ff';
     color = 'white';
     icon = iconWhite;

@@ -4,8 +4,10 @@ import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 import arrowRight from 'assets/arrowRight.svg';
 
 interface ComponentProps {
+  className?: string;
   theme?: string;
   hasArrow?: boolean;
+  disabled?: boolean;
   buttonText: string;
   onClick: () => void;
 }
@@ -72,6 +74,26 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           }
         },
       },
+      '&:disabled': {
+        color: (props) => {
+          switch (props.theme) {
+            case 'dark':
+            case 'transparent':
+              return '#757575';
+            default:
+              return '#FFFFFF';
+          }
+        },
+        background: (props) => {
+          switch (props.theme) {
+            case 'dark':
+            case 'transparent':
+              return '#e4e4e4';
+            default:
+              return '#ba85de';
+          }
+        },
+      },
       '& img': {
         marginLeft: '10px',
         marginRight: '0px',
@@ -81,15 +103,22 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
 );
 
 const ButtonComponent = ({
+  className = '',
   theme,
   hasArrow,
+  disabled = false,
   buttonText,
   onClick,
 }: ComponentProps) => {
   const styleProps = { theme, hasArrow };
   const classes = useStyles(styleProps);
   return (
-    <Button type="button" className={classes.root} onClick={onClick}>
+    <Button
+      disabled={disabled}
+      type="button"
+      className={`${classes.root} ${className}`}
+      onClick={onClick}
+    >
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </Button>

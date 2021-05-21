@@ -17,11 +17,37 @@ const useUtilityStyles = makeStyles((theme) =>
       marginLeft: 'auto',
       marginRight: 'auto',
       marginTop: '49px',
+      minWidth: '300px',
 
       [theme.breakpoints.down('xs')]: {
         marginLeft: 'initial',
         marginRight: 'initial',
+        width: '100%',
       },
+
+      '& .flow-navigation-container': {
+        marginTop: 'auto',
+      }
+    },
+    flexColumn: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    flexRow: {
+      display: 'flex',
+      flexDirection: 'row',
+    },
+    buttonRight: {
+      marginLeft: 'auto',
+    },
+    flexGrow: {
+      flex: '1 1 auto',
+    },
+    flexNone: {
+      flex: '0 0 auto',
+    },
+    helpPopup: {
+      textAlign: 'right',
     },
   })
 );

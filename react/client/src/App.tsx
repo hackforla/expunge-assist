@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import RoutingContextProvider from 'contexts/RoutingContext';
+import { RoutingContextProvider } from 'contexts/RoutingContext';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 
 import PageContainer from 'components/PageContainer';
@@ -78,7 +78,7 @@ const App: React.FC = () => {
                 history={history}
               />
               <Route
-                path="/form/:page?"
+                path="/form/:page?/:substep?"
                 component={PageContainer}
                 history={history}
               />

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Textarea from 'components/Textarea';
 import Button from 'components/Button';
 
@@ -100,7 +101,7 @@ const UnemployedStep = ({
         and be more involved in your community?
       </p>
       <Button onClick={() => goBackPage()} buttonText="BACK" />
-      <Button onClick={() => goNextPage()} buttonText="LOOKS GOOD" />
+      <Button onClick={() => goNextPage()} buttonText="NEXT" />
     </div>
   );
 };
