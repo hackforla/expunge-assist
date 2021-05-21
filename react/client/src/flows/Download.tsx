@@ -1,8 +1,6 @@
 import React from 'react';
 import jsPDF from 'jspdf';
 
-import { IStepProps } from 'contexts/FormStateProps';
-
 const Download = () => {
   const savePDF = () => {
     const doc = new jsPDF('p', 'mm', 'letter');
