@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 
-import arrowRight from '../assets/arrowRight.svg';
+import arrowRight from 'assets/arrowRight.svg';
 
 interface ComponentProps {
   theme?: string;

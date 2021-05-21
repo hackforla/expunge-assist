@@ -1,7 +1,7 @@
 import React from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-import hackForLALogo from '../assets/hackForLALogo.svg';
+import hackForLALogo from 'assets/hackForLALogo.svg';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

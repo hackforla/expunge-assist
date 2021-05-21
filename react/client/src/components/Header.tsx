@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-import iconBlack from '../assets/iconBlack.svg';
-import iconWhite from '../assets/iconWhite.svg';
+import iconBlack from 'assets/iconBlack.svg';
+import iconWhite from 'assets/iconWhite.svg';
 
 interface StyleProps {
   background?: string;
