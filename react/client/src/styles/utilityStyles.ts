@@ -24,10 +24,6 @@ const useUtilityStyles = makeStyles((theme) =>
         marginRight: 'initial',
         width: '100%',
       },
-
-      '& .flow-navigation-container': {
-        marginTop: 'auto',
-      },
     },
     flexColumn: {
       display: 'flex',
