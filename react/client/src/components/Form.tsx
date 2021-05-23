@@ -164,9 +164,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
       )}
 
       {currentStep === STEP_ENUMS.FINALIZE && (
-        <FinalizeStep
-          formState={formState}
-        />
+        <FinalizeStep formState={formState} />
       )}
 
       {currentStep === STEP_ENUMS.DOWNLOAD && <Download />}
