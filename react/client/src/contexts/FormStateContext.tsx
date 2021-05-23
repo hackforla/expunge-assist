@@ -87,7 +87,7 @@ export const FormStateContextProvider = ({
     goBackPage();
   };
 
-  function test(evt) {
+  function test(evt: KeyboardEvent) {
     // ` (backquote)
     if (evt.keyCode === 192) {
       updateStepToForm(sampleStepState);
