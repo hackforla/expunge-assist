@@ -10,21 +10,20 @@ import TextPreview from 'components/TextPreview';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
+import { GenerateIntroduction } from 'helpers/StatementHelpers';
+
 const useStyles = makeStyles(() =>
   createStyles({
     preview: {
       padding: '15px',
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
-      '& h2': {
-        color: '#9903FF',
-        marginTop: 15,
-      },
+      whiteSpace: 'pre-line',
+
       '& p': {
-        whiteSpace: 'pre-wrap',
         marginBottom: 15,
       },
-    }
+    },
   })
 );
 
@@ -32,14 +31,14 @@ interface IFinalizeStepProps {
   formState: IStepState;
 }
 
-const FinalizeStep = ({formState}: IFinalizeStepProps) => {
+const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
 
-  const displayDate = new Date().toLocaleDateString("en-US", {
+  const displayDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
 
   return (
@@ -50,7 +49,10 @@ const FinalizeStep = ({formState}: IFinalizeStepProps) => {
       </div>
 
       <div className={classes.preview}>
-        <span>{displayDate}</span>
+        <span>{`${displayDate},\n\n`}</span>
+        <span>{`To whom it may concern,\n\n`}</span>
+        <p>{GenerateIntroduction(formState)}</p>
+
         <p>
           {`To Whom It May Concern,
 
