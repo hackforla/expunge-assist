@@ -160,13 +160,16 @@ export const sampleStepState = {
     passionDescription: 'I always liked looking at how chemicals affected ',
   },
   involvementParentingState: {
-    childName: '',
-    parentYears: '',
-    parentDescription: '',
+    childName: 'Cyanide Nx11',
+    parentYears: '11',
+    parentDescription:
+      'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
   },
   involvementUnemployedState: {
-    unemploymentDescription: '',
-    wouldClearanceHelp: '',
+    unemploymentDescription:
+      'I have not been able to find any jobs that are not about licking or eating things.',
+    wouldClearanceHelp:
+      'Getting my record cleared would make it so I could get jobs like lockpicking.',
   },
   goalsStep: {
     goals: 'I want to get a new job so I do not have to eat any more poison.',

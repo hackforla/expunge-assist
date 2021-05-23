@@ -38,3 +38,19 @@ export function generateInvolvementJob(formState: IStepState): String {
 
   return `Since my conviction, I have been working at ${companyName} as a ${jobTitle}. At ${companyName}, ${jobDescription}`;
 }
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateInvolvementCommunity(formState: IStepState): String {
+  const {
+    involvementServiceState: { organizationName, serviceDescription },
+  } = formState;
+
+  if (organizationName === '' || serviceDescription === '') {
+    return '';
+  }
+
+  return `I have also been really involved in community service. In particular, I’ve been working with ${organizationName}. ${serviceDescription}`;
+}
