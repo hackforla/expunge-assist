@@ -36,6 +36,12 @@ const FinalizeStep = ({formState}: IFinalizeStepProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
 
+  const displayDate = new Date().toLocaleDateString("en-US", {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
   return (
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.purpleTitle}>
@@ -44,10 +50,9 @@ const FinalizeStep = ({formState}: IFinalizeStepProps) => {
       </div>
 
       <div className={classes.preview}>
+        <span>{displayDate}</span>
         <p>
-          {`October 26th, 2020
-
-          To Whom It May Concern,
+          {`To Whom It May Concern,
 
           Thank you so much for taking the time to read my personal statement. My name is Jenna Smith, and I am 27 years old. I am also a proud veteran of the United States Armed Forces.
 
