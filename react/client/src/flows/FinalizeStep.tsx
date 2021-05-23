@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
+import { IStepState } from 'contexts/FormStateProps';
+
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
@@ -10,19 +12,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
-    purpleTitle: {
-      color: '#9903FF',
-      fontStyle: 'italic',
-      fontSize: '20px',
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: '20px',
-    },
-    purpleIcon: {
-      color: '#9903FF',
-      fontSize: '20px',
-      marginRight: '0.5rem',
-    },
     preview: {
       padding: '15px',
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
@@ -39,16 +28,18 @@ const useStyles = makeStyles(() =>
   })
 );
 
-// interface IFinalizeStepProps {}
+interface IFinalizeStepProps {
+  formState: IStepState;
+}
 
-const FinalizeStep = () => {
+const FinalizeStep = ({formState}: IFinalizeStepProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div className={classes.purpleTitle}>
-        <VisibilityIcon className={classes.purpleIcon} />
+      <div className={utilityClasses.purpleTitle}>
+        <VisibilityIcon className={utilityClasses.purpleIcon} />
         Previewing Final Statement
       </div>
 

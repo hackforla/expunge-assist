@@ -45,6 +45,19 @@ const useUtilityStyles = makeStyles((theme) =>
     helpPopup: {
       textAlign: 'right',
     },
+    purpleTitle: {
+      color: '#9903FF',
+      fontStyle: 'italic',
+      fontSize: '20px',
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '20px',
+    },
+    purpleIcon: {
+      color: '#9903FF',
+      fontSize: '20px',
+      marginRight: '0.5rem',
+    },
   })
 );
 
