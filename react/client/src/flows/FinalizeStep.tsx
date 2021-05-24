@@ -12,6 +12,7 @@ import {
   generateIntroduction,
   generateInvolvementJob,
   generateInvolvementCommunity,
+  generateInvolvementRecovery,
 } from 'helpers/StatementHelpers';
 
 const useStyles = makeStyles(() =>
@@ -56,6 +57,7 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
         <p>{generateIntroduction(formState)}</p>
         <p>{generateInvolvementJob(formState)}</p>
         <p>{generateInvolvementCommunity(formState)}</p>
+        <p>{generateInvolvementRecovery(formState)}</p>
 
         <p>
           {`I am working towards going back to school, so that I can be a social worker. To work towards my goals; I have been taking night classes at Rosedale Community Center, and I have been shadowing a social worker on Fridays. Having my record cleared would help me acheive these goals for my future.

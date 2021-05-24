@@ -54,3 +54,19 @@ export function generateInvolvementCommunity(formState: IStepState): String {
 
   return `I have also been really involved in community service. In particular, I’ve been working with ${organizationName}. ${serviceDescription}`;
 }
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateInvolvementRecovery(formState: IStepState): String {
+  const {
+    involvementRecoveryState: { recoveryName, recoveryDescription },
+  } = formState;
+
+  if (recoveryName === '' || recoveryDescription === '') {
+    return '';
+  }
+
+  return `Since my conviction, I have gotten really serious about my recovery. I am very involved with ${recoveryName}. ${recoveryDescription}`;
+}
