@@ -13,6 +13,7 @@ import {
   generateInvolvementJob,
   generateInvolvementCommunity,
   generateInvolvementRecovery,
+  generateInvolvementSchool,
 } from 'helpers/StatementHelpers';
 
 const useStyles = makeStyles(() =>
@@ -58,16 +59,7 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
         <p>{generateInvolvementJob(formState)}</p>
         <p>{generateInvolvementCommunity(formState)}</p>
         <p>{generateInvolvementRecovery(formState)}</p>
-
-        <p>
-          {`I am working towards going back to school, so that I can be a social worker. To work towards my goals; I have been taking night classes at Rosedale Community Center, and I have been shadowing a social worker on Fridays. Having my record cleared would help me acheive these goals for my future.
-
-          I want to clear my record because I am a different person from who I was when I was convicted. I want to make the world a better place. Right now having a criminal record is preventing me from being accepted to college, and it has hindered my career. Getting my record cleared will have a major impact on my life.
-
-          Sincerely,
-
-          Jenna Smith`}
-        </p>
+        <p>{generateInvolvementSchool(formState)}</p>
       </div>
 
       <FlowNavigation />

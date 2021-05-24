@@ -70,3 +70,20 @@ export function generateInvolvementRecovery(formState: IStepState): String {
 
   return `Since my conviction, I have gotten really serious about my recovery. I am very involved with ${recoveryName}. ${recoveryDescription}`;
 }
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateInvolvementSchool(formState: IStepState): String {
+  const {
+    involvementSchoolState: { schoolName, studyName, passionDescription },
+  } = formState;
+
+  if (schoolName === '' || studyName === '' || passionDescription === '') {
+    return '';
+  }
+
+  return `Since my conviction, I have begun attending school at ${schoolName}, where I have been studying ${studyName}. ${passionDescription}`;
+}
+
