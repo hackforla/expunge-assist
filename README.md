@@ -102,7 +102,7 @@ Explain the different ways people can contribute. For example:
 
 Gretchen Howard - Product Manager - gretchenschwab@gmail.com or on Slack @Gretchen Howard
 
-Myranda Pierce - Product Manager, Research & Design - piercemyranda@gmail.com or on Slack @Myranda Pierce
+Apurva Barve - UX Research Lead - apurva.barve@gmail.com or on Slack @Apurva Barve
 
 Andan Eddy - Product Manager - andaneddy@gmail.com - or on Slack @Andan Eddy
 
