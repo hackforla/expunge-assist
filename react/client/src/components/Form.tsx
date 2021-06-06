@@ -11,6 +11,7 @@ import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
+import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
@@ -163,10 +164,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
       )}
 
       {currentStep === STEP_ENUMS.FINALIZE && (
-        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
-          <p>Editing</p>
-          <Button onClick={() => goNextStep()} buttonText="SAVE" />
-        </div>
+        <FinalizeStep formState={formState} />
       )}
 
       {currentStep === STEP_ENUMS.DOWNLOAD && <Download />}
