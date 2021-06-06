@@ -6,6 +6,19 @@ interface IStyleProps {
 
 const useUtilityStyles = makeStyles<Theme>((theme) =>
   createStyles({
+    primaryContainer: {
+      padding: '18px',
+      display: 'flex',
+      flex: '1 0 auto',
+      flexDirection: 'column',
+      width: '100%',
+
+      background: ({ pageTheme }: IStyleProps) =>
+        pageTheme === 'dark' ? '#9903ff' : 'white',
+
+      color: ({ pageTheme }: IStyleProps) =>
+        pageTheme === 'dark' ? 'white' : '#25003F',
+    },
     buttonContainer: {
       display: 'flex',
       justifyContent: 'flex-end',
@@ -14,14 +27,16 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       },
     },
     contentContainer: {
+      maxWidth: '600px',
+      minWidth: '300px',
+      width: '100%',
+
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginTop: '18px',
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
-      maxWidth: '850px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      marginTop: '49px',
-      minWidth: '300px',
 
       background: ({ pageTheme }: IStyleProps) =>
         pageTheme === 'dark' ? '#9903ff' : 'white',

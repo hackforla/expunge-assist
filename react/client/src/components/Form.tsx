@@ -60,7 +60,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
   }
 
   return (
-    <div className={`${classes.root} content-page`}>
+    <div className={utilityClasses.contentContainer}>
       {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && (
         <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
       )}

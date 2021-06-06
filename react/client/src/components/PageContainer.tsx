@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import AffirmationComponent from 'components/AffirmationComponent';
 import Header from 'components/Header';
@@ -9,20 +8,7 @@ import FormHeader from 'components/FormHeader';
 import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 // import { STEP_ENUMS } from 'contexts/RoutingProps';
-// import useUtilityStyles from 'styles/utilityStyles';
-
-const useStyles = makeStyles<Theme>(() =>
-  createStyles({
-    root: {
-      background: 'white',
-      color: '#131313',
-      padding: '18px',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-    },
-  })
-);
+import useUtilityStyles from 'styles/utilityStyles';
 
 interface PageProps {
   match: {
@@ -39,8 +25,11 @@ const PageContainer = ({ match }: PageProps) => {
     AffirmationContext
   );
 
-  const classes = useStyles();
-  // const utilityClasses = useUtilityStyles();
+  const isDarkTheme = match.params.page === 'start';
+
+  const utilityClasses = useUtilityStyles({
+    pageTheme: isDarkTheme ? 'dark' : 'light',
+  });
 
   useEffect(() => {
     // handle closing the affirmation on home page
@@ -91,8 +80,8 @@ const PageContainer = ({ match }: PageProps) => {
   }, [currentStep]);
 
   return (
-    <div className={classes.root}>
-      <Header isMainPage={false} />
+    <div className={utilityClasses.primaryContainer}>
+      <Header isMainPage={isDarkTheme} />
 
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
@@ -103,13 +92,13 @@ const PageContainer = ({ match }: PageProps) => {
       />
 
       {!affirmationData.isActive && (
-        <div>
+        <>
           <FormHeader />
           <Form
             onChangeAffirmation={updateAffirmationData}
             affirmationIsActive={affirmationData.isActive}
           />
-        </div>
+        </>
       )}
     </div>
   );
