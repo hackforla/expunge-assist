@@ -1,6 +1,10 @@
 import React, { createContext, useContext, useState } from 'react';
 
-import { IStepState, defaultStepState } from 'contexts/FormStateProps';
+import {
+  IStepState,
+  defaultStepState,
+  sampleStepState,
+} from 'contexts/FormStateProps';
 import {
   STEP_ENUMS,
   getNextFormStep,
@@ -82,6 +86,23 @@ export const FormStateContextProvider = ({
   const goBackStep = () => {
     goBackPage();
   };
+
+  function test(evt: KeyboardEvent) {
+    // ` (backquote)
+    if (evt.keyCode === 192) {
+      updateStepToForm(sampleStepState);
+    }
+  }
+
+  React.useEffect(() => {
+    // initiate the event handler
+    window.addEventListener('keydown', test);
+
+    // this will clean up the event every time the component is re-rendered
+    return function cleanup() {
+      window.removeEventListener('keydown', test);
+    };
+  });
 
   return (
     <FormStateContext.Provider
