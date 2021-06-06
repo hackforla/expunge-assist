@@ -1,6 +1,10 @@
-import { makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-const useUtilityStyles = makeStyles((theme) =>
+interface IStyleProps {
+  pageTheme?: string;
+}
+
+const useUtilityStyles = makeStyles<Theme>((theme) =>
   createStyles({
     buttonContainer: {
       display: 'flex',
@@ -18,6 +22,12 @@ const useUtilityStyles = makeStyles((theme) =>
       marginRight: 'auto',
       marginTop: '49px',
       minWidth: '300px',
+
+      background: ({ pageTheme }: IStyleProps) =>
+        pageTheme === 'dark' ? '#9903ff' : 'white',
+
+      color: ({ pageTheme }: IStyleProps) =>
+        pageTheme === 'dark' ? 'white' : '#25003F',
 
       [theme.breakpoints.down('xs')]: {
         marginLeft: 'initial',

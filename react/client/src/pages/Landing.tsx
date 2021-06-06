@@ -31,7 +31,7 @@ const useStyles = makeStyles(() =>
 
 const Landing = () => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({ theme: 'dark' });
+  const utilityClasses = useUtilityStyles({ pageTheme: 'dark' });
 
   const { goNextPage } = useContext(RoutingContext);
 
