@@ -87,3 +87,67 @@ export function generateInvolvementSchool(formState: IStepState): String {
   return `Since my conviction, I have begun attending school at ${schoolName}, where I have been studying ${studyName}. ${passionDescription}`;
 }
 
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateInvolvementParenting(formState: IStepState): String {
+  const {
+    involvementParentingState: { childName, parentYears, parentDescription },
+  } = formState;
+
+  if (childName === '' || parentYears === '' || parentDescription === '') {
+    return '';
+  }
+
+  return `Since my conviction, I have really prioritized being a great parent. My child, ${childName}, is ${parentYears} years old, and I love them so much. ${parentDescription}`;
+}
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateInvolvementUnemployed(formState: IStepState): String {
+  const {
+    involvementUnemployedState: { unemploymentDescription, wouldClearanceHelp },
+  } = formState;
+
+  if (unemploymentDescription === '' || wouldClearanceHelp === '') {
+    return '';
+  }
+
+  const wouldHelpText = wouldClearanceHelp === 'Yes' ? 'would' : 'would not';
+  return `Since my conviction, ${unemploymentDescription}. I beleive that having my record cleared ${wouldHelpText} help me find a job and be more involved in my community.`;
+}
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateFutureGoals(formState: IStepState): String {
+  const {
+    goalsStep: { goals, goalsHow },
+  } = formState;
+
+  if (goals === '' || goalsHow === '') {
+    return '';
+  }
+
+  return `${goals} To work towards my goals, ${goalsHow}. Having my record cleared would help me achieve these goals for my future.`;
+}
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateWhy(formState: IStepState): String {
+  const {
+    whyStep: { clearRecordWhy, clearRecordHow },
+  } = formState;
+
+  if (clearRecordWhy === '' || clearRecordHow === '') {
+    return '';
+  }
+
+  return `I want to clear my record because ${clearRecordWhy} ${clearRecordHow} Getting my record cleared will have a major impact on my life.`;
+}

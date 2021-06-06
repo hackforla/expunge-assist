@@ -169,7 +169,7 @@ export const sampleStepState = {
     unemploymentDescription:
       'I have not been able to find any jobs that are not about licking or eating things.',
     wouldClearanceHelp:
-      'Getting my record cleared would make it so I could get jobs like lockpicking.',
+      'Yes',
   },
   goalsStep: {
     goals: 'I want to get a new job so I do not have to eat any more poison.',

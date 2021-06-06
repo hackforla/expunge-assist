@@ -14,6 +14,10 @@ import {
   generateInvolvementCommunity,
   generateInvolvementRecovery,
   generateInvolvementSchool,
+  generateInvolvementParenting,
+  generateInvolvementUnemployed,
+  generateFutureGoals,
+  generateWhy,
 } from 'helpers/StatementHelpers';
 
 const useStyles = makeStyles(() =>
@@ -60,6 +64,10 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
         <p>{generateInvolvementCommunity(formState)}</p>
         <p>{generateInvolvementRecovery(formState)}</p>
         <p>{generateInvolvementSchool(formState)}</p>
+        <p>{generateInvolvementParenting(formState)}</p>
+        <p>{generateInvolvementUnemployed(formState)}</p>
+        <p>{generateFutureGoals(formState)}</p>
+        <p>{generateWhy(formState)}</p>
       </div>
 
       <FlowNavigation />
