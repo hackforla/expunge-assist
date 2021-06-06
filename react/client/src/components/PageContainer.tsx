@@ -95,6 +95,7 @@ const PageContainer = ({ match }: PageProps) => {
         <>
           <FormHeader />
           <Form
+            isDarkTheme={isDarkTheme}
             onChangeAffirmation={updateAffirmationData}
             affirmationIsActive={affirmationData.isActive}
           />

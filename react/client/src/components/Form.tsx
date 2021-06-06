@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
@@ -23,32 +22,20 @@ import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-      maxWidth: '850px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-
-      [theme.breakpoints.down('xs')]: {
-        marginLeft: 'initial',
-        marginRight: 'initial',
-      },
-    },
-  })
-);
-
 interface FormProps {
   onChangeAffirmation: (newState: object) => void;
   affirmationIsActive: boolean;
+  isDarkTheme: boolean;
 }
 
-const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
-  const classes = useStyles();
-  const utilityClasses = useUtilityStyles({});
+const Form = ({
+  onChangeAffirmation,
+  affirmationIsActive,
+  isDarkTheme,
+}: FormProps) => {
+  const utilityClasses = useUtilityStyles({
+    pageTheme: isDarkTheme ? 'dark' : 'light',
+  });
 
   const { formState, updateStepToForm, goNextStep, goBackStep } = useContext(
     FormStateContext

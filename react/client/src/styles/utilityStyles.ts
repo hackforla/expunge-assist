@@ -2,6 +2,7 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 interface IStyleProps {
   pageTheme?: string;
+  isSoloContainer?: boolean;
 }
 
 const useUtilityStyles = makeStyles<Theme>((theme) =>
@@ -33,7 +34,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
 
       marginLeft: 'auto',
       marginRight: 'auto',
-      marginTop: '18px',
+      // marginTop: '18px',
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
@@ -43,6 +44,9 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
 
       color: ({ pageTheme }: IStyleProps) =>
         pageTheme === 'dark' ? 'white' : '#25003F',
+
+      marginTop: ({ isSoloContainer }: IStyleProps) =>
+        isSoloContainer ? '36px' : '18px',
 
       [theme.breakpoints.down('xs')]: {
         marginLeft: 'initial',

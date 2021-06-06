@@ -21,7 +21,7 @@ const useStyles = makeStyles(() =>
 );
 const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({ pageTheme: 'dark' });
+  const utilityClasses = useUtilityStyles({ pageTheme: 'dark', isSoloContainer: true });
   const { t } = useTranslation();
 
   const { goNextStep } = useContext(FormStateContext);
