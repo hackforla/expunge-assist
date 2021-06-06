@@ -5,13 +5,11 @@ import AffirmationComponent from 'components/AffirmationComponent';
 import Header from 'components/Header';
 import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
-import Landing from 'pages/Landing';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
-import { FormStateContextProvider } from 'contexts/FormStateContext';
-import useUtilityStyles from 'styles/utilityStyles';
+// import { STEP_ENUMS } from 'contexts/RoutingProps';
+// import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles<Theme>(() =>
   createStyles({
@@ -42,7 +40,7 @@ const PageContainer = ({ match }: PageProps) => {
   );
 
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles();
+  // const utilityClasses = useUtilityStyles();
 
   useEffect(() => {
     // handle closing the affirmation on home page
@@ -105,13 +103,13 @@ const PageContainer = ({ match }: PageProps) => {
       />
 
       {!affirmationData.isActive && (
-        <FormStateContextProvider>
+        <div>
           <FormHeader />
           <Form
             onChangeAffirmation={updateAffirmationData}
             affirmationIsActive={affirmationData.isActive}
           />
-        </FormStateContextProvider>
+        </div>
       )}
     </div>
   );

@@ -118,7 +118,6 @@ const IntroductionStep = ({
       </div>
 
       <FlowNavigation
-        onNext={() => setShowPreview(true)}
         isNextDisabled={isNextDisabled}
       />
     </div>
