@@ -13,6 +13,7 @@ import AffirmationContextProvider from 'contexts/AffirmationContext';
 import PageContainer from 'components/PageContainer';
 import Navbar from 'components/Navbar';
 
+import Landing from 'pages/Landing';
 import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
@@ -74,8 +75,7 @@ const App: React.FC = () => {
               <Route
                 exact
                 path="/"
-                component={PageContainer}
-                history={history}
+                component={Landing}
               />
               <Route
                 path="/form/:page?/:substep?"

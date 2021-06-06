@@ -11,16 +11,13 @@ import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
+import useUtilityStyles from 'styles/utilityStyles';
 
-interface styleProps {
-  isLandingPage: boolean;
-}
-
-const useStyles = makeStyles<Theme, styleProps>(() =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
     root: {
-      background: (props) => (props.isLandingPage ? '#9903ff' : 'white'),
-      color: (props) => (props.isLandingPage ? 'white' : '#131313'),
+      background: 'white',
+      color: '#131313',
       padding: '18px',
       display: 'flex',
       flex: '1 0 auto',
@@ -44,10 +41,8 @@ const PageContainer = ({ match }: PageProps) => {
     AffirmationContext
   );
 
-  const isLandingPage = currentStep === STEP_ENUMS.NONE;
-
-  const styleProps = { isLandingPage };
-  const classes = useStyles(styleProps);
+  const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
 
   useEffect(() => {
     // handle closing the affirmation on home page
@@ -98,8 +93,8 @@ const PageContainer = ({ match }: PageProps) => {
   }, [currentStep]);
 
   return (
-    <div className={`${classes.root} page-container`}>
-      <Header isMainPage={isLandingPage} />
+    <div className={classes.root}>
+      <Header isMainPage={false} />
 
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
@@ -109,9 +104,7 @@ const PageContainer = ({ match }: PageProps) => {
         onChangeAffirmation={updateAffirmationData}
       />
 
-      {isLandingPage && <Landing />}
-
-      {!affirmationData.isActive && !isLandingPage && (
+      {!affirmationData.isActive && (
         <FormStateContextProvider>
           <FormHeader />
           <Form
