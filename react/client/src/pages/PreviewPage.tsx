@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import FlowNavigation from 'components/FlowNavigation';
 import TextPreview from 'components/TextPreview';
 
+import { IStepState } from 'contexts/FormStateProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
+import FormStateContext from 'contexts/FormStateContext';
+import RoutingContext from 'contexts/RoutingContext';
+import * as statementHelpers from 'helpers/StatementHelpers';
+
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface IPreviewPage {
-  content: string;
+function generatePreviewFromStep(step: string, formState: IStepState): string {
+  switch (step) {
+    case STEP_ENUMS.INTRODUCTION_PREVIEW:
+      return statementHelpers.generateIntroduction(formState);
+    default:
+      return '';
+  }
 }
 
-const PreviewPage = ({ content }: IPreviewPage) => {
-  const utilityClasses = useUtilityStyles();
+function PreviewPage() {
+  const utilityClasses = useUtilityStyles({ pageTheme: 'light' });
+
+  const { formState } = useContext(FormStateContext);
+  const { currentStep } = useContext(RoutingContext);
+  const previewText = generatePreviewFromStep(currentStep, formState);
 
   return (
-    <div className={utilityClasses.contentContainer}>
-      <div className={utilityClasses.flexGrow}>
+    <div className={utilityClasses.primaryContainer}>
+      <div className={utilityClasses.contentContainer}>
         <TextPreview
-          content={content}
+          content={previewText}
           onAdjustClick={() => {}}
           nameOfStep="Introduction"
         />
@@ -25,6 +40,6 @@ const PreviewPage = ({ content }: IPreviewPage) => {
       </div>
     </div>
   );
-};
+}
 
 export default PreviewPage;

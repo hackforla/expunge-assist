@@ -4,7 +4,7 @@ import { IStepState } from 'contexts/FormStateProps';
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateIntroduction(formState: IStepState): String {
+export function generateIntroduction(formState: IStepState): string {
   const { introduction } = formState;
 
   const firstSentence =
@@ -27,7 +27,7 @@ export function generateIntroduction(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateInvolvementJob(formState: IStepState): String {
+export function generateInvolvementJob(formState: IStepState): string {
   const {
     involvementJobState: { companyName, jobTitle, jobDescription },
   } = formState;
@@ -43,7 +43,7 @@ export function generateInvolvementJob(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateInvolvementCommunity(formState: IStepState): String {
+export function generateInvolvementCommunity(formState: IStepState): string {
   const {
     involvementServiceState: { organizationName, serviceDescription },
   } = formState;
@@ -59,7 +59,7 @@ export function generateInvolvementCommunity(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateInvolvementRecovery(formState: IStepState): String {
+export function generateInvolvementRecovery(formState: IStepState): string {
   const {
     involvementRecoveryState: { recoveryName, recoveryDescription },
   } = formState;
@@ -75,7 +75,7 @@ export function generateInvolvementRecovery(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateInvolvementSchool(formState: IStepState): String {
+export function generateInvolvementSchool(formState: IStepState): string {
   const {
     involvementSchoolState: { schoolName, studyName, passionDescription },
   } = formState;
@@ -91,7 +91,7 @@ export function generateInvolvementSchool(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateInvolvementParenting(formState: IStepState): String {
+export function generateInvolvementParenting(formState: IStepState): string {
   const {
     involvementParentingState: { childName, parentYears, parentDescription },
   } = formState;
@@ -107,7 +107,7 @@ export function generateInvolvementParenting(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateInvolvementUnemployed(formState: IStepState): String {
+export function generateInvolvementUnemployed(formState: IStepState): string {
   const {
     involvementUnemployedState: { unemploymentDescription, wouldClearanceHelp },
   } = formState;
@@ -124,7 +124,7 @@ export function generateInvolvementUnemployed(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateFutureGoals(formState: IStepState): String {
+export function generateFutureGoals(formState: IStepState): string {
   const {
     goalsStep: { goals, goalsHow },
   } = formState;
@@ -140,7 +140,7 @@ export function generateFutureGoals(formState: IStepState): String {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateWhy(formState: IStepState): String {
+export function generateWhy(formState: IStepState): string {
   const {
     whyStep: { clearRecordWhy, clearRecordHow },
   } = formState;
