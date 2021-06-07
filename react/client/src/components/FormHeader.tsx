@@ -1,18 +1,24 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     root: {
       background: '#f7ebff',
       color: 'black',
       padding: '12px 12px',
       borderBottomRightRadius: '64px',
+
+      [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+        marginLeft: '18px',
+        marginRight: '18px',
+      },
+
       '& h2': {
         fontWeight: '300',
         fontSize: '20px',
