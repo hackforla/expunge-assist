@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import FlowNavigation from 'components/FlowNavigation';
+import FormHeader from 'components/FormHeader';
 import TextPreview from 'components/TextPreview';
 
 import { IStepState } from 'contexts/FormStateProps';
@@ -29,6 +30,8 @@ function PreviewPage() {
 
   return (
     <div className={utilityClasses.primaryContainer}>
+      <FormHeader />
+
       <div className={utilityClasses.contentContainer}>
         <TextPreview
           content={previewText}
