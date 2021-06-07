@@ -8,28 +8,40 @@ import { STEP_ENUMS } from 'contexts/RoutingProps';
 import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
 
-interface StyleProps {
-  background?: string;
-  color?: string;
+interface IStyleProps {
+  pageTheme?: string;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme, IStyleProps>((theme: Theme) =>
   createStyles({
     root: {
+      background: ({ pageTheme }: IStyleProps) =>
+        pageTheme === 'purple' ? '#9903ff' : 'white',
+
       padding: '18px',
-      background: (props) => props.background,
-      color: (props) => props.color,
       display: 'flex',
+
+      '& a': {
+        color: ({ pageTheme }: IStyleProps) =>
+          pageTheme === 'purple' ? 'white' : 'black',
+      },
+
       '& .logo-title': {
         display: 'flex',
         flexDirection: 'column',
         marginLeft: '20px',
         textTransform: 'uppercase',
         fontSize: '12px',
-        [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+
+        [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
           display: 'none',
         },
       },
+
+      [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+        background: '#f7ebff',
+      },
+
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         display: 'none',
       },
@@ -40,41 +52,23 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
 const Header = () => {
   const { currentStep } = useContext(RoutingContext);
 
-  const isDarkMode =
+  const isPurpleTheme =
     currentStep === STEP_ENUMS.NONE ||
     currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN;
 
-  let icon: string;
-  let background: string;
-  let color: string;
+  const logoIcon = isPurpleTheme ? iconWhite : iconBlack;
 
-  if (isDarkMode) {
-    background = '#9903ff';
-    color = 'white';
-    icon = iconWhite;
-  } else {
-    background = 'white';
-    color = 'black';
-    icon = iconBlack;
-  }
-
-  const styleProps = {
-    background,
-    color,
-  };
-
-  const classes = useStyles(styleProps);
+  const classes = useStyles({ pageTheme: isPurpleTheme ? 'purple' : 'light' });
 
   return (
     <div className={`${classes.root} app-header`}>
       <Link to="/">
-        <img src={icon} alt="" />
+        <img src={logoIcon} alt="" />
       </Link>
       <Link
         to="/"
         style={{
           textDecoration: 'none',
-          color,
         }}
         className="logo-title"
       >
