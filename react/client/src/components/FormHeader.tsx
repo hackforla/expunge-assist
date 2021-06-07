@@ -12,7 +12,6 @@ const useStyles = makeStyles(() =>
       background: '#f7ebff',
       color: 'black',
       height: '120px',
-      marginTop: '20px',
       paddingLeft: '12px',
       borderBottomRightRadius: '64px',
       '& h2': {

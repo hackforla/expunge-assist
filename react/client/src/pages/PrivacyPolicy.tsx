@@ -59,7 +59,6 @@ const PrivacyPolicy = ({ handleClick }: PrivacyPolicyProps) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Header isMainPage />
       <div className="centered">
         &nbsp;
         <h3>Privacy Policy</h3>

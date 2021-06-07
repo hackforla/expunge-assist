@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
+
+import RoutingContext from 'contexts/RoutingContext';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
@@ -13,6 +16,7 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
   createStyles({
     root: {
+      padding: '18px',
       background: (props) => props.background,
       color: (props) => props.color,
       display: 'flex',
@@ -33,16 +37,18 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
   })
 );
 
-interface HeaderProps {
-  isMainPage: boolean;
-}
+const Header = () => {
+  const { currentStep } = useContext(RoutingContext);
 
-const Header = ({ isMainPage }: HeaderProps) => {
+  const isDarkMode =
+    currentStep === STEP_ENUMS.NONE ||
+    currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN;
+
   let icon: string;
   let background: string;
   let color: string;
 
-  if (isMainPage) {
+  if (isDarkMode) {
     background = '#9903ff';
     color = 'white';
     icon = iconWhite;

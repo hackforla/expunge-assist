@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
 import AffirmationComponent from 'components/AffirmationComponent';
-import Header from 'components/Header';
 import Form from 'components/Form';
 import FormHeader from 'components/FormHeader';
 
@@ -81,8 +80,6 @@ const PageContainer = ({ match }: PageProps) => {
 
   return (
     <div className={utilityClasses.primaryContainer}>
-      <Header isMainPage={isDarkTheme} />
-
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
         titleText={affirmationData.titleText}

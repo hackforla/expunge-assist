@@ -24,7 +24,6 @@ const TermsOfUse = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Header isMainPage />
       <div className={classes.content}>
         <h2>Terms of Use</h2>
         <br />

@@ -33,8 +33,6 @@ const Landing = () => {
 
   return (
     <div className={utilityClasses.primaryContainer}>
-      <Header isMainPage />
-
       <div className={`${utilityClasses.contentContainer}`}>
         <div className={utilityClasses.flexGrow}>
           <h1 className="page-title">Start fresh with a record expungement</h1>
