@@ -11,16 +11,17 @@ const useStyles = makeStyles(() =>
     root: {
       background: '#f7ebff',
       color: 'black',
-      height: '120px',
-      paddingLeft: '12px',
+      padding: '12px 12px',
       borderBottomRightRadius: '64px',
       '& h2': {
-        margin: '33px 0 18px',
+        fontWeight: '300',
+        fontSize: '20px',
+        marginBottom: '12px',
       },
       '& .step-text': {
-        color: '3d0066',
-        opacity: '30%',
-        marginTop: '16px',
+        color: '#9a9a9a',
+        fontSize: '14px',
+        marginTop: '6px',
       },
     },
   })
