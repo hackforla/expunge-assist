@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import Button from 'components/Button';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Header from 'components/Header';
-
 import RoutingContext from 'contexts/RoutingContext';
 
 import useUtilityStyles from 'styles/utilityStyles';
