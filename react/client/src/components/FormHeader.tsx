@@ -1,100 +1,114 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
-import { STEP_ENUMS, isAnInvolvementPage } from 'contexts/RoutingProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles<Theme>((theme) =>
   createStyles({
     root: {
       background: '#f7ebff',
       color: 'black',
-      height: '120px',
-      marginTop: '20px',
-      paddingLeft: '12px',
+      padding: '12px 12px',
       borderBottomRightRadius: '64px',
-      '& h2': {
-        margin: '33px 0 18px',
+
+      [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+        marginLeft: '18px',
+        marginRight: '18px',
       },
-      '& p': {
-        color: '3d0066',
-        opacity: '30%',
-        marginTop: '16px',
+
+      '& h2': {
+        fontWeight: '300',
+        fontSize: '20px',
+        marginBottom: '12px',
+      },
+      '& .step-text': {
+        color: '#9a9a9a',
+        fontSize: '14px',
+        marginTop: '6px',
       },
     },
   })
 );
 
+function convertStepToNum(step: string): number {
+  switch (step) {
+    case STEP_ENUMS.INTRODUCTION:
+    case STEP_ENUMS.INTRODUCTION_PREVIEW:
+      return 1;
+    case STEP_ENUMS.INVOLVEMENT.INITIAL:
+    case STEP_ENUMS.INVOLVEMENT.JOB:
+    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
+    case STEP_ENUMS.INVOLVEMENT.RECOVERY:
+    case STEP_ENUMS.INVOLVEMENT.SCHOOL:
+    case STEP_ENUMS.INVOLVEMENT.PARENTING:
+    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
+      return 2;
+    case STEP_ENUMS.GOALS:
+      return 3;
+    case STEP_ENUMS.WHY:
+      return 4;
+    case STEP_ENUMS.FINALIZE:
+      return 5;
+    default:
+      return 0;
+  }
+}
+
+function convertStepToTitle(step: string): string {
+  switch (step) {
+    case STEP_ENUMS.INTRODUCTION:
+    case STEP_ENUMS.INTRODUCTION_PREVIEW:
+      return 'Introduce Yourself!';
+    case STEP_ENUMS.INVOLVEMENT.INITIAL:
+      return 'Involvement';
+    case STEP_ENUMS.INVOLVEMENT.JOB:
+      return 'Involvement: Job';
+    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
+      return 'Involvement: Community Service';
+    case STEP_ENUMS.INVOLVEMENT.RECOVERY:
+      return 'Involvement: Recovery';
+    case STEP_ENUMS.INVOLVEMENT.SCHOOL:
+      return 'Involvement: School';
+    case STEP_ENUMS.INVOLVEMENT.PARENTING:
+      return 'Involvement: Parenting';
+    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
+      return 'Involvement: Unemployment';
+    case STEP_ENUMS.GOALS:
+      return 'Goals';
+    case STEP_ENUMS.WHY:
+      return 'Why';
+    case STEP_ENUMS.FINALIZE:
+      return 'My Personal Statement';
+    default:
+      return '';
+  }
+}
+
 const FormHeader = () => {
   const classes = useStyles();
   const { currentStep } = React.useContext(RoutingContext);
 
-  let showFormHeader: boolean;
-  let percentageComplete: number;
-  let formStep = 0;
+  const maxNum = 5;
+  const stepNum = convertStepToNum(currentStep);
+  const percentageComplete = (stepNum / maxNum) * 100;
 
-  if (currentStep === STEP_ENUMS.INTRODUCTION) {
-    formStep = 1;
-    showFormHeader = true;
-    percentageComplete = 20;
-  } else if (currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL) {
-    formStep = 2;
-    showFormHeader = true;
-    percentageComplete = 40;
-  } else if (isAnInvolvementPage(currentStep)) {
-    formStep = 2;
-    showFormHeader = true;
-    percentageComplete = 40;
-  } else if (currentStep === STEP_ENUMS.GOALS) {
-    formStep = 5;
-    showFormHeader = true;
-    percentageComplete = 60;
-  } else if (currentStep === STEP_ENUMS.WHY) {
-    formStep = 6;
-    showFormHeader = true;
-    percentageComplete = 80;
-  } else if (currentStep === STEP_ENUMS.FINALIZE) {
-    formStep = 6;
-    showFormHeader = true;
-    percentageComplete = 100;
-  } else {
-    formStep = 0;
-    percentageComplete = 0;
-    showFormHeader = false;
-  }
-
-  if (!showFormHeader) {
+  if (stepNum === 0) {
     return null;
   }
 
+  const formTitle = convertStepToTitle(currentStep);
+
   return (
     <div className={classes.root}>
-      {currentStep === STEP_ENUMS.INTRODUCTION && <h2>Introduce Yourself!</h2>}
-      {currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL && <h2>Involvement</h2>}
-      {currentStep === STEP_ENUMS.INVOLVEMENT.JOB && <h2>Involvement: Job</h2>}
-      {currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
-        <h2>Involvement: Community Service</h2>
-      )}
-      {currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY && (
-        <h2>Involvement: Recovery</h2>
-      )}
-      {currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL && (
-        <h2>Involvement: School</h2>
-      )}
-      {currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING && (
-        <h2>Involvement: Parenting</h2>
-      )}
-      {currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED && (
-        <h2>Involvement: Unemployment</h2>
-      )}
-      {currentStep === STEP_ENUMS.GOALS && <h2>Goals</h2>}
-      {currentStep === STEP_ENUMS.WHY && <h2>Why</h2>}
-      {currentStep === STEP_ENUMS.FINALIZE && <h2>My Personal Statement</h2>}
+      <h2>{formTitle}</h2>
+
       <ProgressBar percentage={percentageComplete} />
-      {formStep < 6 && <p>Step {formStep} of 5</p>}
-      {formStep === 6 && <p>Completed</p>}
+
+      {stepNum < maxNum && <div className="step-text">Step {stepNum} of 5</div>}
+      {stepNum === maxNum && <div className="step-text">Completed</div>}
     </div>
   );
 };

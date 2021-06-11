@@ -21,7 +21,7 @@ const useStyles = makeStyles(() =>
 );
 const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({});
+  const utilityClasses = useUtilityStyles({ pageTheme: 'dark', isSoloContainer: true });
   const { t } = useTranslation();
 
   const { goNextStep } = useContext(FormStateContext);
@@ -34,6 +34,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
       >
         {t('disclaimer.header')}
       </div>
+
       <div className={classes.content} style={{ whiteSpace: 'pre-line' }}>
         {t('disclaimer.text')}
       </div>
@@ -44,6 +45,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
             onChangeAffirmation({ isActive: true });
             goNextStep();
           }}
+          theme='dark'
           buttonText="I understand"
           hasArrow
         />

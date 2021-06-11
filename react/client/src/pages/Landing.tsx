@@ -14,29 +14,39 @@ const useStyles = makeStyles(() =>
     marTop36: {
       marginTop: '36px',
     },
+    flowNavigationContainer: {
+      marginTop: 'auto',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+    },
   })
 );
 
 const Landing = () => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({ theme: 'dark' });
+  const utilityClasses = useUtilityStyles({ pageTheme: 'dark', isSoloContainer: true });
 
   const { goNextPage } = useContext(RoutingContext);
 
   return (
-    <div className={`${utilityClasses.contentContainer} content-page`}>
-      <h1 className="page-title">Start fresh with a record expungement</h1>
-      <div className={classes.marTop24}>
-        Generate a personal statement in just 20 minutes
-      </div>
+    <div className={utilityClasses.primaryContainer}>
+      <div className={`${utilityClasses.contentContainer}`}>
+        <div className={utilityClasses.flexGrow}>
+          <h1 className="page-title">Start fresh with a record expungement</h1>
+          <div className={classes.marTop24}>
+            Generate a personal statement in just 20 minutes
+          </div>
+        </div>
 
-      <div className={`${utilityClasses.buttonContainer} ${classes.marTop36}`}>
-        <Button
-          onClick={() => goNextPage()}
-          theme="dark"
-          hasArrow
-          buttonText="START NOW"
-        />
+        <div className={classes.flowNavigationContainer}>
+          <Button
+            onClick={() => goNextPage()}
+            theme="dark"
+            hasArrow
+            buttonText="START NOW"
+          />
+        </div>
       </div>
     </div>
   );
