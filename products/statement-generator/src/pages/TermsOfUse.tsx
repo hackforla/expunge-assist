@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Header from 'components/Header';
-
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -24,7 +22,6 @@ const TermsOfUse = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Header isMainPage />
       <div className={classes.content}>
         <h2>Terms of Use</h2>
         <br />
