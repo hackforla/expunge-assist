@@ -88,14 +88,9 @@ const App: React.FC = () => {
                   path="/form/:page?/preview"
                   component={PreviewPage}
                 />
-                <Route
-                  exact
-                  path="/form/:page?/:substep?/preview"
-                  component={PreviewPage}
-                />
 
                 <Route
-                  path="/form/:page?/:substep?"
+                  path="/form/:page?"
                   component={PageContainer}
                   history={history}
                 />
