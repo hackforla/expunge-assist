@@ -11,13 +11,68 @@ import * as statementHelpers from 'helpers/StatementHelpers';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-function generatePreviewFromStep(step: string, formState: IStepState): string {
-  switch (step) {
-    case STEP_ENUMS.INTRODUCTION_PREVIEW:
-      return statementHelpers.generateIntroduction(formState);
-    default:
-      return '';
+const PREVIEW_GENERATOR_MAP = {
+  [STEP_ENUMS.INTRODUCTION_PREVIEW]: {
+    title: 'Previewing Introduction',
+    generator: statementHelpers.generateIntroduction,
+  },
+  [STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW]: {
+    title: 'Previewing Involvment',
+    generator: statementHelpers.generateInvolvementJob,
+  },
+  [STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW]: {
+    title: 'Previewing Involvment',
+    generator: statementHelpers.generateInvolvementCommunity,
+  },
+  [STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW]: {
+    title: 'Previewing Involvment',
+    generator: statementHelpers.generateInvolvementRecovery,
+  },
+  [STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW]: {
+    title: 'Previewing Involvment',
+    generator: statementHelpers.generateInvolvementSchool,
+  },
+  [STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW]: {
+    title: 'Previewing Involvment',
+    generator: statementHelpers.generateInvolvementParenting,
+  },
+  [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW]: {
+    title: 'Previewing Involvment',
+    generator: statementHelpers.generateInvolvementUnemployed,
+  },
+  [STEP_ENUMS.GOALS_PREVIEW]: {
+    title: 'Previewing Goals',
+    generator: statementHelpers.generateFutureGoals,
+  },
+  [STEP_ENUMS.WHY_PREVIEW]: {
+    title: 'Previewing Why',
+    generator: statementHelpers.generateWhy,
+  },
+};
+
+interface GeneratorConfig {
+  title: string;
+  generator: (formState: IStepState) => string;
+  content: string;
+}
+
+function generatePreviewFromStep(
+  step: string,
+  formState: IStepState
+): GeneratorConfig {
+  const config = PREVIEW_GENERATOR_MAP[step];
+  if (config === undefined) {
+    return {
+      title: 'Unknown',
+      generator: () => '',
+      content: '?',
+    };
   }
+
+  return {
+    ...config,
+    content: config.generator(formState),
+  };
 }
 
 function PreviewPage() {
@@ -25,15 +80,15 @@ function PreviewPage() {
 
   const { formState } = useContext(FormStateContext);
   const { currentStep } = useContext(RoutingContext);
-  const previewText = generatePreviewFromStep(currentStep, formState);
+  const previewConfig = generatePreviewFromStep(currentStep, formState);
 
   return (
     <div className={utilityClasses.primaryContainer}>
       <div className={utilityClasses.contentContainer}>
         <TextPreview
-          content={previewText}
+          content={previewConfig.content}
           onAdjustClick={() => {}}
-          nameOfStep="Introduction"
+          nameOfStep={previewConfig.title}
         />
 
         <FlowNavigation />
