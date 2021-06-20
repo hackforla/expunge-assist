@@ -142,16 +142,16 @@ const Form = ({
         />
       )}
 
-      {currentStep === STEP_ENUMS.PREVIEWING && (
+      {currentStep === STEP_ENUMS.FINALIZE && (
+        <FinalizeStep formState={formState} />
+      )}
+
+      {currentStep === STEP_ENUMS.FINALIZE_PREVIEW && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackStep()} buttonText="EDIT" />
           <Button onClick={() => goNextStep()} buttonText="NEXT" />
         </div>
-      )}
-
-      {currentStep === STEP_ENUMS.FINALIZE && (
-        <FinalizeStep formState={formState} />
       )}
 
       {currentStep === STEP_ENUMS.DOWNLOAD && <Download />}
