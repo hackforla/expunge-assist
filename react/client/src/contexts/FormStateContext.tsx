@@ -41,35 +41,40 @@ export const FormStateContextProvider = ({
     }
 
     if (
-      suggestedNext === STEP_ENUMS.INVOLVEMENT.JOB &&
+      (suggestedNext === STEP_ENUMS.INVOLVEMENT.JOB ||
+        suggestedNext === STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW) &&
       !formState.involvementInitialState.isJobChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      suggestedNext === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE &&
+      (suggestedNext === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
+        suggestedNext === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW) &&
       !formState.involvementInitialState.isCommunityChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      suggestedNext === STEP_ENUMS.INVOLVEMENT.RECOVERY &&
+      (suggestedNext === STEP_ENUMS.INVOLVEMENT.RECOVERY ||
+        suggestedNext === STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW) &&
       !formState.involvementInitialState.isRecoveryChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      suggestedNext === STEP_ENUMS.INVOLVEMENT.SCHOOL &&
+      (suggestedNext === STEP_ENUMS.INVOLVEMENT.SCHOOL ||
+        suggestedNext === STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW) &&
       !formState.involvementInitialState.isSchoolChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      suggestedNext === STEP_ENUMS.INVOLVEMENT.PARENTING &&
+      (suggestedNext === STEP_ENUMS.INVOLVEMENT.PARENTING ||
+        suggestedNext === STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW) &&
       !formState.involvementInitialState.isParentingChecked
     ) {
       return getNextStep(suggestedNext);
