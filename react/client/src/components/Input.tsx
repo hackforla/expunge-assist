@@ -64,7 +64,6 @@ const InputArea: React.FC<InputFieldProps> = ({
       disabled={disabled}
       endAdornment={
         <InputAdornment position="end">
-          {/* years old */}
           {adornment}
           {valid ? <CheckCircleIcon className={classes.icon} /> : null}
         </InputAdornment>
