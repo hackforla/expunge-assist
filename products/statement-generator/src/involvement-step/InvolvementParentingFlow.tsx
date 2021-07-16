@@ -59,6 +59,7 @@ const InvolvementParentingFlow = ({
           }
           disabled={!childNameValid}
           defaultValue={stepState.parentYears}
+          adornment="years"
         />
       </div>
 

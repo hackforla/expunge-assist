@@ -88,6 +88,7 @@ const IntroductionStep = ({
           disabled={!fullNameValid}
           handleChange={handleChange}
           defaultValue={stepState.age}
+          adornment="years old"
         />
 
         <p className="greyedOut">
