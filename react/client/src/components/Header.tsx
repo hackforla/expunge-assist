@@ -72,8 +72,8 @@ const Header = () => {
         }}
         className="logo-title"
       >
-        <p>The Record</p>
-        <p>Clearance Project</p>
+        <p>Expunge</p>
+        <p>Assist</p>
       </Link>
     </div>
   );
