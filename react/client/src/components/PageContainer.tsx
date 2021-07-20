@@ -5,7 +5,7 @@ import Form from 'components/Form';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
-// import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 import useUtilityStyles from 'styles/utilityStyles';
 
 interface PageProps {
@@ -37,7 +37,7 @@ const PageContainer = ({ match }: PageProps) => {
   // todo: move text into a json for localization
   useEffect(() => {
     switch (currentStep) {
-      case 2:
+      case STEP_ENUMS.INTRODUCTION:
         updateAffirmationData({
           isActive: true,
           titleText: 'Welcome!',
@@ -45,7 +45,7 @@ const PageContainer = ({ match }: PageProps) => {
           description: 'This is a tool to generate a personal statement.',
         });
         break;
-      case 3:
+      case STEP_ENUMS.INVOLVEMENT.INITIAL:
         updateAffirmationData({
           isActive: true,
           titleText: 'Congrats!',
@@ -54,7 +54,7 @@ const PageContainer = ({ match }: PageProps) => {
             'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
         });
         break;
-      case 5:
+      case STEP_ENUMS.GOALS:
         updateAffirmationData({
           isActive: true,
           titleText: 'Hooray!',
@@ -63,7 +63,7 @@ const PageContainer = ({ match }: PageProps) => {
             'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
         });
         break;
-      case 6:
+      case STEP_ENUMS.WHY:
         updateAffirmationData({
           isActive: true,
           titleText: 'Great Job!',
