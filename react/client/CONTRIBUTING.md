@@ -36,14 +36,14 @@ We have tasks with things that need to get done located here https://github.com/
 
 
 ### Development
-Expunge-Assist was developed in [TypeScript](https://www.typescriptlang.org/). It's not too much different than JavaScript other than it has type checking.
+Expunge-Assist was developed in [TypeScript](https://www.typescriptlang.org/). It's not too much different than JavaScript other than it has type checking. We also have a [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) pacakage for code formatting preferences. If there are anything we don't notice in PRs we'll probably run auto-format on the codebase.
 
 #### Files
-* App.tsx: This is the entry point for the app which renders different pages based on the route.
-  * PageContainer.tsx -> Form.tsx: This is where different pages and steps of the Form gets rendered.
+* `App.tsx`: This is the entry point for the app which renders different pages based on the route.
+  * `PageContainer.tsx` -> `Form.tsx`: This is where different pages and steps of the Form gets rendered.
 
-* RoutingContext.tsx: We use React Context to handle giving each page component the state and functions relating to navigating.
-* FormStateContext.tsx: This handles tracking the current state of the filled out form.
+* `RoutingContext.tsx`: We use React Context to handle giving each page component the state and functions relating to navigating.
+* `FormStateContext.tsx`: This handles tracking the current state of the filled out form.
 
 
 ### Create a Pull Request
