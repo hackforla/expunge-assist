@@ -17,27 +17,27 @@ const PREVIEW_GENERATOR_MAP = {
     generator: statementHelpers.generateIntroduction,
   },
   [STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW]: {
-    title: 'Previewing Involvement',
+    title: 'Previewing Involvement: Job',
     generator: statementHelpers.generateInvolvementJob,
   },
   [STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW]: {
-    title: 'Previewing Involvement',
+    title: 'Previewing Involvement: Community Service',
     generator: statementHelpers.generateInvolvementCommunity,
   },
   [STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW]: {
-    title: 'Previewing Involvement',
+    title: 'Previewing Involvement: Recovery',
     generator: statementHelpers.generateInvolvementRecovery,
   },
   [STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW]: {
-    title: 'Previewing Involvement',
+    title: 'Previewing Involvement: School',
     generator: statementHelpers.generateInvolvementSchool,
   },
   [STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW]: {
-    title: 'Previewing Involvement',
+    title: 'Previewing Involvement: Parenting',
     generator: statementHelpers.generateInvolvementParenting,
   },
   [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW]: {
-    title: 'Previewing Involvement',
+    title: 'Previewing Involvement: Unemployment',
     generator: statementHelpers.generateInvolvementUnemployed,
   },
   [STEP_ENUMS.GOALS_PREVIEW]: {
