@@ -2,7 +2,7 @@
 Thanks for being interested in helping out with Expunge Assist!
 
 
-# Preqrequisites
+# Prerequisites
 Hopefully by now you have had onboarding and had your github account set up with an ssh key and connected to the HackForLA organization.
 
 Here are some things you'll want to be familiar with:
