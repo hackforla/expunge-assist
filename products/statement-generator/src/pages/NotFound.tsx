@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link, makeStyles, createStyles } from '@material-ui/core';
+
 import useUtilityStyles from 'styles/utilityStyles';
-import { makeStyles, createStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -22,7 +23,10 @@ export default function NotFound() {
         <div className={utilityClasses.flexGrow}>
           <h1 className="page-title">Oops!</h1>
           <div className={classes.marTop24}>
-            This page does not exist. Why not head back to the home page?
+            This page does not exist. Please head back to the&nbsp;
+            <Link color="textPrimary" href="/">
+              home page.
+            </Link>
           </div>
         </div>
       </div>
