@@ -17,6 +17,7 @@ import Header from 'components/Header';
 import FormHeader from 'components/FormHeader';
 
 import Landing from 'pages/Landing';
+import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
 import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
@@ -99,6 +100,7 @@ const App: React.FC = () => {
                 <Route path="/TermsOfUse" component={TermsOfUse} />
                 <Route path="/FAQ" component={FAQ} />
                 <Route path="/AboutUs" component={AboutUs} />
+                <Route component={NotFound} />
               </Switch>
             </FormStateContextProvider>
           </AffirmationContextProvider>
