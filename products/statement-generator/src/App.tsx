@@ -100,7 +100,9 @@ const App: React.FC = () => {
                 <Route path="/TermsOfUse" component={TermsOfUse} />
                 <Route path="/FAQ" component={FAQ} />
                 <Route path="/AboutUs" component={AboutUs} />
+
                 <Route component={NotFound} />
+                <Route path="/404" component={NotFound} />
               </Switch>
             </FormStateContextProvider>
           </AffirmationContextProvider>
