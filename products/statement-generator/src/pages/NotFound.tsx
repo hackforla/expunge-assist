@@ -23,9 +23,10 @@ export default function NotFound() {
         <div className={utilityClasses.flexGrow}>
           <h1 className="page-title">Oops!</h1>
           <div className={classes.marTop24}>
-            This page does not exist. Please head back to the&nbsp;
+            Sorry, the page you are looking for does not exist. Try starting
+            from our&nbsp;
             <Link color="textPrimary" href="/">
-              home page.
+              homepage.
             </Link>
           </div>
         </div>
