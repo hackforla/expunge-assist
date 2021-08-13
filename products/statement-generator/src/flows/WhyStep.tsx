@@ -99,7 +99,7 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
       </div>
 
       <FlowNavigation
-        onNext={() => setShowPreview(true)}
+        // onNext={() => setShowPreview(true)}
         isNextDisabled={isNextDisabled}
       />
     </div>
