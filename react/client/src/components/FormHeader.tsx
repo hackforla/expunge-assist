@@ -40,15 +40,23 @@ function convertStepToNum(step: string): number {
       return 1;
     case STEP_ENUMS.INVOLVEMENT.INITIAL:
     case STEP_ENUMS.INVOLVEMENT.JOB:
+    case STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW:
     case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
+    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW:
     case STEP_ENUMS.INVOLVEMENT.RECOVERY:
+    case STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW:
     case STEP_ENUMS.INVOLVEMENT.SCHOOL:
+    case STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW:
     case STEP_ENUMS.INVOLVEMENT.PARENTING:
+    case STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW:
     case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
+    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
       return 2;
     case STEP_ENUMS.GOALS:
+    case STEP_ENUMS.GOALS_PREVIEW:
       return 3;
     case STEP_ENUMS.WHY:
+    case STEP_ENUMS.WHY_PREVIEW:
       return 4;
     case STEP_ENUMS.FINALIZE:
       return 5;
@@ -66,19 +74,35 @@ function convertStepToTitle(step: string): string {
       return 'Involvement';
     case STEP_ENUMS.INVOLVEMENT.JOB:
       return 'Involvement: Job';
+    case STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW:
+      return 'Involvement: Job';
     case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
+      return 'Involvement: Community Service';
+    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW:
       return 'Involvement: Community Service';
     case STEP_ENUMS.INVOLVEMENT.RECOVERY:
       return 'Involvement: Recovery';
+    case STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW:
+      return 'Involvement: Recovery';
     case STEP_ENUMS.INVOLVEMENT.SCHOOL:
+      return 'Involvement: School';
+    case STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW:
       return 'Involvement: School';
     case STEP_ENUMS.INVOLVEMENT.PARENTING:
       return 'Involvement: Parenting';
+    case STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW:
+      return 'Involvement: Parenting';
     case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
+      return 'Involvement: Unemployment';
+    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
       return 'Involvement: Unemployment';
     case STEP_ENUMS.GOALS:
       return 'Goals';
+    case STEP_ENUMS.GOALS_PREVIEW:
+      return 'Goals';
     case STEP_ENUMS.WHY:
+      return 'Why';
+    case STEP_ENUMS.WHY_PREVIEW:
       return 'Why';
     case STEP_ENUMS.FINALIZE:
       return 'My Personal Statement';
