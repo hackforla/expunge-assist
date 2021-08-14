@@ -23,13 +23,13 @@ jobs:
 
       - name: Build client files
         run: |
-          cd react/client
+          cd products/statement-generator
           npm install
           npm run build
 
       - name: Publish generated content to GitHub Pages
         uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
         with:
-          dir: react/client/build
+          dir: products/statement-generator/build
           branch: gh-pages
           token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
