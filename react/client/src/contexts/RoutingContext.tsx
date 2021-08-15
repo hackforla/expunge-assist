@@ -63,8 +63,14 @@ const PreRoutingContextProvider = ({
     // for testing: treat current page as the landing page
     if (stepFromPathName && formSteps.length <= 1) {
       const currentStepFromPath = URL[stepFromPathName];
-      setCurrentStepIdx(0);
-      setFormSteps([currentStepFromPath]);
+      if (currentStepFromPath === undefined) {
+        setCurrentStepIdx(0);
+        setFormSteps([STEP_ENUMS.NONE]);
+        history.push('/404');
+      } else {
+        setCurrentStepIdx(0);
+        setFormSteps([currentStepFromPath]);
+      }
     }
   }, [pathname]);
 
