@@ -1,0 +1,16 @@
+{
+  "name": "expunge-assist",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:landing": "npm i --prefix ./landing-page; npm run build  --prefix ./landing-page",
+    "build:statement": "npm i --prefix ./statement-generator; npm run build --prefix ./statement-generator",
+    "build": "build.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
