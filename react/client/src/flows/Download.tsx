@@ -29,9 +29,14 @@
 
 // export default Download;
 
-// mailto version
+//
+// pdf version above
+//
+// mailto version below
+//
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import useUtilityStyles from 'styles/utilityStyles';
 
 import { IStepState } from 'contexts/FormStateProps';
 
@@ -52,6 +57,41 @@ interface IFinalizeStepProps {
 }
 
 const Download = ({ formState }: IFinalizeStepProps) => {
+  const [email, setEmail] = useState('send to');
+  const handleChange = (event: any) => setEmail(event.target.value);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+
+    // const scriptText = document.createTextNode(
+    //   `const doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=+${encodeURIComponent(
+    //     str
+    //   )}"></body></html>'); doc.close();`
+    // );
+
+    // const scriptText = document.createTextNode(
+    //   `const doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="https://greenwold.com">yo</a></div></body></html>'); doc.close();`
+    // );
+
+    const scriptText = document.createTextNode(
+      `doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=+${encodeURIComponent(
+        str
+      )}" target="_blank" rel="noopener noreferrer">Send your personal statement by email ... iframe with target blank in a tag params</a></div></body></html>'); doc.close();`
+    );
+
+    script.appendChild(scriptText);
+
+    // script.src = 'https://use.typekit.net/foobar.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [email]);
+
+  const utilityClasses = useUtilityStyles();
   const str = `${generateIntroduction(formState)}
   ${generateInvolvementJob(formState)}
   ${generateInvolvementCommunity(formState)}
@@ -61,15 +101,65 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   ${generateInvolvementUnemployed(formState)} ${generateFutureGoals(formState)}
   ${generateWhy(formState)}`;
 
+  const test = 'yoyoyo';
+
   return (
-    <div className="Download">
-      <a
-        href={`mailto:fake@email.org?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=+${encodeURIComponent(
-          str
-        )}`}
-      >
-        Send your personal statement by email
-      </a>
+    <div className={utilityClasses.contentContainer}>
+      <div>
+        who would you like to mail it to?
+        <input type="email" value={email} onChange={handleChange} />
+      </div>
+      <div>the links below use the email entered above</div>
+      <div className="Download">
+        {/* the `a` tag below was reviewed by daniel and it's basically ok. just needs to open in a new tab */}
+        <div>
+          <a
+            href={`mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=+${encodeURIComponent(
+              str
+            )}`}
+          >
+            Send your personal statement by email ... orig
+          </a>
+        </div>
+        {/* TODO: make the page look right. add an input field to get 'to' email address. make the `a` tag open in a new tab */}
+        {/* PROBLEM: target="_blank" doesn't seem to work with mailto links. but mailto links are 'smart' in the sense that they will open in the system preference, ie app or web email.  */}
+        <div>
+          <a
+            href="mailto:someone@yoursite.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            // rel="noreferrer"
+          >
+            Send your personal statement by email ... simple email with target
+            blank
+          </a>
+        </div>
+        <div>
+          {' '}
+          <a
+            href={`mailto:${email}?cc=fake@email.com&target=_blank&subject=Expunge%20Assist%20personal%20statement&body=${encodeURIComponent(
+              str
+            )}`}
+          >
+            Send your personal statement by email ... big email with target
+            blank in url params
+          </a>
+        </div>
+        <div>
+          {' '}
+          <a
+            href={`mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=${encodeURIComponent(
+              str
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Send your personal statement by email ... big email with target
+            blank in a tag params
+          </a>
+        </div>
+        <iframe title="yoyoyo" id="FileFrame" src="about:blank" />
+      </div>
     </div>
   );
 };
