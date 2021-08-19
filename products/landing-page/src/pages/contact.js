@@ -32,7 +32,7 @@ const Headings = styled.h2`
 const ContentContainer = styled.div`
   width: 100%;
   display: flex;
-  height: 60%;
+  height: 100%;
 `
 
 const ImageContainer = styled.div`

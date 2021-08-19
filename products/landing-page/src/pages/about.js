@@ -1,19 +1,12 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
-import Profile from "../components/Profile"
 
 import mission from "../assets/images/mission.png"
 import history from "../assets/images/history.png"
 import checkmark from "../assets/images/checkmark.png"
-import Gretchen from "../assets/images/Gretchen.png"
-import Apurva from "../assets/images/Apurva.png"
-import Tierney from "../assets/images/Tierney.png"
-import Andan from "../assets/images/Andan.png"
-import Ryan from "../assets/images/Ryan1.png"
-import NanaYaa from "../assets/images/NanaYaa.png"
-import Brad from "../assets/images/Brad.png"
 import "@fontsource/mulish"
 
 const PageContainer = styled.div`
@@ -27,7 +20,7 @@ const PageContainer = styled.div`
 const MissionContainer = styled.div`
   width: 100%;
   background-color: #fffaf2;
-  height: 350px;
+  min-height: 350px;
   display: flex;
 `
 
@@ -186,39 +179,10 @@ const JoinStatement = styled.p`
 
 const TeamContainer = styled.div`
   width: 100%;
-  min-height: 500px;
+  min-height: 200px;
   background-color: #fffaf2;
-`
-
-const TeamHeadingContainer = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 25px;
-`
-
-const TeamRowContainer = styled.div`
-  width: 100%;
-  padding-top: 30px;
-  display: flex;
-  justify-content: space-evenly;
-`
-
-const BradPhoto = styled.img`
-  border-radius: 50%;
-  height: 155px;
-  width: 160px;
-  margin-left: 40px;
-`
-
-const ProfileContainer = styled.div`
-  width: 400px;
-  padding-top: 20px;
-`
-
-const TeamMemberText = styled.p`
-  font-size: 1.5em;
-  font-family: "mulish";
 `
 
 export default function About() {
@@ -330,36 +294,9 @@ export default function About() {
         </JoinHeadingContainer>
       </JoinContainer>
       <TeamContainer>
-        <TeamHeadingContainer>
-          <Heading>Meet the UX Design & Development Team</Heading>
-        </TeamHeadingContainer>
-        <TeamRowContainer>
-          <Profile
-            name="Gretchen Howard"
-            title="Product Manager"
-            image={Gretchen}
-          />
-          <Profile name="Apurva" title=" UX Research Lead" image={Apurva} />
-          <Profile
-            name="Tierney Sadowski"
-            title="Product Manager"
-            image={Tierney}
-          />
-        </TeamRowContainer>
-        <TeamRowContainer>
-          <Profile name="Andan Eddy" title="Product Manager" image={Andan} />
-          <Profile name="Ryan Curtis" title="UX / UI Designer" image={Ryan} />
-          <Profile
-            name=" Nana Yaa Ansah"
-            title="UX / UI Designer"
-            image={NanaYaa}
-          />
-          <ProfileContainer>
-            <BradPhoto src={Brad} alt="Brad" />
-            <TeamMemberText>Brad Morgan</TeamMemberText>
-            <TeamMemberText>Web Developer</TeamMemberText>
-          </ProfileContainer>
-        </TeamRowContainer>
+         <Link to="https://www.hackforla.org/projects/expunge-assist">
+           <Heading>Meet the UX Design & Development Team</Heading>
+         </Link> 
       </TeamContainer>
       <Footer />
     </PageContainer>

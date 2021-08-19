@@ -5,12 +5,11 @@ import { Link } from "gatsby"
 
 const FooterContainer = styled.div`
   width: 100%;
-  /* position: absolute; */
   bottom: 0;
   display: flex;
   background-color: #efd8ff;
   height: 70px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding: 0;
 `
 
