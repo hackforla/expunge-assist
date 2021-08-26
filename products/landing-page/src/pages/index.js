@@ -4,6 +4,7 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
 import laptop from "../assets/images/laptop.png"
+import rocket from "../assets/images/RocketShip.svg"
 import step1 from "../assets/images/step1.png"
 import step2 from "../assets/images/step2.png"
 import step3 from "../assets/images/step3.png"
@@ -89,6 +90,7 @@ const PartnersFormSection = styled.div`
   width: 100%;
   height: 500px;
   display: flex;
+  position: relative;
 `
 
 const PartnerFormContainer = styled.div`
@@ -182,11 +184,11 @@ const HorizontalPurpleBand = styled.div`
 `
 
 const VerticalYellowBand = styled.div`
-  width: 34px;
+  width: 84px;
   background-color: rgba(248, 203, 85, 0.66);
   height: 500px;
-  position: absolute;
-  left: 1000px;
+  position: relative;
+  right: 30%;
 `
 
 const WhyPartnerFieldContainer = styled.div`
@@ -271,6 +273,15 @@ const LightPurpleBand = styled.div`
   position: relative;
   bottom: -160px;
   z-index: 2;
+`
+
+const RocketImage = styled.img`
+  width: 40%;
+  height: 500px;
+  z-index: 2;
+  position: relative;
+  left: 50%;
+  bottom: 75%;
 `
 
 const HowItWorksSection = styled.div`
@@ -422,6 +433,7 @@ export default function Home() {
             </MissionDescription>
           </MissionCard>
           <LightPurpleBand />
+          <RocketImage src={rocket} alt="" />
         </PartnerMissionContainer>
       </PartnersContainer>
 

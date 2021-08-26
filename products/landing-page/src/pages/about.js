@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
-import mission from "../assets/images/mission.png"
+import mission from "../assets/images/mission.svg"
 import history from "../assets/images/history.png"
 import checkmark from "../assets/images/checkmark.png"
 import "@fontsource/mulish"
@@ -294,9 +294,9 @@ export default function About() {
         </JoinHeadingContainer>
       </JoinContainer>
       <TeamContainer>
-         <Link to="https://www.hackforla.org/projects/expunge-assist">
-           <Heading>Meet the UX Design & Development Team</Heading>
-         </Link> 
+        <Link to="https://www.hackforla.org/projects/expunge-assist">
+          <Heading>Meet the UX Design & Development Team</Heading>
+        </Link>
       </TeamContainer>
       <Footer />
     </PageContainer>
