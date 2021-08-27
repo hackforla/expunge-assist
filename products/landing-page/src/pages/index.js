@@ -8,6 +8,7 @@ import rocket from "../assets/images/RocketShip.svg"
 import step1 from "../assets/images/step1.png"
 import step2 from "../assets/images/step2.png"
 import step3 from "../assets/images/step3.png"
+import volunteers from "../assets/images/volunteers.svg"
 
 const AppContainer = styled.div`
   width: 100%;
@@ -154,7 +155,7 @@ const Input = styled.input`
   border: 2px solid #000;
   background: #fff;
   height: 42px;
-  width: 447px;
+  width: ${props => props.width || "300px"};
   border-radius: 8px;
 `
 
@@ -270,9 +271,16 @@ const LightPurpleBand = styled.div`
   width: 100%;
   background-color: #f9f1ff;
   height: 300px;
+  z-index: -2;
   position: relative;
-  bottom: -160px;
-  z-index: 2;
+  bottom: 80%;
+`
+
+const PartnerLightPurpleBand = styled(LightPurpleBand)`
+  && {
+    position: relative;
+    bottom: -160px;
+  }
 `
 
 const RocketImage = styled.img`
@@ -331,8 +339,54 @@ const StepDirections = styled.p`
   margin-top: 3px;
 `
 
+const VolunteerContainer = styled.div`
+  width: 100%;
+  height: 480px;
+  position: relative;
+`
+
+const VolunteerImage = styled.img`
+  width: 40%;
+  height: 100%;
+`
+
+const VolunteerCard = styled.div`
+  width: 600px;
+  height: 355px;
+  border: 8px solid rgba(245, 179, 4, 0.66);
+  border-radius: 8px;
+  margin-left: 55%;
+  background-color: #fffaf2;
+  z-index: 4;
+  position: absolute;
+  bottom: 12%;
+`
+
+const VolunteerHeadingContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1.5em;
+  /* margin-top: 10px; */
+`
+
+const VolunteerCardHeader = styled.h2`
+  font-family: "mulish";
+  color: #9903ff;
+  margin-left: 50px;
+  font-weight: bold;
+`
+
+const VolunteerCardText = styled.p`
+  font-family: "mulish";
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  line-height: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+`
+
 const handleDemoClick = () => {
-  console.log("moving stuff", window)
   return (window.location.href = "https://expungeassist.org")
 }
 
@@ -385,6 +439,7 @@ export default function Home() {
               <Form action="#" method="POST">
                 <Label htmlFor="signup"></Label>
                 <Input
+                  width="447px"
                   placeholder="yourname@domain.com"
                   name="signup"
                   type="email"
@@ -432,7 +487,7 @@ export default function Home() {
               <b>second chance.</b>
             </MissionDescription>
           </MissionCard>
-          <LightPurpleBand />
+          <PartnerLightPurpleBand />
           <RocketImage src={rocket} alt="" />
         </PartnerMissionContainer>
       </PartnersContainer>
@@ -464,6 +519,29 @@ export default function Home() {
           </ThumbnailContainer>
         </StepsThumbnailsContainer>
       </HowItWorksSection>
+      <VolunteerContainer>
+        <VolunteerImage src={volunteers} alt="" />
+        <LightPurpleBand />
+        <VolunteerCard>
+          <VolunteerHeadingContainer>
+            <VolunteerCardHeader>Volunteer</VolunteerCardHeader>
+          </VolunteerHeadingContainer>
+          <VolunteerCardText>
+            We’re looking for members to join our dev team and support our
+            mission towards improve the record clearance process.  Sign up below
+            for more info.
+          </VolunteerCardText>
+          <Form action="#" method="POST">
+            <Label htmlFor="volunteer"></Label>
+            <Input
+              placeholder="yourname@domain.com"
+              name="volunteer"
+              type="email"
+            ></Input>
+            <SubmitButton>Submit</SubmitButton>
+          </Form>
+        </VolunteerCard>
+      </VolunteerContainer>
       <Footer />
     </AppContainer>
   )
