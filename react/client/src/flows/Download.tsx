@@ -1,43 +1,7 @@
-// original PDF version
-
-// import React from 'react';
-// import jsPDF from 'jspdf';
-
-// const Download = () => {
-//   const savePDF = () => {
-//     const doc = new jsPDF('p', 'mm', 'letter');
-//     doc.setFontSize(12);
-//     const loremLines = doc.splitTextToSize(lorem, 170);
-//     doc.text(20, 50, loremLines);
-//     doc.save('MyPersonalStatement.pdf');
-
-//     // Open PDF in a new tab (untested on mobile)
-//     // pdf.output('dataurlnewwindow');
-//   };
-
-//   const lorem = `October 26th, 2020\n\nTo Whom It May Concern,\n\nThank you so much for taking the time to read my personal statement. My name is Jenna Smith, and I am 27 years old.\n\nSince my conviction, I have been working at United Federal Credit Union as a Security Guard. At this job, I have had the opportunity to assist in day to day operations and ensure the safety of valued customers. This is important to me because I like making people feel safe.\n\nI have also been really involved in community service. In particular, I've been working with Pauly's Project. I lead the outreach team and distribute food to unhoused neighbors throughout the LA area. It's important to me because I wantt hese members of our community to feel valued and loved.\n\nI am working towards going back to school, so that I can be a social worker. To work towards my goals; I have been taking night classes at Rosedale Community Center, and I have been shadowing a social worker on Fridays. Having my record cleared would help me acheive these goals for my future.\n\nI want to clear my record because I am a different person from who I was when I was convicted. I want to make the world a better place. Right now having a criminal record is preventing me from being accepting to college, and it has hindered my career. Getting my record cleared will have a major impact on my life.\n\nSincerely,\n\nJenna Smith
-//     `;
-
-//   return (
-//     <div className="Download">
-//       <p>Previewing Final Statement</p>
-//       <button onClick={savePDF}>Save PDF</button>
-//       <button onClick={() => {}}>BACK</button>
-//     </div>
-//   );
-// };
-
-// export default Download;
-
-//
-// pdf version above
-//
-// mailto version below
-//
-
 import React, { useState, useEffect } from 'react';
-import useUtilityStyles from 'styles/utilityStyles';
+import jsPDF from 'jspdf';
 
+import useUtilityStyles from 'styles/utilityStyles';
 import { IStepState } from 'contexts/FormStateProps';
 
 import {
@@ -57,41 +21,20 @@ interface IFinalizeStepProps {
 }
 
 const Download = ({ formState }: IFinalizeStepProps) => {
-  const [email, setEmail] = useState('send to');
+  const utilityClasses = useUtilityStyles();
+
+  // disable all buttons unless consent is checked
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleClickCheck = (event: any) => {
+    setIsDisabled(!event.target.checked);
+  };
+
+  // create a mailto link with the statement in the body
+
+  const [email, setEmail] = useState();
   const handleChange = (event: any) => setEmail(event.target.value);
 
-  useEffect(() => {
-    const script = document.createElement('script');
-
-    // const scriptText = document.createTextNode(
-    //   `const doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=+${encodeURIComponent(
-    //     str
-    //   )}"></body></html>'); doc.close();`
-    // );
-
-    // const scriptText = document.createTextNode(
-    //   `const doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="https://greenwold.com">yo</a></div></body></html>'); doc.close();`
-    // );
-
-    const scriptText = document.createTextNode(
-      `doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=+${encodeURIComponent(
-        str
-      )}" target="_blank" rel="noopener noreferrer">Send your personal statement by email ... iframe with target blank in a tag params</a></div></body></html>'); doc.close();`
-    );
-
-    script.appendChild(scriptText);
-
-    // script.src = 'https://use.typekit.net/foobar.js';
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [email]);
-
-  const utilityClasses = useUtilityStyles();
   const str = `${generateIntroduction(formState)}
   ${generateInvolvementJob(formState)}
   ${generateInvolvementCommunity(formState)}
@@ -101,64 +44,118 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   ${generateInvolvementUnemployed(formState)} ${generateFutureGoals(formState)}
   ${generateWhy(formState)}`;
 
-  const test = 'yoyoyo';
+  const mailtoLink = `mailto:${email}?&subject=my%20personal%20statement&body=+${encodeURIComponent(
+    str
+  )}`;
+
+  // mailto has to open in a new window, otherwise the user's work will be lost
+  // typically, just need to add `target="_blank" rel="noopener noreferrer"`
+
+  // FIREFOX ISSUE
+  // `target = "_blank"` is broken on FF
+  // you can trick FF by putting the mailto in an iframe
+  // you can pass all the data into the iframe by appending a script
+  // this useEffect creates a script in a text string and appends it to the body
+  // the text string gets the iframe and writes in the mailto
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  //   const scriptText = document.createTextNode(
+  //     `doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="${mailtoLink}" target="_blank" rel="noopener noreferrer">send your personal statement by email</a></div></body></html>'); doc.close();`
+  //   );
+  //   script.appendChild(scriptText);
+  //   script.async = true;
+  //   document.body.appendChild(script);
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, [email]);
+
+  // copy to clipboard
+  const handleClickClipboard = () => navigator.clipboard.writeText(str);
+
+  // download txt
+  const handleClickTXT = () => {
+    const blob = new Blob([str], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    document.body.appendChild(div);
+    div.appendChild(a);
+
+    a.innerHTML = '&nbsp;';
+    div.style.width = '0';
+    div.style.height = '0';
+    a.href = url;
+    a.download = 'text-file.txt';
+
+    const ev = new MouseEvent('click', {});
+    a.dispatchEvent(ev);
+
+    document.body.removeChild(div);
+    window.URL.revokeObjectURL(url);
+  };
+
+  // download pdf
+  const handleClickPDF = () => {
+    const doc = new jsPDF('p', 'mm', 'letter');
+    doc.setFontSize(12);
+    const loremLines = doc.splitTextToSize(str, 170);
+    doc.text(20, 50, loremLines);
+    doc.save('MyPersonalStatement.pdf');
+  };
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div>
-        who would you like to mail it to?
-        <input type="email" value={email} onChange={handleChange} />
+      <div className="consent">
+        <label htmlFor="consent">
+          <input
+            type="checkbox"
+            id="consent"
+            name="consent"
+            onClick={handleClickCheck}
+          />
+          By checking this box you take full responsibility for this personal
+          statement, and release all association with Hack for LA.
+        </label>
       </div>
-      <div>the links below use the email entered above</div>
-      <div className="Download">
-        {/* the `a` tag below was reviewed by daniel and it's basically ok. just needs to open in a new tab */}
+      <div className="email">
+        <h2>send your statement by email</h2>
         <div>
-          <a
-            href={`mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=+${encodeURIComponent(
-              str
-            )}`}
-          >
-            Send your personal statement by email ... orig
-          </a>
-        </div>
-        {/* TODO: make the page look right. add an input field to get 'to' email address. make the `a` tag open in a new tab */}
-        {/* PROBLEM: target="_blank" doesn't seem to work with mailto links. but mailto links are 'smart' in the sense that they will open in the system preference, ie app or web email.  */}
-        <div>
-          <a
-            href="mailto:someone@yoursite.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            // rel="noreferrer"
-          >
-            Send your personal statement by email ... simple email with target
-            blank
-          </a>
+          who would you like to mail it to?
+          <input
+            type="email"
+            value={email}
+            onChange={handleChange}
+            placeholder="email address"
+            disabled={isDisabled}
+          />
         </div>
         <div>
-          {' '}
-          <a
-            href={`mailto:${email}?cc=fake@email.com&target=_blank&subject=Expunge%20Assist%20personal%20statement&body=${encodeURIComponent(
-              str
-            )}`}
-          >
-            Send your personal statement by email ... big email with target
-            blank in url params
+          <a href={mailtoLink} target="_blank" rel="noopener noreferrer">
+            <button disabled={isDisabled}>send</button>
           </a>
         </div>
-        <div>
-          {' '}
-          <a
-            href={`mailto:${email}?cc=fake@email.com&subject=Expunge%20Assist%20personal%20statement&body=${encodeURIComponent(
-              str
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Send your personal statement by email ... big email with target
-            blank in a tag params
-          </a>
-        </div>
-        <iframe title="yoyoyo" id="FileFrame" src="about:blank" />
+        {/* this iframe is only needed as a workaround for firefox. see discussion above */}
+        {/* <iframe title="FF workaround" id="FileFrame" src="about:blank" /> */}
+      </div>
+      <div className="clipboard">
+        <h2>copy your statement to the clipboard</h2>
+        <button onClick={handleClickClipboard} disabled={isDisabled}>
+          copy
+        </button>
+      </div>
+      <div className="txt">
+        <h2>download a txt</h2>
+        <button onClick={handleClickTXT} disabled={isDisabled}>
+          download
+        </button>
+      </div>
+      <div className="pdf">
+        <h2>download a pdf</h2>
+        <button onClick={handleClickPDF} disabled={isDisabled}>
+          download
+        </button>
       </div>
     </div>
   );
