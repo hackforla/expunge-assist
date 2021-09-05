@@ -17,7 +17,6 @@ import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
-import ComingSoon from 'pages/ComingSoon';
 
 import 'styles/App.css';
 
