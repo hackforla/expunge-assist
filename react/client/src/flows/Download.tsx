@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
-
-import useUtilityStyles from 'styles/utilityStyles';
-import { IStepState } from 'contexts/FormStateProps';
 
 import {
   generateIntroduction,
@@ -16,12 +14,25 @@ import {
   generateWhy,
 } from 'helpers/StatementHelpers';
 
+import useUtilityStyles from 'styles/utilityStyles';
+import { IStepState } from 'contexts/FormStateProps';
+import Checkbox from 'components/Checkbox';
+import Button from 'components/Button';
+import Textarea from 'components/Textarea';
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    buttonLeft: {},
+  })
+);
+
 interface IFinalizeStepProps {
   formState: IStepState;
 }
 
 const Download = ({ formState }: IFinalizeStepProps) => {
   const utilityClasses = useUtilityStyles();
+  const classes = useStyles();
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -33,7 +44,17 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   // create a mailto link with the statement in the body
 
   const [email, setEmail] = useState();
-  const handleChange = (event: any) => setEmail(event.target.value);
+  const [emailValid, setEmailValid] = useState(false);
+
+  const validateEmail = (emailIn: string) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(emailIn).toLowerCase());
+  };
+
+  const handleChange = (event: any) => {
+    setEmail(event.target.value);
+    setEmailValid(validateEmail(event.target.value));
+  };
 
   const str = `${generateIntroduction(formState)}
   ${generateInvolvementJob(formState)}
@@ -48,30 +69,29 @@ const Download = ({ formState }: IFinalizeStepProps) => {
     str
   )}`;
 
-  // mailto has to open in a new window, otherwise the user's work will be lost
-  // typically, just need to add `target="_blank" rel="noopener noreferrer"`
+  // expand email form
+  const [expandEmail, setExpandEmail] = useState(false);
 
-  // FIREFOX ISSUE
-  // `target = "_blank"` is broken on FF
-  // you can trick FF by putting the mailto in an iframe
-  // you can pass all the data into the iframe by appending a script
-  // this useEffect creates a script in a text string and appends it to the body
-  // the text string gets the iframe and writes in the mailto
-  // useEffect(() => {
-  //   const script = document.createElement('script');
-  //   const scriptText = document.createTextNode(
-  //     `doc = document.getElementById('FileFrame').contentWindow.document; doc.open(); doc.write('<html><head><title></title></head><body><div><a href="${mailtoLink}" target="_blank" rel="noopener noreferrer">send your personal statement by email</a></div></body></html>'); doc.close();`
-  //   );
-  //   script.appendChild(scriptText);
-  //   script.async = true;
-  //   document.body.appendChild(script);
-  //   return () => {
-  //     document.body.removeChild(script);
-  //   };
-  // }, [email]);
+  const handleClickEmail = () => {
+    setExpandEmail(!expandEmail);
+  };
+
+  // send email
+  const handleClickEmailSend = () => {
+    window.open(mailtoLink);
+  };
 
   // copy to clipboard
-  const handleClickClipboard = () => navigator.clipboard.writeText(str);
+  const handleClickClipboard = () => {
+    navigator.clipboard.writeText(str);
+  };
+
+  // expand download
+  const [expandDownload, setExpandDownload] = useState(false);
+
+  const handleClickDownload = () => {
+    setExpandDownload(!expandDownload);
+  };
 
   // download txt
   const handleClickTXT = () => {
@@ -87,7 +107,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
     div.style.width = '0';
     div.style.height = '0';
     a.href = url;
-    a.download = 'text-file.txt';
+    a.download = 'MyPersonalStatement.txt';
 
     const ev = new MouseEvent('click', {});
     a.dispatchEvent(ev);
@@ -100,63 +120,76 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   const handleClickPDF = () => {
     const doc = new jsPDF('p', 'mm', 'letter');
     doc.setFontSize(12);
-    const loremLines = doc.splitTextToSize(str, 170);
-    doc.text(20, 50, loremLines);
+    const lines = doc.splitTextToSize(str, 170);
+    doc.text(20, 50, lines);
     doc.save('MyPersonalStatement.pdf');
   };
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div className="consent">
-        <label htmlFor="consent">
-          <input
-            type="checkbox"
-            id="consent"
-            name="consent"
-            onClick={handleClickCheck}
-          />
-          By checking this box you take full responsibility for this personal
-          statement, and release all association with Hack for LA.
-        </label>
-      </div>
-      <div className="email">
-        <h2>send your statement by email</h2>
-        <div>
-          who would you like to mail it to?
-          <input
-            type="email"
-            value={email}
-            onChange={handleChange}
-            placeholder="email address"
-            disabled={isDisabled}
-          />
-        </div>
-        <div>
-          <a href={mailtoLink} target="_blank" rel="noopener noreferrer">
-            <button disabled={isDisabled}>send</button>
-          </a>
-        </div>
-        {/* this iframe is only needed as a workaround for firefox. see discussion above */}
-        {/* <iframe title="FF workaround" id="FileFrame" src="about:blank" /> */}
-      </div>
-      <div className="clipboard">
-        <h2>copy your statement to the clipboard</h2>
-        <button onClick={handleClickClipboard} disabled={isDisabled}>
-          copy
-        </button>
-      </div>
-      <div className="txt">
-        <h2>download a txt</h2>
-        <button onClick={handleClickTXT} disabled={isDisabled}>
-          download
-        </button>
-      </div>
-      <div className="pdf">
-        <h2>download a pdf</h2>
-        <button onClick={handleClickPDF} disabled={isDisabled}>
-          download
-        </button>
-      </div>
+      <form className={utilityClasses.flexGrow}>
+        <Checkbox
+          checked={!isDisabled}
+          onChange={handleClickCheck}
+          label="By checking this box you take full responsibility for this personal
+            statement, and release all association with Hack for LA."
+        />
+        <Button
+          className={classes.buttonLeft}
+          onClick={handleClickEmail}
+          disabled={isDisabled}
+          buttonText="send in an email"
+        />
+        <Button
+          className={classes.buttonLeft}
+          onClick={handleClickClipboard}
+          disabled={isDisabled}
+          buttonText="copy to clipboard"
+        />
+        <Button
+          className={classes.buttonLeft}
+          onClick={handleClickDownload}
+          disabled={isDisabled}
+          buttonText="download"
+        />
+
+        {expandEmail && (
+          <div className={utilityClasses.flexColumn}>
+            Who would you like to email?
+            <Textarea
+              handleChange={handleChange}
+              inputName="email"
+              placeholder="someone@somewhere.com"
+              multi={false}
+              isValid={emailValid}
+              defaultValue=""
+            />
+            <Button
+              className={classes.buttonLeft}
+              onClick={handleClickEmailSend}
+              disabled={isDisabled || !emailValid}
+              buttonText="send"
+            />
+          </div>
+        )}
+
+        {expandDownload && (
+          <div className={utilityClasses.flexColumn}>
+            <Button
+              className={classes.buttonLeft}
+              onClick={handleClickTXT}
+              disabled={isDisabled}
+              buttonText="TXT"
+            />
+            <Button
+              className={classes.buttonLeft}
+              onClick={handleClickPDF}
+              disabled={isDisabled}
+              buttonText="PDF"
+            />
+          </div>
+        )}
+      </form>
     </div>
   );
 };

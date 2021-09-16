@@ -52,6 +52,8 @@ function convertStepToNum(step: string): number {
       return 4;
     case STEP_ENUMS.FINALIZE:
       return 5;
+    case STEP_ENUMS.DOWNLOAD:
+      return 5;
     default:
       return 0;
   }
