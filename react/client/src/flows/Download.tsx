@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -19,7 +19,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 import { IStepState } from 'contexts/FormStateProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
-import Textarea from 'components/Textarea';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -44,19 +43,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
 
   // create a mailto link with the statement in the body
 
-  const [email, setEmail] = useState();
-  const [emailValid, setEmailValid] = useState(false);
-
-  const validateEmail = (emailIn: string) => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(emailIn).toLowerCase());
-  };
-
-  const handleChange = (event: any) => {
-    setEmail(event.target.value);
-    setEmailValid(validateEmail(event.target.value));
-  };
-
   const str = `${generateIntroduction(formState)}
   ${generateInvolvementJob(formState)}
   ${generateInvolvementCommunity(formState)}
@@ -66,22 +52,12 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   ${generateInvolvementUnemployed(formState)} ${generateFutureGoals(formState)}
   ${generateWhy(formState)}`;
 
-  // const mailtoLink = `mailto:${email}?&subject=my%20personal%20statement&body=+${encodeURIComponent(
-  //   str
-  // )}`;
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;
 
-  // expand email form
-  const [expandEmail, setExpandEmail] = useState(false);
-
-  const handleClickEmail = () => {
-    setExpandEmail(!expandEmail);
-  };
-
   // send email
-  const handleClickEmailSend = () => {
+  const handleClickEmail = () => {
     window.open(mailtoLink);
   };
 
@@ -148,15 +124,9 @@ const Download = ({ formState }: IFinalizeStepProps) => {
         />
         <div className={utilityClasses.downloadButtonsContainer}>
           <Button
-            // className={utilityClasses.flexNone}
-            // onClick={handleClickEmail}
-            onClick={handleClickEmailSend}
+            onClick={handleClickEmail}
             disabled={isDisabled}
             icon="EmailIcon"
-            // buttonText={`${EmailIcon} ${buttonText(
-            //   'email',
-            //   'send in an email'
-            // )}`}
             buttonText={buttonText('email', 'send in an email')}
           />
           <Button
@@ -172,24 +142,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
             buttonText="download"
           />
         </div>
-        {/* {expandEmail && (
-          <div className={utilityClasses.flexColumn}>
-            Who would you like to email?
-            <Textarea
-              handleChange={handleChange}
-              inputName="email"
-              placeholder="someone@somewhere.com"
-              multi={false}
-              isValid={emailValid}
-              defaultValue=""
-            />
-            <Button
-              onClick={handleClickEmailSend}
-              disabled={isDisabled || !emailValid}
-              buttonText="send"
-            />
-          </div>
-        )} */}
 
         {expandDownload && (
           <div className={utilityClasses.flexColumn}>
@@ -199,7 +151,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
               buttonText="TXT"
             />
             <Button
-              className={classes.buttonLeft}
               onClick={handleClickPDF}
               disabled={isDisabled}
               buttonText="PDF"
