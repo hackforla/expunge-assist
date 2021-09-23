@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import {
   generateIntroduction,
@@ -65,7 +66,10 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   ${generateInvolvementUnemployed(formState)} ${generateFutureGoals(formState)}
   ${generateWhy(formState)}`;
 
-  const mailtoLink = `mailto:${email}?&subject=my%20personal%20statement&body=+${encodeURIComponent(
+  // const mailtoLink = `mailto:${email}?&subject=my%20personal%20statement&body=+${encodeURIComponent(
+  //   str
+  // )}`;
+  const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;
 
@@ -125,35 +129,50 @@ const Download = ({ formState }: IFinalizeStepProps) => {
     doc.save('MyPersonalStatement.pdf');
   };
 
+  const buttonText = (smallText: string, bigText: string) => {
+    const matches = useMediaQuery<Theme>((theme) => theme.breakpoints.up('lg'));
+    if (matches) {
+      return bigText;
+    }
+    return smallText;
+  };
+
   return (
     <div className={utilityClasses.contentContainer}>
-      <form className={utilityClasses.flexGrow}>
+      <form>
         <Checkbox
           checked={!isDisabled}
           onChange={handleClickCheck}
           label="By checking this box you take full responsibility for this personal
             statement, and release all association with Hack for LA."
         />
-        <Button
-          className={classes.buttonLeft}
-          onClick={handleClickEmail}
-          disabled={isDisabled}
-          buttonText="send in an email"
-        />
-        <Button
-          className={classes.buttonLeft}
-          onClick={handleClickClipboard}
-          disabled={isDisabled}
-          buttonText="copy to clipboard"
-        />
-        <Button
-          className={classes.buttonLeft}
-          onClick={handleClickDownload}
-          disabled={isDisabled}
-          buttonText="download"
-        />
-
-        {expandEmail && (
+        <div className={utilityClasses.downloadButtonsContainer}>
+          <Button
+            // className={utilityClasses.flexNone}
+            // onClick={handleClickEmail}
+            onClick={handleClickEmailSend}
+            disabled={isDisabled}
+            icon="EmailIcon"
+            // buttonText={`${EmailIcon} ${buttonText(
+            //   'email',
+            //   'send in an email'
+            // )}`}
+            buttonText={buttonText('email', 'send in an email')}
+          />
+          <Button
+            onClick={handleClickClipboard}
+            disabled={isDisabled}
+            icon="FileCopyIcon"
+            buttonText={buttonText('copy', 'copy to clipboard')}
+          />
+          <Button
+            onClick={handleClickDownload}
+            disabled={isDisabled}
+            icon="GetAppIcon"
+            buttonText="download"
+          />
+        </div>
+        {/* {expandEmail && (
           <div className={utilityClasses.flexColumn}>
             Who would you like to email?
             <Textarea
@@ -165,18 +184,16 @@ const Download = ({ formState }: IFinalizeStepProps) => {
               defaultValue=""
             />
             <Button
-              className={classes.buttonLeft}
               onClick={handleClickEmailSend}
               disabled={isDisabled || !emailValid}
               buttonText="send"
             />
           </div>
-        )}
+        )} */}
 
         {expandDownload && (
           <div className={utilityClasses.flexColumn}>
             <Button
-              className={classes.buttonLeft}
               onClick={handleClickTXT}
               disabled={isDisabled}
               buttonText="TXT"
