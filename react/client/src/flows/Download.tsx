@@ -106,11 +106,13 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   const buttonText = (smallText: string, bigText: string) => {
-    const matches = useMediaQuery<Theme>((theme) => theme.breakpoints.up('lg'));
+    const matches = useMediaQuery<Theme>((theme) =>
+      theme.breakpoints.down('sm')
+    );
     if (matches) {
-      return bigText;
+      return smallText;
     }
-    return smallText;
+    return bigText;
   };
 
   return (
@@ -135,15 +137,27 @@ const Download = ({ formState }: IFinalizeStepProps) => {
             icon="FileCopyIcon"
             buttonText={buttonText('copy', 'copy to clipboard')}
           />
-          <Button
+          {/* <Button
             onClick={handleClickDownload}
             disabled={isDisabled}
             icon="GetAppIcon"
             buttonText="download"
+          /> */}
+          <Button
+            onClick={handleClickTXT}
+            disabled={isDisabled}
+            icon="GetAppIcon"
+            buttonText={buttonText('txt', 'download txt')}
+          />
+          <Button
+            onClick={handleClickPDF}
+            disabled={isDisabled}
+            icon="GetAppIcon"
+            buttonText={buttonText('pdf', 'download pdf')}
           />
         </div>
 
-        {expandDownload && (
+        {/* {expandDownload && (
           <div className={utilityClasses.flexColumn}>
             <Button
               onClick={handleClickTXT}
@@ -156,7 +170,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
               buttonText="PDF"
             />
           </div>
-        )}
+        )} */}
       </form>
     </div>
   );

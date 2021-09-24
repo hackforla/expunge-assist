@@ -1,12 +1,7 @@
 import React from 'react';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
-// icons are not where the mui docs say they are ... '@mui/icons-material/XXX';
 import EmailIcon from '@material-ui/icons/Email';
-// download icon is missing from node_modules
-// import DownloadIcon from '@material-ui/icons/Download';
 import GetAppIcon from '@material-ui/icons/GetApp';
-// copy icon is missing from node_modules
-// import ContentCopyIcon from '@material-ui/icons/ContentCopy';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 import arrowRight from 'assets/arrowRight.svg';
@@ -129,9 +124,6 @@ const ButtonComponent = ({
       className={`${classes.root} ${className}`}
       onClick={onClick}
     >
-      {/* {icon && `<${icon} />`} */}
-      {/* {icon !== undefined && */}
-      {/* (icon === 'EmailIcon' ? <EmailIcon /> : <GetAppIcon />)} */}
       {icon === 'EmailIcon' ? <EmailIcon /> : null}
       {icon === 'GetAppIcon' ? <GetAppIcon /> : null}
       {icon === 'FileCopyIcon' ? <FileCopyIcon /> : null}
