@@ -87,6 +87,23 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       fontSize: '20px',
       marginRight: '0.5rem',
     },
+    downloadButtonsContainer: {
+      marginTop: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      // justifyContent: 'flex-start',
+      // [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      //   flexDirection: 'column',
+      //   justifyContent: 'space-evenly',
+      // },
+      '& button': {
+        width: '50%',
+        '& svg': {
+          marginRight: '1rem',
+        },
+      },
+    },
   })
 );
 

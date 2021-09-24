@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
+import EmailIcon from '@material-ui/icons/Email';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 import arrowRight from 'assets/arrowRight.svg';
 
@@ -8,6 +11,7 @@ interface ComponentProps {
   theme?: string;
   hasArrow?: boolean;
   disabled?: boolean;
+  icon?: string;
   buttonText: string;
   onClick: () => void;
 }
@@ -107,6 +111,7 @@ const ButtonComponent = ({
   theme,
   hasArrow,
   disabled = false,
+  icon,
   buttonText,
   onClick,
 }: ComponentProps) => {
@@ -119,6 +124,9 @@ const ButtonComponent = ({
       className={`${classes.root} ${className}`}
       onClick={onClick}
     >
+      {icon === 'EmailIcon' ? <EmailIcon /> : null}
+      {icon === 'GetAppIcon' ? <GetAppIcon /> : null}
+      {icon === 'FileCopyIcon' ? <FileCopyIcon /> : null}
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </Button>

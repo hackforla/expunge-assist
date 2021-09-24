@@ -154,7 +154,9 @@ const Form = ({
         </div>
       )}
 
-      {currentStep === STEP_ENUMS.DOWNLOAD && <Download />}
+      {currentStep === STEP_ENUMS.DOWNLOAD && (
+        <Download formState={formState} />
+      )}
     </div>
   );
 };
