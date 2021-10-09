@@ -11,6 +11,7 @@ import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
+import { Banner } from './Banner';
 
 interface styleProps {
   isLandingPage: boolean;
@@ -21,7 +22,7 @@ const useStyles = makeStyles<Theme, styleProps>(() =>
     root: {
       background: (props) => (props.isLandingPage ? '#9903ff' : 'white'),
       color: (props) => (props.isLandingPage ? 'white' : '#131313'),
-      padding: '18px',
+      paddingTop: '18px',
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
@@ -100,6 +101,7 @@ const PageContainer = ({ match }: PageProps) => {
   return (
     <div className={`${classes.root} page-container`}>
       <Header isMainPage={isLandingPage} />
+      <Banner />
 
       <AffirmationComponent
         buttonText={affirmationData.buttonText}

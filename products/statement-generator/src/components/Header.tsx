@@ -15,6 +15,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
     root: {
       background: (props) => props.background,
       color: (props) => props.color,
+      paddingLeft: '18px',
       display: 'flex',
       '& .logo-title': {
         display: 'flex',
