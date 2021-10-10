@@ -43,7 +43,7 @@ const TextPreview = ({
   return (
     <div className={classes.root}>
       <div className={classes.flex}>
-        <h2>Previewing {nameOfStep}</h2>
+        <h2>{nameOfStep}</h2>
         <CreateIcon style={{ color: '#9903FF' }} onClick={onAdjustClick} />
       </div>
       <p>{content}</p>

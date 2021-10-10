@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
 
@@ -11,6 +10,7 @@ import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
+import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
@@ -22,32 +22,20 @@ import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-      maxWidth: '850px',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-
-      [theme.breakpoints.down('xs')]: {
-        marginLeft: 'initial',
-        marginRight: 'initial',
-      },
-    },
-  })
-);
-
 interface FormProps {
   onChangeAffirmation: (newState: object) => void;
   affirmationIsActive: boolean;
+  isDarkTheme: boolean;
 }
 
-const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
-  const classes = useStyles();
-  const utilityClasses = useUtilityStyles({});
+const Form = ({
+  onChangeAffirmation,
+  affirmationIsActive,
+  isDarkTheme,
+}: FormProps) => {
+  const utilityClasses = useUtilityStyles({
+    pageTheme: isDarkTheme ? 'dark' : 'light',
+  });
 
   const { formState, updateStepToForm, goNextStep, goBackStep } = useContext(
     FormStateContext
@@ -59,7 +47,7 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
   }
 
   return (
-    <div className={`${classes.root} content-page`}>
+    <div className={utilityClasses.contentContainer}>
       {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && (
         <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
       )}
@@ -154,18 +142,15 @@ const Form = ({ onChangeAffirmation, affirmationIsActive }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.PREVIEWING && (
+      {currentStep === STEP_ENUMS.FINALIZE && (
+        <FinalizeStep formState={formState} />
+      )}
+
+      {currentStep === STEP_ENUMS.FINALIZE_PREVIEW && (
         <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackStep()} buttonText="EDIT" />
           <Button onClick={() => goNextStep()} buttonText="NEXT" />
-        </div>
-      )}
-
-      {currentStep === STEP_ENUMS.FINALIZE && (
-        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
-          <p>Editing</p>
-          <Button onClick={() => goNextStep()} buttonText="SAVE" />
         </div>
       )}
 

@@ -125,3 +125,59 @@ export interface IWhyStepState {
   clearRecordWhy: string;
   clearRecordHow: string;
 }
+
+export const sampleStepState = {
+  introduction: {
+    fullName: 'Daniel Xiao',
+    age: '29',
+    isVeteran: 'Yes',
+  },
+  involvementInitialState: {
+    isJobChecked: true,
+    isCommunityChecked: true,
+    isRecoveryChecked: true,
+    isSchoolChecked: false,
+    isParentingChecked: false,
+    isNoneChecked: false,
+  },
+  involvementJobState: {
+    companyName: 'Cool Company',
+    jobTitle: 'Big Boss',
+    jobDescription: 'I make the decisions on what the biggest cake should be.',
+  },
+  involvementServiceState: {
+    organizationName: 'Taste Tester',
+    serviceDescription: 'I check cakes for poison. It is a very serious job.',
+  },
+  involvementRecoveryState: {
+    recoveryName: 'Addicts Anonymous',
+    recoveryDescription:
+      'I go to a meeting every week to help me overcome my addiction to poisons.',
+  },
+  involvementSchoolState: {
+    schoolName: 'Villians University',
+    studyName: 'Chemistry',
+    passionDescription: 'I always liked looking at how chemicals affected ',
+  },
+  involvementParentingState: {
+    childName: 'Cyanide Nx11',
+    parentYears: '11',
+    parentDescription:
+      'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
+  },
+  involvementUnemployedState: {
+    unemploymentDescription:
+      'I have not been able to find any jobs that are not about licking or eating things.',
+    wouldClearanceHelp:
+      'Yes',
+  },
+  goalsStep: {
+    goals: 'I want to get a new job so I do not have to eat any more poison.',
+    goalsHow: 'I am learning new ways to work that go beyond eating.',
+  },
+  whyStep: {
+    clearRecordWhy: 'It will help me make a better life for me and my family.',
+    clearRecordHow:
+      'If my record no longer says I have poison resistance, I can be hired for other jobs.',
+  },
+};

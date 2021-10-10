@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import Header from 'components/Header';
-
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -59,7 +57,6 @@ const PrivacyPolicy = ({ handleClick }: PrivacyPolicyProps) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Header isMainPage />
       <div className="centered">
         &nbsp;
         <h3>Privacy Policy</h3>
