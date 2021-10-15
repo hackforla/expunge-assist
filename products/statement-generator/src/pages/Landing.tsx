@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Button from 'components/Button';
+import { Banner } from 'components/Banner';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
@@ -25,12 +26,16 @@ const useStyles = makeStyles(() =>
 
 const Landing = () => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({ pageTheme: 'dark', isSoloContainer: true });
+  const utilityClasses = useUtilityStyles({
+    pageTheme: 'dark',
+    isSoloContainer: true,
+  });
 
   const { goNextPage } = useContext(RoutingContext);
 
   return (
     <div className={utilityClasses.primaryContainer}>
+      <Banner />
       <div className={`${utilityClasses.contentContainer}`}>
         <div className={utilityClasses.flexGrow}>
           <h1 className="page-title">Start fresh with a record expungement</h1>
