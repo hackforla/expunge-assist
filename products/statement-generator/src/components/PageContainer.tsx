@@ -1,33 +1,12 @@
 import React, { useEffect, useContext } from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import AffirmationComponent from 'components/AffirmationComponent';
-import Header from 'components/Header';
 import Form from 'components/Form';
-import FormHeader from 'components/FormHeader';
-import Landing from 'pages/Landing';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
-import { FormStateContextProvider } from 'contexts/FormStateContext';
-
-interface styleProps {
-  isLandingPage: boolean;
-}
-
-const useStyles = makeStyles<Theme, styleProps>(() =>
-  createStyles({
-    root: {
-      background: (props) => (props.isLandingPage ? '#9903ff' : 'white'),
-      color: (props) => (props.isLandingPage ? 'white' : '#131313'),
-      padding: '18px',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-    },
-  })
-);
+import useUtilityStyles from 'styles/utilityStyles';
 
 interface PageProps {
   match: {
@@ -44,10 +23,11 @@ const PageContainer = ({ match }: PageProps) => {
     AffirmationContext
   );
 
-  const isLandingPage = currentStep === STEP_ENUMS.NONE;
+  const isDarkTheme = match.params.page === 'start';
 
-  const styleProps = { isLandingPage };
-  const classes = useStyles(styleProps);
+  const utilityClasses = useUtilityStyles({
+    pageTheme: isDarkTheme ? 'dark' : 'light',
+  });
 
   useEffect(() => {
     // handle closing the affirmation on home page
@@ -57,7 +37,7 @@ const PageContainer = ({ match }: PageProps) => {
   // todo: move text into a json for localization
   useEffect(() => {
     switch (currentStep) {
-      case 2:
+      case STEP_ENUMS.INTRODUCTION:
         updateAffirmationData({
           isActive: true,
           titleText: 'Welcome!',
@@ -65,7 +45,7 @@ const PageContainer = ({ match }: PageProps) => {
           description: 'This is a tool to generate a personal statement.',
         });
         break;
-      case 3:
+      case STEP_ENUMS.INVOLVEMENT.INITIAL:
         updateAffirmationData({
           isActive: true,
           titleText: 'Congrats!',
@@ -74,7 +54,7 @@ const PageContainer = ({ match }: PageProps) => {
             'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
         });
         break;
-      case 5:
+      case STEP_ENUMS.GOALS:
         updateAffirmationData({
           isActive: true,
           titleText: 'Hooray!',
@@ -83,7 +63,7 @@ const PageContainer = ({ match }: PageProps) => {
             'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
         });
         break;
-      case 6:
+      case STEP_ENUMS.WHY:
         updateAffirmationData({
           isActive: true,
           titleText: 'Great Job!',
@@ -98,9 +78,7 @@ const PageContainer = ({ match }: PageProps) => {
   }, [currentStep]);
 
   return (
-    <div className={`${classes.root} page-container`}>
-      <Header isMainPage={isLandingPage} />
-
+    <div className={utilityClasses.primaryContainer}>
       <AffirmationComponent
         buttonText={affirmationData.buttonText}
         titleText={affirmationData.titleText}
@@ -109,16 +87,12 @@ const PageContainer = ({ match }: PageProps) => {
         onChangeAffirmation={updateAffirmationData}
       />
 
-      {isLandingPage && <Landing />}
-
-      {!affirmationData.isActive && !isLandingPage && (
-        <FormStateContextProvider>
-          <FormHeader />
-          <Form
-            onChangeAffirmation={updateAffirmationData}
-            affirmationIsActive={affirmationData.isActive}
-          />
-        </FormStateContextProvider>
+      {!affirmationData.isActive && (
+        <Form
+          isDarkTheme={isDarkTheme}
+          onChangeAffirmation={updateAffirmationData}
+          affirmationIsActive={affirmationData.isActive}
+        />
       )}
     </div>
   );

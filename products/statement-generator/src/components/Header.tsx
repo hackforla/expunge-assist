@@ -1,31 +1,47 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
+
+import RoutingContext from 'contexts/RoutingContext';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
 
-interface StyleProps {
-  background?: string;
-  color?: string;
+interface IStyleProps {
+  pageTheme?: string;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme, IStyleProps>((theme: Theme) =>
   createStyles({
     root: {
-      background: (props) => props.background,
-      color: (props) => props.color,
+      background: ({ pageTheme }: IStyleProps) =>
+        pageTheme === 'purple' ? '#9903ff' : 'white',
+
+      padding: '18px',
       display: 'flex',
+
+      '& a': {
+        color: ({ pageTheme }: IStyleProps) =>
+          pageTheme === 'purple' ? 'white' : 'black',
+      },
+
       '& .logo-title': {
         display: 'flex',
         flexDirection: 'column',
         marginLeft: '20px',
         textTransform: 'uppercase',
         fontSize: '12px',
-        [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+
+        [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
           display: 'none',
         },
       },
+
+      [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+        background: '#f7ebff',
+      },
+
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         display: 'none',
       },
@@ -33,47 +49,31 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) =>
   })
 );
 
-interface HeaderProps {
-  isMainPage: boolean;
-}
+const Header = () => {
+  const { currentStep } = useContext(RoutingContext);
 
-const Header = ({ isMainPage }: HeaderProps) => {
-  let icon: string;
-  let background: string;
-  let color: string;
+  const isPurpleTheme =
+    currentStep === STEP_ENUMS.NONE ||
+    currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN;
 
-  if (isMainPage) {
-    background = '#9903ff';
-    color = 'white';
-    icon = iconWhite;
-  } else {
-    background = 'white';
-    color = 'black';
-    icon = iconBlack;
-  }
+  const logoIcon = isPurpleTheme ? iconWhite : iconBlack;
 
-  const styleProps = {
-    background,
-    color,
-  };
-
-  const classes = useStyles(styleProps);
+  const classes = useStyles({ pageTheme: isPurpleTheme ? 'purple' : 'light' });
 
   return (
     <div className={`${classes.root} app-header`}>
       <Link to="/">
-        <img src={icon} alt="" />
+        <img src={logoIcon} alt="" />
       </Link>
       <Link
         to="/"
         style={{
           textDecoration: 'none',
-          color,
         }}
         className="logo-title"
       >
-        <p>The Record</p>
-        <p>Clearance Project</p>
+        <p>Expunge</p>
+        <p>Assist</p>
       </Link>
     </div>
   );

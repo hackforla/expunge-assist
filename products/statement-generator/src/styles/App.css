@@ -1,5 +1,5 @@
 body {
-  background: #9903ff;
+  /*background: #9903ff;*/
   font-family: Roboto;
   font-weight: 400;
   height: 100vh;
@@ -9,12 +9,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-h2 {
-  font-weight: 500;
-  font-size: 1.25rem;
-  margin: 1rem 0;
 }
 
 .greyedOut {

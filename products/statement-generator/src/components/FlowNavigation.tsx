@@ -8,6 +8,7 @@ import Button from 'components/Button';
 const useStyles = makeStyles(() =>
   createStyles({
     flowNavigationContainer: {
+      marginTop: 'auto',
       display: 'flex',
       flexDirection: 'row',
     },
