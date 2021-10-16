@@ -5,11 +5,11 @@ const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '100%',
-      height: '8%',
+      height: '30px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      fontSize: '24px',
+      fontSize: '15px',
       borderRadius: '3px',
       marginTop: '10px',
       backgroundColor: '#ff3403',
