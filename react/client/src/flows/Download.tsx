@@ -66,13 +66,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
     navigator.clipboard.writeText(str);
   };
 
-  // expand download
-  const [expandDownload, setExpandDownload] = useState(false);
-
-  const handleClickDownload = () => {
-    setExpandDownload(!expandDownload);
-  };
-
   // download txt
   const handleClickTXT = () => {
     const blob = new Blob([str], { type: 'text/plain' });
@@ -137,12 +130,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
             icon="FileCopyIcon"
             buttonText={buttonText('copy', 'copy to clipboard')}
           />
-          {/* <Button
-            onClick={handleClickDownload}
-            disabled={isDisabled}
-            icon="GetAppIcon"
-            buttonText="download"
-          /> */}
           <Button
             onClick={handleClickTXT}
             disabled={isDisabled}
@@ -156,21 +143,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
             buttonText={buttonText('pdf', 'download pdf')}
           />
         </div>
-
-        {/* {expandDownload && (
-          <div className={utilityClasses.flexColumn}>
-            <Button
-              onClick={handleClickTXT}
-              disabled={isDisabled}
-              buttonText="TXT"
-            />
-            <Button
-              onClick={handleClickPDF}
-              disabled={isDisabled}
-              buttonText="PDF"
-            />
-          </div>
-        )} */}
       </form>
     </div>
   );
