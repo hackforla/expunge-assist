@@ -49,6 +49,7 @@ const IntroductionStep = ({
   const isNextDisabled = !fullNameValid || !ageValid;
 
   if (showPreview) {
+    // AS written this will never be true.
     return (
       <div className={utilityClasses.contentContainer}>
         <div>
@@ -56,13 +57,11 @@ const IntroductionStep = ({
             content={textPreviewContent}
             onAdjustClick={() => setShowPreview(false)}
             nameOfStep="Introduction"
+            setFormState={setFormState}
           />
         </div>
 
-        <FlowNavigation
-          onBack={() => setShowPreview(false)}
-          isNextDisabled={isNextDisabled}
-        />
+        <FlowNavigation isNextDisabled={isNextDisabled} />
       </div>
     );
   }
@@ -73,7 +72,7 @@ const IntroductionStep = ({
         <p>What is your name?</p>
         <Textarea
           inputName="name"
-          placeholder="Firstname Lastname"
+          placeholder="Full Name"
           handleChange={handleChange}
           multi={false}
           isValid={fullNameValid}

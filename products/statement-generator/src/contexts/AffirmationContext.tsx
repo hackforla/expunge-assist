@@ -16,9 +16,9 @@ export const AffirmationContext = React.createContext<any>(undefined);
 const AffirmationContextProvider = ({ children }: AffirmationProviderProps) => {
   const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
     isActive: false,
-    titleText: 'Welcome!',
-    buttonText: 'Begin',
-    description: 'This is a tool to generate a personal statement.',
+    titleText: '',
+    buttonText: '',
+    description: '',
   });
 
   const updateAffirmationData = (newState: object) => {

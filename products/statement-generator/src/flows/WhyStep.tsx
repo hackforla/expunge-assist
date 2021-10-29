@@ -45,12 +45,13 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
     return (
       <div className={utilityClasses.contentContainer}>
         <TextPreview
+          setFormState={setFormState}
           content={textPreviewContent}
           onAdjustClick={() => setShowPreview(false)}
           nameOfStep="Why"
         />
 
-        <FlowNavigation onBack={() => setShowPreview(false)} />
+        <FlowNavigation />
       </div>
     );
   }
