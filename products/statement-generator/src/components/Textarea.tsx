@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -43,13 +44,15 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface TextFieldProps {
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputName: string;
-  placeholder: string;
+  placeholder?: string;
   multi: boolean;
   isValid: boolean;
-  defaultValue: string;
+  defaultValue?: string;
   disabled?: boolean;
+  className?: string;
+  value?: any;
 }
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
@@ -60,19 +63,22 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
   isValid,
   defaultValue,
   disabled = false,
+  className,
+  value,
 }) => {
   const classes = useStyles();
   return (
     <TextField
-      className={classes.root}
+      className={clsx(classes.root, className)}
       onChange={handleChange}
       name={inputName}
       placeholder={placeholder}
       id="outlined-textarea"
       multiline={multi}
       variant="outlined"
-      defaultValue={defaultValue}
+      defaultValue={value ? undefined : defaultValue}
       disabled={disabled}
+      value={value}
       InputProps={{
         classes: {
           input: classes.input,

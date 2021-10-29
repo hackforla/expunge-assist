@@ -24,8 +24,9 @@ export const FormStateContextProvider = ({
 }: FormStateProviderProps) => {
   const [formState, setFormState] = useState<IStepState>(defaultStepState);
 
-  const updateStepToForm = (stepState: any) =>
+  const updateStepToForm = (stepState: any) => {
     setFormState({ ...formState, ...stepState });
+  };
 
   const { currentStep, goNextPage, goBackPage } = useContext(RoutingContext);
 
