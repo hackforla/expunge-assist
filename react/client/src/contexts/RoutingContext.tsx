@@ -15,6 +15,7 @@ const PreRoutingContextProvider = ({
   history,
 }: RoutingProviderProps) => {
   const [formSteps, setFormSteps] = useState([STEP_ENUMS.NONE]);
+  const [canShowAffirmation, setCanShowAffirmation] = useState(true);
   const [currentStepIdx, setCurrentStepIdx] = useState(0);
   const currentStep = formSteps[currentStepIdx];
   const { pathname } = history.location;
@@ -29,6 +30,7 @@ const PreRoutingContextProvider = ({
     setFormSteps([...formSteps, nextStep]);
     const nextPageUrl = PAGES[nextStep];
     navigateToFormPage(nextPageUrl);
+    setCanShowAffirmation(true);
   };
 
   const goBackPage = () => {
@@ -38,6 +40,7 @@ const PreRoutingContextProvider = ({
     setFormSteps(formSteps.slice(0, prevStepIdx + 1));
     const prevPageUrl = PAGES[prevStep];
     navigateToFormPage(prevPageUrl);
+    setCanShowAffirmation(false);
   };
 
   // handle arriving directly from a url
@@ -80,6 +83,7 @@ const PreRoutingContextProvider = ({
         goNextPage,
         goBackPage,
         currentStep,
+        canShowAffirmation,
       }}
     >
       {children}
