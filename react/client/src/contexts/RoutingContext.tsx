@@ -8,9 +8,12 @@ interface RoutingProviderProps extends RouteComponentProps<any> {
 }
 
 interface PageData {
+  stepIdx: number;
   stepEnum: string;
   pageEnum: string; // path
+  isCurrentStep: boolean;
   isViewedStep: boolean; // has user been on this step in current session
+  isNewStep: boolean;
 }
 
 const RoutingContext = React.createContext<any>(undefined);
@@ -26,12 +29,6 @@ const PreRoutingContextProvider = ({
   const currentStep = formSteps[currentStepIdx];
   const { pathname } = history.location;
 
-  const [pageData, setPageData] = useState<PageData>({
-    stepEnum: STEP_ENUMS.NONE,
-    pageEnum: PAGES[STEP_ENUMS.NONE],
-    isViewedStep: false,
-  });
-
   const navigateToFormPage = (newPageUrl: string) => {
     history.push(`/form/${newPageUrl}`);
   };
@@ -39,7 +36,10 @@ const PreRoutingContextProvider = ({
   const goNextPage = (suggestedNext?: string) => {
     const nextStep = suggestedNext || getNextFormStep(currentStep);
     setCurrentStepIdx(currentStepIdx + 1);
-    setFormSteps([...formSteps, nextStep]);
+    if (!formSteps.includes(nextStep)) {
+      setFormSteps([...formSteps, nextStep]);
+    }
+
     const nextPageUrl = PAGES[nextStep];
     navigateToFormPage(nextPageUrl);
     setCanShowAffirmation(true);
@@ -49,11 +49,20 @@ const PreRoutingContextProvider = ({
     const prevStepIdx = Math.max(currentStepIdx - 1, 0);
     const prevStep = formSteps[prevStepIdx];
     setCurrentStepIdx(prevStepIdx);
-    setFormSteps(formSteps.slice(0, prevStepIdx + 1));
+    // setFormSteps(formSteps.slice(0, prevStepIdx + 1));
     const prevPageUrl = PAGES[prevStep];
-    navigateToFormPage(prevPageUrl);
     setCanShowAffirmation(false);
+    navigateToFormPage(prevPageUrl);
   };
+
+  function handleBrowserPageNav(existingPageEnum: string) {
+    const existingPageIdx = formSteps.indexOf(existingPageEnum);
+    // const existingStep = formSteps[existingPageIdx];
+    setCurrentStepIdx(existingPageIdx);
+    // setFormSteps(formSteps.slice(0, existingPageIdx + 1));
+    // const prevPageUrl = PAGES[existingStep];
+    setCanShowAffirmation(false);
+  }
 
   // triggers on any url change
   //  meaning both programmatic history navigation via `navigateToFormPage()`
@@ -61,27 +70,35 @@ const PreRoutingContextProvider = ({
   useEffect(() => {
     const pathMatcher = pathname.match(/(?<=\/form\/).*/) || [];
     const pageFromPathname = pathMatcher[0] || '';
-    setPageData({
-      stepEnum: URL[pageFromPathname],
+    const stepEnum = URL[pageFromPathname];
+    const stepIdx = formSteps.indexOf(stepEnum);
+    const newPageData: PageData = {
+      stepIdx,
+      stepEnum,
       pageEnum: pageFromPathname,
-      isViewedStep: formSteps.includes(URL[pageFromPathname]),
-    });
-    console.log('pageData', pageData);
+      isCurrentStep: stepEnum === currentStep,
+      isViewedStep: stepIdx > -1,
+      isNewStep: stepIdx === -1,
+    };
 
     // redirect back to the first page when accessing another random page
     // (in the future we would first check what data is currently cached before
     // deciding if we redirect or not)
-    if (pageData.pageEnum !== PAGES[STEP_ENUMS.NONE] && formSteps.length <= 1) {
+    if (
+      newPageData.pageEnum !== PAGES[STEP_ENUMS.NONE] &&
+      formSteps.length <= 1
+    ) {
       // setCurrentStepIdx(0);
       // setFormSteps([STEP_ENUMS.NONE]);
       // navigateToFormPage(PAGES[STEP_ENUMS.NONE]);
     }
 
-    if (pageData.isViewedStep) {
-      console.log('cool', pageData.pageEnum);
+    if (newPageData.isViewedStep && !newPageData.isCurrentStep) {
+      handleBrowserPageNav(stepEnum);
     }
 
-    // when going back to home page, clear out steps
+    // when going to home page, clear out steps
+    // TODO: potentially buggy if data is filled and user presses back on browser
     if (pathname === '/' || pathname === '/form') {
       setCurrentStepIdx(0);
       setFormSteps([STEP_ENUMS.NONE]);
@@ -89,15 +106,14 @@ const PreRoutingContextProvider = ({
 
     // TESTING
     //  if page is the first one the user lands on, treat it as the first page
-    if (pageData.pageEnum && formSteps.length <= 1) {
-      const pathURL = URL[pageData.pageEnum];
-      if (pathURL === undefined) {
+    if (newPageData.pageEnum && formSteps.length <= 1) {
+      if (newPageData.stepEnum === undefined) {
         setCurrentStepIdx(0);
         setFormSteps([STEP_ENUMS.NONE]);
         history.push('/404');
       } else {
         setCurrentStepIdx(0);
-        setFormSteps([pathURL]);
+        setFormSteps([newPageData.stepEnum]);
       }
     }
   }, [pathname]);
