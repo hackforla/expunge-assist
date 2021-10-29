@@ -49,7 +49,6 @@ const PreRoutingContextProvider = ({
     const prevStepIdx = Math.max(currentStepIdx - 1, 0);
     const prevStep = formSteps[prevStepIdx];
     setCurrentStepIdx(prevStepIdx);
-    // setFormSteps(formSteps.slice(0, prevStepIdx + 1));
     const prevPageUrl = PAGES[prevStep];
     setCanShowAffirmation(false);
     navigateToFormPage(prevPageUrl);
@@ -57,10 +56,7 @@ const PreRoutingContextProvider = ({
 
   function handleBrowserPageNav(existingPageEnum: string) {
     const existingPageIdx = formSteps.indexOf(existingPageEnum);
-    // const existingStep = formSteps[existingPageIdx];
     setCurrentStepIdx(existingPageIdx);
-    // setFormSteps(formSteps.slice(0, existingPageIdx + 1));
-    // const prevPageUrl = PAGES[existingStep];
     setCanShowAffirmation(false);
   }
 
@@ -69,13 +65,13 @@ const PreRoutingContextProvider = ({
   //  and pressing back on the browser
   useEffect(() => {
     const pathMatcher = pathname.match(/(?<=\/form\/).*/) || [];
-    const pageFromPathname = pathMatcher[0] || '';
-    const stepEnum = URL[pageFromPathname];
+    const pageEnum = pathMatcher[0] || '';
+    const stepEnum = URL[pageEnum];
     const stepIdx = formSteps.indexOf(stepEnum);
     const newPageData: PageData = {
       stepIdx,
       stepEnum,
-      pageEnum: pageFromPathname,
+      pageEnum,
       isCurrentStep: stepEnum === currentStep,
       isViewedStep: stepIdx > -1,
       isNewStep: stepIdx === -1,
@@ -84,10 +80,7 @@ const PreRoutingContextProvider = ({
     // redirect back to the first page when accessing another random page
     // (in the future we would first check what data is currently cached before
     // deciding if we redirect or not)
-    if (
-      newPageData.pageEnum !== PAGES[STEP_ENUMS.NONE] &&
-      formSteps.length <= 1
-    ) {
+    if (pageEnum !== PAGES[STEP_ENUMS.NONE] && formSteps.length <= 1) {
       // setCurrentStepIdx(0);
       // setFormSteps([STEP_ENUMS.NONE]);
       // navigateToFormPage(PAGES[STEP_ENUMS.NONE]);
@@ -106,14 +99,14 @@ const PreRoutingContextProvider = ({
 
     // TESTING
     //  if page is the first one the user lands on, treat it as the first page
-    if (newPageData.pageEnum && formSteps.length <= 1) {
-      if (newPageData.stepEnum === undefined) {
+    if (pageEnum && formSteps.length <= 1) {
+      if (stepEnum === undefined) {
         setCurrentStepIdx(0);
         setFormSteps([STEP_ENUMS.NONE]);
         history.push('/404');
       } else {
         setCurrentStepIdx(0);
-        setFormSteps([newPageData.stepEnum]);
+        setFormSteps([stepEnum]);
       }
     }
   }, [pathname]);
