@@ -21,7 +21,10 @@ const useStyles = makeStyles(() =>
 );
 const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({ pageTheme: 'dark', isSoloContainer: true });
+  const utilityClasses = useUtilityStyles({
+    pageTheme: 'dark',
+    isSoloContainer: true,
+  });
   const { t } = useTranslation();
 
   const { goNextStep } = useContext(FormStateContext);
@@ -45,7 +48,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
             onChangeAffirmation({ isActive: true });
             goNextStep();
           }}
-          theme='dark'
+          theme="dark"
           buttonText="I understand"
           hasArrow
         />
