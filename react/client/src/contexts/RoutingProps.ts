@@ -37,7 +37,7 @@ export const STEP_ENUMS = {
 /**
  * map of a constant to the page url
  *
- * @type PAGES
+ * @type PageEnum
  */
 export const PAGES = {
   [STEP_ENUMS.NONE]: '',
@@ -68,9 +68,10 @@ export const PAGES = {
 };
 
 /**
- * map of PAGES to a PAGE_ENUM
+ * maps PageEnum to StepEnum
+ *  eg: 'intro': STEP_ENUMS.INTRODUCTION
  *
- * @type URL
+ * @type UrlEnum
  */
 export const URL: { [key: string]: string } = {};
 Object.keys(PAGES).forEach((pageKey) => {

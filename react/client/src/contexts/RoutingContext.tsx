@@ -7,6 +7,12 @@ interface RoutingProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
 }
 
+interface PageData {
+  stepEnum: string;
+  pageEnum: string; // path
+  isViewedStep: boolean; // has user been on this step in current session
+}
+
 const RoutingContext = React.createContext<any>(undefined);
 export default RoutingContext;
 
@@ -19,6 +25,12 @@ const PreRoutingContextProvider = ({
   const [currentStepIdx, setCurrentStepIdx] = useState(0);
   const currentStep = formSteps[currentStepIdx];
   const { pathname } = history.location;
+
+  const [pageData, setPageData] = useState<PageData>({
+    stepEnum: STEP_ENUMS.NONE,
+    pageEnum: PAGES[STEP_ENUMS.NONE],
+    isViewedStep: false,
+  });
 
   const navigateToFormPage = (newPageUrl: string) => {
     history.push(`/form/${newPageUrl}`);
@@ -43,18 +55,30 @@ const PreRoutingContextProvider = ({
     setCanShowAffirmation(false);
   };
 
-  // handle arriving directly from a url
+  // triggers on any url change
+  //  meaning both programmatic history navigation via `navigateToFormPage()`
+  //  and pressing back on the browser
   useEffect(() => {
     const pathMatcher = pathname.match(/(?<=\/form\/).*/) || [];
-    const stepFromPathName = pathMatcher[0] || '';
+    const pageFromPathname = pathMatcher[0] || '';
+    setPageData({
+      stepEnum: URL[pageFromPathname],
+      pageEnum: pageFromPathname,
+      isViewedStep: formSteps.includes(URL[pageFromPathname]),
+    });
+    console.log('pageData', pageData);
 
     // redirect back to the first page when accessing another random page
     // (in the future we would first check what data is currently cached before
     // deciding if we redirect or not)
-    if (stepFromPathName !== PAGES[STEP_ENUMS.NONE] && formSteps.length <= 1) {
+    if (pageData.pageEnum !== PAGES[STEP_ENUMS.NONE] && formSteps.length <= 1) {
       // setCurrentStepIdx(0);
       // setFormSteps([STEP_ENUMS.NONE]);
       // navigateToFormPage(PAGES[STEP_ENUMS.NONE]);
+    }
+
+    if (pageData.isViewedStep) {
+      console.log('cool', pageData.pageEnum);
     }
 
     // when going back to home page, clear out steps
@@ -63,16 +87,17 @@ const PreRoutingContextProvider = ({
       setFormSteps([STEP_ENUMS.NONE]);
     }
 
-    // for testing: treat current page as the landing page
-    if (stepFromPathName && formSteps.length <= 1) {
-      const currentStepFromPath = URL[stepFromPathName];
-      if (currentStepFromPath === undefined) {
+    // TESTING
+    //  if page is the first one the user lands on, treat it as the first page
+    if (pageData.pageEnum && formSteps.length <= 1) {
+      const pathURL = URL[pageData.pageEnum];
+      if (pathURL === undefined) {
         setCurrentStepIdx(0);
         setFormSteps([STEP_ENUMS.NONE]);
         history.push('/404');
       } else {
         setCurrentStepIdx(0);
-        setFormSteps([currentStepFromPath]);
+        setFormSteps([pathURL]);
       }
     }
   }, [pathname]);
