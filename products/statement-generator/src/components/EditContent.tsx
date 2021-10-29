@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import FormStateContext from 'contexts/FormStateContext';
-
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
@@ -66,12 +64,10 @@ export default function EditContent({
 }: EditContentProps) {
   const [updatedContent, setUpdatedContent] = useState(content);
   // This value will be the name of the input  e.x. <input name='blah' />  which coincides with the targeted piece of state. {editdText: updatedContent}
-  const [editedField, setEditedField] = useState(null);
   const classes = useStyles();
 
   const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setEditedField(name);
+    const { value } = e.target;
     setUpdatedContent(value);
   };
 
