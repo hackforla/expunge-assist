@@ -36,15 +36,13 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
     return (
       <div className={utilityClasses.contentContainer}>
         <TextPreview
+          setFormState={setFormState}
           content={`${stepState.goals}. To work towards my goals; ${stepState.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
           onAdjustClick={() => setPreview(false)}
           nameOfStep="Future Goals"
         />
 
-        <FlowNavigation
-          onBack={() => setPreview(false)}
-          isNextDisabled={isNextDisabled}
-        />
+        <FlowNavigation isNextDisabled={isNextDisabled} />
       </div>
     );
   }
