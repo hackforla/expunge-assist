@@ -143,6 +143,9 @@ export function getNextFormStep(currentStep: string) {
     case STEP_ENUMS.FINALIZE_PREVIEW:
       return STEP_ENUMS.DOWNLOAD;
 
+    case STEP_ENUMS.DOWNLOAD:
+      return STEP_ENUMS.NONE;
+
     default:
       return STEP_ENUMS.NONE;
   }
