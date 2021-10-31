@@ -92,11 +92,6 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      // justifyContent: 'flex-start',
-      // [theme.breakpoints.up(theme.breakpoints.values.md)]: {
-      //   flexDirection: 'column',
-      //   justifyContent: 'space-evenly',
-      // },
       '& button': {
         width: '50%',
         '& svg': {

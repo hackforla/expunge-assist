@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { Theme } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -19,12 +19,9 @@ import useUtilityStyles from 'styles/utilityStyles';
 import { IStepState } from 'contexts/FormStateProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    buttonLeft: {},
-  })
-);
+import EmailIcon from '@material-ui/icons/Email';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 interface IFinalizeStepProps {
   formState: IStepState;
@@ -32,7 +29,6 @@ interface IFinalizeStepProps {
 
 const Download = ({ formState }: IFinalizeStepProps) => {
   const utilityClasses = useUtilityStyles();
-  const classes = useStyles();
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -42,7 +38,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   // create a mailto link with the statement in the body
-
   const str = `${generateIntroduction(formState)}
   ${generateInvolvementJob(formState)}
   ${generateInvolvementCommunity(formState)}
@@ -51,7 +46,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   ${generateInvolvementParenting(formState)}
   ${generateInvolvementUnemployed(formState)} ${generateFutureGoals(formState)}
   ${generateWhy(formState)}`;
-
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;
@@ -121,25 +115,25 @@ const Download = ({ formState }: IFinalizeStepProps) => {
           <Button
             onClick={handleClickEmail}
             disabled={isDisabled}
-            icon="EmailIcon"
+            icon={<EmailIcon />}
             buttonText={buttonText('email', 'send in an email')}
           />
           <Button
             onClick={handleClickClipboard}
             disabled={isDisabled}
-            icon="FileCopyIcon"
+            icon={<FileCopyIcon />}
             buttonText={buttonText('copy', 'copy to clipboard')}
           />
           <Button
             onClick={handleClickTXT}
             disabled={isDisabled}
-            icon="GetAppIcon"
+            icon={<GetAppIcon />}
             buttonText={buttonText('txt', 'download txt')}
           />
           <Button
             onClick={handleClickPDF}
             disabled={isDisabled}
-            icon="GetAppIcon"
+            icon={<GetAppIcon />}
             buttonText={buttonText('pdf', 'download pdf')}
           />
         </div>
