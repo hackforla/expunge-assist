@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
+import React, { ReactSVGElement } from 'react';
+import { Button, Theme, makeStyles, createStyles, SvgIconTypeMap } from '@material-ui/core';
 
 import arrowRight from 'assets/arrowRight.svg';
 
@@ -8,6 +8,7 @@ interface ComponentProps {
   theme?: string;
   hasArrow?: boolean;
   disabled?: boolean;
+  icon?: React.ReactNode;
   buttonText: string;
   onClick: () => void;
 }
@@ -107,6 +108,7 @@ const ButtonComponent = ({
   theme,
   hasArrow,
   disabled = false,
+  icon,
   buttonText,
   onClick,
 }: ComponentProps) => {
@@ -119,6 +121,7 @@ const ButtonComponent = ({
       className={`${classes.root} ${className}`}
       onClick={onClick}
     >
+      {icon}
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </Button>

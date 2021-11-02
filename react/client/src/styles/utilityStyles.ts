@@ -87,6 +87,18 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       fontSize: '20px',
       marginRight: '0.5rem',
     },
+    downloadButtonsContainer: {
+      marginTop: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      '& button': {
+        width: '50%',
+        '& svg': {
+          marginRight: '1rem',
+        },
+      },
+    },
   })
 );
 
