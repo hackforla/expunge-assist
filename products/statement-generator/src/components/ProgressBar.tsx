@@ -17,7 +17,7 @@ const useStyles = makeStyles(() =>
       },
     },
     box: {
-      width: '90%',
+      width: '95%',
     },
   })
 );

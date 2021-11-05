@@ -33,6 +33,7 @@ interface InputFieldProps {
   type: string;
   defaultValue?: string;
   disabled?: boolean;
+  adornment: string;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -42,6 +43,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   type,
   defaultValue,
   disabled,
+  adornment,
 }) => {
   const checkValid = (e: string) => {
     isValid(e.length > 0);
@@ -62,7 +64,7 @@ const InputArea: React.FC<InputFieldProps> = ({
       disabled={disabled}
       endAdornment={
         <InputAdornment position="end">
-          years old
+          {adornment}
           {valid ? <CheckCircleIcon className={classes.icon} /> : null}
         </InputAdornment>
       }

@@ -16,7 +16,7 @@ i18n
       cache: ['cookie'],
     },
     backend: {
-      loadPath: '/record-clearance/locales/{{lng}}/{{ns}}.json',
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 
