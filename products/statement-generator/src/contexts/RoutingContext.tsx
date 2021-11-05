@@ -89,11 +89,10 @@ const PreRoutingContextProvider = ({
       // redirect back to the first page when accessing another random page
       // (in the future we would first check what data is currently cached before
       // deciding if we redirect or not)
-      // } else if (pageEnum !== PAGES[STEP_ENUMS.NONE] && formSteps.length <= 1) {
-      //   console.log('reset');
-      //   setCurrentStepIdx(0);
-      //   setFormSteps([STEP_ENUMS.NONE]);
-      //   navigateToFormPage(PAGES[STEP_ENUMS.NONE]);
+    } else if (pageEnum !== PAGES[STEP_ENUMS.NONE] && formSteps.length <= 1) {
+      setCurrentStepIdx(0);
+      setFormSteps([STEP_ENUMS.NONE]);
+      navigateToFormPage(PAGES[STEP_ENUMS.NONE]);
     } else if (newPageData.isViewedStep && !newPageData.isCurrentStep) {
       handleBrowserPageNav(stepEnum);
 
