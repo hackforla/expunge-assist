@@ -1,5 +1,5 @@
-import React, { ReactSVGElement } from 'react';
-import { Button, Theme, makeStyles, createStyles, SvgIconTypeMap } from '@material-ui/core';
+import React from 'react';
+import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import arrowRight from 'assets/arrowRight.svg';
 
