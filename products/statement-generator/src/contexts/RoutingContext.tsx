@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { STEP_ENUMS, PAGES, getNextFormStep } from 'contexts/RoutingProps';
+import { STEP_ENUMS, PAGES, URL, getNextFormStep } from 'contexts/RoutingProps';
 
 interface RoutingProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
 }
 
-// interface PageData {
-//   stepIdx: number;
-//   stepEnum: string;
-//   pageEnum: string; // path
-//   isCurrentStep: boolean;
-//   isViewedStep: boolean; // has user been on this step in current session
-//   isNewStep: boolean;
-// }
+interface PageData {
+  stepIdx: number;
+  stepEnum: string;
+  pageEnum: string; // path
+  isCurrentStep: boolean;
+  isViewedStep: boolean; // has user been on this step in current session
+  isNewStep: boolean;
+}
 
 const RoutingContext = React.createContext<any>(undefined);
 export default RoutingContext;
@@ -27,7 +27,7 @@ const PreRoutingContextProvider = ({
   const [canShowAffirmation, setCanShowAffirmation] = useState(true);
   const [currentStepIdx, setCurrentStepIdx] = useState(0);
   const currentStep = formSteps[currentStepIdx];
-  // const { pathname } = history.location;
+  const { pathname } = history.location;
 
   const navigateToFormPage = (newPageUrl: string) => {
     history.push(`/${newPageUrl}`);
@@ -54,16 +54,15 @@ const PreRoutingContextProvider = ({
     navigateToFormPage(prevPageUrl);
   };
 
-  // function handleBrowserPageNav(existingPageEnum: string) {
-  //   const existingPageIdx = formSteps.indexOf(existingPageEnum);
-  //   setCurrentStepIdx(existingPageIdx);
-  //   setCanShowAffirmation(false);
-  // }
+  function handleBrowserPageNav(existingPageEnum: string) {
+    const existingPageIdx = formSteps.indexOf(existingPageEnum);
+    setCurrentStepIdx(existingPageIdx);
+    setCanShowAffirmation(false);
+  }
 
   // triggers on any url change
   //  meaning both programmatic history navigation via `navigateToFormPage()`
   //  and pressing back on the browser
-  /*
   useEffect(() => {
     const pageEnum = pathname.substring(1); // remove the first `/`
     const stepEnum = URL[pageEnum];
@@ -77,8 +76,8 @@ const PreRoutingContextProvider = ({
       isNewStep: stepIdx === -1,
     };
 
-    when going to home page, clear out steps
-    TODO: potentially buggy if data is filled and user presses back on browser
+    // when going to home page, clear out steps
+    // TODO: potentially buggy if data is filled and user presses back on browser
     if (pathname === '/' || pathname === '') {
       setCurrentStepIdx(0);
       setFormSteps([STEP_ENUMS.NONE]);
@@ -104,7 +103,7 @@ const PreRoutingContextProvider = ({
       setFormSteps([stepEnum]);
     }
   }, [pathname]);
-*/
+
   return (
     <RoutingContext.Provider
       value={{
