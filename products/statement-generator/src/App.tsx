@@ -84,25 +84,22 @@ const App: React.FC = () => {
               <Switch>
                 <Route exact path="/" component={Landing} />
 
-                <Route
-                  exact
-                  path="/form/:page?/preview"
-                  component={PreviewPage}
-                />
-
-                <Route
-                  path="/form/:page?"
-                  component={PageContainer}
-                  history={history}
-                />
-
                 <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
                 <Route path="/TermsOfUse" component={TermsOfUse} />
                 <Route path="/FAQ" component={FAQ} />
                 <Route path="/AboutUs" component={AboutUs} />
 
-                <Route component={NotFound} />
                 <Route path="/404" component={NotFound} />
+
+                <Route exact path="/:page?/preview" component={PreviewPage} />
+
+                <Route
+                  path="/:page?"
+                  component={PageContainer}
+                  history={history}
+                />
+
+                <Route component={NotFound} />
               </Switch>
             </FormStateContextProvider>
           </AffirmationContextProvider>
