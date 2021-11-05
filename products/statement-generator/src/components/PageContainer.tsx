@@ -18,7 +18,7 @@ interface PageProps {
 }
 
 const PageContainer = ({ match }: PageProps) => {
-  const { currentStep } = useContext(RoutingContext);
+  const { currentStep, canShowAffirmation } = useContext(RoutingContext);
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
   );
@@ -39,7 +39,7 @@ const PageContainer = ({ match }: PageProps) => {
     switch (currentStep) {
       case STEP_ENUMS.INTRODUCTION:
         updateAffirmationData({
-          isActive: true,
+          isActive: canShowAffirmation,
           titleText: 'Welcome!',
           buttonText: 'Begin',
           description: 'This is a tool to generate a personal statement.',
@@ -47,7 +47,7 @@ const PageContainer = ({ match }: PageProps) => {
         break;
       case STEP_ENUMS.INVOLVEMENT.INITIAL:
         updateAffirmationData({
-          isActive: true,
+          isActive: canShowAffirmation,
           titleText: 'Congrats!',
           buttonText: 'Next',
           description:
@@ -56,7 +56,7 @@ const PageContainer = ({ match }: PageProps) => {
         break;
       case STEP_ENUMS.GOALS:
         updateAffirmationData({
-          isActive: true,
+          isActive: canShowAffirmation,
           titleText: 'Hooray!',
           buttonText: 'Next',
           description:
@@ -65,7 +65,7 @@ const PageContainer = ({ match }: PageProps) => {
         break;
       case STEP_ENUMS.WHY:
         updateAffirmationData({
-          isActive: true,
+          isActive: canShowAffirmation,
           titleText: 'Great Job!',
           buttonText: 'Next',
           description:

@@ -8,7 +8,7 @@ interface IStyleProps {
 const useUtilityStyles = makeStyles<Theme>((theme) =>
   createStyles({
     primaryContainer: {
-      padding: '18px',
+      padding: '18px 0',
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
@@ -86,6 +86,18 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       color: '#9903FF',
       fontSize: '20px',
       marginRight: '0.5rem',
+    },
+    downloadButtonsContainer: {
+      marginTop: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      '& button': {
+        width: '50%',
+        '& svg': {
+          marginRight: '1rem',
+        },
+      },
     },
   })
 );
