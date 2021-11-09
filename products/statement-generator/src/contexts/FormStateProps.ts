@@ -21,7 +21,6 @@ export const defaultStepState = {
     fullName: '',
     age: '',
     isVeteran: '',
-    editedText: '',
   },
   involvementInitialState: {
     isJobChecked: false,
@@ -72,7 +71,6 @@ export interface IIntroductionState {
   fullName: string;
   age: string;
   isVeteran: string;
-  editedText: string;
 }
 
 // involvement checkboxes
