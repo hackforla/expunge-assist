@@ -78,7 +78,7 @@ function generatePreviewFromStep(
 function PreviewPage() {
   const utilityClasses = useUtilityStyles({ pageTheme: 'light' });
 
-  const { formState, setFormState } = useContext(FormStateContext);
+  const { formState } = useContext(FormStateContext);
   const { currentStep } = useContext(RoutingContext);
   const previewConfig = generatePreviewFromStep(currentStep, formState);
 
@@ -86,9 +86,6 @@ function PreviewPage() {
     <div className={utilityClasses.primaryContainer}>
       <div className={utilityClasses.contentContainer}>
         <TextPreview
-          setFormState={(text) =>
-            setFormState({ ...formState, editedText: text })
-          }
           content={previewConfig.content}
           onAdjustClick={() => {}}
           nameOfStep={previewConfig.title}

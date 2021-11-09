@@ -58,23 +58,21 @@ const useStyles = makeStyles(() =>
 interface EditContentProps {
   setIsEditing: (v: boolean) => void;
   content: string;
-  setFormState: (value: any) => void;
 }
 
 export default function EditContent({
   setIsEditing,
   content,
-  setFormState,
 }: EditContentProps) {
   const [updatedContent, setUpdatedContent] = useState(content);
   // This value will be the name of the input  e.x. <input name='blah' />  which coincides with the targeted piece of state. {editdText: updatedContent}
   const [editedField, setEditedField] = useState(null);
   const classes = useStyles();
-  const { updateStepToForm } = React.useContext(FormStateContext);
 
   const handleChange = (e: any) => {
-    setEditedField(e.target.name);
-    setUpdatedContent(e.target.value);
+    const { name, value } = e.target;
+    setEditedField(name);
+    setUpdatedContent(value);
   };
 
   const handleCancelClick = () => {
@@ -84,7 +82,6 @@ export default function EditContent({
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    updateStepToForm({ editedText: updatedContent });
     setIsEditing(false);
   };
   return (

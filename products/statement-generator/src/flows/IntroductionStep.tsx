@@ -57,11 +57,13 @@ const IntroductionStep = ({
             content={textPreviewContent}
             onAdjustClick={() => setShowPreview(false)}
             nameOfStep="Introduction"
-            setFormState={setFormState}
           />
         </div>
 
-        <FlowNavigation isNextDisabled={isNextDisabled} />
+        <FlowNavigation
+          onBack={() => setShowPreview(false)}
+          isNextDisabled={isNextDisabled}
+        />
       </div>
     );
   }
