@@ -63,7 +63,6 @@ export default function EditContent({
   content,
 }: EditContentProps) {
   const [updatedContent, setUpdatedContent] = useState(content);
-  // This value will be the name of the input  e.x. <input name='blah' />  which coincides with the targeted piece of state. {editdText: updatedContent}
   const classes = useStyles();
 
   const handleChange = (e: any) => {
