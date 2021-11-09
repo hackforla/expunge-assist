@@ -36,14 +36,12 @@ interface ComponentProps {
   onAdjustClick: () => void;
   content: string;
   nameOfStep: string;
-  setFormState: (value: any) => void;
 }
 
 const TextPreview = ({
   onAdjustClick,
   content,
   nameOfStep,
-  setFormState,
 }: ComponentProps) => {
   const classes = useStyles();
   const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -57,11 +55,7 @@ const TextPreview = ({
       <div className={classes.flex}>
         <h2>{nameOfStep}</h2>
         {isEditing ? (
-          <EditContent
-            setFormState={setFormState}
-            content={content}
-            setIsEditing={setIsEditing}
-          />
+          <EditContent content={content} setIsEditing={setIsEditing} />
         ) : (
           <div className={classes.textContainer}>
             <p>{content}</p>
