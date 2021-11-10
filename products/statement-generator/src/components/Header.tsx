@@ -20,6 +20,7 @@ const useStyles = makeStyles<Theme, IStyleProps>((theme: Theme) =>
 
       padding: '18px',
       display: 'flex',
+      justifyContent: 'space-evenly',
 
       '& a': {
         color: ({ pageTheme }: IStyleProps) =>
@@ -46,6 +47,20 @@ const useStyles = makeStyles<Theme, IStyleProps>((theme: Theme) =>
         display: 'none',
       },
     },
+    logoContainer: {
+      display: 'flex',
+      width: '50%',
+      paddingLeft: '18px',
+    },
+    linkContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      width: '50%',
+      paddingRight: '18px',
+    },
+    link: {
+      marginLeft: '15px',
+    },
   })
 );
 
@@ -61,20 +76,39 @@ const Header = () => {
   const classes = useStyles({ pageTheme: isPurpleTheme ? 'purple' : 'light' });
 
   return (
-    <div className={`${classes.root} app-header`}>
-      <Link to="/">
-        <img src={logoIcon} alt="" />
-      </Link>
-      <Link
-        to="/"
-        style={{
-          textDecoration: 'none',
-        }}
-        className="logo-title"
-      >
-        <p>Expunge</p>
-        <p>Assist</p>
-      </Link>
+    <div className={classes.root}>
+      <div className={classes.logoContainer}>
+        <Link to="/">
+          <img src={logoIcon} alt="" />
+        </Link>
+        <Link
+          to="/"
+          style={{
+            textDecoration: 'none',
+          }}
+          className="logo-title"
+        >
+          <p>Expunge</p>
+          <p>Assist</p>
+        </Link>
+      </div>
+      <div className={classes.linkContainer}>
+        <Link className={classes.link} to="/">
+          Home
+        </Link>
+        <Link className={classes.link} to="/about">
+          About
+        </Link>
+        <Link className={classes.link} to="faq">
+          FAQs
+        </Link>
+        <Link className={classes.link} to="/contact">
+          Contact
+        </Link>
+        <Link className={classes.link} to="/demo">
+          Demo
+        </Link>
+      </div>
     </div>
   );
 };

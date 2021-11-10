@@ -24,6 +24,9 @@ import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
 
+import DesignedLandingPage from 'pages/DesignedLandingPage';
+import ContactUs from 'pages/ContactUs';
+
 import 'styles/App.css';
 
 import { useTranslation } from 'react-i18next';
@@ -82,7 +85,7 @@ const App: React.FC = () => {
               <FormHeader />
 
               <Switch>
-                <Route exact path="/" component={Landing} />
+                <Route exact path="/" component={DesignedLandingPage} />
 
                 <Route
                   exact
@@ -98,8 +101,10 @@ const App: React.FC = () => {
 
                 <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
                 <Route path="/TermsOfUse" component={TermsOfUse} />
-                <Route path="/FAQ" component={FAQ} />
-                <Route path="/AboutUs" component={AboutUs} />
+                <Route path="/faq" component={FAQ} />
+                <Route path="/about" component={AboutUs} />
+                <Route path="/demo" component={Landing} />
+                <Route path="/contact" component={ContactUs} />
 
                 <Route component={NotFound} />
                 <Route path="/404" component={NotFound} />
