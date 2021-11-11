@@ -25,29 +25,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     middleWrapper: {
       display: 'flex',
-      flex: '1 1 auto',
       justifyContent: 'space-between',
-      maxWidth: '320px',
-      textTransform: 'uppercase',
       margin: '0 auto',
-      '& a': {},
-      [theme.breakpoints.up('md')]: {
-        // '& :nth-child(n+3)': {
-        //   display: 'none',
-        // },
-        // width: '260px',
-        // '& a': {
-        //   fontWeight: '700',
-        //   fontSize: '1rem',
-        // },
-      },
-      [theme.breakpoints.down('sm')]: {
-        // position: 'relative',
-        // bottom: '17px',
-      },
     },
     endWrapper: {
       fontSize: '12px',
+      textAlign: 'end',
       [theme.breakpoints.down('sm')]: {
         display: 'none',
       },
@@ -56,19 +39,20 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: '6px',
       color: 'white',
       fontSize: '12px',
+      textTransform: 'uppercase',
+      margin: '0 6px',
     },
   })
 );
 
 function NavbarLink(props: any) {
   const classes = useStyles();
-  const publicUrl = process.env.PUBLIC_URL;
   const { url, children } = props;
 
   return (
     <Link
       className={classes.linkBtn}
-      href={`${publicUrl}/${url}`}
+      href={`${process.env.PUBLIC_URL}/${url}`}
       underline="always"
     >
       {children}
