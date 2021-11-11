@@ -1,5 +1,5 @@
 import React from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles, styled } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import Footer from 'components/Footer';
@@ -60,6 +60,7 @@ const useStyles = makeStyles<Theme>((theme) =>
       letterSoacing: '1px',
       border: 'none',
       marginLeft: '50px',
+      fontSize: '1.2em',
     },
     partnerContainer: {
       width: '100%',
@@ -128,6 +129,60 @@ const useStyles = makeStyles<Theme>((theme) =>
       fontSize: '0.9em',
       marginTop: '50px',
     },
+    partnerMissionContainer: {
+      width: ' 100%',
+      height: '480px',
+    },
+    missionCard: {
+      width: '600px',
+      height: '335px',
+      border: '8px solid rgba(153,3,225, 0.5)',
+      borderRadius: '8px',
+      marginLeft: '120px',
+      backgroundColor: '#fffaf2',
+      zIndex: 4,
+    },
+    missionTextContainer: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'flex-start',
+      fontSize: '1.6em',
+    },
+    missionText: {
+      color: '#9903ff',
+      fontFamily: 'mulish',
+      marginLeft: '50px',
+    },
+    textContainer: {
+      marginTop: '35px',
+    },
+    missionDescription: {
+      fontFamily: 'mulish',
+      fontSize: '1.3em',
+      letterSpacing: '1px',
+      lineHeight: '40px',
+      marginLeft: '50px',
+      marginRight: '50px',
+    },
+    missionButton: {
+      borderRadius: '8px',
+      marginTop: '40px',
+      marginLeft: '50px',
+      color: '#fff',
+      backgroundColor: '#9903ff',
+      height: '42px',
+      width: '162px',
+      fontSize: '1.2em',
+      letterSpacing: '1px',
+    },
+    purpleBand: {
+      width: '100%',
+      backgroundColor: '#f9f1ff',
+      height: '300px',
+      zIndex: -2,
+      position: 'relative',
+      bottom: '110px',
+    },
   })
 );
 
@@ -178,7 +233,9 @@ export default function LandingPage() {
         <div className={classes.whyPartnerContainer}>
           <div className={classes.partnersFieldContainer}>
             <div className={classes.whyPartnerField}>
-              <div className={classes.partnerHeaderContainer}>Header</div>
+              <div className={classes.partnerHeaderContainer}>
+                Why Partner with us?
+              </div>
               <p className={classes.partnerFormText}>Ipsum Lorem</p>
               <p className={classes.partnerFormText}>Ipsum Lorem</p>
               <p className={classes.partnerFormText}>Ipsum Lorem</p>
@@ -189,6 +246,22 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className={classes.partnerMissionContainer}>
+        <div className={classes.missionCard}>
+          <div className={classes.missionTextContainer}>
+            <h2 className={classes.missionText}>Our Mission</h2>
+          </div>
+          <div className={classes.textContainer}>
+            <p className={classes.missionDescription}>
+              Our mission is to help the 200,000+ residents of LA county who are
+              eligible for record clearance and help provide a second chance
+            </p>
+            <button className={classes.missionButton}>Learn More</button>
+          </div>
+        </div>
+        <div className={classes.purpleBand} />
       </div>
       <Footer />
     </div>
