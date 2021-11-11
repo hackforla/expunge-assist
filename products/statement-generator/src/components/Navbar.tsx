@@ -1,5 +1,5 @@
 import React from 'react';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles, Link } from '@material-ui/core';
 
 import hackForLALogo from 'assets/hackForLALogo.svg';
 
@@ -7,84 +7,92 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
-      background: 'none',
       color: 'white',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       flexShrink: 0,
-      '& img, span': {
-        display: 'none',
-        margin: '0 20px',
-      },
+      padding: '6px 18px',
+      background: theme.palette.primary.main,
       [theme.breakpoints.up('md')]: {
         background: 'black',
-        height: '50px',
-        '& img, span': {
-          display: 'block',
-        },
-      },
-      [theme.breakpoints.up('lg')]: {
-        '& img, span': {
-          margin: '0 45px',
-        },
       },
     },
-    imageWrapper: {
-      [theme.breakpoints.up('md')]: {
-        width: '230px',
+    leftWrapper: {
+      [theme.breakpoints.down('sm')]: {
+        display: 'none',
       },
     },
-    linkWrapper: {
+    middleWrapper: {
       display: 'flex',
-      margin: '0 auto',
+      flex: '1 1 auto',
       justifyContent: 'space-between',
-      width: '300px',
+      maxWidth: '320px',
       textTransform: 'uppercase',
-      '& a': {
-        color: 'white',
-        fontSize: '0.625rem',
-      },
+      margin: '0 auto',
+      '& a': {},
       [theme.breakpoints.up('md')]: {
-        '& :nth-child(n+3)': {
-          display: 'none',
-        },
-        width: '260px',
-        '& a': {
-          fontWeight: '700',
-          fontSize: '1rem',
-        },
+        // '& :nth-child(n+3)': {
+        //   display: 'none',
+        // },
+        // width: '260px',
+        // '& a': {
+        //   fontWeight: '700',
+        //   fontSize: '1rem',
+        // },
       },
       [theme.breakpoints.down('sm')]: {
-        position: 'relative',
-        bottom: '17px',
+        // position: 'relative',
+        // bottom: '17px',
       },
+    },
+    endWrapper: {
+      fontSize: '12px',
+      [theme.breakpoints.down('sm')]: {
+        display: 'none',
+      },
+    },
+    linkBtn: {
+      padding: '6px',
+      color: 'white',
+      fontSize: '12px',
     },
   })
 );
 
+function NavbarLink(props: any) {
+  const classes = useStyles();
+  const publicUrl = process.env.PUBLIC_URL;
+  const { url, children } = props;
+
+  return (
+    <Link
+      className={classes.linkBtn}
+      href={`${publicUrl}/${url}`}
+      underline="always"
+    >
+      {children}
+    </Link>
+  );
+}
+
 const Navbar: React.FC = () => {
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
-      <div className={classes.imageWrapper}>
+      <div className={classes.leftWrapper}>
         <img src={hackForLALogo} alt="Hack for LA Logo" />
       </div>
-      <div className={classes.linkWrapper}>
-        <li>
-          <a href={`${process.env.PUBLIC_URL}/PrivacyPolicy`}>Privacy Policy</a>
-        </li>
-        <li>
-          <a href={`${process.env.PUBLIC_URL}/TermsOfUse`}>Terms Of Use</a>
-        </li>
-        <li>
-          <a href={`${process.env.PUBLIC_URL}/FAQ`}>FAQ</a>
-        </li>
-        <li>
-          <a href={`${process.env.PUBLIC_URL}/AboutUs`}>About Us</a>
-        </li>
+
+      <div className={classes.middleWrapper}>
+        <NavbarLink url="PrivacyPolicy">Privacy Policy</NavbarLink>
+        <NavbarLink url="TermsOfUse">Terms Of Use</NavbarLink>
+        <NavbarLink url="AboutUs">About Us</NavbarLink>
+        <NavbarLink url="FAQ">FAQ</NavbarLink>
       </div>
-      <span>COPYRIGHT 2020 HACK FOR LA</span>
+
+      <span className={classes.endWrapper}>COPYRIGHT 2020 HACK FOR LA</span>
     </div>
   );
 };
