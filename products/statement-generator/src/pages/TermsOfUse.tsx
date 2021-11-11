@@ -1,28 +1,23 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 const useStyles = makeStyles(() =>
   createStyles({
-    root: {
-      color: 'white',
-      padding: '18px',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-    },
-    content: {
-      marginTop: '50px',
-      padding: '0 5px',
-      lineHeight: '1.17rem',
-    },
+    root: {},
   })
 );
 
 const TermsOfUse = () => {
   const classes = useStyles();
+  const utilityClasses = useUtilityStyles({
+    pageTheme: 'dark',
+  });
+
   return (
-    <div className={classes.root}>
-      <div className={classes.content}>
+    <div className={utilityClasses.primaryContainer}>
+      <div className={utilityClasses.contentContainer}>
         <h2>Terms of Use</h2>
         <br />
         <p>

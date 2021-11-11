@@ -50,11 +50,7 @@ function NavbarLink(props: any) {
   const { url, children } = props;
 
   return (
-    <Link
-      className={classes.linkBtn}
-      href={`${process.env.PUBLIC_URL}/${url}`}
-      underline="always"
-    >
+    <Link className={classes.linkBtn} href={`/${url}`} underline="always">
       {children}
     </Link>
   );
