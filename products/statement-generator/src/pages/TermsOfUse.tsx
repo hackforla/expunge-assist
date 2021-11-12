@@ -1,5 +1,8 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+
+import Button from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -11,11 +14,12 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const TermsOfUse = () => {
+function TermsOfUse() {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
   });
+  const history = useHistory();
 
   return (
     <div className={utilityClasses.primaryContainer}>
@@ -61,9 +65,18 @@ const TermsOfUse = () => {
           The laws of the State of California excluding its conflicts of law
           rules govern this license agreement.
         </p>
+
+        <div className={utilityClasses.buttonContainerBuffer} />
+        <div className={utilityClasses.buttonContainer}>
+          <Button
+            onClick={() => history.goBack()}
+            buttonText="Back"
+            theme="transparent"
+          />
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default TermsOfUse;

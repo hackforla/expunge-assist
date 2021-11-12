@@ -25,6 +25,9 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       display: 'flex',
       flexDirection: 'row',
     },
+    buttonContainerBuffer: {
+      height: '36px',
+    },
     contentContainer: {
       maxWidth: '600px',
       minWidth: '300px',

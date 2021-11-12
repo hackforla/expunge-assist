@@ -1,5 +1,8 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+
+import Button from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -11,15 +14,12 @@ const useStyles = makeStyles(() =>
   })
 );
 
-interface PrivacyPolicyProps {
-  handleClick: () => void;
-}
-
-const PrivacyPolicy = ({ handleClick }: PrivacyPolicyProps) => {
+function PrivacyPolicy() {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
   });
+  const history = useHistory();
 
   return (
     <div className={utilityClasses.primaryContainer}>
@@ -44,9 +44,18 @@ const PrivacyPolicy = ({ handleClick }: PrivacyPolicyProps) => {
           ALL SESSION DATA IS KEPT PRIVATE AND PERSONAL INFORMATION IS
           CONFIDENTIAL.
         </p>
+
+        <div className={utilityClasses.buttonContainerBuffer} />
+        <div className={utilityClasses.buttonContainer}>
+          <Button
+            onClick={() => history.goBack()}
+            buttonText="Back"
+            theme="transparent"
+          />
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default PrivacyPolicy;
