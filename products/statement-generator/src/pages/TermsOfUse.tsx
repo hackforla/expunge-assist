@@ -1,34 +1,33 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+
+import Button from 'components/Button';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
-    root: {
-      color: 'white',
-      padding: '18px',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-    },
-    content: {
-      marginTop: '50px',
-      padding: '0 5px',
-      lineHeight: '1.17rem',
+    paragraph: {
+      marginTop: '1rem',
     },
   })
 );
 
-const TermsOfUse = () => {
+function TermsOfUse() {
   const classes = useStyles();
+  const utilityClasses = useUtilityStyles({
+    pageTheme: 'dark',
+  });
+  const history = useHistory();
+
   return (
-    <div className={classes.root}>
-      <div className={classes.content}>
+    <div className={utilityClasses.primaryContainer}>
+      <div className={utilityClasses.contentContainer}>
         <h2>Terms of Use</h2>
-        <br />
-        <p>
-          The Personal Statement Generator
-          <br />
-          <br />
+        <h3 className={classes.paragraph}>The Personal Statement Generator</h3>
+
+        <p className={classes.paragraph}>
           The Personal Statement Generator is a piece of software created to
           helping people expunge their records through a personal statement that
           can be submitted. The main use is to help applications generate a
@@ -39,18 +38,15 @@ const TermsOfUse = () => {
           interactions would be subjected to such laws, you may not use this
           application. You may not use the Application in a way that would
           violate the Gramm-Leach-Bliley Act (GLBA)
-          <br />
-          <br />
-          Scope Of License
-          <br />
-          <br />
+        </p>
+        <h3 className={classes.paragraph}>Scope Of License</h3>
+        <p className={classes.paragraph}>
           You are given a non-transferable, non-exclusive, non-sub licensable
           license to use the application on your browser of choice.
-          <br />
-          <br />
-          User Generated Contributions
-          <br />
-          <br />
+        </p>
+        <h3 className={classes.paragraph}>User Generated Contributions</h3>
+
+        <p className={classes.paragraph}>
           We may provide you with the opportunity to create, submit, post,
           display, transmit, perform, publish, distribute, or broadcast content
           and materials to us or in the Application, including but not limited
@@ -69,9 +65,18 @@ const TermsOfUse = () => {
           The laws of the State of California excluding its conflicts of law
           rules govern this license agreement.
         </p>
+
+        <div className={utilityClasses.buttonContainerBuffer} />
+        <div className={utilityClasses.buttonContainer}>
+          <Button
+            onClick={() => history.goBack()}
+            buttonText="Back"
+            theme="transparent"
+          />
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default TermsOfUse;

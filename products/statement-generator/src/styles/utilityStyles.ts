@@ -21,11 +21,12 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
         pageTheme === 'dark' ? 'white' : '#25003F',
     },
     buttonContainer: {
+      marginTop: 'auto',
       display: 'flex',
-      justifyContent: 'flex-end',
-      [theme.breakpoints.up(theme.breakpoints.values.md)]: {
-        justifyContent: 'flex-start',
-      },
+      flexDirection: 'row',
+    },
+    buttonContainerBuffer: {
+      height: '36px',
     },
     contentContainer: {
       maxWidth: '600px',
