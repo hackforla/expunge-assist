@@ -26,14 +26,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       border: 'none',
       borderRadius: '24px',
       fontFamily: 'Roboto',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
       fontSize: '14px',
       lineHeight: '16px',
-      letterSpacing: '0.0125em',
-      textTransform: 'uppercase',
-      marginBottom: '1rem',
-      cursor: 'pointer',
 
       boxShadow: (props) => {
         switch (props.theme) {
