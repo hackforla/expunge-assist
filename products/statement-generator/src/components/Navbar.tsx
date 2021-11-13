@@ -5,18 +5,15 @@ import hackForLALogo from 'assets/hackForLALogo.svg';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
+    footerContainer: {
       width: '100%',
-      color: 'white',
+      color: '#cbcbcb',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      background: '#0a0a0a',
       flexShrink: 0,
       padding: '6px 18px',
-      background: theme.palette.primary.main,
-      [theme.breakpoints.up('md')]: {
-        background: 'black',
-      },
     },
     leftWrapper: {
       [theme.breakpoints.down('sm')]: {
@@ -37,10 +34,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     linkBtn: {
       padding: '6px',
-      color: 'white',
+      color: '#cbcbcb',
       fontSize: '12px',
-      textTransform: 'uppercase',
       margin: '0 6px',
+      [theme.breakpoints.down('sm')]: {
+        textAlign: 'center',
+      },
     },
   })
 );
@@ -50,7 +49,7 @@ function NavbarLink(props: any) {
   const { url, children } = props;
 
   return (
-    <Link className={classes.linkBtn} href={`/${url}`} underline="always">
+    <Link className={classes.linkBtn} href={`/${url}`}>
       {children}
     </Link>
   );
@@ -60,7 +59,7 @@ const Navbar: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.footerContainer}>
       <div className={classes.leftWrapper}>
         <img src={hackForLALogo} alt="Hack for LA Logo" />
       </div>
@@ -72,7 +71,7 @@ const Navbar: React.FC = () => {
         <NavbarLink url="FAQ">FAQ</NavbarLink>
       </div>
 
-      <span className={classes.endWrapper}>COPYRIGHT 2020 HACK FOR LA</span>
+      <span className={classes.endWrapper}>COPYRIGHT 2021 HACK FOR LA</span>
     </div>
   );
 };
