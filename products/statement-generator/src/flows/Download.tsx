@@ -13,7 +13,7 @@ import {
   generateInvolvementUnemployed,
   generateFutureGoals,
   generateWhy,
-} from 'helpers/StatementHelpers';
+} from 'helpers/statementGenerators';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import { IStepState } from 'contexts/FormStateProps';

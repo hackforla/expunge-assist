@@ -18,7 +18,7 @@ import {
   generateInvolvementUnemployed,
   generateFutureGoals,
   generateWhy,
-} from 'helpers/StatementHelpers';
+} from 'helpers/statementGenerators';
 
 const useStyles = makeStyles(() =>
   createStyles({
