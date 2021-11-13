@@ -21,11 +21,9 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
     },
     buttonContainer: {
       marginTop: 'auto',
+      paddingTop: '3rem',
       display: 'flex',
       flexDirection: 'row',
-    },
-    buttonContainerBuffer: {
-      height: '36px',
     },
     contentContainer: {
       maxWidth: '600px',

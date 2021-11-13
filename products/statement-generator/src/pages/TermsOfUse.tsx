@@ -5,7 +5,6 @@ import Button from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-
 function TermsOfUse() {
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
@@ -57,7 +56,6 @@ function TermsOfUse() {
           rules govern this license agreement.
         </p>
 
-        <div className={utilityClasses.buttonContainerBuffer} />
         <div className={utilityClasses.buttonContainer}>
           <Button
             onClick={() => history.goBack()}
