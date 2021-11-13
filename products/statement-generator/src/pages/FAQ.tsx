@@ -1,31 +1,10 @@
 import React from 'react';
-import { makeStyles, createStyles, Link } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
 import Button from 'components/Button';
+import LinkAsText from 'components/LinkAsText';
 
 import useUtilityStyles from 'styles/utilityStyles';
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    linkAsText: {
-      color: 'white',
-    },
-  })
-);
-
-function LinkAsText({ link }: any) {
-  const classes = useStyles();
-  return (
-    <>
-      &nbsp;
-      <Link underline="always" className={classes.linkAsText} href={link}>
-        {link}
-      </Link>
-      &nbsp;
-    </>
-  );
-}
 
 function FAQ() {
   const utilityClasses = useUtilityStyles({
