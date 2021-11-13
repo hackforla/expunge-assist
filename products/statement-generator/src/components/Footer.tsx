@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function NavbarLink(props: any) {
+function FooterLink(props: any) {
   const classes = useStyles();
   const { url, children } = props;
 
@@ -55,7 +55,7 @@ function NavbarLink(props: any) {
   );
 }
 
-const Navbar: React.FC = () => {
+const Footer: React.FC = () => {
   const classes = useStyles();
 
   return (
@@ -65,10 +65,10 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className={classes.middleWrapper}>
-        <NavbarLink url="PrivacyPolicy">Privacy Policy</NavbarLink>
-        <NavbarLink url="TermsOfUse">Terms Of Use</NavbarLink>
-        <NavbarLink url="AboutUs">About Us</NavbarLink>
-        <NavbarLink url="FAQ">FAQ</NavbarLink>
+        <FooterLink url="PrivacyPolicy">Privacy Policy</FooterLink>
+        <FooterLink url="TermsOfUse">Terms Of Use</FooterLink>
+        <FooterLink url="AboutUs">About Us</FooterLink>
+        <FooterLink url="FAQ">FAQ</FooterLink>
       </div>
 
       <span className={classes.endWrapper}>COPYRIGHT 2021 HACK FOR LA</span>
@@ -76,4 +76,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default Footer;
