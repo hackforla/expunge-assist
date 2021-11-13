@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Theme } from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -23,11 +23,20 @@ import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    buttonSpacing: {
+      marginBottom: '1rem',
+    },
+  })
+);
+
 interface IFinalizeStepProps {
   formState: IStepState;
 }
 
 const Download = ({ formState }: IFinalizeStepProps) => {
+  const classes = useStyles();
   const utilityClasses = useUtilityStyles();
 
   // disable all buttons unless consent is checked
@@ -113,24 +122,28 @@ const Download = ({ formState }: IFinalizeStepProps) => {
         />
         <div className={utilityClasses.downloadButtonsContainer}>
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickEmail}
             disabled={isDisabled}
             icon={<EmailIcon />}
             buttonText={buttonText('email', 'send in an email')}
           />
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickClipboard}
             disabled={isDisabled}
             icon={<FileCopyIcon />}
             buttonText={buttonText('copy', 'copy to clipboard')}
           />
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickTXT}
             disabled={isDisabled}
             icon={<GetAppIcon />}
             buttonText={buttonText('txt', 'download txt')}
           />
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickPDF}
             disabled={isDisabled}
             icon={<GetAppIcon />}

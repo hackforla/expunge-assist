@@ -8,7 +8,6 @@ interface IStyleProps {
 const useUtilityStyles = makeStyles<Theme>((theme) =>
   createStyles({
     primaryContainer: {
-      padding: '18px 0',
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
@@ -32,6 +31,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       maxWidth: '600px',
       minWidth: '300px',
       width: '100%',
+      padding: '18px',
 
       marginLeft: 'auto',
       marginRight: 'auto',
