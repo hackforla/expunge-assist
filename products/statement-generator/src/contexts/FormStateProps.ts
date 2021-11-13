@@ -139,6 +139,7 @@ export interface IWhyStepState {
 }
 
 export interface IStatementState {
+  [key: string]: string;
   introduction: string;
   job: string;
   service: string;

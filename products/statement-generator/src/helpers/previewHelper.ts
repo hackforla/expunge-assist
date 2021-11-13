@@ -3,75 +3,79 @@ import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import * as statementGenerators from 'helpers/statementGenerators';
 
-const PREVIEW_GENERATOR_MAP = {
+interface IPreviewMapItem {
+  title: string;
+  generator: (formState: IStepState) => string;
+  stateKey: string;
+}
+
+const PREVIEW_MAP = {
   [STEP_ENUMS.INTRODUCTION_PREVIEW]: {
     title: 'Previewing Introduction',
     generator: statementGenerators.generateIntroduction,
+    stateKey: 'introduction',
   },
   [STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW]: {
     title: 'Previewing Involvement: Job',
     generator: statementGenerators.generateInvolvementJob,
+    stateKey: 'job',
   },
   [STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW]: {
     title: 'Previewing Involvement: Community Service',
     generator: statementGenerators.generateInvolvementCommunity,
+    stateKey: 'service',
   },
   [STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW]: {
     title: 'Previewing Involvement: Recovery',
     generator: statementGenerators.generateInvolvementRecovery,
+    stateKey: 'recovery',
   },
   [STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW]: {
     title: 'Previewing Involvement: School',
     generator: statementGenerators.generateInvolvementSchool,
+    stateKey: 'school',
   },
   [STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW]: {
     title: 'Previewing Involvement: Parenting',
     generator: statementGenerators.generateInvolvementParenting,
+    stateKey: 'parenting',
   },
   [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW]: {
     title: 'Previewing Involvement: Unemployment',
     generator: statementGenerators.generateInvolvementUnemployed,
+    stateKey: 'unemployed',
   },
   [STEP_ENUMS.GOALS_PREVIEW]: {
     title: 'Previewing Goals',
     generator: statementGenerators.generateFutureGoals,
+    stateKey: 'goals',
   },
   [STEP_ENUMS.WHY_PREVIEW]: {
     title: 'Previewing Why',
     generator: statementGenerators.generateWhy,
+    stateKey: 'why',
   },
 };
 
+export function getPreviewConfig(step: string): IPreviewMapItem {
+  return PREVIEW_MAP[step];
+}
+
 export function getPreviewTitle(step: string): string {
-  return PREVIEW_GENERATOR_MAP[step]?.title;
+  return PREVIEW_MAP[step]?.title;
 }
 
 export function getPreviewStatementState(
   formState: IStepState,
   step: string
 ): string | undefined {
-  switch (step) {
-    case STEP_ENUMS.INTRODUCTION_PREVIEW:
-      return formState.statements.introduction;
-    case STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW:
-      return formState.statements.job;
-    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW:
-      return formState.statements.service;
-    case STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW:
-      return formState.statements.recovery;
-    case STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW:
-      return formState.statements.school;
-    case STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW:
-      return formState.statements.parenting;
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
-      return formState.statements.unemployed;
-    case STEP_ENUMS.GOALS_PREVIEW:
-      return formState.statements.goals;
-    case STEP_ENUMS.WHY_PREVIEW:
-      return formState.statements.why;
-    default:
-      return undefined;
+  const previewConfig = getPreviewConfig(step);
+  if (previewConfig) {
+    const { stateKey } = previewConfig;
+    return formState.statements[stateKey];
   }
+
+  return undefined;
 }
 
 export function getPreviewStatement(
@@ -83,5 +87,5 @@ export function getPreviewStatement(
     return statementInState;
   }
 
-  return PREVIEW_GENERATOR_MAP[step]?.generator(formState);
+  return PREVIEW_MAP[step]?.generator(formState);
 }
