@@ -8,13 +8,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
-    heading: {
-      marginTop: '2rem',
-    },
-    paragraph: {
-      marginTop: '1rem',
-      whiteSpace: 'pre-wrap',
-    },
     linkAsText: {
       color: 'white',
     },
@@ -35,7 +28,6 @@ function LinkAsText({ link }: any) {
 }
 
 function FAQ() {
-  const classes = useStyles();
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
   });
@@ -45,9 +37,9 @@ function FAQ() {
     <div className={utilityClasses.primaryContainer}>
       <div className={utilityClasses.contentContainer}>
         <h2>FAQ</h2>
-        <h3 className={classes.heading}>Why do I need a personal statement?</h3>
 
-        <p className={classes.paragraph}>
+        <h3>Why do I need a personal statement?</h3>
+        <p>
           The personal statement is a brief essay about your current life
           situation. You can use it to tell the judge why you’re worthy of
           having your felony conviction re-classified as a misdemeanor under
@@ -56,11 +48,11 @@ function FAQ() {
           expunged under Pro 64.
         </p>
 
-        <h3 className={classes.heading}>
+        <h3>
           What type of convictions are eligible to be reclassified to a
           misdemeanor under Prop 47?
         </h3>
-        <p className={classes.paragraph}>
+        <p>
           Certain individuals with a low-level non-violent prior felony record
           or who are currently incarcerated may qualify to change their record
           or their sentence to a misdemeanor for the following offenses:
@@ -85,10 +77,8 @@ function FAQ() {
           for more information.
         </p>
 
-        <h3 className={classes.heading}>
-          When do I need to file my Prop 47 application?
-        </h3>
-        <p className={classes.paragraph}>
+        <h3>When do I need to file my Prop 47 application?</h3>
+        <p>
           You need to file your Prop 47 application by November 4, 2022.
           However, you can still file past that dateline if you have a valid
           excuse. Please visit
@@ -96,11 +86,11 @@ function FAQ() {
           for more information.
         </p>
 
-        <h3 className={classes.heading}>
+        <h3>
           What type of marijuana convictions are eligible to be reclassified to
           a misdemeanor or completely expunged under Prop 64?
         </h3>
-        <p className={classes.paragraph}>
+        <p>
           There is a long list of mariruana offenses that can be reclassified or
           completely expunged under California’s Prop 64. It includes:
           <br />
@@ -115,18 +105,14 @@ function FAQ() {
           for a complete list and for more information.
         </p>
 
-        <h3 className={classes.heading}>
-          When do I need to file my Prop 64 application?
-        </h3>
-        <p className={classes.paragraph}>
+        <h3>When do I need to file my Prop 64 application?</h3>
+        <p>
           There is no deadline for filing a Prop 64 application. You may file
           any time.
         </p>
 
-        <h3 className={classes.heading}>
-          Are there any helpful resources for getting my record cleared?
-        </h3>
-        <p className={classes.paragraph}>
+        <h3>Are there any helpful resources for getting my record cleared?</h3>
+        <p>
           There are a lot of organizations that help with record clearance. Here
           is a non-comprehensive list of organizations that provide support:
           <br />

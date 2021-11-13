@@ -1,21 +1,12 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
 import Button from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    paragraph: {
-      marginTop: '1rem',
-    },
-  })
-);
 
 function TermsOfUse() {
-  const classes = useStyles();
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
   });
@@ -25,9 +16,9 @@ function TermsOfUse() {
     <div className={utilityClasses.primaryContainer}>
       <div className={utilityClasses.contentContainer}>
         <h2>Terms of Use</h2>
-        <h3 className={classes.paragraph}>The Personal Statement Generator</h3>
+        <h3>The Personal Statement Generator</h3>
 
-        <p className={classes.paragraph}>
+        <p>
           The Personal Statement Generator is a piece of software created to
           helping people expunge their records through a personal statement that
           can be submitted. The main use is to help applications generate a
@@ -39,14 +30,14 @@ function TermsOfUse() {
           application. You may not use the Application in a way that would
           violate the Gramm-Leach-Bliley Act (GLBA)
         </p>
-        <h3 className={classes.paragraph}>Scope Of License</h3>
-        <p className={classes.paragraph}>
+        <h3>Scope Of License</h3>
+        <p>
           You are given a non-transferable, non-exclusive, non-sub licensable
           license to use the application on your browser of choice.
         </p>
-        <h3 className={classes.paragraph}>User Generated Contributions</h3>
+        <h3>User Generated Contributions</h3>
 
-        <p className={classes.paragraph}>
+        <p>
           We may provide you with the opportunity to create, submit, post,
           display, transmit, perform, publish, distribute, or broadcast content
           and materials to us or in the Application, including but not limited
