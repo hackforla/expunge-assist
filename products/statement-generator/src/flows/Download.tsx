@@ -3,25 +3,16 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import {
-  generateIntroduction,
-  generateInvolvementJob,
-  generateInvolvementCommunity,
-  generateInvolvementRecovery,
-  generateInvolvementSchool,
-  generateInvolvementParenting,
-  generateInvolvementUnemployed,
-  generateFutureGoals,
-  generateWhy,
-} from 'helpers/StatementHelpers';
+import { getPreviewStatement } from 'helpers/previewHelper';
 
-import useUtilityStyles from 'styles/utilityStyles';
 import { IStepState } from 'contexts/FormStateProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -47,14 +38,20 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   // create a mailto link with the statement in the body
-  const str = `${generateIntroduction(formState)}
-  ${generateInvolvementJob(formState)}
-  ${generateInvolvementCommunity(formState)}
-  ${generateInvolvementRecovery(formState)}
-  ${generateInvolvementSchool(formState)}
-  ${generateInvolvementParenting(formState)}
-  ${generateInvolvementUnemployed(formState)} ${generateFutureGoals(formState)}
-  ${generateWhy(formState)}`;
+  const str = `${getPreviewStatement(formState, STEP_ENUMS.INTRODUCTION)}
+  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW)}}
+  ${getPreviewStatement(
+    formState,
+    STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW
+  )}
+  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW)}
+  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW)}
+  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW)}
+  ${getPreviewStatement(
+    formState,
+    STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW
+  )} ${getPreviewStatement(formState, STEP_ENUMS.GOALS_PREVIEW)}
+  ${getPreviewStatement(formState, STEP_ENUMS.WHY_PREVIEW)}`;
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;

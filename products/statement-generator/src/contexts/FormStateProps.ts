@@ -14,6 +14,7 @@ export interface IStepState {
   involvementUnemployedState: IInvolvementUnemployedState;
   goalsStep: IGoalsState;
   whyStep: IWhyStepState;
+  statements: IStatementState;
 }
 
 export const defaultStepState = {
@@ -64,6 +65,17 @@ export const defaultStepState = {
   whyStep: {
     clearRecordWhy: '',
     clearRecordHow: '',
+  },
+  statements: {
+    introduction: '',
+    job: '',
+    service: '',
+    recovery: '',
+    school: '',
+    parenting: '',
+    unemployed: '',
+    goals: '',
+    why: '',
   },
 };
 
@@ -124,6 +136,19 @@ export interface IGoalsState {
 export interface IWhyStepState {
   clearRecordWhy: string;
   clearRecordHow: string;
+}
+
+export interface IStatementState {
+  [key: string]: string;
+  introduction: string;
+  job: string;
+  service: string;
+  recovery: string;
+  school: string;
+  parenting: string;
+  unemployed: string;
+  goals: string;
+  why: string;
 }
 
 export const sampleStepState = {
