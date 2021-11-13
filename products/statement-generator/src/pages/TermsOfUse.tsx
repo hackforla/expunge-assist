@@ -5,7 +5,6 @@ import Button from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-
 function TermsOfUse() {
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
