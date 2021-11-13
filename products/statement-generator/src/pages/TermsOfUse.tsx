@@ -56,7 +56,6 @@ function TermsOfUse() {
           rules govern this license agreement.
         </p>
 
-        <div className={utilityClasses.buttonContainerBuffer} />
         <div className={utilityClasses.buttonContainer}>
           <Button
             onClick={() => history.goBack()}

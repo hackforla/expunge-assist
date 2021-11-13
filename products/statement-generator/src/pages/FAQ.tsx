@@ -101,7 +101,6 @@ function FAQ() {
           <br />• NDICA
         </p>
 
-        <div className={utilityClasses.buttonContainerBuffer} />
         <div className={utilityClasses.buttonContainer}>
           <Button
             onClick={() => history.goBack()}

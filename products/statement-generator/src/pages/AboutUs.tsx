@@ -45,7 +45,6 @@ export default function AboutUs() {
           </Link>
         </p>
 
-        <div className={utilityClasses.buttonContainerBuffer} />
         <div className={utilityClasses.buttonContainer}>
           <Button
             onClick={() => history.goBack()}
