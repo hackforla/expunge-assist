@@ -3,6 +3,8 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import Footer from 'components/Footer';
+import iPhone from '../assets/iPhoneProduct.jpg';
+import macbook from '../assets/MacBookProduct.jpg';
 import rocket from '../assets/RocketShip.svg';
 import step1 from '../assets/step1Column.jpg';
 import step2 from '../assets/step2Column.jpg';
@@ -27,7 +29,11 @@ const useStyles = makeStyles(() =>
     },
     greetingImageContainer: {
       width: '50%',
-      border: '2px solid red',
+      display: 'flex',
+    },
+    iPhone: {
+      height: '50px',
+      width: '100px',
     },
     greetingHeaderContainer: {
       fontFamily: 'mulish',
@@ -306,7 +312,10 @@ export default function LandingPage() {
             </Link>
           </div>
         </div>
-        <div className={classes.greetingImageContainer}>image</div>
+        <div className={classes.greetingImageContainer}>
+          <img src={macbook} alt="macbook preview" />
+          {/* <img className={classes.iPhone} src={iPhone} alt="iphone preview" /> */}
+        </div>
       </div>
 
       <div className={classes.partnerContainer}>
