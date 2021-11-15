@@ -1,10 +1,15 @@
 import React from 'react';
-import { Theme, makeStyles, createStyles, styled } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import Footer from 'components/Footer';
+import rocket from '../assets/RocketShip.svg';
+import step1 from '../assets/step1Column.jpg';
+import step2 from '../assets/step2Column.jpg';
+import step3 from '../assets/step3Column.jpg';
+import volunteers from '../assets/volunteers.jpg';
 
-const useStyles = makeStyles<Theme>((theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     pageContainer: {
       minWidth: '100%',
@@ -22,23 +27,24 @@ const useStyles = makeStyles<Theme>((theme) =>
     },
     greetingImageContainer: {
       width: '50%',
+      border: '2px solid red',
     },
     greetingHeaderContainer: {
       fontFamily: 'mulish',
-      fontSize: '2.2em',
+      fontSize: '2.3em',
       paddingLeft: '40px',
       lineHeight: '45px',
       letterSpacing: '1px',
       marginTop: '50px',
       fontWeight: 800,
+      width: '100%',
     },
     boldHeader: {
-      width: '60%',
+      width: '100%',
       paddingLeft: '50px',
     },
     purpleText: {
       fontFamily: 'mulish',
-      fontSize: '1.5em',
       color: '#9903ff',
     },
     greetingDescriptionContainer: {
@@ -50,6 +56,7 @@ const useStyles = makeStyles<Theme>((theme) =>
       lineHeight: '40px',
       fontFamily: 'mulish',
       marginLeft: '50px',
+      paddingRight: '70px',
     },
     demoButton: {
       width: '144px',
@@ -67,13 +74,14 @@ const useStyles = makeStyles<Theme>((theme) =>
       minHeight: '600px',
       backgroundColor: '#fff',
       height: '100%',
-      marginBottom: '100px',
+      marginBottom: '20px',
     },
     partnersFormSection: {
       width: '100%',
-      height: '500px',
+      height: '400px',
       display: 'flex',
       position: 'relative',
+      marginBottom: '40px',
     },
     formContainer: {
       width: '60%',
@@ -83,14 +91,14 @@ const useStyles = makeStyles<Theme>((theme) =>
       width: '700px',
       borderRadius: '8px',
       marginLeft: '150px',
-      marginTop: '30px',
+      marginTop: '20px',
       border: '8px solid rgba(245, 179, 4, 0.66)',
       backgroundColor: '#fffaf2',
       fontSize: '1.6em',
       paddingBottom: '10px',
     },
     partnerHeadingContainer: {
-      width: '50%',
+      width: '70%',
       marginLeft: '100px',
     },
     partnerHeading: {
@@ -121,6 +129,7 @@ const useStyles = makeStyles<Theme>((theme) =>
       width: '100%',
       marginLeft: '80px',
       marginRight: '30px',
+      paddingTop: '20px',
     },
     headOverTextContainer: {
       width: '90%',
@@ -178,10 +187,90 @@ const useStyles = makeStyles<Theme>((theme) =>
     purpleBand: {
       width: '100%',
       backgroundColor: '#f9f1ff',
-      height: '300px',
+      height: '280px',
       zIndex: -2,
       position: 'relative',
-      bottom: '110px',
+      bottom: '140px',
+    },
+    howItWorksContainer: {
+      width: '100%',
+      backgroundColor: '#fff',
+      marginTop: '50px',
+      marginBottom: 0,
+      height: '550px',
+    },
+    rocketImage: {
+      width: '40%',
+      height: '500px',
+      zIndex: 2,
+      position: 'relative',
+      left: '50%',
+      bottom: '85vh',
+    },
+    stepsHeaderContainer: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      paddingTop: '40px',
+    },
+    stepsHeaderText: {
+      fontFamily: 'mulish',
+      fontSize: '2.5em',
+    },
+    colorPurple: {
+      color: '#9903ff',
+    },
+    stepsImageContainer: {
+      width: '100%',
+      height: '700px',
+      display: 'flex',
+      justifyContent: 'center',
+      marginTop: '30px',
+    },
+    stepsImage: {
+      width: '255px',
+      height: '368px',
+      margin: '0 35px',
+    },
+    volunteering: {
+      width: '100%',
+      position: 'relative',
+    },
+    volunteersImg: {
+      height: '100%',
+      width: '40%',
+    },
+    volunteerCard: {
+      border: '8px solid rgba(245, 179, 4, 0.66)',
+      width: '600px',
+      borderRadius: '8px',
+      height: '350px',
+      marginLeft: '50%',
+      marginTop: '50px',
+      backgroundColor: '#fffaf2',
+      zIndex: 4,
+      position: 'absolute',
+      bottom: '12%',
+    },
+    volunteerCardHeader: {
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'flex-start',
+    },
+    volunteerHeading: {
+      padding: '40px 0 0 50px',
+      fontSize: '2.2em',
+      color: '#9903ff',
+      fontFamily: 'mulish',
+    },
+    volunteerTextContainer: {
+      padding: '40px 0 0 50px',
+    },
+    volunteerText: {
+      fontSize: '1.3em',
+      paddingRight: '52px',
+      lineHeight: '30px',
+      fontFamily: 'mulish',
     },
   })
 );
@@ -195,10 +284,15 @@ export default function LandingPage() {
         <div className={classes.greetingTextContainer}>
           <div className={classes.greetingHeaderContainer}>
             <div className={classes.boldHeader}>
-              <span className={classes.purpleText}>Expunge Assist</span>
-              accelerates the{' '}
-              <span className={classes.purpleText}>Record Clearnace</span>{' '}
-              process by helping user generate a declaration letter.
+              <h3>
+                <span className={classes.purpleText}>Expunge Assist</span>
+                <div>
+                  accelerates the{' '}
+                  <span className={classes.purpleText}> Record</span>
+                </div>{' '}
+                <span className={classes.purpleText}>Clearance</span> process by
+                helping user generate a declaration letter.
+              </h3>
             </div>
           </div>
           <div className={classes.greetingDescriptionContainer}>
@@ -234,7 +328,10 @@ export default function LandingPage() {
           <div className={classes.partnersFieldContainer}>
             <div className={classes.whyPartnerField}>
               <div className={classes.partnerHeaderContainer}>
-                Why Partner with us?
+                <h2>
+                  Why <span className={classes.colorPurple}>Partner</span> with
+                  us?
+                </h2>
               </div>
               <p className={classes.partnerFormText}>Ipsum Lorem</p>
               <p className={classes.partnerFormText}>Ipsum Lorem</p>
@@ -262,6 +359,42 @@ export default function LandingPage() {
           </div>
         </div>
         <div className={classes.purpleBand} />
+        <img className={classes.rocketImage} src={rocket} alt="rocketship" />
+      </div>
+
+      <div className={classes.howItWorksContainer}>
+        <div className={classes.stepsHeaderContainer}>
+          <h2 className={classes.stepsHeaderText}>
+            How <span className={classes.colorPurple}>Expunge Assist</span>{' '}
+            Works
+          </h2>{' '}
+        </div>
+        <div className={classes.stepsImageContainer}>
+          <img className={classes.stepsImage} src={step1} alt="phone" />
+          <img className={classes.stepsImage} src={step2} alt="phone" />
+          <img className={classes.stepsImage} src={step3} alt="phone" />
+        </div>
+      </div>
+
+      <div className={classes.volunteering}>
+        <img
+          className={classes.volunteersImg}
+          src={volunteers}
+          alt="volunteers"
+        />
+
+        <div className={classes.volunteerCard}>
+          <div className={classes.volunteerCardHeader}>
+            <h2 className={classes.volunteerHeading}>Volunteer</h2>
+          </div>
+          <div className={classes.volunteerTextContainer}>
+            <p className={classes.volunteerText}>
+              We’re looking for members to join our development team and support
+              our mission towards improve the record clearance process. <br />
+              Sign up below for more info.
+            </p>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>
