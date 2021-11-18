@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import Footer from 'components/Footer';
 import ourMissionImg from '../assets/ourMissionImg.jpg';
 import history from '../assets/thehistory.jpg';
+import checkmark from '../assets/checkmark.jpg';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -112,7 +113,7 @@ const useStyles = makeStyles(() =>
     accomplishContainer: {
       width: '100%',
       backgroundColor: '#fffaf2',
-      height: '500px',
+      height: '440px',
     },
     accomplishHeaderContainer: {
       width: '100%',
@@ -122,12 +123,72 @@ const useStyles = makeStyles(() =>
     },
     accomplishHeader: {
       fontFamily: 'mulish',
+      fontSize: '2.2em',
+    },
+    accomplishBodyContainer: {
+      width: '100%',
+      marginTop: '20px',
+    },
+    accomplishment: {
+      display: 'flex',
+      justifyContent: 'center',
+      marginBottom: '40px',
+    },
+    checkmarkImg: {
+      marginRight: '40px',
+    },
+    accomplishmentText: {
+      fontFamily: 'mulish',
+      fontSize: '1.8em',
+      width: '60%',
+    },
+    joinContainer: {
+      width: '100%',
+      height: '300px',
+    },
+    joinHeaderContainer: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      marginTop: '40px',
+    },
+    joinHeader: {
+      fontFamily: 'mulish',
+      fontSize: '2.2em',
+      lineHeight: '44px',
+      fontWeight: 700,
+    },
+    joinTextContainer: {
+      marginTop: '30px',
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    joinText: {
+      width: '48%',
+      fontSize: '1.8em',
+      fontFamily: 'mulish',
+      textAlign: 'center',
+      lineHeight: '40px',
+    },
+    teamContainer: {
+      backgroundColor: '#fffaf2',
+      height: '150px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    teamHeading: {
+      fontFamily: 'mulish',
+      fontSize: '2.2em',
     },
   })
 );
 
 const AboutUs: React.FC = () => {
   const classes = useStyles();
+  useEffect(() => {
+    document.title = 'About';
+  });
   return (
     <div className={classes.aboutContainer}>
       <div className={classes.ourMissionContainer}>
@@ -189,6 +250,54 @@ const AboutUs: React.FC = () => {
             What We&apos;ve Accomplished So Far
           </h2>
         </div>
+        <div className={classes.accomplishBodyContainer}>
+          <div className={classes.accomplishment}>
+            <img className={classes.checkmarkImg} src={checkmark} alt="" />
+
+            <p className={classes.accomplishmentText}>
+              Record clearance or reduction in California is possible as a
+              result of legislation which includes Prop 64 & Prop 47.
+            </p>
+          </div>
+
+          <div className={classes.accomplishment}>
+            <img className={classes.checkmarkImg} src={checkmark} alt="" />
+
+            <p className={classes.accomplishmentText}>
+              Record clearance or reduction in California is possible as a
+              result of legislation which includes Prop 64 & Prop 47.
+            </p>
+          </div>
+
+          <div className={classes.accomplishment}>
+            <img className={classes.checkmarkImg} src={checkmark} alt="" />
+
+            <p className={classes.accomplishmentText}>
+              Record clearance or reduction in California is possible as a
+              result of legislation which includes Prop 64 & Prop 47.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className={classes.joinContainer}>
+        <div className={classes.joinHeaderContainer}>
+          <h2 className={classes.joinHeader}>Join Our Mission</h2>
+        </div>
+        <div className={classes.joinTextContainer}>
+          <p className={classes.joinText}>
+            Our goal is to create a tool that can be used by anyone creating
+            personal statement generators for record clearance. Partner with us
+            on our mission to help the 200,000+ residents of LA county who are
+            eligible for record clearance and help provide a second chance
+          </p>
+        </div>
+      </div>
+
+      <div className={classes.teamContainer}>
+        <a href="https://www.hackforla.org/projects/expunge-assist">
+          <h2 className={classes.teamHeading}>Meet The Expunge Assist Team</h2>
+        </a>
       </div>
       <Footer />
     </div>

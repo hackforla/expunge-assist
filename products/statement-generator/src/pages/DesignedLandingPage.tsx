@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -283,6 +283,9 @@ const useStyles = makeStyles(() =>
 
 export default function LandingPage() {
   const classes = useStyles();
+  useEffect(() => {
+    document.title = 'Home';
+  });
 
   return (
     <div className={classes.pageContainer}>
