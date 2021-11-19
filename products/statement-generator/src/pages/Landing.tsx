@@ -6,7 +6,6 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import RoutingContext from 'contexts/RoutingContext';
 
 import useUtilityStyles from 'styles/utilityStyles';
-import { Banner } from './Banner';
 
 const useStyles = makeStyles(() =>
   createStyles({
