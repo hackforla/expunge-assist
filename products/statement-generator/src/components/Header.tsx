@@ -99,12 +99,6 @@ const Header = () => {
         <Link className={classes.link} to="/about">
           About
         </Link>
-        <Link className={classes.link} to="faq">
-          FAQs
-        </Link>
-        <Link className={classes.link} to="/contact">
-          Contact
-        </Link>
         <Link className={classes.link} to="/demo">
           Demo
         </Link>

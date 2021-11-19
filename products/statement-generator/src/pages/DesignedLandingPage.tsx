@@ -3,9 +3,8 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import Footer from 'components/Footer';
-import iPhone from '../assets/iPhoneProduct.jpg';
 import macbook from '../assets/MacBookProduct.jpg';
-import rocket from '../assets/RocketShip.svg';
+import rocket from '../assets/rocketship.svg';
 import step1 from '../assets/step1Column.jpg';
 import step2 from '../assets/step2Column.jpg';
 import step3 from '../assets/step3Column.jpg';
