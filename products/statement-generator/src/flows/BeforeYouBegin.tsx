@@ -17,6 +17,11 @@ const useStyles = makeStyles(() =>
     content: {
       margin: '23px 0 50px',
     },
+    buttonContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      marginTop: '240px',
+    },
   })
 );
 const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
@@ -42,7 +47,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
         {t('disclaimer.text')}
       </div>
 
-      <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
+      <div className={classes.buttonContainer}>
         <Button
           onClick={() => {
             onChangeAffirmation({ isActive: true });

@@ -12,21 +12,10 @@ import useUtilityStyles from 'styles/utilityStyles';
 function PreviewPage() {
   const utilityClasses = useUtilityStyles({ pageTheme: 'light' });
 
-  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const { formState } = useContext(FormStateContext);
   const { currentStep } = useContext(RoutingContext);
   const previewConfigItem = getPreviewConfig(currentStep);
   const hasPreviewConfig = previewConfigItem !== undefined;
-
-  function updateStatement(newStatement: string) {
-    if (hasPreviewConfig) {
-      updateStepToForm({
-        statements: {
-          ...formState.statements,
-          [previewConfigItem.stateKey]: newStatement,
-        },
-      });
-    }
-  }
 
   return (
     <div className={utilityClasses.primaryContainer}>
