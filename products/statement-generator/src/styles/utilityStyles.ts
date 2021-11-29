@@ -8,7 +8,6 @@ interface IStyleProps {
 const useUtilityStyles = makeStyles<Theme>((theme) =>
   createStyles({
     primaryContainer: {
-      padding: '18px 0',
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
@@ -21,16 +20,16 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
         pageTheme === 'dark' ? 'white' : '#25003F',
     },
     buttonContainer: {
+      marginTop: 'auto',
+      paddingTop: '3rem',
       display: 'flex',
-      justifyContent: 'flex-end',
-      [theme.breakpoints.up(theme.breakpoints.values.md)]: {
-        justifyContent: 'flex-start',
-      },
+      flexDirection: 'row',
     },
     contentContainer: {
       maxWidth: '600px',
       minWidth: '300px',
       width: '100%',
+      padding: '18px',
 
       marginLeft: 'auto',
       marginRight: 'auto',

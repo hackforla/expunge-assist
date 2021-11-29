@@ -47,7 +47,7 @@ const Form = ({
   }
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <>
       {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && (
         <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
       )}
@@ -157,7 +157,7 @@ const Form = ({
       {currentStep === STEP_ENUMS.DOWNLOAD && (
         <Download formState={formState} />
       )}
-    </div>
+    </>
   );
 };
 

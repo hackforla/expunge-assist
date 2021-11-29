@@ -12,7 +12,7 @@ import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
 import PageContainer from 'components/PageContainer';
-import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 import Header from 'components/Header';
 import FormHeader from 'components/FormHeader';
 
@@ -107,7 +107,7 @@ const App: React.FC = () => {
             </FormStateContextProvider>
           </AffirmationContextProvider>
         </RoutingContextProvider>
-        <Navbar />
+        <Footer />
       </Router>
     </ThemeProvider>
   );

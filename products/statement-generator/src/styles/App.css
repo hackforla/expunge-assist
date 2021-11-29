@@ -63,3 +63,18 @@ body {
     margin-left: 0;
   }
 }
+
+p {
+  white-space: pre-wrap;
+}
+
+h2 + h3,
+p + h3,
+h2 + p {
+  margin-top: 2rem;
+}
+
+h3 + p,
+p + p {
+  margin-top: 1rem;
+}
