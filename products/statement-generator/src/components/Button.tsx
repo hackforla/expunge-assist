@@ -28,6 +28,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       fontFamily: 'Roboto',
       fontSize: '14px',
       lineHeight: '16px',
+      width: '250px',
 
       boxShadow: (props) => {
         switch (props.theme) {
