@@ -32,18 +32,18 @@ export const FormStateContextProvider = ({
   function getNextStep(startingStep: string): string {
     const suggestedNext = getNextFormStep(startingStep);
 
+    // if `None of the Above` is checked, we go directly to the unemployed step
+    if (
+      isAnInvolvementPage(suggestedNext) &&
+      formState.involvementInitialState.isNoneChecked
+    ) {
+      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED;
+    }
+
     if (
       (suggestedNext === STEP_ENUMS.INVOLVEMENT.JOB ||
         suggestedNext === STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW) &&
       !formState.involvementInitialState.isJobChecked
-    ) {
-      return getNextStep(suggestedNext);
-    }
-
-    if (
-      (suggestedNext === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED ||
-        suggestedNext === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW) &&
-      formState.involvementInitialState.isJobChecked
     ) {
       return getNextStep(suggestedNext);
     }
