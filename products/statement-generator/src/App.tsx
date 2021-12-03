@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   useHistory,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -57,11 +57,11 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Router basename={process.env.PUBLIC_URL}>
-        <RoutingContextProvider>
+    <Router basename={process.env.PUBLIC_URL}>
+      <RoutingContextProvider>
+        <FormStateContextProvider>
           <AffirmationContextProvider>
-            <FormStateContextProvider>
+            <ThemeProvider theme={theme}>
               <nav
                 style={{
                   width: '100%',
@@ -101,12 +101,12 @@ const App: React.FC = () => {
 
                 <Route component={NotFound} />
               </Switch>
-            </FormStateContextProvider>
+              <Navbar />
+            </ThemeProvider>
           </AffirmationContextProvider>
-        </RoutingContextProvider>
-        <Navbar />
-      </Router>
-    </ThemeProvider>
+        </FormStateContextProvider>
+      </RoutingContextProvider>
+    </Router>
   );
 };
 
