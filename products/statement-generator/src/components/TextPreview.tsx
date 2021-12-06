@@ -9,6 +9,7 @@ const useStyles = makeStyles(() =>
     root: {
       margin: '25px 15px',
       padding: '15px',
+      height: '250px',
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
       '& h2': {
@@ -28,6 +29,11 @@ const useStyles = makeStyles(() =>
     },
     textContainer: {
       display: 'flex',
+      marginTop: '40px',
+    },
+    textContent: {
+      width: '80%',
+      margin: ' 0 25px 0 40px',
     },
   })
 );
@@ -58,7 +64,7 @@ const TextPreview = ({
           <EditContent content={content} setIsEditing={setIsEditing} />
         ) : (
           <div className={classes.textContainer}>
-            <p>{content}</p>
+            <p className={classes.textContent}> {content}</p>
             <CreateIcon style={{ color: '#9903FF' }} onClick={handleClick} />
           </div>
         )}

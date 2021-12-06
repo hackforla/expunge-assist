@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { IIntroductionState } from 'contexts/FormStateProps';
 
-import Textarea from 'components/Textarea';
 import Input from 'components/Input';
 import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
@@ -72,12 +71,11 @@ const IntroductionStep = ({
     <div className={utilityClasses.contentContainer}>
       <form className={utilityClasses.flexGrow}>
         <p>What is your name?</p>
-        <Textarea
+        <Input
           inputName="name"
           placeholder="Full Name"
           handleChange={handleChange}
-          multi={false}
-          isValid={fullNameValid}
+          type="text"
           defaultValue={stepState.fullName}
         />
 

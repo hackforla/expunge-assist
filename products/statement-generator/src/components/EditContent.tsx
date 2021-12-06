@@ -1,33 +1,18 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
-
-import FormStateContext from 'contexts/FormStateContext';
+import useUtilityStyles from 'styles/utilityStyles';
+import Textarea from './Textarea';
+import Button from './Button';
 
 const useStyles = makeStyles(() =>
   createStyles({
-    root: {
-      display: 'flex',
-      height: '100%',
-      width: '70%',
-    },
     form: {
       height: '120px',
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
+      paddingLeft: '70px',
       margin: '0 auto',
-    },
-    textContainer: {
-      width: '100%',
-    },
-    textArea: {
-      minHeight: '80px',
-      width: '100%',
-      padding: '10px',
-      fontSize: '.rem',
-      borderRadius: ' 5px',
-      border: '1px solid #ccc',
-      boxShadow: '1px 1px 1px #999',
     },
     buttonContainer: {
       display: 'flex',
@@ -65,47 +50,39 @@ export default function EditContent({
   content,
 }: EditContentProps) {
   const [updatedContent, setUpdatedContent] = useState(content);
-  // This value will be the name of the input  e.x. <input name='blah' />  which coincides with the targeted piece of state. {editdText: updatedContent}
-  const [editedField, setEditedField] = useState(null);
   const classes = useStyles();
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setEditedField(name);
-    setUpdatedContent(value);
-  };
+  const utilityClasses = useUtilityStyles({});
 
   const handleCancelClick = () => {
     setIsEditing(false);
     setUpdatedContent(content);
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setIsEditing(false);
   };
   return (
-    <div className={classes.root}>
+    <div className={utilityClasses.contentContainer}>
       <form className={classes.form}>
-        <div className={classes.textContainer}>
-          <textarea
-            name="editedText"
-            className={classes.textArea}
-            onChange={handleChange}
+        <div className={utilityClasses.flexColumn}>
+          <Textarea
+            multi
+            inputName="editedText"
+            handleChange={(e) => setUpdatedContent(e.target.value)}
             value={updatedContent}
           />
         </div>
         <div className={classes.buttonContainer}>
-          <button className={classes.cancelButton} onClick={handleCancelClick}>
-            Cancel
-          </button>
-          <button
-            type="submit"
+          <Button
+            className={classes.cancelButton}
+            buttonText="Cancel"
+            onClick={handleCancelClick}
+          />
+          <Button
             className={classes.purpleButton}
             onClick={handleSubmit}
-          >
-            Submit
-          </button>
+            buttonText="Submit"
+          />
         </div>
       </form>
     </div>

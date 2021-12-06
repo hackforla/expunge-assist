@@ -8,9 +8,8 @@ import { teal } from '@material-ui/core/colors';
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
-      width: '30%',
+      width: '300px',
       minWidth: '10rem',
-      height: '2.5rem',
       borderRadius: '15px',
       marginBottom: '1rem',
 
@@ -33,7 +32,8 @@ interface InputFieldProps {
   type: string;
   defaultValue?: string;
   disabled?: boolean;
-  adornment: string;
+  adornment?: string;
+  className?: string;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({

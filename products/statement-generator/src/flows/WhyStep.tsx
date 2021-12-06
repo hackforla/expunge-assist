@@ -63,7 +63,7 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
           inputName="clearRecordWhy"
           placeholder="I am..."
           handleChange={handleChange}
-          multi={false}
+          multi
           isValid={clearRecordWhyValid}
           defaultValue={stepState.clearRecordWhy}
         />

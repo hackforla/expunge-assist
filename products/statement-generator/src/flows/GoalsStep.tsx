@@ -56,6 +56,7 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
         like attending school, getting specialized training, etc. (2-3 sentences
         suggested)
       </p>
+
       <Textarea
         inputName="goals"
         handleChange={handleChange}
@@ -69,6 +70,7 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
         How are you working towards acheiving these goals? What are the concrete
         steps you are taking? (2-3 sentences suggested)
       </p>
+
       <Textarea
         inputName="goalsHow"
         handleChange={handleChange}

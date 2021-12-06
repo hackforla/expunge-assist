@@ -4,8 +4,8 @@ import { IInvolvementSchoolState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
-
 import useUtilityStyles from 'styles/utilityStyles';
+import Input from '../components/Input';
 
 interface IInvolvementSchoolStepProps {
   stepState: IInvolvementSchoolState;
@@ -35,30 +35,28 @@ const InvolvementSchoolFlow = ({
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
         What is the name of the school you are attending?
-        <Textarea
+        <Input
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ schoolName: evt.target.value })
           }
           inputName="schoolName"
           placeholder="Name of School"
-          multi={false}
-          isValid={schoolNameValid}
           defaultValue={stepState.schoolName}
+          type="text"
         />
       </div>
 
       <div className={utilityClasses.flexColumn}>
         What are you currently studying?
-        <Textarea
+        <Input
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ studyName: evt.target.value })
           }
           inputName="studyName"
           placeholder="Name of Subject/Study Area"
-          multi={false}
-          isValid={studyNameValid}
           disabled={!schoolNameValid}
           defaultValue={stepState.studyName}
+          type="text"
         />
       </div>
 
