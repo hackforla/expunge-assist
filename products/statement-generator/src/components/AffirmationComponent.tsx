@@ -109,7 +109,9 @@ const AffirmationComponent = ({
             style={{
               display: 'flex',
               justifyContent: 'flex-end',
-              marginTop: '39px',
+              marginTop: '240px',
+              width: '700px',
+              paddingRight: '30px',
             }}
             className="align-right-sm"
           >

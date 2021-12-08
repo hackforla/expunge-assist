@@ -42,7 +42,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
         {t('disclaimer.text')}
       </div>
 
-      <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
+      <div className={utilityClasses.buttonContainer}>
         <Button
           onClick={() => {
             onChangeAffirmation({ isActive: true });

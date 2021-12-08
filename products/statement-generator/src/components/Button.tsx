@@ -26,17 +26,12 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       border: 'none',
       borderRadius: '24px',
       fontFamily: 'Roboto',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
       fontSize: '14px',
       lineHeight: '16px',
-      letterSpacing: '0.0125em',
-      textTransform: 'uppercase',
-      marginBottom: '1rem',
-      cursor: 'pointer',
 
       boxShadow: (props) => {
         switch (props.theme) {
+          case 'white':
           case 'transparent':
             return 'none';
           default:
@@ -46,7 +41,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
 
       color: (props) => {
         switch (props.theme) {
-          case 'transparent':
+          case 'white':
             return 'black';
           default:
             return '#FFFFFF';
@@ -57,8 +52,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         switch (props.theme) {
           case 'dark':
             return '#25003F';
-          case 'transparent':
+          case 'white':
             return '#FFFFFF';
+          case 'transparent':
+            return 'transparent';
           default:
             return '#9903FF';
         }
@@ -68,8 +65,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           switch (props.theme) {
             case 'dark':
               return '#330652';
-            case 'transparent':
+            case 'white':
               return '#FFFFFF';
+            case 'transparent':
+              return 'transparent';
             default:
               return '#a224f7';
           }
@@ -79,8 +78,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         color: (props) => {
           switch (props.theme) {
             case 'dark':
-            case 'transparent':
+            case 'white':
               return '#757575';
+            case 'transparent':
+              return '#b7b7b7';
             default:
               return '#FFFFFF';
           }
@@ -88,8 +89,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         background: (props) => {
           switch (props.theme) {
             case 'dark':
-            case 'transparent':
+            case 'white':
               return '#e4e4e4';
+            case 'transparent':
+              return 'transparent';
             default:
               return '#ba85de';
           }
