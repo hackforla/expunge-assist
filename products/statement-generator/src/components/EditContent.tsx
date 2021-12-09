@@ -7,7 +7,6 @@ import Button from './Button';
 const useStyles = makeStyles(() =>
   createStyles({
     form: {
-      height: '120px',
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -72,7 +71,7 @@ export default function EditContent({
             value={updatedContent}
           />
         </div>
-        <div className={classes.buttonContainer}>
+        <div className={utilityClasses.buttonContainer}>
           <Button
             className={classes.cancelButton}
             buttonText="Cancel"
