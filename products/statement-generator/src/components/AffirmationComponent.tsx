@@ -10,7 +10,7 @@ import Button from './Button';
 const useStyles = makeStyles<Theme, StyleProps>(() =>
   createStyles({
     root: {
-      position: 'fixed',
+      position: 'absolute',
       background: '#f7ebff',
       left: '0',
       bottom: '0',
@@ -90,9 +90,6 @@ const AffirmationComponent = ({
 
   return (
     <div className={classes.root}>
-      <Link to="/">
-        <img src={iconBlack} alt="Expunge Assist Logo" />
-      </Link>
       <div className={classes.container}>
         <div className={classes.cropIllustration}>
           <img

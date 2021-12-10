@@ -12,6 +12,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       flex: '1 0 auto',
       flexDirection: 'column',
       width: '100%',
+      position: 'relative',
 
       background: ({ pageTheme }: IStyleProps) =>
         pageTheme === 'dark' ? '#9903ff' : 'white',

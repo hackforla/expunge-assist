@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 
 import AffirmationComponent from 'components/AffirmationComponent';
 import Form from 'components/Form';
+import FormHeader from 'components/FormHeader';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { AffirmationContext } from 'contexts/AffirmationContext';
@@ -86,6 +87,8 @@ const PageContainer = ({ match }: PageProps) => {
         isActive={affirmationData.isActive}
         onChangeAffirmation={updateAffirmationData}
       />
+
+      {!affirmationData.isActive && <FormHeader />}
 
       {!affirmationData.isActive && (
         <Form
