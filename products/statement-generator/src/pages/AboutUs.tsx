@@ -49,7 +49,7 @@ export default function AboutUs() {
           <Button
             onClick={() => history.goBack()}
             buttonText="Back"
-            theme="transparent"
+            theme="transparent-on-dark"
           />
         </div>
       </div>

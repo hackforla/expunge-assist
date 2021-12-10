@@ -60,7 +60,7 @@ export default function FlowNavigation({
         onClick={handleBack}
         disabled={isBackDisabled}
         buttonText="BACK"
-        theme="transparent"
+        theme="transparent-on-light"
       />
       <Button
         className={classes.buttonRight}

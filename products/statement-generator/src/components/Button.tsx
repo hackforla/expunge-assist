@@ -33,6 +33,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         switch (props.theme) {
           case 'white':
           case 'transparent':
+          case 'transparent-on-dark':
+          case 'transparent-on-light':
             return 'none';
           default:
             return `4px 4px 16px rgba(61, 0, 102, 0.25)`;
@@ -42,7 +44,9 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       color: (props) => {
         switch (props.theme) {
           case 'white':
-            return 'black';
+          case 'transparent-on-light':
+            return '#25003F';
+          case 'transparent-on-dark':
           default:
             return '#FFFFFF';
         }
@@ -55,6 +59,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           case 'white':
             return '#FFFFFF';
           case 'transparent':
+          case 'transparent-on-dark':
+          case 'transparent-on-light':
             return 'transparent';
           default:
             return '#9903FF';
@@ -68,6 +74,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
             case 'white':
               return '#FFFFFF';
             case 'transparent':
+            case 'transparent-on-dark':
+            case 'transparent-on-light':
               return 'transparent';
             default:
               return '#a224f7';
@@ -79,7 +87,9 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           switch (props.theme) {
             case 'dark':
             case 'white':
+            case 'transparent-on-dark':
               return '#757575';
+            case 'transparent-on-light':
             case 'transparent':
               return '#b7b7b7';
             default:
@@ -92,6 +102,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
             case 'white':
               return '#e4e4e4';
             case 'transparent':
+            case 'transparent-on-dark':
+            case 'transparent-on-light':
               return 'transparent';
             default:
               return '#ba85de';
