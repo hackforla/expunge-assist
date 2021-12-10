@@ -56,6 +56,8 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
             return '#FFFFFF';
           case 'transparent':
             return 'transparent';
+          case 'cancel':
+            return '#ff3403';
           default:
             return '#9903FF';
         }

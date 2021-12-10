@@ -13,29 +13,6 @@ const useStyles = makeStyles(() =>
       paddingLeft: '70px',
       margin: '0 auto',
     },
-    buttonContainer: {
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      marginTop: '2px',
-    },
-    purpleButton: {
-      height: '35px',
-      backgroundColor: '#9903ff',
-      color: '#fff',
-      borderRadius: '4px',
-      width: '70px',
-      letterSpacing: '1px',
-      border: '1px solid #777',
-    },
-    cancelButton: {
-      height: '35px',
-      backgroundColor: '#ff3403',
-      letterSpacing: '1px',
-      borderRadius: '4px',
-      width: '70px',
-      color: '#fff',
-      border: '1px solid #777',
-    },
   })
 );
 
@@ -73,15 +50,11 @@ export default function EditContent({
         </div>
         <div className={utilityClasses.buttonContainer}>
           <Button
-            className={classes.cancelButton}
+            theme="cancel"
             buttonText="Cancel"
             onClick={handleCancelClick}
           />
-          <Button
-            className={classes.purpleButton}
-            onClick={handleSubmit}
-            buttonText="Submit"
-          />
+          <Button onClick={handleSubmit} buttonText="Submit" />
         </div>
       </form>
     </div>
