@@ -10,8 +10,7 @@ const useStyles = makeStyles(() =>
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
-      paddingLeft: '70px',
-      margin: '0 auto',
+      paddingLeft: '80px',
     },
   })
 );
