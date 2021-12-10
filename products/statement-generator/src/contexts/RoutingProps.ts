@@ -63,7 +63,7 @@ export const PAGES = {
   [STEP_ENUMS.WHY]: 'why',
   [STEP_ENUMS.WHY_PREVIEW]: 'why/preview',
   [STEP_ENUMS.FINALIZE]: 'finalize',
-  [STEP_ENUMS.FINALIZE_PREVIEW]: 'finalize',
+  [STEP_ENUMS.FINALIZE_PREVIEW]: 'finalize/preview',
   [STEP_ENUMS.DOWNLOAD]: 'download',
 };
 
