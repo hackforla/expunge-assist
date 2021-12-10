@@ -5,13 +5,10 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Button from 'components/Button';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 const useStyles = makeStyles(() =>
   createStyles({
-    flowNavigationContainer: {
-      marginTop: 'auto',
-      display: 'flex',
-      flexDirection: 'row',
-    },
     buttonLeft: {},
     buttonRight: {
       marginLeft: 'auto',
@@ -32,6 +29,7 @@ export default function FlowNavigation({
   isNextDisabled,
   isBackDisabled,
 }: IFlowNavigation) {
+  const utilityClasses = useUtilityStyles();
   const classes = useStyles();
   const { goNextStep, goBackStep } = React.useContext(FormStateContext);
 
@@ -52,9 +50,7 @@ export default function FlowNavigation({
   }
 
   return (
-    <div
-      className={`flow-navigation-container ${classes.flowNavigationContainer}`}
-    >
+    <div className={utilityClasses.buttonContainer}>
       <Button
         className={classes.buttonLeft}
         onClick={handleBack}
