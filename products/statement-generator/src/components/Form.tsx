@@ -147,7 +147,7 @@ const Form = ({
       )}
 
       {currentStep === STEP_ENUMS.FINALIZE_PREVIEW && (
-        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
+        <div className={utilityClasses.buttonContainer}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackStep()} buttonText="EDIT" />
           <Button onClick={() => goNextStep()} buttonText="NEXT" />

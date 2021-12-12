@@ -1,5 +1,8 @@
 import { createMuiTheme } from '@material-ui/core';
 
+/**
+ * @link https://v4.mui.com/customization/theming/
+ */
 const appTheme = createMuiTheme({
   globals: {
     contentWidth: 600,
@@ -27,6 +30,10 @@ const appTheme = createMuiTheme({
       lg: 1200,
       xl: 1920,
     },
+  },
+  typography: {
+    fontFamily: 'Roboto',
+    fontSize: 12,
   },
 });
 
