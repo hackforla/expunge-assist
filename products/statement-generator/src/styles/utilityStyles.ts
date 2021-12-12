@@ -68,6 +68,9 @@ const useUtilityStyles = makeStyles<Theme>(
           width: '100%',
         },
       },
+      disabledColor: {
+        color: '#adadad',
+      },
       flexColumn: {
         display: 'flex',
         flexDirection: 'column',

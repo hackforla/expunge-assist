@@ -1,6 +1,8 @@
 import React from 'react';
 import { Radio, makeStyles, createStyles } from '@material-ui/core';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 interface RadioButtonProps {
   label: string;
   inputName: string;
@@ -26,6 +28,7 @@ const RadioButton = ({
   inputName,
   disabled = false,
 }: RadioButtonProps) => {
+  const utilityClasses = useUtilityStyles();
   const classes = useStyles();
   return (
     <div>
@@ -42,7 +45,9 @@ const RadioButton = ({
         disabled={disabled}
       />
 
-      <span className={disabled ? 'greyedOut' : ''}>{label}</span>
+      <span className={disabled ? utilityClasses.disabledColor : ''}>
+        {label}
+      </span>
     </div>
   );
 };
