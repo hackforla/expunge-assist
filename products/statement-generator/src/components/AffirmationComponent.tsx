@@ -10,44 +10,45 @@ interface CustomStyleProps {
   isActive: boolean;
 }
 
-const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette }) =>
-  createStyles({
-    affirmationComponent: {
-      position: 'absolute',
-      background: palette.primary.light,
-      left: '0',
-      bottom: '0',
-      top: '0',
-      width: '100%',
-      zIndex: 1,
-      paddingTop: '2rem',
-      display: ({ isActive }) => (isActive ? 'block' : 'none'),
-    },
-    affirmationInner: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      height: '100%',
-    },
-    cropIllustration: {
-      overflow: 'hidden',
-      maxWidth: '375px',
-      borderBottomLeftRadius: '10%',
-      borderBottomRightRadius: '10%',
-      width: '100%',
-    },
-    illustration: {
-      width: '600px',
-      position: 'relative',
-      left: '-78px',
-      top: '-3px',
-    },
-    messageContainer: {
-      marginTop: '1rem',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
+const useStyles = makeStyles<Theme, CustomStyleProps>(
+  ({ palette, globals, spacing }) =>
+    createStyles({
+      affirmationComponent: {
+        position: 'absolute',
+        background: palette.primary.light,
+        left: '0',
+        bottom: '0',
+        top: '0',
+        width: '100%',
+        zIndex: 1,
+        paddingTop: spacing(2),
+        display: ({ isActive }) => (isActive ? 'block' : 'none'),
+      },
+      affirmationInner: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '100%',
+      },
+      cropIllustration: {
+        overflow: 'hidden',
+        maxWidth: '375px',
+        borderBottomLeftRadius: '10%',
+        borderBottomRightRadius: '10%',
+        width: '100%',
+      },
+      illustration: {
+        width: globals.contentWidth,
+        position: 'relative',
+        left: '-78px',
+        top: '-3px',
+      },
+      messageContainer: {
+        marginTop: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    })
 );
 
 interface ComponentProps {
