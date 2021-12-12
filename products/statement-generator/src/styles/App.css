@@ -15,32 +15,9 @@ body {
   opacity: 0.6;
 }
 
-.page-title {
+h1 {
   font-size: clamp(34px, 5vw, 48px);
-  font-weight: 400;
-  margin-right: auto;
-}
-
-@media only screen and (min-width: 320px) {
-  .page-title {
-    margin-right: 0;
-  }
-}
-
-@media only screen and (min-width: 960px) {
-  .page-title {
-    font-weight: 700;
-  }
-}
-
-.align-right-sm {
-  margin-left: auto;
-}
-
-@media only screen and (min-width: 320px) {
-  .align-right-sm {
-    margin-left: 0;
-  }
+  font-weight: 700;
 }
 
 p {

@@ -18,7 +18,7 @@ const Landing = () => {
       <Banner />
       <div className={utilityClasses.contentContainer}>
         <div className={utilityClasses.flexGrow}>
-          <h2 className="page-title">Start fresh with a record expungement</h2>
+          <h1>Start fresh with a record expungement</h1>
           <p>Generate a personal statement in just 20 minutes</p>
         </div>
 
