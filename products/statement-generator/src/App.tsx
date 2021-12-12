@@ -24,7 +24,7 @@ import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
-import { appTheme } from 'styles/utilityStyles';
+import appTheme from 'styles/appTheme';
 
 import { useTranslation } from 'react-i18next';
 
