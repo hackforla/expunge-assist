@@ -18,7 +18,7 @@ interface StyleProps {
   hasArrow?: boolean;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>(() =>
+const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
   createStyles({
     root: {
       padding: '12px 16px',
@@ -45,7 +45,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         switch (props.theme) {
           case 'white':
           case 'transparent-on-light':
-            return '#25003F';
+            return palette.primary.darker;
           case 'transparent-on-dark':
           default:
             return '#FFFFFF';
@@ -55,7 +55,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       background: (props) => {
         switch (props.theme) {
           case 'dark':
-            return '#25003F';
+            return palette.primary.darker;
           case 'white':
             return '#FFFFFF';
           case 'transparent':
@@ -63,7 +63,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           case 'transparent-on-light':
             return 'transparent';
           default:
-            return '#9903FF';
+            return palette.primary.main;
         }
       },
       '&:hover': {

@@ -31,7 +31,7 @@ export const appTheme = createMuiTheme({
   },
 });
 
-const useUtilityStyles = makeStyles<Theme>((theme) =>
+const useUtilityStyles = makeStyles<Theme>(({ palette, breakpoints }) =>
   createStyles({
     primaryContainer: {
       display: 'flex',
@@ -41,10 +41,10 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       position: 'relative',
 
       background: ({ pageTheme }: IUseUtilityStyle) =>
-        pageTheme === 'dark' ? theme.palette.primary.main : 'white',
+        pageTheme === 'dark' ? palette.primary.main : 'white',
 
       color: ({ pageTheme }: IUseUtilityStyle) =>
-        pageTheme === 'dark' ? 'white' : '#25003F',
+        pageTheme === 'dark' ? 'white' : palette.primary.darker,
     },
     buttonContainer: {
       marginTop: 'auto',
@@ -68,9 +68,9 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       background: ({ pageTheme }: IUseUtilityStyle) => {
         switch (pageTheme) {
           case 'dark':
-            return theme.palette.primary.main;
+            return palette.primary.main;
           case 'light':
-            return '#f7ebff';
+            return palette.primary.light;
           case 'transparent':
           default:
             return 'transparent';
@@ -84,11 +84,11 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
           case 'light':
           case 'transparent':
           default:
-            return '#25003F';
+            return palette.primary.darker;
         }
       },
 
-      [theme.breakpoints.down('xs')]: {
+      [breakpoints.down('xs')]: {
         marginLeft: 'initial',
         marginRight: 'initial',
         width: '100%',
@@ -115,7 +115,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       textAlign: 'right',
     },
     purpleTitle: {
-      color: theme.palette.primary.main,
+      color: palette.primary.main,
       fontStyle: 'italic',
       fontSize: '20px',
       display: 'flex',
@@ -123,7 +123,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       marginBottom: '20px',
     },
     purpleIcon: {
-      color: theme.palette.primary.main,
+      color: palette.primary.main,
       fontSize: '20px',
       marginRight: '0.5rem',
     },
