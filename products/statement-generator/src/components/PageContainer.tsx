@@ -27,7 +27,7 @@ const PageContainer = ({ match }: PageProps) => {
   const isDarkTheme = match.params.page === 'start';
 
   const utilityClasses = useUtilityStyles({
-    pageTheme: isDarkTheme ? 'dark' : 'light',
+    pageTheme: isDarkTheme ? 'dark' : 'transparent',
   });
 
   useEffect(() => {

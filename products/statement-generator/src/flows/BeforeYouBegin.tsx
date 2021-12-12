@@ -14,7 +14,6 @@ interface ComponentProps {
 const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
-    isSoloContainer: true,
   });
   const { t } = useTranslation();
 

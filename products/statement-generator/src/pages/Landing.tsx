@@ -9,7 +9,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 const Landing = () => {
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
-    isSoloContainer: true,
   });
 
   const { goNextPage } = useContext(RoutingContext);

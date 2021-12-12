@@ -10,7 +10,7 @@ import { getPreviewConfig, getPreviewStatement } from 'helpers/previewHelper';
 import useUtilityStyles from 'styles/utilityStyles';
 
 function PreviewPage() {
-  const utilityClasses = useUtilityStyles({ pageTheme: 'light' });
+  const utilityClasses = useUtilityStyles({ pageTheme: 'transparent' });
 
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { currentStep } = useContext(RoutingContext);

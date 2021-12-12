@@ -14,7 +14,6 @@ export default function NotFound() {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
-    isSoloContainer: true,
   });
 
   return (
