@@ -1,8 +1,35 @@
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import {
+  Theme,
+  makeStyles,
+  createStyles,
+  createMuiTheme,
+} from '@material-ui/core';
 
-interface IStyleProps {
-  pageTheme?: string;
-}
+export const appTheme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#F7EBFF',
+      main: '#9903FF',
+      dark: '#c5b3d1',
+      darker: '#25003F',
+    },
+    warning: {
+      main: '#E87461',
+    },
+    success: {
+      main: '#0aeba0',
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 320,
+      md: 960,
+      lg: 1200,
+      xl: 1920,
+    },
+  },
+});
 
 const useUtilityStyles = makeStyles<Theme>((theme) =>
   createStyles({
@@ -13,10 +40,10 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       width: '100%',
       position: 'relative',
 
-      background: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'dark' ? '#9903ff' : 'white',
+      background: ({ pageTheme }: IUseUtilityStyle) =>
+        pageTheme === 'dark' ? theme.palette.primary.main : 'white',
 
-      color: ({ pageTheme }: IStyleProps) =>
+      color: ({ pageTheme }: IUseUtilityStyle) =>
         pageTheme === 'dark' ? 'white' : '#25003F',
     },
     buttonContainer: {
@@ -34,15 +61,14 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
 
       marginLeft: 'auto',
       marginRight: 'auto',
-      // marginTop: '18px',
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
 
-      background: ({ pageTheme }: IStyleProps) => {
+      background: ({ pageTheme }: IUseUtilityStyle) => {
         switch (pageTheme) {
           case 'dark':
-            return '#9903ff';
+            return theme.palette.primary.main;
           case 'light':
             return '#f7ebff';
           case 'transparent':
@@ -51,7 +77,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
         }
       },
 
-      color: ({ pageTheme }: IStyleProps) => {
+      color: ({ pageTheme }: IUseUtilityStyle) => {
         switch (pageTheme) {
           case 'dark':
             return 'white';
@@ -89,7 +115,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       textAlign: 'right',
     },
     purpleTitle: {
-      color: '#9903FF',
+      color: theme.palette.primary.main,
       fontStyle: 'italic',
       fontSize: '20px',
       display: 'flex',
@@ -97,7 +123,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       marginBottom: '20px',
     },
     purpleIcon: {
-      color: '#9903FF',
+      color: theme.palette.primary.main,
       fontSize: '20px',
       marginRight: '0.5rem',
     },

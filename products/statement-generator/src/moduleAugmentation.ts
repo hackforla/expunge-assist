@@ -7,4 +7,7 @@ declare module '@material-ui/core/styles/createPalette' {
   export interface SimplePaletteColorOptions {
     darker?: string;
   }
+  export interface PaletteColor {
+    darker?: string;
+  }
 }
