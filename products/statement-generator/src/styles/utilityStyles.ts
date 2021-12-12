@@ -2,7 +2,6 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 interface IStyleProps {
   pageTheme?: string;
-  isSoloContainer?: boolean;
 }
 
 const useUtilityStyles = makeStyles<Theme>((theme) =>
@@ -12,6 +11,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       flex: '1 0 auto',
       flexDirection: 'column',
       width: '100%',
+      position: 'relative',
 
       background: ({ pageTheme }: IStyleProps) =>
         pageTheme === 'dark' ? '#9903ff' : 'white',
@@ -24,6 +24,7 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       paddingTop: '3rem',
       display: 'flex',
       flexDirection: 'row',
+      width: '100%',
     },
     contentContainer: {
       maxWidth: '600px',
@@ -38,14 +39,28 @@ const useUtilityStyles = makeStyles<Theme>((theme) =>
       flex: '1 0 auto',
       flexDirection: 'column',
 
-      background: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'dark' ? '#9903ff' : 'white',
+      background: ({ pageTheme }: IStyleProps) => {
+        switch (pageTheme) {
+          case 'dark':
+            return '#9903ff';
+          case 'light':
+            return '#f7ebff';
+          case 'transparent':
+          default:
+            return 'transparent';
+        }
+      },
 
-      color: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'dark' ? 'white' : '#25003F',
-
-      marginTop: ({ isSoloContainer }: IStyleProps) =>
-        isSoloContainer ? '36px' : '18px',
+      color: ({ pageTheme }: IStyleProps) => {
+        switch (pageTheme) {
+          case 'dark':
+            return 'white';
+          case 'light':
+          case 'transparent':
+          default:
+            return '#25003F';
+        }
+      },
 
       [theme.breakpoints.down('xs')]: {
         marginLeft: 'initial',

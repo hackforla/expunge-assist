@@ -14,7 +14,6 @@ import { FormStateContextProvider } from 'contexts/FormStateContext';
 import PageContainer from 'components/PageContainer';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import FormHeader from 'components/FormHeader';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -78,8 +77,6 @@ const App: React.FC = () => {
               </nav>
 
               <Header />
-
-              <FormHeader />
 
               <Switch>
                 <Route exact path="/" component={Landing} />

@@ -34,7 +34,7 @@ const Form = ({
   isDarkTheme,
 }: FormProps) => {
   const utilityClasses = useUtilityStyles({
-    pageTheme: isDarkTheme ? 'dark' : 'light',
+    pageTheme: isDarkTheme ? 'dark' : 'transparent',
   });
 
   const { formState, updateStepToForm, goNextStep, goBackStep } = useContext(
