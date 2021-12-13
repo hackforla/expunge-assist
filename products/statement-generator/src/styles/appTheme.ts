@@ -11,8 +11,13 @@ const appTheme = createMuiTheme({
     primary: {
       light: '#F7EBFF',
       main: '#9903FF',
-      dark: '#c5b3d1',
+      // dark: '#c5b3d1',
       darker: '#25003F',
+    },
+    common: {
+      black: '#0a0a0a',
+      lightgrey: '#cbcbcb',
+      grey: '#adadad',
     },
     warning: {
       main: '#E87461',

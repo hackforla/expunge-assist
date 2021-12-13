@@ -65,7 +65,7 @@ const useUtilityStyles = makeStyles<Theme>(
         },
       },
       disabledColor: {
-        color: '#adadad',
+        color: palette.common.grey,
       },
       flexColumn: {
         display: 'flex',

@@ -1,4 +1,3 @@
-import { createMuiTheme } from '@material-ui/core/styles';
 import { PaletteColorOptions } from '@material-ui/core/styles/createPalette';
 
 declare module '@material-ui/core/styles/createMuiTheme' {
@@ -25,5 +24,9 @@ declare module '@material-ui/core/styles/createPalette' {
   }
   export interface PaletteColor {
     darker?: string;
+  }
+  export interface CommonColors {
+    grey: string;
+    lightgrey: string;
   }
 }

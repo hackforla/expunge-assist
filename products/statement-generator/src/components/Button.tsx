@@ -25,8 +25,6 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
       display: 'flex',
       border: 'none',
       borderRadius: '24px',
-      fontFamily: 'Roboto',
-      fontSize: '14px',
       lineHeight: '16px',
 
       boxShadow: (props) => {
@@ -78,7 +76,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
             case 'transparent-on-light':
               return 'transparent';
             default:
-              return '#a224f7';
+              return palette.primary.main;
           }
         },
       },
@@ -100,7 +98,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
           switch (props.theme) {
             case 'dark':
             case 'white':
-              return '#e4e4e4';
+              return palette.common.lightgrey;
             case 'transparent':
             case 'transparent-on-dark':
             case 'transparent-on-light':
