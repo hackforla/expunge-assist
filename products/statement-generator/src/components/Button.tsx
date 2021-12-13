@@ -18,15 +18,13 @@ interface StyleProps {
   hasArrow?: boolean;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>(() =>
+const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
   createStyles({
     root: {
       padding: '12px 16px',
       display: 'flex',
       border: 'none',
       borderRadius: '24px',
-      fontFamily: 'Roboto',
-      fontSize: '14px',
       lineHeight: '16px',
 
       boxShadow: (props) => {
@@ -45,7 +43,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         switch (props.theme) {
           case 'white':
           case 'transparent-on-light':
-            return '#25003F';
+            return palette.primary.darker;
           case 'transparent-on-dark':
           default:
             return '#FFFFFF';
@@ -55,7 +53,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       background: (props) => {
         switch (props.theme) {
           case 'dark':
-            return '#25003F';
+            return palette.primary.darker;
           case 'white':
             return '#FFFFFF';
           case 'transparent':
@@ -63,7 +61,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           case 'transparent-on-light':
             return 'transparent';
           default:
-            return '#9903FF';
+            return palette.primary.main;
         }
       },
       '&:hover': {
@@ -78,7 +76,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
             case 'transparent-on-light':
               return 'transparent';
             default:
-              return '#a224f7';
+              return palette.primary.main;
           }
         },
       },
@@ -100,7 +98,7 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           switch (props.theme) {
             case 'dark':
             case 'white':
-              return '#e4e4e4';
+              return palette.common.lightgrey;
             case 'transparent':
             case 'transparent-on-dark':
             case 'transparent-on-light':

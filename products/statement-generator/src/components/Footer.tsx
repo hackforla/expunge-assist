@@ -1,22 +1,22 @@
 import React from 'react';
-import { Theme, makeStyles, createStyles, Link } from '@material-ui/core';
+import { makeStyles, createStyles, Link } from '@material-ui/core';
 
 import hackForLALogo from 'assets/hackForLALogo.svg';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
     footerContainer: {
       width: '100%',
-      color: '#cbcbcb',
+      color: palette.common.lightgrey,
+      background: palette.common.black,
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      background: '#0a0a0a',
       flexShrink: 0,
       padding: '6px 18px',
     },
     leftWrapper: {
-      [theme.breakpoints.down('sm')]: {
+      [breakpoints.down('sm')]: {
         display: 'none',
       },
     },
@@ -28,16 +28,16 @@ const useStyles = makeStyles((theme: Theme) =>
     endWrapper: {
       fontSize: '12px',
       textAlign: 'end',
-      [theme.breakpoints.down('sm')]: {
+      [breakpoints.down('sm')]: {
         display: 'none',
       },
     },
     linkBtn: {
       padding: '6px',
-      color: '#cbcbcb',
+      color: palette.common.lightgrey,
       fontSize: '12px',
       margin: '0 6px',
-      [theme.breakpoints.down('sm')]: {
+      [breakpoints.down('sm')]: {
         textAlign: 'center',
       },
     },

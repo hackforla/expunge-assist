@@ -6,44 +6,49 @@ import AffirmationImage from 'assets/affirmation-img.svg';
 import useUtilityStyles from 'styles/utilityStyles';
 import Button from './Button';
 
-const useStyles = makeStyles<Theme, StyleProps>(() =>
-  createStyles({
-    affirmationComponent: {
-      position: 'absolute',
-      background: '#f7ebff',
-      left: '0',
-      bottom: '0',
-      top: '0',
-      width: '100%',
-      zIndex: 1,
-      paddingTop: '2rem',
-      display: (props) => (props.isActive ? 'block' : 'none'),
-    },
-    affirmationInner: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      height: '100%',
-    },
-    cropIllustration: {
-      overflow: 'hidden',
-      maxWidth: '375px',
-      borderBottomLeftRadius: '10%',
-      borderBottomRightRadius: '10%',
-      width: '100%',
-    },
-    illustration: {
-      width: '600px',
-      position: 'relative',
-      left: '-78px',
-      top: '-3px',
-    },
-    messageContainer: {
-      marginTop: '1rem',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  })
+interface CustomStyleProps {
+  isActive: boolean;
+}
+
+const useStyles = makeStyles<Theme, CustomStyleProps>(
+  ({ palette, globals, spacing }) =>
+    createStyles({
+      affirmationComponent: {
+        position: 'absolute',
+        background: palette.primary.light,
+        left: '0',
+        bottom: '0',
+        top: '0',
+        width: '100%',
+        zIndex: 1,
+        paddingTop: spacing(2),
+        display: ({ isActive }) => (isActive ? 'block' : 'none'),
+      },
+      affirmationInner: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '100%',
+      },
+      cropIllustration: {
+        overflow: 'hidden',
+        maxWidth: '375px',
+        borderBottomLeftRadius: '10%',
+        borderBottomRightRadius: '10%',
+        width: '100%',
+      },
+      illustration: {
+        width: globals.contentWidth,
+        position: 'relative',
+        left: '-78px',
+        top: '-3px',
+      },
+      messageContainer: {
+        marginTop: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+      },
+    })
 );
 
 interface ComponentProps {
@@ -52,10 +57,6 @@ interface ComponentProps {
   buttonText: string;
   description: string;
   onChangeAffirmation: (newState: object) => void;
-}
-
-interface StyleProps {
-  isActive: boolean;
 }
 
 const AffirmationComponent = ({
@@ -68,12 +69,15 @@ const AffirmationComponent = ({
   const utilityClasses = useUtilityStyles({
     pageTheme: 'transparent',
   });
-  const styleProps: StyleProps = { isActive };
-  const classes = useStyles(styleProps);
+  const classes = useStyles({ isActive });
 
   return (
-    <div className={`${utilityClasses.primaryContainer} ${classes.affirmationComponent}`}>
-      <div className={`${utilityClasses.contentContainer} ${classes.affirmationInner}`}>
+    <div
+      className={`${utilityClasses.primaryContainer} ${classes.affirmationComponent}`}
+    >
+      <div
+        className={`${utilityClasses.contentContainer} ${classes.affirmationInner}`}
+      >
         <div className={classes.cropIllustration}>
           <img
             src={AffirmationImage}
