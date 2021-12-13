@@ -33,7 +33,7 @@ const appTheme = createMuiTheme({
   },
   typography: {
     fontFamily: 'Roboto',
-    fontSize: 12,
+    fontSize: 14,
   },
 });
 

@@ -11,7 +11,7 @@ import { getPreviewStatement } from 'helpers/previewHelper';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     preview: {
       padding: '15px',
@@ -22,6 +22,19 @@ const useStyles = makeStyles(() =>
       '& p': {
         marginBottom: 15,
       },
+    },
+    purpleTitle: {
+      color: palette.primary.main,
+      fontStyle: 'italic',
+      fontSize: '20px',
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '20px',
+    },
+    purpleIcon: {
+      color: palette.primary.main,
+      fontSize: '20px',
+      marginRight: '0.5rem',
     },
   })
 );
@@ -42,8 +55,8 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div className={utilityClasses.purpleTitle}>
-        <VisibilityIcon className={utilityClasses.purpleIcon} />
+      <div className={classes.purpleTitle}>
+        <VisibilityIcon className={classes.purpleIcon} />
         Previewing Final Statement
       </div>
 

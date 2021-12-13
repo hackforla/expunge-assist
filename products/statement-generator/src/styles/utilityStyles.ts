@@ -1,8 +1,4 @@
-import {
-  Theme,
-  makeStyles,
-  createStyles,
-} from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 const useUtilityStyles = makeStyles<Theme>(
   ({ palette, breakpoints, globals, spacing }) =>
@@ -75,46 +71,14 @@ const useUtilityStyles = makeStyles<Theme>(
         display: 'flex',
         flexDirection: 'column',
       },
-      flexRow: {
-        display: 'flex',
-        flexDirection: 'row',
-      },
       buttonRight: {
         marginLeft: 'auto',
       },
       flexGrow: {
         flex: '1 1 auto',
       },
-      flexNone: {
-        flex: '0 0 auto',
-      },
       helpPopup: {
         textAlign: 'right',
-      },
-      purpleTitle: {
-        color: palette.primary.main,
-        fontStyle: 'italic',
-        fontSize: '20px',
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '20px',
-      },
-      purpleIcon: {
-        color: palette.primary.main,
-        fontSize: '20px',
-        marginRight: '0.5rem',
-      },
-      downloadButtonsContainer: {
-        marginTop: '1rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        '& button': {
-          width: '50%',
-          '& svg': {
-            marginRight: '1rem',
-          },
-        },
       },
     })
 );
