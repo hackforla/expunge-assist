@@ -12,7 +12,7 @@ import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
 import PageContainer from 'components/PageContainer';
-import Footer from 'components/Footer';
+import AppFooter from 'components/AppFooter';
 import AppHeader from 'components/AppHeader';
 
 import Landing from 'pages/Landing';
@@ -82,10 +82,12 @@ const App: React.FC = () => {
                 <Route component={NotFound} />
                 <Route path="/404" component={NotFound} />
               </Switch>
+
+              <AppFooter />
+
             </FormStateContextProvider>
           </AffirmationContextProvider>
         </RoutingContextProvider>
-        <Footer />
       </Router>
     </ThemeProvider>
   );
