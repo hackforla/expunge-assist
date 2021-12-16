@@ -1,104 +1,87 @@
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-interface IStyleProps {
-  pageTheme?: string;
-  isSoloContainer?: boolean;
-}
 
-const useUtilityStyles = makeStyles<Theme>((theme) =>
-  createStyles({
-    primaryContainer: {
-      padding: '18px 0',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-      width: '100%',
+const useUtilityStyles = makeStyles<Theme>(
+  ({ palette, breakpoints, globals, spacing }) =>
+    createStyles({
+      primaryContainer: {
+        display: 'flex',
+        flex: '1 0 auto',
+        flexDirection: 'column',
+        width: '100%',
+        position: 'relative',
 
-      background: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'dark' ? '#9903ff' : 'white',
+        background: ({ pageTheme }: IUseUtilityStyle) =>
+          pageTheme === 'dark' ? palette.primary.main : 'white',
 
-      color: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'dark' ? 'white' : '#25003F',
-    },
-    buttonContainer: {
-      marginTop: 'auto',
-      paddingTop: '3rem',
-      display: 'flex',
-      flexDirection: 'row',
-    },
-    contentContainer: {
-      maxWidth: '600px',
-      minWidth: '300px',
-      width: '100%',
-
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      // marginTop: '18px',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-
-      background: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'dark' ? '#9903ff' : 'white',
-
-      color: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'dark' ? 'white' : '#25003F',
-
-      marginTop: ({ isSoloContainer }: IStyleProps) =>
-        isSoloContainer ? '36px' : '18px',
-
-      [theme.breakpoints.down('xs')]: {
-        marginLeft: 'initial',
-        marginRight: 'initial',
+        color: ({ pageTheme }: IUseUtilityStyle) =>
+          pageTheme === 'dark' ? 'white' : palette.primary.darker,
+      },
+      buttonContainer: {
+        marginTop: 'auto',
+        paddingTop: spacing(3),
+        display: 'flex',
+        flexDirection: 'row',
         width: '100%',
       },
-    },
-    flexColumn: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    flexRow: {
-      display: 'flex',
-      flexDirection: 'row',
-    },
-    buttonRight: {
-      marginLeft: 'auto',
-    },
-    flexGrow: {
-      flex: '1 1 auto',
-    },
-    flexNone: {
-      flex: '0 0 auto',
-    },
-    helpPopup: {
-      textAlign: 'right',
-    },
-    purpleTitle: {
-      color: '#9903FF',
-      fontStyle: 'italic',
-      fontSize: '20px',
-      display: 'flex',
-      alignItems: 'center',
-      marginBottom: '20px',
-    },
-    purpleIcon: {
-      color: '#9903FF',
-      fontSize: '20px',
-      marginRight: '0.5rem',
-    },
-    downloadButtonsContainer: {
-      marginTop: '1rem',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      '& button': {
-        width: '50%',
-        '& svg': {
-          marginRight: '1rem',
+      contentContainer: {
+        maxWidth: globals.contentWidth,
+        minWidth: '300px',
+        width: '100%',
+        padding: spacing(3),
+
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'flex',
+        flex: '1 0 auto',
+        flexDirection: 'column',
+
+        background: ({ pageTheme }: IUseUtilityStyle) => {
+          switch (pageTheme) {
+            case 'dark':
+              return palette.primary.main;
+            case 'light':
+              return palette.primary.light;
+            case 'transparent':
+            default:
+              return 'transparent';
+          }
+        },
+
+        color: ({ pageTheme }: IUseUtilityStyle) => {
+          switch (pageTheme) {
+            case 'dark':
+              return 'white';
+            case 'light':
+            case 'transparent':
+            default:
+              return palette.primary.darker;
+          }
+        },
+
+        [breakpoints.down('xs')]: {
+          marginLeft: 'initial',
+          marginRight: 'initial',
+          width: '100%',
         },
       },
-    },
-  })
+      disabledColor: {
+        color: palette.common.grey,
+      },
+      flexColumn: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      buttonRight: {
+        marginLeft: 'auto',
+      },
+      flexGrow: {
+        flex: '1 1 auto',
+      },
+      helpPopup: {
+        textAlign: 'right',
+      },
+    })
 );
 
 export default useUtilityStyles;

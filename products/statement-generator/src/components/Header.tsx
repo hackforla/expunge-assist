@@ -8,45 +8,42 @@ import { STEP_ENUMS } from 'contexts/RoutingProps';
 import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
 
-interface IStyleProps {
-  pageTheme?: string;
-}
+const useStyles = makeStyles<Theme, IUseUtilityStyle>(
+  ({ palette, breakpoints }) =>
+    createStyles({
+      root: {
+        background: ({ pageTheme }: IUseUtilityStyle) =>
+          pageTheme === 'purple' ? palette.primary.main : 'white',
 
-const useStyles = makeStyles<Theme, IStyleProps>((theme: Theme) =>
-  createStyles({
-    root: {
-      background: ({ pageTheme }: IStyleProps) =>
-        pageTheme === 'purple' ? '#9903ff' : 'white',
-
-      padding: '18px',
-      display: 'flex',
-
-      '& a': {
-        color: ({ pageTheme }: IStyleProps) =>
-          pageTheme === 'purple' ? 'white' : 'black',
-      },
-
-      '& .logo-title': {
+        padding: '18px',
         display: 'flex',
-        flexDirection: 'column',
-        marginLeft: '20px',
-        textTransform: 'uppercase',
-        fontSize: '12px',
 
-        [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
+        '& a': {
+          color: ({ pageTheme }: IUseUtilityStyle) =>
+            pageTheme === 'purple' ? 'white' : 'black',
+        },
+
+        '& .logo-title': {
+          display: 'flex',
+          flexDirection: 'column',
+          marginLeft: '20px',
+          textTransform: 'uppercase',
+          fontSize: '12px',
+
+          [breakpoints.down(breakpoints.values.sm)]: {
+            display: 'none',
+          },
+        },
+
+        [breakpoints.down(breakpoints.values.md)]: {
+          background: palette.primary.light,
+        },
+
+        [breakpoints.down(breakpoints.values.sm)]: {
           display: 'none',
         },
       },
-
-      [theme.breakpoints.down(theme.breakpoints.values.md)]: {
-        background: '#f7ebff',
-      },
-
-      [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
-        display: 'none',
-      },
-    },
-  })
+    })
 );
 
 const Header = () => {

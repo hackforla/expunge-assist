@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -12,18 +11,9 @@ interface ComponentProps {
   onChangeAffirmation: (newState: object) => void;
 }
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    content: {
-      margin: '23px 0 50px',
-    },
-  })
-);
 const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
-  const classes = useStyles();
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
-    isSoloContainer: true,
   });
   const { t } = useTranslation();
 
@@ -31,19 +21,13 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div
-        className="adjacent-mar-top"
-        style={{ fontWeight: 500, fontSize: '20px' }}
-      >
-        {t('disclaimer.header')}
-      </div>
+      <h3>{t('disclaimer.header')}</h3>
 
-      <div className={classes.content} style={{ whiteSpace: 'pre-line' }}>
-        {t('disclaimer.text')}
-      </div>
+      <p>{t('disclaimer.text')}</p>
 
-      <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
+      <div className={utilityClasses.buttonContainer}>
         <Button
+          className={utilityClasses.buttonRight}
           onClick={() => {
             onChangeAffirmation({ isActive: true });
             goNextStep();

@@ -6,14 +6,14 @@ interface ProgressBarProps {
   percentage: number;
 }
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       borderRadius: 10,
       backgroundColor: '#FFFFFF',
       '& .MuiLinearProgress-bar': {
         borderRadius: 10,
-        backgroundColor: '#9903FF',
+        backgroundColor: theme.palette.primary.main,
       },
     },
     box: {

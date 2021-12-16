@@ -4,7 +4,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import EditContent from './EditContent';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       margin: '25px 15px',
@@ -12,7 +12,7 @@ const useStyles = makeStyles(() =>
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
       '& h2': {
-        color: '#9903FF',
+        color: theme.palette.primary.main,
         marginTop: 15,
       },
       '& p': {
@@ -26,14 +26,9 @@ const useStyles = makeStyles(() =>
       alignItems: 'center',
       marginRight: 5,
     },
-    textContainer: {
-      display: 'flex',
-      marginTop: '40px',
-    },
-    textContent: {
-      width: '80%',
-      margin: ' 0 25px 0 40px',
-    },
+    iconStyle: {
+      color: theme.palette.primary.main,
+    }
   })
 );
 

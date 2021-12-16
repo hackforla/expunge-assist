@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { IIntroductionState } from 'contexts/FormStateProps';
 
 import Input from 'components/Input';
+import Paragraph from 'components/Paragraph';
 import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
@@ -79,7 +80,7 @@ const IntroductionStep = ({
           defaultValue={stepState.fullName}
         />
 
-        <p className="greyedOut">How old are you?</p>
+        <Paragraph disabled={!fullNameValid}>How old are you?</Paragraph>
         <Input
           type="number"
           inputName="age"
@@ -90,9 +91,9 @@ const IntroductionStep = ({
           adornment="years old"
         />
 
-        <p className="greyedOut">
+        <Paragraph disabled={!ageValid}>
           Are you a veteran of the United States of America?
-        </p>
+        </Paragraph>
         <RadioGroup
           labels={['Yes', 'No']}
           inputName="isVeteran"

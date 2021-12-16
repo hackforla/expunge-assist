@@ -6,15 +6,15 @@ import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
-const useStyles = makeStyles<Theme>((theme) =>
+const useStyles = makeStyles<Theme>(({ palette, breakpoints }) =>
   createStyles({
     root: {
-      background: '#f7ebff',
+      background: palette.primary.light,
       color: 'black',
       padding: '12px 12px',
       borderBottomRightRadius: '64px',
 
-      [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      [breakpoints.up(breakpoints.values.md)]: {
         marginLeft: '18px',
         marginRight: '18px',
       },

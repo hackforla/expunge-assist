@@ -18,21 +18,21 @@ interface StyleProps {
   hasArrow?: boolean;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>(() =>
+const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
   createStyles({
     root: {
       padding: '12px 16px',
       display: 'flex',
       border: 'none',
       borderRadius: '24px',
-      fontFamily: 'Roboto',
-      fontSize: '14px',
       lineHeight: '16px',
 
       boxShadow: (props) => {
         switch (props.theme) {
           case 'white':
           case 'transparent':
+          case 'transparent-on-dark':
+          case 'transparent-on-light':
             return 'none';
           default:
             return `4px 4px 16px rgba(61, 0, 102, 0.25)`;
@@ -42,7 +42,9 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       color: (props) => {
         switch (props.theme) {
           case 'white':
-            return 'black';
+          case 'transparent-on-light':
+            return palette.primary.darker;
+          case 'transparent-on-dark':
           default:
             return '#FFFFFF';
         }
@@ -51,15 +53,17 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       background: (props) => {
         switch (props.theme) {
           case 'dark':
-            return '#25003F';
+            return palette.primary.darker;
           case 'white':
             return '#FFFFFF';
           case 'transparent':
+          case 'transparent-on-dark':
+          case 'transparent-on-light':
             return 'transparent';
           case 'cancel':
             return '#ff3403';
           default:
-            return '#9903FF';
+            return palette.primary.main;
         }
       },
       '&:hover': {
@@ -70,9 +74,11 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
             case 'white':
               return '#FFFFFF';
             case 'transparent':
+            case 'transparent-on-dark':
+            case 'transparent-on-light':
               return 'transparent';
             default:
-              return '#a224f7';
+              return palette.primary.main;
           }
         },
       },
@@ -81,7 +87,9 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           switch (props.theme) {
             case 'dark':
             case 'white':
+            case 'transparent-on-dark':
               return '#757575';
+            case 'transparent-on-light':
             case 'transparent':
               return '#b7b7b7';
             default:
@@ -92,8 +100,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           switch (props.theme) {
             case 'dark':
             case 'white':
-              return '#e4e4e4';
+              return palette.common.lightgrey;
             case 'transparent':
+            case 'transparent-on-dark':
+            case 'transparent-on-light':
               return 'transparent';
             default:
               return '#ba85de';

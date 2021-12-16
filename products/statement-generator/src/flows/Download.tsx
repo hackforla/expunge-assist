@@ -19,6 +19,18 @@ const useStyles = makeStyles(() =>
     buttonSpacing: {
       marginBottom: '1rem',
     },
+    downloadButtonsContainer: {
+      marginTop: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      '& button': {
+        width: '50%',
+        '& svg': {
+          marginRight: '1rem',
+        },
+      },
+    },
   })
 );
 
@@ -117,7 +129,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
           label="By checking this box you take full responsibility for this personal
             statement, and release all association with Hack for LA."
         />
-        <div className={utilityClasses.downloadButtonsContainer}>
+        <div className={classes.downloadButtonsContainer}>
           <Button
             className={classes.buttonSpacing}
             onClick={handleClickEmail}
