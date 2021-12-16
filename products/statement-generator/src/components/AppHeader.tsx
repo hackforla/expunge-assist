@@ -46,7 +46,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     })
 );
 
-const Header = () => {
+const AppHeader = () => {
   const { currentStep } = useContext(RoutingContext);
 
   const isPurpleTheme =
@@ -76,4 +76,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AppHeader;

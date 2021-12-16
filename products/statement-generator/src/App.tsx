@@ -13,7 +13,7 @@ import { FormStateContextProvider } from 'contexts/FormStateContext';
 
 import PageContainer from 'components/PageContainer';
 import Footer from 'components/Footer';
-import Header from 'components/Header';
+import AppHeader from 'components/AppHeader';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -57,7 +57,7 @@ const App: React.FC = () => {
                 <button onClick={() => handleClick('ko')}>KO</button>
               </nav>
 
-              <Header />
+              <AppHeader />
 
               <Switch>
                 <Route exact path="/" component={Landing} />
