@@ -3,7 +3,7 @@ import { makeStyles, createStyles, Link } from '@material-ui/core';
 
 import hackForLALogo from 'assets/hackForLALogo.svg';
 
-const useStyles = makeStyles(({ palette, breakpoints }) =>
+const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
     footerContainer: {
       width: '100%',
@@ -13,7 +13,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       justifyContent: 'space-between',
       alignItems: 'center',
       flexShrink: 0,
-      padding: '6px 18px',
+      padding: spacing(1, 3),
     },
     leftWrapper: {
       [breakpoints.down('sm')]: {
@@ -33,10 +33,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       },
     },
     linkBtn: {
-      padding: '6px',
-      color: palette.common.lightgrey,
       fontSize: '12px',
-      margin: '0 6px',
+      color: palette.common.lightgrey,
+      padding: spacing(1),
+      margin: spacing(0, 1),
       [breakpoints.down('sm')]: {
         textAlign: 'center',
       },
