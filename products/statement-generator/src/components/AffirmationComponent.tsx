@@ -4,9 +4,11 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
 import AffirmationImage from 'assets/affirmation-img.svg';
 
-import { AffirmationContext } from 'contexts/AffirmationContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
+
+import { AffirmationContext } from 'contexts/AffirmationContext';
+import ContentContainer from 'page-layout/ContentContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Button from './Button';
@@ -135,9 +137,7 @@ const AffirmationComponent = ({
     <div
       className={`${utilityClasses.primaryContainer} ${classes.affirmationComponent}`}
     >
-      <div
-        className={`${utilityClasses.contentContainer} ${classes.affirmationInner}`}
-      >
+      <ContentContainer className={classes.affirmationInner}>
         <div className={classes.cropIllustration}>
           <img
             src={AffirmationImage}
@@ -159,7 +159,7 @@ const AffirmationComponent = ({
             hasArrow
           />
         </div>
-      </div>
+      </ContentContainer>
     </div>
   );
 };

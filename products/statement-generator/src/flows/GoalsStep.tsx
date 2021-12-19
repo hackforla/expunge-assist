@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { IGoalsState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'page-layout/FlowNavigation';
-import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import Textarea from 'components/Textarea';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -34,7 +36,7 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
 
   if (previewPage) {
     return (
-      <div className={utilityClasses.contentContainer}>
+      <ContentContainer>
         <TextPreview
           content={`${stepState.goals}. To work towards my goals; ${stepState.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
           onAdjustClick={() => setPreview(false)}
@@ -45,12 +47,12 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
           onBack={() => setPreview(false)}
           isNextDisabled={isNextDisabled}
         />
-      </div>
+      </ContentContainer>
     );
   }
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <p>
         Please describe what goals you have to improve your life even further,
         like attending school, getting specialized training, etc. (2-3 sentences
@@ -82,7 +84,8 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
       />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+
+    </ContentContainer>
   );
 };
 

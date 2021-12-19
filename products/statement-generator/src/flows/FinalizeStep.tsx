@@ -5,11 +5,10 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import { IStepState } from 'contexts/FormStateProps';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
 
+import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 
 import { getPreviewStatement } from 'helpers/previewHelper';
-
-import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(({ palette }) =>
   createStyles({
@@ -45,7 +44,6 @@ interface IFinalizeStepProps {
 
 const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles();
 
   const displayDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
@@ -54,7 +52,7 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
   });
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
         Previewing Final Statement
@@ -102,7 +100,7 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
       </div>
 
       <FlowNavigation />
-    </div>
+    </ContentContainer>
   );
 };
 

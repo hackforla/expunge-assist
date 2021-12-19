@@ -2,9 +2,11 @@ import React from 'react';
 
 import { IInvolvementUnemployedState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'page-layout/FlowNavigation';
 import Textarea from 'components/Textarea';
 import RadioGroup from 'components/RadioGroup';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -32,7 +34,7 @@ const InvolvementUnemployedFlow = ({
     !unemploymentDescriptionValid || !wouldClearanceHelpValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         Please describe why you are having trouble finding work. (2-3 sentences
         suggested)
@@ -62,7 +64,7 @@ const InvolvementUnemployedFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

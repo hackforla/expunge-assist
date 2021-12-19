@@ -5,6 +5,8 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Button from 'components/Button';
 
+import ContentContainer from 'page-layout/ContentContainer';
+
 import useUtilityStyles from 'styles/utilityStyles';
 
 const BeforeYouBegin = () => {
@@ -16,7 +18,7 @@ const BeforeYouBegin = () => {
   const { goNextStep } = useContext(FormStateContext);
 
   return (
-    <div>
+    <ContentContainer>
       <h3>{t('disclaimer.header')}</h3>
 
       <p>{t('disclaimer.text')}</p>
@@ -32,7 +34,7 @@ const BeforeYouBegin = () => {
           hasArrow
         />
       </div>
-    </div>
+    </ContentContainer>
   );
 };
 

@@ -4,12 +4,17 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 interface IContentContainer {
   children?: any;
+  className?: string;
 }
 
-const ContentContainer = ({ children }: IContentContainer) => {
+const ContentContainer = ({ children, className }: IContentContainer) => {
   const utilityClasses = useUtilityStyles();
 
-  return <div className={utilityClasses.contentContainer}>{children}</div>;
+  return (
+    <div className={`${utilityClasses.contentContainer} ${className}`}>
+      {children}
+    </div>
+  );
 };
 
 export default ContentContainer;

@@ -2,8 +2,11 @@ import React from 'react';
 
 import { IInvolvementSchoolState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'page-layout/FlowNavigation';
 import Textarea from 'components/Textarea';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
+
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
 
@@ -32,7 +35,7 @@ const InvolvementSchoolFlow = ({
     !schoolNameValid || !studyNameValid || !passionDescriptionValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the school you are attending?
         <Input
@@ -76,7 +79,7 @@ const InvolvementSchoolFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

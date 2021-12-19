@@ -2,8 +2,11 @@ import React from 'react';
 
 import { IInvolvementServiceState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'page-layout/FlowNavigation';
 import Textarea from 'components/Textarea';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
+
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
 
@@ -30,7 +33,7 @@ const InvolvementCommunityServiceFlow = ({
   const isNextDisabled = !organizationNameValid || !serviceDescriptionValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the community service organization that you are
         involved with?
@@ -62,7 +65,7 @@ const InvolvementCommunityServiceFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

@@ -2,9 +2,11 @@ import React from 'react';
 
 import { IInvolvementParentingState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'page-layout/FlowNavigation';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -33,7 +35,7 @@ const InvolvementParentingFlow = ({
     !childNameValid || !parentYearsValid || !parentDescriptionValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of your child?
         <Input
@@ -78,7 +80,7 @@ const InvolvementParentingFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

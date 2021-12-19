@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
+
 import Button from 'components/Button';
 import { Banner } from 'components/Banner';
+
+import ContentContainer from 'page-layout/ContentContainer';
 
 import RoutingContext from 'contexts/RoutingContext';
 
@@ -14,9 +17,9 @@ const Landing = () => {
   const { goNextPage } = useContext(RoutingContext);
 
   return (
-    <div className={utilityClasses.primaryContainer}>
+    <>
       <Banner />
-      <div className={utilityClasses.contentContainer}>
+      <ContentContainer>
         <div className={utilityClasses.flexGrow}>
           <h1>Start fresh with a record expungement</h1>
           <p>Generate a personal statement in just 20 minutes</p>
@@ -31,8 +34,8 @@ const Landing = () => {
             buttonText="START NOW"
           />
         </div>
-      </div>
-    </div>
+      </ContentContainer>
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 
-import FlowNavigation from 'page-layout/FlowNavigation';
 import TextPreview from 'components/TextPreview';
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
@@ -29,19 +30,17 @@ function PreviewPage() {
   }
 
   return (
-    <div className={utilityClasses.primaryContainer}>
-      <div className={utilityClasses.contentContainer}>
-        {hasPreviewConfig && (
-          <TextPreview
-            onAdjustClick={() => {}}
-            content={getPreviewStatement(formState, currentStep)}
-            nameOfStep={previewConfigItem.title}
-          />
-        )}
+    <ContentContainer>
+      {hasPreviewConfig && (
+        <TextPreview
+          onAdjustClick={() => {}}
+          content={getPreviewStatement(formState, currentStep)}
+          nameOfStep={previewConfigItem.title}
+        />
+      )}
 
-        <FlowNavigation />
-      </div>
-    </div>
+      <FlowNavigation />
+    </ContentContainer>
   );
 }
 
