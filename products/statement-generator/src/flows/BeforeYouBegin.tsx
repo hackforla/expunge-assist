@@ -7,11 +7,7 @@ import Button from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface ComponentProps {
-  onChangeAffirmation: (newState: object) => void;
-}
-
-const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
+const BeforeYouBegin = () => {
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
   });
@@ -20,7 +16,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
   const { goNextStep } = useContext(FormStateContext);
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <div>
       <h3>{t('disclaimer.header')}</h3>
 
       <p>{t('disclaimer.text')}</p>
@@ -29,7 +25,6 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
         <Button
           className={utilityClasses.buttonRight}
           onClick={() => {
-            onChangeAffirmation({ isActive: true });
             goNextStep();
           }}
           theme="dark"

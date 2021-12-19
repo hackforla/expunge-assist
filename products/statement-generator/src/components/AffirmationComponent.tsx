@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
 import AffirmationImage from 'assets/affirmation-img.svg';
+
+import { AffirmationContext } from 'contexts/AffirmationContext';
+import RoutingContext from 'contexts/RoutingContext';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Button from './Button';
@@ -57,6 +62,7 @@ interface ComponentProps {
   buttonText: string;
   description: string;
   onChangeAffirmation: (newState: object) => void;
+  match: any;
 }
 
 const AffirmationComponent = ({
@@ -70,6 +76,60 @@ const AffirmationComponent = ({
     pageTheme: 'transparent',
   });
   const classes = useStyles({ isActive });
+
+  let match = useRouteMatch('/form/:page?');
+  const { currentStep, canShowAffirmation } = useContext(RoutingContext);
+  const { affirmationData, updateAffirmationData } = useContext(
+    AffirmationContext
+  );
+
+  useEffect(() => {
+    // handle closing the affirmation on home page
+    if (match?.path === '/') updateAffirmationData({ isActive: false });
+  }, [match]);
+
+  // todo: move text into a json for localization
+  useEffect(() => {
+    switch (currentStep) {
+      case STEP_ENUMS.INTRODUCTION:
+        updateAffirmationData({
+          isActive: canShowAffirmation,
+          titleText: 'Welcome!',
+          buttonText: 'Begin',
+          description: 'This is a tool to generate a personal statement.',
+        });
+        break;
+      case STEP_ENUMS.INVOLVEMENT.INITIAL:
+        updateAffirmationData({
+          isActive: canShowAffirmation,
+          titleText: 'Congrats!',
+          buttonText: 'Next',
+          description:
+            'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
+        });
+        break;
+      case STEP_ENUMS.GOALS:
+        updateAffirmationData({
+          isActive: canShowAffirmation,
+          titleText: 'Hooray!',
+          buttonText: 'Next',
+          description:
+            'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
+        });
+        break;
+      case STEP_ENUMS.WHY:
+        updateAffirmationData({
+          isActive: canShowAffirmation,
+          titleText: 'Great Job!',
+          buttonText: 'Next',
+          description:
+            'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
+        });
+        break;
+      default:
+        break;
+    }
+  }, [currentStep]);
 
   return (
     <div
