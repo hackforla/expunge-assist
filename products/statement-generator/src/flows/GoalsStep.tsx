@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { IGoalsState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
 

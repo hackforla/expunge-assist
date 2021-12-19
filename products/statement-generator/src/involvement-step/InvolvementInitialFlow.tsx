@@ -3,7 +3,7 @@ import React from 'react';
 import { IInvolvementInitialState } from 'contexts/FormStateProps';
 
 import Checkbox from 'components/Checkbox';
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 

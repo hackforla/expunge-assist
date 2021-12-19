@@ -5,7 +5,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import { IStepState } from 'contexts/FormStateProps';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
 
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import { getPreviewStatement } from 'helpers/previewHelper';
 

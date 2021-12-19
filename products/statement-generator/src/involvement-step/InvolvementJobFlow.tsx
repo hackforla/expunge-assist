@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IInvolvementJobState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 import Textarea from 'components/Textarea';
 
 import useUtilityStyles from 'styles/utilityStyles';

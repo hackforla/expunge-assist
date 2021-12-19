@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 import TextPreview from 'components/TextPreview';
 
 import FormStateContext from 'contexts/FormStateContext';

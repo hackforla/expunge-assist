@@ -7,7 +7,7 @@ import Paragraph from 'components/Paragraph';
 import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 

@@ -11,9 +11,9 @@ import { RoutingContextProvider } from 'contexts/RoutingContext';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
-import PageContainer from 'components/PageContainer';
-import AppFooter from 'components/AppFooter';
-import AppHeader from 'components/AppHeader';
+import PageContainer from 'page-layout/PageContainer';
+import AppFooter from 'page-layout/AppFooter';
+import AppHeader from 'page-layout/AppHeader';
 import Form from 'components/Form';
 
 import Landing from 'pages/Landing';

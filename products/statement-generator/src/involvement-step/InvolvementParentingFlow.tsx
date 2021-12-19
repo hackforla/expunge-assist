@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IInvolvementParentingState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { IWhyStepState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
+import FlowNavigation from 'page-layout/FlowNavigation';
 import HelpPopUp from 'components/HelpPopUp';
 import Paragraph from 'components/Paragraph';
 import Textarea from 'components/Textarea';
