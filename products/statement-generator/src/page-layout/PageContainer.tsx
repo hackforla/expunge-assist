@@ -11,11 +11,7 @@ const PageContainer = ({ children }: IPageContainer) => {
     pageTheme: 'transparent',
   });
 
-  return (
-    <div className={utilityClasses.primaryContainer}>
-      <div className={utilityClasses.contentContainer}>{children}</div>
-    </div>
-  );
+  return <div className={utilityClasses.primaryContainer}>{children}</div>;
 };
 
 export default PageContainer;
