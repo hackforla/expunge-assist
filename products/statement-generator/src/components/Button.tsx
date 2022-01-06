@@ -61,7 +61,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
           case 'transparent-on-light':
             return 'transparent';
           case 'cancel':
-            return '#ff3403';
+            return palette.warning.main;
           default:
             return palette.primary.main;
         }
@@ -78,7 +78,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
             case 'transparent-on-light':
               return 'transparent';
             case 'cancel':
-              return '#ff3403';
+              return palette.warning.main;
             default:
               return palette.primary.main;
           }

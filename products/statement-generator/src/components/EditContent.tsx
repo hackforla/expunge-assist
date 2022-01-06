@@ -4,7 +4,7 @@ import useUtilityStyles from 'styles/utilityStyles';
 import Textarea from './Textarea';
 import Button from './Button';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ spacing }) =>
   createStyles({
     form: {
       width: '100%',
@@ -15,7 +15,7 @@ const useStyles = makeStyles(() =>
       justifyContent: 'flex-end',
     },
     cancelButton: {
-      marginLeft: '1rem',
+      marginLeft: spacing(2),
     },
   })
 );
@@ -42,31 +42,29 @@ export default function EditContent({
     setIsEditing(false);
   };
   return (
-    <div className={utilityClasses.contentContainer}>
-      <form className={classes.form}>
-        <div className={utilityClasses.flexColumn}>
-          <Textarea
-            multi
-            inputName="editedText"
-            handleChange={(e) => setUpdatedContent(e.target.value)}
-            value={updatedContent}
-          />
-        </div>
-        <div
-          className={`${utilityClasses.buttonContainer} ${classes.container}`}
-        >
-          <Button
-            theme="cancel"
-            buttonText="Cancel"
-            onClick={handleCancelClick}
-          />
-          <Button
-            className={classes.cancelButton}
-            onClick={handleSubmit}
-            buttonText="Submit"
-          />
-        </div>
-      </form>
-    </div>
+    <form className={classes.form}>
+      <div className={utilityClasses.flexColumn}>
+        <Textarea
+          multi
+          inputName="editedText"
+          handleChange={(e) => setUpdatedContent(e.target.value)}
+          value={updatedContent}
+        />
+      </div>
+      <div
+        className={`${utilityClasses.buttonContainer} ${classes.container}`}
+      >
+        <Button
+          theme="cancel"
+          buttonText="Cancel"
+          onClick={handleCancelClick}
+        />
+        <Button
+          className={classes.cancelButton}
+          onClick={handleSubmit}
+          buttonText="Submit"
+        />
+      </div>
+    </form>
   );
 }

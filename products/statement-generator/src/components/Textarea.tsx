@@ -8,8 +8,6 @@ import { teal } from '@material-ui/core/colors';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      // width: '80%',
-      marginBottom: '1rem',
       '& > *': {
         minWidth: '10rem',
         height: '2.5rem',
