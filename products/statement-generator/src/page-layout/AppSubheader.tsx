@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
-interface IAppSubheader {
-  children?: any;
-  // className?: string;
-}
+import { Banner } from 'components/Banner';
 
-const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette, spacing }) =>
+import RoutingContext from 'contexts/RoutingContext';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
+
+const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
   createStyles({
     subheaderContainer: {
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
-      padding: spacing(1, 3),
+      // padding: spacing(1, 3),
 
       background: ({ pageTheme }: IUseUtilityStyle) => {
         switch (pageTheme) {
@@ -40,12 +40,18 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette, spacing }) =>
   })
 );
 
-const AppSubheader = (props: IAppSubheader) => {
-  const { children } = props;
+const AppSubheader = () => {
+  const { currentStep } = useContext(RoutingContext);
 
   const classes = useStyles({ pageTheme: 'dark' });
 
-  return <div className={classes.subheaderContainer}>{children}</div>;
+  const isLandingPage = currentStep === STEP_ENUMS.NONE;
+
+  return (
+    <div className={classes.subheaderContainer}>
+      {isLandingPage && <Banner />}
+    </div>
+  );
 };
 
 export default AppSubheader;
