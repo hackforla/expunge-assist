@@ -5,16 +5,15 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
 import PageContainer from 'components/PageContainer';
-import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 import Header from 'components/Header';
-import FormHeader from 'components/FormHeader';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -25,28 +24,9 @@ import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
+import appTheme from 'styles/appTheme';
 
 import { useTranslation } from 'react-i18next';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#9903FF',
-    },
-    secondary: {
-      main: '#0AEBA0',
-    },
-  },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 320,
-      md: 960,
-      lg: 1200,
-      xl: 1920,
-    },
-  },
-});
 
 const App: React.FC = () => {
   const history = useHistory();
@@ -57,7 +37,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
@@ -78,8 +58,6 @@ const App: React.FC = () => {
               </nav>
 
               <Header />
-
-              <FormHeader />
 
               <Switch>
                 <Route exact path="/" component={Landing} />
@@ -107,7 +85,7 @@ const App: React.FC = () => {
             </FormStateContextProvider>
           </AffirmationContextProvider>
         </RoutingContextProvider>
-        <Navbar />
+        <Footer />
       </Router>
     </ThemeProvider>
   );

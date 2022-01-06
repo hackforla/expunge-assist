@@ -3,24 +3,15 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { IStepState } from 'contexts/FormStateProps';
+import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 
+import { getPreviewStatement } from 'helpers/previewHelper';
+
 import useUtilityStyles from 'styles/utilityStyles';
 
-import {
-  generateIntroduction,
-  generateInvolvementJob,
-  generateInvolvementCommunity,
-  generateInvolvementRecovery,
-  generateInvolvementSchool,
-  generateInvolvementParenting,
-  generateInvolvementUnemployed,
-  generateFutureGoals,
-  generateWhy,
-} from 'helpers/StatementHelpers';
-
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     preview: {
       padding: '15px',
@@ -31,6 +22,19 @@ const useStyles = makeStyles(() =>
       '& p': {
         marginBottom: 15,
       },
+    },
+    purpleTitle: {
+      color: palette.primary.main,
+      fontStyle: 'italic',
+      fontSize: '20px',
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '20px',
+    },
+    purpleIcon: {
+      color: palette.primary.main,
+      fontSize: '20px',
+      marginRight: '0.5rem',
     },
   })
 );
@@ -51,23 +55,50 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
 
   return (
     <div className={utilityClasses.contentContainer}>
-      <div className={utilityClasses.purpleTitle}>
-        <VisibilityIcon className={utilityClasses.purpleIcon} />
+      <div className={classes.purpleTitle}>
+        <VisibilityIcon className={classes.purpleIcon} />
         Previewing Final Statement
       </div>
 
       <div className={classes.preview}>
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
-        <p>{generateIntroduction(formState)}</p>
-        <p>{generateInvolvementJob(formState)}</p>
-        <p>{generateInvolvementCommunity(formState)}</p>
-        <p>{generateInvolvementRecovery(formState)}</p>
-        <p>{generateInvolvementSchool(formState)}</p>
-        <p>{generateInvolvementParenting(formState)}</p>
-        <p>{generateInvolvementUnemployed(formState)}</p>
-        <p>{generateFutureGoals(formState)}</p>
-        <p>{generateWhy(formState)}</p>
+        <p>{getPreviewStatement(formState, STEP_ENUMS.INTRODUCTION)}</p>
+        <p>
+          {getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW)}
+        </p>
+        <p>
+          {getPreviewStatement(
+            formState,
+            STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW
+          )}
+        </p>
+        <p>
+          {getPreviewStatement(
+            formState,
+            STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW
+          )}
+        </p>
+        <p>
+          {getPreviewStatement(
+            formState,
+            STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW
+          )}
+        </p>
+        <p>
+          {getPreviewStatement(
+            formState,
+            STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW
+          )}
+        </p>
+        <p>
+          {getPreviewStatement(
+            formState,
+            STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW
+          )}
+        </p>
+        <p>{getPreviewStatement(formState, STEP_ENUMS.GOALS_PREVIEW)}</p>
+        <p>{getPreviewStatement(formState, STEP_ENUMS.WHY_PREVIEW)}</p>
       </div>
 
       <FlowNavigation />

@@ -6,15 +6,15 @@ import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
-const useStyles = makeStyles<Theme>((theme) =>
+const useStyles = makeStyles<Theme>(({ palette, breakpoints }) =>
   createStyles({
     root: {
-      background: '#f7ebff',
+      background: palette.primary.light,
       color: 'black',
       padding: '12px 12px',
       borderBottomRightRadius: '64px',
 
-      [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      [breakpoints.up(breakpoints.values.md)]: {
         marginLeft: '18px',
         marginRight: '18px',
       },
@@ -59,6 +59,8 @@ function convertStepToNum(step: string): number {
     case STEP_ENUMS.WHY_PREVIEW:
       return 4;
     case STEP_ENUMS.FINALIZE:
+      return 5;
+    case STEP_ENUMS.DOWNLOAD:
       return 5;
     default:
       return 0;

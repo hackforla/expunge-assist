@@ -8,7 +8,7 @@ import { teal } from '@material-ui/core/colors';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '80%',
+      // width: '80%',
       marginBottom: '1rem',
       '& > *': {
         minWidth: '10rem',
@@ -45,11 +45,12 @@ const useStyles = makeStyles((theme: Theme) =>
 interface TextFieldProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputName: string;
-  placeholder: string;
-  multi: boolean;
-  isValid: boolean;
-  defaultValue: string;
+  placeholder?: string;
+  multi?: boolean;
+  isValid?: boolean;
+  defaultValue?: string;
   disabled?: boolean;
+  value?: string;
 }
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
@@ -60,6 +61,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
   isValid,
   defaultValue,
   disabled = false,
+  value,
 }) => {
   const classes = useStyles();
   return (
@@ -73,6 +75,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
       variant="outlined"
       defaultValue={defaultValue}
       disabled={disabled}
+      value={value}
       InputProps={{
         classes: {
           input: classes.input,

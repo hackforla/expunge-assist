@@ -34,7 +34,7 @@ const Form = ({
   isDarkTheme,
 }: FormProps) => {
   const utilityClasses = useUtilityStyles({
-    pageTheme: isDarkTheme ? 'dark' : 'light',
+    pageTheme: isDarkTheme ? 'dark' : 'transparent',
   });
 
   const { formState, updateStepToForm, goNextStep, goBackStep } = useContext(
@@ -47,7 +47,7 @@ const Form = ({
   }
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <>
       {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && (
         <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
       )}
@@ -147,15 +147,17 @@ const Form = ({
       )}
 
       {currentStep === STEP_ENUMS.FINALIZE_PREVIEW && (
-        <div className={`${utilityClasses.buttonContainer} adjacent-mar-top`}>
+        <div className={utilityClasses.buttonContainer}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackStep()} buttonText="EDIT" />
           <Button onClick={() => goNextStep()} buttonText="NEXT" />
         </div>
       )}
 
-      {currentStep === STEP_ENUMS.DOWNLOAD && <Download />}
-    </div>
+      {currentStep === STEP_ENUMS.DOWNLOAD && (
+        <Download formState={formState} />
+      )}
+    </>
   );
 };
 

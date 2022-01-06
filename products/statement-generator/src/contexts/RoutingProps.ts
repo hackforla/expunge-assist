@@ -37,7 +37,7 @@ export const STEP_ENUMS = {
 /**
  * map of a constant to the page url
  *
- * @type PAGES
+ * @type PageEnum
  */
 export const PAGES = {
   [STEP_ENUMS.NONE]: '',
@@ -63,14 +63,15 @@ export const PAGES = {
   [STEP_ENUMS.WHY]: 'why',
   [STEP_ENUMS.WHY_PREVIEW]: 'why/preview',
   [STEP_ENUMS.FINALIZE]: 'finalize',
-  [STEP_ENUMS.FINALIZE_PREVIEW]: 'finalize',
+  [STEP_ENUMS.FINALIZE_PREVIEW]: 'finalize/preview',
   [STEP_ENUMS.DOWNLOAD]: 'download',
 };
 
 /**
- * map of PAGES to a PAGE_ENUM
+ * maps PageEnum to StepEnum
+ *  eg: 'intro': STEP_ENUMS.INTRODUCTION
  *
- * @type URL
+ * @type UrlEnum
  */
 export const URL: { [key: string]: string } = {};
 Object.keys(PAGES).forEach((pageKey) => {
@@ -101,6 +102,11 @@ export function getNextFormStep(currentStep: string) {
     case STEP_ENUMS.INVOLVEMENT.JOB:
       return STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW;
     case STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW:
+      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED;
+
+    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
+      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW;
+    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
       return STEP_ENUMS.INVOLVEMENT.RECOVERY;
 
     case STEP_ENUMS.INVOLVEMENT.RECOVERY:
@@ -123,11 +129,6 @@ export function getNextFormStep(currentStep: string) {
     case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW:
       return STEP_ENUMS.GOALS;
 
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
-      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW;
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
-      return STEP_ENUMS.GOALS;
-
     case STEP_ENUMS.GOALS:
       return STEP_ENUMS.GOALS_PREVIEW;
     case STEP_ENUMS.GOALS_PREVIEW:
@@ -141,6 +142,9 @@ export function getNextFormStep(currentStep: string) {
     case STEP_ENUMS.FINALIZE:
       return STEP_ENUMS.FINALIZE_PREVIEW;
     case STEP_ENUMS.FINALIZE_PREVIEW:
+      return STEP_ENUMS.DOWNLOAD;
+
+    case STEP_ENUMS.DOWNLOAD:
       return STEP_ENUMS.NONE;
 
     default:

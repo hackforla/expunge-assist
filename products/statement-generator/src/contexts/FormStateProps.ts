@@ -14,6 +14,7 @@ export interface IStepState {
   involvementUnemployedState: IInvolvementUnemployedState;
   goalsStep: IGoalsState;
   whyStep: IWhyStepState;
+  statements: IStatementState;
 }
 
 export const defaultStepState = {
@@ -64,6 +65,17 @@ export const defaultStepState = {
   whyStep: {
     clearRecordWhy: '',
     clearRecordHow: '',
+  },
+  statements: {
+    introduction: '',
+    job: '',
+    service: '',
+    recovery: '',
+    school: '',
+    parenting: '',
+    unemployed: '',
+    goals: '',
+    why: '',
   },
 };
 
@@ -126,6 +138,19 @@ export interface IWhyStepState {
   clearRecordHow: string;
 }
 
+export interface IStatementState {
+  [key: string]: string;
+  introduction: string;
+  job: string;
+  service: string;
+  recovery: string;
+  school: string;
+  parenting: string;
+  unemployed: string;
+  goals: string;
+  why: string;
+}
+
 export const sampleStepState = {
   introduction: {
     fullName: 'Daniel Xiao',
@@ -168,8 +193,7 @@ export const sampleStepState = {
   involvementUnemployedState: {
     unemploymentDescription:
       'I have not been able to find any jobs that are not about licking or eating things.',
-    wouldClearanceHelp:
-      'Yes',
+    wouldClearanceHelp: 'Yes',
   },
   goalsStep: {
     goals: 'I want to get a new job so I do not have to eat any more poison.',

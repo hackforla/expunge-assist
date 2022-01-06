@@ -36,15 +36,14 @@ const InvolvementParentingFlow = ({
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
         What is the name of your child?
-        <Textarea
+        <Input
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ childName: evt.target.value })
           }
           inputName="childName"
           placeholder="Name of Child"
-          multi={false}
-          isValid={childNameValid}
           defaultValue={stepState.childName}
+          type="text"
         />
       </div>
 
@@ -71,7 +70,7 @@ const InvolvementParentingFlow = ({
           }
           inputName="parentDescription"
           placeholder="Being a good parent is important to me because..."
-          multi={false}
+          multi
           isValid={parentDescriptionValid}
           disabled={!parentYearsValid}
           defaultValue={stepState.parentDescription}

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles, createStyles } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
+import EditContent from './EditContent';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       margin: '25px 15px',
@@ -11,7 +12,7 @@ const useStyles = makeStyles(() =>
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
       '& h2': {
-        color: '#9903FF',
+        color: theme.palette.primary.main,
         marginTop: 15,
       },
       '& p': {
@@ -21,8 +22,12 @@ const useStyles = makeStyles(() =>
     flex: {
       display: 'flex',
       justifyContent: 'space-between',
+      flexDirection: 'column',
       alignItems: 'center',
       marginRight: 5,
+    },
+    iconStyle: {
+      color: theme.palette.primary.main,
     },
   })
 );
@@ -39,14 +44,25 @@ const TextPreview = ({
   nameOfStep,
 }: ComponentProps) => {
   const classes = useStyles();
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+
+  const handleClick = () => {
+    setIsEditing(true);
+  };
 
   return (
     <div className={classes.root}>
       <div className={classes.flex}>
         <h2>{nameOfStep}</h2>
-        <CreateIcon style={{ color: '#9903FF' }} onClick={onAdjustClick} />
+        {isEditing ? (
+          <EditContent content={content} setIsEditing={setIsEditing} />
+        ) : (
+          <div>
+            <p> {content}</p>
+            <CreateIcon style={{ color: '#9903FF' }} onClick={handleClick} />
+          </div>
+        )}
       </div>
-      <p>{content}</p>
     </div>
   );
 };
