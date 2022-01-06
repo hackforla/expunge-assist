@@ -10,31 +10,6 @@ const useUtilityStyles = makeStyles<Theme>(
         width: '100%',
         position: 'relative',
 
-        background: ({ pageTheme }: IUseUtilityStyle) =>
-          pageTheme === 'dark' ? palette.primary.main : 'white',
-
-        color: ({ pageTheme }: IUseUtilityStyle) =>
-          pageTheme === 'dark' ? 'white' : palette.primary.darker,
-      },
-      buttonContainer: {
-        marginTop: 'auto',
-        paddingTop: spacing(3),
-        display: 'flex',
-        flexDirection: 'row',
-        width: '100%',
-      },
-      contentContainer: {
-        maxWidth: globals.contentWidth,
-        minWidth: '300px',
-        width: '100%',
-        padding: spacing(3),
-
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        display: 'flex',
-        flex: '1 0 auto',
-        flexDirection: 'column',
-
         background: ({ pageTheme }: IUseUtilityStyle) => {
           switch (pageTheme) {
             case 'dark':
@@ -57,6 +32,25 @@ const useUtilityStyles = makeStyles<Theme>(
               return palette.primary.darker;
           }
         },
+      },
+      buttonContainer: {
+        marginTop: 'auto',
+        paddingTop: spacing(3),
+        display: 'flex',
+        flexDirection: 'row',
+        width: '100%',
+      },
+      contentContainer: {
+        maxWidth: globals.contentWidth,
+        minWidth: '300px',
+        width: '100%',
+        padding: spacing(3),
+
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'flex',
+        flex: '1 0 auto',
+        flexDirection: 'column',
 
         [breakpoints.down('xs')]: {
           marginLeft: 'initial',

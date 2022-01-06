@@ -14,6 +14,7 @@ import { FormStateContextProvider } from 'contexts/FormStateContext';
 import PageContainer from 'page-layout/PageContainer';
 import AppFooter from 'page-layout/AppFooter';
 import AppHeader from 'page-layout/AppHeader';
+import AppSubheader from 'page-layout/AppSubheader';
 import Form from 'components/Form';
 
 import Landing from 'pages/Landing';
@@ -59,6 +60,7 @@ const App: React.FC = () => {
               </nav>
 
               <AppHeader />
+              <AppSubheader />
 
               <PageContainer>
                 <Switch>
