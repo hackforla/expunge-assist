@@ -8,16 +8,12 @@ import TextPreview from 'components/TextPreview';
 import ContentContainer from 'page-layout/ContentContainer';
 import Textarea from 'components/Textarea';
 
-import useUtilityStyles from 'styles/utilityStyles';
-
 interface IGoalsStepProps {
   stepState: IGoalsState;
   setFormState: (value: any) => void;
 }
 
 const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
-  const utilityClasses = useUtilityStyles();
-
   const [previewPage, setPreview] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;

@@ -29,8 +29,9 @@ const PreRoutingContextProvider = ({
   const currentStep = formSteps[currentStepIdx];
   const { pathname } = history.location;
 
-  const isDarkTheme = currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN ||
-          currentStep === STEP_ENUMS.NONE;
+  const isDarkTheme =
+    currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN ||
+    currentStep === STEP_ENUMS.NONE;
   const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
 
   const navigateToFormPage = (newPageUrl: string) => {

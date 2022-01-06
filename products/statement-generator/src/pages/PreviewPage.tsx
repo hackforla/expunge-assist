@@ -8,11 +8,7 @@ import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { getPreviewConfig, getPreviewStatement } from 'helpers/previewHelper';
 
-import useUtilityStyles from 'styles/utilityStyles';
-
 function PreviewPage() {
-  const utilityClasses = useUtilityStyles({ pageTheme: 'transparent' });
-
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { currentStep } = useContext(RoutingContext);
   const previewConfigItem = getPreviewConfig(currentStep);
