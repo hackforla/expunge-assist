@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import useUtilityStyles from 'styles/utilityStyles';
 
 import Button from 'components/Button';
-import FormHeader from 'components/FormHeader';
 
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
@@ -44,8 +43,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      <FormHeader />
-
       {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && <BeforeYouBegin />}
 
       {currentStep === STEP_ENUMS.INTRODUCTION && (
