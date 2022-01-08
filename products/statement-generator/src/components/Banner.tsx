@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-const useStyles = makeStyles(({ palette }) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       width: '100%',

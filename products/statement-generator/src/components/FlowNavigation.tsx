@@ -58,6 +58,7 @@ export default function FlowNavigation({
         buttonText="BACK"
         theme="transparent-on-light"
       />
+
       <Button
         className={classes.buttonRight}
         onClick={handleNext}

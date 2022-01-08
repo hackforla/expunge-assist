@@ -4,8 +4,8 @@ import { IInvolvementRecoveryState } from 'contexts/FormStateProps';
 
 import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
-
 import useUtilityStyles from 'styles/utilityStyles';
+import Input from '../components/Input';
 
 interface IInvolvementRecoveryProps {
   stepState: IInvolvementRecoveryState;
@@ -33,15 +33,14 @@ const InvolvementRecoveryFlow = ({
     <div className={utilityClasses.contentContainer}>
       <div className={utilityClasses.flexColumn}>
         What is the name of the recovery program you are involved with?
-        <Textarea
+        <Input
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ recoveryName: evt.target.value })
           }
           inputName="recoveryName"
           placeholder="Name of Organization"
-          multi={false}
-          isValid={recoveryNameValid}
           defaultValue={stepState.recoveryName}
+          type="text"
         />
       </div>
 

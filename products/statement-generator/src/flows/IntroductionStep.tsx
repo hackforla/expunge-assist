@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { IIntroductionState } from 'contexts/FormStateProps';
 
-import Textarea from 'components/Textarea';
 import Input from 'components/Input';
 import Paragraph from 'components/Paragraph';
 import TextPreview from 'components/TextPreview';
@@ -50,6 +49,7 @@ const IntroductionStep = ({
   const isNextDisabled = !fullNameValid || !ageValid;
 
   if (showPreview) {
+    // AS written this will never be true.
     return (
       <div className={utilityClasses.contentContainer}>
         <div>
@@ -72,12 +72,11 @@ const IntroductionStep = ({
     <div className={utilityClasses.contentContainer}>
       <form className={utilityClasses.flexGrow}>
         <p>What is your name?</p>
-        <Textarea
+        <Input
           inputName="name"
-          placeholder="Firstname Lastname"
+          placeholder="Full Name"
           handleChange={handleChange}
-          multi={false}
-          isValid={fullNameValid}
+          type="text"
           defaultValue={stepState.fullName}
         />
 

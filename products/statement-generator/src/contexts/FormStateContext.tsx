@@ -5,11 +5,7 @@ import {
   defaultStepState,
   sampleStepState,
 } from 'contexts/FormStateProps';
-import {
-  STEP_ENUMS,
-  getNextFormStep,
-  isAnInvolvementPage,
-} from 'contexts/RoutingProps';
+import { STEP_ENUMS, getNextFormStep } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
 interface FormStateProviderProps {
