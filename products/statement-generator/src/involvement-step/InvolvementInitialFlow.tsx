@@ -3,7 +3,9 @@ import React from 'react';
 import { IInvolvementInitialState } from 'contexts/FormStateProps';
 
 import Checkbox from 'components/Checkbox';
-import FlowNavigation from 'components/FlowNavigation';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -61,7 +63,7 @@ const InvolvementInitialFlow = ({
     stepState.isNoneChecked;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What things have you been involved with since your conviction?
       </div>
@@ -119,7 +121,7 @@ const InvolvementInitialFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={!isNextEnabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

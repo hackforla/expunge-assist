@@ -51,9 +51,7 @@ export default function EditContent({
           value={updatedContent}
         />
       </div>
-      <div
-        className={`${utilityClasses.buttonContainer} ${classes.container}`}
-      >
+      <div className={`${utilityClasses.buttonContainer} ${classes.container}`}>
         <Button
           theme="cancel"
           buttonText="Cancel"

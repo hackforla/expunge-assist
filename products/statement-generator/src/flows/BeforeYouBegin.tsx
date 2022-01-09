@@ -5,13 +5,11 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Button from 'components/Button';
 
+import ContentContainer from 'page-layout/ContentContainer';
+
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface ComponentProps {
-  onChangeAffirmation: (newState: object) => void;
-}
-
-const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
+const BeforeYouBegin = () => {
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
   });
@@ -20,7 +18,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
   const { goNextStep } = useContext(FormStateContext);
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <h3>{t('disclaimer.header')}</h3>
 
       <p>{t('disclaimer.text')}</p>
@@ -29,7 +27,6 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
         <Button
           className={utilityClasses.buttonRight}
           onClick={() => {
-            onChangeAffirmation({ isActive: true });
             goNextStep();
           }}
           theme="dark"
@@ -37,7 +34,7 @@ const BeforeYouBegin = ({ onChangeAffirmation }: ComponentProps) => {
           hasArrow
         />
       </div>
-    </div>
+    </ContentContainer>
   );
 };
 

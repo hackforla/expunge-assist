@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 
 import { IWhyStepState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
 import HelpPopUp from 'components/HelpPopUp';
 import Paragraph from 'components/Paragraph';
 import Textarea from 'components/Textarea';
 import TextPreview from 'components/TextPreview';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -44,7 +46,7 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
   const textPreviewContent = `${stepState.clearRecordWhy} ${stepState.clearRecordHow}`;
   if (showPreview) {
     return (
-      <div className={utilityClasses.contentContainer}>
+      <ContentContainer>
         <TextPreview
           content={textPreviewContent}
           onAdjustClick={() => setShowPreview(false)}
@@ -52,12 +54,12 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
         />
 
         <FlowNavigation onBack={() => setShowPreview(false)} />
-      </div>
+      </ContentContainer>
     );
   }
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <form className={utilityClasses.flexGrow}>
         <p>Please finish this sentence: I want to clear my record because...</p>
         <Textarea
@@ -90,7 +92,7 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
         // onNext={() => setShowPreview(true)}
         isNextDisabled={isNextDisabled}
       />
-    </div>
+    </ContentContainer>
   );
 };
 

@@ -2,8 +2,10 @@ import React from 'react';
 
 import { IInvolvementJobState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
@@ -33,7 +35,7 @@ const InvolvementJobFlow = ({
     !companyNameValid || !jobTitleValid || !jobDescriptionValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the company you work for?
         <Input
@@ -78,7 +80,7 @@ const InvolvementJobFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

@@ -7,7 +7,9 @@ import Paragraph from 'components/Paragraph';
 import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
-import FlowNavigation from 'components/FlowNavigation';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -51,7 +53,7 @@ const IntroductionStep = ({
   if (showPreview) {
     // AS written this will never be true.
     return (
-      <div className={utilityClasses.contentContainer}>
+      <ContentContainer>
         <div>
           <TextPreview
             content={textPreviewContent}
@@ -64,12 +66,12 @@ const IntroductionStep = ({
           onBack={() => setShowPreview(false)}
           isNextDisabled={isNextDisabled}
         />
-      </div>
+      </ContentContainer>
     );
   }
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <form className={utilityClasses.flexGrow}>
         <p>What is your name?</p>
         <Input
@@ -106,7 +108,7 @@ const IntroductionStep = ({
       <HelpPopUp />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

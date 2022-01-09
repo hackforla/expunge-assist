@@ -3,7 +3,7 @@ import { makeStyles, createStyles, Link } from '@material-ui/core';
 
 import hackForLALogo from 'assets/hackForLALogo.svg';
 
-const useStyles = makeStyles(({ palette, breakpoints }) =>
+const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
     footerContainer: {
       width: '100%',
@@ -13,7 +13,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       justifyContent: 'space-between',
       alignItems: 'center',
       flexShrink: 0,
-      padding: '6px 18px',
+      padding: spacing(1, 3),
     },
     leftWrapper: {
       [breakpoints.down('sm')]: {
@@ -33,10 +33,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       },
     },
     linkBtn: {
-      padding: '6px',
-      color: palette.common.lightgrey,
       fontSize: '12px',
-      margin: '0 6px',
+      color: palette.common.lightgrey,
+      padding: spacing(1),
+      margin: spacing(0, 1),
       [breakpoints.down('sm')]: {
         textAlign: 'center',
       },
@@ -44,7 +44,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
   })
 );
 
-function FooterLink(props: any) {
+function AppFooterLink(props: any) {
   const classes = useStyles();
   const { url, children } = props;
 
@@ -55,7 +55,7 @@ function FooterLink(props: any) {
   );
 }
 
-const Footer: React.FC = () => {
+const AppFooter: React.FC = () => {
   const classes = useStyles();
 
   return (
@@ -65,10 +65,10 @@ const Footer: React.FC = () => {
       </div>
 
       <div className={classes.middleWrapper}>
-        <FooterLink url="PrivacyPolicy">Privacy Policy</FooterLink>
-        <FooterLink url="TermsOfUse">Terms Of Use</FooterLink>
-        <FooterLink url="AboutUs">About Us</FooterLink>
-        <FooterLink url="FAQ">FAQ</FooterLink>
+        <AppFooterLink url="PrivacyPolicy">Privacy Policy</AppFooterLink>
+        <AppFooterLink url="TermsOfUse">Terms Of Use</AppFooterLink>
+        <AppFooterLink url="AboutUs">About Us</AppFooterLink>
+        <AppFooterLink url="FAQ">FAQ</AppFooterLink>
       </div>
 
       <span className={classes.endWrapper}>COPYRIGHT 2021 HACK FOR LA</span>
@@ -76,4 +76,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;
+export default AppFooter;

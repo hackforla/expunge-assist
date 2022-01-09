@@ -156,6 +156,36 @@ export function getNextFormStep(currentStep: string) {
  * @param {StepEnum} currentStep
  * @returns {Boolean}
  */
+export function isFormPage(currentStep: string) {
+  return (
+    currentStep === STEP_ENUMS.INTRODUCTION ||
+    currentStep === STEP_ENUMS.INTRODUCTION_PREVIEW ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.JOB ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED ||
+    currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW ||
+    currentStep === STEP_ENUMS.GOALS ||
+    currentStep === STEP_ENUMS.GOALS_PREVIEW ||
+    currentStep === STEP_ENUMS.WHY ||
+    currentStep === STEP_ENUMS.WHY_PREVIEW ||
+    currentStep === STEP_ENUMS.FINALIZE ||
+    currentStep === STEP_ENUMS.FINALIZE_PREVIEW
+  );
+}
+
+/**
+ * @param {StepEnum} currentStep
+ * @returns {Boolean}
+ */
 export function isAnInvolvementPage(currentStep: string) {
   return (
     // currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL ||

@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  useHistory,
   BrowserRouter as Router,
   Route,
   Switch,
+  useHistory,
 } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 
@@ -11,9 +11,11 @@ import { RoutingContextProvider } from 'contexts/RoutingContext';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
-import PageContainer from 'components/PageContainer';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
+import PageContainer from 'page-layout/PageContainer';
+import AppFooter from 'page-layout/AppFooter';
+import AppHeader from 'page-layout/AppHeader';
+import AppSubheader from 'page-layout/AppSubheader';
+import Form from 'components/Form';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -57,35 +59,39 @@ const App: React.FC = () => {
                 <button onClick={() => handleClick('ko')}>KO</button>
               </nav>
 
-              <Header />
+              <AppHeader />
+              <AppSubheader />
 
-              <Switch>
-                <Route exact path="/" component={Landing} />
+              <PageContainer>
+                <Switch>
+                  <Route exact path="/" component={Landing} />
 
-                <Route
-                  exact
-                  path="/form/:page?/preview"
-                  component={PreviewPage}
-                />
+                  <Route
+                    exact
+                    path="/form/:page?/preview"
+                    component={PreviewPage}
+                  />
 
-                <Route
-                  path="/form/:page?"
-                  component={PageContainer}
-                  history={history}
-                />
+                  <Route
+                    path="/form/:page?"
+                    component={Form}
+                    history={history}
+                  />
 
-                <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
-                <Route path="/TermsOfUse" component={TermsOfUse} />
-                <Route path="/FAQ" component={FAQ} />
-                <Route path="/AboutUs" component={AboutUs} />
+                  <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
+                  <Route path="/TermsOfUse" component={TermsOfUse} />
+                  <Route path="/FAQ" component={FAQ} />
+                  <Route path="/AboutUs" component={AboutUs} />
 
-                <Route component={NotFound} />
-                <Route path="/404" component={NotFound} />
-              </Switch>
+                  <Route component={NotFound} />
+                  <Route path="/404" component={NotFound} />
+                </Switch>
+              </PageContainer>
+
+              <AppFooter />
             </FormStateContextProvider>
           </AffirmationContextProvider>
         </RoutingContextProvider>
-        <Footer />
       </Router>
     </ThemeProvider>
   );

@@ -9,10 +9,13 @@ const appTheme = createMuiTheme({
   },
   palette: {
     primary: {
-      light: '#F7EBFF',
+      light: '#F7EBFF', // light purple
       main: '#9903FF',
       // dark: '#c5b3d1',
       darker: '#25003F',
+    },
+    secondary: {
+      main: '#FFFAF2', // tangerine light orange
     },
     common: {
       black: '#0a0a0a',

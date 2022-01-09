@@ -23,16 +23,11 @@ import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
 interface FormProps {
-  onChangeAffirmation: (newState: object) => void;
   affirmationIsActive: boolean;
   isDarkTheme: boolean;
 }
 
-const Form = ({
-  onChangeAffirmation,
-  affirmationIsActive,
-  isDarkTheme,
-}: FormProps) => {
+const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
   const utilityClasses = useUtilityStyles({
     pageTheme: isDarkTheme ? 'dark' : 'transparent',
   });
@@ -48,9 +43,7 @@ const Form = ({
 
   return (
     <>
-      {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && (
-        <BeforeYouBegin onChangeAffirmation={onChangeAffirmation} />
-      )}
+      {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && <BeforeYouBegin />}
 
       {currentStep === STEP_ENUMS.INTRODUCTION && (
         <IntroductionStep

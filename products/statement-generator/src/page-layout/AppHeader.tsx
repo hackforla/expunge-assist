@@ -9,13 +9,13 @@ import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
 
 const useStyles = makeStyles<Theme, IUseUtilityStyle>(
-  ({ palette, breakpoints }) =>
+  ({ palette, breakpoints, spacing }) =>
     createStyles({
       root: {
         background: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'purple' ? palette.primary.main : 'white',
 
-        padding: '18px',
+        padding: spacing(3),
         display: 'flex',
 
         '& a': {
@@ -26,7 +26,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         '& .logo-title': {
           display: 'flex',
           flexDirection: 'column',
-          marginLeft: '20px',
+          marginLeft: spacing(3),
           textTransform: 'uppercase',
           fontSize: '12px',
 
@@ -46,7 +46,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     })
 );
 
-const Header = () => {
+const AppHeader = () => {
   const { currentStep } = useContext(RoutingContext);
 
   const isPurpleTheme =
@@ -76,4 +76,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AppHeader;

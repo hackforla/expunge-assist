@@ -9,10 +9,11 @@ import { IStepState } from 'contexts/FormStateProps';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
+import ContentContainer from 'page-layout/ContentContainer';
+
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
-import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -40,7 +41,6 @@ interface IFinalizeStepProps {
 
 const Download = ({ formState }: IFinalizeStepProps) => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles();
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -121,7 +121,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <form>
         <Checkbox
           checked={!isDisabled}
@@ -160,7 +160,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
           />
         </div>
       </form>
-    </div>
+    </ContentContainer>
   );
 };
 
