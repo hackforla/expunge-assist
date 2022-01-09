@@ -80,7 +80,6 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
       />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-
     </ContentContainer>
   );
 };
