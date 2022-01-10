@@ -8,7 +8,7 @@ import {
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
-import { PAGES } from 'contexts/RoutingProps';
+import { AppUrl } from 'contexts/RoutingProps';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
@@ -80,12 +80,12 @@ const App: React.FC = () => {
                   />
 
                   <Route
-                    path={PAGES.PRIVACY_POLICY}
+                    path={AppUrl.PrivacyPolicy}
                     component={PrivacyPolicy}
                   />
-                  <Route path={PAGES.TERMS_OF_USE} component={TermsOfUse} />
-                  <Route path={PAGES.FAQ} component={FAQ} />
-                  <Route path={PAGES.ABOUT_US} component={AboutUs} />
+                  <Route path={AppUrl.TermsOfUse} component={TermsOfUse} />
+                  <Route path={AppUrl.FAQ} component={FAQ} />
+                  <Route path={AppUrl.AboutUs} component={AboutUs} />
 
                   <Route component={NotFound} />
                   <Route path="/404" component={NotFound} />
