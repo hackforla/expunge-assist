@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { STEP_ENUMS, PAGES, URL, getNextFormStep } from 'contexts/RoutingProps';
+import { AppUrl, isAppUrl, getNextGeneratorUrl } from 'contexts/RoutingProps';
 
 interface RoutingProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
 }
 
 interface PageData {
-  stepIdx: number;
-  stepEnum: string;
-  pageEnum: string; // path
+  // browserUrl: AppUrl;
+  browserUrlIdx: number;
   isCurrentStep: boolean;
   isViewedStep: boolean; // has user been on this step in current session
   isNewStep: boolean;
@@ -23,96 +22,105 @@ const PreRoutingContextProvider = ({
   children,
   history,
 }: RoutingProviderProps) => {
-  const [formSteps, setFormSteps] = useState([STEP_ENUMS.NONE]);
+  const [appHistory, setAppHistory] = useState([AppUrl.Landing]);
+  const [historyIdx, setHistoryIdx] = useState(0);
   const [canShowAffirmation, setCanShowAffirmation] = useState(true);
-  const [currentStepIdx, setCurrentStepIdx] = useState(0);
-  const currentStep = formSteps[currentStepIdx];
+
+  const currentStep = appHistory[historyIdx];
   const { pathname } = history.location;
+  const appUrl = pathname as AppUrl;
+
+  console.log('pathname', pathname, appUrl);
 
   const isDarkTheme =
-    currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN ||
-    currentStep === STEP_ENUMS.NONE;
+    currentStep === AppUrl.BeforeYouBegin || currentStep === AppUrl.Landing;
   const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
 
-  const navigateToFormPage = (newPageUrl: string) => {
-    history.push(`/form/${newPageUrl}`);
+  const navigateToAppUrl = (newAppUrl: AppUrl) => {
+    history.push(`/form/${newAppUrl}`);
   };
 
-  const goNextPage = (suggestedNext?: string) => {
-    const nextStep = suggestedNext || getNextFormStep(currentStep);
-    setCurrentStepIdx(currentStepIdx + 1);
-    if (!formSteps.includes(nextStep)) {
-      setFormSteps([...formSteps, nextStep]);
+  const goNextPage = (suggestedNext?: AppUrl) => {
+    const nextUrl = suggestedNext || getNextGeneratorUrl(currentStep);
+    setHistoryIdx(historyIdx + 1);
+    if (!appHistory.includes(nextUrl)) {
+      setAppHistory([...appHistory, nextUrl]);
     }
 
-    const nextPageUrl = PAGES[nextStep];
-    navigateToFormPage(nextPageUrl);
+    navigateToAppUrl(nextUrl);
     setCanShowAffirmation(true);
   };
 
   const goBackPage = () => {
-    const prevStepIdx = Math.max(currentStepIdx - 1, 0);
-    const prevStep = formSteps[prevStepIdx];
-    setCurrentStepIdx(prevStepIdx);
-    const prevPageUrl = PAGES[prevStep];
+    const prevHistoryIdx = Math.max(historyIdx - 1, 0);
+    const prevUrl = appHistory[prevHistoryIdx];
+    setHistoryIdx(prevHistoryIdx);
+
     setCanShowAffirmation(false);
-    navigateToFormPage(prevPageUrl);
+    navigateToAppUrl(prevUrl);
   };
 
-  function handleBrowserPageNav(existingPageEnum: string) {
-    const existingPageIdx = formSteps.indexOf(existingPageEnum);
-    setCurrentStepIdx(existingPageIdx);
+  function handleBrowserPageNav(browserUrl: AppUrl) {
+    const existingPageIdx = appHistory.indexOf(browserUrl);
+    setHistoryIdx(existingPageIdx);
     setCanShowAffirmation(false);
   }
 
   // triggers on any url change
-  //  meaning both programmatic history navigation via `navigateToFormPage()`
+  //  including both programmatic history navigation via `navigateToAppUrl()`
   //  and pressing back on the browser
   useEffect(() => {
-    const pathMatcher = pathname.match(/(?<=\/form\/).*/) || [];
-    const pageEnum = pathMatcher[0] || '';
-    const stepEnum = URL[pageEnum];
-    const stepIdx = formSteps.indexOf(stepEnum);
+    const pathUrl = (pathname.match(/(?<=\/form\/).*/) || [])[0];
+
+    // if nothing was matched, it is probably the home (landing) page
+    if (pathUrl === undefined) {
+      setHistoryIdx(0);
+      setAppHistory([AppUrl.Landing]);
+      return;
+    }
+
+    // 404 if current path is not one of our defined urls
+    const browserUrl = (pathUrl as AppUrl) || AppUrl.Landing;
+    if (!isAppUrl(browserUrl)) {
+      setHistoryIdx(0);
+      setAppHistory([AppUrl.NotFound]);
+      history.push('/404');
+      return;
+    }
+
+    const browserUrlIdx = appHistory.indexOf(browserUrl);
     const newPageData: PageData = {
-      stepIdx,
-      stepEnum,
-      pageEnum,
-      isCurrentStep: stepEnum === currentStep,
-      isViewedStep: stepIdx > -1,
-      isNewStep: stepIdx === -1,
+      browserUrlIdx,
+      isCurrentStep: browserUrl === currentStep,
+      isViewedStep: browserUrlIdx > -1,
+      isNewStep: browserUrlIdx === -1,
     };
 
     // redirect back to the first page when accessing another random page
     // (in the future we would first check what data is currently cached before
     // deciding if we redirect or not)
-    if (pageEnum !== PAGES[STEP_ENUMS.NONE] && formSteps.length <= 1) {
-      // setCurrentStepIdx(0);
-      // setFormSteps([STEP_ENUMS.NONE]);
-      // navigateToFormPage(PAGES[STEP_ENUMS.NONE]);
+    if (browserUrl !== AppUrl.Landing && appHistory.length <= 1) {
+      // setHistoryIdx(0);
+      // setAppHistory([AppUrl.Landing]);
+      // navigateToAppUrl(PAGES[AppUrl.Landing]);
     }
 
     if (newPageData.isViewedStep && !newPageData.isCurrentStep) {
-      handleBrowserPageNav(stepEnum);
+      // handleBrowserPageNav(stepEnum);
     }
 
     // when going to home page, clear out steps
     // TODO: potentially buggy if data is filled and user presses back on browser
     if (pathname === '/' || pathname === '/form') {
-      setCurrentStepIdx(0);
-      setFormSteps([STEP_ENUMS.NONE]);
+      setHistoryIdx(0);
+      setAppHistory([AppUrl.Landing]);
     }
 
     // TESTING
     //  if page is the first one the user lands on, treat it as the first page
-    if (pageEnum && formSteps.length <= 1) {
-      if (stepEnum === undefined) {
-        setCurrentStepIdx(0);
-        setFormSteps([STEP_ENUMS.NONE]);
-        history.push('/404');
-      } else {
-        setCurrentStepIdx(0);
-        setFormSteps([stepEnum]);
-      }
+    if (browserUrl && appHistory.length <= 1) {
+      setHistoryIdx(0);
+      setAppHistory([browserUrl]);
     }
   }, [pathname]);
 

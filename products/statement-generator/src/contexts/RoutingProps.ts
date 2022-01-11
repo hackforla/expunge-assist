@@ -37,6 +37,7 @@ export enum AppPage {
  */
 export enum AppUrl {
   Landing = '',
+  NotFound = '404',
   BeforeYouBegin = 'start',
   Introduction = 'intro',
   IntroductionPreview = 'introduction/preview',
@@ -66,6 +67,13 @@ export enum AppUrl {
   TermsOfUse = 'terms-of-use',
   FAQ = 'faq',
   AboutUs = 'about-us',
+}
+
+export type AppUrlOrString = AppUrl | string;
+
+const AppUrlList = Object.values(AppUrl);
+export function isAppUrl(url: AppUrlOrString): boolean {
+  return AppUrlList.includes(url as AppUrl);
 }
 
 /**
@@ -229,6 +237,79 @@ export function getNextFormStep(currentStep: string) {
 
     default:
       return STEP_ENUMS.NONE;
+  }
+}
+
+/**
+ * @param {AppUrl} url
+ * @returns {AppUrl}
+ */
+export function getNextGeneratorUrl(url: AppUrl): AppUrl {
+  switch (url) {
+    case AppUrl.Landing:
+      return AppUrl.BeforeYouBegin;
+
+    case AppUrl.BeforeYouBegin:
+      return AppUrl.Introduction;
+
+    case AppUrl.Introduction:
+      return AppUrl.IntroductionPreview;
+    case AppUrl.IntroductionPreview:
+      return AppUrl.Involvement;
+
+    case AppUrl.Involvement:
+      return AppUrl.Job;
+
+    case AppUrl.Job:
+      return AppUrl.JobPreview;
+    case AppUrl.JobPreview:
+      return AppUrl.Unemployed;
+
+    case AppUrl.Unemployed:
+      return AppUrl.UnemployedPreview;
+    case AppUrl.UnemployedPreview:
+      return AppUrl.Recovery;
+
+    case AppUrl.Recovery:
+      return AppUrl.RecoveryPreview;
+    case AppUrl.RecoveryPreview:
+      return AppUrl.School;
+
+    case AppUrl.School:
+      return AppUrl.SchoolPreview;
+    case AppUrl.SchoolPreview:
+      return AppUrl.Parenting;
+
+    case AppUrl.Parenting:
+      return AppUrl.ParentingPreview;
+    case AppUrl.ParentingPreview:
+      return AppUrl.CommunityService;
+
+    case AppUrl.CommunityService:
+      return AppUrl.CommunityServicePreview;
+    case AppUrl.CommunityServicePreview:
+      return AppUrl.Goals;
+
+    case AppUrl.Goals:
+      return AppUrl.GoalsPreview;
+    case AppUrl.GoalsPreview:
+      return AppUrl.Why;
+
+    case AppUrl.Why:
+      return AppUrl.WhyPreview;
+    case AppUrl.WhyPreview:
+      return AppUrl.Finalize;
+
+    case AppUrl.Finalize:
+      return AppUrl.FinalizePreview;
+    case AppUrl.FinalizePreview:
+      return AppUrl.Download;
+
+    case AppUrl.Download:
+      return AppUrl.Landing;
+
+    default:
+      return AppUrl.Landing;
   }
 }
 
