@@ -28,15 +28,13 @@ const PreRoutingContextProvider = ({
 
   const currentStep = appHistory[historyIdx];
   const { pathname } = history.location;
-  const appUrl = pathname as AppUrl;
-
-  console.log('pathname', pathname, appUrl);
+  // const appUrl = pathname as AppUrl;
 
   const isDarkTheme =
     currentStep === AppUrl.BeforeYouBegin || currentStep === AppUrl.Landing;
   const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
 
-  const navigateToAppUrl = (newAppUrl: AppUrl) => {
+  const navigateToFormUrl = (newAppUrl: AppUrl) => {
     history.push(`/form/${newAppUrl}`);
   };
 
@@ -47,7 +45,7 @@ const PreRoutingContextProvider = ({
       setAppHistory([...appHistory, nextUrl]);
     }
 
-    navigateToAppUrl(nextUrl);
+    navigateToFormUrl(nextUrl);
     setCanShowAffirmation(true);
   };
 
@@ -57,7 +55,7 @@ const PreRoutingContextProvider = ({
     setHistoryIdx(prevHistoryIdx);
 
     setCanShowAffirmation(false);
-    navigateToAppUrl(prevUrl);
+    navigateToFormUrl(prevUrl);
   };
 
   function handleBrowserPageNav(browserUrl: AppUrl) {
@@ -67,17 +65,19 @@ const PreRoutingContextProvider = ({
   }
 
   // triggers on any url change
-  //  including both programmatic history navigation via `navigateToAppUrl()`
+  //  including both programmatic history navigation via `navigateToFormUrl()`
   //  and pressing back on the browser
   useEffect(() => {
-    const pathUrl = (pathname.match(/(?<=\/form\/).*/) || [])[0];
-
-    // if nothing was matched, it is probably the home (landing) page
-    if (pathUrl === undefined) {
+    // when going to home page, clear out steps
+    // TODO: potentially buggy if data is filled and user presses back on browser
+    if (pathname === '/' || pathname === '/form') {
       setHistoryIdx(0);
       setAppHistory([AppUrl.Landing]);
       return;
     }
+
+    const pathUrl = (pathname.match(/(?<=\/form\/).*/) || [])[0];
+    console.log('pathUrl', pathUrl);
 
     // 404 if current path is not one of our defined urls
     const browserUrl = (pathUrl as AppUrl) || AppUrl.Landing;
@@ -102,18 +102,11 @@ const PreRoutingContextProvider = ({
     if (browserUrl !== AppUrl.Landing && appHistory.length <= 1) {
       // setHistoryIdx(0);
       // setAppHistory([AppUrl.Landing]);
-      // navigateToAppUrl(PAGES[AppUrl.Landing]);
+      // navigateToFormUrl(AppUrl.Landing);
     }
 
     if (newPageData.isViewedStep && !newPageData.isCurrentStep) {
-      // handleBrowserPageNav(stepEnum);
-    }
-
-    // when going to home page, clear out steps
-    // TODO: potentially buggy if data is filled and user presses back on browser
-    if (pathname === '/' || pathname === '/form') {
-      setHistoryIdx(0);
-      setAppHistory([AppUrl.Landing]);
+      handleBrowserPageNav(browserUrl);
     }
 
     // TESTING
