@@ -7,7 +7,7 @@ interface IContentContainer {
   className?: string;
 }
 
-const ContentContainer = ({ children, className }: IContentContainer) => {
+const ContentContainer = ({ children, className = '' }: IContentContainer) => {
   const utilityClasses = useUtilityStyles();
 
   return (

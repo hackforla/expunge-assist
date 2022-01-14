@@ -9,7 +9,7 @@ interface IPageContainer {
   className?: string;
 }
 
-const PageContainer = ({ children, className }: IPageContainer) => {
+const PageContainer = ({ children, className = '' }: IPageContainer) => {
   const { topLevelPageTheme } = useContext(RoutingContext);
 
   const utilityClasses = useUtilityStyles({
