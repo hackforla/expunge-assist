@@ -4,7 +4,6 @@ import {
   HashRouter as Router,
   Route,
   Switch,
-  useHistory,
 } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 
