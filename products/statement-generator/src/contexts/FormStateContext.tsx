@@ -5,7 +5,7 @@ import {
   defaultStepState,
   sampleStepState,
 } from 'contexts/FormStateProps';
-import { STEP_ENUMS, getNextFormStep } from 'contexts/RoutingProps';
+import { AppUrl, getNextFormUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
 interface FormStateProviderProps {
@@ -25,52 +25,51 @@ export const FormStateContextProvider = ({
 
   const { currentStep, goNextPage, goBackPage } = useContext(RoutingContext);
 
-  function getNextStep(startingStep: string): string {
-    const suggestedNext = getNextFormStep(startingStep);
+  function getNextStep(givenUrl: AppUrl): AppUrl {
+    const suggestedNext = getNextFormUrl(givenUrl);
 
     if (
-      (suggestedNext === STEP_ENUMS.INVOLVEMENT.JOB ||
-        suggestedNext === STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW) &&
+      (suggestedNext === AppUrl.Job || suggestedNext === AppUrl.JobPreview) &&
       !formState.involvementInitialState.isJobChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      (suggestedNext === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED ||
-        suggestedNext === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW) &&
+      (suggestedNext === AppUrl.Unemployed ||
+        suggestedNext === AppUrl.UnemployedPreview) &&
       formState.involvementInitialState.isJobChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      (suggestedNext === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
-        suggestedNext === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW) &&
+      (suggestedNext === AppUrl.CommunityService ||
+        suggestedNext === AppUrl.CommunityServicePreview) &&
       !formState.involvementInitialState.isCommunityChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      (suggestedNext === STEP_ENUMS.INVOLVEMENT.RECOVERY ||
-        suggestedNext === STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW) &&
+      (suggestedNext === AppUrl.Recovery ||
+        suggestedNext === AppUrl.RecoveryPreview) &&
       !formState.involvementInitialState.isRecoveryChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      (suggestedNext === STEP_ENUMS.INVOLVEMENT.SCHOOL ||
-        suggestedNext === STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW) &&
+      (suggestedNext === AppUrl.School ||
+        suggestedNext === AppUrl.SchoolPreview) &&
       !formState.involvementInitialState.isSchoolChecked
     ) {
       return getNextStep(suggestedNext);
     }
 
     if (
-      (suggestedNext === STEP_ENUMS.INVOLVEMENT.PARENTING ||
-        suggestedNext === STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW) &&
+      (suggestedNext === AppUrl.Parenting ||
+        suggestedNext === AppUrl.ParentingPreview) &&
       !formState.involvementInitialState.isParentingChecked
     ) {
       return getNextStep(suggestedNext);

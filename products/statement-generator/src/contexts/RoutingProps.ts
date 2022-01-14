@@ -1,34 +1,9 @@
-export enum AppPage {
-  None,
-  BeforeYouBegin,
-  Introduction,
-  IntroductionPreview,
-  Involvement,
-  InvolvementPreview,
-  Job,
-  JobPreview,
-  CommunityService,
-  CommunityServicePreview,
-  Recovery,
-  RecoveryPreview,
-  School,
-  SchoolPreview,
-  Parenting,
-  ParentingPreview,
-  Unemployed,
-  UnemployedPreview,
-  Goals,
-  GoalsPreview,
-  Why,
-  WhyPreview,
-  Finalize,
-  FinalizePreview,
-  Editing,
-  Download,
-  PrivacyPolicy,
-  TermsOfUse,
-  FAQ,
-  AboutUs,
+export interface RoutingContextProps {
+  goNextPage: () => void;
+  goBackPage: () => void;
+  currentStep: AppUrl;
+  canShowAffirmation: boolean;
+  topLevelPageTheme: string;
 }
 
 /**
@@ -44,23 +19,23 @@ export enum AppUrl {
   Involvement = '/form/involvement',
   InvolvementPreview = '/form/involvement',
   Job = '/form/job',
-  JobPreview = '/form/job-preview',
+  JobPreview = '/form/job/preview',
   CommunityService = '/form/community-service',
-  CommunityServicePreview = '/form/community-service-preview',
+  CommunityServicePreview = '/form/community-service/preview',
   Recovery = '/form/recovery',
-  RecoveryPreview = '/form/recovery-preview',
+  RecoveryPreview = '/form/recovery/preview',
   School = '/form/school',
-  SchoolPreview = '/form/school-preview',
+  SchoolPreview = '/form/school/preview',
   Parenting = '/form/parenting',
-  ParentingPreview = '/form/parenting-preview',
+  ParentingPreview = '/form/parenting/preview',
   Unemployed = '/form/unemployed',
-  UnemployedPreview = '/form/unemployed-preview',
+  UnemployedPreview = '/form/unemployed/preview',
   Goals = '/form/goals',
-  GoalsPreview = '/form/goals-preview',
+  GoalsPreview = '/form/goals/preview',
   Why = '/form/why',
-  WhyPreview = '/form/why-preview',
+  WhyPreview = '/form/why/preview',
   Finalize = '/form/finalize',
-  FinalizePreview = '/form/finalize-preview',
+  FinalizePreview = '/form/finalize/preview',
   Editing = '/form/editing',
   Download = '/form/download',
   PrivacyPolicy = 'privacy-policy',
@@ -244,7 +219,7 @@ export function getNextFormStep(currentStep: string) {
  * @param {AppUrl} url
  * @returns {AppUrl}
  */
-export function getNextGeneratorUrl(url: AppUrl): AppUrl {
+export function getNextFormUrl(url: AppUrl): AppUrl {
   switch (url) {
     case AppUrl.Landing:
       return AppUrl.BeforeYouBegin;

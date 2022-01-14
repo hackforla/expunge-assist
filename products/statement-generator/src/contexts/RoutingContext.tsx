@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { AppUrl, isAppUrl, getNextGeneratorUrl } from 'contexts/RoutingProps';
+import { AppUrl, isAppUrl, getNextFormUrl } from 'contexts/RoutingProps';
 
 interface RoutingProviderProps extends RouteComponentProps<any> {
   children: React.ReactNode;
 }
 
 interface PageData {
-  // browserUrl: AppUrl;
   browserUrlIdx: number;
   isCurrentStep: boolean;
   isViewedStep: boolean; // has user been on this step in current session
-  isNewStep: boolean;
+  // isNewStep: boolean;
 }
 
 const RoutingContext = React.createContext<any>(undefined);
@@ -40,7 +39,7 @@ const PreRoutingContextProvider = ({
   };
 
   const goNextPage = (suggestedNext?: AppUrl) => {
-    const nextUrl = suggestedNext || getNextGeneratorUrl(currentStep);
+    const nextUrl = suggestedNext || getNextFormUrl(currentStep);
     setHistoryIdx(historyIdx + 1);
     if (!appHistory.includes(nextUrl)) {
       setAppHistory([...appHistory, nextUrl]);
@@ -93,7 +92,7 @@ const PreRoutingContextProvider = ({
       browserUrlIdx,
       isCurrentStep: browserUrl === appHistory[historyIdx],
       isViewedStep: browserUrlIdx > -1,
-      isNewStep: browserUrlIdx === -1,
+      // isNewStep: browserUrlIdx === -1,
     };
 
     // redirect back to the first page when accessing another random page
