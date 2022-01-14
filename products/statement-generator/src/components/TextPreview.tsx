@@ -28,13 +28,13 @@ const useStyles = makeStyles(({ palette, spacing }) =>
 );
 
 interface ComponentProps {
-  onAdjustClick: () => void;
+  // onAdjustClick: () => void;
   content: string;
   nameOfStep: string;
 }
 
 const TextPreview = ({
-  onAdjustClick,
+  // onAdjustClick,
   content,
   nameOfStep,
 }: ComponentProps) => {

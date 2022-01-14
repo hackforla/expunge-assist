@@ -35,7 +35,6 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
       <ContentContainer>
         <TextPreview
           content={`${stepState.goals}. To work towards my goals; ${stepState.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
-          onAdjustClick={() => setPreview(false)}
           nameOfStep="Future Goals"
         />
 

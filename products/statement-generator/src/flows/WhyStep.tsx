@@ -47,11 +47,7 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
   if (showPreview) {
     return (
       <ContentContainer>
-        <TextPreview
-          content={textPreviewContent}
-          onAdjustClick={() => setShowPreview(false)}
-          nameOfStep="Why"
-        />
+        <TextPreview content={textPreviewContent} nameOfStep="Why" />
 
         <FlowNavigation onBack={() => setShowPreview(false)} />
       </ContentContainer>

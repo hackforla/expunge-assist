@@ -55,11 +55,7 @@ const IntroductionStep = ({
     return (
       <ContentContainer>
         <div>
-          <TextPreview
-            content={textPreviewContent}
-            onAdjustClick={() => setShowPreview(false)}
-            nameOfStep="Introduction"
-          />
+          <TextPreview content={textPreviewContent} nameOfStep="Introduction" />
         </div>
 
         <FlowNavigation
