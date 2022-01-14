@@ -5,7 +5,7 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import AffirmationImage from 'assets/affirmation-img.svg';
 
 import RoutingContext from 'contexts/RoutingContext';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { AppUrl } from 'contexts/RoutingProps';
 
 import { AffirmationContext } from 'contexts/AffirmationContext';
 import ContentContainer from 'page-layout/ContentContainer';
@@ -93,7 +93,7 @@ const AffirmationComponent = ({
   // todo: move text into a json for localization
   useEffect(() => {
     switch (currentStep) {
-      case STEP_ENUMS.INTRODUCTION:
+      case AppUrl.Introduction:
         updateAffirmationData({
           isActive: canShowAffirmation,
           titleText: 'Welcome!',
@@ -101,7 +101,7 @@ const AffirmationComponent = ({
           description: 'This is a tool to generate a personal statement.',
         });
         break;
-      case STEP_ENUMS.INVOLVEMENT.INITIAL:
+      case AppUrl.Involvement:
         updateAffirmationData({
           isActive: canShowAffirmation,
           titleText: 'Congrats!',
@@ -110,7 +110,7 @@ const AffirmationComponent = ({
             'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
         });
         break;
-      case STEP_ENUMS.GOALS:
+      case AppUrl.Goals:
         updateAffirmationData({
           isActive: canShowAffirmation,
           titleText: 'Hooray!',
@@ -119,7 +119,7 @@ const AffirmationComponent = ({
             'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
         });
         break;
-      case STEP_ENUMS.WHY:
+      case AppUrl.Why:
         updateAffirmationData({
           isActive: canShowAffirmation,
           titleText: 'Great Job!',
