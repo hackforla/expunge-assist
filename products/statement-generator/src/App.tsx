@@ -46,7 +46,7 @@ const App: React.FC = () => {
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
-            <ThemeProvider theme={theme}>
+            <FormStateContextProvider>
               <nav
                 style={{
                   width: '100%',
