@@ -8,7 +8,6 @@ import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { STEP_ENUMS } from 'contexts/RoutingProps';
 
-import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
@@ -43,8 +42,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && <BeforeYouBegin />}
-
       {currentStep === STEP_ENUMS.INTRODUCTION && (
         <IntroductionStep
           stepState={formState.introduction}

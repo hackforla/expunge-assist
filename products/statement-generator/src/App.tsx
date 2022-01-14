@@ -18,6 +18,7 @@ import AppHeader from 'page-layout/AppHeader';
 import AppSubheader from 'page-layout/AppSubheader';
 import Form from 'components/Form';
 
+import BeforeYouBegin from 'flows/BeforeYouBegin';
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
@@ -66,6 +67,12 @@ const App: React.FC = () => {
               <PageContainer>
                 <Switch>
                   <Route exact path="/" component={Landing} />
+
+                  <Route
+                    exact
+                    path={AppUrl.BeforeYouBegin}
+                    component={BeforeYouBegin}
+                  />
 
                   <Route
                     exact
