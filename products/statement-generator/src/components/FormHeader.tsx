@@ -2,19 +2,19 @@ import React from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { AppUrl } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
-const useStyles = makeStyles<Theme>((theme) =>
+const useStyles = makeStyles<Theme>(({ palette, breakpoints }) =>
   createStyles({
     root: {
-      background: '#f7ebff',
+      background: palette.primary.light,
       color: 'black',
       padding: '12px 12px',
       borderBottomRightRadius: '64px',
 
-      [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      [breakpoints.up(breakpoints.values.md)]: {
         marginLeft: '18px',
         marginRight: '18px',
       },
@@ -33,80 +33,80 @@ const useStyles = makeStyles<Theme>((theme) =>
   })
 );
 
-function convertStepToNum(step: string): number {
-  switch (step) {
-    case STEP_ENUMS.INTRODUCTION:
-    case STEP_ENUMS.INTRODUCTION_PREVIEW:
+function convertStepToNum(url: AppUrl): number {
+  switch (url) {
+    case AppUrl.Introduction:
+    case AppUrl.IntroductionPreview:
       return 1;
-    case STEP_ENUMS.INVOLVEMENT.INITIAL:
-    case STEP_ENUMS.INVOLVEMENT.JOB:
-    case STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW:
-    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
-    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW:
-    case STEP_ENUMS.INVOLVEMENT.RECOVERY:
-    case STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW:
-    case STEP_ENUMS.INVOLVEMENT.SCHOOL:
-    case STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW:
-    case STEP_ENUMS.INVOLVEMENT.PARENTING:
-    case STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW:
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
+    case AppUrl.Involvement:
+    case AppUrl.Job:
+    case AppUrl.JobPreview:
+    case AppUrl.CommunityService:
+    case AppUrl.CommunityServicePreview:
+    case AppUrl.Recovery:
+    case AppUrl.RecoveryPreview:
+    case AppUrl.School:
+    case AppUrl.SchoolPreview:
+    case AppUrl.Parenting:
+    case AppUrl.ParentingPreview:
+    case AppUrl.Unemployed:
+    case AppUrl.UnemployedPreview:
       return 2;
-    case STEP_ENUMS.GOALS:
-    case STEP_ENUMS.GOALS_PREVIEW:
+    case AppUrl.Goals:
+    case AppUrl.GoalsPreview:
       return 3;
-    case STEP_ENUMS.WHY:
-    case STEP_ENUMS.WHY_PREVIEW:
+    case AppUrl.Why:
+    case AppUrl.WhyPreview:
       return 4;
-    case STEP_ENUMS.FINALIZE:
+    case AppUrl.Finalize:
       return 5;
-    case STEP_ENUMS.DOWNLOAD:
+    case AppUrl.Download:
       return 5;
     default:
       return 0;
   }
 }
 
-function convertStepToTitle(step: string): string {
-  switch (step) {
-    case STEP_ENUMS.INTRODUCTION:
-    case STEP_ENUMS.INTRODUCTION_PREVIEW:
+function convertStepToTitle(url: AppUrl): string {
+  switch (url) {
+    case AppUrl.Introduction:
+    case AppUrl.IntroductionPreview:
       return 'Introduce Yourself!';
-    case STEP_ENUMS.INVOLVEMENT.INITIAL:
+    case AppUrl.Involvement:
       return 'Involvement';
-    case STEP_ENUMS.INVOLVEMENT.JOB:
+    case AppUrl.Job:
       return 'Involvement: Job';
-    case STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW:
+    case AppUrl.JobPreview:
       return 'Involvement: Job';
-    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
+    case AppUrl.CommunityService:
       return 'Involvement: Community Service';
-    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW:
+    case AppUrl.CommunityServicePreview:
       return 'Involvement: Community Service';
-    case STEP_ENUMS.INVOLVEMENT.RECOVERY:
+    case AppUrl.Recovery:
       return 'Involvement: Recovery';
-    case STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW:
+    case AppUrl.RecoveryPreview:
       return 'Involvement: Recovery';
-    case STEP_ENUMS.INVOLVEMENT.SCHOOL:
+    case AppUrl.School:
       return 'Involvement: School';
-    case STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW:
+    case AppUrl.SchoolPreview:
       return 'Involvement: School';
-    case STEP_ENUMS.INVOLVEMENT.PARENTING:
+    case AppUrl.Parenting:
       return 'Involvement: Parenting';
-    case STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW:
+    case AppUrl.ParentingPreview:
       return 'Involvement: Parenting';
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
+    case AppUrl.Unemployed:
       return 'Involvement: Unemployment';
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
+    case AppUrl.UnemployedPreview:
       return 'Involvement: Unemployment';
-    case STEP_ENUMS.GOALS:
+    case AppUrl.Goals:
       return 'Goals';
-    case STEP_ENUMS.GOALS_PREVIEW:
+    case AppUrl.GoalsPreview:
       return 'Goals';
-    case STEP_ENUMS.WHY:
+    case AppUrl.Why:
       return 'Why';
-    case STEP_ENUMS.WHY_PREVIEW:
+    case AppUrl.WhyPreview:
       return 'Why';
-    case STEP_ENUMS.FINALIZE:
+    case AppUrl.Finalize:
       return 'My Personal Statement';
     default:
       return '';

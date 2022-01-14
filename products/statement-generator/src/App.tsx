@@ -4,18 +4,22 @@ import {
   HashRouter as Router,
   Route,
   Switch,
+  useHistory,
 } from 'react-router-dom';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
+import { AppUrl } from 'contexts/RoutingProps';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
-import PageContainer from 'components/PageContainer';
-import Navbar from 'components/Navbar';
-import Header from 'components/Header';
-import FormHeader from 'components/FormHeader';
+import PageContainer from 'page-layout/PageContainer';
+import AppFooter from 'page-layout/AppFooter';
+import AppHeader from 'page-layout/AppHeader';
+import AppSubheader from 'page-layout/AppSubheader';
+import Form from 'components/Form';
 
+import BeforeYouBegin from 'flows/BeforeYouBegin';
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
@@ -25,28 +29,9 @@ import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
+import appTheme from 'styles/appTheme';
 
 import { useTranslation } from 'react-i18next';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#9903FF',
-    },
-    secondary: {
-      main: '#0AEBA0',
-    },
-  },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 320,
-      md: 960,
-      lg: 1200,
-      xl: 1920,
-    },
-  },
-});
 
 const App: React.FC = () => {
   const history = useHistory();
@@ -57,9 +42,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
-      <RoutingContextProvider>
-        <FormStateContextProvider>
+    <ThemeProvider theme={appTheme}>
+      <Router basename={process.env.PUBLIC_URL}>
+        <RoutingContextProvider>
           <AffirmationContextProvider>
             <ThemeProvider theme={theme}>
               <nav
@@ -77,36 +62,50 @@ const App: React.FC = () => {
                 <button onClick={() => handleClick('ko')}>KO</button>
               </nav>
 
-              <Header />
+              <AppHeader />
+              <AppSubheader />
 
-              <FormHeader />
+              <PageContainer>
+                <Switch>
+                  <Route exact path="/" component={Landing} />
 
-              <Switch>
-                <Route exact path="/" component={Landing} />
+                  <Route
+                    exact
+                    path={AppUrl.BeforeYouBegin}
+                    component={BeforeYouBegin}
+                  />
 
-                <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
-                <Route path="/TermsOfUse" component={TermsOfUse} />
-                <Route path="/FAQ" component={FAQ} />
-                <Route path="/AboutUs" component={AboutUs} />
+                  <Route
+                    exact
+                    path="/form/:page?/preview"
+                    component={PreviewPage}
+                  />
 
-                <Route path="/404" component={NotFound} />
+                  <Route
+                    path="/form/:page?"
+                    component={Form}
+                    history={history}
+                  />
 
-                <Route exact path="/:page?/preview" component={PreviewPage} />
+                  <Route
+                    path={AppUrl.PrivacyPolicy}
+                    component={PrivacyPolicy}
+                  />
+                  <Route path={AppUrl.TermsOfUse} component={TermsOfUse} />
+                  <Route path={AppUrl.FAQ} component={FAQ} />
+                  <Route path={AppUrl.AboutUs} component={AboutUs} />
 
-                <Route
-                  path="/:page?"
-                  component={PageContainer}
-                  history={history}
-                />
+                  <Route component={NotFound} />
+                  <Route path="/404" component={NotFound} />
+                </Switch>
+              </PageContainer>
 
-                <Route component={NotFound} />
-              </Switch>
-              <Navbar />
-            </ThemeProvider>
+              <AppFooter />
+            </FormStateContextProvider>
           </AffirmationContextProvider>
-        </FormStateContextProvider>
-      </RoutingContextProvider>
-    </Router>
+        </RoutingContextProvider>
+      </Router>
+    </ThemeProvider>
   );
 };
 

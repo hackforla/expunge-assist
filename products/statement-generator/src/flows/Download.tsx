@@ -1,34 +1,46 @@
 import React, { useState } from 'react';
-import { Theme } from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import {
-  generateIntroduction,
-  generateInvolvementJob,
-  generateInvolvementCommunity,
-  generateInvolvementRecovery,
-  generateInvolvementSchool,
-  generateInvolvementParenting,
-  generateInvolvementUnemployed,
-  generateFutureGoals,
-  generateWhy,
-} from 'helpers/StatementHelpers';
+import { getPreviewStatement } from 'helpers/previewHelper';
 
-import useUtilityStyles from 'styles/utilityStyles';
 import { IStepState } from 'contexts/FormStateProps';
+import { AppUrl } from 'contexts/RoutingProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
+import ContentContainer from 'page-layout/ContentContainer';
+
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    buttonSpacing: {
+      marginBottom: '1rem',
+    },
+    downloadButtonsContainer: {
+      marginTop: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      '& button': {
+        width: '50%',
+        '& svg': {
+          marginRight: '1rem',
+        },
+      },
+    },
+  })
+);
 
 interface IFinalizeStepProps {
   formState: IStepState;
 }
 
 const Download = ({ formState }: IFinalizeStepProps) => {
-  const utilityClasses = useUtilityStyles();
+  const classes = useStyles();
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -38,14 +50,17 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   // create a mailto link with the statement in the body
-  const str = `${generateIntroduction(formState)}
-  ${generateInvolvementJob(formState)}
-  ${generateInvolvementCommunity(formState)}
-  ${generateInvolvementRecovery(formState)}
-  ${generateInvolvementSchool(formState)}
-  ${generateInvolvementParenting(formState)}
-  ${generateInvolvementUnemployed(formState)} ${generateFutureGoals(formState)}
-  ${generateWhy(formState)}`;
+  const str = `${getPreviewStatement(formState, AppUrl.Introduction)}
+  ${getPreviewStatement(formState, AppUrl.JobPreview)}}
+  ${getPreviewStatement(formState, AppUrl.CommunityServicePreview)}
+  ${getPreviewStatement(formState, AppUrl.RecoveryPreview)}
+  ${getPreviewStatement(formState, AppUrl.SchoolPreview)}
+  ${getPreviewStatement(formState, AppUrl.ParentingPreview)}
+  ${getPreviewStatement(
+    formState,
+    AppUrl.UnemployedPreview
+  )} ${getPreviewStatement(formState, AppUrl.GoalsPreview)}
+  ${getPreviewStatement(formState, AppUrl.WhyPreview)}`;
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;
@@ -103,7 +118,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <form>
         <Checkbox
           checked={!isDisabled}
@@ -111,26 +126,30 @@ const Download = ({ formState }: IFinalizeStepProps) => {
           label="By checking this box you take full responsibility for this personal
             statement, and release all association with Hack for LA."
         />
-        <div className={utilityClasses.downloadButtonsContainer}>
+        <div className={classes.downloadButtonsContainer}>
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickEmail}
             disabled={isDisabled}
             icon={<EmailIcon />}
             buttonText={buttonText('email', 'send in an email')}
           />
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickClipboard}
             disabled={isDisabled}
             icon={<FileCopyIcon />}
             buttonText={buttonText('copy', 'copy to clipboard')}
           />
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickTXT}
             disabled={isDisabled}
             icon={<GetAppIcon />}
             buttonText={buttonText('txt', 'download txt')}
           />
           <Button
+            className={classes.buttonSpacing}
             onClick={handleClickPDF}
             disabled={isDisabled}
             icon={<GetAppIcon />}
@@ -138,7 +157,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
           />
         </div>
       </form>
-    </div>
+    </ContentContainer>
   );
 };
 

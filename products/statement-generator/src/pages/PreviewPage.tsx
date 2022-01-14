@@ -1,99 +1,42 @@
 import React, { useContext } from 'react';
 
-import FlowNavigation from 'components/FlowNavigation';
 import TextPreview from 'components/TextPreview';
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
-import { IStepState } from 'contexts/FormStateProps';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
-import * as statementHelpers from 'helpers/StatementHelpers';
-
-import useUtilityStyles from 'styles/utilityStyles';
-
-const PREVIEW_GENERATOR_MAP = {
-  [STEP_ENUMS.INTRODUCTION_PREVIEW]: {
-    title: 'Previewing Introduction',
-    generator: statementHelpers.generateIntroduction,
-  },
-  [STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW]: {
-    title: 'Previewing Involvement: Job',
-    generator: statementHelpers.generateInvolvementJob,
-  },
-  [STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW]: {
-    title: 'Previewing Involvement: Community Service',
-    generator: statementHelpers.generateInvolvementCommunity,
-  },
-  [STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW]: {
-    title: 'Previewing Involvement: Recovery',
-    generator: statementHelpers.generateInvolvementRecovery,
-  },
-  [STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW]: {
-    title: 'Previewing Involvement: School',
-    generator: statementHelpers.generateInvolvementSchool,
-  },
-  [STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW]: {
-    title: 'Previewing Involvement: Parenting',
-    generator: statementHelpers.generateInvolvementParenting,
-  },
-  [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW]: {
-    title: 'Previewing Involvement: Unemployment',
-    generator: statementHelpers.generateInvolvementUnemployed,
-  },
-  [STEP_ENUMS.GOALS_PREVIEW]: {
-    title: 'Previewing Goals',
-    generator: statementHelpers.generateFutureGoals,
-  },
-  [STEP_ENUMS.WHY_PREVIEW]: {
-    title: 'Previewing Why',
-    generator: statementHelpers.generateWhy,
-  },
-};
-
-interface GeneratorConfig {
-  title: string;
-  generator: (formState: IStepState) => string;
-  content: string;
-}
-
-function generatePreviewFromStep(
-  step: string,
-  formState: IStepState
-): GeneratorConfig {
-  const config = PREVIEW_GENERATOR_MAP[step];
-  if (config === undefined) {
-    return {
-      title: 'Unknown',
-      generator: () => '',
-      content: '?',
-    };
-  }
-
-  return {
-    ...config,
-    content: config.generator(formState),
-  };
-}
+import { getPreviewConfig, getPreviewStatement } from 'helpers/previewHelper';
 
 function PreviewPage() {
-  const utilityClasses = useUtilityStyles({ pageTheme: 'light' });
-
-  const { formState } = useContext(FormStateContext);
+  const { formState, updateStepToForm } = useContext(FormStateContext);
   const { currentStep } = useContext(RoutingContext);
-  const previewConfig = generatePreviewFromStep(currentStep, formState);
+  const previewConfigItem = getPreviewConfig(currentStep);
+  const hasPreviewConfig = previewConfigItem !== undefined;
+
+  function updateStatement(newStatement: string) {
+    if (hasPreviewConfig) {
+      updateStepToForm({
+        statements: {
+          ...formState.statements,
+          [previewConfigItem.stateKey]: newStatement,
+        },
+      });
+    }
+  }
 
   return (
-    <div className={utilityClasses.primaryContainer}>
-      <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
+      {hasPreviewConfig && (
         <TextPreview
-          content={previewConfig.content}
           onAdjustClick={() => {}}
-          nameOfStep={previewConfig.title}
+          content={getPreviewStatement(formState, currentStep)}
+          nameOfStep={previewConfigItem.title}
         />
+      )}
 
-        <FlowNavigation />
-      </div>
-    </div>
+      <FlowNavigation />
+    </ContentContainer>
   );
 }
 

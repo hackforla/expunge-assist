@@ -6,6 +6,7 @@ import 'styles/cssreset.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import './moduleAugmentation';
 import './i18n';
 
 ReactDOM.render(

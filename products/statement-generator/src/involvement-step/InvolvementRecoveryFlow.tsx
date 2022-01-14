@@ -2,10 +2,13 @@ import React from 'react';
 
 import { IInvolvementRecoveryState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
+
 import useUtilityStyles from 'styles/utilityStyles';
+import Input from '../components/Input';
 
 interface IInvolvementRecoveryProps {
   stepState: IInvolvementRecoveryState;
@@ -30,18 +33,17 @@ const InvolvementRecoveryFlow = ({
   const isNextDisabled = !recoveryNameValid || !recoveryDescriptionValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the recovery program you are involved with?
-        <Textarea
+        <Input
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ recoveryName: evt.target.value })
           }
           inputName="recoveryName"
           placeholder="Name of Organization"
-          multi={false}
-          isValid={recoveryNameValid}
           defaultValue={stepState.recoveryName}
+          type="text"
         />
       </div>
 
@@ -61,7 +63,7 @@ const InvolvementRecoveryFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

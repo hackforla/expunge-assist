@@ -2,9 +2,11 @@ import React from 'react';
 
 import { IInvolvementParentingState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -33,18 +35,17 @@ const InvolvementParentingFlow = ({
     !childNameValid || !parentYearsValid || !parentDescriptionValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of your child?
-        <Textarea
+        <Input
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ childName: evt.target.value })
           }
           inputName="childName"
           placeholder="Name of Child"
-          multi={false}
-          isValid={childNameValid}
           defaultValue={stepState.childName}
+          type="text"
         />
       </div>
 
@@ -71,7 +72,7 @@ const InvolvementParentingFlow = ({
           }
           inputName="parentDescription"
           placeholder="Being a good parent is important to me because..."
-          multi={false}
+          multi
           isValid={parentDescriptionValid}
           disabled={!parentYearsValid}
           defaultValue={stepState.parentDescription}
@@ -79,7 +80,7 @@ const InvolvementParentingFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

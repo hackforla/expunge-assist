@@ -2,10 +2,13 @@ import React from 'react';
 
 import { IInvolvementServiceState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
+
 import useUtilityStyles from 'styles/utilityStyles';
+import Input from '../components/Input';
 
 interface IInvolvementInitialStepProps {
   stepState: IInvolvementServiceState;
@@ -30,19 +33,18 @@ const InvolvementCommunityServiceFlow = ({
   const isNextDisabled = !organizationNameValid || !serviceDescriptionValid;
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the community service organization that you are
         involved with?
-        <Textarea
+        <Input
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ organizationName: evt.target.value })
           }
           inputName="organizationName"
           placeholder="Name of Organization"
-          multi={false}
-          isValid={organizationNameValid}
           defaultValue={stepState.organizationName}
+          type="text"
         />
       </div>
 
@@ -55,7 +57,7 @@ const InvolvementCommunityServiceFlow = ({
           }
           inputName="serviceDescription"
           placeholder="I have taken on responsibilities including..."
-          multi={false}
+          multi
           isValid={serviceDescriptionValid}
           disabled={!organizationNameValid}
           defaultValue={stepState.serviceDescription}
@@ -63,7 +65,7 @@ const InvolvementCommunityServiceFlow = ({
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 

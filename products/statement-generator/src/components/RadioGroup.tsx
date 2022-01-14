@@ -1,5 +1,7 @@
 import React from 'react';
-import { Radio } from '@material-ui/core';
+import { Radio, makeStyles, createStyles } from '@material-ui/core';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 interface RadioButtonProps {
   label: string;
@@ -9,6 +11,16 @@ interface RadioButtonProps {
   disabled?: boolean;
 }
 
+const useStyles = makeStyles(({ palette }) =>
+  createStyles({
+    radioStyles: {
+      '&.MuiIconButton-root.Mui-checked': {
+        color: palette.success.main,
+      },
+    },
+  })
+);
+
 const RadioButton = ({
   label,
   activeRadio,
@@ -16,11 +28,15 @@ const RadioButton = ({
   inputName,
   disabled = false,
 }: RadioButtonProps) => {
+  const utilityClasses = useUtilityStyles();
+  const classes = useStyles();
   return (
     <div>
       <Radio
+        classes={{
+          colorSecondary: classes.radioStyles,
+        }}
         value={label}
-        color="secondary"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           handleChange(e);
         }}
@@ -29,7 +45,9 @@ const RadioButton = ({
         disabled={disabled}
       />
 
-      <span className={disabled ? 'greyedOut' : ''}>{label}</span>
+      <span className={disabled ? utilityClasses.disabledColor : ''}>
+        {label}
+      </span>
     </div>
   );
 };

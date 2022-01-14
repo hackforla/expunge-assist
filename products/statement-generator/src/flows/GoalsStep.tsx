@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 import { IGoalsState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
-import Textarea from 'components/Textarea';
+import FlowNavigation from 'page-layout/FlowNavigation';
 import TextPreview from 'components/TextPreview';
 
-import useUtilityStyles from 'styles/utilityStyles';
+import ContentContainer from 'page-layout/ContentContainer';
+import Textarea from 'components/Textarea';
 
 interface IGoalsStepProps {
   stepState: IGoalsState;
@@ -14,8 +14,6 @@ interface IGoalsStepProps {
 }
 
 const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
-  const utilityClasses = useUtilityStyles();
-
   const [previewPage, setPreview] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = e.currentTarget.name;
@@ -34,7 +32,7 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
 
   if (previewPage) {
     return (
-      <div className={utilityClasses.contentContainer}>
+      <ContentContainer>
         <TextPreview
           content={`${stepState.goals}. To work towards my goals; ${stepState.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
           onAdjustClick={() => setPreview(false)}
@@ -45,17 +43,18 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
           onBack={() => setPreview(false)}
           isNextDisabled={isNextDisabled}
         />
-      </div>
+      </ContentContainer>
     );
   }
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <p>
         Please describe what goals you have to improve your life even further,
         like attending school, getting specialized training, etc. (2-3 sentences
         suggested)
       </p>
+
       <Textarea
         inputName="goals"
         handleChange={handleChange}
@@ -69,6 +68,7 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
         How are you working towards acheiving these goals? What are the concrete
         steps you are taking? (2-3 sentences suggested)
       </p>
+
       <Textarea
         inputName="goalsHow"
         handleChange={handleChange}
@@ -79,11 +79,8 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
         defaultValue={stepState.goalsHow}
       />
 
-      <FlowNavigation
-        // onNext={() => setPreview(true)}
-        isNextDisabled={isNextDisabled}
-      />
-    </div>
+      <FlowNavigation isNextDisabled={isNextDisabled} />
+    </ContentContainer>
   );
 };
 

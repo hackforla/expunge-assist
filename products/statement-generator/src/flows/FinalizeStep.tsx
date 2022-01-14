@@ -3,24 +3,14 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { IStepState } from 'contexts/FormStateProps';
+import { AppUrl } from 'contexts/RoutingProps';
 
-import FlowNavigation from 'components/FlowNavigation';
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
-import useUtilityStyles from 'styles/utilityStyles';
+import { getPreviewStatement } from 'helpers/previewHelper';
 
-import {
-  generateIntroduction,
-  generateInvolvementJob,
-  generateInvolvementCommunity,
-  generateInvolvementRecovery,
-  generateInvolvementSchool,
-  generateInvolvementParenting,
-  generateInvolvementUnemployed,
-  generateFutureGoals,
-  generateWhy,
-} from 'helpers/StatementHelpers';
-
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     preview: {
       padding: '15px',
@@ -32,6 +22,19 @@ const useStyles = makeStyles(() =>
         marginBottom: 15,
       },
     },
+    purpleTitle: {
+      color: palette.primary.main,
+      fontStyle: 'italic',
+      fontSize: '20px',
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: '20px',
+    },
+    purpleIcon: {
+      color: palette.primary.main,
+      fontSize: '20px',
+      marginRight: '0.5rem',
+    },
   })
 );
 
@@ -41,7 +44,6 @@ interface IFinalizeStepProps {
 
 const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles();
 
   const displayDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
@@ -50,28 +52,28 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
   });
 
   return (
-    <div className={utilityClasses.contentContainer}>
-      <div className={utilityClasses.purpleTitle}>
-        <VisibilityIcon className={utilityClasses.purpleIcon} />
+    <ContentContainer>
+      <div className={classes.purpleTitle}>
+        <VisibilityIcon className={classes.purpleIcon} />
         Previewing Final Statement
       </div>
 
       <div className={classes.preview}>
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
-        <p>{generateIntroduction(formState)}</p>
-        <p>{generateInvolvementJob(formState)}</p>
-        <p>{generateInvolvementCommunity(formState)}</p>
-        <p>{generateInvolvementRecovery(formState)}</p>
-        <p>{generateInvolvementSchool(formState)}</p>
-        <p>{generateInvolvementParenting(formState)}</p>
-        <p>{generateInvolvementUnemployed(formState)}</p>
-        <p>{generateFutureGoals(formState)}</p>
-        <p>{generateWhy(formState)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.Introduction)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.JobPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.CommunityServicePreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.RecoveryPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.SchoolPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.ParentingPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.UnemployedPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.GoalsPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.WhyPreview)}</p>
       </div>
 
       <FlowNavigation />
-    </div>
+    </ContentContainer>
   );
 };
 

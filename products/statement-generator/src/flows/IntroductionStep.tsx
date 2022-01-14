@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 
 import { IIntroductionState } from 'contexts/FormStateProps';
 
-import Textarea from 'components/Textarea';
 import Input from 'components/Input';
+import Paragraph from 'components/Paragraph';
 import TextPreview from 'components/TextPreview';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
-import FlowNavigation from 'components/FlowNavigation';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -49,8 +51,9 @@ const IntroductionStep = ({
   const isNextDisabled = !fullNameValid || !ageValid;
 
   if (showPreview) {
+    // AS written this will never be true.
     return (
-      <div className={utilityClasses.contentContainer}>
+      <ContentContainer>
         <div>
           <TextPreview
             content={textPreviewContent}
@@ -63,24 +66,23 @@ const IntroductionStep = ({
           onBack={() => setShowPreview(false)}
           isNextDisabled={isNextDisabled}
         />
-      </div>
+      </ContentContainer>
     );
   }
 
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <form className={utilityClasses.flexGrow}>
         <p>What is your name?</p>
-        <Textarea
+        <Input
           inputName="name"
-          placeholder="Firstname Lastname"
+          placeholder="Full Name"
           handleChange={handleChange}
-          multi={false}
-          isValid={fullNameValid}
+          type="text"
           defaultValue={stepState.fullName}
         />
 
-        <p className="greyedOut">How old are you?</p>
+        <Paragraph disabled={!fullNameValid}>How old are you?</Paragraph>
         <Input
           type="number"
           inputName="age"
@@ -91,9 +93,9 @@ const IntroductionStep = ({
           adornment="years old"
         />
 
-        <p className="greyedOut">
+        <Paragraph disabled={!ageValid}>
           Are you a veteran of the United States of America?
-        </p>
+        </Paragraph>
         <RadioGroup
           labels={['Yes', 'No']}
           inputName="isVeteran"
@@ -106,7 +108,7 @@ const IntroductionStep = ({
       <HelpPopUp />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
 };
 
