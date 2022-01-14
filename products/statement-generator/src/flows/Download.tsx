@@ -6,7 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { getPreviewStatement } from 'helpers/previewHelper';
 
 import { IStepState } from 'contexts/FormStateProps';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { AppUrl } from 'contexts/RoutingProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
 import ContentContainer from 'page-layout/ContentContainer';
@@ -50,20 +50,17 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   // create a mailto link with the statement in the body
-  const str = `${getPreviewStatement(formState, STEP_ENUMS.INTRODUCTION)}
-  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW)}}
+  const str = `${getPreviewStatement(formState, AppUrl.Introduction)}
+  ${getPreviewStatement(formState, AppUrl.JobPreview)}}
+  ${getPreviewStatement(formState, AppUrl.CommunityServicePreview)}
+  ${getPreviewStatement(formState, AppUrl.RecoveryPreview)}
+  ${getPreviewStatement(formState, AppUrl.SchoolPreview)}
+  ${getPreviewStatement(formState, AppUrl.ParentingPreview)}
   ${getPreviewStatement(
     formState,
-    STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW
-  )}
-  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW)}
-  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW)}
-  ${getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW)}
-  ${getPreviewStatement(
-    formState,
-    STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW
-  )} ${getPreviewStatement(formState, STEP_ENUMS.GOALS_PREVIEW)}
-  ${getPreviewStatement(formState, STEP_ENUMS.WHY_PREVIEW)}`;
+    AppUrl.UnemployedPreview
+  )} ${getPreviewStatement(formState, AppUrl.GoalsPreview)}
+  ${getPreviewStatement(formState, AppUrl.WhyPreview)}`;
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;
