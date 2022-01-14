@@ -143,79 +143,6 @@ Object.keys(PAGES).forEach((pageKey) => {
 });
 
 /**
- * @param {StepEnum} currentStep
- * @returns {StepEnum}
- */
-export function getNextFormStep(currentStep: string) {
-  switch (currentStep) {
-    case STEP_ENUMS.NONE:
-      return STEP_ENUMS.BEFORE_YOU_BEGIN;
-
-    case STEP_ENUMS.BEFORE_YOU_BEGIN:
-      return STEP_ENUMS.INTRODUCTION;
-
-    case STEP_ENUMS.INTRODUCTION:
-      return STEP_ENUMS.INTRODUCTION_PREVIEW;
-    case STEP_ENUMS.INTRODUCTION_PREVIEW:
-      return STEP_ENUMS.INVOLVEMENT.INITIAL;
-
-    case STEP_ENUMS.INVOLVEMENT.INITIAL:
-      return STEP_ENUMS.INVOLVEMENT.JOB;
-
-    case STEP_ENUMS.INVOLVEMENT.JOB:
-      return STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW;
-    case STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW:
-      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED;
-
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED:
-      return STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW;
-    case STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW:
-      return STEP_ENUMS.INVOLVEMENT.RECOVERY;
-
-    case STEP_ENUMS.INVOLVEMENT.RECOVERY:
-      return STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW;
-    case STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW:
-      return STEP_ENUMS.INVOLVEMENT.SCHOOL;
-
-    case STEP_ENUMS.INVOLVEMENT.SCHOOL:
-      return STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW;
-    case STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW:
-      return STEP_ENUMS.INVOLVEMENT.PARENTING;
-
-    case STEP_ENUMS.INVOLVEMENT.PARENTING:
-      return STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW;
-    case STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW:
-      return STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE;
-
-    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE:
-      return STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW;
-    case STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW:
-      return STEP_ENUMS.GOALS;
-
-    case STEP_ENUMS.GOALS:
-      return STEP_ENUMS.GOALS_PREVIEW;
-    case STEP_ENUMS.GOALS_PREVIEW:
-      return STEP_ENUMS.WHY;
-
-    case STEP_ENUMS.WHY:
-      return STEP_ENUMS.WHY_PREVIEW;
-    case STEP_ENUMS.WHY_PREVIEW:
-      return STEP_ENUMS.FINALIZE;
-
-    case STEP_ENUMS.FINALIZE:
-      return STEP_ENUMS.FINALIZE_PREVIEW;
-    case STEP_ENUMS.FINALIZE_PREVIEW:
-      return STEP_ENUMS.DOWNLOAD;
-
-    case STEP_ENUMS.DOWNLOAD:
-      return STEP_ENUMS.NONE;
-
-    default:
-      return STEP_ENUMS.NONE;
-  }
-}
-
-/**
  * @param {AppUrl} url
  * @returns {AppUrl}
  */
@@ -289,53 +216,31 @@ export function getNextFormUrl(url: AppUrl): AppUrl {
 }
 
 /**
- * @param {StepEnum} currentStep
+ * @param {AppUrl} appUrl
  * @returns {Boolean}
  */
-export function isFormPage(currentStep: string) {
+export function isFormPage(appUrl: AppUrl): Boolean {
   return (
-    currentStep === STEP_ENUMS.INTRODUCTION ||
-    currentStep === STEP_ENUMS.INTRODUCTION_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.JOB ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW ||
-    currentStep === STEP_ENUMS.GOALS ||
-    currentStep === STEP_ENUMS.GOALS_PREVIEW ||
-    currentStep === STEP_ENUMS.WHY ||
-    currentStep === STEP_ENUMS.WHY_PREVIEW ||
-    currentStep === STEP_ENUMS.FINALIZE ||
-    currentStep === STEP_ENUMS.FINALIZE_PREVIEW
-  );
-}
-
-/**
- * @param {StepEnum} currentStep
- * @returns {Boolean}
- */
-export function isAnInvolvementPage(currentStep: string) {
-  return (
-    // currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.JOB ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED ||
-    currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW
+    appUrl === AppUrl.Introduction ||
+    appUrl === AppUrl.IntroductionPreview ||
+    appUrl === AppUrl.Involvement ||
+    appUrl === AppUrl.Job ||
+    appUrl === AppUrl.JobPreview ||
+    appUrl === AppUrl.CommunityService ||
+    appUrl === AppUrl.CommunityServicePreview ||
+    appUrl === AppUrl.Recovery ||
+    appUrl === AppUrl.RecoveryPreview ||
+    appUrl === AppUrl.School ||
+    appUrl === AppUrl.SchoolPreview ||
+    appUrl === AppUrl.Parenting ||
+    appUrl === AppUrl.ParentingPreview ||
+    appUrl === AppUrl.Unemployed ||
+    appUrl === AppUrl.UnemployedPreview ||
+    appUrl === AppUrl.Goals ||
+    appUrl === AppUrl.GoalsPreview ||
+    appUrl === AppUrl.Why ||
+    appUrl === AppUrl.WhyPreview ||
+    appUrl === AppUrl.Finalize ||
+    appUrl === AppUrl.FinalizePreview
   );
 }
