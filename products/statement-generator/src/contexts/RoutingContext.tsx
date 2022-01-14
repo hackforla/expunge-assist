@@ -28,10 +28,11 @@ const PreRoutingContextProvider = ({
 
   const currentStep = appHistory[historyIdx];
   const { pathname } = history.location;
-  // const appUrl = pathname as AppUrl;
 
   const isDarkTheme =
-    currentStep === AppUrl.BeforeYouBegin || currentStep === AppUrl.Landing;
+    currentStep === AppUrl.BeforeYouBegin ||
+    currentStep === AppUrl.Landing ||
+    currentStep === AppUrl.NotFound;
   const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
 
   const navigateToFormUrl = (newAppUrl: AppUrl) => {
@@ -90,7 +91,7 @@ const PreRoutingContextProvider = ({
     const browserUrlIdx = appHistory.indexOf(browserUrl);
     const newPageData: PageData = {
       browserUrlIdx,
-      isCurrentStep: browserUrl === currentStep,
+      isCurrentStep: browserUrl === appHistory[historyIdx],
       isViewedStep: browserUrlIdx > -1,
       isNewStep: browserUrlIdx === -1,
     };

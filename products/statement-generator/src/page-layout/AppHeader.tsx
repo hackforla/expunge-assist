@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
 
 import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
@@ -13,14 +12,14 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     createStyles({
       root: {
         background: ({ pageTheme }: IUseUtilityStyle) =>
-          pageTheme === 'purple' ? palette.primary.main : 'white',
+          pageTheme === 'dark' ? palette.primary.main : 'white',
 
         padding: spacing(3),
         display: 'flex',
 
         '& a': {
           color: ({ pageTheme }: IUseUtilityStyle) =>
-            pageTheme === 'purple' ? 'white' : 'black',
+            pageTheme === 'dark' ? 'white' : 'black',
         },
 
         '& .logo-title': {
@@ -47,15 +46,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
 );
 
 const AppHeader = () => {
-  const { currentStep } = useContext(RoutingContext);
+  const { topLevelPageTheme } = useContext(RoutingContext);
 
-  const isPurpleTheme =
-    currentStep === STEP_ENUMS.NONE ||
-    currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN;
-
-  const logoIcon = isPurpleTheme ? iconWhite : iconBlack;
-
-  const classes = useStyles({ pageTheme: isPurpleTheme ? 'purple' : 'light' });
+  const logoIcon = topLevelPageTheme === 'dark' ? iconWhite : iconBlack;
+  const classes = useStyles({ pageTheme: topLevelPageTheme });
 
   return (
     <div className={`${classes.root} app-header`}>
