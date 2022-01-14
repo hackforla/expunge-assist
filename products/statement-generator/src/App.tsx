@@ -8,6 +8,7 @@ import {
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
+import { AppUrl } from 'contexts/RoutingProps';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
@@ -17,6 +18,7 @@ import AppHeader from 'page-layout/AppHeader';
 import AppSubheader from 'page-layout/AppSubheader';
 import Form from 'components/Form';
 
+import BeforeYouBegin from 'flows/BeforeYouBegin';
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
@@ -68,6 +70,12 @@ const App: React.FC = () => {
 
                   <Route
                     exact
+                    path={AppUrl.BeforeYouBegin}
+                    component={BeforeYouBegin}
+                  />
+
+                  <Route
+                    exact
                     path="/form/:page?/preview"
                     component={PreviewPage}
                   />
@@ -78,10 +86,13 @@ const App: React.FC = () => {
                     history={history}
                   />
 
-                  <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
-                  <Route path="/TermsOfUse" component={TermsOfUse} />
-                  <Route path="/FAQ" component={FAQ} />
-                  <Route path="/AboutUs" component={AboutUs} />
+                  <Route
+                    path={AppUrl.PrivacyPolicy}
+                    component={PrivacyPolicy}
+                  />
+                  <Route path={AppUrl.TermsOfUse} component={TermsOfUse} />
+                  <Route path={AppUrl.FAQ} component={FAQ} />
+                  <Route path={AppUrl.AboutUs} component={AboutUs} />
 
                   <Route component={NotFound} />
                   <Route path="/404" component={NotFound} />

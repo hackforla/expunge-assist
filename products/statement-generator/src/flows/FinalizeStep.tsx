@@ -3,7 +3,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { IStepState } from 'contexts/FormStateProps';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { AppUrl } from 'contexts/RoutingProps';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
@@ -61,42 +61,15 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
       <div className={classes.preview}>
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
-        <p>{getPreviewStatement(formState, STEP_ENUMS.INTRODUCTION)}</p>
-        <p>
-          {getPreviewStatement(formState, STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW)}
-        </p>
-        <p>
-          {getPreviewStatement(
-            formState,
-            STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW
-          )}
-        </p>
-        <p>
-          {getPreviewStatement(
-            formState,
-            STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW
-          )}
-        </p>
-        <p>
-          {getPreviewStatement(
-            formState,
-            STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW
-          )}
-        </p>
-        <p>
-          {getPreviewStatement(
-            formState,
-            STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW
-          )}
-        </p>
-        <p>
-          {getPreviewStatement(
-            formState,
-            STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW
-          )}
-        </p>
-        <p>{getPreviewStatement(formState, STEP_ENUMS.GOALS_PREVIEW)}</p>
-        <p>{getPreviewStatement(formState, STEP_ENUMS.WHY_PREVIEW)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.Introduction)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.JobPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.CommunityServicePreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.RecoveryPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.SchoolPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.ParentingPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.UnemployedPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.GoalsPreview)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.WhyPreview)}</p>
       </div>
 
       <FlowNavigation />

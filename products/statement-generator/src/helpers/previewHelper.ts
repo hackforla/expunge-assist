@@ -1,5 +1,5 @@
 import { IStepState } from 'contexts/FormStateProps';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { AppUrl } from 'contexts/RoutingProps';
 
 import * as statementGenerators from 'helpers/statementGenerators';
 
@@ -10,66 +10,66 @@ interface IPreviewMapItem {
 }
 
 const PREVIEW_MAP = {
-  [STEP_ENUMS.INTRODUCTION_PREVIEW]: {
+  [AppUrl.IntroductionPreview as string]: {
     title: 'Previewing Introduction',
     generator: statementGenerators.generateIntroduction,
     stateKey: 'introduction',
   },
-  [STEP_ENUMS.INVOLVEMENT.JOB_PREVIEW]: {
+  [AppUrl.JobPreview as string]: {
     title: 'Previewing Involvement: Job',
     generator: statementGenerators.generateInvolvementJob,
     stateKey: 'job',
   },
-  [STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE_PREVIEW]: {
+  [AppUrl.CommunityServicePreview as string]: {
     title: 'Previewing Involvement: Community Service',
     generator: statementGenerators.generateInvolvementCommunity,
     stateKey: 'service',
   },
-  [STEP_ENUMS.INVOLVEMENT.RECOVERY_PREVIEW]: {
+  [AppUrl.RecoveryPreview as string]: {
     title: 'Previewing Involvement: Recovery',
     generator: statementGenerators.generateInvolvementRecovery,
     stateKey: 'recovery',
   },
-  [STEP_ENUMS.INVOLVEMENT.SCHOOL_PREVIEW]: {
+  [AppUrl.SchoolPreview as string]: {
     title: 'Previewing Involvement: School',
     generator: statementGenerators.generateInvolvementSchool,
     stateKey: 'school',
   },
-  [STEP_ENUMS.INVOLVEMENT.PARENTING_PREVIEW]: {
+  [AppUrl.ParentingPreview as string]: {
     title: 'Previewing Involvement: Parenting',
     generator: statementGenerators.generateInvolvementParenting,
     stateKey: 'parenting',
   },
-  [STEP_ENUMS.INVOLVEMENT.UNEMPLOYED_PREVIEW]: {
+  [AppUrl.UnemployedPreview as string]: {
     title: 'Previewing Involvement: Unemployment',
     generator: statementGenerators.generateInvolvementUnemployed,
     stateKey: 'unemployed',
   },
-  [STEP_ENUMS.GOALS_PREVIEW]: {
+  [AppUrl.GoalsPreview as string]: {
     title: 'Previewing Goals',
     generator: statementGenerators.generateFutureGoals,
     stateKey: 'goals',
   },
-  [STEP_ENUMS.WHY_PREVIEW]: {
+  [AppUrl.WhyPreview as string]: {
     title: 'Previewing Why',
     generator: statementGenerators.generateWhy,
     stateKey: 'why',
   },
 };
 
-export function getPreviewConfig(step: string): IPreviewMapItem {
-  return PREVIEW_MAP[step];
+export function getPreviewConfig(url: AppUrl): IPreviewMapItem {
+  return PREVIEW_MAP[url as string];
 }
 
-export function getPreviewTitle(step: string): string {
-  return PREVIEW_MAP[step]?.title;
+export function getPreviewTitle(url: AppUrl): string {
+  return PREVIEW_MAP[url as string]?.title;
 }
 
 export function getPreviewStatementState(
   formState: IStepState,
-  step: string
+  url: AppUrl
 ): string | undefined {
-  const previewConfig = getPreviewConfig(step);
+  const previewConfig = getPreviewConfig(url);
   if (previewConfig) {
     const { stateKey } = previewConfig;
     return formState.statements[stateKey];
@@ -80,12 +80,12 @@ export function getPreviewStatementState(
 
 export function getPreviewStatement(
   formState: IStepState,
-  step: string
+  url: AppUrl
 ): string {
-  const statementInState = getPreviewStatementState(formState, step);
+  const statementInState = getPreviewStatementState(formState, url);
   if (statementInState !== undefined && statementInState !== '') {
     return statementInState;
   }
 
-  return PREVIEW_MAP[step]?.generator(formState);
+  return PREVIEW_MAP[url as string]?.generator(formState);
 }

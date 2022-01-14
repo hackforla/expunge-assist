@@ -6,9 +6,8 @@ import Button from 'components/Button';
 
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
-import { STEP_ENUMS } from 'contexts/RoutingProps';
+import { AppUrl } from 'contexts/RoutingProps';
 
-import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
@@ -43,9 +42,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === STEP_ENUMS.BEFORE_YOU_BEGIN && <BeforeYouBegin />}
-
-      {currentStep === STEP_ENUMS.INTRODUCTION && (
+      {currentStep === AppUrl.Introduction && (
         <IntroductionStep
           stepState={formState.introduction}
           setFormState={(newStepState) =>
@@ -54,7 +51,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.INVOLVEMENT.INITIAL && (
+      {currentStep === AppUrl.Involvement && (
         <InvolvementInitialFlow
           stepState={formState.involvementInitialState}
           setFormState={(newStepState) =>
@@ -63,7 +60,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.INVOLVEMENT.JOB && (
+      {currentStep === AppUrl.Job && (
         <InvolvementJobFlow
           stepState={formState.involvementJobState}
           setFormState={(newStepState) =>
@@ -72,7 +69,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.INVOLVEMENT.COMMUNITY_SERVICE && (
+      {currentStep === AppUrl.CommunityService && (
         <InvolvementCommunityServiceFlow
           stepState={formState.involvementServiceState}
           setFormState={(newStepState) =>
@@ -81,7 +78,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.INVOLVEMENT.RECOVERY && (
+      {currentStep === AppUrl.Recovery && (
         <InvolvementRecoveryFlow
           stepState={formState.involvementRecoveryState}
           setFormState={(newStepState) =>
@@ -90,7 +87,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.INVOLVEMENT.SCHOOL && (
+      {currentStep === AppUrl.School && (
         <InvolvementSchoolFlow
           stepState={formState.involvementSchoolState}
           setFormState={(newStepState) =>
@@ -99,7 +96,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.INVOLVEMENT.PARENTING && (
+      {currentStep === AppUrl.Parenting && (
         <InvolvementParentingFlow
           stepState={formState.involvementParentingState}
           setFormState={(newStepState) =>
@@ -108,7 +105,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.INVOLVEMENT.UNEMPLOYED && (
+      {currentStep === AppUrl.Unemployed && (
         <InvolvementUnemployedFlow
           stepState={formState.involvementUnemployedState}
           setFormState={(newStepState) =>
@@ -117,7 +114,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.GOALS && (
+      {currentStep === AppUrl.Goals && (
         <GoalsStep
           stepState={formState.goalsStep}
           setFormState={(newStepState) =>
@@ -126,7 +123,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.WHY && (
+      {currentStep === AppUrl.Why && (
         <WhyStep
           stepState={formState.whyStep}
           setFormState={(newStepState) =>
@@ -135,11 +132,11 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         />
       )}
 
-      {currentStep === STEP_ENUMS.FINALIZE && (
+      {currentStep === AppUrl.Finalize && (
         <FinalizeStep formState={formState} />
       )}
 
-      {currentStep === STEP_ENUMS.FINALIZE_PREVIEW && (
+      {currentStep === AppUrl.FinalizePreview && (
         <div className={utilityClasses.buttonContainer}>
           <p>Previewing Final Statement</p>
           <Button onClick={() => goBackStep()} buttonText="EDIT" />
@@ -147,9 +144,7 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
         </div>
       )}
 
-      {currentStep === STEP_ENUMS.DOWNLOAD && (
-        <Download formState={formState} />
-      )}
+      {currentStep === AppUrl.Download && <Download formState={formState} />}
     </>
   );
 };

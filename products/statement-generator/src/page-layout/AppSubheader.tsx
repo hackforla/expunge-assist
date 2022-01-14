@@ -5,7 +5,7 @@ import { Banner } from 'components/Banner';
 import FormHeader from 'components/FormHeader';
 
 import RoutingContext from 'contexts/RoutingContext';
-import { STEP_ENUMS, isFormPage } from 'contexts/RoutingProps';
+import { AppUrl, isFormPage } from 'contexts/RoutingProps';
 
 const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
   createStyles({
@@ -42,13 +42,13 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
 );
 
 const AppSubheader = () => {
-  const { currentStep } = useContext(RoutingContext);
-
-  const isLandingPage = currentStep === STEP_ENUMS.NONE;
+  const { topLevelPageTheme, currentStep } = useContext(RoutingContext);
 
   const classes = useStyles({
-    pageTheme: isLandingPage ? 'dark' : 'transparent',
+    pageTheme: topLevelPageTheme,
   });
+
+  const isLandingPage = currentStep === AppUrl.Landing;
 
   return (
     <div className={classes.subheaderContainer}>
