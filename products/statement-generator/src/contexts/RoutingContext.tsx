@@ -88,6 +88,7 @@ const PreRoutingContextProvider = ({
     }
 
     const browserUrlIdx = appHistory.indexOf(browserUrl);
+
     const newPageData: PageData = {
       browserUrlIdx,
       isCurrentStep: browserUrl === appHistory[historyIdx],

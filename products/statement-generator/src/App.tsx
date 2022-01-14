@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  useHistory,
+  HashRouter as Router,
   Route,
   Switch,
   useHistory,
@@ -45,7 +46,7 @@ const App: React.FC = () => {
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
-            <FormStateContextProvider>
+            <ThemeProvider theme={theme}>
               <nav
                 style={{
                   width: '100%',
