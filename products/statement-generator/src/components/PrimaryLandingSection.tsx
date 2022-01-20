@@ -1,13 +1,15 @@
 import React from 'react';
 import useUtilityStyles from 'styles/utilityStyles';
 
+import ContentContainer from 'page-layout/ContentContainer';
+
 const PrimaryLandingSection = () => {
     const utilityClasses = useUtilityStyles();
-    console.log(utilityClasses)
+
     return (
-        <>
-        hello world
-        </>
+        <ContentContainer>
+            hello world
+        </ContentContainer>
     );
 };
 
