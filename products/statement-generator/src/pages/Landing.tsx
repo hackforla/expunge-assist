@@ -18,7 +18,7 @@ const Landing = () => {
 
   return (
     <>
-    <PrimaryLandingSection />
+      <PrimaryLandingSection />
       <ContentContainer>
         <div className={utilityClasses.flexGrow}>
           <h1>Start fresh with a record expungement</h1>
