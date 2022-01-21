@@ -16,7 +16,11 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
     createStyles({
         root: {
-            background: palette.secondary.main
+            background: palette.secondary.main,
+            color: palette.primary.darker
+        },
+        span: {
+            color: palette.primary.main
         }
     })
 )
@@ -30,7 +34,7 @@ const PrimaryLandingSection = ({ goNextPage, theme }: ComponentProps) => {
         <section className ={classes.root}>
             <div className={utilityClasses.contentContainer}>
                 <div>
-                    <h1><span>Expunge Assist</span> accelerates the <span>Record Clearance</span> process by helping user generate a declaration letter</h1>
+                    <h1><span className={classes.span}>Expunge Assist</span> accelerates the <span className={classes.span}>Record Clearance</span> process by helping user generate a declaration letter</h1>
                     <p>While still under development, Expunge Assist will aim to help people in California with criminal records accomplish record clearance, expungement or reduction.</p>
                 </div>
                 <img src="https://via.placeholder.com/590x350" alt="" />
