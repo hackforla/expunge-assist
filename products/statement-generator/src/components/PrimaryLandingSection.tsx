@@ -1,23 +1,39 @@
 import React from 'react';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Button from 'components/Button';
 
 interface ComponentProps {
     goNextPage: () => void;
+    theme: string;
 }
 
-const PrimaryLandingSection = ({ goNextPage }: ComponentProps) => {
-    const utilityClasses = useUtilityStyles({
-        pageTheme: 'tangerine'
-    });
+interface StyleProps {
+    theme?: string;
+}
+
+const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
+    createStyles({
+        root: {
+            background: palette.secondary.main
+        }
+    })
+)
+
+const PrimaryLandingSection = ({ goNextPage, theme }: ComponentProps) => {
+    const utilityClasses = useUtilityStyles();
+    const styleProps = { theme }
+    const classes = useStyles(styleProps)
 
     return (
-        <section className ={utilityClasses.primaryContainer}>
+        <section className ={classes.root}>
             <div className={utilityClasses.contentContainer}>
-                <h2><span>Expunge Assist</span> accelerates the <span>Record Clearance</span> process by helping user generate a declaration letter</h2>
+                <div>
+                    <h1><span>Expunge Assist</span> accelerates the <span>Record Clearance</span> process by helping user generate a declaration letter</h1>
+                    <p>While still under development, Expunge Assist will aim to help people in California with criminal records accomplish record clearance, expungement or reduction.</p>
+                </div>
                 <img src="https://via.placeholder.com/590x350" alt="" />
-                <div>While still under development, Expunge Assist will aim to help people in California with criminal records accomplish record clearance, expungement or reduction.</div>
                 <div className={utilityClasses.buttonContainer}>
                     <Button
                         buttonText='View Demo'
