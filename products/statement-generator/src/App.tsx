@@ -21,6 +21,7 @@ import Form from 'components/Form';
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
+import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -87,6 +88,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Involvement}
                     component={InvolvementInitialFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Job}
+                    component={InvolvementJobFlow}
                   />
 
                   <Route
