@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementParentingState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
@@ -10,41 +10,38 @@ import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface IInvolvementParentingStepProps {
-  stepState: IInvolvementParentingState;
-  setFormState: (value: any) => void;
-}
-
-const InvolvementParentingFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementParentingStepProps) => {
+function InvolvementParentingFlow() {
   const utilityClasses = useUtilityStyles();
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    childName,
+    parentYears,
+    parentDescription,
+  } = formState.parentingState;
 
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
-    });
-  };
-
-  const childNameValid = stepState.childName !== '';
-  const parentYearsValid = stepState.parentYears !== '';
-  const parentDescriptionValid = stepState.parentDescription !== '';
+  const childNameValid = childName !== '';
+  const parentYearsValid = parentYears !== '';
+  const parentDescriptionValid = parentDescription !== '';
   const isNextDisabled =
     !childNameValid || !parentYearsValid || !parentDescriptionValid;
+
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      parentingState: { ...formState.parentingState, ...changes },
+    });
+  };
 
   return (
     <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of your child?
         <Input
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ childName: evt.target.value })
-          }
           id="childName"
+          handleChange={onInputChange}
           placeholder="Name of Child"
-          defaultValue={stepState.childName}
+          defaultValue={childName}
           type="text"
         />
       </div>
@@ -53,13 +50,11 @@ const InvolvementParentingFlow = ({
         How long have you been a parent?
         <Input
           type="number"
-          id="age"
+          id="parentYears"
           placeholder="1"
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ parentYears: evt.target.value })
-          }
+          handleChange={onInputChange}
           disabled={!childNameValid}
-          defaultValue={stepState.parentYears}
+          defaultValue={parentYears}
           adornment="years"
         />
       </div>
@@ -67,21 +62,19 @@ const InvolvementParentingFlow = ({
       <div className={utilityClasses.flexColumn}>
         Why is being a good parent important to you? (2-3 sentences suggested)
         <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ parentDescription: evt.target.value })
-          }
           id="parentDescription"
+          handleChange={onInputChange}
           placeholder="Being a good parent is important to me because..."
           multi
           isValid={parentDescriptionValid}
           disabled={!parentYearsValid}
-          defaultValue={stepState.parentDescription}
+          defaultValue={parentDescription}
         />
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default InvolvementParentingFlow;

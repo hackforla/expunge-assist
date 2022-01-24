@@ -10,7 +10,7 @@ export interface IStepState {
   involvementServiceState: IInvolvementServiceState;
   involvementRecoveryState: IInvolvementRecoveryState;
   involvementSchoolState: IInvolvementSchoolState;
-  involvementParentingState: IInvolvementParentingState;
+  parentingState: IParentingState;
   involvementUnemployedState: IInvolvementUnemployedState;
   goalsStep: IGoalsState;
   whyStep: IWhyStepState;
@@ -49,7 +49,7 @@ export const defaultStepState = {
     studyName: '',
     passionDescription: '',
   },
-  involvementParentingState: {
+  parentingState: {
     childName: '',
     parentYears: '',
     parentDescription: '',
@@ -117,7 +117,7 @@ export interface IInvolvementSchoolState {
   passionDescription: string;
 }
 // step 2e
-export interface IInvolvementParentingState {
+export interface IParentingState {
   childName: string;
   parentYears: string;
   parentDescription: string;
@@ -184,7 +184,7 @@ export const sampleStepState = {
     studyName: 'Chemistry',
     passionDescription: 'I always liked looking at how chemicals affected ',
   },
-  involvementParentingState: {
+  parentingState: {
     childName: 'Cyanide Nx11',
     parentYears: '11',
     parentDescription:

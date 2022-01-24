@@ -12,7 +12,6 @@ import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
-import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
 import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
 import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
@@ -62,15 +61,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
           stepState={formState.involvementSchoolState}
           setFormState={(newStepState) =>
             updateStepToForm({ involvementSchoolState: newStepState })
-          }
-        />
-      )}
-
-      {currentStep === AppUrl.Parenting && (
-        <InvolvementParentingFlow
-          stepState={formState.involvementParentingState}
-          setFormState={(newStepState) =>
-            updateStepToForm({ involvementParentingState: newStepState })
           }
         />
       )}

@@ -93,7 +93,7 @@ export function generateInvolvementSchool(formState: IStepState): string {
  */
 export function generateInvolvementParenting(formState: IStepState): string {
   const {
-    involvementParentingState: { childName, parentYears, parentDescription },
+    parentingState: { childName, parentYears, parentDescription },
   } = formState;
 
   if (childName === '' || parentYears === '' || parentDescription === '') {

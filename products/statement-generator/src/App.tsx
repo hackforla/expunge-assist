@@ -22,6 +22,7 @@ import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
 import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
+import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -94,6 +95,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Job}
                     component={InvolvementJobFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Parenting}
+                    component={InvolvementParentingFlow}
                   />
 
                   <Route
