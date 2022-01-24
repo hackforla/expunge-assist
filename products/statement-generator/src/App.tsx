@@ -20,6 +20,7 @@ import Form from 'components/Form';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
+import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -80,6 +81,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Introduction}
                     component={IntroductionStep}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Involvement}
+                    component={InvolvementInitialFlow}
                   />
 
                   <Route

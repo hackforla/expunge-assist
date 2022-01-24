@@ -5,7 +5,7 @@ export interface IStepProps {
 
 export interface IStepState {
   introduction: IIntroductionState;
-  involvementInitialState: IInvolvementInitialState;
+  involvement: IInvolvementInitialState;
   involvementJobState: IInvolvementJobState;
   involvementServiceState: IInvolvementServiceState;
   involvementRecoveryState: IInvolvementRecoveryState;
@@ -23,7 +23,7 @@ export const defaultStepState = {
     age: '',
     isVeteran: '',
   },
-  involvementInitialState: {
+  involvement: {
     isJobChecked: false,
     isRecoveryChecked: false,
     isSchoolChecked: false,
@@ -157,7 +157,7 @@ export const sampleStepState = {
     age: '29',
     isVeteran: 'Yes',
   },
-  involvementInitialState: {
+  involvement: {
     isJobChecked: true,
     isCommunityChecked: true,
     isRecoveryChecked: true,

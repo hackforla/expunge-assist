@@ -30,7 +30,7 @@ export const FormStateContextProvider = ({
 
     if (
       (suggestedNext === AppUrl.Job || suggestedNext === AppUrl.JobPreview) &&
-      !formState.involvementInitialState.isJobChecked
+      !formState.involvement.isJobChecked
     ) {
       return getNextStep(suggestedNext);
     }
@@ -38,7 +38,7 @@ export const FormStateContextProvider = ({
     if (
       (suggestedNext === AppUrl.Unemployed ||
         suggestedNext === AppUrl.UnemployedPreview) &&
-      formState.involvementInitialState.isJobChecked
+      formState.involvement.isJobChecked
     ) {
       return getNextStep(suggestedNext);
     }
@@ -46,7 +46,7 @@ export const FormStateContextProvider = ({
     if (
       (suggestedNext === AppUrl.CommunityService ||
         suggestedNext === AppUrl.CommunityServicePreview) &&
-      !formState.involvementInitialState.isCommunityChecked
+      !formState.involvement.isCommunityChecked
     ) {
       return getNextStep(suggestedNext);
     }
@@ -54,7 +54,7 @@ export const FormStateContextProvider = ({
     if (
       (suggestedNext === AppUrl.Recovery ||
         suggestedNext === AppUrl.RecoveryPreview) &&
-      !formState.involvementInitialState.isRecoveryChecked
+      !formState.involvement.isRecoveryChecked
     ) {
       return getNextStep(suggestedNext);
     }
@@ -62,7 +62,7 @@ export const FormStateContextProvider = ({
     if (
       (suggestedNext === AppUrl.School ||
         suggestedNext === AppUrl.SchoolPreview) &&
-      !formState.involvementInitialState.isSchoolChecked
+      !formState.involvement.isSchoolChecked
     ) {
       return getNextStep(suggestedNext);
     }
@@ -70,7 +70,7 @@ export const FormStateContextProvider = ({
     if (
       (suggestedNext === AppUrl.Parenting ||
         suggestedNext === AppUrl.ParentingPreview) &&
-      !formState.involvementInitialState.isParentingChecked
+      !formState.involvement.isParentingChecked
     ) {
       return getNextStep(suggestedNext);
     }
