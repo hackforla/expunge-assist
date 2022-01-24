@@ -6,34 +6,36 @@ import Button from 'components/Button';
 
 interface ComponentProps {
     goNextPage: () => void;
-    theme: string;
 }
 
 interface StyleProps {
     theme?: string;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>(({ palette, typography }) =>
+const useStyles = makeStyles<Theme, StyleProps>(({ palette, typography, spacing }) =>
     createStyles({
-        root: {
+        outer: {
             background: palette.secondary.main,
-            color: palette.primary.darker
+        },
+        content: {
+            color: palette.primary.darker,
+            fontFamily: typography.fontFamily,
+            padding: spacing(3),
         },
         span: {
             color: palette.primary.main
-        }
+        },
     })
 )
 
-const PrimaryLandingSection = ({ goNextPage, theme }: ComponentProps) => {
+const PrimaryLandingSection = ({ goNextPage }: ComponentProps) => {
     const utilityClasses = useUtilityStyles();
-    const styleProps = { theme }
-    const classes = useStyles(styleProps)
+    const classes = useStyles({ theme: 'light' });
 
     return (
-        <section className ={classes.root}>
+        <section className ={classes.outer}>
             <div className={utilityClasses.contentContainer}>
-                <div>
+                <div className={classes.content}>
                     <h1><span className={classes.span}>Expunge Assist</span> accelerates the <span className={classes.span}>Record Clearance</span> process by helping user generate a declaration letter</h1>
                     <p className = {classes.p}>While still under development, Expunge Assist will aim to help people in California with criminal records accomplish record clearance, expungement or reduction.</p>
                 </div>

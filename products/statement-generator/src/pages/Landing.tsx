@@ -20,7 +20,6 @@ const Landing = () => {
     <>
       <PrimaryLandingSection
         goNextPage={goNextPage}
-        theme='light'
       />
       <ContentContainer>
         <div className={utilityClasses.flexGrow}>
