@@ -16,6 +16,7 @@ const appTheme = createMuiTheme({
     },
     secondary: {
       main: '#FFFAF2', // tangerine light orange
+      dark: '#7422DA',
     },
     common: {
       black: '#0a0a0a',

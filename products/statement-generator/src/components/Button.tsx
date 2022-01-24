@@ -56,6 +56,8 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
             return palette.primary.darker;
           case 'white':
             return '#FFFFFF';
+          case 'landing':
+            return palette.secondary.dark;
           case 'transparent':
           case 'transparent-on-dark':
           case 'transparent-on-light':
