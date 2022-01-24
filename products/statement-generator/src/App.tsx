@@ -19,6 +19,8 @@ import AppSubheader from 'page-layout/AppSubheader';
 import Form from 'components/Form';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
+import IntroductionStep from 'flows/IntroductionStep';
+
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
@@ -72,6 +74,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.BeforeYouBegin}
                     component={BeforeYouBegin}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Introduction}
+                    component={IntroductionStep}
                   />
 
                   <Route

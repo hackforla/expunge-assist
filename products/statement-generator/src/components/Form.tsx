@@ -8,7 +8,6 @@ import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
 
-import IntroductionStep from 'flows/IntroductionStep';
 import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
@@ -42,15 +41,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === AppUrl.Introduction && (
-        <IntroductionStep
-          stepState={formState.introduction}
-          setFormState={(newStepState) =>
-            updateStepToForm({ introduction: newStepState })
-          }
-        />
-      )}
-
       {currentStep === AppUrl.Involvement && (
         <InvolvementInitialFlow
           stepState={formState.involvementInitialState}
