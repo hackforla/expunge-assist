@@ -42,7 +42,7 @@ const InvolvementSchoolFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ schoolName: evt.target.value })
           }
-          inputName="schoolName"
+          id="schoolName"
           placeholder="Name of School"
           defaultValue={stepState.schoolName}
           type="text"
@@ -55,7 +55,7 @@ const InvolvementSchoolFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ studyName: evt.target.value })
           }
-          inputName="studyName"
+          id="studyName"
           placeholder="Name of Subject/Study Area"
           disabled={!schoolNameValid}
           defaultValue={stepState.studyName}
@@ -69,7 +69,7 @@ const InvolvementSchoolFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ passionDescription: evt.target.value })
           }
-          inputName="passionDescription"
+          id="passionDescription"
           placeholder="I am passionate about..."
           multi
           isValid={passionDescriptionValid}

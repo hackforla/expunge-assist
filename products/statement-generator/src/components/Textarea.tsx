@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface TextFieldProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputName: string;
+  id: string;
   placeholder?: string;
   multi?: boolean;
   isValid?: boolean;
@@ -53,7 +53,7 @@ interface TextFieldProps {
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
   handleChange,
-  inputName,
+  id,
   placeholder,
   multi,
   isValid,
@@ -66,9 +66,8 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
     <TextField
       className={classes.root}
       onChange={handleChange}
-      name={inputName}
+      id={id}
       placeholder={placeholder}
-      id="outlined-textarea"
       multiline={multi}
       variant="outlined"
       defaultValue={defaultValue}

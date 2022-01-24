@@ -42,7 +42,7 @@ const InvolvementParentingFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ childName: evt.target.value })
           }
-          inputName="childName"
+          id="childName"
           placeholder="Name of Child"
           defaultValue={stepState.childName}
           type="text"
@@ -53,7 +53,7 @@ const InvolvementParentingFlow = ({
         How long have you been a parent?
         <Input
           type="number"
-          inputName="age"
+          id="age"
           placeholder="1"
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ parentYears: evt.target.value })
@@ -70,7 +70,7 @@ const InvolvementParentingFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ parentDescription: evt.target.value })
           }
-          inputName="parentDescription"
+          id="parentDescription"
           placeholder="Being a good parent is important to me because..."
           multi
           isValid={parentDescriptionValid}

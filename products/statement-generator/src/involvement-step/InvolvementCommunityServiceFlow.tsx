@@ -41,7 +41,7 @@ const InvolvementCommunityServiceFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ organizationName: evt.target.value })
           }
-          inputName="organizationName"
+          id="organizationName"
           placeholder="Name of Organization"
           defaultValue={stepState.organizationName}
           type="text"
@@ -55,7 +55,7 @@ const InvolvementCommunityServiceFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ serviceDescription: evt.target.value })
           }
-          inputName="serviceDescription"
+          id="serviceDescription"
           placeholder="I have taken on responsibilities including..."
           multi
           isValid={serviceDescriptionValid}

@@ -30,11 +30,11 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
   const [showPreview, setShowPreview] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputName = e.currentTarget.name;
+    const id = e.currentTarget.id;
     const inputValue = e.currentTarget.value;
-    if (inputName === 'clearRecordWhy') {
+    if (id === 'clearRecordWhy') {
       updateStepState({ ...stepState, clearRecordWhy: inputValue });
-    } else if (inputName === 'clearRecordHow') {
+    } else if (id === 'clearRecordHow') {
       updateStepState({ ...stepState, clearRecordHow: inputValue });
     }
   };
@@ -59,7 +59,7 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
       <form className={utilityClasses.flexGrow}>
         <p>Please finish this sentence: I want to clear my record because...</p>
         <Textarea
-          inputName="clearRecordWhy"
+          id="clearRecordWhy"
           placeholder="I am..."
           handleChange={handleChange}
           multi
@@ -72,7 +72,7 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
           sentences maximum)
         </Paragraph>
         <Textarea
-          inputName="clearRecordHow"
+          id="clearRecordHow"
           handleChange={handleChange}
           placeholder="Clearing my record will..."
           multi

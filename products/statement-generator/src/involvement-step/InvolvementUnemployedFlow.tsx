@@ -42,7 +42,7 @@ const InvolvementUnemployedFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ unemploymentDescription: evt.target.value })
           }
-          inputName="unemploymentDescription"
+          id="unemploymentDescription"
           placeholder="I have been having trouble finding work because..."
           multi={false}
           isValid={unemploymentDescriptionValid}

@@ -40,7 +40,7 @@ const InvolvementRecoveryFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ recoveryName: evt.target.value })
           }
-          inputName="recoveryName"
+          id="recoveryName"
           placeholder="Name of Organization"
           defaultValue={stepState.recoveryName}
           type="text"
@@ -53,7 +53,7 @@ const InvolvementRecoveryFlow = ({
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
             updateStepState({ recoveryDescription: evt.target.value })
           }
-          inputName="recoveryDescription"
+          id="recoveryDescription"
           placeholder="This program is important to me because..."
           multi
           isValid={recoveryDescriptionValid}

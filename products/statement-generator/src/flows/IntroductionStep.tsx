@@ -23,8 +23,8 @@ export function IntroductionStep() {
   const isNextDisabled = !fullNameValid || !ageValid;
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = evt.currentTarget;
-    const changes = { [name]: value };
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
     updateStepToForm({
       introduction: { ...formState.introduction, ...changes },
     });
@@ -35,7 +35,7 @@ export function IntroductionStep() {
       <form className={utilityClasses.flexGrow}>
         <p>What is your name?</p>
         <Input
-          inputName="fullName"
+          id="fullName"
           defaultValue={fullName}
           placeholder="Full Name"
           handleChange={onInputChange}
@@ -45,7 +45,7 @@ export function IntroductionStep() {
         <Paragraph disabled={!fullNameValid}>How old are you?</Paragraph>
         <Input
           type="number"
-          inputName="age"
+          id="age"
           defaultValue={age}
           placeholder="25"
           disabled={!fullNameValid}

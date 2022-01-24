@@ -16,12 +16,12 @@ interface IGoalsStepProps {
 const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
   const [previewPage, setPreview] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputName = e.currentTarget.name;
+    const id = e.currentTarget.id;
     const inputValue = e.currentTarget.value;
 
-    if (inputName === 'goals') {
+    if (id === 'goals') {
       setFormState({ ...stepState, goals: inputValue });
-    } else if (inputName === 'goalsHow') {
+    } else if (id === 'goalsHow') {
       setFormState({ ...stepState, goalsHow: inputValue });
     }
   };
@@ -55,7 +55,7 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
       </p>
 
       <Textarea
-        inputName="goals"
+        id="goals"
         handleChange={handleChange}
         placeholder="I have plans of..."
         multi
@@ -69,7 +69,7 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
       </p>
 
       <Textarea
-        inputName="goalsHow"
+        id="goalsHow"
         handleChange={handleChange}
         placeholder="I have been..."
         multi
