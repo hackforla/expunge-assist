@@ -7,7 +7,7 @@ export interface IStepState {
   introduction: IIntroductionState;
   involvement: IInvolvementInitialState;
   involvementJobState: IInvolvementJobState;
-  involvementServiceState: IInvolvementServiceState;
+  communityServiceState: ICommunityServiceState;
   involvementRecoveryState: IInvolvementRecoveryState;
   involvementSchoolState: IInvolvementSchoolState;
   parentingState: IParentingState;
@@ -36,7 +36,7 @@ export const defaultStepState = {
     jobTitle: '',
     jobDescription: '',
   },
-  involvementServiceState: {
+  communityServiceState: {
     organizationName: '',
     serviceDescription: '',
   },
@@ -101,7 +101,7 @@ export interface IInvolvementJobState {
   jobDescription: string;
 }
 // step 2b
-export interface IInvolvementServiceState {
+export interface ICommunityServiceState {
   organizationName: string;
   serviceDescription: string;
 }
@@ -170,7 +170,7 @@ export const sampleStepState = {
     jobTitle: 'Big Boss',
     jobDescription: 'I make the decisions on what the biggest cake should be.',
   },
-  involvementServiceState: {
+  communityServiceState: {
     organizationName: 'Taste Tester',
     serviceDescription: 'I check cakes for poison. It is a very serious job.',
   },

@@ -20,6 +20,7 @@ import Form from 'components/Form';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
+import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
 import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
@@ -89,6 +90,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Involvement}
                     component={InvolvementInitialFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.CommunityService}
+                    component={InvolvementCommunityServiceFlow}
                   />
 
                   <Route

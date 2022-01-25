@@ -12,7 +12,6 @@ import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
-import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
 import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
@@ -38,15 +37,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === AppUrl.CommunityService && (
-        <InvolvementCommunityServiceFlow
-          stepState={formState.involvementServiceState}
-          setFormState={(newStepState) =>
-            updateStepToForm({ involvementServiceState: newStepState })
-          }
-        />
-      )}
-
       {currentStep === AppUrl.Recovery && (
         <InvolvementRecoveryFlow
           stepState={formState.involvementRecoveryState}

@@ -45,7 +45,7 @@ export function generateInvolvementJob(formState: IStepState): string {
  */
 export function generateInvolvementCommunity(formState: IStepState): string {
   const {
-    involvementServiceState: { organizationName, serviceDescription },
+    communityServiceState: { organizationName, serviceDescription },
   } = formState;
 
   if (organizationName === '' || serviceDescription === '') {
