@@ -8,7 +8,7 @@ export interface IStepState {
   involvement: IInvolvementInitialState;
   involvementJobState: IInvolvementJobState;
   communityServiceState: ICommunityServiceState;
-  involvementRecoveryState: IInvolvementRecoveryState;
+  recoveryState: IRecoveryState;
   involvementSchoolState: IInvolvementSchoolState;
   parentingState: IParentingState;
   involvementUnemployedState: IInvolvementUnemployedState;
@@ -40,7 +40,7 @@ export const defaultStepState = {
     organizationName: '',
     serviceDescription: '',
   },
-  involvementRecoveryState: {
+  recoveryState: {
     recoveryName: '',
     recoveryDescription: '',
   },
@@ -106,7 +106,7 @@ export interface ICommunityServiceState {
   serviceDescription: string;
 }
 // step 2c
-export interface IInvolvementRecoveryState {
+export interface IRecoveryState {
   recoveryName: string;
   recoveryDescription: string;
 }
@@ -174,7 +174,7 @@ export const sampleStepState = {
     organizationName: 'Taste Tester',
     serviceDescription: 'I check cakes for poison. It is a very serious job.',
   },
-  involvementRecoveryState: {
+  recoveryState: {
     recoveryName: 'Addicts Anonymous',
     recoveryDescription:
       'I go to a meeting every week to help me overcome my addiction to poisons.',

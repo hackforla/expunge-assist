@@ -12,7 +12,6 @@ import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
-import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
@@ -37,15 +36,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === AppUrl.Recovery && (
-        <InvolvementRecoveryFlow
-          stepState={formState.involvementRecoveryState}
-          setFormState={(newStepState) =>
-            updateStepToForm({ involvementRecoveryState: newStepState })
-          }
-        />
-      )}
-
       {currentStep === AppUrl.School && (
         <InvolvementSchoolFlow
           stepState={formState.involvementSchoolState}

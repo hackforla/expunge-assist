@@ -61,7 +61,7 @@ export function generateInvolvementCommunity(formState: IStepState): string {
  */
 export function generateInvolvementRecovery(formState: IStepState): string {
   const {
-    involvementRecoveryState: { recoveryName, recoveryDescription },
+    recoveryState: { recoveryName, recoveryDescription },
   } = formState;
 
   if (recoveryName === '' || recoveryDescription === '') {
