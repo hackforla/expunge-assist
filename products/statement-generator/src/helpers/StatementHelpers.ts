@@ -77,7 +77,7 @@ export function generateInvolvementRecovery(formState: IStepState): string {
  */
 export function generateInvolvementSchool(formState: IStepState): string {
   const {
-    involvementSchoolState: { schoolName, studyName, passionDescription },
+    schoolState: { schoolName, studyName, passionDescription },
   } = formState;
 
   if (schoolName === '' || studyName === '' || passionDescription === '') {

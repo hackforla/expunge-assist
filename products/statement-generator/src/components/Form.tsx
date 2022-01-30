@@ -12,7 +12,6 @@ import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
-import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
 interface FormProps {
@@ -36,15 +35,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === AppUrl.School && (
-        <InvolvementSchoolFlow
-          stepState={formState.involvementSchoolState}
-          setFormState={(newStepState) =>
-            updateStepToForm({ involvementSchoolState: newStepState })
-          }
-        />
-      )}
-
       {currentStep === AppUrl.Unemployed && (
         <InvolvementUnemployedFlow
           stepState={formState.involvementUnemployedState}

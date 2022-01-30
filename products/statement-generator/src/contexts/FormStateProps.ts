@@ -9,7 +9,7 @@ export interface IStepState {
   involvementJobState: IInvolvementJobState;
   communityServiceState: ICommunityServiceState;
   recoveryState: IRecoveryState;
-  involvementSchoolState: IInvolvementSchoolState;
+  schoolState: ISchoolState;
   parentingState: IParentingState;
   involvementUnemployedState: IInvolvementUnemployedState;
   goalsStep: IGoalsState;
@@ -44,7 +44,7 @@ export const defaultStepState = {
     recoveryName: '',
     recoveryDescription: '',
   },
-  involvementSchoolState: {
+  schoolState: {
     schoolName: '',
     studyName: '',
     passionDescription: '',
@@ -111,7 +111,7 @@ export interface IRecoveryState {
   recoveryDescription: string;
 }
 // step 2d
-export interface IInvolvementSchoolState {
+export interface ISchoolState {
   schoolName: string;
   studyName: string;
   passionDescription: string;
@@ -179,7 +179,7 @@ export const sampleStepState = {
     recoveryDescription:
       'I go to a meeting every week to help me overcome my addiction to poisons.',
   },
-  involvementSchoolState: {
+  schoolState: {
     schoolName: 'Villians University',
     studyName: 'Chemistry',
     passionDescription: 'I always liked looking at how chemicals affected ',

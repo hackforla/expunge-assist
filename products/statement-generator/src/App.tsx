@@ -25,6 +25,7 @@ import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
 import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
 import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
 import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
+import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -116,6 +117,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Recovery}
                     component={InvolvementRecoveryFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.School}
+                    component={InvolvementSchoolFlow}
                   />
                   {/* end involvement flow pages */}
 
