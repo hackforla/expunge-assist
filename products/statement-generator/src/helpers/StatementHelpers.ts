@@ -142,7 +142,7 @@ export function generateFutureGoals(formState: IStepState): string {
  */
 export function generateWhy(formState: IStepState): string {
   const {
-    whyStep: { clearRecordWhy, clearRecordHow },
+    whyState: { clearRecordWhy, clearRecordHow },
   } = formState;
 
   if (clearRecordWhy === '' || clearRecordHow === '') {

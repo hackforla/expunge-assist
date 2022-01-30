@@ -13,7 +13,7 @@ export interface IStepState {
   parentingState: IParentingState;
   unemployedState: IUnemployedState;
   goalsState: IGoalsState;
-  whyStep: IWhyStepState;
+  whyState: IWhyState;
   statements: IStatementState;
 }
 
@@ -62,7 +62,7 @@ export const defaultStepState = {
     goals: '',
     goalsHow: '',
   },
-  whyStep: {
+  whyState: {
     clearRecordWhy: '',
     clearRecordHow: '',
   },
@@ -133,7 +133,7 @@ export interface IGoalsState {
   goalsHow: string;
 }
 
-export interface IWhyStepState {
+export interface IWhyState {
   clearRecordWhy: string;
   clearRecordHow: string;
 }
@@ -199,7 +199,7 @@ export const sampleStepState = {
     goals: 'I want to get a new job so I do not have to eat any more poison.',
     goalsHow: 'I am learning new ways to work that go beyond eating.',
   },
-  whyStep: {
+  whyState: {
     clearRecordWhy: 'It will help me make a better life for me and my family.',
     clearRecordHow:
       'If my record no longer says I have poison resistance, I can be hired for other jobs.',

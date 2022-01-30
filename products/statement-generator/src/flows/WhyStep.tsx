@@ -1,58 +1,33 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
-import { IWhyStepState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import HelpPopUp from 'components/HelpPopUp';
 import Paragraph from 'components/Paragraph';
 import Textarea from 'components/Textarea';
-import TextPreview from 'components/TextPreview';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface IWhyStepProps {
-  stepState: IWhyStepState;
-  setFormState: (value: any) => void;
-}
-
-const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
+function WhyStep() {
   const utilityClasses = useUtilityStyles();
 
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
-    });
-  };
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const { clearRecordWhy, clearRecordHow } = formState.whyState;
 
-  const [showPreview, setShowPreview] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const id = e.currentTarget.id;
-    const inputValue = e.currentTarget.value;
-    if (id === 'clearRecordWhy') {
-      updateStepState({ ...stepState, clearRecordWhy: inputValue });
-    } else if (id === 'clearRecordHow') {
-      updateStepState({ ...stepState, clearRecordHow: inputValue });
-    }
-  };
-
-  const clearRecordWhyValid = stepState.clearRecordWhy !== '';
-  const clearRecordHowValid = stepState.clearRecordHow !== '';
+  const clearRecordWhyValid = clearRecordWhy !== '';
+  const clearRecordHowValid = clearRecordHow !== '';
   const isNextDisabled = !clearRecordWhyValid || !clearRecordHowValid;
 
-  const textPreviewContent = `${stepState.clearRecordWhy} ${stepState.clearRecordHow}`;
-  if (showPreview) {
-    return (
-      <ContentContainer>
-        <TextPreview content={textPreviewContent} nameOfStep="Why" />
-
-        <FlowNavigation onBack={() => setShowPreview(false)} />
-      </ContentContainer>
-    );
-  }
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      whyState: { ...formState.whyState, ...changes },
+    });
+  };
 
   return (
     <ContentContainer>
@@ -60,11 +35,11 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
         <p>Please finish this sentence: I want to clear my record because...</p>
         <Textarea
           id="clearRecordWhy"
+          handleChange={onInputChange}
           placeholder="I am..."
-          handleChange={handleChange}
           multi
           isValid={clearRecordWhyValid}
-          defaultValue={stepState.clearRecordWhy}
+          defaultValue={clearRecordWhy}
         />
 
         <Paragraph disabled={clearRecordWhyValid}>
@@ -73,23 +48,20 @@ const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
         </Paragraph>
         <Textarea
           id="clearRecordHow"
-          handleChange={handleChange}
+          handleChange={onInputChange}
           placeholder="Clearing my record will..."
           multi
           isValid={clearRecordHowValid}
           disabled={!clearRecordWhyValid}
-          defaultValue={stepState.clearRecordHow}
+          defaultValue={clearRecordHow}
         />
       </form>
 
       <HelpPopUp />
 
-      <FlowNavigation
-        // onNext={() => setShowPreview(true)}
-        isNextDisabled={isNextDisabled}
-      />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default WhyStep;

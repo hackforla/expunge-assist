@@ -29,6 +29,7 @@ import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
+import WhyStep from 'flows/WhyStep';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -145,6 +146,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Goals}
                     component={GoalsStep}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Why}
+                    component={WhyStep}
                   />
 
                   <Route

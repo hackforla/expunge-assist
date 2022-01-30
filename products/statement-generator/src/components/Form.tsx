@@ -8,7 +8,6 @@ import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
 
-import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 
 interface FormProps {
@@ -32,15 +31,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === AppUrl.Why && (
-        <WhyStep
-          stepState={formState.whyStep}
-          setFormState={(newStepState) =>
-            updateStepToForm({ whyStep: newStepState })
-          }
-        />
-      )}
-
       {currentStep === AppUrl.FinalizePreview && (
         <div className={utilityClasses.buttonContainer}>
           <p>Previewing Final Statement</p>
