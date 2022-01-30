@@ -11,7 +11,7 @@ export interface IStepState {
   recoveryState: IRecoveryState;
   schoolState: ISchoolState;
   parentingState: IParentingState;
-  involvementUnemployedState: IInvolvementUnemployedState;
+  unemployedState: IUnemployedState;
   goalsStep: IGoalsState;
   whyStep: IWhyStepState;
   statements: IStatementState;
@@ -54,7 +54,7 @@ export const defaultStepState = {
     parentYears: '',
     parentDescription: '',
   },
-  involvementUnemployedState: {
+  unemployedState: {
     unemploymentDescription: '',
     wouldClearanceHelp: '',
   },
@@ -123,7 +123,7 @@ export interface IParentingState {
   parentDescription: string;
 }
 // step 2f
-export interface IInvolvementUnemployedState {
+export interface IUnemployedState {
   unemploymentDescription: string;
   wouldClearanceHelp: string;
 }
@@ -190,7 +190,7 @@ export const sampleStepState = {
     parentDescription:
       'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
   },
-  involvementUnemployedState: {
+  unemployedState: {
     unemploymentDescription:
       'I have not been able to find any jobs that are not about licking or eating things.',
     wouldClearanceHelp: 'Yes',

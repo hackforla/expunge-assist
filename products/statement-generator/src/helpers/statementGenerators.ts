@@ -109,7 +109,7 @@ export function generateInvolvementParenting(formState: IStepState): string {
  */
 export function generateInvolvementUnemployed(formState: IStepState): string {
   const {
-    involvementUnemployedState: { unemploymentDescription, wouldClearanceHelp },
+    unemployedState: { unemploymentDescription, wouldClearanceHelp },
   } = formState;
 
   if (unemploymentDescription === '' || wouldClearanceHelp === '') {

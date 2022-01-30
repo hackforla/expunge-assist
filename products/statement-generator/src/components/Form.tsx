@@ -12,7 +12,6 @@ import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
-import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 
 interface FormProps {
   affirmationIsActive: boolean;
@@ -35,15 +34,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === AppUrl.Unemployed && (
-        <InvolvementUnemployedFlow
-          stepState={formState.involvementUnemployedState}
-          setFormState={(newStepState) =>
-            updateStepToForm({ involvementUnemployedState: newStepState })
-          }
-        />
-      )}
-
       {currentStep === AppUrl.Goals && (
         <GoalsStep
           stepState={formState.goalsStep}
