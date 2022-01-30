@@ -126,7 +126,7 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
  */
 export function generateFutureGoals(formState: IStepState): string {
   const {
-    goalsStep: { goals, goalsHow },
+    goalsState: { goals, goalsHow },
   } = formState;
 
   if (goals === '' || goalsHow === '') {

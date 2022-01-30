@@ -8,7 +8,6 @@ import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
 
-import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 
@@ -33,15 +32,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
 
   return (
     <>
-      {currentStep === AppUrl.Goals && (
-        <GoalsStep
-          stepState={formState.goalsStep}
-          setFormState={(newStepState) =>
-            updateStepToForm({ goalsStep: newStepState })
-          }
-        />
-      )}
-
       {currentStep === AppUrl.Why && (
         <WhyStep
           stepState={formState.whyStep}

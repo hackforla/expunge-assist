@@ -1,50 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
-import { IGoalsState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import FlowNavigation from 'page-layout/FlowNavigation';
-import TextPreview from 'components/TextPreview';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import Textarea from 'components/Textarea';
 
-interface IGoalsStepProps {
-  stepState: IGoalsState;
-  setFormState: (value: any) => void;
-}
+function GoalsStep() {
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const { goals, goalsHow } = formState.goalsState;
 
-const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
-  const [previewPage, setPreview] = useState(false);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const id = e.currentTarget.id;
-    const inputValue = e.currentTarget.value;
-
-    if (id === 'goals') {
-      setFormState({ ...stepState, goals: inputValue });
-    } else if (id === 'goalsHow') {
-      setFormState({ ...stepState, goalsHow: inputValue });
-    }
-  };
-
-  const goalsValid = stepState.goals !== '';
-  const goalsHowValid = stepState.goalsHow !== '';
+  const goalsValid = goals !== '';
+  const goalsHowValid = goalsHow !== '';
   const isNextDisabled = !goalsValid || !goalsHowValid;
 
-  if (previewPage) {
-    return (
-      <ContentContainer>
-        <TextPreview
-          content={`${stepState.goals}. To work towards my goals; ${stepState.goalsHow}. Having my record cleared would help me achieve these goals for my future.`}
-          nameOfStep="Future Goals"
-        />
-
-        <FlowNavigation
-          onBack={() => setPreview(false)}
-          isNextDisabled={isNextDisabled}
-        />
-      </ContentContainer>
-    );
-  }
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      goalsState: { ...formState.goalsState, ...changes },
+    });
+  };
 
   return (
     <ContentContainer>
@@ -56,11 +33,11 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
 
       <Textarea
         id="goals"
-        handleChange={handleChange}
+        handleChange={onInputChange}
         placeholder="I have plans of..."
         multi
         isValid={goalsValid}
-        defaultValue={stepState.goals}
+        defaultValue={goals}
       />
 
       <p>
@@ -70,17 +47,17 @@ const GoalsStep = ({ stepState, setFormState }: IGoalsStepProps) => {
 
       <Textarea
         id="goalsHow"
-        handleChange={handleChange}
+        handleChange={onInputChange}
         placeholder="I have been..."
         multi
         isValid={goalsHowValid}
         disabled={!goalsValid}
-        defaultValue={stepState.goalsHow}
+        defaultValue={goalsHow}
       />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default GoalsStep;

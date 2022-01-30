@@ -28,6 +28,7 @@ import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
 import FinalizeStep from 'flows/FinalizeStep';
+import GoalsStep from 'flows/GoalsStep';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -138,6 +139,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Finalize}
                     component={FinalizeStep}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Goals}
+                    component={GoalsStep}
                   />
 
                   <Route

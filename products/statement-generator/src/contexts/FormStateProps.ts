@@ -12,7 +12,7 @@ export interface IStepState {
   schoolState: ISchoolState;
   parentingState: IParentingState;
   unemployedState: IUnemployedState;
-  goalsStep: IGoalsState;
+  goalsState: IGoalsState;
   whyStep: IWhyStepState;
   statements: IStatementState;
 }
@@ -58,7 +58,7 @@ export const defaultStepState = {
     unemploymentDescription: '',
     wouldClearanceHelp: '',
   },
-  goalsStep: {
+  goalsState: {
     goals: '',
     goalsHow: '',
   },
@@ -195,7 +195,7 @@ export const sampleStepState = {
       'I have not been able to find any jobs that are not about licking or eating things.',
     wouldClearanceHelp: 'Yes',
   },
-  goalsStep: {
+  goalsState: {
     goals: 'I want to get a new job so I do not have to eat any more poison.',
     goalsHow: 'I am learning new ways to work that go beyond eating.',
   },
