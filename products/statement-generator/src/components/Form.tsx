@@ -8,7 +8,6 @@ import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
 
-import FinalizeStep from 'flows/FinalizeStep';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
@@ -50,10 +49,6 @@ const Form = ({ affirmationIsActive, isDarkTheme }: FormProps) => {
             updateStepToForm({ whyStep: newStepState })
           }
         />
-      )}
-
-      {currentStep === AppUrl.Finalize && (
-        <FinalizeStep formState={formState} />
       )}
 
       {currentStep === AppUrl.FinalizePreview && (

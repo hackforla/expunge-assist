@@ -27,6 +27,7 @@ import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow'
 import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
+import FinalizeStep from 'flows/FinalizeStep';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -132,6 +133,12 @@ const App: React.FC = () => {
                     component={InvolvementUnemployedFlow}
                   />
                   {/* end involvement flow pages */}
+
+                  <Route
+                    exact
+                    path={AppUrl.Finalize}
+                    component={FinalizeStep}
+                  />
 
                   <Route
                     exact
