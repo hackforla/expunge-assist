@@ -46,7 +46,7 @@ export default function EditContent({
       <div className={utilityClasses.flexColumn}>
         <Textarea
           multi
-          inputName="editedText"
+          id="editedText"
           handleChange={(e) => setUpdatedContent(e.target.value)}
           value={updatedContent}
         />
