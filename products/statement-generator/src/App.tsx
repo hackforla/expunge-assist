@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  useHistory,
-  HashRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
@@ -16,7 +11,6 @@ import PageContainer from 'page-layout/PageContainer';
 import AppFooter from 'page-layout/AppFooter';
 import AppHeader from 'page-layout/AppHeader';
 import AppSubheader from 'page-layout/AppSubheader';
-import Form from 'components/Form';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
@@ -45,7 +39,6 @@ import appTheme from 'styles/appTheme';
 import { useTranslation } from 'react-i18next';
 
 const App: React.FC = () => {
-  const history = useHistory();
   const { i18n } = useTranslation();
 
   const handleClick = (language: any) => {
@@ -142,28 +135,14 @@ const App: React.FC = () => {
                     component={FinalizeStep}
                   />
 
-                  <Route
-                    exact
-                    path={AppUrl.Goals}
-                    component={GoalsStep}
-                  />
+                  <Route exact path={AppUrl.Goals} component={GoalsStep} />
 
-                  <Route
-                    exact
-                    path={AppUrl.Why}
-                    component={WhyStep}
-                  />
+                  <Route exact path={AppUrl.Why} component={WhyStep} />
 
                   <Route
                     exact
                     path="/form/:page?/preview"
                     component={PreviewPage}
-                  />
-
-                  <Route
-                    path="/form/:page?"
-                    component={Form}
-                    history={history}
                   />
 
                   <Route
