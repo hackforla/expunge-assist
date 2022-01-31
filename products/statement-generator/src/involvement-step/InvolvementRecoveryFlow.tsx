@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementRecoveryState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import Textarea from 'components/Textarea';
 
@@ -10,39 +10,35 @@ import FlowNavigation from 'page-layout/FlowNavigation';
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
 
-interface IInvolvementRecoveryProps {
-  stepState: IInvolvementRecoveryState;
-  setFormState: (value: any) => void;
-}
-
-const InvolvementRecoveryFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementRecoveryProps) => {
+function InvolvementRecoveryFlow() {
   const utilityClasses = useUtilityStyles();
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    recoveryName,
+    recoveryDescription,
+  } = formState.recoveryState;
 
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
+  const recoveryNameValid = recoveryName !== '';
+  const recoveryDescriptionValid = recoveryDescription !== '';
+  const isNextDisabled = !recoveryNameValid || !recoveryDescriptionValid;
+
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      recoveryState: { ...formState.recoveryState, ...changes },
     });
   };
-
-  const recoveryNameValid = stepState.recoveryName !== '';
-  const recoveryDescriptionValid = stepState.recoveryDescription !== '';
-  const isNextDisabled = !recoveryNameValid || !recoveryDescriptionValid;
 
   return (
     <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the recovery program you are involved with?
         <Input
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ recoveryName: evt.target.value })
-          }
-          inputName="recoveryName"
+          id="recoveryName"
+          handleChange={onInputChange}
           placeholder="Name of Organization"
-          defaultValue={stepState.recoveryName}
+          defaultValue={recoveryName}
           type="text"
         />
       </div>
@@ -50,15 +46,13 @@ const InvolvementRecoveryFlow = ({
       <div className={utilityClasses.flexColumn}>
         Why is this recovery program important to you? (2-3 sentences suggested)
         <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ recoveryDescription: evt.target.value })
-          }
-          inputName="recoveryDescription"
+          id="recoveryDescription"
+          handleChange={onInputChange}
           placeholder="This program is important to me because..."
           multi
           isValid={recoveryDescriptionValid}
           disabled={!recoveryNameValid}
-          defaultValue={stepState.recoveryDescription}
+          defaultValue={recoveryDescription}
         />
       </div>
 

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementInitialState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import Checkbox from 'components/Checkbox';
 
@@ -9,58 +9,50 @@ import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface IInvolvementInitialStepProps {
-  stepState: IInvolvementInitialState;
-  setFormState: (value: any) => void;
-}
-
-const InvolvementInitialFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementInitialStepProps) => {
-  const utilityClasses = useUtilityStyles({});
-
-  const updateStepState = (changes: IInvolvementInitialState) => {
-    if (changes.isNoneChecked) {
-      setFormState({
-        isJobChecked: false,
-        isRecoveryChecked: false,
-        isSchoolChecked: false,
-        isParentingChecked: false,
-        isCommunityChecked: false,
-        isNoneChecked: true,
-      });
-      return;
-    }
-
-    if (
-      changes.isJobChecked ||
-      changes.isRecoveryChecked ||
-      changes.isSchoolChecked ||
-      changes.isParentingChecked ||
-      changes.isCommunityChecked
-    ) {
-      setFormState({
-        ...stepState,
-        ...changes,
-        isNoneChecked: false,
-      });
-      return;
-    }
-
-    setFormState({
-      ...stepState,
-      ...changes,
-    });
-  };
+function InvolvementInitialFlow() {
+  const utilityClasses = useUtilityStyles();
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    isJobChecked,
+    isRecoveryChecked,
+    isSchoolChecked,
+    isParentingChecked,
+    isCommunityChecked,
+    isNoneChecked,
+  } = formState.involvement;
 
   const isNextEnabled =
-    stepState.isJobChecked ||
-    stepState.isRecoveryChecked ||
-    stepState.isSchoolChecked ||
-    stepState.isParentingChecked ||
-    stepState.isCommunityChecked ||
-    stepState.isNoneChecked;
+    isJobChecked ||
+    isRecoveryChecked ||
+    isSchoolChecked ||
+    isParentingChecked ||
+    isCommunityChecked ||
+    isNoneChecked;
+
+  const onCheckboxChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, checked } = evt.currentTarget;
+    if (id === 'isNoneChecked' && checked) {
+      updateStepToForm({
+        involvement: {
+          isJobChecked: false,
+          isRecoveryChecked: false,
+          isSchoolChecked: false,
+          isParentingChecked: false,
+          isCommunityChecked: false,
+          isNoneChecked: true,
+        },
+      });
+      return;
+    }
+
+    const changes = {
+      [id]: Boolean(checked),
+      isNoneChecked: false,
+    };
+    updateStepToForm({
+      involvement: { ...formState.involvement, ...changes },
+    });
+  };
 
   return (
     <ContentContainer>
@@ -72,50 +64,44 @@ const InvolvementInitialFlow = ({
       </div>
       <div className={utilityClasses.flexColumn}>
         <Checkbox
-          checked={stepState.isJobChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isJobChecked: evt.target.checked })
-          }
+          id="isJobChecked"
+          checked={isJobChecked || false}
+          onChange={onCheckboxChange}
           label="Jobs"
         />
 
         <Checkbox
-          checked={stepState.isRecoveryChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isRecoveryChecked: evt.target.checked })
-          }
+          id="isRecoveryChecked"
+          checked={isRecoveryChecked || false}
+          onChange={onCheckboxChange}
           label="Recovery"
         />
 
         <Checkbox
-          checked={stepState.isSchoolChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isSchoolChecked: evt.target.checked })
-          }
+          id="isSchoolChecked"
+          checked={isSchoolChecked || false}
+          onChange={onCheckboxChange}
           label="School"
         />
 
         <Checkbox
-          checked={stepState.isParentingChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isParentingChecked: evt.target.checked })
-          }
+          id="isParentingChecked"
+          checked={isParentingChecked || false}
+          onChange={onCheckboxChange}
           label="Parenting"
         />
 
         <Checkbox
-          checked={stepState.isCommunityChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isCommunityChecked: evt.target.checked })
-          }
+          id="isCommunityChecked"
+          checked={isCommunityChecked || false}
+          onChange={onCheckboxChange}
           label="Community Service"
         />
 
         <Checkbox
-          checked={stepState.isNoneChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isNoneChecked: evt.target.checked })
-          }
+          id="isNoneChecked"
+          checked={isNoneChecked || false}
+          onChange={onCheckboxChange}
           label="None of the above"
         />
       </div>
@@ -123,6 +109,6 @@ const InvolvementInitialFlow = ({
       <FlowNavigation isNextDisabled={!isNextEnabled} />
     </ContentContainer>
   );
-};
+}
 
 export default InvolvementInitialFlow;

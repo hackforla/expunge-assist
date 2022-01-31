@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementSchoolState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import Textarea from 'components/Textarea';
 
@@ -10,41 +10,34 @@ import FlowNavigation from 'page-layout/FlowNavigation';
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
 
-interface IInvolvementSchoolStepProps {
-  stepState: IInvolvementSchoolState;
-  setFormState: (value: any) => void;
-}
-
-const InvolvementSchoolFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementSchoolStepProps) => {
+function InvolvementSchoolFlow() {
   const utilityClasses = useUtilityStyles();
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const { schoolName, studyName, passionDescription } = formState.schoolState;
 
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
-    });
-  };
-
-  const schoolNameValid = stepState.schoolName !== '';
-  const studyNameValid = stepState.studyName !== '';
-  const passionDescriptionValid = stepState.passionDescription !== '';
+  const schoolNameValid = schoolName !== '';
+  const studyNameValid = studyName !== '';
+  const passionDescriptionValid = passionDescription !== '';
   const isNextDisabled =
     !schoolNameValid || !studyNameValid || !passionDescriptionValid;
+
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      schoolState: { ...formState.schoolState, ...changes },
+    });
+  };
 
   return (
     <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the school you are attending?
         <Input
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ schoolName: evt.target.value })
-          }
-          inputName="schoolName"
+          id="schoolName"
+          handleChange={onInputChange}
           placeholder="Name of School"
-          defaultValue={stepState.schoolName}
+          defaultValue={schoolName}
           type="text"
         />
       </div>
@@ -52,13 +45,11 @@ const InvolvementSchoolFlow = ({
       <div className={utilityClasses.flexColumn}>
         What are you currently studying?
         <Input
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ studyName: evt.target.value })
-          }
-          inputName="studyName"
+          id="studyName"
+          handleChange={onInputChange}
           placeholder="Name of Subject/Study Area"
           disabled={!schoolNameValid}
-          defaultValue={stepState.studyName}
+          defaultValue={studyName}
           type="text"
         />
       </div>
@@ -66,21 +57,19 @@ const InvolvementSchoolFlow = ({
       <div className={utilityClasses.flexColumn}>
         Why are you passionate about studying this? (2-3 sentences suggested)
         <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ passionDescription: evt.target.value })
-          }
-          inputName="passionDescription"
+          id="passionDescription"
+          handleChange={onInputChange}
           placeholder="I am passionate about..."
           multi
           isValid={passionDescriptionValid}
           disabled={!studyNameValid}
-          defaultValue={stepState.passionDescription}
+          defaultValue={passionDescription}
         />
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default InvolvementSchoolFlow;

@@ -27,7 +27,7 @@ const useStyles = makeStyles(() =>
 
 interface InputFieldProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputName: string;
+  id: string;
   placeholder: string;
   type: string;
   defaultValue?: string;
@@ -38,7 +38,7 @@ interface InputFieldProps {
 
 const InputArea: React.FC<InputFieldProps> = ({
   handleChange,
-  inputName,
+  id,
   placeholder,
   type,
   defaultValue,
@@ -58,7 +58,7 @@ const InputArea: React.FC<InputFieldProps> = ({
         checkValid(e.currentTarget.value);
         handleChange(e);
       }}
-      name={inputName}
+      id={id}
       placeholder={placeholder}
       defaultValue={defaultValue}
       disabled={disabled}
