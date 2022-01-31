@@ -32,7 +32,9 @@ export function IntroductionStep() {
 
   return (
     <ContentContainer>
-      <form className={utilityClasses.flexGrow}>
+      <form
+        className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
+      >
         <p>What is your name?</p>
         <Input
           id="fullName"

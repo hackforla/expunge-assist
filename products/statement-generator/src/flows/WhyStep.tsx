@@ -31,7 +31,9 @@ function WhyStep() {
 
   return (
     <ContentContainer>
-      <form className={utilityClasses.flexGrow}>
+      <form
+        className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
+      >
         <p>Please finish this sentence: I want to clear my record because...</p>
         <Textarea
           id="clearRecordWhy"
@@ -42,7 +44,7 @@ function WhyStep() {
           defaultValue={clearRecordWhy}
         />
 
-        <Paragraph disabled={clearRecordWhyValid}>
+        <Paragraph disabled={!clearRecordWhyValid}>
           How will clearing your record change your life or help you? (2
           sentences maximum)
         </Paragraph>
