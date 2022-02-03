@@ -19,7 +19,10 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette, typography, spacing,
             color: palette.primary.darker,
             display: 'flex',
             flexDirection: 'row',
-            padding: spacing(12, 3)
+            padding: spacing(12, 3),
+            [breakpoints.down('sm')]: {
+                padding: spacing(3)
+            }
         },
         content: {
             padding: spacing(2,3),
@@ -69,7 +72,10 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette, typography, spacing,
             display: 'none',
             [breakpoints.down('sm')]: {
                 display: 'flex',
-                margin: '0 auto',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginTop: spacing(2),
+                marginBottom: spacing(2),
                 width: '100%'
             }
         },
