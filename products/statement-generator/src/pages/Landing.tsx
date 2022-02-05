@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 
 import Button from 'components/Button';
+import PrimaryLandingSection from 'components/PrimaryLandingSection';
 
 import ContentContainer from 'page-layout/ContentContainer';
 
@@ -17,6 +18,9 @@ const Landing = () => {
 
   return (
     <>
+      <PrimaryLandingSection
+        goNextPage={goNextPage}
+      />
       <ContentContainer>
         <div className={utilityClasses.flexGrow}>
           <h1>Start fresh with a record expungement</h1>

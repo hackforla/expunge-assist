@@ -62,6 +62,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
             return 'transparent';
           case 'cancel':
             return palette.warning.main;
+          case 'landing':
           default:
             return palette.primary.main;
         }
