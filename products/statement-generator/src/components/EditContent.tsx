@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
+
 import useUtilityStyles from 'styles/utilityStyles';
 import Textarea from './Textarea';
 import Button from './Button';
@@ -31,9 +33,10 @@ export default function EditContent({
   onSaveClick,
   content,
 }: EditContentProps) {
-  const [updatedContent, setUpdatedContent] = useState(content);
+  const { t } = useTranslation();
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({});
+  const utilityClasses = useUtilityStyles();
+  const [updatedContent, setUpdatedContent] = useState(content);
 
   const handleCancelClick = () => {
     setIsEditing(false);
@@ -58,13 +61,13 @@ export default function EditContent({
       <div className={`${utilityClasses.buttonContainer} ${classes.container}`}>
         <Button
           theme="cancel"
-          buttonText="Cancel"
           onClick={handleCancelClick}
+          buttonText={t('button.cancel')}
         />
         <Button
           className={classes.cancelButton}
           onClick={handleSubmit}
-          buttonText="Submit"
+          buttonText={t('button.save')}
         />
       </div>
     </form>
