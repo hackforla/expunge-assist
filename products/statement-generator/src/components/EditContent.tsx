@@ -22,11 +22,13 @@ const useStyles = makeStyles(({ spacing }) =>
 
 interface EditContentProps {
   setIsEditing: (v: boolean) => void;
+  onSaveClick: (content: string) => void;
   content: string;
 }
 
 export default function EditContent({
   setIsEditing,
+  onSaveClick,
   content,
 }: EditContentProps) {
   const [updatedContent, setUpdatedContent] = useState(content);
@@ -40,7 +42,9 @@ export default function EditContent({
 
   const handleSubmit = () => {
     setIsEditing(false);
+    onSaveClick(updatedContent);
   };
+
   return (
     <form className={classes.form}>
       <div className={utilityClasses.flexColumn}>

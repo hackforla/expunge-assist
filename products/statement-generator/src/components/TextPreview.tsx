@@ -28,16 +28,12 @@ const useStyles = makeStyles(({ palette, spacing }) =>
 );
 
 interface ComponentProps {
-  // onAdjustClick: () => void;
+  onSaveClick: (content: string) => void;
   content: string;
   nameOfStep: string;
 }
 
-const TextPreview = ({
-  // onAdjustClick,
-  content,
-  nameOfStep,
-}: ComponentProps) => {
+const TextPreview = ({ onSaveClick, content, nameOfStep }: ComponentProps) => {
   const classes = useStyles();
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
@@ -51,12 +47,16 @@ const TextPreview = ({
         <h2>{nameOfStep}</h2>
 
         {!isEditing && (
-          <CreateIcon style={{ color: '#9903FF' }} onClick={handleClick} />
+          <CreateIcon className={classes.iconStyle} onClick={handleClick} />
         )}
       </div>
 
       {isEditing ? (
-        <EditContent content={content} setIsEditing={setIsEditing} />
+        <EditContent
+          content={content}
+          setIsEditing={setIsEditing}
+          onSaveClick={onSaveClick}
+        />
       ) : (
         <p>{content}</p>
       )}
