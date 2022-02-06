@@ -40,9 +40,10 @@ interface ComponentProps {
   onSaveClick: (content: string) => void;
   content: string;
   nameOfStep: string;
+  className?: string;
 }
 
-const TextPreview = ({ onSaveClick, content, nameOfStep }: ComponentProps) => {
+const TextPreview = ({ onSaveClick, content, nameOfStep, className }: ComponentProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
   const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -52,7 +53,7 @@ const TextPreview = ({ onSaveClick, content, nameOfStep }: ComponentProps) => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${className}`}>
       <div className={classes.previewHeader}>
         <h3>{nameOfStep}</h3>
 

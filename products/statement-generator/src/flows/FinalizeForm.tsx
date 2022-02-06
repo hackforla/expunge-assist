@@ -11,19 +11,17 @@ import { AppUrl } from 'contexts/RoutingProps';
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 
-import { getPreviewConfig, getPreviewStatement } from 'helpers/previewHelper';
+import { getPreviewStatement, PREVIEW_MAP } from 'helpers/previewHelper';
 
-const useStyles = makeStyles(({ palette }) =>
+const PREVIEW_LIST = Object.keys(PREVIEW_MAP).map((previewKey) => ({
+  ...PREVIEW_MAP[previewKey],
+  stepName: previewKey as AppUrl,
+}));
+
+const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
-    preview: {
-      padding: '15px',
-      boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
-      borderRadius: '20px',
-      whiteSpace: 'pre-line',
-
-      '& p': {
-        marginBottom: 15,
-      },
+    previewItem: {
+      marginBottom: spacing(4),
     },
     purpleTitle: {
       color: palette.primary.main,
@@ -45,8 +43,6 @@ function FinalizeForm() {
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
 
-  const previewConfigItem = getPreviewConfig(AppUrl.IntroductionPreview);
-
   return (
     <ContentContainer>
       <div className={classes.purpleTitle}>
@@ -54,11 +50,15 @@ function FinalizeForm() {
         Editing Final Statement
       </div>
 
-      <TextPreview
-        onSaveClick={() => {}}
-        content={getPreviewStatement(formState, AppUrl.IntroductionPreview)}
-        nameOfStep={previewConfigItem.title}
-      />
+      {PREVIEW_LIST.map((previewConfigItem) => (
+        <TextPreview
+          key={`${previewConfigItem.stepName}-preview-key`}
+          className={classes.previewItem}
+          onSaveClick={() => {}}
+          content={getPreviewStatement(formState, previewConfigItem.stepName)}
+          nameOfStep={previewConfigItem.title}
+        />
+      ))}
 
       <FlowNavigation />
     </ContentContainer>
