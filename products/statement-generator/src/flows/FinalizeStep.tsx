@@ -4,8 +4,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { IStepState } from 'contexts/FormStateProps';
 
-import FlowNavigation from 'components/FlowNavigation';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
 import {
@@ -19,6 +17,7 @@ import {
   generateFutureGoals,
   generateWhy,
 } from 'helpers/StatementHelpers';
+import FlowNavigation from '../page-layout/FlowNavigation';
 
 const useStyles = makeStyles(() =>
   createStyles({

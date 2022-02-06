@@ -1,28 +1,162 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-const Download = () => {
-  const savePDF = () => {
-    const doc = new jsPDF('p', 'mm', 'letter');
-    doc.setFontSize(12);
-    const loremLines = doc.splitTextToSize(lorem, 170);
-    doc.text(20, 50, loremLines);
-    doc.save('MyPersonalStatement.pdf');
+import { getPreviewStatement } from 'helpers/previewHelper';
 
-    // Open PDF in a new tab (untested on mobile)
-    // pdf.output('dataurlnewwindow');
+import FormStateContext from 'contexts/FormStateContext';
+import { AppUrl } from 'contexts/RoutingProps';
+import Checkbox from 'components/Checkbox';
+import Button from 'components/Button';
+import ContentContainer from 'page-layout/ContentContainer';
+
+import EmailIcon from '@material-ui/icons/Email';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    buttonSpacing: {
+      marginBottom: '1rem',
+    },
+    downloadButtonsContainer: {
+      marginTop: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      '& button': {
+        width: '50%',
+        '& svg': {
+          marginRight: '1rem',
+        },
+      },
+    },
+  })
+);
+
+function Download() {
+  const classes = useStyles();
+  const { formState } = useContext(FormStateContext);
+
+  // disable all buttons unless consent is checked
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleClickCheck = (event: any) => {
+    setIsDisabled(!event.target.checked);
   };
 
-  const lorem = `October 26th, 2020\n\nTo Whom It May Concern,\n\nThank you so much for taking the time to read my personal statement. My name is Jenna Smith, and I am 27 years old.\n\nSince my conviction, I have been working at United Federal Credit Union as a Security Guard. At this job, I have had the opportunity to assist in day to day operations and ensure the safety of valued customers. This is important to me because I like making people feel safe.\n\nI have also been really involved in community service. In particular, I've been working with Pauly's Project. I lead the outreach team and distribute food to unhoused neighbors throughout the LA area. It's important to me because I wantt hese members of our community to feel valued and loved.\n\nI am working towards going back to school, so that I can be a social worker. To work towards my goals; I have been taking night classes at Rosedale Community Center, and I have been shadowing a social worker on Fridays. Having my record cleared would help me acheive these goals for my future.\n\nI want to clear my record because I am a different person from who I was when I was convicted. I want to make the world a better place. Right now having a criminal record is preventing me from being accepting to college, and it has hindered my career. Getting my record cleared will have a major impact on my life.\n\nSincerely,\n\nJenna Smith
-    `;
+  // create a mailto link with the statement in the body
+  const str = `${getPreviewStatement(formState, AppUrl.IntroductionPreview)}
+  ${getPreviewStatement(formState, AppUrl.JobPreview)}}
+  ${getPreviewStatement(formState, AppUrl.CommunityServicePreview)}
+  ${getPreviewStatement(formState, AppUrl.RecoveryPreview)}
+  ${getPreviewStatement(formState, AppUrl.SchoolPreview)}
+  ${getPreviewStatement(formState, AppUrl.ParentingPreview)}
+  ${getPreviewStatement(
+    formState,
+    AppUrl.UnemployedPreview
+  )} ${getPreviewStatement(formState, AppUrl.GoalsPreview)}
+  ${getPreviewStatement(formState, AppUrl.WhyPreview)}`;
+
+  const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
+    str
+  )}`;
+
+  // send email
+  const handleClickEmail = () => {
+    window.open(mailtoLink);
+  };
+
+  // copy to clipboard
+  const handleClickClipboard = () => {
+    navigator.clipboard.writeText(str);
+  };
+
+  // download txt
+  const handleClickTXT = () => {
+    const blob = new Blob([str], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    document.body.appendChild(div);
+    div.appendChild(a);
+
+    a.innerHTML = '&nbsp;';
+    div.style.width = '0';
+    div.style.height = '0';
+    a.href = url;
+    a.download = 'MyPersonalStatement.txt';
+
+    const ev = new MouseEvent('click', {});
+    a.dispatchEvent(ev);
+
+    document.body.removeChild(div);
+    window.URL.revokeObjectURL(url);
+  };
+
+  // download pdf
+  const handleClickPDF = () => {
+    const doc = new jsPDF('p', 'mm', 'letter');
+    doc.setFontSize(12);
+    const lines = doc.splitTextToSize(str, 170);
+    doc.text(20, 50, lines);
+    doc.save('MyPersonalStatement.pdf');
+  };
+
+  const buttonText = (smallText: string, bigText: string) => {
+    const matches = useMediaQuery<Theme>((theme) =>
+      theme.breakpoints.down('sm')
+    );
+    if (matches) {
+      return smallText;
+    }
+    return bigText;
+  };
 
   return (
-    <div className="Download">
-      <p>Previewing Final Statement</p>
-      <button onClick={savePDF}>Save PDF</button>
-      <button onClick={() => {}}>BACK</button>
-    </div>
+    <ContentContainer>
+      <form>
+        <Checkbox
+          checked={!isDisabled}
+          onChange={handleClickCheck}
+          label="By checking this box you take full responsibility for this personal
+            statement, and release all association with Hack for LA."
+        />
+        <div className={classes.downloadButtonsContainer}>
+          <Button
+            className={classes.buttonSpacing}
+            onClick={handleClickEmail}
+            disabled={isDisabled}
+            icon={<EmailIcon />}
+            buttonText={buttonText('email', 'send in an email')}
+          />
+          <Button
+            className={classes.buttonSpacing}
+            onClick={handleClickClipboard}
+            disabled={isDisabled}
+            icon={<FileCopyIcon />}
+            buttonText={buttonText('copy', 'copy to clipboard')}
+          />
+          <Button
+            className={classes.buttonSpacing}
+            onClick={handleClickTXT}
+            disabled={isDisabled}
+            icon={<GetAppIcon />}
+            buttonText={buttonText('txt', 'download txt')}
+          />
+          <Button
+            className={classes.buttonSpacing}
+            onClick={handleClickPDF}
+            disabled={isDisabled}
+            icon={<GetAppIcon />}
+            buttonText={buttonText('pdf', 'download pdf')}
+          />
+        </div>
+      </form>
+    </ContentContainer>
   );
-};
+}
 
 export default Download;

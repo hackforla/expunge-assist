@@ -1,64 +1,60 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementJobState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
-import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
+
 import useUtilityStyles from 'styles/utilityStyles';
+import Input from '../components/Input';
 
-interface IInvolvementInitialStepProps {
-  stepState: IInvolvementJobState;
-  setFormState: (value: any) => void;
-}
-
-const InvolvementJobFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementInitialStepProps) => {
+function InvolvementJobFlow() {
   const utilityClasses = useUtilityStyles();
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    companyName,
+    jobTitle,
+    jobDescription,
+  } = formState.involvementJobState;
 
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
-    });
-  };
-
-  const companyNameValid = stepState.companyName !== '';
-  const jobTitleValid = stepState.jobTitle !== '';
-  const jobDescriptionValid = stepState.jobDescription !== '';
+  const companyNameValid = companyName !== '';
+  const jobTitleValid = jobTitle !== '';
+  const jobDescriptionValid = jobDescription !== '';
   const isNextDisabled =
     !companyNameValid || !jobTitleValid || !jobDescriptionValid;
 
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      involvementJobState: { ...formState.involvementJobState, ...changes },
+    });
+  };
+
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         What is the name of the company you work for?
-        <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ companyName: evt.target.value })
-          }
-          inputName="companyName"
+        <Input
+          handleChange={onInputChange}
+          id="companyName"
           placeholder="Name of company"
-          multi={false}
-          isValid={companyNameValid}
-          defaultValue={stepState.companyName}
+          defaultValue={companyName}
+          type="text"
         />
       </div>
 
       <div className={utilityClasses.flexColumn}>
         What is your current job title?
-        <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ jobTitle: evt.target.value })
-          }
-          inputName="jobTitle"
+        <Input
+          handleChange={onInputChange}
+          id="jobTitle"
           placeholder="Job Title"
-          multi={false}
           disabled={!companyNameValid}
-          isValid={jobTitleValid}
-          defaultValue={stepState.jobTitle}
+          defaultValue={jobTitle}
+          type="text"
         />
       </div>
 
@@ -66,21 +62,19 @@ const InvolvementJobFlow = ({
         What do you do at this job? Why is this important to you? (2-3 sentences
         suggested)
         <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ jobDescription: evt.target.value })
-          }
-          inputName="jobDescription"
+          handleChange={onInputChange}
+          id="jobDescription"
           placeholder="I have had the chance to..."
           multi
           disabled={!jobTitleValid}
           isValid={jobDescriptionValid}
-          defaultValue={stepState.jobDescription}
+          defaultValue={jobDescription}
         />
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
-};
+}
 
 export default InvolvementJobFlow;

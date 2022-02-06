@@ -9,7 +9,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     infoButton: {
       color: '#301934',
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() =>
     },
     alertBox: {
       '& .MuiDialog-paperWidthSm': {
-        backgroundColor: '#f7ebff',
+        backgroundColor: palette.primary.light,
       },
     },
   })

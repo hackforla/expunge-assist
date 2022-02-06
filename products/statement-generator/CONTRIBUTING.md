@@ -21,7 +21,11 @@ We have tasks with things that need to get done located here https://github.com/
 
 ### Setup
 * Clone the repo by running `git clone git@github.com:hackforla/expunge-assist.git` in your command line.
+<<<<<<< HEAD
 * Navigate to the following folder in your cli `/expunge-assist/react/client/`
+=======
+* Navigate to the following folder in your cli `/expunge-assist/products/statement-generator/`
+>>>>>>> e72389972629225cf34eba7f99e16588b9dbb4f5
   - Because of how the project was originally set up, this is where the javascript app resides and I am going to refer to this as the __root folder__  from now on.
 * This was created using [create-react-app](https://create-react-app.dev/) and manages dependencies with [npm](https://www.npmjs.com/), so let's __install dependencies__ by running `npm install` in the root folder.
 * After dependencies are installed, run `npm run start` which should open up the app in your browser.

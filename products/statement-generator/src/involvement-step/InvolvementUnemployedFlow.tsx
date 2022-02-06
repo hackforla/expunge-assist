@@ -1,50 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementUnemployedState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
-import FlowNavigation from 'components/FlowNavigation';
 import Textarea from 'components/Textarea';
 import RadioGroup from 'components/RadioGroup';
 
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
+
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface IInvolvementUnemployedStepProps {
-  stepState: IInvolvementUnemployedState;
-  setFormState: (value: any) => void;
-}
-
-const InvolvementUnemployedFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementUnemployedStepProps) => {
+function InvolvementUnemployedFlow() {
   const utilityClasses = useUtilityStyles();
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    unemploymentDescription,
+    wouldClearanceHelp,
+  } = formState.unemployedState;
 
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
-    });
-  };
-
-  const unemploymentDescriptionValid = stepState.unemploymentDescription !== '';
-  const wouldClearanceHelpValid = stepState.wouldClearanceHelp !== '';
+  const unemploymentDescriptionValid = unemploymentDescription !== '';
+  const wouldClearanceHelpValid = wouldClearanceHelp !== '';
   const isNextDisabled =
     !unemploymentDescriptionValid || !wouldClearanceHelpValid;
 
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      unemployedState: { ...formState.unemployedState, ...changes },
+    });
+  };
+
   return (
-    <div className={utilityClasses.contentContainer}>
+    <ContentContainer>
       <div className={utilityClasses.flexColumn}>
         Please describe why you are having trouble finding work. (2-3 sentences
         suggested)
         <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ unemploymentDescription: evt.target.value })
-          }
-          inputName="unemploymentDescription"
+          id="unemploymentDescription"
+          handleChange={onInputChange}
           placeholder="I have been having trouble finding work because..."
           multi={false}
           isValid={unemploymentDescriptionValid}
-          defaultValue={stepState.unemploymentDescription}
+          defaultValue={unemploymentDescription}
         />
       </div>
 
@@ -52,18 +50,16 @@ const InvolvementUnemployedFlow = ({
         Do you believe that having your record cleared would help you find a job
         and be more involved in your community?
         <RadioGroup
-          labels={['Yes', 'No']}
           inputName="wouldClearanceHelp"
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ wouldClearanceHelp: evt.target.value })
-          }
-          activeRadio={stepState.wouldClearanceHelp}
+          handleChange={onInputChange}
+          labels={['Yes', 'No']}
+          activeRadio={wouldClearanceHelp}
         />
       </div>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
-};
+}
 
 export default InvolvementUnemployedFlow;

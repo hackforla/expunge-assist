@@ -8,6 +8,7 @@ interface ComponentProps {
   theme?: string;
   hasArrow?: boolean;
   disabled?: boolean;
+  icon?: React.ReactNode;
   buttonText: string;
   onClick: () => void;
 }
@@ -17,26 +18,21 @@ interface StyleProps {
   hasArrow?: boolean;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>(() =>
+const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
   createStyles({
     root: {
       padding: '12px 16px',
       display: 'flex',
       border: 'none',
       borderRadius: '24px',
-      fontFamily: 'Roboto',
-      fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: '14px',
       lineHeight: '16px',
-      letterSpacing: '0.0125em',
-      textTransform: 'uppercase',
-      marginBottom: '1rem',
-      cursor: 'pointer',
 
       boxShadow: (props) => {
         switch (props.theme) {
+          case 'white':
           case 'transparent':
+          case 'transparent-on-dark':
+          case 'transparent-on-light':
             return 'none';
           default:
             return `4px 4px 16px rgba(61, 0, 102, 0.25)`;
@@ -45,8 +41,10 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
 
       color: (props) => {
         switch (props.theme) {
-          case 'transparent':
-            return 'black';
+          case 'white':
+          case 'transparent-on-light':
+            return palette.primary.darker;
+          case 'transparent-on-dark':
           default:
             return '#FFFFFF';
         }
@@ -55,11 +53,18 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
       background: (props) => {
         switch (props.theme) {
           case 'dark':
-            return '#25003F';
-          case 'transparent':
+            return palette.primary.darker;
+          case 'white':
             return '#FFFFFF';
+          case 'transparent':
+          case 'transparent-on-dark':
+          case 'transparent-on-light':
+            return 'transparent';
+          case 'cancel':
+            return palette.warning.main;
+          case 'landing':
           default:
-            return '#9903FF';
+            return palette.primary.main;
         }
       },
       '&:hover': {
@@ -67,10 +72,16 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
           switch (props.theme) {
             case 'dark':
               return '#330652';
-            case 'transparent':
+            case 'white':
               return '#FFFFFF';
+            case 'transparent':
+            case 'transparent-on-dark':
+            case 'transparent-on-light':
+              return 'transparent';
+            case 'cancel':
+              return palette.warning.main;
             default:
-              return '#a224f7';
+              return palette.primary.main;
           }
         },
       },
@@ -78,8 +89,12 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         color: (props) => {
           switch (props.theme) {
             case 'dark':
-            case 'transparent':
+            case 'white':
+            case 'transparent-on-dark':
               return '#757575';
+            case 'transparent-on-light':
+            case 'transparent':
+              return '#b7b7b7';
             default:
               return '#FFFFFF';
           }
@@ -87,8 +102,12 @@ const useStyles = makeStyles<Theme, StyleProps>(() =>
         background: (props) => {
           switch (props.theme) {
             case 'dark':
+            case 'white':
+              return palette.common.lightgrey;
             case 'transparent':
-              return '#e4e4e4';
+            case 'transparent-on-dark':
+            case 'transparent-on-light':
+              return 'transparent';
             default:
               return '#ba85de';
           }
@@ -107,6 +126,7 @@ const ButtonComponent = ({
   theme,
   hasArrow,
   disabled = false,
+  icon,
   buttonText,
   onClick,
 }: ComponentProps) => {
@@ -119,6 +139,7 @@ const ButtonComponent = ({
       className={`${classes.root} ${className}`}
       onClick={onClick}
     >
+      {icon}
       {buttonText}
       {hasArrow && <img src={arrowRight} alt="arrow right" />}
     </Button>

@@ -1,20 +1,31 @@
 import React from 'react';
-import {
-  useHistory,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
+import { AppUrl } from 'contexts/RoutingProps';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
-import PageContainer from 'components/PageContainer';
-import Navbar from 'components/Navbar';
-import Header from 'components/Header';
-import FormHeader from 'components/FormHeader';
+import PageContainer from 'page-layout/PageContainer';
+import AppFooter from 'page-layout/AppFooter';
+import AppHeader from 'page-layout/AppHeader';
+import AppSubheader from 'page-layout/AppSubheader';
+
+import BeforeYouBegin from 'flows/BeforeYouBegin';
+import IntroductionStep from 'flows/IntroductionStep';
+import InvolvementCommunityServiceFlow from 'involvement-step/InvolvementCommunityServiceFlow';
+import InvolvementInitialFlow from 'involvement-step/InvolvementInitialFlow';
+import InvolvementJobFlow from 'involvement-step/InvolvementJobFlow';
+import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow';
+import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
+import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
+import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
+import FinalizeForm from 'flows/FinalizeForm';
+import FinalizePreview from 'flows/FinalizePreview';
+import GoalsStep from 'flows/GoalsStep';
+import WhyStep from 'flows/WhyStep';
+import Download from 'flows/Download';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -25,31 +36,11 @@ import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
+import appTheme from 'styles/appTheme';
 
 import { useTranslation } from 'react-i18next';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#9903FF',
-    },
-    secondary: {
-      main: '#0AEBA0',
-    },
-  },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 320,
-      md: 960,
-      lg: 1200,
-      xl: 1920,
-    },
-  },
-});
-
 const App: React.FC = () => {
-  const history = useHistory();
   const { i18n } = useTranslation();
 
   const handleClick = (language: any) => {
@@ -57,7 +48,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={appTheme}>
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
@@ -77,37 +68,110 @@ const App: React.FC = () => {
                 <button onClick={() => handleClick('ko')}>KO</button>
               </nav>
 
-              <Header />
+              <AppHeader />
+              <AppSubheader />
 
-              <FormHeader />
+              <PageContainer>
+                <Switch>
+                  <Route exact path="/" component={Landing} />
 
-              <Switch>
-                <Route exact path="/" component={Landing} />
+                  <Route
+                    exact
+                    path={AppUrl.BeforeYouBegin}
+                    component={BeforeYouBegin}
+                  />
 
-                <Route
-                  exact
-                  path="/form/:page?/preview"
-                  component={PreviewPage}
-                />
+                  <Route
+                    exact
+                    path={AppUrl.Introduction}
+                    component={IntroductionStep}
+                  />
 
-                <Route
-                  path="/form/:page?"
-                  component={PageContainer}
-                  history={history}
-                />
+                  {/* start involvement flow pages */}
+                  <Route
+                    exact
+                    path={AppUrl.Involvement}
+                    component={InvolvementInitialFlow}
+                  />
 
-                <Route path="/PrivacyPolicy" component={PrivacyPolicy} />
-                <Route path="/TermsOfUse" component={TermsOfUse} />
-                <Route path="/FAQ" component={FAQ} />
-                <Route path="/AboutUs" component={AboutUs} />
+                  <Route
+                    exact
+                    path={AppUrl.CommunityService}
+                    component={InvolvementCommunityServiceFlow}
+                  />
 
-                <Route component={NotFound} />
-                <Route path="/404" component={NotFound} />
-              </Switch>
+                  <Route
+                    exact
+                    path={AppUrl.Job}
+                    component={InvolvementJobFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Parenting}
+                    component={InvolvementParentingFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Recovery}
+                    component={InvolvementRecoveryFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.School}
+                    component={InvolvementSchoolFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.Unemployed}
+                    component={InvolvementUnemployedFlow}
+                  />
+                  {/* end involvement flow pages */}
+
+                  <Route
+                    exact
+                    path={AppUrl.Finalize}
+                    component={FinalizeForm}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.FinalizePreview}
+                    component={FinalizePreview}
+                  />
+
+                  <Route exact path={AppUrl.Goals} component={GoalsStep} />
+
+                  <Route exact path={AppUrl.Why} component={WhyStep} />
+
+                  <Route exact path={AppUrl.Download} component={Download} />
+
+                  <Route
+                    exact
+                    path="/form/:page?/preview"
+                    component={PreviewPage}
+                  />
+
+                  <Route
+                    path={AppUrl.PrivacyPolicy}
+                    component={PrivacyPolicy}
+                  />
+                  <Route path={AppUrl.TermsOfUse} component={TermsOfUse} />
+                  <Route path={AppUrl.FAQ} component={FAQ} />
+                  <Route path={AppUrl.AboutUs} component={AboutUs} />
+
+                  <Route component={NotFound} />
+                  <Route path="/404" component={NotFound} />
+                </Switch>
+              </PageContainer>
+
+              <AppFooter />
             </FormStateContextProvider>
           </AffirmationContextProvider>
         </RoutingContextProvider>
-        <Navbar />
       </Router>
     </ThemeProvider>
   );

@@ -1,113 +1,77 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
-import { IIntroductionState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
-import Textarea from 'components/Textarea';
 import Input from 'components/Input';
-import TextPreview from 'components/TextPreview';
+import Paragraph from 'components/Paragraph';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
-import FlowNavigation from 'components/FlowNavigation';
+
+import ContentContainer from 'page-layout/ContentContainer';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface IIntroductionStepProps {
-  stepState: IIntroductionState;
-  setFormState: (value: any) => void;
-}
+export function IntroductionStep() {
+  const utilityClasses = useUtilityStyles();
 
-const IntroductionStep = ({
-  stepState,
-  setFormState,
-}: IIntroductionStepProps) => {
-  const utilityClasses = useUtilityStyles({});
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const { fullName, age, isVeteran } = formState.introduction;
 
-  const [showPreview, setShowPreview] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputName = e.currentTarget.name;
-    const inputValue = e.currentTarget.value;
-
-    if (inputName === 'name') {
-      setFormState({ ...stepState, fullName: inputValue });
-    }
-
-    if (inputName === 'age') setFormState({ ...stepState, age: inputValue });
-
-    if (inputName === 'isVeteran')
-      setFormState({ ...stepState, isVeteran: inputValue });
-  };
-
-  let veteranSentence;
-  stepState.isVeteran === 'Yes'
-    ? (veteranSentence = `I am also a proud veteran of the United States Armed Forces.`)
-    : (veteranSentence = ``);
-  const textPreviewContent = `Thank you so much for taking the time to read my personal statement. My name is ${stepState.fullName}, and I am ${stepState.age} years old. ${veteranSentence}`;
-
-  const fullNameValid = stepState.fullName !== '';
-  const ageValid = Number(stepState.age) > 0;
+  const fullNameValid = fullName !== '';
+  const ageValid = Number(age) > 0;
   const isNextDisabled = !fullNameValid || !ageValid;
 
-  if (showPreview) {
-    return (
-      <div className={utilityClasses.contentContainer}>
-        <div>
-          <TextPreview
-            content={textPreviewContent}
-            onAdjustClick={() => setShowPreview(false)}
-            nameOfStep="Introduction"
-          />
-        </div>
-
-        <FlowNavigation
-          onBack={() => setShowPreview(false)}
-          isNextDisabled={isNextDisabled}
-        />
-      </div>
-    );
-  }
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      introduction: { ...formState.introduction, ...changes },
+    });
+  };
 
   return (
-    <div className={utilityClasses.contentContainer}>
-      <form className={utilityClasses.flexGrow}>
+    <ContentContainer>
+      <form
+        className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
+      >
         <p>What is your name?</p>
-        <Textarea
-          inputName="name"
-          placeholder="Firstname Lastname"
-          handleChange={handleChange}
-          multi={false}
-          isValid={fullNameValid}
-          defaultValue={stepState.fullName}
+        <Input
+          id="fullName"
+          defaultValue={fullName}
+          placeholder="Full Name"
+          handleChange={onInputChange}
+          type="text"
         />
 
-        <p className="greyedOut">How old are you?</p>
+        <Paragraph disabled={!fullNameValid}>How old are you?</Paragraph>
         <Input
           type="number"
-          inputName="age"
+          id="age"
+          defaultValue={age}
           placeholder="25"
           disabled={!fullNameValid}
-          handleChange={handleChange}
-          defaultValue={stepState.age}
+          handleChange={onInputChange}
           adornment="years old"
         />
 
-        <p className="greyedOut">
+        <Paragraph disabled={!ageValid}>
           Are you a veteran of the United States of America?
-        </p>
+        </Paragraph>
         <RadioGroup
           labels={['Yes', 'No']}
           inputName="isVeteran"
+          activeRadio={isVeteran}
           disabled={!ageValid}
-          handleChange={handleChange}
-          activeRadio={stepState.isVeteran}
+          handleChange={onInputChange}
         />
       </form>
 
       <HelpPopUp />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
-    </div>
+    </ContentContainer>
   );
-};
+}
 
 export default IntroductionStep;
