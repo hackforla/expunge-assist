@@ -74,6 +74,10 @@ const useUtilityStyles = makeStyles<Theme>(
       helpPopup: {
         textAlign: 'right',
       },
+      iconButton: {
+        cursor: 'pointer',
+        color: palette.primary.main,
+      },
     })
 );
 

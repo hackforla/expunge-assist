@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
+import CheckIcon from '@material-ui/icons/Check';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Textarea from './Textarea';
