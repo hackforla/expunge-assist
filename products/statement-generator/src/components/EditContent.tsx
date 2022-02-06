@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
+import CheckIcon from '@material-ui/icons/Check';
+
 import useUtilityStyles from 'styles/utilityStyles';
 import Textarea from './Textarea';
 import Button from './Button';
@@ -22,16 +25,19 @@ const useStyles = makeStyles(({ spacing }) =>
 
 interface EditContentProps {
   setIsEditing: (v: boolean) => void;
+  onSaveClick: (content: string) => void;
   content: string;
 }
 
 export default function EditContent({
   setIsEditing,
+  onSaveClick,
   content,
 }: EditContentProps) {
-  const [updatedContent, setUpdatedContent] = useState(content);
+  const { t } = useTranslation();
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({});
+  const utilityClasses = useUtilityStyles();
+  const [updatedContent, setUpdatedContent] = useState(content);
 
   const handleCancelClick = () => {
     setIsEditing(false);
@@ -40,7 +46,9 @@ export default function EditContent({
 
   const handleSubmit = () => {
     setIsEditing(false);
+    onSaveClick(updatedContent);
   };
+
   return (
     <form className={classes.form}>
       <div className={utilityClasses.flexColumn}>
@@ -54,13 +62,13 @@ export default function EditContent({
       <div className={`${utilityClasses.buttonContainer} ${classes.container}`}>
         <Button
           theme="cancel"
-          buttonText="Cancel"
           onClick={handleCancelClick}
+          buttonText={t('button.cancel')}
         />
         <Button
           className={classes.cancelButton}
           onClick={handleSubmit}
-          buttonText="Submit"
+          buttonText={t('button.save')}
         />
       </div>
     </form>
