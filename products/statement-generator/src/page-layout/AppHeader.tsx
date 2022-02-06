@@ -14,7 +14,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         background: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'dark' ? palette.primary.main : 'white',
 
-        padding: spacing(3),
+        padding: spacing(2),
         display: 'flex',
 
         '& a': {
