@@ -47,7 +47,7 @@ function Download() {
   };
 
   // create a mailto link with the statement in the body
-  const str = `${getPreviewStatement(formState, AppUrl.Introduction)}
+  const str = `${getPreviewStatement(formState, AppUrl.IntroductionPreview)}
   ${getPreviewStatement(formState, AppUrl.JobPreview)}}
   ${getPreviewStatement(formState, AppUrl.CommunityServicePreview)}
   ${getPreviewStatement(formState, AppUrl.RecoveryPreview)}
@@ -58,6 +58,7 @@ function Download() {
     AppUrl.UnemployedPreview
   )} ${getPreviewStatement(formState, AppUrl.GoalsPreview)}
   ${getPreviewStatement(formState, AppUrl.WhyPreview)}`;
+
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;
