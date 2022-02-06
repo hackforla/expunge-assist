@@ -15,7 +15,7 @@ import { getPreviewStatement, PREVIEW_MAP } from 'helpers/previewHelper';
 
 const PREVIEW_LIST = Object.keys(PREVIEW_MAP).map((previewKey) => ({
   ...PREVIEW_MAP[previewKey],
-  stepName: previewKey as AppUrl,
+  stepUrl: previewKey as AppUrl,
 }));
 
 const useStyles = makeStyles(({ palette, spacing }) =>
@@ -41,7 +41,16 @@ const useStyles = makeStyles(({ palette, spacing }) =>
 
 function FinalizeForm() {
   const classes = useStyles();
-  const { formState } = useContext(FormStateContext);
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+
+  function updatePreviewItem(newStatement: string, stateKey: string) {
+    updateStepToForm({
+      statements: {
+        ...formState.statements,
+        [stateKey]: newStatement,
+      },
+    });
+  }
 
   return (
     <ContentContainer>
@@ -52,10 +61,12 @@ function FinalizeForm() {
 
       {PREVIEW_LIST.map((previewConfigItem) => (
         <TextPreview
-          key={`${previewConfigItem.stepName}-preview-key`}
+          key={`${previewConfigItem.stepUrl}-preview-key`}
           className={classes.previewItem}
-          onSaveClick={() => {}}
-          content={getPreviewStatement(formState, previewConfigItem.stepName)}
+          onSaveClick={(newText: string) =>
+            updatePreviewItem(newText, previewConfigItem.stateKey)
+          }
+          content={getPreviewStatement(formState, previewConfigItem.stepUrl)}
           nameOfStep={previewConfigItem.title}
         />
       ))}
