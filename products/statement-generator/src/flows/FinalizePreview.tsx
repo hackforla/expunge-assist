@@ -60,7 +60,7 @@ function FinalizeStep() {
       <div className={classes.preview}>
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
-        <p>{getPreviewStatement(formState, AppUrl.Introduction)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.IntroductionPreview)}</p>
         <p>{getPreviewStatement(formState, AppUrl.JobPreview)}</p>
         <p>{getPreviewStatement(formState, AppUrl.CommunityServicePreview)}</p>
         <p>{getPreviewStatement(formState, AppUrl.RecoveryPreview)}</p>

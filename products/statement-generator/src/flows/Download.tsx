@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { getPreviewStatement } from 'helpers/previewHelper';
 
-import { IStepState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 import { AppUrl } from 'contexts/RoutingProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
@@ -35,12 +35,9 @@ const useStyles = makeStyles(() =>
   })
 );
 
-interface IFinalizeStepProps {
-  formState: IStepState;
-}
-
-const Download = ({ formState }: IFinalizeStepProps) => {
+function Download() {
   const classes = useStyles();
+  const { formState } = useContext(FormStateContext);
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -50,7 +47,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
   };
 
   // create a mailto link with the statement in the body
-  const str = `${getPreviewStatement(formState, AppUrl.Introduction)}
+  const str = `${getPreviewStatement(formState, AppUrl.IntroductionPreview)}
   ${getPreviewStatement(formState, AppUrl.JobPreview)}}
   ${getPreviewStatement(formState, AppUrl.CommunityServicePreview)}
   ${getPreviewStatement(formState, AppUrl.RecoveryPreview)}
@@ -61,6 +58,7 @@ const Download = ({ formState }: IFinalizeStepProps) => {
     AppUrl.UnemployedPreview
   )} ${getPreviewStatement(formState, AppUrl.GoalsPreview)}
   ${getPreviewStatement(formState, AppUrl.WhyPreview)}`;
+
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
     str
   )}`;
@@ -159,6 +157,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
       </form>
     </ContentContainer>
   );
-};
+}
 
 export default Download;
