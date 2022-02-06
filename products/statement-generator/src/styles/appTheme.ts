@@ -29,7 +29,7 @@ const appTheme = createMuiTheme({
       main: '#0aeba0',
     },
   },
-  spacing: 6,
+  spacing: 8,
   breakpoints: {
     values: {
       xs: 0,
