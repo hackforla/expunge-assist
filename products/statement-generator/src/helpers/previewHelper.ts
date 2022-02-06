@@ -9,7 +9,7 @@ interface IPreviewMapItem {
   stateKey: string;
 }
 
-const PREVIEW_MAP = {
+export const PREVIEW_MAP = {
   [AppUrl.IntroductionPreview as string]: {
     title: 'Previewing Introduction',
     generator: statementGenerators.generateIntroduction,

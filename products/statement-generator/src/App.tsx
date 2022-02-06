@@ -21,7 +21,8 @@ import InvolvementParentingFlow from 'involvement-step/InvolvementParentingFlow'
 import InvolvementRecoveryFlow from 'involvement-step/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'involvement-step/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'involvement-step/InvolvementUnemployedFlow';
-import FinalizeStep from 'flows/FinalizeStep';
+import FinalizeForm from 'flows/FinalizeForm';
+import FinalizePreview from 'flows/FinalizePreview';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
 
@@ -132,7 +133,13 @@ const App: React.FC = () => {
                   <Route
                     exact
                     path={AppUrl.Finalize}
-                    component={FinalizeStep}
+                    component={FinalizeForm}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.FinalizePreview}
+                    component={FinalizePreview}
                   />
 
                   <Route exact path={AppUrl.Goals} component={GoalsStep} />
