@@ -6,31 +6,30 @@ import { AppUrl } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
-const useStyles = makeStyles<Theme>(({ palette, breakpoints }) =>
-  createStyles({
-    root: {
-      background: palette.primary.light,
-      color: 'black',
-      padding: '12px 12px',
-      borderBottomRightRadius: '64px',
+const useStyles = makeStyles<Theme>(
+  ({ palette, breakpoints, spacing, typography }) =>
+    createStyles({
+      root: {
+        background: palette.primary.light,
+        color: palette.common.black,
+        padding: spacing(2),
+        borderBottomRightRadius: '64px',
 
-      [breakpoints.up(breakpoints.values.md)]: {
-        marginLeft: '18px',
-        marginRight: '18px',
-      },
+        [breakpoints.up(breakpoints.values.md)]: {
+          marginLeft: spacing(2),
+          marginRight: spacing(2),
+        },
 
-      '& h2': {
-        fontWeight: '300',
-        fontSize: '20px',
-        marginBottom: '12px',
+        '& h2': {
+          fontWeight: '300',
+        },
       },
-      '& .step-text': {
-        color: '#9a9a9a',
-        fontSize: '14px',
-        marginTop: '6px',
+      stepText: {
+        color: palette.common.grey,
+        marginTop: spacing(1),
+        fontSize: typography.fontSize,
       },
-    },
-  })
+    })
 );
 
 function convertStepToNum(url: AppUrl): number {
@@ -133,8 +132,10 @@ const FormHeader = () => {
 
       <ProgressBar percentage={percentageComplete} />
 
-      {stepNum < maxNum && <div className="step-text">Step {stepNum} of 5</div>}
-      {stepNum === maxNum && <div className="step-text">Completed</div>}
+      {stepNum < maxNum && (
+        <div className={classes.stepText}>Step {stepNum} of 5</div>
+      )}
+      {stepNum === maxNum && <div className={classes.stepText}>Completed</div>}
     </div>
   );
 };

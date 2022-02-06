@@ -52,6 +52,10 @@ const useUtilityStyles = makeStyles<Theme>(
         flex: '1 0 auto',
         flexDirection: 'column',
 
+        [breakpoints.down('sm')]: {
+          padding: spacing(2),
+        },
+
         [breakpoints.down('xs')]: {
           marginLeft: 'initial',
           marginRight: 'initial',

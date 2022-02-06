@@ -11,7 +11,7 @@ import EditContent from './EditContent';
 const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
     root: {
-      padding: spacing(3),
+      padding: spacing(2),
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
     },
@@ -43,7 +43,12 @@ interface ComponentProps {
   className?: string;
 }
 
-const TextPreview = ({ onSaveClick, content, nameOfStep, className }: ComponentProps) => {
+const TextPreview = ({
+  onSaveClick,
+  content,
+  nameOfStep,
+  className = '',
+}: ComponentProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
   const [isEditing, setIsEditing] = useState<boolean>(false);
