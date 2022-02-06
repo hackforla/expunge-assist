@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { getPreviewStatement } from 'helpers/previewHelper';
 
-import { IStepState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 import { AppUrl } from 'contexts/RoutingProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
@@ -35,12 +35,9 @@ const useStyles = makeStyles(() =>
   })
 );
 
-interface IFinalizeStepProps {
-  formState: IStepState;
-}
-
-const Download = ({ formState }: IFinalizeStepProps) => {
+function Download() {
   const classes = useStyles();
+  const { formState } = useContext(FormStateContext);
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -159,6 +156,6 @@ const Download = ({ formState }: IFinalizeStepProps) => {
       </form>
     </ContentContainer>
   );
-};
+}
 
 export default Download;

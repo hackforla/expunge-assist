@@ -25,6 +25,7 @@ import FinalizeForm from 'flows/FinalizeForm';
 import FinalizePreview from 'flows/FinalizePreview';
 import GoalsStep from 'flows/GoalsStep';
 import WhyStep from 'flows/WhyStep';
+import Download from 'flows/Download';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -145,6 +146,12 @@ const App: React.FC = () => {
                   <Route exact path={AppUrl.Goals} component={GoalsStep} />
 
                   <Route exact path={AppUrl.Why} component={WhyStep} />
+
+                  <Route
+                    exact
+                    path={AppUrl.Download}
+                    component={Download}
+                  />
 
                   <Route
                     exact
