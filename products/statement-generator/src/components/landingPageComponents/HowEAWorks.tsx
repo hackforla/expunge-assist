@@ -6,7 +6,7 @@ import document from '../../assets/document.png';
 import clipboard from '../../assets/clipboard.png';
 import { Thumbnail } from './Thumbnail';
 
-const useStyles = makeStyles<Theme>(({ palette, breakpoints }) =>
+const useStyles = makeStyles<Theme>(({ palette, typography, breakpoints }) =>
   createStyles({
     mainContainer: {
       display: 'flex',
@@ -16,6 +16,7 @@ const useStyles = makeStyles<Theme>(({ palette, breakpoints }) =>
     headingText: {
       color: '#000',
       margin: '0 auto',
+      fontFamily: typography.fontFamily,
     },
     purpleText: {
       color: '#9903ff',
