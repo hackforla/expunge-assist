@@ -13,10 +13,7 @@ import Input from '../components/Input';
 function InvolvementRecoveryFlow() {
   const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
-  const {
-    recoveryName,
-    recoveryDescription,
-  } = formState.recoveryState;
+  const { recoveryName, recoveryDescription } = formState.recoveryState;
 
   const recoveryNameValid = recoveryName !== '';
   const recoveryDescriptionValid = recoveryDescription !== '';
@@ -59,6 +56,6 @@ function InvolvementRecoveryFlow() {
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default InvolvementRecoveryFlow;
