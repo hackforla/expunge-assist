@@ -3,29 +3,28 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
+// TODO: its kind of confusing that the data is which url this should show up
+//  as opposed to the step that it is referring to
 const AFFIRMATION_DATA = {
   [AppUrl.Introduction as string]: {
-    titleText: 'Welcome',
-    buttonText: 'Begin',
-    description: 'This is a tool to generate a personal statement.',
+    titleText: 'affirmations.welcome.titleText',
+    description: 'affirmations.welcome.description',
+    buttonText: 'button.begin',
   },
   [AppUrl.Involvement as string]: {
-    titleText: 'Congrats',
-    buttonText: 'Next',
-    description:
-      'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared.',
+    titleText: 'affirmations.introduction.titleText',
+    description: 'affirmations.introduction.description',
+    buttonText: 'button.next',
   },
   [AppUrl.Goals as string]: {
-    titleText: 'Hooray',
-    buttonText: 'Next',
-    description:
-      'You just finished telling everyone about your involvement in your city and your various communities. Thank you for taking the time to tell us about this.',
+    titleText: 'affirmations.community_service.titleText',
+    description: 'affirmations.community_service.description',
+    buttonText: 'button.next',
   },
   [AppUrl.Why as string]: {
-    titleText: 'Great Job',
-    buttonText: 'Next',
-    description:
-      'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
+    titleText: 'affirmations.goals.titleText',
+    description: 'affirmations.goals.description',
+    buttonText: 'button.next',
   },
 };
 

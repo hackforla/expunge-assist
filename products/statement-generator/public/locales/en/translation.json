@@ -4,7 +4,27 @@
     "text": "Please make sure you are eligible for getting your record cleared. If you need help with this please email placeholder@website.com.\n\nBe aware your statement is stored locally on your device, and never transmitted to our servers or any third-party\n\nThis software is developed by a non-governmental third party, Code for America.\n\nPlease also review our Privacy Policy and Terms of Use before beginning.\n\nPlease allocate at least 30 minutes of time to complete this.\n\nIf at anytime you are confused please click the question mark button for guidance."
   },
   "button": {
+    "begin": "Begin",
+    "next": "Next",
     "cancel": "Cancel",
     "save": "Save"
+  },
+  "affirmations": {
+    "welcome": {
+      "titleText": "Welcome",
+      "description": "This is a tool to generate a personal statement."
+    },
+    "introduction": {
+      "titleText": "Congrats",
+      "description": "You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared."
+    },
+    "community_service": {
+      "titleText": "Hooray",
+      "description": "You just finished telling everyone about your involvement in your city and your various communities. Thank you for taking the time to tell us about this."
+    },
+    "goals": {
+      "titleText": "Good Job",
+      "description": "Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared."
+    }
   }
 }

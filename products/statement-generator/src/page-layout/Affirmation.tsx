@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 import AffirmationImage from 'assets/affirmation-img.svg';
 
@@ -57,6 +58,7 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(
 );
 
 const Affirmation = () => {
+  const { t } = useTranslation();
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
   );
@@ -80,15 +82,15 @@ const Affirmation = () => {
         </div>
 
         <div className={classes.messageContainer}>
-          <h1>{affirmationData.titleText}</h1>
-          <p>{affirmationData.description}</p>
+          <h1>{t(affirmationData.titleText)}</h1>
+          <p>{t(affirmationData.description)}</p>
         </div>
 
         <div className={utilityClasses.buttonContainer}>
           <Button
             className={utilityClasses.buttonRight}
             onClick={() => updateAffirmationData({ isActive: false })}
-            buttonText={affirmationData.buttonText}
+            buttonText={t(affirmationData.buttonText)}
             hasArrow
           />
         </div>
