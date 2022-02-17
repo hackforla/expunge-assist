@@ -6,7 +6,6 @@ import AffirmationImage from 'assets/affirmation-img.svg';
 import Button from 'components/Button';
 
 import { AffirmationContext } from 'contexts/AffirmationContext';
-import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
 
@@ -59,8 +58,7 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(
     })
 );
 
-const AffirmationComponent = () => {
-  const { formState } = useContext(FormStateContext);
+const Affirmation = () => {
   const { currentStep, canShowAffirmation } = useContext(RoutingContext);
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
@@ -115,7 +113,7 @@ const AffirmationComponent = () => {
         });
         break;
     }
-  }, [currentStep])
+  }, [currentStep]);
 
   return (
     <div
@@ -148,4 +146,4 @@ const AffirmationComponent = () => {
   );
 };
 
-export default AffirmationComponent;
+export default Affirmation;
