@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
 import AffirmationImage from 'assets/affirmation-img.svg';
@@ -6,8 +6,6 @@ import AffirmationImage from 'assets/affirmation-img.svg';
 import Button from 'components/Button';
 
 import { AffirmationContext } from 'contexts/AffirmationContext';
-import RoutingContext from 'contexts/RoutingContext';
-import { AppUrl } from 'contexts/RoutingProps';
 
 import ContentContainer from 'page-layout/ContentContainer';
 
@@ -59,7 +57,6 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(
 );
 
 const Affirmation = () => {
-  const { currentStep, canShowAffirmation } = useContext(RoutingContext);
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
   );
@@ -68,52 +65,6 @@ const Affirmation = () => {
     pageTheme: 'transparent',
   });
   const classes = useStyles({ isActive: affirmationData.isActive });
-
-  useEffect(() => {
-    switch (currentStep) {
-      case AppUrl.Introduction:
-        updateAffirmationData({
-          isActive: canShowAffirmation,
-          titleText: 'Welcome!',
-          buttonText: 'Begin',
-          description: 'This is a tool to generate a personal statement.',
-        });
-        break;
-      case AppUrl.Involvement:
-        updateAffirmationData({
-          isActive: canShowAffirmation,
-          titleText: 'Congrats!',
-          buttonText: 'Next',
-          description:
-            'You just finished introducing yourself! You are well on your way to completing your personal statement and getting your record cleared!',
-        });
-        break;
-      case AppUrl.Goals:
-        updateAffirmationData({
-          isActive: canShowAffirmation,
-          titleText: 'Hooray!',
-          buttonText: 'Next',
-          description:
-            'You just finished telling everyone about your involvement in your city and your various communities! Thank you for taking the time to tell us about this!',
-        });
-        break;
-      case AppUrl.Why:
-        updateAffirmationData({
-          isActive: canShowAffirmation,
-          titleText: 'Great Job!',
-          buttonText: 'Next',
-          description:
-            'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
-        });
-        break;
-      case AppUrl.Landing:
-      default:
-        updateAffirmationData({
-          isActive: false,
-        });
-        break;
-    }
-  }, [currentStep]);
 
   return (
     <div
