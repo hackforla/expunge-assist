@@ -11,6 +11,7 @@ import PageContainer from 'page-layout/PageContainer';
 import AppFooter from 'page-layout/AppFooter';
 import AppHeader from 'page-layout/AppHeader';
 import AppSubheader from 'page-layout/AppSubheader';
+import Affirmation from 'page-layout/Affirmation';
 
 import BeforeYouBegin from 'flows/BeforeYouBegin';
 import IntroductionStep from 'flows/IntroductionStep';
@@ -70,6 +71,8 @@ const App: React.FC = () => {
 
               <AppHeader />
               <AppSubheader />
+
+              <Affirmation />
 
               <PageContainer>
                 <Switch>
