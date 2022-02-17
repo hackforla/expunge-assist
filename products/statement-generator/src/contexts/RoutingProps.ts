@@ -38,10 +38,10 @@ export enum AppUrl {
   FinalizePreview = '/form/finalize/preview',
   Editing = '/form/editing',
   Download = '/form/download',
-  PrivacyPolicy = 'privacy-policy',
-  TermsOfUse = 'terms-of-use',
-  FAQ = 'faq',
-  AboutUs = 'about-us',
+  PrivacyPolicy = '/privacy-policy',
+  TermsOfUse = '/terms-of-use',
+  FAQ = '/faq',
+  AboutUs = '/about-us',
 }
 
 export type AppUrlOrString = AppUrl | string;

@@ -35,7 +35,7 @@ const PreRoutingContextProvider = ({
   const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
 
   const navigateToFormUrl = (newAppUrl: AppUrl) => {
-    history.push(`${newAppUrl}`);
+    history.push(newAppUrl);
   };
 
   const goNextPage = (suggestedNext?: AppUrl) => {

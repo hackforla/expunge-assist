@@ -150,11 +150,7 @@ const App: React.FC = () => {
 
                   <Route exact path={AppUrl.Why} component={WhyStep} />
 
-                  <Route
-                    exact
-                    path={AppUrl.Download}
-                    component={Download}
-                  />
+                  <Route exact path={AppUrl.Download} component={Download} />
 
                   <Route
                     exact

@@ -1,7 +1,10 @@
 import React from 'react';
-import { makeStyles, createStyles, Link } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { makeStyles, createStyles } from '@material-ui/core';
 
 import hackForLALogo from 'assets/hackForLALogo.svg';
+
+import { AppUrl } from 'contexts/RoutingProps';
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
@@ -50,7 +53,7 @@ function AppFooterLink(props: any) {
   const { url, children } = props;
 
   return (
-    <Link className={classes.linkBtn} href={`/${url}`}>
+    <Link className={classes.linkBtn} to={url}>
       {children}
     </Link>
   );
@@ -66,10 +69,10 @@ const AppFooter: React.FC = () => {
       </div>
 
       <div className={classes.middleWrapper}>
-        <AppFooterLink url="PrivacyPolicy">Privacy Policy</AppFooterLink>
-        <AppFooterLink url="TermsOfUse">Terms Of Use</AppFooterLink>
-        <AppFooterLink url="AboutUs">About Us</AppFooterLink>
-        <AppFooterLink url="FAQ">FAQ</AppFooterLink>
+        <AppFooterLink url={AppUrl.PrivacyPolicy}>Privacy Policy</AppFooterLink>
+        <AppFooterLink url={AppUrl.TermsOfUse}>Terms Of Use</AppFooterLink>
+        <AppFooterLink url={AppUrl.AboutUs}>About Us</AppFooterLink>
+        <AppFooterLink url={AppUrl.FAQ}>FAQ</AppFooterLink>
       </div>
 
       <span className={classes.endWrapper}>COPYRIGHT 2021 HACK FOR LA</span>
