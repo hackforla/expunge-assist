@@ -11,6 +11,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
   ({ palette, breakpoints, spacing }) =>
     createStyles({
       root: {
+        height: 60,
         background: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'dark' ? palette.primary.main : 'white',
 

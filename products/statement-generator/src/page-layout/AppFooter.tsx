@@ -6,6 +6,7 @@ import hackForLALogo from 'assets/hackForLALogo.svg';
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
     footerContainer: {
+      height: 60,
       width: '100%',
       color: palette.common.lightgrey,
       background: palette.common.black,
