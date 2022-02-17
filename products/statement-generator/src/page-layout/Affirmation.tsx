@@ -1,17 +1,18 @@
-import React, { useEffect, useContext } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 
 import AffirmationImage from 'assets/affirmation-img.svg';
 
+import Button from 'components/Button';
+
+import { AffirmationContext } from 'contexts/AffirmationContext';
+import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
 
-import { AffirmationContext } from 'contexts/AffirmationContext';
 import ContentContainer from 'page-layout/ContentContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
-import Button from './Button';
 
 interface CustomStyleProps {
   isActive: boolean;
@@ -23,9 +24,9 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(
       affirmationComponent: {
         position: 'absolute',
         background: palette.primary.light,
+        top: 60, // offset from header
+        bottom: 60, // offset from footer
         left: '0',
-        bottom: '0',
-        top: '0',
         width: '100%',
         zIndex: 1,
         paddingTop: spacing(2),
@@ -58,38 +59,18 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(
     })
 );
 
-interface ComponentProps {
-  isActive: boolean;
-  titleText: string;
-  buttonText: string;
-  description: string;
-  onChangeAffirmation: (newState: object) => void;
-}
-
-const AffirmationComponent = ({
-  isActive,
-  titleText,
-  buttonText = 'Next',
-  description,
-  onChangeAffirmation,
-}: ComponentProps) => {
-  const utilityClasses = useUtilityStyles({
-    pageTheme: 'transparent',
-  });
-  const classes = useStyles({ isActive });
-
-  const match = useRouteMatch('/form/:page?');
+const AffirmationComponent = () => {
+  const { formState } = useContext(FormStateContext);
   const { currentStep, canShowAffirmation } = useContext(RoutingContext);
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
   );
 
-  useEffect(() => {
-    // handle closing the affirmation on home page
-    if (match?.path === '/') updateAffirmationData({ isActive: false });
-  }, [match]);
+  const utilityClasses = useUtilityStyles({
+    pageTheme: 'transparent',
+  });
+  const classes = useStyles({ isActive: affirmationData.isActive });
 
-  // todo: move text into a json for localization
   useEffect(() => {
     switch (currentStep) {
       case AppUrl.Introduction:
@@ -127,10 +108,14 @@ const AffirmationComponent = ({
             'Those are some amazing goals you’ve set for yourself! You’re one step closer towards acheiving them too by getting your record cleared.',
         });
         break;
+      case AppUrl.Landing:
       default:
+        updateAffirmationData({
+          isActive: false,
+        });
         break;
     }
-  }, [currentStep]);
+  }, [currentStep])
 
   return (
     <div
@@ -146,15 +131,15 @@ const AffirmationComponent = ({
         </div>
 
         <div className={classes.messageContainer}>
-          <h1>{titleText}</h1>
-          <p>{description}</p>
+          <h1>{affirmationData.titleText}</h1>
+          <p>{affirmationData.description}</p>
         </div>
 
         <div className={utilityClasses.buttonContainer}>
           <Button
             className={utilityClasses.buttonRight}
-            onClick={() => onChangeAffirmation({ isActive: false })}
-            buttonText={buttonText}
+            onClick={() => updateAffirmationData({ isActive: false })}
+            buttonText={affirmationData.buttonText}
             hasArrow
           />
         </div>
