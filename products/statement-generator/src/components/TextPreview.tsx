@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { makeStyles, createStyles } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
 import CreateIcon from '@material-ui/icons/Create';
 
 import useUtilityStyles from 'styles/utilityStyles';
@@ -67,13 +66,6 @@ const TextPreview = ({
             <CreateIcon
               className={utilityClasses.iconButton}
               onClick={handleClick}
-            />
-          )}
-
-          {isEditing && (
-            <CloseIcon
-              className={utilityClasses.iconButton}
-              onClick={() => setIsEditing(false)}
             />
           )}
         </div>
