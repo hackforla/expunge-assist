@@ -21,7 +21,7 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(
     createStyles({
       affirmationComponent: {
         position: 'absolute',
-        background: palette.primary.light,
+        background: palette.primary.lighter,
         top: 60, // offset from header
         bottom: 60, // offset from footer
         left: '0',

@@ -17,7 +17,7 @@ const useStyles = makeStyles(({ spacing }) =>
     container: {
       justifyContent: 'flex-end',
     },
-    cancelButton: {
+    secondBtn: {
       marginLeft: spacing(2),
     },
   })
@@ -61,12 +61,12 @@ export default function EditContent({
       </div>
       <div className={`${utilityClasses.buttonContainer} ${classes.container}`}>
         <Button
-          theme="cancel"
+          theme="white"
           onClick={handleCancelClick}
           buttonText={t('button.cancel')}
         />
         <Button
-          className={classes.cancelButton}
+          className={classes.secondBtn}
           onClick={handleSubmit}
           buttonText={t('button.save')}
         />

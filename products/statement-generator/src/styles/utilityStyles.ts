@@ -15,7 +15,7 @@ const useUtilityStyles = makeStyles<Theme>(
             case 'dark':
               return palette.primary.main;
             case 'light':
-              return palette.primary.light;
+              return palette.primary.lighter;
             case 'transparent':
             default:
               return 'transparent';

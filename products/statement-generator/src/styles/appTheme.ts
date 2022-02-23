@@ -9,7 +9,8 @@ const appTheme = createMuiTheme({
   },
   palette: {
     primary: {
-      light: '#F7EBFF', // light purple
+      lighter: '#F7EBFF', // pink-purple
+      light: '#e5c0ff', // light purple
       main: '#9903FF',
       // dark: '#c5b3d1',
       darker: '#25003F',
