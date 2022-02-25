@@ -6,6 +6,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { teal } from '@material-ui/core/colors';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 interface StyleProps {
   disabled?: boolean;
 }
@@ -13,6 +15,7 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
   createStyles({
     inputContainer: {
+      width: '100%',
       borderRadius: '16px',
       '& input': {
         padding: spacing(1, 2),
@@ -59,14 +62,16 @@ const InputArea: React.FC<InputFieldProps> = ({
   adornment,
   className = '',
 }) => {
+  const utilityClasses = useUtilityStyles();
+
   const checkValid = (e: string) => {
     isValid(e.length > 0);
   };
   const [valid, isValid] = useState(false);
-  const classes = useStyles({disabled});
+  const classes = useStyles({ disabled });
 
   return (
-    <div className={className}>
+    <div className={`${utilityClasses.adjacentInput} ${className}`}>
       <InputLabel className={classes.labelContainer}>{label}</InputLabel>
       <OutlinedInput
         type={type}

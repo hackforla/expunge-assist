@@ -82,6 +82,11 @@ const useUtilityStyles = makeStyles<Theme>(
         cursor: 'pointer',
         color: palette.primary.main,
       },
+      adjacentInput: {
+        '&$adjacentInput ~ $adjacentInput': {
+          marginTop: spacing(3),
+        },
+      },
     })
 );
 
