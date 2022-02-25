@@ -5,16 +5,16 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { teal } from '@material-ui/core/colors';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ spacing }) =>
   createStyles({
-    root: {
-      width: '300px',
-      minWidth: '10rem',
-      borderRadius: '15px',
-      marginBottom: '1rem',
+    inputContainer: {
+      borderRadius: '16px',
+      '& input': {
+        padding: spacing(1, 2),
+      },
 
       '&.MuiInputBase-root.Mui-disabled': {
-        borderRadius: '15px',
+        borderRadius: '16px',
         background: '#efefef',
         color: '#b5b5b5',
       },
@@ -53,7 +53,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   return (
     <OutlinedInput
       type={type}
-      className={classes.root}
+      className={classes.inputContainer}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
         checkValid(e.currentTarget.value);
         handleChange(e);
