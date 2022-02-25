@@ -72,7 +72,7 @@ const InputArea: React.FC<InputFieldProps> = ({
 
   return (
     <div className={`${utilityClasses.adjacentInput} ${className}`}>
-      <InputLabel className={classes.labelContainer}>{label}</InputLabel>
+      <InputLabel className={utilityClasses.labelContainer} disabled={disabled} >{label}</InputLabel>
       <OutlinedInput
         type={type}
         className={classes.inputContainer}

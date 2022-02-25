@@ -87,6 +87,16 @@ const useUtilityStyles = makeStyles<Theme>(
           marginTop: spacing(3),
         },
       },
+      labelContainer: {
+        color: palette.common.black,
+        marginBottom: spacing(1),
+        '&.Mui-disabled': {
+          color: palette.common.grey,
+        },
+        '&:disabled': {
+          color: palette.common.grey,
+        },
+      },
     })
 );
 
