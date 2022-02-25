@@ -47,12 +47,11 @@ function InvolvementUnemployedFlow() {
       </div>
 
       <div className={utilityClasses.flexColumn}>
-        Do you believe that having your record cleared would help you find a job
-        and be more involved in your community?
         <RadioGroup
+          label="Do you believe that having your record cleared would help you find a job and be more involved in your community?"
           inputName="wouldClearanceHelp"
           handleChange={onInputChange}
-          labels={['Yes', 'No']}
+          choices={['Yes', 'No']}
           activeRadio={wouldClearanceHelp}
         />
       </div>

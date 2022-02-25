@@ -22,9 +22,8 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
       },
 
       '&.MuiInputBase-root.Mui-disabled': {
-        borderRadius: '16px',
         background: '#efefef',
-        color: '#b5b5b5',
+        color: palette.common.grey,
       },
     },
     formLabel: {
@@ -75,6 +74,7 @@ const InputArea: React.FC<InputFieldProps> = ({
       <FormLabel className={utilityClasses.formLabel} disabled={disabled}>
         {label}
       </FormLabel>
+
       <OutlinedInput
         type={type}
         className={classes.inputContainer}

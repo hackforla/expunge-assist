@@ -55,7 +55,7 @@ const RadioButton = ({
 
 interface RadioGroupProps {
   label?: string;
-  labels: string[];
+  choices: string[];
   inputName: string;
   activeRadio: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -64,7 +64,7 @@ interface RadioGroupProps {
 
 const RadioGroup = ({
   label,
-  labels,
+  choices,
   inputName,
   handleChange,
   activeRadio,
@@ -77,7 +77,7 @@ const RadioGroup = ({
         {label}
       </FormLabel>
 
-      {labels.map((radioLabel) => {
+      {choices.map((radioLabel) => {
         return (
           <RadioButton
             label={radioLabel}
