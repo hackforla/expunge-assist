@@ -35,8 +35,8 @@ export function IntroductionStep() {
       <form
         className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
       >
-        <p>What is your name?</p>
         <Input
+          label="What is your name?"
           id="fullName"
           defaultValue={fullName}
           placeholder="Full Name"
@@ -44,8 +44,8 @@ export function IntroductionStep() {
           type="text"
         />
 
-        <Paragraph disabled={!fullNameValid}>How old are you?</Paragraph>
         <Input
+          label="How old are you?"
           type="number"
           id="age"
           defaultValue={age}
