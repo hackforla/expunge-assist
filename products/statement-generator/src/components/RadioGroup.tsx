@@ -1,5 +1,6 @@
 import React from 'react';
 import { Radio, makeStyles, createStyles } from '@material-ui/core';
+import FormLabel from '@material-ui/core/FormLabel';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -53,6 +54,7 @@ const RadioButton = ({
 };
 
 interface RadioGroupProps {
+  label?: string;
   labels: string[];
   inputName: string;
   activeRadio: string;
@@ -61,23 +63,29 @@ interface RadioGroupProps {
 }
 
 const RadioGroup = ({
+  label,
   labels,
   inputName,
   handleChange,
   activeRadio,
   disabled,
 }: RadioGroupProps) => {
+  const utilityClasses = useUtilityStyles();
   return (
-    <div className="radio">
-      {labels.map((label) => {
+    <div className={utilityClasses.adjacentInput}>
+      <FormLabel className={utilityClasses.formLabel} disabled={disabled}>
+        {label}
+      </FormLabel>
+
+      {labels.map((radioLabel) => {
         return (
           <RadioButton
-            label={label}
+            label={radioLabel}
             activeRadio={activeRadio}
             handleChange={handleChange}
             inputName={inputName}
             disabled={disabled}
-            key={label}
+            key={radioLabel}
           />
         );
       })}

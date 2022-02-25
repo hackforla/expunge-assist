@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import InputLabel from '@material-ui/core/InputLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { teal } from '@material-ui/core/colors';
 
@@ -27,7 +27,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
         color: '#b5b5b5',
       },
     },
-    labelContainer: {
+    formLabel: {
       color: ({ disabled }) => {
         return disabled ? palette.common.grey : palette.common.black;
       },
@@ -72,7 +72,9 @@ const InputArea: React.FC<InputFieldProps> = ({
 
   return (
     <div className={`${utilityClasses.adjacentInput} ${className}`}>
-      <InputLabel className={utilityClasses.labelContainer} disabled={disabled} >{label}</InputLabel>
+      <FormLabel className={utilityClasses.formLabel} disabled={disabled}>
+        {label}
+      </FormLabel>
       <OutlinedInput
         type={type}
         className={classes.inputContainer}

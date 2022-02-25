@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
-import Paragraph from 'components/Paragraph';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
 
@@ -55,10 +54,8 @@ export function IntroductionStep() {
           adornment="years old"
         />
 
-        <Paragraph disabled={!ageValid}>
-          Are you a veteran of the United States of America?
-        </Paragraph>
         <RadioGroup
+          label='Are you a veteran of the United States of America?'
           labels={['Yes', 'No']}
           inputName="isVeteran"
           activeRadio={isVeteran}

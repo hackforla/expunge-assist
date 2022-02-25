@@ -87,7 +87,7 @@ const useUtilityStyles = makeStyles<Theme>(
           marginTop: spacing(3),
         },
       },
-      labelContainer: {
+      formLabel: {
         color: palette.common.black,
         marginBottom: spacing(1),
         '&.Mui-disabled': {
