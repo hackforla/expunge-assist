@@ -11,10 +11,11 @@ interface StyleProps {
   disabled?: boolean;
 }
 
-const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
+const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
   createStyles({
     icon: {
       color: palette.success.main,
+      marginLeft: spacing(1),
     },
   })
 );
@@ -66,7 +67,7 @@ const InputArea: React.FC<InputFieldProps> = ({
         disabled={disabled}
         endAdornment={
           <InputAdornment position="end">
-            {adornment}
+            {adornment !== undefined && <span>{adornment}</span>}
             {valid ? <CheckCircleIcon className={classes.icon} /> : null}
           </InputAdornment>
         }
