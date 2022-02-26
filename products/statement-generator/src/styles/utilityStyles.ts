@@ -82,19 +82,40 @@ const useUtilityStyles = makeStyles<Theme>(
         cursor: 'pointer',
         color: palette.primary.main,
       },
-      adjacentInput: {
-        '&$adjacentInput ~ $adjacentInput': {
+      formInput: {
+        display: 'flex',
+        flexDirection: 'column',
+
+        // -- inputs
+        '& .MuiOutlinedInput-root': {
+          width: '100%',
+          borderRadius: '16px',
+        },
+
+        '& .MuiOutlinedInput-input': {
+          padding: spacing(1, 2),
+        },
+
+        '& .MuiInputBase-root.Mui-disabled': {
+          background: '#efefef',
+          color: palette.common.grey,
+        },
+
+        '&$formInput ~ $formInput': {
           marginTop: spacing(3),
         },
-      },
-      formLabel: {
-        color: palette.common.black,
-        marginBottom: spacing(1),
-        '&.Mui-disabled': {
+
+        // -- form labels
+        '& .MuiFormLabel-root': {
+          color: palette.common.black,
+        },
+
+        '& .MuiFormLabel-root.Mui-disabled': {
           color: palette.common.grey,
         },
-        '&:disabled': {
-          color: palette.common.grey,
+
+        '& .MuiFormLabel-root ~ .MuiInputBase-root': {
+          marginTop: spacing(1),
         },
       },
     })

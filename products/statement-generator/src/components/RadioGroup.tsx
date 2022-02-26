@@ -72,10 +72,8 @@ const RadioGroup = ({
 }: RadioGroupProps) => {
   const utilityClasses = useUtilityStyles();
   return (
-    <div className={utilityClasses.adjacentInput}>
-      <FormLabel className={utilityClasses.formLabel} disabled={disabled}>
-        {label}
-      </FormLabel>
+    <div className={utilityClasses.formInput}>
+      <FormLabel disabled={disabled}>{label}</FormLabel>
 
       {choices.map((radioLabel) => {
         return (
