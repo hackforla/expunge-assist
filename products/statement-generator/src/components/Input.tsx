@@ -13,6 +13,9 @@ interface StyleProps {
 
 const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
   createStyles({
+    adornment: {
+      pointerEvents: 'none',
+    },
     icon: {
       color: palette.success.main,
       marginLeft: spacing(1),
@@ -46,10 +49,10 @@ const InputArea: React.FC<InputFieldProps> = ({
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({ disabled });
 
+  const [valid, isValid] = useState(false);
   const checkValid = (e: string) => {
     isValid(e.length > 0);
   };
-  const [valid, isValid] = useState(false);
 
   return (
     <div className={`${utilityClasses.formInput} ${className}`}>
@@ -66,8 +69,9 @@ const InputArea: React.FC<InputFieldProps> = ({
         defaultValue={defaultValue}
         disabled={disabled}
         endAdornment={
-          <InputAdornment position="end">
+          <InputAdornment className={classes.adornment} position="end">
             {adornment !== undefined && <span>{adornment}</span>}
+
             {valid ? <CheckCircleIcon className={classes.icon} /> : null}
           </InputAdornment>
         }
