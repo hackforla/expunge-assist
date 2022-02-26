@@ -35,8 +35,8 @@ export function IntroductionStep() {
         className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
       >
         <Input
-          label="What is your name?"
           id="fullName"
+          label="What is your name?"
           defaultValue={fullName}
           placeholder="Full Name"
           handleChange={onInputChange}
@@ -44,9 +44,9 @@ export function IntroductionStep() {
         />
 
         <Input
+          id="age"
           label="How old are you?"
           type="number"
-          id="age"
           defaultValue={age}
           placeholder="25"
           disabled={!fullNameValid}
@@ -55,12 +55,19 @@ export function IntroductionStep() {
         />
 
         <RadioGroup
-          label='Are you a veteran of the United States of America?'
+          id="isVeteran"
+          label="Are you a veteran of the United States of America?"
           choices={['Yes', 'No']}
-          // inputName="isVeteran"
           value={isVeteran}
           disabled={!ageValid}
-          handleChange={onInputChange}
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+            updateStepToForm({
+              introduction: {
+                ...formState.introduction,
+                isVeteran: evt.currentTarget.value,
+              },
+            });
+          }}
         />
       </form>
 

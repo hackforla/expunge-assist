@@ -48,11 +48,18 @@ function InvolvementUnemployedFlow() {
 
       <div className={utilityClasses.flexColumn}>
         <RadioGroup
+          id="wouldClearanceHelp"
           label="Do you believe that having your record cleared would help you find a job and be more involved in your community?"
-          // inputName="wouldClearanceHelp"
-          handleChange={onInputChange}
           choices={['Yes', 'No']}
           value={wouldClearanceHelp}
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+            updateStepToForm({
+              unemployedState: {
+                ...formState.unemployedState,
+                wouldClearanceHelp: evt.currentTarget.value,
+              },
+            });
+          }}
         />
       </div>
 
