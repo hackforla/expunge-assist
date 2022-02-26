@@ -92,10 +92,13 @@ const useUtilityStyles = makeStyles<Theme>(
           borderRadius: '16px',
         },
 
+        '& .MuiOutlinedInput-root.Mui-focused': {
+          boxShadow: '0 0 10px 2px #F7EBFF',
+        },
+
         '& .MuiOutlinedInput-input': {
           padding: spacing(1, 2),
         },
-
         '& .MuiInputBase-root.Mui-disabled': {
           background: '#efefef',
           color: palette.common.grey,
