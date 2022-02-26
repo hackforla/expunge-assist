@@ -57,8 +57,8 @@ export function IntroductionStep() {
         <RadioGroup
           label='Are you a veteran of the United States of America?'
           choices={['Yes', 'No']}
-          inputName="isVeteran"
-          activeRadio={isVeteran}
+          // inputName="isVeteran"
+          value={isVeteran}
           disabled={!ageValid}
           handleChange={onInputChange}
         />

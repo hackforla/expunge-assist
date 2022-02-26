@@ -1,94 +1,51 @@
 import React from 'react';
-import { Radio, makeStyles, createStyles } from '@material-ui/core';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-interface RadioButtonProps {
-  label: string;
-  inputName: string;
-  activeRadio: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
-}
-
-const useStyles = makeStyles(({ palette }) =>
-  createStyles({
-    radioStyles: {
-      '&.MuiIconButton-root.Mui-checked': {
-        color: palette.success.main,
-      },
-    },
-  })
-);
-
-const RadioButton = ({
-  label,
-  activeRadio,
-  handleChange,
-  inputName,
-  disabled = false,
-}: RadioButtonProps) => {
-  const utilityClasses = useUtilityStyles();
-  const classes = useStyles();
-  return (
-    <div>
-      <Radio
-        classes={{
-          colorSecondary: classes.radioStyles,
-        }}
-        value={label}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          handleChange(e);
-        }}
-        checked={activeRadio === label}
-        name={inputName}
-        disabled={disabled}
-      />
-
-      <span className={disabled ? utilityClasses.disabledColor : ''}>
-        {label}
-      </span>
-    </div>
-  );
-};
-
 interface RadioGroupProps {
-  label?: string;
+  label: string;
+  value?: string;
   choices: string[];
-  inputName: string;
-  activeRadio: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 }
 
-const RadioGroup = ({
+const RadioGroupComponent = ({
   label,
   choices,
-  inputName,
+  value,
   handleChange,
-  activeRadio,
   disabled,
 }: RadioGroupProps) => {
   const utilityClasses = useUtilityStyles();
-  return (
-    <div className={utilityClasses.formInput}>
-      <FormLabel disabled={disabled}>{label}</FormLabel>
 
-      {choices.map((radioLabel) => {
-        return (
-          <RadioButton
-            label={radioLabel}
-            activeRadio={activeRadio}
-            handleChange={handleChange}
-            inputName={inputName}
-            disabled={disabled}
-            key={radioLabel}
-          />
-        );
-      })}
-    </div>
+  return (
+    <FormControl className={utilityClasses.formInput}>
+      <FormLabel disabled={disabled}>{label}</FormLabel>
+      <RadioGroup
+        aria-label={label}
+        name={label}
+        value={value}
+        onChange={handleChange}
+      >
+        {choices.map((choice) => {
+          return (
+            <FormControlLabel
+              disabled={disabled}
+              value={choice}
+              control={<Radio />}
+              label={choice}
+            />
+          );
+        })}
+      </RadioGroup>
+    </FormControl>
   );
 };
 
-export default RadioGroup;
+export default RadioGroupComponent;
