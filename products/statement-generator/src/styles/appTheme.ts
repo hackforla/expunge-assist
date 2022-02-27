@@ -44,6 +44,14 @@ const appTheme = createMuiTheme({
     fontFamily: 'Roboto',
     fontSize: 14,
   },
+
+  overrides: {
+    MuiFormLabel: {
+      root: {
+        color: '#0a0a0a', // common.black
+      },
+    },
+  },
 });
 
 export default appTheme;
