@@ -8,12 +8,9 @@ import HelpPopUp from 'components/HelpPopUp';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
-
-import useUtilityStyles from 'styles/utilityStyles';
+import FormContainer from 'page-layout/FormContainer';
 
 export function IntroductionStep() {
-  const utilityClasses = useUtilityStyles();
-
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { fullName, age, isVeteran } = formState.introduction;
 
@@ -31,9 +28,7 @@ export function IntroductionStep() {
 
   return (
     <ContentContainer>
-      <form
-        className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
-      >
+      <FormContainer>
         <Input
           id="fullName"
           label="What is your name?"
@@ -69,7 +64,7 @@ export function IntroductionStep() {
             });
           }}
         />
-      </form>
+      </FormContainer>
 
       <HelpPopUp />
 
