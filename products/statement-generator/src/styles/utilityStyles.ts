@@ -86,37 +86,17 @@ const useUtilityStyles = makeStyles<Theme>(
         display: 'flex',
         flexDirection: 'column',
 
-        // -- inputs
-        '& .MuiOutlinedInput-root': {
-          width: '100%',
-          borderRadius: '16px',
-        },
-
-        '& .MuiOutlinedInput-root.Mui-focused': {
-          boxShadow: '0 0 10px 2px #F7EBFF',
-        },
-
-        '& .MuiOutlinedInput-input': {
-          padding: spacing(1, 2),
-        },
-        '& .MuiInputBase-root.Mui-disabled': {
-          background: '#efefef',
-          color: palette.common.grey,
-        },
-
         '&$formInput ~ $formInput': {
-          marginTop: spacing(3),
+          marginTop: spacing(4),
         },
 
-        // -- form labels
+        // -- <FormLabel />
         '& .MuiFormLabel-root': {
           color: palette.common.black,
         },
-
         '& .MuiFormLabel-root.Mui-disabled': {
           color: palette.common.grey,
         },
-
         '& .MuiFormLabel-root ~ .MuiInputBase-root': {
           marginTop: spacing(1),
         },
