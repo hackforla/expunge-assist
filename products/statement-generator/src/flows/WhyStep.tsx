@@ -8,12 +8,9 @@ import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
-
-import useUtilityStyles from 'styles/utilityStyles';
+import FormContainer from 'page-layout/FormContainer';
 
 function WhyStep() {
-  const utilityClasses = useUtilityStyles();
-
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { clearRecordWhy, clearRecordHow } = formState.whyState;
 
@@ -31,9 +28,7 @@ function WhyStep() {
 
   return (
     <ContentContainer>
-      <form
-        className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
-      >
+      <FormContainer>
         <p>Please finish this sentence: I want to clear my record because...</p>
         <Textarea
           id="clearRecordWhy"
@@ -57,7 +52,7 @@ function WhyStep() {
           disabled={!clearRecordWhyValid}
           defaultValue={clearRecordHow}
         />
-      </form>
+      </FormContainer>
 
       <HelpPopUp />
 

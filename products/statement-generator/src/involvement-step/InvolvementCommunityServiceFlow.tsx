@@ -6,6 +6,7 @@ import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
@@ -32,31 +33,33 @@ function InvolvementCommunityServiceFlow() {
 
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of the community service organization that you are
-        involved with?
-        <Input
-          id="organizationName"
-          handleChange={onInputChange}
-          placeholder="Name of Organization"
-          defaultValue={organizationName}
-          type="text"
-        />
-      </div>
+      <FormContainer>
+        <div className={utilityClasses.flexColumn}>
+          What is the name of the community service organization that you are
+          involved with?
+          <Input
+            id="organizationName"
+            handleChange={onInputChange}
+            placeholder="Name of Organization"
+            defaultValue={organizationName}
+            type="text"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        What do you do at this community service organization? Why is this
-        important to you? (2-3 sentences suggested)
-        <Textarea
-          id="serviceDescription"
-          handleChange={onInputChange}
-          placeholder="I have taken on responsibilities including..."
-          multi
-          isValid={serviceDescriptionValid}
-          disabled={!organizationNameValid}
-          defaultValue={serviceDescription}
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          What do you do at this community service organization? Why is this
+          important to you? (2-3 sentences suggested)
+          <Textarea
+            id="serviceDescription"
+            handleChange={onInputChange}
+            placeholder="I have taken on responsibilities including..."
+            multi
+            isValid={serviceDescriptionValid}
+            disabled={!organizationNameValid}
+            defaultValue={serviceDescription}
+          />
+        </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>

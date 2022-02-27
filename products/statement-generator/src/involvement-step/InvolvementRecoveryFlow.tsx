@@ -6,6 +6,7 @@ import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
@@ -29,29 +30,32 @@ function InvolvementRecoveryFlow() {
 
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of the recovery program you are involved with?
-        <Input
-          id="recoveryName"
-          handleChange={onInputChange}
-          placeholder="Name of Organization"
-          defaultValue={recoveryName}
-          type="text"
-        />
-      </div>
+      <FormContainer>
+        <div className={utilityClasses.flexColumn}>
+          What is the name of the recovery program you are involved with?
+          <Input
+            id="recoveryName"
+            handleChange={onInputChange}
+            placeholder="Name of Organization"
+            defaultValue={recoveryName}
+            type="text"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        Why is this recovery program important to you? (2-3 sentences suggested)
-        <Textarea
-          id="recoveryDescription"
-          handleChange={onInputChange}
-          placeholder="This program is important to me because..."
-          multi
-          isValid={recoveryDescriptionValid}
-          disabled={!recoveryNameValid}
-          defaultValue={recoveryDescription}
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          Why is this recovery program important to you? (2-3 sentences
+          suggested)
+          <Textarea
+            id="recoveryDescription"
+            handleChange={onInputChange}
+            placeholder="This program is important to me because..."
+            multi
+            isValid={recoveryDescriptionValid}
+            disabled={!recoveryNameValid}
+            defaultValue={recoveryDescription}
+          />
+        </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>

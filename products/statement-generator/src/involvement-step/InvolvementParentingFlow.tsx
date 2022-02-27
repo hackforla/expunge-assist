@@ -7,6 +7,7 @@ import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -35,42 +36,44 @@ function InvolvementParentingFlow() {
 
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of your child?
-        <Input
-          id="childName"
-          handleChange={onInputChange}
-          placeholder="Name of Child"
-          defaultValue={childName}
-          type="text"
-        />
-      </div>
+      <FormContainer>
+        <div className={utilityClasses.flexColumn}>
+          What is the name of your child?
+          <Input
+            id="childName"
+            handleChange={onInputChange}
+            placeholder="Name of Child"
+            defaultValue={childName}
+            type="text"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        How long have you been a parent?
-        <Input
-          type="number"
-          id="parentYears"
-          placeholder="1"
-          handleChange={onInputChange}
-          disabled={!childNameValid}
-          defaultValue={parentYears}
-          adornment="years"
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          How long have you been a parent?
+          <Input
+            type="number"
+            id="parentYears"
+            placeholder="1"
+            handleChange={onInputChange}
+            disabled={!childNameValid}
+            defaultValue={parentYears}
+            adornment="years"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        Why is being a good parent important to you? (2-3 sentences suggested)
-        <Textarea
-          id="parentDescription"
-          handleChange={onInputChange}
-          placeholder="Being a good parent is important to me because..."
-          multi
-          isValid={parentDescriptionValid}
-          disabled={!parentYearsValid}
-          defaultValue={parentDescription}
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          Why is being a good parent important to you? (2-3 sentences suggested)
+          <Textarea
+            id="parentDescription"
+            handleChange={onInputChange}
+            placeholder="Being a good parent is important to me because..."
+            multi
+            isValid={parentDescriptionValid}
+            disabled={!parentYearsValid}
+            defaultValue={parentDescription}
+          />
+        </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>

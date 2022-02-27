@@ -6,6 +6,7 @@ import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
@@ -31,41 +32,43 @@ function InvolvementSchoolFlow() {
 
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of the school you are attending?
-        <Input
-          id="schoolName"
-          handleChange={onInputChange}
-          placeholder="Name of School"
-          defaultValue={schoolName}
-          type="text"
-        />
-      </div>
+      <FormContainer>
+        <div className={utilityClasses.flexColumn}>
+          What is the name of the school you are attending?
+          <Input
+            id="schoolName"
+            handleChange={onInputChange}
+            placeholder="Name of School"
+            defaultValue={schoolName}
+            type="text"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        What are you currently studying?
-        <Input
-          id="studyName"
-          handleChange={onInputChange}
-          placeholder="Name of Subject/Study Area"
-          disabled={!schoolNameValid}
-          defaultValue={studyName}
-          type="text"
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          What are you currently studying?
+          <Input
+            id="studyName"
+            handleChange={onInputChange}
+            placeholder="Name of Subject/Study Area"
+            disabled={!schoolNameValid}
+            defaultValue={studyName}
+            type="text"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        Why are you passionate about studying this? (2-3 sentences suggested)
-        <Textarea
-          id="passionDescription"
-          handleChange={onInputChange}
-          placeholder="I am passionate about..."
-          multi
-          isValid={passionDescriptionValid}
-          disabled={!studyNameValid}
-          defaultValue={passionDescription}
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          Why are you passionate about studying this? (2-3 sentences suggested)
+          <Textarea
+            id="passionDescription"
+            handleChange={onInputChange}
+            placeholder="I am passionate about..."
+            multi
+            isValid={passionDescriptionValid}
+            disabled={!studyNameValid}
+            defaultValue={passionDescription}
+          />
+        </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>

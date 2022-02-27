@@ -6,6 +6,7 @@ import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
@@ -35,42 +36,44 @@ function InvolvementJobFlow() {
 
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of the company you work for?
-        <Input
-          handleChange={onInputChange}
-          id="companyName"
-          placeholder="Name of company"
-          defaultValue={companyName}
-          type="text"
-        />
-      </div>
+      <FormContainer>
+        <div className={utilityClasses.flexColumn}>
+          What is the name of the company you work for?
+          <Input
+            handleChange={onInputChange}
+            id="companyName"
+            placeholder="Name of company"
+            defaultValue={companyName}
+            type="text"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        What is your current job title?
-        <Input
-          handleChange={onInputChange}
-          id="jobTitle"
-          placeholder="Job Title"
-          disabled={!companyNameValid}
-          defaultValue={jobTitle}
-          type="text"
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          What is your current job title?
+          <Input
+            handleChange={onInputChange}
+            id="jobTitle"
+            placeholder="Job Title"
+            disabled={!companyNameValid}
+            defaultValue={jobTitle}
+            type="text"
+          />
+        </div>
 
-      <div className={utilityClasses.flexColumn}>
-        What do you do at this job? Why is this important to you? (2-3 sentences
-        suggested)
-        <Textarea
-          handleChange={onInputChange}
-          id="jobDescription"
-          placeholder="I have had the chance to..."
-          multi
-          disabled={!jobTitleValid}
-          isValid={jobDescriptionValid}
-          defaultValue={jobDescription}
-        />
-      </div>
+        <div className={utilityClasses.flexColumn}>
+          What do you do at this job? Why is this important to you? (2-3
+          sentences suggested)
+          <Textarea
+            handleChange={onInputChange}
+            id="jobDescription"
+            placeholder="I have had the chance to..."
+            multi
+            disabled={!jobTitleValid}
+            isValid={jobDescriptionValid}
+            defaultValue={jobDescription}
+          />
+        </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
