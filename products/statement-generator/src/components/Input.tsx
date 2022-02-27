@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormLabel from '@material-ui/core/FormLabel';
+import InputLabel from '@material-ui/core/InputLabel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import useUtilityStyles from 'styles/utilityStyles';
@@ -14,8 +14,6 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
   createStyles({
     inputComponent: {
-      width: '100%',
-
       borderRadius: '16px',
 
       '&.Mui-focused': {
@@ -106,9 +104,12 @@ const InputArea: React.FC<InputFieldProps> = ({
 
   return (
     <div className={`${utilityClasses.formInput} ${className}`}>
-      <FormLabel disabled={disabled}>{label}</FormLabel>
+      <InputLabel htmlFor={id} disabled={disabled}>
+        {label}
+      </InputLabel>
 
       <OutlinedInput
+        label={label}
         id={id}
         className={classes.inputComponent}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -119,6 +120,8 @@ const InputArea: React.FC<InputFieldProps> = ({
         placeholder={placeholder}
         disabled={disabled}
         type={type}
+        notched={false}
+        fullWidth
         endAdornment={
           <InputAdornment position="end">
             {adornment !== undefined && <span>{adornment}</span>}
