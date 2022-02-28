@@ -43,7 +43,9 @@ const useStyles = makeStyles<Theme, StyleProps>(
         color: palette.primary.main,
       },
       text: {
-        marginLeft: spacing(3),
+        [breakpoints.up('md')]: {
+          marginLeft: spacing(3),
+        },
         [breakpoints.down('sm')]: {
           display: 'flex',
           flexDirection: 'column',
