@@ -7,13 +7,12 @@ import document from '../../assets/document.png';
 import clipboard from '../../assets/clipboard.png';
 import { Thumbnail } from './Thumbnail';
 
-const useStyles = makeStyles<Theme>(({ palette, typography, breakpoints }) =>
+const useStyles = makeStyles<Theme>(({ typography, breakpoints }) =>
   createStyles({
     mainContainer: {
       width: '100%',
       display: 'flex',
       justifyContent: 'center',
-      background: palette.secondary.main,
     },
     headingText: {
       color: '#000',

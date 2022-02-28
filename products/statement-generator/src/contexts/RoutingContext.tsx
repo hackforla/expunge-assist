@@ -28,11 +28,7 @@ const PreRoutingContextProvider = ({
   const currentStep = appHistory[historyIdx];
   const { pathname } = history.location;
 
-  const isDarkTheme =
-    currentStep === AppUrl.Start ||
-    currentStep === AppUrl.Landing ||
-    currentStep === AppUrl.NotFound;
-  const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
+  const topLevelPageTheme = 'transparent';
 
   const navigateToFormUrl = (newAppUrl: AppUrl) => {
     history.push(newAppUrl);
