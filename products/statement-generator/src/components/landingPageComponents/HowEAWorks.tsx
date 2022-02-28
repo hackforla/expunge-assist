@@ -96,3 +96,5 @@ export const HowEAWorks: React.FC = () => {
     </div>
   );
 };
+
+export default HowEAWorks;
