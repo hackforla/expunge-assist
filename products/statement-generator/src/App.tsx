@@ -80,11 +80,7 @@ const App: React.FC = () => {
                 <Switch>
                   <Route exact path="/" component={Landing} />
 
-                  <Route
-                    exact
-                    path={AppUrl.Start}
-                    component={StartPage}
-                  />
+                  <Route exact path={AppUrl.Start} component={StartPage} />
 
                   <Route
                     exact
