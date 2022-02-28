@@ -8,10 +8,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
     textfieldComponent: {
-      '& .MuiInputBase-root.Mui-focused': {
-        boxShadow: '0 0 10px 2px #F7EBFF',
-      },
-
       // -- outline
       '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
         borderRadius: '15px',
@@ -25,6 +21,7 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
       '& .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
         borderColor: '#8b30c9', // primary.main/#9903FF is too harsh
         borderWidth: '1px',
+        boxShadow: '0 0 10px 2px #F7EBFF',
       },
       '& .MuiInputBase-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
         borderColor: '#a1a1a1',
@@ -79,7 +76,6 @@ interface TextFieldProps {
   disabled?: boolean;
   value?: string;
   rows?: number;
-  multi?: boolean;
 }
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
@@ -97,11 +93,11 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
 
   return (
     <div className={utilityClasses.formInput}>
-      { label &&
+      {label && (
         <InputLabel htmlFor={id} disabled={disabled}>
           {label}
         </InputLabel>
-      }
+      )}
 
       <TextField
         id={id}

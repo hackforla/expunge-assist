@@ -92,6 +92,7 @@ const useUtilityStyles = makeStyles<Theme>(
 
         // -- <FormLabel />
         '& .MuiFormLabel-root': {
+          lineHeight: 'normal',
           color: palette.common.black,
         },
         '& .MuiFormLabel-root.Mui-disabled': {
