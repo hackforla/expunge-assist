@@ -11,7 +11,7 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 const BeforeYouBegin = () => {
   const utilityClasses = useUtilityStyles({
-    pageTheme: 'dark',
+    pageTheme: 'light',
   });
   const { t } = useTranslation();
 
@@ -29,7 +29,7 @@ const BeforeYouBegin = () => {
           onClick={() => {
             goNextStep();
           }}
-          theme="dark"
+          theme="landing"
           buttonText="I understand"
           hasArrow
         />
