@@ -2,7 +2,6 @@ import React from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import Button from 'components/Button';
-import ContentContainer from 'page-layout/ContentContainer';
 
 interface ComponentProps {
   goNextPage: () => void;
@@ -20,10 +19,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
         color: palette.primary.darker,
         display: 'flex',
         flexDirection: 'row',
-        padding: spacing(12, 3),
-        [breakpoints.down('sm')]: {
-          padding: spacing(3),
-        },
+        padding: spacing(5, 3),
       },
       content: {
         padding: spacing(2, 3),
@@ -47,7 +43,9 @@ const useStyles = makeStyles<Theme, StyleProps>(
         color: palette.primary.main,
       },
       text: {
-        paddingRight: spacing(3),
+        [breakpoints.up('md')]: {
+          marginLeft: spacing(3),
+        },
         [breakpoints.down('sm')]: {
           display: 'flex',
           flexDirection: 'column',
@@ -64,10 +62,9 @@ const useStyles = makeStyles<Theme, StyleProps>(
         },
       },
       button: {
+        display: 'flex',
+        justifyContent: 'flex-end',
         paddingTop: spacing(3),
-        [breakpoints.down('sm')]: {
-          margin: '0 auto',
-        },
       },
       mobileImg: {
         display: 'none',
@@ -96,7 +93,13 @@ const PrimaryLandingSection = ({ goNextPage }: ComponentProps) => {
 
   return (
     <section className={classes.root}>
-      <ContentContainer className={classes.content}>
+      <div className={classes.content}>
+        <img
+          src={landingImage}
+          alt={landingImageAlt}
+          className={classes.desktopImg}
+        />
+
         <div className={classes.text}>
           <h1 className={classes.title}>
             <span className={classes.span}>Expunge Assist</span> accelerates the{' '}
@@ -121,12 +124,7 @@ const PrimaryLandingSection = ({ goNextPage }: ComponentProps) => {
             />
           </div>
         </div>
-        <img
-          src={landingImage}
-          alt={landingImageAlt}
-          className={classes.desktopImg}
-        />
-      </ContentContainer>
+      </div>
     </section>
   );
 };
