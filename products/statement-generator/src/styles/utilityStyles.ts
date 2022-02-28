@@ -103,6 +103,9 @@ const useUtilityStyles = makeStyles<Theme>(
         '& .MuiFormLabel-root ~ .MuiFormGroup-root': {
           marginTop: spacing(1),
         },
+        '& .MuiFormLabel-root ~ .MuiFormControl-root': {
+          marginTop: spacing(1),
+        },
       },
     })
 );

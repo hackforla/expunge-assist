@@ -1,41 +1,71 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import { teal } from '@material-ui/core/colors';
+import InputLabel from '@material-ui/core/InputLabel';
 
-const useStyles = makeStyles((theme: Theme) =>
+import useUtilityStyles from 'styles/utilityStyles';
+
+const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
-    root: {
-      '& > *': {
-        minWidth: '10rem',
-        height: '2.5rem',
+    textfieldComponent: {
+      '& .MuiInputBase-root.Mui-focused': {
+        boxShadow: '0 0 10px 2px #F7EBFF',
       },
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
+
+      // -- outline
+      '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
+        borderRadius: '15px',
+        borderColor: '#adadad',
+        borderWidth: '1px',
       },
-      '& .MuiOutlinedInput-root': {
-        width: '70%',
-        '& fieldset': {
-          borderRadius: '15px',
+      '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline:hover': {
+        borderColor: '#8f8f8f',
+        borderWidth: '1px',
+      },
+      '& .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#8b30c9', // primary.main/#9903FF is too harsh
+        borderWidth: '1px',
+      },
+      '& .MuiInputBase-root.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#a1a1a1',
+        borderWidth: '1px',
+      },
+
+      // -- text field
+      '& .MuiOutlinedInput-multiline': {
+        padding: spacing(2),
+
+        '&::placeholder': {
+          opacity: 1,
+          color: palette.common.grey,
         },
       },
-      '& .MuiOutlinedInput-multiline': {
-        width: '100%',
-        height: '100%',
+      '& .MuiInputAdornment-root': {
+        pointerEvents: 'none',
+        color: palette.common.black,
+      },
+
+      // -- disabled
+      '& .Mui-disabled': {
+        background: '#f1f1f1',
+        color: palette.common.grey,
+        opacity: 0.7,
       },
       '& .MuiInputBase-root.Mui-disabled': {
         borderRadius: '15px',
         background: '#efefef',
         color: '#b5b5b5',
       },
+      '& .Mui-disabled .MuiInputAdornment-root': {
+        opacity: 0.3,
+      },
     },
-    input: {
-      fontSize: '1rem',
+    adornment: {
+      alignSelf: 'flex-start',
     },
     icon: {
-      color: teal.A400,
+      color: palette.success.main,
+      marginLeft: spacing(1),
     },
   })
 );
@@ -43,47 +73,53 @@ const useStyles = makeStyles((theme: Theme) =>
 interface TextFieldProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id: string;
+  label?: string;
   placeholder?: string;
-  multi?: boolean;
-  isValid?: boolean;
   defaultValue?: string;
   disabled?: boolean;
   value?: string;
+  rows?: number;
+  multi?: boolean;
 }
 
 const MultilineTextFields: React.FC<TextFieldProps> = ({
   handleChange,
   id,
+  label,
   placeholder,
-  multi,
-  isValid,
   defaultValue,
   disabled = false,
   value,
+  rows = 3,
 }) => {
+  const utilityClasses = useUtilityStyles();
   const classes = useStyles();
+
   return (
-    <TextField
-      className={classes.root}
-      onChange={handleChange}
-      id={id}
-      placeholder={placeholder}
-      multiline={multi}
-      variant="outlined"
-      defaultValue={defaultValue}
-      disabled={disabled}
-      value={value}
-      InputProps={{
-        classes: {
-          input: classes.input,
-        },
-        endAdornment: isValid ? (
-          <InputAdornment position="end">
-            <CheckCircleIcon className={classes.icon} />
-          </InputAdornment>
-        ) : null,
-      }}
-    />
+    <div className={utilityClasses.formInput}>
+      { label &&
+        <InputLabel htmlFor={id} disabled={disabled}>
+          {label}
+        </InputLabel>
+      }
+
+      <TextField
+        id={id}
+        className={classes.textfieldComponent}
+        onChange={handleChange}
+        placeholder={placeholder}
+        defaultValue={defaultValue}
+        disabled={disabled}
+        value={value}
+        rows={rows}
+        multiline
+        fullWidth
+        variant="outlined"
+        InputProps={{
+          notched: false,
+        }}
+      />
+    </div>
   );
 };
 
