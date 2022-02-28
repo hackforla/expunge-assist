@@ -1,39 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import FormStateContext from 'contexts/FormStateContext';
-
-import Button from 'components/Button';
-
 import ContentContainer from 'page-layout/ContentContainer';
-
-import useUtilityStyles from 'styles/utilityStyles';
+import FlowNavigation from 'page-layout/FlowNavigation';
 
 const BeforeYouBegin = () => {
-  const utilityClasses = useUtilityStyles({
-    pageTheme: 'dark',
-  });
   const { t } = useTranslation();
-
-  const { goNextStep } = useContext(FormStateContext);
 
   return (
     <ContentContainer>
-      <h3>{t('disclaimer.header')}</h3>
+      <h2>{t('disclaimer.header')}</h2>
 
       <p>{t('disclaimer.text')}</p>
 
-      <div className={utilityClasses.buttonContainer}>
-        <Button
-          className={utilityClasses.buttonRight}
-          onClick={() => {
-            goNextStep();
-          }}
-          theme="dark"
-          buttonText="I understand"
-          hasArrow
-        />
-      </div>
+      <FlowNavigation />
     </ContentContainer>
   );
 };

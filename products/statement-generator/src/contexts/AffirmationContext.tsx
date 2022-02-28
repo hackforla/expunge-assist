@@ -6,24 +6,31 @@ import RoutingContext from 'contexts/RoutingContext';
 // TODO: its kind of confusing that the data is which url this should show up
 //  as opposed to the step that it is referring to
 const AFFIRMATION_DATA = {
+  // so this is welcoming new users after the Welcome screen,
+  //  even though it is on the introduction page
   [AppUrl.Introduction as string]: {
-    titleText: 'affirmations.welcome.titleText',
-    description: 'affirmations.welcome.description',
+    titleText: 'affirmations.step1.titleText',
+    description: 'affirmations.step1.description',
     buttonText: 'button.begin',
   },
   [AppUrl.Involvement as string]: {
-    titleText: 'affirmations.introduction.titleText',
-    description: 'affirmations.introduction.description',
+    titleText: 'affirmations.step2.titleText',
+    description: 'affirmations.step2.description',
     buttonText: 'button.next',
   },
   [AppUrl.Goals as string]: {
-    titleText: 'affirmations.community_service.titleText',
-    description: 'affirmations.community_service.description',
+    titleText: 'affirmations.step3.titleText',
+    description: 'affirmations.step3.description',
     buttonText: 'button.next',
   },
   [AppUrl.Why as string]: {
-    titleText: 'affirmations.goals.titleText',
-    description: 'affirmations.goals.description',
+    titleText: 'affirmations.step4.titleText',
+    description: 'affirmations.step4.description',
+    buttonText: 'button.next',
+  },
+  [AppUrl.Finalize as string]: {
+    titleText: 'affirmations.step5.titleText',
+    description: 'affirmations.step5.description',
     buttonText: 'button.next',
   },
 };

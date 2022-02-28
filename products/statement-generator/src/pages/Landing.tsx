@@ -1,42 +1,18 @@
 import React, { useContext } from 'react';
 
-import Button from 'components/Button';
 import PrimaryLandingSection from 'components/PrimaryLandingSection';
-
-import ContentContainer from 'page-layout/ContentContainer';
+import HowEAWorks from 'components/landingPageComponents/HowEAWorks';
 
 import RoutingContext from 'contexts/RoutingContext';
 
-import useUtilityStyles from 'styles/utilityStyles';
-
 const Landing = () => {
-  const utilityClasses = useUtilityStyles({
-    pageTheme: 'dark',
-  });
-
   const { goNextPage } = useContext(RoutingContext);
 
   return (
     <>
-      <PrimaryLandingSection
-        goNextPage={goNextPage}
-      />
-      <ContentContainer>
-        <div className={utilityClasses.flexGrow}>
-          <h1>Start fresh with a record expungement</h1>
-          <p>Generate a personal statement in just 20 minutes</p>
-        </div>
+      <PrimaryLandingSection goNextPage={goNextPage} />
 
-        <div className={utilityClasses.buttonContainer}>
-          <Button
-            className={utilityClasses.buttonRight}
-            onClick={() => goNextPage()}
-            theme="dark"
-            hasArrow
-            buttonText="START NOW"
-          />
-        </div>
-      </ContentContainer>
+      <HowEAWorks />
     </>
   );
 };

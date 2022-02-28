@@ -29,12 +29,14 @@ import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 
 import Landing from 'pages/Landing';
+import StartPage from 'pages/StartPage';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
 import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
+import Welcome from 'pages/Welcome';
 
 import 'styles/App.css';
 import appTheme from 'styles/appTheme';
@@ -80,9 +82,17 @@ const App: React.FC = () => {
 
                   <Route
                     exact
+                    path={AppUrl.Start}
+                    component={StartPage}
+                  />
+
+                  <Route
+                    exact
                     path={AppUrl.BeforeYouBegin}
                     component={BeforeYouBegin}
                   />
+
+                  <Route exact path={AppUrl.Welcome} component={Welcome} />
 
                   <Route
                     exact
