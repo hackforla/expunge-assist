@@ -29,6 +29,7 @@ import WhyStep from 'flows/WhyStep';
 import Download from 'flows/Download';
 
 import Landing from 'pages/Landing';
+import StartPage from 'pages/StartPage';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
 import PrivacyPolicy from 'pages/PrivacyPolicy';
@@ -78,6 +79,12 @@ const App: React.FC = () => {
               <PageContainer>
                 <Switch>
                   <Route exact path="/" component={Landing} />
+
+                  <Route
+                    exact
+                    path={AppUrl.Start}
+                    component={StartPage}
+                  />
 
                   <Route
                     exact

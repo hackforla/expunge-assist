@@ -29,6 +29,7 @@ const PreRoutingContextProvider = ({
   const { pathname } = history.location;
 
   const isDarkTheme =
+    currentStep === AppUrl.Start ||
     currentStep === AppUrl.Landing ||
     currentStep === AppUrl.NotFound;
   const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
