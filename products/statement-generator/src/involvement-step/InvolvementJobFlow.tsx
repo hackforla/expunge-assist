@@ -2,17 +2,14 @@ import React, { useContext } from 'react';
 
 import FormStateContext from 'contexts/FormStateContext';
 
+import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
-import Input from '../components/Input';
-
 function InvolvementJobFlow() {
-  const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     companyName,
@@ -37,42 +34,34 @@ function InvolvementJobFlow() {
   return (
     <ContentContainer>
       <FormContainer>
-        <div className={utilityClasses.flexColumn}>
-          What is the name of the company you work for?
-          <Input
-            handleChange={onInputChange}
-            id="companyName"
-            placeholder="Name of company"
-            defaultValue={companyName}
-            type="text"
-          />
-        </div>
+        <Input
+          id="companyName"
+          label="What is the name of the company you work for?"
+          handleChange={onInputChange}
+          placeholder="Name of company"
+          defaultValue={companyName}
+          type="text"
+        />
 
-        <div className={utilityClasses.flexColumn}>
-          What is your current job title?
-          <Input
-            handleChange={onInputChange}
-            id="jobTitle"
-            placeholder="Job Title"
-            disabled={!companyNameValid}
-            defaultValue={jobTitle}
-            type="text"
-          />
-        </div>
+        <Input
+          id="jobTitle"
+          label="What is your current job title?"
+          handleChange={onInputChange}
+          placeholder="Job Title"
+          disabled={!companyNameValid}
+          defaultValue={jobTitle}
+          type="text"
+        />
 
-        <div className={utilityClasses.flexColumn}>
-          What do you do at this job? Why is this important to you? (2-3
-          sentences suggested)
-          <Textarea
-            handleChange={onInputChange}
-            id="jobDescription"
-            placeholder="I have had the chance to..."
-            multi
-            disabled={!jobTitleValid}
-            isValid={jobDescriptionValid}
-            defaultValue={jobDescription}
-          />
-        </div>
+        <Textarea
+          id="jobDescription"
+          label="What do you do at this job? Why is this important to you? (2-3
+        sentences suggested)"
+          handleChange={onInputChange}
+          placeholder="I have had the chance to..."
+          disabled={!jobTitleValid}
+          defaultValue={jobDescription}
+        />
       </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />

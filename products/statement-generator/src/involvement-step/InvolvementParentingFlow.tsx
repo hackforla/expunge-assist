@@ -9,10 +9,7 @@ import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
-
 function InvolvementParentingFlow() {
-  const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     childName,
@@ -37,42 +34,34 @@ function InvolvementParentingFlow() {
   return (
     <ContentContainer>
       <FormContainer>
-        <div className={utilityClasses.flexColumn}>
-          What is the name of your child?
-          <Input
-            id="childName"
-            handleChange={onInputChange}
-            placeholder="Name of Child"
-            defaultValue={childName}
-            type="text"
-          />
-        </div>
+        <Input
+          id="childName"
+          label="What is the name of your child?"
+          handleChange={onInputChange}
+          placeholder="Name of Child"
+          defaultValue={childName}
+          type="text"
+        />
 
-        <div className={utilityClasses.flexColumn}>
-          How long have you been a parent?
-          <Input
-            type="number"
-            id="parentYears"
-            placeholder="1"
-            handleChange={onInputChange}
-            disabled={!childNameValid}
-            defaultValue={parentYears}
-            adornment="years"
-          />
-        </div>
+        <Input
+          id="parentYears"
+          label="How long have you been a parent?"
+          type="number"
+          placeholder="1"
+          handleChange={onInputChange}
+          disabled={!childNameValid}
+          defaultValue={parentYears}
+          adornment="years"
+        />
 
-        <div className={utilityClasses.flexColumn}>
-          Why is being a good parent important to you? (2-3 sentences suggested)
-          <Textarea
-            id="parentDescription"
-            handleChange={onInputChange}
-            placeholder="Being a good parent is important to me because..."
-            multi
-            isValid={parentDescriptionValid}
-            disabled={!parentYearsValid}
-            defaultValue={parentDescription}
-          />
-        </div>
+        <Textarea
+          id="parentDescription"
+          label="Why is being a good parent important to you? (2-3 sentences suggested)"
+          handleChange={onInputChange}
+          placeholder="Being a good parent is important to me because..."
+          disabled={!parentYearsValid}
+          defaultValue={parentDescription}
+        />
       </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />

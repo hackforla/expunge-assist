@@ -2,17 +2,14 @@ import React, { useContext } from 'react';
 
 import FormStateContext from 'contexts/FormStateContext';
 
+import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
-import Input from '../components/Input';
-
 function InvolvementRecoveryFlow() {
-  const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { recoveryName, recoveryDescription } = formState.recoveryState;
 
@@ -31,30 +28,24 @@ function InvolvementRecoveryFlow() {
   return (
     <ContentContainer>
       <FormContainer>
-        <div className={utilityClasses.flexColumn}>
-          What is the name of the recovery program you are involved with?
-          <Input
-            id="recoveryName"
-            handleChange={onInputChange}
-            placeholder="Name of Organization"
-            defaultValue={recoveryName}
-            type="text"
-          />
-        </div>
+        <Input
+          id="recoveryName"
+          label="What is the name of the recovery program you are involved with?"
+          handleChange={onInputChange}
+          placeholder="Name of Organization"
+          defaultValue={recoveryName}
+          type="text"
+        />
 
-        <div className={utilityClasses.flexColumn}>
-          Why is this recovery program important to you? (2-3 sentences
-          suggested)
-          <Textarea
-            id="recoveryDescription"
-            handleChange={onInputChange}
-            placeholder="This program is important to me because..."
-            multi
-            isValid={recoveryDescriptionValid}
-            disabled={!recoveryNameValid}
-            defaultValue={recoveryDescription}
-          />
-        </div>
+        <Textarea
+          id="recoveryDescription"
+          label="Why is this recovery program important to you? (2-3 sentences
+        suggested)"
+          handleChange={onInputChange}
+          placeholder="This program is important to me because..."
+          disabled={!recoveryNameValid}
+          defaultValue={recoveryDescription}
+        />
       </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />

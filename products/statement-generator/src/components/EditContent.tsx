@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
-import CheckIcon from '@material-ui/icons/Check';
 
 import useUtilityStyles from 'styles/utilityStyles';
 import Textarea from './Textarea';
@@ -51,14 +50,12 @@ export default function EditContent({
 
   return (
     <form className={classes.form}>
-      <div className={utilityClasses.flexColumn}>
-        <Textarea
-          multi
-          id="editedText"
-          handleChange={(e) => setUpdatedContent(e.target.value)}
-          value={updatedContent}
-        />
-      </div>
+      <Textarea
+        id="editedText"
+        handleChange={(e) => setUpdatedContent(e.target.value)}
+        value={updatedContent}
+      />
+
       <div className={`${utilityClasses.buttonContainer} ${classes.container}`}>
         <Button
           theme="white"

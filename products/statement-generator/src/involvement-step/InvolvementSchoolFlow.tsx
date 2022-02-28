@@ -2,17 +2,14 @@ import React, { useContext } from 'react';
 
 import FormStateContext from 'contexts/FormStateContext';
 
+import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
-import Input from '../components/Input';
-
 function InvolvementSchoolFlow() {
-  const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { schoolName, studyName, passionDescription } = formState.schoolState;
 
@@ -33,41 +30,31 @@ function InvolvementSchoolFlow() {
   return (
     <ContentContainer>
       <FormContainer>
-        <div className={utilityClasses.flexColumn}>
-          What is the name of the school you are attending?
-          <Input
-            id="schoolName"
-            handleChange={onInputChange}
-            placeholder="Name of School"
-            defaultValue={schoolName}
-            type="text"
-          />
-        </div>
-
-        <div className={utilityClasses.flexColumn}>
-          What are you currently studying?
-          <Input
-            id="studyName"
-            handleChange={onInputChange}
-            placeholder="Name of Subject/Study Area"
-            disabled={!schoolNameValid}
-            defaultValue={studyName}
-            type="text"
-          />
-        </div>
-
-        <div className={utilityClasses.flexColumn}>
-          Why are you passionate about studying this? (2-3 sentences suggested)
-          <Textarea
-            id="passionDescription"
-            handleChange={onInputChange}
-            placeholder="I am passionate about..."
-            multi
-            isValid={passionDescriptionValid}
-            disabled={!studyNameValid}
-            defaultValue={passionDescription}
-          />
-        </div>
+        <Input
+          id="schoolName"
+          label="What is the name of the school you are attending?"
+          handleChange={onInputChange}
+          placeholder="Name of School"
+          defaultValue={schoolName}
+          type="text"
+        />
+        <Input
+          id="studyName"
+          label="What are you currently studying?"
+          handleChange={onInputChange}
+          placeholder="Name of Subject/Study Area"
+          disabled={!schoolNameValid}
+          defaultValue={studyName}
+          type="text"
+        />
+        <Textarea
+          id="passionDescription"
+          label="Why are you passionate about studying this? (2-3 sentences suggested)"
+          handleChange={onInputChange}
+          placeholder="I am passionate about..."
+          disabled={!studyNameValid}
+          defaultValue={passionDescription}
+        />
       </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />

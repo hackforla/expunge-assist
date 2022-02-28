@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import FormStateContext from 'contexts/FormStateContext';
 
 import HelpPopUp from 'components/HelpPopUp';
-import Paragraph from 'components/Paragraph';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
@@ -29,26 +28,20 @@ function WhyStep() {
   return (
     <ContentContainer>
       <FormContainer>
-        <p>Please finish this sentence: I want to clear my record because...</p>
         <Textarea
+          label="Please finish this sentence: I want to clear my record because..."
           id="clearRecordWhy"
           handleChange={onInputChange}
           placeholder="I am..."
-          multi
-          isValid={clearRecordWhyValid}
           defaultValue={clearRecordWhy}
         />
 
-        <Paragraph disabled={!clearRecordWhyValid}>
-          How will clearing your record change your life or help you? (2
-          sentences maximum)
-        </Paragraph>
         <Textarea
           id="clearRecordHow"
+          label="How will clearing your record change your life or help you? (2
+          sentences maximum)"
           handleChange={onInputChange}
           placeholder="Clearing my record will..."
-          multi
-          isValid={clearRecordHowValid}
           disabled={!clearRecordWhyValid}
           defaultValue={clearRecordHow}
         />

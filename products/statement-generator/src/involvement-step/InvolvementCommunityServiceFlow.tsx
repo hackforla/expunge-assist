@@ -8,11 +8,9 @@ import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
 
 function InvolvementCommunityServiceFlow() {
-  const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     organizationName,
@@ -34,31 +32,25 @@ function InvolvementCommunityServiceFlow() {
   return (
     <ContentContainer>
       <FormContainer>
-        <div className={utilityClasses.flexColumn}>
-          What is the name of the community service organization that you are
-          involved with?
-          <Input
-            id="organizationName"
-            handleChange={onInputChange}
-            placeholder="Name of Organization"
-            defaultValue={organizationName}
-            type="text"
-          />
-        </div>
+        <Input
+          id="organizationName"
+          label="What is the name of the community service organization that you are
+        involved with?"
+          handleChange={onInputChange}
+          placeholder="Name of Organization"
+          defaultValue={organizationName}
+          type="text"
+        />
 
-        <div className={utilityClasses.flexColumn}>
-          What do you do at this community service organization? Why is this
-          important to you? (2-3 sentences suggested)
-          <Textarea
-            id="serviceDescription"
-            handleChange={onInputChange}
-            placeholder="I have taken on responsibilities including..."
-            multi
-            isValid={serviceDescriptionValid}
-            disabled={!organizationNameValid}
-            defaultValue={serviceDescription}
-          />
-        </div>
+        <Textarea
+          id="serviceDescription"
+          label="What do you do at this community service organization? Why is this
+        important to you? (2-3 sentences suggested)"
+          handleChange={onInputChange}
+          placeholder="I have taken on responsibilities including..."
+          disabled={!organizationNameValid}
+          defaultValue={serviceDescription}
+        />
       </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
