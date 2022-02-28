@@ -61,6 +61,7 @@ function InvolvementJobFlow() {
           placeholder="I have had the chance to..."
           disabled={!jobTitleValid}
           defaultValue={jobDescription}
+          rows={3}
         />
       </FormContainer>
 

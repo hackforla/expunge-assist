@@ -34,6 +34,7 @@ function WhyStep() {
           handleChange={onInputChange}
           placeholder="I am..."
           defaultValue={clearRecordWhy}
+          rows={3}
         />
 
         <Textarea
@@ -44,6 +45,7 @@ function WhyStep() {
           placeholder="Clearing my record will..."
           disabled={!clearRecordWhyValid}
           defaultValue={clearRecordHow}
+          rows={3}
         />
       </FormContainer>
 

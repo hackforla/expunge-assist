@@ -33,6 +33,7 @@ function GoalsStep() {
         handleChange={onInputChange}
         placeholder="I have plans of..."
         defaultValue={goals}
+        rows={3}
       />
 
       <Textarea
@@ -43,6 +44,7 @@ function GoalsStep() {
         placeholder="I have been..."
         disabled={!goalsValid}
         defaultValue={goalsHow}
+        rows={3}
       />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />

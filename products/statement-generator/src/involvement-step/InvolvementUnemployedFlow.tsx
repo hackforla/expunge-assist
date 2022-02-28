@@ -39,9 +39,10 @@ function InvolvementUnemployedFlow() {
           id="unemploymentDescription"
           label="Please describe why you are having trouble finding work. (2-3
         sentences suggested)"
-          handleChange={onInputChange}
           placeholder="I have been having trouble finding work because..."
           defaultValue={unemploymentDescription}
+          handleChange={onInputChange}
+          rows={3}
         />
 
         <RadioGroup

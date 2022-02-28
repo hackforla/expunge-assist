@@ -50,6 +50,7 @@ function InvolvementCommunityServiceFlow() {
           placeholder="I have taken on responsibilities including..."
           disabled={!organizationNameValid}
           defaultValue={serviceDescription}
+          rows={3}
         />
       </FormContainer>
 

@@ -86,7 +86,7 @@ const MultilineTextFields: React.FC<TextFieldProps> = ({
   defaultValue,
   disabled = false,
   value,
-  rows = 3,
+  rows,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles();

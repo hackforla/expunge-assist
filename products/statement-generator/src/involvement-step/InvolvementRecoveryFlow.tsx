@@ -45,6 +45,7 @@ function InvolvementRecoveryFlow() {
           placeholder="This program is important to me because..."
           disabled={!recoveryNameValid}
           defaultValue={recoveryDescription}
+          rows={3}
         />
       </FormContainer>
 

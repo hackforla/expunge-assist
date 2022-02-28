@@ -38,6 +38,7 @@ function InvolvementSchoolFlow() {
           defaultValue={schoolName}
           type="text"
         />
+
         <Input
           id="studyName"
           label="What are you currently studying?"
@@ -47,6 +48,7 @@ function InvolvementSchoolFlow() {
           defaultValue={studyName}
           type="text"
         />
+
         <Textarea
           id="passionDescription"
           label="Why are you passionate about studying this? (2-3 sentences suggested)"
@@ -54,6 +56,7 @@ function InvolvementSchoolFlow() {
           placeholder="I am passionate about..."
           disabled={!studyNameValid}
           defaultValue={passionDescription}
+          rows={3}
         />
       </FormContainer>
 

@@ -61,6 +61,7 @@ function InvolvementParentingFlow() {
           placeholder="Being a good parent is important to me because..."
           disabled={!parentYearsValid}
           defaultValue={parentDescription}
+          rows={3}
         />
       </FormContainer>
 
