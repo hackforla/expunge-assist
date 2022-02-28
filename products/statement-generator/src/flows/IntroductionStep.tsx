@@ -33,7 +33,7 @@ export function IntroductionStep() {
           id="fullName"
           label="What is your name?"
           defaultValue={fullName}
-          placeholder="Full Name"
+          placeholder="First name Last name"
           handleChange={onInputChange}
           type="text"
         />

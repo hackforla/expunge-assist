@@ -100,7 +100,7 @@ export function generateInvolvementParenting(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have really prioritized being a great parent. My child, ${childName}, is ${parentYears} years old, and I love them so much. ${parentDescription}`;
+  return `Since my conviction, I have really prioritized being a great parent. My child, ${childName}, is ${parentYears} years old and I love them so much. ${parentDescription}`;
 }
 
 /**
@@ -117,7 +117,7 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
   }
 
   const wouldHelpText = wouldClearanceHelp === 'Yes' ? 'would' : 'would not';
-  return `Since my conviction, ${unemploymentDescription}. I beleive that having my record cleared ${wouldHelpText} help me find a job and be more involved in my community.`;
+  return `Since my conviction, ${unemploymentDescription} I believe that having my record cleared ${wouldHelpText} help me find a job and be more involved in my community.`;
 }
 
 /**
@@ -133,7 +133,7 @@ export function generateFutureGoals(formState: IStepState): string {
     return '';
   }
 
-  return `${goals} To work towards my goals, ${goalsHow}. Having my record cleared would help me achieve these goals for my future.`;
+  return `${goals} To work towards my goals, ${goalsHow} Having my record cleared would help me achieve these goals for my future.`;
 }
 
 /**
