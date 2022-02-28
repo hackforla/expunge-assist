@@ -54,6 +54,7 @@ function InvolvementUnemployedFlow() {
           handleChange={onInputChange}
           labels={['Yes', 'No']}
           activeRadio={wouldClearanceHelp}
+          id="wouldClearanceHelp"
         />
       </div>
 

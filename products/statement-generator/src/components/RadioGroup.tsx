@@ -9,6 +9,7 @@ interface RadioButtonProps {
   activeRadio: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  id: string;
 }
 
 const useStyles = makeStyles(({ palette }) =>
@@ -27,6 +28,7 @@ const RadioButton = ({
   handleChange,
   inputName,
   disabled = false,
+  id,
 }: RadioButtonProps) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles();
@@ -43,6 +45,7 @@ const RadioButton = ({
         checked={activeRadio === label}
         name={inputName}
         disabled={disabled}
+        id={id}
       />
 
       <span className={disabled ? utilityClasses.disabledColor : ''}>
@@ -58,6 +61,7 @@ interface RadioGroupProps {
   activeRadio: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  id: string;
 }
 
 const RadioGroup = ({
@@ -66,6 +70,7 @@ const RadioGroup = ({
   handleChange,
   activeRadio,
   disabled,
+  id,
 }: RadioGroupProps) => {
   return (
     <div className="radio">
@@ -78,6 +83,7 @@ const RadioGroup = ({
             inputName={inputName}
             disabled={disabled}
             key={label}
+            id={id}
           />
         );
       })}

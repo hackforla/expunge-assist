@@ -62,6 +62,7 @@ export function IntroductionStep() {
           labels={['Yes', 'No']}
           inputName="isVeteran"
           activeRadio={isVeteran}
+          id="isVeteran"
           disabled={!ageValid}
           handleChange={onInputChange}
         />
