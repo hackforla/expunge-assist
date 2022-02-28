@@ -11,10 +11,11 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
   ({ palette, breakpoints, spacing }) =>
     createStyles({
       root: {
+        height: 60,
         background: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'dark' ? palette.primary.main : 'white',
 
-        padding: spacing(3),
+        padding: spacing(2),
         display: 'flex',
 
         '& a': {
@@ -35,7 +36,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         },
 
         [breakpoints.down(breakpoints.values.md)]: {
-          background: palette.primary.light,
+          background: palette.primary.lighter,
         },
 
         [breakpoints.down(breakpoints.values.sm)]: {

@@ -1,72 +1,62 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementServiceState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
 import Input from '../components/Input';
 
-interface IInvolvementInitialStepProps {
-  stepState: IInvolvementServiceState;
-  setFormState: (value: any) => void;
-}
+function InvolvementCommunityServiceFlow() {
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    organizationName,
+    serviceDescription,
+  } = formState.communityServiceState;
 
-const InvolvementCommunityServiceFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementInitialStepProps) => {
-  const utilityClasses = useUtilityStyles({});
+  const organizationNameValid = organizationName !== '';
+  const serviceDescriptionValid = serviceDescription !== '';
+  const isNextDisabled = !organizationNameValid || !serviceDescriptionValid;
 
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      communityServiceState: { ...formState.communityServiceState, ...changes },
     });
   };
 
-  const organizationNameValid = stepState.organizationName !== '';
-  const serviceDescriptionValid = stepState.serviceDescription !== '';
-  const isNextDisabled = !organizationNameValid || !serviceDescriptionValid;
-
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of the community service organization that you are
-        involved with?
+      <FormContainer>
         <Input
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ organizationName: evt.target.value })
-          }
-          inputName="organizationName"
+          id="organizationName"
+          label="What is the name of the community service organization that you are
+        involved with?"
+          handleChange={onInputChange}
           placeholder="Name of Organization"
-          defaultValue={stepState.organizationName}
+          defaultValue={organizationName}
           type="text"
         />
-      </div>
 
-      <div className={utilityClasses.flexColumn}>
-        What do you do at this community service organization? Why is this
-        important to you? (2-3 sentences suggested)
         <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ serviceDescription: evt.target.value })
-          }
-          inputName="serviceDescription"
+          id="serviceDescription"
+          label="What do you do at this community service organization? Why is this
+        important to you? (2-3 sentences suggested)"
+          handleChange={onInputChange}
           placeholder="I have taken on responsibilities including..."
-          multi
-          isValid={serviceDescriptionValid}
           disabled={!organizationNameValid}
-          defaultValue={stepState.serviceDescription}
+          defaultValue={serviceDescription}
+          rows={3}
         />
-      </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default InvolvementCommunityServiceFlow;

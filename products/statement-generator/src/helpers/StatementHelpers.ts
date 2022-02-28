@@ -45,7 +45,7 @@ export function generateInvolvementJob(formState: IStepState): string {
  */
 export function generateInvolvementCommunity(formState: IStepState): string {
   const {
-    involvementServiceState: { organizationName, serviceDescription },
+    communityServiceState: { organizationName, serviceDescription },
   } = formState;
 
   if (organizationName === '' || serviceDescription === '') {
@@ -61,7 +61,7 @@ export function generateInvolvementCommunity(formState: IStepState): string {
  */
 export function generateInvolvementRecovery(formState: IStepState): string {
   const {
-    involvementRecoveryState: { recoveryName, recoveryDescription },
+    recoveryState: { recoveryName, recoveryDescription },
   } = formState;
 
   if (recoveryName === '' || recoveryDescription === '') {
@@ -77,7 +77,7 @@ export function generateInvolvementRecovery(formState: IStepState): string {
  */
 export function generateInvolvementSchool(formState: IStepState): string {
   const {
-    involvementSchoolState: { schoolName, studyName, passionDescription },
+    schoolState: { schoolName, studyName, passionDescription },
   } = formState;
 
   if (schoolName === '' || studyName === '' || passionDescription === '') {
@@ -93,7 +93,7 @@ export function generateInvolvementSchool(formState: IStepState): string {
  */
 export function generateInvolvementParenting(formState: IStepState): string {
   const {
-    involvementParentingState: { childName, parentYears, parentDescription },
+    parentingState: { childName, parentYears, parentDescription },
   } = formState;
 
   if (childName === '' || parentYears === '' || parentDescription === '') {
@@ -109,7 +109,7 @@ export function generateInvolvementParenting(formState: IStepState): string {
  */
 export function generateInvolvementUnemployed(formState: IStepState): string {
   const {
-    involvementUnemployedState: { unemploymentDescription, wouldClearanceHelp },
+    unemployedState: { unemploymentDescription, wouldClearanceHelp },
   } = formState;
 
   if (unemploymentDescription === '' || wouldClearanceHelp === '') {
@@ -126,7 +126,7 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
  */
 export function generateFutureGoals(formState: IStepState): string {
   const {
-    goalsStep: { goals, goalsHow },
+    goalsState: { goals, goalsHow },
   } = formState;
 
   if (goals === '' || goalsHow === '') {
@@ -142,7 +142,7 @@ export function generateFutureGoals(formState: IStepState): string {
  */
 export function generateWhy(formState: IStepState): string {
   const {
-    whyStep: { clearRecordWhy, clearRecordHow },
+    whyState: { clearRecordWhy, clearRecordHow },
   } = formState;
 
   if (clearRecordWhy === '' || clearRecordHow === '') {

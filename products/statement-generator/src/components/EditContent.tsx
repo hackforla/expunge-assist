@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
+
 import useUtilityStyles from 'styles/utilityStyles';
 import Textarea from './Textarea';
 import Button from './Button';
@@ -14,7 +16,7 @@ const useStyles = makeStyles(({ spacing }) =>
     container: {
       justifyContent: 'flex-end',
     },
-    cancelButton: {
+    secondBtn: {
       marginLeft: spacing(2),
     },
   })
@@ -22,16 +24,19 @@ const useStyles = makeStyles(({ spacing }) =>
 
 interface EditContentProps {
   setIsEditing: (v: boolean) => void;
+  onSaveClick: (content: string) => void;
   content: string;
 }
 
 export default function EditContent({
   setIsEditing,
+  onSaveClick,
   content,
 }: EditContentProps) {
-  const [updatedContent, setUpdatedContent] = useState(content);
+  const { t } = useTranslation();
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({});
+  const utilityClasses = useUtilityStyles();
+  const [updatedContent, setUpdatedContent] = useState(content);
 
   const handleCancelClick = () => {
     setIsEditing(false);
@@ -40,27 +45,27 @@ export default function EditContent({
 
   const handleSubmit = () => {
     setIsEditing(false);
+    onSaveClick(updatedContent);
   };
+
   return (
     <form className={classes.form}>
-      <div className={utilityClasses.flexColumn}>
-        <Textarea
-          multi
-          inputName="editedText"
-          handleChange={(e) => setUpdatedContent(e.target.value)}
-          value={updatedContent}
-        />
-      </div>
+      <Textarea
+        id="editedText"
+        handleChange={(e) => setUpdatedContent(e.target.value)}
+        value={updatedContent}
+      />
+
       <div className={`${utilityClasses.buttonContainer} ${classes.container}`}>
         <Button
-          theme="cancel"
-          buttonText="Cancel"
+          theme="white"
           onClick={handleCancelClick}
+          buttonText={t('button.cancel')}
         />
         <Button
-          className={classes.cancelButton}
+          className={classes.secondBtn}
           onClick={handleSubmit}
-          buttonText="Submit"
+          buttonText={t('button.save')}
         />
       </div>
     </form>

@@ -23,9 +23,20 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
     root: {
       padding: '12px 16px',
       display: 'flex',
-      border: 'none',
       borderRadius: '24px',
       lineHeight: '16px',
+
+      border: ({ theme }) => {
+        switch (theme) {
+          case 'white':
+            return `1px solid ${palette.primary.light}`;
+          case 'transparent':
+          case 'transparent-on-dark':
+          case 'transparent-on-light':
+          default:
+            return '1px solid transparent';
+        }
+      },
 
       boxShadow: (props) => {
         switch (props.theme) {
@@ -62,6 +73,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
             return 'transparent';
           case 'cancel':
             return palette.warning.main;
+          case 'landing':
           default:
             return palette.primary.main;
         }

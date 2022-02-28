@@ -1,128 +1,138 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
 
-import { IInvolvementInitialState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import Checkbox from 'components/Checkbox';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
+const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
+  createStyles({
+    checkboxGroup: {
+      '& .MuiFormLabel-root': {
+        color: palette.common.black,
+      },
+      '& .MuiFormLabel-root.Mui-focused': {
+        color: palette.common.black,
+      },
 
-interface IInvolvementInitialStepProps {
-  stepState: IInvolvementInitialState;
-  setFormState: (value: any) => void;
-}
+      '& .MuiFormLabel-root + .MuiFormGroup-root': {
+        marginTop: spacing(1),
+      },
+    },
+  })
+);
 
-const InvolvementInitialFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementInitialStepProps) => {
-  const utilityClasses = useUtilityStyles({});
+function InvolvementInitialFlow() {
+  const classes = useStyles();
 
-  const updateStepState = (changes: IInvolvementInitialState) => {
-    if (changes.isNoneChecked) {
-      setFormState({
-        isJobChecked: false,
-        isRecoveryChecked: false,
-        isSchoolChecked: false,
-        isParentingChecked: false,
-        isCommunityChecked: false,
-        isNoneChecked: true,
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    isJobChecked,
+    isRecoveryChecked,
+    isSchoolChecked,
+    isParentingChecked,
+    isCommunityChecked,
+    isNoneChecked,
+  } = formState.involvement;
+
+  const isNextEnabled =
+    isJobChecked ||
+    isRecoveryChecked ||
+    isSchoolChecked ||
+    isParentingChecked ||
+    isCommunityChecked ||
+    isNoneChecked;
+
+  const onCheckboxChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, checked } = evt.currentTarget;
+    if (id === 'isNoneChecked' && checked) {
+      updateStepToForm({
+        involvement: {
+          isJobChecked: false,
+          isRecoveryChecked: false,
+          isSchoolChecked: false,
+          isParentingChecked: false,
+          isCommunityChecked: false,
+          isNoneChecked: true,
+        },
       });
       return;
     }
 
-    if (
-      changes.isJobChecked ||
-      changes.isRecoveryChecked ||
-      changes.isSchoolChecked ||
-      changes.isParentingChecked ||
-      changes.isCommunityChecked
-    ) {
-      setFormState({
-        ...stepState,
-        ...changes,
-        isNoneChecked: false,
-      });
-      return;
-    }
-
-    setFormState({
-      ...stepState,
-      ...changes,
+    const changes = {
+      [id]: Boolean(checked),
+      isNoneChecked: false,
+    };
+    updateStepToForm({
+      involvement: { ...formState.involvement, ...changes },
     });
   };
 
-  const isNextEnabled =
-    stepState.isJobChecked ||
-    stepState.isRecoveryChecked ||
-    stepState.isSchoolChecked ||
-    stepState.isParentingChecked ||
-    stepState.isCommunityChecked ||
-    stepState.isNoneChecked;
-
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What things have you been involved with since your conviction?
-      </div>
-      <div className={utilityClasses.flexColumn}>
-        Please check all that apply:
-      </div>
-      <div className={utilityClasses.flexColumn}>
-        <Checkbox
-          checked={stepState.isJobChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isJobChecked: evt.target.checked })
-          }
-          label="Jobs"
-        />
+      <FormContainer>
+        <FormControl className={classes.checkboxGroup}>
+          <FormLabel htmlFor="involvement-checkboxes">
+            What things have you been involved with since your conviction?
+            <br />
+            Please check all that apply:
+          </FormLabel>
+          <FormGroup id="involvement-checkboxes">
+            <Checkbox
+              id="isJobChecked"
+              checked={isJobChecked}
+              onChange={onCheckboxChange}
+              label="Jobs"
+            />
 
-        <Checkbox
-          checked={stepState.isRecoveryChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isRecoveryChecked: evt.target.checked })
-          }
-          label="Recovery"
-        />
+            <Checkbox
+              id="isRecoveryChecked"
+              checked={isRecoveryChecked}
+              onChange={onCheckboxChange}
+              label="Recovery"
+            />
 
-        <Checkbox
-          checked={stepState.isSchoolChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isSchoolChecked: evt.target.checked })
-          }
-          label="School"
-        />
+            <Checkbox
+              id="isSchoolChecked"
+              checked={isSchoolChecked}
+              onChange={onCheckboxChange}
+              label="School"
+            />
 
-        <Checkbox
-          checked={stepState.isParentingChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isParentingChecked: evt.target.checked })
-          }
-          label="Parenting"
-        />
+            <Checkbox
+              id="isParentingChecked"
+              checked={isParentingChecked}
+              onChange={onCheckboxChange}
+              label="Parenting"
+            />
 
-        <Checkbox
-          checked={stepState.isCommunityChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isCommunityChecked: evt.target.checked })
-          }
-          label="Community Service"
-        />
+            <Checkbox
+              id="isCommunityChecked"
+              checked={isCommunityChecked}
+              onChange={onCheckboxChange}
+              label="Community Service"
+            />
 
-        <Checkbox
-          checked={stepState.isNoneChecked || false}
-          onChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ isNoneChecked: evt.target.checked })
-          }
-          label="None of the above"
-        />
-      </div>
+            <Checkbox
+              id="isNoneChecked"
+              checked={isNoneChecked}
+              onChange={onCheckboxChange}
+              label="None of the above"
+            />
+          </FormGroup>
+        </FormControl>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={!isNextEnabled} />
     </ContentContainer>
   );
-};
+}
 
 export default InvolvementInitialFlow;

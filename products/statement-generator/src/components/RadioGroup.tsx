@@ -1,15 +1,12 @@
 import React from 'react';
-import { Radio, makeStyles, createStyles } from '@material-ui/core';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import { makeStyles, createStyles } from '@material-ui/core';
 
 import useUtilityStyles from 'styles/utilityStyles';
-
-interface RadioButtonProps {
-  label: string;
-  inputName: string;
-  activeRadio: string;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
-}
 
 const useStyles = makeStyles(({ palette }) =>
   createStyles({
@@ -21,68 +18,48 @@ const useStyles = makeStyles(({ palette }) =>
   })
 );
 
-const RadioButton = ({
-  label,
-  activeRadio,
-  handleChange,
-  inputName,
-  disabled = false,
-}: RadioButtonProps) => {
-  const utilityClasses = useUtilityStyles();
-  const classes = useStyles();
-  return (
-    <div>
-      <Radio
-        classes={{
-          colorSecondary: classes.radioStyles,
-        }}
-        value={label}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          handleChange(e);
-        }}
-        checked={activeRadio === label}
-        name={inputName}
-        disabled={disabled}
-      />
-
-      <span className={disabled ? utilityClasses.disabledColor : ''}>
-        {label}
-      </span>
-    </div>
-  );
-};
-
 interface RadioGroupProps {
-  labels: string[];
-  inputName: string;
-  activeRadio: string;
+  id: string;
+  label: string;
+  value?: string;
+  choices: string[];
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 }
 
-const RadioGroup = ({
-  labels,
-  inputName,
+const RadioGroupComponent = ({
+  id,
+  label,
+  value,
+  choices,
   handleChange,
-  activeRadio,
   disabled,
 }: RadioGroupProps) => {
+  const utilityClasses = useUtilityStyles();
+  const classes = useStyles();
+
   return (
-    <div className="radio">
-      {labels.map((label) => {
-        return (
-          <RadioButton
-            label={label}
-            activeRadio={activeRadio}
-            handleChange={handleChange}
-            inputName={inputName}
+    <FormControl className={utilityClasses.formInput}>
+      <FormLabel disabled={disabled}>{label}</FormLabel>
+      <RadioGroup
+        id={id}
+        aria-label={label}
+        name={label}
+        value={value}
+        onChange={handleChange}
+      >
+        {choices.map((choice) => (
+          <FormControlLabel
             disabled={disabled}
-            key={label}
+            value={choice}
+            label={choice}
+            control={<Radio className={classes.radioStyles} />}
+            key={`radio-group-control-${choice}-key`}
           />
-        );
-      })}
-    </div>
+        ))}
+      </RadioGroup>
+    </FormControl>
   );
 };
 
-export default RadioGroup;
+export default RadioGroupComponent;

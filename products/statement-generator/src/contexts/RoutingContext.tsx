@@ -28,14 +28,10 @@ const PreRoutingContextProvider = ({
   const currentStep = appHistory[historyIdx];
   const { pathname } = history.location;
 
-  const isDarkTheme =
-    currentStep === AppUrl.BeforeYouBegin ||
-    currentStep === AppUrl.Landing ||
-    currentStep === AppUrl.NotFound;
-  const topLevelPageTheme = isDarkTheme ? 'dark' : 'transparent';
+  const topLevelPageTheme = 'transparent';
 
   const navigateToFormUrl = (newAppUrl: AppUrl) => {
-    history.push(`${newAppUrl}`);
+    history.push(newAppUrl);
   };
 
   const goNextPage = (suggestedNext?: AppUrl) => {
@@ -76,10 +72,8 @@ const PreRoutingContextProvider = ({
       return;
     }
 
-    const pathUrl = (pathname.match(/\/form\/.*/) || [])[0];
-
     // 404 if current path is not one of our defined urls
-    const browserUrl = (pathUrl as AppUrl) || AppUrl.Landing;
+    const browserUrl = (pathname as AppUrl) || AppUrl.Landing;
     if (!isAppUrl(browserUrl)) {
       setHistoryIdx(0);
       setAppHistory([AppUrl.NotFound]);

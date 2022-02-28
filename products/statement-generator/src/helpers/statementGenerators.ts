@@ -45,7 +45,7 @@ export function generateInvolvementJob(formState: IStepState): string {
  */
 export function generateInvolvementCommunity(formState: IStepState): string {
   const {
-    involvementServiceState: { organizationName, serviceDescription },
+    communityServiceState: { organizationName, serviceDescription },
   } = formState;
 
   if (organizationName === '' || serviceDescription === '') {
@@ -61,7 +61,7 @@ export function generateInvolvementCommunity(formState: IStepState): string {
  */
 export function generateInvolvementRecovery(formState: IStepState): string {
   const {
-    involvementRecoveryState: { recoveryName, recoveryDescription },
+    recoveryState: { recoveryName, recoveryDescription },
   } = formState;
 
   if (recoveryName === '' || recoveryDescription === '') {
@@ -77,7 +77,7 @@ export function generateInvolvementRecovery(formState: IStepState): string {
  */
 export function generateInvolvementSchool(formState: IStepState): string {
   const {
-    involvementSchoolState: { schoolName, studyName, passionDescription },
+    schoolState: { schoolName, studyName, passionDescription },
   } = formState;
 
   if (schoolName === '' || studyName === '' || passionDescription === '') {
@@ -93,14 +93,14 @@ export function generateInvolvementSchool(formState: IStepState): string {
  */
 export function generateInvolvementParenting(formState: IStepState): string {
   const {
-    involvementParentingState: { childName, parentYears, parentDescription },
+    parentingState: { childName, parentYears, parentDescription },
   } = formState;
 
   if (childName === '' || parentYears === '' || parentDescription === '') {
     return '';
   }
 
-  return `Since my conviction, I have really prioritized being a great parent. My child, ${childName}, is ${parentYears} years old, and I love them so much. ${parentDescription}`;
+  return `Since my conviction, I have really prioritized being a great parent. My child, ${childName}, is ${parentYears} years old and I love them so much. ${parentDescription}`;
 }
 
 /**
@@ -109,7 +109,7 @@ export function generateInvolvementParenting(formState: IStepState): string {
  */
 export function generateInvolvementUnemployed(formState: IStepState): string {
   const {
-    involvementUnemployedState: { unemploymentDescription, wouldClearanceHelp },
+    unemployedState: { unemploymentDescription, wouldClearanceHelp },
   } = formState;
 
   if (unemploymentDescription === '' || wouldClearanceHelp === '') {
@@ -117,7 +117,7 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
   }
 
   const wouldHelpText = wouldClearanceHelp === 'Yes' ? 'would' : 'would not';
-  return `Since my conviction, ${unemploymentDescription}. I beleive that having my record cleared ${wouldHelpText} help me find a job and be more involved in my community.`;
+  return `Since my conviction, ${unemploymentDescription} I believe that having my record cleared ${wouldHelpText} help me find a job and be more involved in my community.`;
 }
 
 /**
@@ -126,14 +126,14 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
  */
 export function generateFutureGoals(formState: IStepState): string {
   const {
-    goalsStep: { goals, goalsHow },
+    goalsState: { goals, goalsHow },
   } = formState;
 
   if (goals === '' || goalsHow === '') {
     return '';
   }
 
-  return `${goals} To work towards my goals, ${goalsHow}. Having my record cleared would help me achieve these goals for my future.`;
+  return `${goals} To work towards my goals, ${goalsHow} Having my record cleared would help me achieve these goals for my future.`;
 }
 
 /**
@@ -142,7 +142,7 @@ export function generateFutureGoals(formState: IStepState): string {
  */
 export function generateWhy(formState: IStepState): string {
   const {
-    whyStep: { clearRecordWhy, clearRecordHow },
+    whyState: { clearRecordWhy, clearRecordHow },
   } = formState;
 
   if (clearRecordWhy === '' || clearRecordHow === '') {

@@ -1,33 +1,80 @@
 import React, { useState } from 'react';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import { teal } from '@material-ui/core/colors';
 
-const useStyles = makeStyles(() =>
+import useUtilityStyles from 'styles/utilityStyles';
+
+interface StyleProps {
+  disabled?: boolean;
+}
+
+const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
   createStyles({
-    root: {
-      width: '300px',
-      minWidth: '10rem',
-      borderRadius: '15px',
-      marginBottom: '1rem',
+    inputComponent: {
+      borderRadius: '16px',
 
-      '&.MuiInputBase-root.Mui-disabled': {
-        borderRadius: '15px',
-        background: '#efefef',
-        color: '#b5b5b5',
+      '&.Mui-focused': {
+        boxShadow: '0 0 10px 2px #F7EBFF',
+      },
+
+      // -- disabled
+      '&.Mui-disabled': {
+        background: '#f1f1f1',
+        color: palette.common.grey,
+        opacity: 0.7,
+      },
+
+      // -- outline
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#adadad',
+        borderWidth: '1px',
+      },
+      '&:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#8f8f8f',
+        borderWidth: '1px',
+      },
+      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#8b30c9', // primary.main/#9903FF is too harsh
+        borderWidth: '1px',
+      },
+      '&.Mui-disabled .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#a1a1a1',
+        borderWidth: '1px',
+      },
+
+      // -- input field
+      '& .MuiOutlinedInput-input': {
+        padding: spacing(1, 2),
+
+        '&::placeholder': {
+          opacity: 1,
+          color: palette.common.grey,
+        },
+      },
+
+      '& .MuiInputAdornment-root': {
+        pointerEvents: 'none',
+        color: palette.common.black,
+      },
+      '&.Mui-disabled .MuiInputAdornment-root': {
+        opacity: 0.3,
       },
     },
+
     icon: {
-      color: teal.A400,
+      color: palette.success.main,
+      marginLeft: spacing(1),
     },
   })
 );
 
 interface InputFieldProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputName: string;
+  id: string;
+  label?: string; // todo: make required
   placeholder: string;
   type: string;
   defaultValue?: string;
@@ -38,37 +85,52 @@ interface InputFieldProps {
 
 const InputArea: React.FC<InputFieldProps> = ({
   handleChange,
-  inputName,
+  label,
+  id,
   placeholder,
   type,
   defaultValue,
   disabled,
   adornment,
+  className = '',
 }) => {
+  const utilityClasses = useUtilityStyles();
+  const classes = useStyles({ disabled });
+
+  const [valid, isValid] = useState(false);
   const checkValid = (e: string) => {
     isValid(e.length > 0);
   };
-  const [valid, isValid] = useState(false);
-  const classes = useStyles();
+
   return (
-    <OutlinedInput
-      type={type}
-      className={classes.root}
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-        checkValid(e.currentTarget.value);
-        handleChange(e);
-      }}
-      name={inputName}
-      placeholder={placeholder}
-      defaultValue={defaultValue}
-      disabled={disabled}
-      endAdornment={
-        <InputAdornment position="end">
-          {adornment}
-          {valid ? <CheckCircleIcon className={classes.icon} /> : null}
-        </InputAdornment>
-      }
-    />
+    <div className={`${utilityClasses.formInput} ${className}`}>
+      <InputLabel htmlFor={id} disabled={disabled}>
+        {label}
+      </InputLabel>
+
+      <OutlinedInput
+        label={label}
+        id={id}
+        className={classes.inputComponent}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          checkValid(e.currentTarget.value);
+          handleChange(e);
+        }}
+        defaultValue={defaultValue}
+        placeholder={placeholder}
+        disabled={disabled}
+        type={type}
+        notched={false}
+        fullWidth
+        endAdornment={
+          <InputAdornment position="end">
+            {adornment !== undefined && <span>{adornment}</span>}
+
+            {valid ? <CheckCircleIcon className={classes.icon} /> : null}
+          </InputAdornment>
+        }
+      />
+    </div>
   );
 };
 

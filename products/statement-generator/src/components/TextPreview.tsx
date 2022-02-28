@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 
 import { makeStyles, createStyles } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
+
+import useUtilityStyles from 'styles/utilityStyles';
+
 import EditContent from './EditContent';
 
 const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
     root: {
-      padding: spacing(3),
+      padding: spacing(2),
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
     },
@@ -17,28 +20,36 @@ const useStyles = makeStyles(({ palette, spacing }) =>
       marginBottom: spacing(2),
       color: palette.primary.main,
 
-      '& h2': {
+      '& h3': {
         flexGrow: 1,
       },
     },
-    iconStyle: {
-      color: palette.primary.main,
+    actionHeader: {
+      display: 'flex',
+      flexDirection: 'row',
+
+      '& svg + svg': {
+        marginLeft: spacing(1),
+      },
     },
   })
 );
 
 interface ComponentProps {
-  // onAdjustClick: () => void;
+  onSaveClick: (content: string) => void;
   content: string;
   nameOfStep: string;
+  className?: string;
 }
 
 const TextPreview = ({
-  // onAdjustClick,
+  onSaveClick,
   content,
   nameOfStep,
+  className = '',
 }: ComponentProps) => {
   const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -46,17 +57,26 @@ const TextPreview = ({
   };
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} ${className}`}>
       <div className={classes.previewHeader}>
-        <h2>{nameOfStep}</h2>
+        <h3>{nameOfStep}</h3>
 
-        {!isEditing && (
-          <CreateIcon style={{ color: '#9903FF' }} onClick={handleClick} />
-        )}
+        <div className={classes.actionHeader}>
+          {!isEditing && (
+            <CreateIcon
+              className={utilityClasses.iconButton}
+              onClick={handleClick}
+            />
+          )}
+        </div>
       </div>
 
       {isEditing ? (
-        <EditContent content={content} setIsEditing={setIsEditing} />
+        <EditContent
+          content={content}
+          setIsEditing={setIsEditing}
+          onSaveClick={onSaveClick}
+        />
       ) : (
         <p>{content}</p>
       )}

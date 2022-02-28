@@ -5,15 +5,15 @@ export interface IStepProps {
 
 export interface IStepState {
   introduction: IIntroductionState;
-  involvementInitialState: IInvolvementInitialState;
+  involvement: IInvolvementInitialState;
   involvementJobState: IInvolvementJobState;
-  involvementServiceState: IInvolvementServiceState;
-  involvementRecoveryState: IInvolvementRecoveryState;
-  involvementSchoolState: IInvolvementSchoolState;
-  involvementParentingState: IInvolvementParentingState;
-  involvementUnemployedState: IInvolvementUnemployedState;
-  goalsStep: IGoalsState;
-  whyStep: IWhyStepState;
+  communityServiceState: ICommunityServiceState;
+  recoveryState: IRecoveryState;
+  schoolState: ISchoolState;
+  parentingState: IParentingState;
+  unemployedState: IUnemployedState;
+  goalsState: IGoalsState;
+  whyState: IWhyState;
   statements: IStatementState;
 }
 
@@ -23,7 +23,7 @@ export const defaultStepState = {
     age: '',
     isVeteran: '',
   },
-  involvementInitialState: {
+  involvement: {
     isJobChecked: false,
     isRecoveryChecked: false,
     isSchoolChecked: false,
@@ -36,33 +36,33 @@ export const defaultStepState = {
     jobTitle: '',
     jobDescription: '',
   },
-  involvementServiceState: {
+  communityServiceState: {
     organizationName: '',
     serviceDescription: '',
   },
-  involvementRecoveryState: {
+  recoveryState: {
     recoveryName: '',
     recoveryDescription: '',
   },
-  involvementSchoolState: {
+  schoolState: {
     schoolName: '',
     studyName: '',
     passionDescription: '',
   },
-  involvementParentingState: {
+  parentingState: {
     childName: '',
     parentYears: '',
     parentDescription: '',
   },
-  involvementUnemployedState: {
+  unemployedState: {
     unemploymentDescription: '',
     wouldClearanceHelp: '',
   },
-  goalsStep: {
+  goalsState: {
     goals: '',
     goalsHow: '',
   },
-  whyStep: {
+  whyState: {
     clearRecordWhy: '',
     clearRecordHow: '',
   },
@@ -101,29 +101,29 @@ export interface IInvolvementJobState {
   jobDescription: string;
 }
 // step 2b
-export interface IInvolvementServiceState {
+export interface ICommunityServiceState {
   organizationName: string;
   serviceDescription: string;
 }
 // step 2c
-export interface IInvolvementRecoveryState {
+export interface IRecoveryState {
   recoveryName: string;
   recoveryDescription: string;
 }
 // step 2d
-export interface IInvolvementSchoolState {
+export interface ISchoolState {
   schoolName: string;
   studyName: string;
   passionDescription: string;
 }
 // step 2e
-export interface IInvolvementParentingState {
+export interface IParentingState {
   childName: string;
   parentYears: string;
   parentDescription: string;
 }
 // step 2f
-export interface IInvolvementUnemployedState {
+export interface IUnemployedState {
   unemploymentDescription: string;
   wouldClearanceHelp: string;
 }
@@ -133,7 +133,7 @@ export interface IGoalsState {
   goalsHow: string;
 }
 
-export interface IWhyStepState {
+export interface IWhyState {
   clearRecordWhy: string;
   clearRecordHow: string;
 }
@@ -157,7 +157,7 @@ export const sampleStepState = {
     age: '29',
     isVeteran: 'Yes',
   },
-  involvementInitialState: {
+  involvement: {
     isJobChecked: true,
     isCommunityChecked: true,
     isRecoveryChecked: true,
@@ -170,36 +170,36 @@ export const sampleStepState = {
     jobTitle: 'Big Boss',
     jobDescription: 'I make the decisions on what the biggest cake should be.',
   },
-  involvementServiceState: {
+  communityServiceState: {
     organizationName: 'Taste Tester',
     serviceDescription: 'I check cakes for poison. It is a very serious job.',
   },
-  involvementRecoveryState: {
+  recoveryState: {
     recoveryName: 'Addicts Anonymous',
     recoveryDescription:
       'I go to a meeting every week to help me overcome my addiction to poisons.',
   },
-  involvementSchoolState: {
+  schoolState: {
     schoolName: 'Villians University',
     studyName: 'Chemistry',
     passionDescription: 'I always liked looking at how chemicals affected ',
   },
-  involvementParentingState: {
+  parentingState: {
     childName: 'Cyanide Nx11',
     parentYears: '11',
     parentDescription:
       'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
   },
-  involvementUnemployedState: {
+  unemployedState: {
     unemploymentDescription:
       'I have not been able to find any jobs that are not about licking or eating things.',
     wouldClearanceHelp: 'Yes',
   },
-  goalsStep: {
+  goalsState: {
     goals: 'I want to get a new job so I do not have to eat any more poison.',
     goalsHow: 'I am learning new ways to work that go beyond eating.',
   },
-  whyStep: {
+  whyState: {
     clearRecordWhy: 'It will help me make a better life for me and my family.',
     clearRecordHow:
       'If my record no longer says I have poison resistance, I can be hired for other jobs.',

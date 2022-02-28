@@ -17,7 +17,7 @@ const TealCheckbox = withStyles({
     classes={props.classes}
     checked={props.checked}
     onChange={props.onChange}
-    name={props.name}
+    id={props.id}
   />
 ));
 
@@ -25,14 +25,18 @@ interface CheckProps {
   label: string;
   checked: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  id?: string;
 }
 
-const CheckboxLabels: React.FC<CheckProps> = ({ label, checked, onChange }) => {
+const CheckboxLabels: React.FC<CheckProps> = ({
+  label,
+  checked,
+  onChange,
+  id,
+}) => {
   return (
     <FormControlLabel
-      control={
-        <TealCheckbox checked={checked} onChange={onChange} name="checked" />
-      }
+      control={<TealCheckbox id={id} checked={checked} onChange={onChange} />}
       label={label}
     />
   );

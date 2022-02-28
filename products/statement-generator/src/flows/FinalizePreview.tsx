@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+
+import FormStateContext from 'contexts/FormStateContext';
+
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
-import { IStepState } from 'contexts/FormStateProps';
 import { AppUrl } from 'contexts/RoutingProps';
 
 import ContentContainer from 'page-layout/ContentContainer';
@@ -38,12 +40,9 @@ const useStyles = makeStyles(({ palette }) =>
   })
 );
 
-interface IFinalizeStepProps {
-  formState: IStepState;
-}
-
-const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
+function FinalizeStep() {
   const classes = useStyles();
+  const { formState } = useContext(FormStateContext);
 
   const displayDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
@@ -61,7 +60,7 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
       <div className={classes.preview}>
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
-        <p>{getPreviewStatement(formState, AppUrl.Introduction)}</p>
+        <p>{getPreviewStatement(formState, AppUrl.IntroductionPreview)}</p>
         <p>{getPreviewStatement(formState, AppUrl.JobPreview)}</p>
         <p>{getPreviewStatement(formState, AppUrl.CommunityServicePreview)}</p>
         <p>{getPreviewStatement(formState, AppUrl.RecoveryPreview)}</p>
@@ -75,6 +74,6 @@ const FinalizeStep = ({ formState }: IFinalizeStepProps) => {
       <FlowNavigation />
     </ContentContainer>
   );
-};
+}
 
 export default FinalizeStep;

@@ -1,95 +1,59 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
-import { IWhyStepState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import HelpPopUp from 'components/HelpPopUp';
-import Paragraph from 'components/Paragraph';
 import Textarea from 'components/Textarea';
-import TextPreview from 'components/TextPreview';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
+function WhyStep() {
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const { clearRecordWhy, clearRecordHow } = formState.whyState;
 
-interface IWhyStepProps {
-  stepState: IWhyStepState;
-  setFormState: (value: any) => void;
-}
+  const clearRecordWhyValid = clearRecordWhy !== '';
+  const clearRecordHowValid = clearRecordHow !== '';
+  const isNextDisabled = !clearRecordWhyValid || !clearRecordHowValid;
 
-const WhyStep = ({ stepState, setFormState }: IWhyStepProps) => {
-  const utilityClasses = useUtilityStyles();
-
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      whyState: { ...formState.whyState, ...changes },
     });
   };
 
-  const [showPreview, setShowPreview] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputName = e.currentTarget.name;
-    const inputValue = e.currentTarget.value;
-    if (inputName === 'clearRecordWhy') {
-      updateStepState({ ...stepState, clearRecordWhy: inputValue });
-    } else if (inputName === 'clearRecordHow') {
-      updateStepState({ ...stepState, clearRecordHow: inputValue });
-    }
-  };
-
-  const clearRecordWhyValid = stepState.clearRecordWhy !== '';
-  const clearRecordHowValid = stepState.clearRecordHow !== '';
-  const isNextDisabled = !clearRecordWhyValid || !clearRecordHowValid;
-
-  const textPreviewContent = `${stepState.clearRecordWhy} ${stepState.clearRecordHow}`;
-  if (showPreview) {
-    return (
-      <ContentContainer>
-        <TextPreview content={textPreviewContent} nameOfStep="Why" />
-
-        <FlowNavigation onBack={() => setShowPreview(false)} />
-      </ContentContainer>
-    );
-  }
-
   return (
     <ContentContainer>
-      <form className={utilityClasses.flexGrow}>
-        <p>Please finish this sentence: I want to clear my record because...</p>
+      <FormContainer>
         <Textarea
-          inputName="clearRecordWhy"
+          label="Please finish this sentence: I want to clear my record because..."
+          id="clearRecordWhy"
+          handleChange={onInputChange}
           placeholder="I am..."
-          handleChange={handleChange}
-          multi
-          isValid={clearRecordWhyValid}
-          defaultValue={stepState.clearRecordWhy}
+          defaultValue={clearRecordWhy}
+          rows={3}
         />
 
-        <Paragraph disabled={clearRecordWhyValid}>
-          How will clearing your record change your life or help you? (2
-          sentences maximum)
-        </Paragraph>
         <Textarea
-          inputName="clearRecordHow"
-          handleChange={handleChange}
+          id="clearRecordHow"
+          label="How will clearing your record change your life or help you? (2
+          sentences maximum)"
+          handleChange={onInputChange}
           placeholder="Clearing my record will..."
-          multi
-          isValid={clearRecordHowValid}
           disabled={!clearRecordWhyValid}
-          defaultValue={stepState.clearRecordHow}
+          defaultValue={clearRecordHow}
+          rows={3}
         />
-      </form>
+      </FormContainer>
 
       <HelpPopUp />
 
-      <FlowNavigation
-        // onNext={() => setShowPreview(true)}
-        isNextDisabled={isNextDisabled}
-      />
+      <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default WhyStep;

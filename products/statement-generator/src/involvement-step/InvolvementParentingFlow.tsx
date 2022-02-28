@@ -1,87 +1,73 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { IInvolvementParentingState } from 'contexts/FormStateProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
+import FormContainer from 'page-layout/FormContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
+function InvolvementParentingFlow() {
+  const { formState, updateStepToForm } = useContext(FormStateContext);
+  const {
+    childName,
+    parentYears,
+    parentDescription,
+  } = formState.parentingState;
 
-interface IInvolvementParentingStepProps {
-  stepState: IInvolvementParentingState;
-  setFormState: (value: any) => void;
-}
-
-const InvolvementParentingFlow = ({
-  stepState,
-  setFormState,
-}: IInvolvementParentingStepProps) => {
-  const utilityClasses = useUtilityStyles();
-
-  const updateStepState = (changes: object) => {
-    setFormState({
-      ...stepState,
-      ...changes,
-    });
-  };
-
-  const childNameValid = stepState.childName !== '';
-  const parentYearsValid = stepState.parentYears !== '';
-  const parentDescriptionValid = stepState.parentDescription !== '';
+  const childNameValid = childName !== '';
+  const parentYearsValid = parentYears !== '';
+  const parentDescriptionValid = parentDescription !== '';
   const isNextDisabled =
     !childNameValid || !parentYearsValid || !parentDescriptionValid;
 
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = evt.currentTarget;
+    const changes = { [id]: value };
+    updateStepToForm({
+      parentingState: { ...formState.parentingState, ...changes },
+    });
+  };
+
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of your child?
+      <FormContainer>
         <Input
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ childName: evt.target.value })
-          }
-          inputName="childName"
+          id="childName"
+          label="What is the name of your child?"
+          handleChange={onInputChange}
           placeholder="Name of Child"
-          defaultValue={stepState.childName}
+          defaultValue={childName}
           type="text"
         />
-      </div>
 
-      <div className={utilityClasses.flexColumn}>
-        How long have you been a parent?
         <Input
+          id="parentYears"
+          label="How long have you been a parent?"
           type="number"
-          inputName="age"
           placeholder="1"
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ parentYears: evt.target.value })
-          }
+          handleChange={onInputChange}
           disabled={!childNameValid}
-          defaultValue={stepState.parentYears}
+          defaultValue={parentYears}
           adornment="years"
         />
-      </div>
 
-      <div className={utilityClasses.flexColumn}>
-        Why is being a good parent important to you? (2-3 sentences suggested)
         <Textarea
-          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) =>
-            updateStepState({ parentDescription: evt.target.value })
-          }
-          inputName="parentDescription"
+          id="parentDescription"
+          label="Why is being a good parent important to you? (2-3 sentences suggested)"
+          handleChange={onInputChange}
           placeholder="Being a good parent is important to me because..."
-          multi
-          isValid={parentDescriptionValid}
           disabled={!parentYearsValid}
-          defaultValue={stepState.parentDescription}
+          defaultValue={parentDescription}
+          rows={3}
         />
-      </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
   );
-};
+}
 
 export default InvolvementParentingFlow;
