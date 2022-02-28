@@ -40,7 +40,6 @@ const PreRoutingContextProvider = ({
 
   const goNextPage = (suggestedNext?: AppUrl) => {
     const nextUrl = suggestedNext || getNextFormUrl(currentStep);
-    console.log('goNextPage', suggestedNext, 'or', getNextFormUrl(currentStep));
     setHistoryIdx(historyIdx + 1);
     if (!appHistory.includes(nextUrl)) {
       setAppHistory([...appHistory, nextUrl]);
@@ -78,7 +77,7 @@ const PreRoutingContextProvider = ({
     }
 
     // 404 if current path is not one of our defined urls
-    const browserUrl = pathname as AppUrl || AppUrl.Landing;
+    const browserUrl = (pathname as AppUrl) || AppUrl.Landing;
     if (!isAppUrl(browserUrl)) {
       setHistoryIdx(0);
       setAppHistory([AppUrl.NotFound]);

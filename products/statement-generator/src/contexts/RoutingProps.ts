@@ -13,7 +13,8 @@ export interface RoutingContextProps {
 export enum AppUrl {
   Landing = '',
   NotFound = '404',
-  BeforeYouBegin = '/form/start',
+  BeforeYouBegin = '/agreement',
+  Welcome = '/welcome',
   Introduction = '/form/intro',
   IntroductionPreview = '/form/introduction/preview',
   Involvement = '/form/involvement',
@@ -61,6 +62,9 @@ export function getNextFormUrl(url: AppUrl): AppUrl {
       return AppUrl.BeforeYouBegin;
 
     case AppUrl.BeforeYouBegin:
+      return AppUrl.Welcome;
+
+    case AppUrl.Welcome:
       return AppUrl.Introduction;
 
     case AppUrl.Introduction:

@@ -35,6 +35,7 @@ import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
+import Welcome from 'pages/Welcome';
 
 import 'styles/App.css';
 import appTheme from 'styles/appTheme';
@@ -83,6 +84,8 @@ const App: React.FC = () => {
                     path={AppUrl.BeforeYouBegin}
                     component={BeforeYouBegin}
                   />
+
+                  <Route exact path={AppUrl.Welcome} component={Welcome} />
 
                   <Route
                     exact
