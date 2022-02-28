@@ -19,7 +19,7 @@ const useStyles = makeStyles(({ palette }) =>
     },
     alertBox: {
       '& .MuiDialog-paperWidthSm': {
-        backgroundColor: palette.primary.light,
+        backgroundColor: palette.primary.lighter,
       },
     },
   })

@@ -3,18 +3,14 @@ import React, { useContext } from 'react';
 import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
-import Paragraph from 'components/Paragraph';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
-
-import useUtilityStyles from 'styles/utilityStyles';
+import FormContainer from 'page-layout/FormContainer';
 
 export function IntroductionStep() {
-  const utilityClasses = useUtilityStyles();
-
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { fullName, age, isVeteran } = formState.introduction;
 
@@ -32,22 +28,20 @@ export function IntroductionStep() {
 
   return (
     <ContentContainer>
-      <form
-        className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
-      >
-        <p>What is your name?</p>
+      <FormContainer>
         <Input
           id="fullName"
+          label="What is your name?"
           defaultValue={fullName}
           placeholder="Full Name"
           handleChange={onInputChange}
           type="text"
         />
 
-        <Paragraph disabled={!fullNameValid}>How old are you?</Paragraph>
         <Input
-          type="number"
           id="age"
+          label="How old are you?"
+          type="number"
           defaultValue={age}
           placeholder="25"
           disabled={!fullNameValid}
@@ -55,17 +49,22 @@ export function IntroductionStep() {
           adornment="years old"
         />
 
-        <Paragraph disabled={!ageValid}>
-          Are you a veteran of the United States of America?
-        </Paragraph>
         <RadioGroup
-          labels={['Yes', 'No']}
-          inputName="isVeteran"
-          activeRadio={isVeteran}
+          id="isVeteran"
+          label="Are you a veteran of the United States of America?"
+          choices={['Yes', 'No']}
+          value={isVeteran}
           disabled={!ageValid}
-          handleChange={onInputChange}
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+            updateStepToForm({
+              introduction: {
+                ...formState.introduction,
+                isVeteran: evt.currentTarget.value,
+              },
+            });
+          }}
         />
-      </form>
+      </FormContainer>
 
       <HelpPopUp />
 

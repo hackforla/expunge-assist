@@ -15,7 +15,7 @@ const useUtilityStyles = makeStyles<Theme>(
             case 'dark':
               return palette.primary.main;
             case 'light':
-              return palette.primary.light;
+              return palette.primary.lighter;
             case 'transparent':
             default:
               return 'transparent';
@@ -81,6 +81,32 @@ const useUtilityStyles = makeStyles<Theme>(
       iconButton: {
         cursor: 'pointer',
         color: palette.primary.main,
+      },
+      formInput: {
+        display: 'flex',
+        flexDirection: 'column',
+
+        '&$formInput ~ $formInput': {
+          marginTop: spacing(4),
+        },
+
+        // -- <FormLabel />
+        '& .MuiFormLabel-root': {
+          lineHeight: 'normal',
+          color: palette.common.black,
+        },
+        '& .MuiFormLabel-root.Mui-disabled': {
+          color: palette.common.grey,
+        },
+        '& .MuiFormLabel-root ~ .MuiInputBase-root': {
+          marginTop: spacing(1),
+        },
+        '& .MuiFormLabel-root ~ .MuiFormGroup-root': {
+          marginTop: spacing(1),
+        },
+        '& .MuiFormLabel-root ~ .MuiFormControl-root': {
+          marginTop: spacing(1),
+        },
       },
     })
 );

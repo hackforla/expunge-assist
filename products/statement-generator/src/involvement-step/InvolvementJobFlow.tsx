@@ -2,16 +2,14 @@ import React, { useContext } from 'react';
 
 import FormStateContext from 'contexts/FormStateContext';
 
+import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
-
-import useUtilityStyles from 'styles/utilityStyles';
-import Input from '../components/Input';
+import FormContainer from 'page-layout/FormContainer';
 
 function InvolvementJobFlow() {
-  const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     companyName,
@@ -35,42 +33,37 @@ function InvolvementJobFlow() {
 
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        What is the name of the company you work for?
+      <FormContainer>
         <Input
-          handleChange={onInputChange}
           id="companyName"
+          label="What is the name of the company you work for?"
+          handleChange={onInputChange}
           placeholder="Name of company"
           defaultValue={companyName}
           type="text"
         />
-      </div>
 
-      <div className={utilityClasses.flexColumn}>
-        What is your current job title?
         <Input
-          handleChange={onInputChange}
           id="jobTitle"
+          label="What is your current job title?"
+          handleChange={onInputChange}
           placeholder="Job Title"
           disabled={!companyNameValid}
           defaultValue={jobTitle}
           type="text"
         />
-      </div>
 
-      <div className={utilityClasses.flexColumn}>
-        What do you do at this job? Why is this important to you? (2-3 sentences
-        suggested)
         <Textarea
-          handleChange={onInputChange}
           id="jobDescription"
+          label="What do you do at this job? Why is this important to you? (2-3
+        sentences suggested)"
+          handleChange={onInputChange}
           placeholder="I have had the chance to..."
-          multi
           disabled={!jobTitleValid}
-          isValid={jobDescriptionValid}
           defaultValue={jobDescription}
+          rows={3}
         />
-      </div>
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>

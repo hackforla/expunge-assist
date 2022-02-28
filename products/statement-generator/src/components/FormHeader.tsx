@@ -10,7 +10,7 @@ const useStyles = makeStyles<Theme>(
   ({ palette, breakpoints, spacing, typography }) =>
     createStyles({
       root: {
-        background: palette.primary.light,
+        background: palette.primary.lighter,
         color: palette.common.black,
         padding: spacing(2),
         borderBottomRightRadius: '64px',

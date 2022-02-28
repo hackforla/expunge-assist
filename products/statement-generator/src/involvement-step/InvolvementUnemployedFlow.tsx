@@ -7,11 +7,9 @@ import RadioGroup from 'components/RadioGroup';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
-
-import useUtilityStyles from 'styles/utilityStyles';
+import FormContainer from 'page-layout/FormContainer';
 
 function InvolvementUnemployedFlow() {
-  const utilityClasses = useUtilityStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     unemploymentDescription,
@@ -33,29 +31,33 @@ function InvolvementUnemployedFlow() {
 
   return (
     <ContentContainer>
-      <div className={utilityClasses.flexColumn}>
-        Please describe why you are having trouble finding work. (2-3 sentences
-        suggested)
+      <FormContainer>
         <Textarea
           id="unemploymentDescription"
-          handleChange={onInputChange}
+          label="Please describe why you are having trouble finding work. (2-3
+        sentences suggested)"
           placeholder="I have been having trouble finding work because..."
-          multi={false}
-          isValid={unemploymentDescriptionValid}
           defaultValue={unemploymentDescription}
-        />
-      </div>
-
-      <div className={utilityClasses.flexColumn}>
-        Do you believe that having your record cleared would help you find a job
-        and be more involved in your community?
-        <RadioGroup
-          inputName="wouldClearanceHelp"
           handleChange={onInputChange}
-          labels={['Yes', 'No']}
-          activeRadio={wouldClearanceHelp}
+          rows={3}
         />
-      </div>
+
+        <RadioGroup
+          id="wouldClearanceHelp"
+          label="Do you believe that having your record cleared would help you find a job and be more involved in your community?"
+          choices={['Yes', 'No']}
+          value={wouldClearanceHelp}
+          disabled={!unemploymentDescriptionValid}
+          handleChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+            updateStepToForm({
+              unemployedState: {
+                ...formState.unemployedState,
+                wouldClearanceHelp: evt.currentTarget.value,
+              },
+            });
+          }}
+        />
+      </FormContainer>
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>

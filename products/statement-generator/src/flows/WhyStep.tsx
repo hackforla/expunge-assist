@@ -3,17 +3,13 @@ import React, { useContext } from 'react';
 import FormStateContext from 'contexts/FormStateContext';
 
 import HelpPopUp from 'components/HelpPopUp';
-import Paragraph from 'components/Paragraph';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
-
-import useUtilityStyles from 'styles/utilityStyles';
+import FormContainer from 'page-layout/FormContainer';
 
 function WhyStep() {
-  const utilityClasses = useUtilityStyles();
-
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { clearRecordWhy, clearRecordHow } = formState.whyState;
 
@@ -31,33 +27,27 @@ function WhyStep() {
 
   return (
     <ContentContainer>
-      <form
-        className={`${utilityClasses.flexColumn} ${utilityClasses.flexGrow}`}
-      >
-        <p>Please finish this sentence: I want to clear my record because...</p>
+      <FormContainer>
         <Textarea
+          label="Please finish this sentence: I want to clear my record because..."
           id="clearRecordWhy"
           handleChange={onInputChange}
           placeholder="I am..."
-          multi
-          isValid={clearRecordWhyValid}
           defaultValue={clearRecordWhy}
+          rows={3}
         />
 
-        <Paragraph disabled={!clearRecordWhyValid}>
-          How will clearing your record change your life or help you? (2
-          sentences maximum)
-        </Paragraph>
         <Textarea
           id="clearRecordHow"
+          label="How will clearing your record change your life or help you? (2
+          sentences maximum)"
           handleChange={onInputChange}
           placeholder="Clearing my record will..."
-          multi
-          isValid={clearRecordHowValid}
           disabled={!clearRecordWhyValid}
           defaultValue={clearRecordHow}
+          rows={3}
         />
-      </form>
+      </FormContainer>
 
       <HelpPopUp />
 

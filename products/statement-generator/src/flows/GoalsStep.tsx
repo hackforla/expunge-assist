@@ -25,34 +25,26 @@ function GoalsStep() {
 
   return (
     <ContentContainer>
-      <p>
-        Please describe what goals you have to improve your life even further,
-        like attending school, getting specialized training, etc. (2-3 sentences
-        suggested)
-      </p>
-
       <Textarea
         id="goals"
+        label="Please describe what goals you have to improve your life even further,
+        like attending school, getting specialized training, etc. (2-3 sentences
+        suggested)"
         handleChange={onInputChange}
         placeholder="I have plans of..."
-        multi
-        isValid={goalsValid}
         defaultValue={goals}
+        rows={3}
       />
-
-      <p>
-        How are you working towards acheiving these goals? What are the concrete
-        steps you are taking? (2-3 sentences suggested)
-      </p>
 
       <Textarea
         id="goalsHow"
+        label="How are you working towards acheiving these goals? What are the concrete
+        steps you are taking? (2-3 sentences suggested)"
         handleChange={onInputChange}
         placeholder="I have been..."
-        multi
-        isValid={goalsHowValid}
         disabled={!goalsValid}
         defaultValue={goalsHow}
+        rows={3}
       />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />

@@ -20,9 +20,11 @@ declare module '@material-ui/core/styles/createPalette' {
     tertiary?: PaletteColorOptions;
   }
   export interface SimplePaletteColorOptions {
+    lighter?: string;
     darker?: string;
   }
   export interface PaletteColor {
+    lighter?: string;
     darker?: string;
   }
   export interface CommonColors {

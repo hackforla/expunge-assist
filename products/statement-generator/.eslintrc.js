@@ -39,5 +39,7 @@ module.exports = {
     // currently forces double define for arrow functions https://github.com/yannickcr/eslint-plugin-react/issues/2353
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
+
+    'react/jsx-props-no-spreading': 'off',
   },
 };
