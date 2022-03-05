@@ -28,7 +28,7 @@ jobs:
           npm run build
 
       - name: Publish generated content to GitHub Pages
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
         with:
           dir: products/statement-generator/build
           branch: gh-pages
