@@ -28,8 +28,8 @@ jobs:
           npm run build
 
       - name: Publish generated content to GitHub Pages
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          dir: products/statement-generator/build
+          folder: products/statement-generator/build
           branch: gh-pages
           token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
