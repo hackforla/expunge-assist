@@ -11,12 +11,11 @@ import { AppUrl } from 'contexts/RoutingProps';
 import ContentContainer from 'page-layout/ContentContainer';
 import FlowNavigation from 'page-layout/FlowNavigation';
 
-import { getPreviewStatement, PREVIEW_MAP } from 'helpers/previewHelper';
-
-const PREVIEW_LIST = Object.keys(PREVIEW_MAP).map((previewKey) => ({
-  ...PREVIEW_MAP[previewKey],
-  stepUrl: previewKey as AppUrl,
-}));
+import {
+  getPreviewStatement,
+  PREVIEW_MAP,
+  PREVIEW_KEYS,
+} from 'helpers/previewHelper';
 
 const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
@@ -52,6 +51,27 @@ function FinalizeForm() {
     });
   }
 
+  const previewComponents = PREVIEW_KEYS.map((previewKey) => {
+    const statement = getPreviewStatement(formState, previewKey as AppUrl);
+    if (statement === '') {
+      return null;
+    }
+
+    const previewConfig = PREVIEW_MAP[previewKey];
+
+    return (
+      <TextPreview
+        key={`${previewKey}-preview-key`}
+        className={classes.previewItem}
+        onSaveClick={(newText: string) =>
+          updatePreviewItem(newText, previewConfig.stateKey)
+        }
+        content={statement}
+        nameOfStep={previewConfig.title}
+      />
+    );
+  });
+
   return (
     <ContentContainer>
       <div className={classes.purpleTitle}>
@@ -59,17 +79,7 @@ function FinalizeForm() {
         Editing Final Statement
       </div>
 
-      {PREVIEW_LIST.map((previewConfigItem) => (
-        <TextPreview
-          key={`${previewConfigItem.stepUrl}-preview-key`}
-          className={classes.previewItem}
-          onSaveClick={(newText: string) =>
-            updatePreviewItem(newText, previewConfigItem.stateKey)
-          }
-          content={getPreviewStatement(formState, previewConfigItem.stepUrl)}
-          nameOfStep={previewConfigItem.title}
-        />
-      ))}
+      {previewComponents}
 
       <FlowNavigation />
     </ContentContainer>
