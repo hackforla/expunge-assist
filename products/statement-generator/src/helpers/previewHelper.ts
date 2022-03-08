@@ -57,6 +57,8 @@ export const PREVIEW_MAP = {
   },
 };
 
+export const PREVIEW_KEYS = Object.keys(PREVIEW_MAP);
+
 export function getPreviewConfig(url: AppUrl): IPreviewMapItem {
   return PREVIEW_MAP[url as string];
 }
@@ -88,4 +90,23 @@ export function getPreviewStatement(
   }
 
   return PREVIEW_MAP[url as string]?.generator(formState);
+}
+
+export function generateFinal(formState: IStepState): string {
+  return PREVIEW_KEYS.reduce((accumulator, previewKey) => {
+    const statement = getPreviewStatement(formState, previewKey as AppUrl);
+
+    // blank statement
+    if (statement === '') {
+      return accumulator;
+    }
+
+    // first statement (should always be introduction)
+    if (accumulator === '') {
+      return statement;
+    }
+
+    // concat statement
+    return `${accumulator}\n\n${statement}`;
+  }, '');
 }

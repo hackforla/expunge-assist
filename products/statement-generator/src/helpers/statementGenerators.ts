@@ -32,6 +32,10 @@ export function generateInvolvementJob(formState: IStepState): string {
     involvementJobState: { companyName, jobTitle, jobDescription },
   } = formState;
 
+  if (!formState.involvement.isJobChecked) {
+    return '';
+  }
+
   if (companyName === '' || jobTitle === '' || jobDescription === '') {
     return '';
   }
@@ -47,6 +51,10 @@ export function generateInvolvementCommunity(formState: IStepState): string {
   const {
     communityServiceState: { organizationName, serviceDescription },
   } = formState;
+
+  if (!formState.involvement.isCommunityChecked) {
+    return '';
+  }
 
   if (organizationName === '' || serviceDescription === '') {
     return '';
@@ -64,6 +72,10 @@ export function generateInvolvementRecovery(formState: IStepState): string {
     recoveryState: { recoveryName, recoveryDescription },
   } = formState;
 
+  if (!formState.involvement.isRecoveryChecked) {
+    return '';
+  }
+
   if (recoveryName === '' || recoveryDescription === '') {
     return '';
   }
@@ -79,6 +91,10 @@ export function generateInvolvementSchool(formState: IStepState): string {
   const {
     schoolState: { schoolName, studyName, passionDescription },
   } = formState;
+
+  if (!formState.involvement.isSchoolChecked) {
+    return '';
+  }
 
   if (schoolName === '' || studyName === '' || passionDescription === '') {
     return '';
@@ -96,6 +112,10 @@ export function generateInvolvementParenting(formState: IStepState): string {
     parentingState: { childName, parentYears, parentDescription },
   } = formState;
 
+  if (!formState.involvement.isParentingChecked) {
+    return '';
+  }
+
   if (childName === '' || parentYears === '' || parentDescription === '') {
     return '';
   }
@@ -111,6 +131,10 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
   const {
     unemployedState: { unemploymentDescription, wouldClearanceHelp },
   } = formState;
+
+  if (!formState.involvement.isNoneChecked) {
+    return '';
+  }
 
   if (unemploymentDescription === '' || wouldClearanceHelp === '') {
     return '';
