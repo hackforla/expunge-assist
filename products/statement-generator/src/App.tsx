@@ -7,11 +7,11 @@ import { AppUrl } from 'contexts/RoutingProps';
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
-import PageContainer from 'page-layout/PageContainer';
-import AppFooter from 'page-layout/AppFooter';
-import AppHeader from 'page-layout/AppHeader';
-import AppSubheader from 'page-layout/AppSubheader';
-import Affirmation from 'page-layout/Affirmation';
+import PageContainer from 'components-layout/PageContainer';
+import AppFooter from 'components-layout/AppFooter';
+import AppHeader from 'components-layout/AppHeader';
+import AppSubheader from 'components-layout/AppSubheader';
+import Affirmation from 'components-layout/Affirmation';
 
 import BeforeYouBegin from 'pages-form/BeforeYouBegin';
 import IntroductionStep from 'pages-form/IntroductionStep';

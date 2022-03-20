@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Button from 'components/Button';
 import LinkAsText from 'components/LinkAsText';
 
-import ContentContainer from 'page-layout/ContentContainer';
+import ContentContainer from 'components-layout/ContentContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 

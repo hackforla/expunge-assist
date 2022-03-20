@@ -8,7 +8,7 @@ import { generateFinal } from 'helpers/previewHelper';
 import FormStateContext from 'contexts/FormStateContext';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
-import ContentContainer from 'page-layout/ContentContainer';
+import ContentContainer from 'components-layout/ContentContainer';
 
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';

@@ -8,9 +8,9 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Checkbox from 'components/Checkbox';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({

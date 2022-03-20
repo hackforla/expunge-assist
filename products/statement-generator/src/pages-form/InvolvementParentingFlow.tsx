@@ -5,9 +5,9 @@ import FormStateContext from 'contexts/FormStateContext';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 function InvolvementParentingFlow() {
   const { formState, updateStepToForm } = useContext(FormStateContext);

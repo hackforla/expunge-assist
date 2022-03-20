@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
 import TextPreview from 'components/TextPreview';
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
