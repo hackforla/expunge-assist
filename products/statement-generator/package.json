@@ -33,7 +33,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint",
+    "lint:fix": "prettier --write src/ && eslint --fix src/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
