@@ -13,6 +13,8 @@ import AppHeader from 'components-layout/AppHeader';
 import AppSubheader from 'components-layout/AppSubheader';
 import Affirmation from 'components-layout/Affirmation';
 
+import Welcome from 'pages-form/Welcome';
+import Advice from 'pages-form/Advice';
 import BeforeYouBegin from 'pages-form/BeforeYouBegin';
 import IntroductionStep from 'pages-form/IntroductionStep';
 import InvolvementCommunityServiceFlow from 'pages-form/InvolvementCommunityServiceFlow';
@@ -27,8 +29,6 @@ import FinalizePreview from 'pages-form/FinalizePreview';
 import GoalsStep from 'pages-form/GoalsStep';
 import WhyStep from 'pages-form/WhyStep';
 import Download from 'pages-form/Download';
-// import Welcome from 'pages-form/Welcome';
-import Advice from 'pages-form/Advice';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -80,7 +80,7 @@ const App: React.FC = () => {
                 <Switch>
                   <Route exact path="/" component={Landing} />
 
-                  {/*<Route exact path={AppUrl.Welcome} component={Welcome} />*/}
+                  <Route exact path={AppUrl.Welcome} component={Welcome} />
 
                   <Route
                     exact
