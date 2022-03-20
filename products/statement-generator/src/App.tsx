@@ -27,8 +27,8 @@ import FinalizePreview from 'pages-form/FinalizePreview';
 import GoalsStep from 'pages-form/GoalsStep';
 import WhyStep from 'pages-form/WhyStep';
 import Download from 'pages-form/Download';
-import StartPage from 'pages-form/StartPage';
-import Welcome from 'pages-form/Welcome';
+// import Welcome from 'pages-form/Welcome';
+import Advice from 'pages-form/Advice';
 
 import Landing from 'pages/Landing';
 import NotFound from 'pages/NotFound';
@@ -80,7 +80,7 @@ const App: React.FC = () => {
                 <Switch>
                   <Route exact path="/" component={Landing} />
 
-                  <Route exact path={AppUrl.Start} component={StartPage} />
+                  {/*<Route exact path={AppUrl.Welcome} component={Welcome} />*/}
 
                   <Route
                     exact
@@ -88,7 +88,7 @@ const App: React.FC = () => {
                     component={BeforeYouBegin}
                   />
 
-                  <Route exact path={AppUrl.Welcome} component={Welcome} />
+                  <Route exact path={AppUrl.Advice} component={Advice} />
 
                   <Route
                     exact

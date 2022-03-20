@@ -3,7 +3,7 @@ import React from 'react';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 
-export default function Welcome() {
+export default function Advice() {
   return (
     <ContentContainer>
       <h2>Some advice for your personal statement</h2>
