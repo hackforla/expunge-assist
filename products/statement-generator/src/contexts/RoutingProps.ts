@@ -3,7 +3,8 @@ export interface RoutingContextProps {
   goBackPage: () => void;
   currentStep: AppUrl;
   canShowAffirmation: boolean;
-  topLevelPageTheme: string;
+  appTheme: string;
+  setAppTheme: () => void;
 }
 
 /**

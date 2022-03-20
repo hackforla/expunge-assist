@@ -42,10 +42,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
 );
 
 const AppSubheader = () => {
-  const { topLevelPageTheme, currentStep } = useContext(RoutingContext);
+  const { appTheme, currentStep } = useContext(RoutingContext);
 
   const classes = useStyles({
-    pageTheme: topLevelPageTheme,
+    pageTheme: appTheme,
   });
 
   const isLandingPage = currentStep === AppUrl.Landing;
