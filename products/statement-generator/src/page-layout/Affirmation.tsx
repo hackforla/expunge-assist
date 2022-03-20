@@ -24,6 +24,9 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
     messageContainer: {
       marginTop: spacing(2),
     },
+    titleText: {
+      fontSize: '2rem',
+    },
   })
 );
 
@@ -45,7 +48,7 @@ const Affirmation = () => {
       }}
       fullWidth
       open={affirmationData.isActive}
-      // onClose={handleClose}
+      onClose={() => updateAffirmationData({ isActive: false })}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
@@ -58,7 +61,7 @@ const Affirmation = () => {
       </div>
 
       <div className={classes.messageContainer}>
-        <h2>{t(affirmationData.titleText)}</h2>
+        <h2 className={classes.titleText}>{t(affirmationData.titleText)}</h2>
         <p>{t(affirmationData.description)}</p>
       </div>
 
