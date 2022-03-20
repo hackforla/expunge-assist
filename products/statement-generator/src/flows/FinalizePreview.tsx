@@ -61,14 +61,16 @@ function FinalizeStep() {
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
 
-        { PREVIEW_KEYS.map((previewKey) => {
-          const statement = getPreviewStatement(formState, previewKey as AppUrl);
+        {PREVIEW_KEYS.map((previewKey) => {
+          const statement = getPreviewStatement(
+            formState,
+            previewKey as AppUrl
+          );
           if (statement === '') {
             return null;
           }
 
-          return <p>{statement}</p>
-
+          return <p>{statement}</p>;
         })}
       </div>
 

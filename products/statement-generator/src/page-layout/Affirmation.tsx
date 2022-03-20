@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import Dialog from '@material-ui/core/Dialog';
 
 import AffirmationImage from 'assets/affirmation-img.svg';
 
@@ -8,53 +9,25 @@ import Button from 'components/Button';
 
 import { AffirmationContext } from 'contexts/AffirmationContext';
 
-import ContentContainer from 'page-layout/ContentContainer';
-
 import useUtilityStyles from 'styles/utilityStyles';
 
 interface CustomStyleProps {
   isActive: boolean;
 }
 
-const useStyles = makeStyles<Theme, CustomStyleProps>(
-  ({ palette, globals, spacing }) =>
-    createStyles({
-      affirmationComponent: {
-        position: 'absolute',
-        background: palette.primary.lighter,
-        top: 60, // offset from header
-        bottom: 60, // offset from footer
-        left: '0',
-        width: '100%',
-        zIndex: 1,
-        paddingTop: spacing(2),
-        display: ({ isActive }) => (isActive ? 'block' : 'none'),
-      },
-      affirmationInner: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '100%',
-      },
-      cropIllustration: {
-        overflow: 'hidden',
-        maxWidth: '375px',
-        borderBottomLeftRadius: '10%',
-        borderBottomRightRadius: '10%',
-        width: '100%',
-      },
-      illustration: {
-        width: globals.contentWidth,
-        position: 'relative',
-        left: '-78px',
-        top: '-3px',
-      },
-      messageContainer: {
-        marginTop: '1rem',
-        display: 'flex',
-        flexDirection: 'column',
-      },
-    })
+const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
+  createStyles({
+    affirmationContainer: {
+      background: palette.primary.lighter,
+      padding: spacing(2),
+    },
+    messageContainer: {
+      marginTop: spacing(2),
+    },
+    titleText: {
+      fontSize: '2rem',
+    },
+  })
 );
 
 const Affirmation = () => {
@@ -69,33 +42,37 @@ const Affirmation = () => {
   const classes = useStyles({ isActive: affirmationData.isActive });
 
   return (
-    <div
-      className={`${utilityClasses.primaryContainer} ${classes.affirmationComponent}`}
+    <Dialog
+      classes={{
+        paper: classes.affirmationContainer,
+      }}
+      fullWidth
+      open={affirmationData.isActive}
+      onClose={() => updateAffirmationData({ isActive: false })}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
     >
-      <ContentContainer className={classes.affirmationInner}>
-        <div className={classes.cropIllustration}>
-          <img
-            src={AffirmationImage}
-            alt="affirmation illustration"
-            className={classes.illustration}
-          />
-        </div>
+      <div className={classes.cropIllustration}>
+        <img
+          src={AffirmationImage}
+          alt="affirmation illustration"
+          className={classes.illustration}
+        />
+      </div>
 
-        <div className={classes.messageContainer}>
-          <h1>{t(affirmationData.titleText)}</h1>
-          <p>{t(affirmationData.description)}</p>
-        </div>
+      <div className={classes.messageContainer}>
+        <h2 className={classes.titleText}>{t(affirmationData.titleText)}</h2>
+        <p>{t(affirmationData.description)}</p>
+      </div>
 
-        <div className={utilityClasses.buttonContainer}>
-          <Button
-            className={utilityClasses.buttonRight}
-            onClick={() => updateAffirmationData({ isActive: false })}
-            buttonText={t(affirmationData.buttonText)}
-            hasArrow
-          />
-        </div>
-      </ContentContainer>
-    </div>
+      <div className={utilityClasses.buttonContainer}>
+        <Button
+          className={utilityClasses.buttonRight}
+          onClick={() => updateAffirmationData({ isActive: false })}
+          buttonText={t(affirmationData.buttonText)}
+        />
+      </div>
+    </Dialog>
   );
 };
 

@@ -128,7 +128,7 @@ const FormHeader = () => {
 
   return (
     <div className={classes.root}>
-      <h2>{formTitle}</h2>
+      <h3>{formTitle}</h3>
 
       <ProgressBar percentage={percentageComplete} />
 
