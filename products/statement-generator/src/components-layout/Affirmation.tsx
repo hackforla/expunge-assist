@@ -52,13 +52,10 @@ const Affirmation = () => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <div className={classes.cropIllustration}>
-        <img
-          src={AffirmationImage}
-          alt="affirmation illustration"
-          className={classes.illustration}
-        />
-      </div>
+      <img
+        src={AffirmationImage}
+        alt="affirmation illustration"
+      />
 
       <div className={classes.messageContainer}>
         <h2 className={classes.titleText}>{t(affirmationData.titleText)}</h2>
