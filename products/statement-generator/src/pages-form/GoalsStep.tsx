@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 
 import FormStateContext from 'contexts/FormStateContext';
 
-import FlowNavigation from 'page-layout/FlowNavigation';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
-import ContentContainer from 'page-layout/ContentContainer';
+import ContentContainer from 'components-layout/ContentContainer';
 import Textarea from 'components/Textarea';
 
 function GoalsStep() {

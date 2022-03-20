@@ -8,8 +8,8 @@ import TextPreview from 'components/TextPreview';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
 import {
   getPreviewStatement,

@@ -7,8 +7,8 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
 import { getPreviewStatement, PREVIEW_KEYS } from 'helpers/previewHelper';
 

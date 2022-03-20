@@ -6,9 +6,9 @@ import Input from 'components/Input';
 import RadioGroup from 'components/RadioGroup';
 import HelpPopUp from 'components/HelpPopUp';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 export function IntroductionStep() {
   const { formState, updateStepToForm } = useContext(FormStateContext);
