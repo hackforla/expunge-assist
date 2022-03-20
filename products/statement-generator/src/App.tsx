@@ -39,7 +39,7 @@ import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
-import appTheme from 'styles/appTheme';
+import customMuiTheme from 'styles/customMuiTheme';
 
 import { useTranslation } from 'react-i18next';
 
@@ -51,7 +51,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={appTheme}>
+    <ThemeProvider theme={customMuiTheme}>
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
