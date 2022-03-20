@@ -27,16 +27,16 @@ import FinalizePreview from 'pages-form/FinalizePreview';
 import GoalsStep from 'pages-form/GoalsStep';
 import WhyStep from 'pages-form/WhyStep';
 import Download from 'pages-form/Download';
+import StartPage from 'pages-form/StartPage';
+import Welcome from 'pages-form/Welcome';
 
 import Landing from 'pages/Landing';
-import StartPage from 'pages/StartPage';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
 import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
-import Welcome from 'pages/Welcome';
 
 import 'styles/App.css';
 import appTheme from 'styles/appTheme';
