@@ -80,7 +80,7 @@ export function generateInvolvementRecovery(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have gotten really serious about my recovery. I am very involved with ${recoveryName}. ${recoveryDescription}`;
+  return `Since my conviction, I have gotten serious about my recovery. I am involved with ${recoveryName}. ${recoveryDescription}`;
 }
 
 /**

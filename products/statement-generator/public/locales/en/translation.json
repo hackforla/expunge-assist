@@ -59,9 +59,15 @@
     "jobDescription_input_placeholder": ""
   },
   "community_service_form": {
-    "organizationName_input_label": "What is the name of the community service organization that you are involved with? ",
+    "organizationName_input_label": "What is the name of the community service organization that you are involved with?",
     "organizationName_input_placeholder": "Name of organization",
     "serviceDescription_input_label": "What do you do at this community service organization? How has your volunteer work impacted your life for the better?\n(2-3 complete sentences)",
     "serviceDescription_input_placeholder": ""
+  },
+  "recovery_form": {
+    "recoveryName_input_label": "What is the name of the recovery program you are involved with?",
+    "recoveryName_input_placeholder": "Name of organization",
+    "recoveryDescription_input_label": "Why is this recovery program important to you?\n(2-3 complete sentences)",
+    "recoveryDescription_input_placeholder": ""
   }
 }
