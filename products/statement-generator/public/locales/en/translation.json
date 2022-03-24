@@ -49,5 +49,13 @@
     "parenting": "Parenting",
     "community_service": "Community service",
     "none_above": "None of the above"
+  },
+  "job_form": {
+    "companyName_input_label": "What is the name of the company you work for?",
+    "companyName_input_placeholder": "Name of company",
+    "jobTitle_input_label": "What is your current job title?",
+    "jobTitle_input_placeholder": "Job title",
+    "jobDescription_input_label": "What do you do at this job? How has your role at work impacted your life for the better?\n(2-3 complete sentences)",
+    "jobDescription_input_placeholder": ""
   }
 }

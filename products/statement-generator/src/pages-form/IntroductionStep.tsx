@@ -47,7 +47,6 @@ export function IntroductionStep() {
           type="number"
           defaultValue={age}
           placeholder="0"
-          disabled={!fullNameValid}
           handleChange={onInputChange}
         />
 
@@ -56,7 +55,6 @@ export function IntroductionStep() {
           label={t('introduction_form.isVeteran_label')}
           choices={[t('button.yes'), t('button.no')]}
           value={isVeteran}
-          disabled={!ageValid}
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
             updateStepToForm({
               introduction: {
