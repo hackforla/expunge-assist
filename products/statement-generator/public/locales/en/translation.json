@@ -7,7 +7,9 @@
     "begin": "Begin",
     "next": "Next",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "yes": "Yes",
+    "no": "No"
   },
   "welcomePage": {
     "titleText": "Welcome",
@@ -30,5 +32,12 @@
       "titleText": "Almost done",
       "description": "Just one more step. Next, you can preview your entire letter and make changes.\n\nWhen you are done, email or download a copy of your letter."
     }
+  },
+  "introduction_form": {
+    "fullName_input_label": "What is your full name?",
+    "fullName_input_placeholder": "Firstname Lastname",
+    "age_input_label": "How old are you?",
+    "age_input_append": "years old",
+    "isVeteran_label": "Are you a veteran of the United States of America? (y/n)"
   }
 }

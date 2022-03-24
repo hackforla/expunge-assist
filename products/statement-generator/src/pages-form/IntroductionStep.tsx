@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
@@ -11,6 +12,7 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
 export function IntroductionStep() {
+  const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { fullName, age, isVeteran } = formState.introduction;
 
@@ -31,28 +33,28 @@ export function IntroductionStep() {
       <FormContainer>
         <Input
           id="fullName"
-          label="What is your name?"
+          label={t('introduction_form.fullName_input_label')}
+          placeholder={t('introduction_form.fullName_input_placeholder')}
           defaultValue={fullName}
-          placeholder="First name Last name"
           handleChange={onInputChange}
           type="text"
         />
 
         <Input
           id="age"
-          label="How old are you?"
+          label={t('introduction_form.age_input_label')}
+          adornment={t('introduction_form.age_input_append')}
           type="number"
           defaultValue={age}
-          placeholder="25"
+          placeholder="0"
           disabled={!fullNameValid}
           handleChange={onInputChange}
-          adornment="years old"
         />
 
         <RadioGroup
           id="isVeteran"
-          label="Are you a veteran of the United States of America?"
-          choices={['Yes', 'No']}
+          label={t('introduction_form.isVeteran_label')}
+          choices={[t('button.yes'), t('button.no')]}
           value={isVeteran}
           disabled={!ageValid}
           handleChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
