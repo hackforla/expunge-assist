@@ -11,6 +11,7 @@
     "yes": "Yes",
     "no": "No"
   },
+
   "welcomePage": {
     "titleText": "Welcome",
     "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
@@ -39,5 +40,14 @@
     "age_input_label": "How old are you?",
     "age_input_append": "years old",
     "isVeteran_label": "Are you a veteran of the United States of America? (y/n)"
+  },
+  "involvement_form": {
+    "checkboxgroup_label": "What have you been involved with since your conviction?\n\nCheck all that apply:",
+    "job": "Job",
+    "recovery": "Recovery",
+    "education": "Education",
+    "parenting": "Parenting",
+    "community_service": "Community service",
+    "none_above": "None of the above"
   }
 }
