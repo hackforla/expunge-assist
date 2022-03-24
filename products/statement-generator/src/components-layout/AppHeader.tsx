@@ -47,10 +47,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
 );
 
 const AppHeader = () => {
-  const { topLevelPageTheme } = useContext(RoutingContext);
+  const { appTheme } = useContext(RoutingContext);
 
-  const logoIcon = topLevelPageTheme === 'dark' ? iconWhite : iconBlack;
-  const classes = useStyles({ pageTheme: topLevelPageTheme });
+  const logoIcon = appTheme === 'dark' ? iconWhite : iconBlack;
+  const classes = useStyles({ pageTheme: appTheme });
 
   return (
     <div className={`${classes.root} app-header`}>

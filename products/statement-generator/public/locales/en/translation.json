@@ -9,11 +9,11 @@
     "cancel": "Cancel",
     "save": "Save"
   },
+  "welcomePage": {
+    "titleText": "Welcome",
+    "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
+  },
   "affirmations": {
-    "step1": {
-      "titleText": "Welcome",
-      "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
-    },
     "step2": {
       "titleText": "Thank you",
       "description": "Now that you have introduced yourself, it’s time to start writing your letter."

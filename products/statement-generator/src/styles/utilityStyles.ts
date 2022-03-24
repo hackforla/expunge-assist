@@ -14,7 +14,7 @@ const useUtilityStyles = makeStyles<Theme>(
           switch (pageTheme) {
             case 'dark':
               return palette.primary.main;
-            case 'light':
+            case 'pink':
               return palette.primary.lighter;
             case 'transparent':
             default:
@@ -26,7 +26,7 @@ const useUtilityStyles = makeStyles<Theme>(
           switch (pageTheme) {
             case 'dark':
               return 'white';
-            case 'light':
+            case 'pink':
             case 'transparent':
             default:
               return palette.primary.darker;

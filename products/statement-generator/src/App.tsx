@@ -13,6 +13,8 @@ import AppHeader from 'components-layout/AppHeader';
 import AppSubheader from 'components-layout/AppSubheader';
 import Affirmation from 'components-layout/Affirmation';
 
+import Welcome from 'pages-form/Welcome';
+import Advice from 'pages-form/Advice';
 import BeforeYouBegin from 'pages-form/BeforeYouBegin';
 import IntroductionStep from 'pages-form/IntroductionStep';
 import InvolvementCommunityServiceFlow from 'pages-form/InvolvementCommunityServiceFlow';
@@ -29,17 +31,15 @@ import WhyStep from 'pages-form/WhyStep';
 import Download from 'pages-form/Download';
 
 import Landing from 'pages/Landing';
-import StartPage from 'pages/StartPage';
 import NotFound from 'pages/NotFound';
 import PreviewPage from 'pages/PreviewPage';
 import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
-import Welcome from 'pages/Welcome';
 
 import 'styles/App.css';
-import appTheme from 'styles/appTheme';
+import customMuiTheme from 'styles/customMuiTheme';
 
 import { useTranslation } from 'react-i18next';
 
@@ -51,7 +51,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={appTheme}>
+    <ThemeProvider theme={customMuiTheme}>
       <Router basename={process.env.PUBLIC_URL}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
@@ -80,7 +80,7 @@ const App: React.FC = () => {
                 <Switch>
                   <Route exact path="/" component={Landing} />
 
-                  <Route exact path={AppUrl.Start} component={StartPage} />
+                  <Route exact path={AppUrl.Welcome} component={Welcome} />
 
                   <Route
                     exact
@@ -88,7 +88,7 @@ const App: React.FC = () => {
                     component={BeforeYouBegin}
                   />
 
-                  <Route exact path={AppUrl.Welcome} component={Welcome} />
+                  <Route exact path={AppUrl.Advice} component={Advice} />
 
                   <Route
                     exact

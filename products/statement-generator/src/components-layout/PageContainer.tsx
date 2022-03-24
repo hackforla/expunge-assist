@@ -10,10 +10,10 @@ interface IPageContainer {
 }
 
 const PageContainer = ({ children, className = '' }: IPageContainer) => {
-  const { topLevelPageTheme } = useContext(RoutingContext);
+  const { appTheme } = useContext(RoutingContext);
 
   const utilityClasses = useUtilityStyles({
-    pageTheme: topLevelPageTheme,
+    pageTheme: appTheme,
   });
 
   return (
