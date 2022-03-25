@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
@@ -67,46 +68,39 @@ function convertStepToNum(url: AppUrl): number {
 }
 
 function convertStepToTitle(url: AppUrl): string {
+  const { t } = useTranslation();
   switch (url) {
     case AppUrl.Introduction:
     case AppUrl.IntroductionPreview:
-      return 'Introduce Yourself!';
+      return t('sections.introduce_yourself');
     case AppUrl.Involvement:
-      return 'Involvement';
+      return t('sections.involvement');
     case AppUrl.Job:
-      return 'Involvement: Job';
     case AppUrl.JobPreview:
-      return 'Involvement: Job';
+      return `${t('sections.involvement')}: ${t('sections.job')}`;
     case AppUrl.CommunityService:
-      return 'Involvement: Community Service';
     case AppUrl.CommunityServicePreview:
-      return 'Involvement: Community Service';
+      return `${t('sections.involvement')}: ${t('sections.community_service')}`;
     case AppUrl.Recovery:
-      return 'Involvement: Recovery';
     case AppUrl.RecoveryPreview:
-      return 'Involvement: Recovery';
+      return `${t('sections.involvement')}: ${t('sections.recovery')}`;
     case AppUrl.School:
-      return 'Involvement: School';
     case AppUrl.SchoolPreview:
-      return 'Involvement: School';
+      return `${t('sections.involvement')}: ${t('sections.education')}`;
     case AppUrl.Parenting:
-      return 'Involvement: Parenting';
     case AppUrl.ParentingPreview:
-      return 'Involvement: Parenting';
+      return `${t('sections.involvement')}: ${t('sections.parenting')}`;
     case AppUrl.Unemployed:
-      return 'Involvement: Unemployment';
     case AppUrl.UnemployedPreview:
-      return 'Involvement: Unemployment';
+      return `${t('sections.involvement')}: ${t('sections.unemployed')}`;
     case AppUrl.Goals:
-      return 'Goals';
     case AppUrl.GoalsPreview:
-      return 'Goals';
+      return t('sections.goals');
     case AppUrl.Why:
-      return 'Why';
     case AppUrl.WhyPreview:
-      return 'Why';
+      return t('sections.why');
     case AppUrl.Finalize:
-      return 'My Personal Statement';
+      return t('sections.finalize');
     default:
       return '';
   }

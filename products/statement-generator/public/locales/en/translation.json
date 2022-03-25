@@ -35,16 +35,18 @@
     }
   },
 
-  "formHeader": {
-    "introduce_yourself": "Introduce Yourself",
-    "involvement": "Involvement"
-  },
   "sections": {
+    "introduce_yourself": "Introduce Yourself",
+    "involvement": "Involvement",
     "job": "Job",
+    "unemployed": "Unemployed",
     "recovery": "Recovery",
     "education": "Education",
     "parenting": "Parenting",
-    "community_service": "Community service"
+    "community_service": "Community Service",
+    "goals": "Future Goals",
+    "why": "Why",
+    "finalize": "My declaration letter"
   },
 
   "introduction_form": {
