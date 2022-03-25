@@ -5,7 +5,6 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import RadioGroup from 'components/RadioGroup';
-import HelpPopUp from 'components/HelpPopUp';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
@@ -65,8 +64,6 @@ export function IntroductionStep() {
           }}
         />
       </FormContainer>
-
-      <HelpPopUp />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>

@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
-import HelpPopUp from 'components/HelpPopUp';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'components-layout/ContentContainer';
@@ -49,8 +48,6 @@ function WhyStep() {
           rows={3}
         />
       </FormContainer>
-
-      <HelpPopUp />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
