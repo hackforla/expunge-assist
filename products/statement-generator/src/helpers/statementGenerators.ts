@@ -120,7 +120,7 @@ export function generateInvolvementParenting(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have really prioritized being a great parent. My child, ${childName}, is ${parentYears} years old and I love them so much. ${parentDescription}`;
+  return `Since my conviction, I have prioritized my parenting. My child, ${childName}, is ${parentYears} years old. ${parentDescription}`;
 }
 
 /**

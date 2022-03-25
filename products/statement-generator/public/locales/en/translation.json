@@ -77,5 +77,13 @@
     "studyName_input_placeholder": "Name of subject/study area, or program",
     "passionDescription_input_label": "Why have you chosen to study this? Why does it matter to you?\n(2-3 complete sentences)",
     "passionDescription_input_placeholder": ""
+  },
+  "parenting_form": {
+    "childName_input_label": "What is the name of your child?",
+    "childName_input_placeholder": "Name of child",
+    "parentYears_number_label": "How old is your child?",
+    "parentYears_number_append": "year(s)",
+    "parentDescription_input_label": "What is important about parenting for you now? How has parenting changed your perspective?\n(2-3 complete sentences)",
+    "parentDescription_input_placeholder": ""
   }
 }
