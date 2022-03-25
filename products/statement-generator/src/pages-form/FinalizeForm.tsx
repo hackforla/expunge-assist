@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
@@ -10,6 +11,8 @@ import { AppUrl } from 'contexts/RoutingProps';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
+
+import { getSectionTitle } from 'helpers/i18nHelper';
 
 import {
   getPreviewStatement,
@@ -39,6 +42,7 @@ const useStyles = makeStyles(({ palette, spacing }) =>
 );
 
 function FinalizeForm() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
 
@@ -67,7 +71,7 @@ function FinalizeForm() {
           updatePreviewItem(newText, previewConfig.stateKey)
         }
         content={statement}
-        nameOfStep={previewConfig.title}
+        nameOfStep={`${t('sections.previewing')} ${getSectionTitle(previewKey as AppUrl)}`}
       />
     );
   });

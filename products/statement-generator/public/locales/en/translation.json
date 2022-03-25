@@ -36,6 +36,7 @@
   },
 
   "sections": {
+    "previewing": "Previewing",
     "introduce_yourself": "Introduce Yourself",
     "involvement": "Involvement",
     "job": "Job",

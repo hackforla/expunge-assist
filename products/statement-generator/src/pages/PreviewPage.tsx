@@ -7,6 +7,7 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
 import { getPreviewConfig, getPreviewStatement } from 'helpers/previewHelper';
+import { getSectionTitle } from 'helpers/i18nHelper';
 
 function PreviewPage() {
   const { formState, updateStepToForm } = useContext(FormStateContext);
@@ -31,7 +32,7 @@ function PreviewPage() {
         <TextPreview
           onSaveClick={updateStatement}
           content={getPreviewStatement(formState, currentStep)}
-          nameOfStep={previewConfigItem.title}
+          nameOfStep={getSectionTitle(currentStep)}
         />
       )}
 
