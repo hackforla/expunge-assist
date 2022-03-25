@@ -34,6 +34,19 @@
       "description": "Just one more step. Next, you can preview your entire letter and make changes.\n\nWhen you are done, email or download a copy of your letter."
     }
   },
+
+  "formHeader": {
+    "introduce_yourself": "Introduce Yourself",
+    "involvement": "Involvement"
+  },
+  "sections": {
+    "job": "Job",
+    "recovery": "Recovery",
+    "education": "Education",
+    "parenting": "Parenting",
+    "community_service": "Community service"
+  },
+
   "introduction_form": {
     "fullName_input_label": "What is your full name?",
     "fullName_input_placeholder": "Firstname Lastname",
@@ -43,11 +56,6 @@
   },
   "involvement_form": {
     "checkboxgroup_label": "What have you been involved with since your conviction?\n\nCheck all that apply:",
-    "job": "Job",
-    "recovery": "Recovery",
-    "education": "Education",
-    "parenting": "Parenting",
-    "community_service": "Community service",
     "none_above": "None of the above"
   },
   "job_form": {

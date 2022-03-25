@@ -89,35 +89,35 @@ function InvolvementInitialFlow() {
               id="isJobChecked"
               checked={isJobChecked}
               onChange={onCheckboxChange}
-              label={t('involvement_form.job')}
+              label={t('sections.job')}
             />
 
             <Checkbox
               id="isRecoveryChecked"
               checked={isRecoveryChecked}
               onChange={onCheckboxChange}
-              label={t('involvement_form.recovery')}
+              label={t('sections.recovery')}
             />
 
             <Checkbox
               id="isSchoolChecked"
               checked={isSchoolChecked}
               onChange={onCheckboxChange}
-              label={t('involvement_form.education')}
+              label={t('sections.education')}
             />
 
             <Checkbox
               id="isParentingChecked"
               checked={isParentingChecked}
               onChange={onCheckboxChange}
-              label={t('involvement_form.parenting')}
+              label={t('sections.parenting')}
             />
 
             <Checkbox
               id="isCommunityChecked"
               checked={isCommunityChecked}
               onChange={onCheckboxChange}
-              label={t('involvement_form.community_service')}
+              label={t('sections.community_service')}
             />
 
             <Checkbox
