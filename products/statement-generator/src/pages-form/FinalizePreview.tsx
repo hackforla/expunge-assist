@@ -66,11 +66,12 @@ function FinalizeStep() {
             formState,
             previewKey as AppUrl
           );
+
           if (statement === '') {
             return null;
           }
 
-          return <p>{statement}</p>;
+          return <p key={`${previewKey}-final-paragraph-key`}>{statement}</p>;
         })}
       </div>
 

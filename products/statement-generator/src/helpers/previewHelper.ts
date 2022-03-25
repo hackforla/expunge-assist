@@ -17,6 +17,10 @@ export const PREVIEW_MAP = {
     generator: statementGenerators.generateInvolvementJob,
     stateKey: 'job',
   },
+  [AppUrl.UnemployedPreview as string]: {
+    generator: statementGenerators.generateInvolvementUnemployed,
+    stateKey: 'unemployed',
+  },
   [AppUrl.CommunityServicePreview as string]: {
     generator: statementGenerators.generateInvolvementCommunity,
     stateKey: 'service',
@@ -32,10 +36,6 @@ export const PREVIEW_MAP = {
   [AppUrl.ParentingPreview as string]: {
     generator: statementGenerators.generateInvolvementParenting,
     stateKey: 'parenting',
-  },
-  [AppUrl.UnemployedPreview as string]: {
-    generator: statementGenerators.generateInvolvementUnemployed,
-    stateKey: 'unemployed',
   },
   [AppUrl.GoalsPreview as string]: {
     generator: statementGenerators.generateFutureGoals,
