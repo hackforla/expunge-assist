@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
@@ -10,6 +11,7 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
 function InvolvementParentingFlow() {
+  const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     childName,
@@ -36,30 +38,28 @@ function InvolvementParentingFlow() {
       <FormContainer>
         <Input
           id="childName"
-          label="What is the name of your child?"
+          label={t('parenting_form.childName_input_label')}
+          placeholder={t('parenting_form.childName_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Name of Child"
           defaultValue={childName}
           type="text"
         />
 
         <Input
           id="parentYears"
-          label="How long have you been a parent?"
+          label={t('parenting_form.parentYears_number_label')}
+          adornment={t('parenting_form.parentYears_number_append')}
           type="number"
           placeholder="1"
           handleChange={onInputChange}
-          disabled={!childNameValid}
           defaultValue={parentYears}
-          adornment="years"
         />
 
         <Textarea
           id="parentDescription"
-          label="Why is being a good parent important to you? (2-3 sentences suggested)"
+          label={t('parenting_form.parentDescription_input_label')}
+          placeholder={t('parenting_form.parentDescription_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Being a good parent is important to me because..."
-          disabled={!parentYearsValid}
           defaultValue={parentDescription}
           rows={3}
         />

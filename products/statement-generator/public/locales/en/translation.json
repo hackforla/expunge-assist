@@ -7,8 +7,11 @@
     "begin": "Begin",
     "next": "Next",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "yes": "Yes",
+    "no": "No"
   },
+
   "welcomePage": {
     "titleText": "Welcome",
     "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
@@ -30,5 +33,84 @@
       "titleText": "Almost done",
       "description": "Just one more step. Next, you can preview your entire letter and make changes.\n\nWhen you are done, email or download a copy of your letter."
     }
+  },
+
+  "sections": {
+    "previewing": "Previewing",
+    "introduce_yourself": "Introduce Yourself",
+    "involvement": "Involvement",
+    "job": "Job",
+    "unemployed": "Unemployed",
+    "recovery": "Recovery",
+    "education": "Education",
+    "parenting": "Parenting",
+    "community_service": "Community Service",
+    "goals": "Future Goals",
+    "why": "Why",
+    "finalize": "My declaration letter"
+  },
+
+  "introduction_form": {
+    "fullName_input_label": "What is your full name?",
+    "fullName_input_placeholder": "Firstname Lastname",
+    "age_input_label": "How old are you?",
+    "age_input_append": "years old",
+    "isVeteran_label": "Are you a veteran of the United States of America? (y/n)"
+  },
+  "involvement_form": {
+    "checkboxgroup_label": "What have you been involved with since your conviction?\n\nCheck all that apply:",
+    "none_above": "None of the above"
+  },
+  "job_form": {
+    "companyName_input_label": "What is the name of the company you work for?",
+    "companyName_input_placeholder": "Name of company",
+    "jobTitle_input_label": "What is your current job title?",
+    "jobTitle_input_placeholder": "Job title",
+    "jobDescription_input_label": "What do you do at this job? How has your role at work impacted your life for the better?\n(2-3 complete sentences)",
+    "jobDescription_input_placeholder": ""
+  },
+  "unemployed_form": {
+    "unemploymentDescription_input_label": "Describe how and why you are having trouble finding work.\n(2-3 complete sentences)",
+    "unemploymentDescription_input_placeholder": ""
+  },
+  "community_service_form": {
+    "organizationName_input_label": "What is the name of the community service organization that you are involved with?",
+    "organizationName_input_placeholder": "Name of organization",
+    "serviceDescription_input_label": "What do you do at this community service organization? How has your volunteer work impacted your life for the better?\n(2-3 complete sentences)",
+    "serviceDescription_input_placeholder": ""
+  },
+  "recovery_form": {
+    "recoveryName_input_label": "What is the name of the recovery program you are involved with?",
+    "recoveryName_input_placeholder": "Name of organization",
+    "recoveryDescription_input_label": "Why is this recovery program important to you?\n(2-3 complete sentences)",
+    "recoveryDescription_input_placeholder": ""
+  },
+  "education_form": {
+    "schoolName_input_label": "What is the name of the school or educational program you are attending?\nThis can include a four year university, community college, trade school, GED preparation, etc.",
+    "schoolName_input_placeholder": "Name of school",
+    "studyName_input_label": "What are you currently studying?",
+    "studyName_input_placeholder": "Name of subject/study area, or program",
+    "passionDescription_input_label": "Why have you chosen to study this? Why does it matter to you?\n(2-3 complete sentences)",
+    "passionDescription_input_placeholder": ""
+  },
+  "parenting_form": {
+    "childName_input_label": "What is the name of your child?",
+    "childName_input_placeholder": "Name of child",
+    "parentYears_number_label": "How old is your child?",
+    "parentYears_number_append": "year(s)",
+    "parentDescription_input_label": "What is important about parenting for you now? How has parenting changed your perspective?\n(2-3 complete sentences)",
+    "parentDescription_input_placeholder": ""
+  },
+  "goals_form": {
+    "goals_input_label": "Describe what goals you have to improve your life even further, like getting specialized training, starting therapy or counseling, etc.\n(2-3 complete sentences)",
+    "goals_input_placeholder": "",
+    "goalsHow_input_label": "How are you working towards achieving these goals? What concrete steps are you taking?\n(2-3 complete sentences)",
+    "goalsHow_input_placeholder": ""
+  },
+  "why_form": {
+    "clearRecordWhy_input_label": "Why do you want to clear your record?\nStart with, for example, \"I want to clear my record because…\"",
+    "clearRecordWhy_input_placeholder": "",
+    "clearRecordHow_input_label": "How is your criminal record barring you from achieving your goals?\n(2-3 complete sentences)",
+    "clearRecordHow_input_placeholder": ""
   }
 }

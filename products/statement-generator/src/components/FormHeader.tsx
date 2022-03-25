@@ -6,6 +6,8 @@ import { AppUrl } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
+import { getSectionTitle } from 'helpers/i18nHelper';
+
 const useStyles = makeStyles<Theme>(
   ({ palette, breakpoints, spacing, typography }) =>
     createStyles({
@@ -66,52 +68,6 @@ function convertStepToNum(url: AppUrl): number {
   }
 }
 
-function convertStepToTitle(url: AppUrl): string {
-  switch (url) {
-    case AppUrl.Introduction:
-    case AppUrl.IntroductionPreview:
-      return 'Introduce Yourself!';
-    case AppUrl.Involvement:
-      return 'Involvement';
-    case AppUrl.Job:
-      return 'Involvement: Job';
-    case AppUrl.JobPreview:
-      return 'Involvement: Job';
-    case AppUrl.CommunityService:
-      return 'Involvement: Community Service';
-    case AppUrl.CommunityServicePreview:
-      return 'Involvement: Community Service';
-    case AppUrl.Recovery:
-      return 'Involvement: Recovery';
-    case AppUrl.RecoveryPreview:
-      return 'Involvement: Recovery';
-    case AppUrl.School:
-      return 'Involvement: School';
-    case AppUrl.SchoolPreview:
-      return 'Involvement: School';
-    case AppUrl.Parenting:
-      return 'Involvement: Parenting';
-    case AppUrl.ParentingPreview:
-      return 'Involvement: Parenting';
-    case AppUrl.Unemployed:
-      return 'Involvement: Unemployment';
-    case AppUrl.UnemployedPreview:
-      return 'Involvement: Unemployment';
-    case AppUrl.Goals:
-      return 'Goals';
-    case AppUrl.GoalsPreview:
-      return 'Goals';
-    case AppUrl.Why:
-      return 'Why';
-    case AppUrl.WhyPreview:
-      return 'Why';
-    case AppUrl.Finalize:
-      return 'My Personal Statement';
-    default:
-      return '';
-  }
-}
-
 const FormHeader = () => {
   const classes = useStyles();
   const { currentStep } = React.useContext(RoutingContext);
@@ -120,11 +76,11 @@ const FormHeader = () => {
   const stepNum = convertStepToNum(currentStep);
   const percentageComplete = (stepNum / maxNum) * 100;
 
+  const formTitle = getSectionTitle(currentStep);
+
   if (stepNum === 0) {
     return null;
   }
-
-  const formTitle = convertStepToTitle(currentStep);
 
   return (
     <div className={classes.root}>

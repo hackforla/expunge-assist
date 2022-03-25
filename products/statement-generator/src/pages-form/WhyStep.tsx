@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
-import HelpPopUp from 'components/HelpPopUp';
 import Textarea from 'components/Textarea';
 
 import ContentContainer from 'components-layout/ContentContainer';
@@ -10,6 +10,7 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
 function WhyStep() {
+  const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { clearRecordWhy, clearRecordHow } = formState.whyState;
 
@@ -29,27 +30,24 @@ function WhyStep() {
     <ContentContainer>
       <FormContainer>
         <Textarea
-          label="Please finish this sentence: I want to clear my record because..."
           id="clearRecordWhy"
+          label={t('why_form.clearRecordWhy_input_label')}
+          placeholder={t('why_form.clearRecordWhy_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="I am..."
           defaultValue={clearRecordWhy}
           rows={3}
         />
 
         <Textarea
           id="clearRecordHow"
-          label="How will clearing your record change your life or help you? (2
-          sentences maximum)"
+          label={t('why_form.clearRecordHow_input_label')}
+          placeholder={t('why_form.clearRecordHow_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Clearing my record will..."
           disabled={!clearRecordWhyValid}
           defaultValue={clearRecordHow}
           rows={3}
         />
       </FormContainer>
-
-      <HelpPopUp />
 
       <FlowNavigation isNextDisabled={isNextDisabled} />
     </ContentContainer>
