@@ -89,5 +89,11 @@
     "parentYears_number_append": "year(s)",
     "parentDescription_input_label": "What is important about parenting for you now? How has parenting changed your perspective?\n(2-3 complete sentences)",
     "parentDescription_input_placeholder": ""
+  },
+  "goals_form": {
+    "goals_input_label": "Describe what goals you have to improve your life even further, like getting specialized training, starting therapy or counseling, etc.\n(2-3 complete sentences)",
+    "goals_input_placeholder": "",
+    "goalsHow_input_label": "How are you working towards achieving these goals? What concrete steps are you taking?\n(2-3 complete sentences)",
+    "goalsHow_input_placeholder": ""
   }
 }
