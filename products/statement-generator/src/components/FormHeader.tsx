@@ -76,11 +76,11 @@ const FormHeader = () => {
   const stepNum = convertStepToNum(currentStep);
   const percentageComplete = (stepNum / maxNum) * 100;
 
+  const formTitle = getSectionTitle(currentStep);
+
   if (stepNum === 0) {
     return null;
   }
-
-  const formTitle = getSectionTitle(currentStep);
 
   return (
     <div className={classes.root}>
