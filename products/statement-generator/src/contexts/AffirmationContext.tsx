@@ -47,9 +47,9 @@ const AffirmationContextProvider = ({ children }: AffirmationProviderProps) => {
   const { currentStep, canShowAffirmation } = useContext(RoutingContext);
   const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
     isActive: false,
-    titleText: 'title',
-    buttonText: 'Next',
-    description: 'description',
+    titleText: 'affirmations.step2.titleText',
+    buttonText: 'button.next',
+    description: 'affirmations.step2.description',
   });
 
   const updateAffirmationData = (newState: object) => {
