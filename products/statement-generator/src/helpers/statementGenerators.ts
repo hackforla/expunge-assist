@@ -100,7 +100,7 @@ export function generateInvolvementSchool(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have begun attending school at ${schoolName}, where I have been studying ${studyName}. ${passionDescription}`;
+  return `Since my conviction, I have begun attending ${schoolName}, where I have been studying ${studyName}. ${passionDescription}`;
 }
 
 /**

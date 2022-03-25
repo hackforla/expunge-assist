@@ -69,5 +69,13 @@
     "recoveryName_input_placeholder": "Name of organization",
     "recoveryDescription_input_label": "Why is this recovery program important to you?\n(2-3 complete sentences)",
     "recoveryDescription_input_placeholder": ""
+  },
+  "education_form": {
+    "schoolName_input_label": "What is the name of the school or educational program you are attending?\nThis can include a four year university, community college, trade school, GED preparation, etc.",
+    "schoolName_input_placeholder": "Name of school",
+    "studyName_input_label": "What are you currently studying?",
+    "studyName_input_placeholder": "Name of subject/study area, or program",
+    "passionDescription_input_label": "Why have you chosen to study this? Why does it matter to you?\n(2-3 complete sentences)",
+    "passionDescription_input_placeholder": ""
   }
 }
