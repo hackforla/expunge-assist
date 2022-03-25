@@ -129,19 +129,14 @@ export function generateInvolvementParenting(formState: IStepState): string {
  */
 export function generateInvolvementUnemployed(formState: IStepState): string {
   const {
-    unemployedState: { unemploymentDescription, wouldClearanceHelp },
+    unemployedState: { unemploymentDescription },
   } = formState;
 
-  if (!formState.involvement.isNoneChecked) {
+  if (unemploymentDescription === '') {
     return '';
   }
 
-  if (unemploymentDescription === '' || wouldClearanceHelp === '') {
-    return '';
-  }
-
-  const wouldHelpText = wouldClearanceHelp === 'Yes' ? 'would' : 'would not';
-  return `Since my conviction, ${unemploymentDescription} I believe that having my record cleared ${wouldHelpText} help me find a job and be more involved in my community.`;
+  return `Since my conviction, ${unemploymentDescription} I believe that having my record cleared would help me find a job and be more involved in my community.`;
 }
 
 /**

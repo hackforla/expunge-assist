@@ -56,7 +56,6 @@ export const defaultStepState = {
   },
   unemployedState: {
     unemploymentDescription: '',
-    wouldClearanceHelp: '',
   },
   goalsState: {
     goals: '',
@@ -125,7 +124,6 @@ export interface IParentingState {
 // step 2f
 export interface IUnemployedState {
   unemploymentDescription: string;
-  wouldClearanceHelp: string;
 }
 
 export interface IGoalsState {
@@ -193,7 +191,6 @@ export const sampleStepState = {
   unemployedState: {
     unemploymentDescription:
       'I have not been able to find any jobs that are not about licking or eating things.',
-    wouldClearanceHelp: 'Yes',
   },
   goalsState: {
     goals: 'I want to get a new job so I do not have to eat any more poison.',

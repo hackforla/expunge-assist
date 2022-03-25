@@ -58,6 +58,10 @@
     "jobDescription_input_label": "What do you do at this job? How has your role at work impacted your life for the better?\n(2-3 complete sentences)",
     "jobDescription_input_placeholder": ""
   },
+  "unemployed_form": {
+    "unemploymentDescription_input_label": "Describe how and why you are having trouble finding work.\n(2-3 complete sentences)",
+    "unemploymentDescription_input_placeholder": ""
+  },
   "community_service_form": {
     "organizationName_input_label": "What is the name of the community service organization that you are involved with?",
     "organizationName_input_placeholder": "Name of organization",
