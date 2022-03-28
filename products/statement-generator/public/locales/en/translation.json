@@ -16,6 +16,14 @@
     "titleText": "Welcome",
     "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
   },
+  "advicePage": {
+    "header": "Advice for a successful declaration letter",
+    "point1": "1. Avoid using informal language, such as abbreviations or slang.\n\t• Do not use profanity.\n\t• Don’t Use - dude, gig, pov\n\t• Use - Mr./Mrs. (last name), job, point of view",
+    "point2": "2. Write in complete sentences and remember to use punctuation at the end.\n\t• Don’t Use - expunge my record because I need a new job\n\t• Use - I want to expunge my record because I want to apply for jobs.",
+    "point3": "3. Use first person when answering questions. You are telling your story from your point of view.",
+    "point4": "4. Keep your responses between 3-5 sentences for each section."
+  },
+
   "affirmations": {
     "step2": {
       "titleText": "Thank you",

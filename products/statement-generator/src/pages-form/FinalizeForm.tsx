@@ -71,7 +71,9 @@ function FinalizeForm() {
           updatePreviewItem(newText, previewConfig.stateKey)
         }
         content={statement}
-        nameOfStep={`${t('sections.previewing')} ${getSectionTitle(previewKey as AppUrl)}`}
+        nameOfStep={`${t('sections.previewing')} ${getSectionTitle(
+          previewKey as AppUrl
+        )}`}
       />
     );
   });
