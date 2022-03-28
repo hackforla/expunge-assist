@@ -1,30 +1,19 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 
 export default function Advice() {
+  const { t } = useTranslation();
+
   return (
     <ContentContainer>
-      <h2>Some advice for your personal statement</h2>
-
-      <p>
-        1. Remember that you are writing for a judge, so refrain from using
-        informal language such as abbreviations or slang.
-      </p>
-
-      <p>2. Write in complete sentences when given the option.</p>
-
-      <p>
-        3. Use the first person when answering questions. This means telling the
-        story from your point of view.
-      </p>
-
-      <p>
-        4. Please try to limit your responses. We recommend each paragraph being
-        3-5 sentences.
-      </p>
-
+      <h2>{t('advicePage.header')}</h2>
+      <p>{t('advicePage.point1')}</p>
+      <p>{t('advicePage.point2')}</p>
+      <p>{t('advicePage.point3')}</p>
+      <p>{t('advicePage.point4')}</p>
       <FlowNavigation />
     </ContentContainer>
   );
