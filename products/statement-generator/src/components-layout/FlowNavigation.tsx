@@ -39,9 +39,7 @@ export default function FlowNavigation({
   const classes = useStyles();
 
   const backBtnTheme =
-    appTheme === 'dark'
-      ? 'transparent-on-dark'
-      : 'transparent-on-light';
+    appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
   const nextBtnTheme = appTheme === 'dark' ? 'dark' : 'landing';
 
   function handleBack() {
