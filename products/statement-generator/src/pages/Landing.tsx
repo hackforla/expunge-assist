@@ -19,15 +19,6 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       display: 'flex',
       flexDirection: 'column',
     },
-    waveBg: {
-      // backgroundColor: palette.primary.lighter,
-      height: 100,
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-    },
-
     section: {
       width: 400,
 
@@ -43,6 +34,11 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       },
     },
 
+    primaryContainer: {
+      backgroundColor: palette.primary.lighter,
+      zIndex: 1,
+      position: 'relative',
+    },
     primarySection: {
       display: 'flex',
       flexDirection: 'row',
@@ -55,6 +51,12 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     primaryImage: {
       width: '40%',
       marginLeft: 'auto',
+    },
+
+    waveBg: {
+      height: 100,
+      zIndex: -2,
+      marginTop: -80,
     },
   })
 );
@@ -105,39 +107,48 @@ function LandingPage() {
   const utilityClasses = useUtilityStyles();
 
   return (
-    <div className={classes.widePage}>
-      <section className={`${classes.section} ${classes.primarySection}`}>
-        <div>
-          <h2>{t('landingPage.sectionTitle1')}</h2>
-          <p>{t('landingPage.sectionParagraph1')}</p>
+    <div>
+      <div className={classes.primaryContainer}>
+        <div className={classes.widePage}>
+          <section className={`${classes.section} ${classes.primarySection}`}>
+            <div>
+              <h2>{t('landingPage.sectionTitle1')}</h2>
+              <p>{t('landingPage.sectionParagraph1')}</p>
 
-          <div className={utilityClasses.buttonContainer}>
-            <LinkButtonComponent
-              to={AppUrl.Welcome}
-              buttonText={t('button.startNow')}
-            />
-          </div>
-        </div>
+              <div className={utilityClasses.buttonContainer}>
+                <LinkButtonComponent
+                  to={AppUrl.Welcome}
+                  buttonText={t('button.startNow')}
+                />
+              </div>
+            </div>
 
-        <div className={classes.primaryImage}>
-          <img
-            src="https://via.placeholder.com/150"
-            alt="placeholder graphic"
-          />
+            <div className={classes.primaryImage}>
+              <img
+                src="https://via.placeholder.com/150"
+                alt="placeholder graphic"
+              />
+            </div>
+          </section>
         </div>
-      </section>
-      <LandingSection
-        header={t('landingPage.sectionTitle2')}
-        paragraph={t('landingPage.sectionParagraph2')}
-      />
-      <LandingSection
-        header={t('landingPage.sectionTitle3')}
-        paragraph={t('landingPage.sectionParagraph3')}
-      />
-      <LandingSection
-        header={t('landingPage.sectionTitle4')}
-        paragraph={t('landingPage.sectionParagraph4')}
-      />
+      </div>
+
+      <WaveBackground />
+
+      <div className={classes.widePage}>
+        <LandingSection
+          header={t('landingPage.sectionTitle2')}
+          paragraph={t('landingPage.sectionParagraph2')}
+        />
+        <LandingSection
+          header={t('landingPage.sectionTitle3')}
+          paragraph={t('landingPage.sectionParagraph3')}
+        />
+        <LandingSection
+          header={t('landingPage.sectionTitle4')}
+          paragraph={t('landingPage.sectionParagraph4')}
+        />
+      </div>
     </div>
   );
 }
