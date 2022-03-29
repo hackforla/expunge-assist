@@ -6,6 +6,7 @@ import { createMuiTheme } from '@material-ui/core';
 const customMuiTheme = createMuiTheme({
   globals: {
     contentWidth: 600,
+    wideWidth: 960,
   },
   palette: {
     primary: {

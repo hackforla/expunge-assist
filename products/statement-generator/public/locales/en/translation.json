@@ -1,5 +1,6 @@
 {
   "button": {
+    "startNow": "Start Now",
     "begin": "Begin",
     "next": "Next",
     "cancel": "Cancel",
