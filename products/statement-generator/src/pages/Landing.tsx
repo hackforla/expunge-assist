@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       },
 
       '&$section ~ $section': {
-        marginTop: spacing(4),
+        marginTop: spacing(6),
       },
       '&$section:nth-child(even)': {
         alignSelf: 'flex-end',
