@@ -12,15 +12,31 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
   createStyles({
     widePage: {
       maxWidth: globals.wideWidth,
-      padding: spacing(3),
+      padding: spacing(6, 3),
       width: '100%',
       marginLeft: 'auto',
       marginRight: 'auto',
       display: 'flex',
       flexDirection: 'column',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        padding: spacing(3),
+      },
+    },
+    marginTopChildren: {
+      [breakpoints.up(breakpoints.values.md)]: {
+        width: 400,
+      },
+
+      '&> * + *': {
+        marginTop: spacing(2),
+        paddingTop: 0,
+      },
     },
     section: {
-      width: 400,
+      [breakpoints.up(breakpoints.values.md)]: {
+        width: 400,
+      },
 
       [breakpoints.down(breakpoints.values.md)]: {
         width: '100%',
@@ -43,20 +59,34 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       display: 'flex',
       flexDirection: 'row',
       width: '100%',
-
-      '&> div': {
-        width: 400,
-      },
     },
     primaryImage: {
       width: '40%',
       marginLeft: 'auto',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        display: 'none',
+      },
+    },
+    verticalImage: {
+      width: '100%',
+      [breakpoints.up(breakpoints.values.md)]: {
+        display: 'none',
+      },
+    },
+    startButtonContainer: {
+      [breakpoints.down(breakpoints.values.md)]: {
+        justifyContent: 'center',
+      },
     },
 
     waveBg: {
-      height: 100,
       zIndex: -2,
-      marginTop: -80,
+
+      [breakpoints.up(breakpoints.values.md)]: {
+        height: 100,
+        marginTop: -50,
+      },
     },
   })
 );
@@ -111,11 +141,18 @@ function LandingPage() {
       <div className={classes.primaryContainer}>
         <div className={classes.widePage}>
           <section className={`${classes.section} ${classes.primarySection}`}>
-            <div>
+            <div className={classes.marginTopChildren}>
               <h2>{t('landingPage.sectionTitle1')}</h2>
+              <img
+                className={classes.verticalImage}
+                src="https://via.placeholder.com/300x200"
+                alt="placeholder graphic"
+              />
               <p>{t('landingPage.sectionParagraph1')}</p>
 
-              <div className={utilityClasses.buttonContainer}>
+              <div
+                className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
+              >
                 <LinkButtonComponent
                   to={AppUrl.Welcome}
                   buttonText={t('button.startNow')}
@@ -125,7 +162,8 @@ function LandingPage() {
 
             <div className={classes.primaryImage}>
               <img
-                src="https://via.placeholder.com/150"
+                style={{ width: '100%' }}
+                src="https://via.placeholder.com/300x200"
                 alt="placeholder graphic"
               />
             </div>
