@@ -1,9 +1,6 @@
 {
-  "disclaimer": {
-    "header": "Before you begin",
-    "text": "Please make sure you are eligible for getting your record cleared. If you need help with this please look at our FAQ.\n\nBe aware your statement is stored locally on your device, and never transmitted to our servers or any third-party.\n\nThis software is developed by a non-governmental third party, Hack for LA.\n\nPlease allocate enough time to complete this.\n\nPlease also review our Privacy Policy and Terms of Use before beginning."
-  },
   "button": {
+    "startNow": "Start Now",
     "begin": "Begin",
     "next": "Next",
     "cancel": "Cancel",
@@ -12,6 +9,21 @@
     "no": "No"
   },
 
+  "landingPage": {
+    "sectionTitle1": "The quick and easy way to create a declaration letter",
+    "sectionParagraph1": "This tool guides justice impacted individuals through the declaration letter writing process to accelerate their path toward record clearance.",
+    "sectionTitle2": "What is Expunge Assist?",
+    "sectionParagraph2": "Expunge Assist aims to help people in California with criminal records accomplish record clearance, expungement, or a reduction and subsequently a second chance as a part of society.\n\nWe work with verifiable non-profits, the government, and partners to build digital tools that can affect changes in the lives of justice impacted individuals.\n\nOur first product, a declaration letter generator, will help streamline the expungement application process.",
+    "sectionTitle3": "Partnership opportunities",
+    "sectionParagraph3": "Expunge Assist is currently looking for partner organizations to refine and tailor the product to the needs of their organizations. Reach out to learn more.",
+    "sectionTitle4": "The team",
+    "sectionParagraph4": "We are a group of volunteer designers, engineers, researchers, writers, and activists who are using the power of technology to improve LA County."
+  },
+
+  "disclaimer": {
+    "header": "Before you begin",
+    "text": "Please make sure you are eligible for getting your record cleared. If you need help with this please look at our FAQ.\n\nBe aware your statement is stored locally on your device, and never transmitted to our servers or any third-party.\n\nThis software is developed by a non-governmental third party, Hack for LA.\n\nPlease allocate enough time to complete this.\n\nPlease also review our Privacy Policy and Terms of Use before beginning."
+  },
   "welcomePage": {
     "titleText": "Welcome",
     "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."

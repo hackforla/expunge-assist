@@ -16,10 +16,11 @@ h1 {
   font-weight: 400;
 }
 h2 {
-  font-weight: 400;
   font-size: 2rem;
+  font-weight: 400;
 }
 h3 {
+  font-size: 1.25rem;
   font-weight: normal;
 }
 
@@ -32,12 +33,12 @@ h2 + h3,
 p + h3,
 h1 + p,
 h2 + p {
-  margin-top: 2rem;
+  margin-top: 16px;
 }
 
 h3 + p,
 p + p {
-  margin-top: 1rem;
+  margin-top: 8px;
 }
 
 code {
