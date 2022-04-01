@@ -18,12 +18,17 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       marginRight: 'auto',
       display: 'flex',
       flexDirection: 'column',
+      alignItems: 'center',
 
       [breakpoints.down(breakpoints.values.md)]: {
         padding: spacing(3),
       },
     },
     marginTopChildren: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+
       [breakpoints.up(breakpoints.values.md)]: {
         width: 400,
       },
@@ -34,19 +39,28 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       },
     },
     section: {
-      [breakpoints.up(breakpoints.values.md)]: {
-        width: 400,
-      },
-
-      [breakpoints.down(breakpoints.values.md)]: {
-        width: '100%',
-      },
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
 
       '&$section ~ $section': {
         marginTop: spacing(6),
       },
-      '&$section:nth-child(even)': {
-        alignSelf: 'flex-end',
+
+      [breakpoints.up(breakpoints.values.md)]: {
+        width: 400,
+        '&$section:nth-child(odd)': {
+          marginRight: 'auto',
+        },
+        '&$section:nth-child(even)': {
+          alignSelf: 'flex-end',
+          marginLeft: 'auto',
+        },
+      },
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        maxWidth: globals.contentWidth,
+        width: '100%',
       },
     },
 
@@ -60,7 +74,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       flexDirection: 'row',
       width: '100%',
     },
-    primaryImage: {
+    horizontalImage: {
       width: '40%',
       marginLeft: 'auto',
 
@@ -70,6 +84,8 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     },
     verticalImage: {
       width: '100%',
+      maxWidth: globals.contentWidth,
+      alignSelf: 'center',
       [breakpoints.up(breakpoints.values.md)]: {
         display: 'none',
       },
@@ -160,7 +176,7 @@ function LandingPage() {
               </div>
             </div>
 
-            <div className={classes.primaryImage}>
+            <div className={classes.horizontalImage}>
               <img
                 style={{ width: '100%' }}
                 src="https://via.placeholder.com/300x200"
