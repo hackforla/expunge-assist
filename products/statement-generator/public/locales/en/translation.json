@@ -1,19 +1,42 @@
 {
+  "button": {
+    "startNow": "Start Now",
+    "begin": "Begin",
+    "next": "Next",
+    "cancel": "Cancel",
+    "save": "Save",
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "landingPage": {
+    "sectionTitle1": "The quick and easy way to create a declaration letter",
+    "sectionParagraph1": "This tool guides justice impacted individuals through the declaration letter writing process to accelerate their path toward record clearance.",
+    "sectionTitle2": "What is Expunge Assist?",
+    "sectionParagraph2": "Expunge Assist aims to help people in California with criminal records accomplish record clearance, expungement, or a reduction and subsequently a second chance as a part of society.\n\nWe work with verifiable non-profits, the government, and partners to build digital tools that can affect changes in the lives of justice impacted individuals.\n\nOur first product, a declaration letter generator, will help streamline the expungement application process.",
+    "sectionTitle3": "Partnership opportunities",
+    "sectionParagraph3": "Expunge Assist is currently looking for partner organizations to refine and tailor the product to the needs of their organizations. Reach out to learn more.",
+    "sectionTitle4": "The team",
+    "sectionParagraph4": "We are a group of volunteer designers, engineers, researchers, writers, and activists who are using the power of technology to improve LA County."
+  },
+
   "disclaimer": {
     "header": "Before you begin",
     "text": "Please make sure you are eligible for getting your record cleared. If you need help with this please look at our FAQ.\n\nBe aware your statement is stored locally on your device, and never transmitted to our servers or any third-party.\n\nThis software is developed by a non-governmental third party, Hack for LA.\n\nPlease allocate enough time to complete this.\n\nPlease also review our Privacy Policy and Terms of Use before beginning."
   },
-  "button": {
-    "begin": "Begin",
-    "next": "Next",
-    "cancel": "Cancel",
-    "save": "Save"
+  "welcomePage": {
+    "titleText": "Welcome",
+    "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
   },
+  "advicePage": {
+    "header": "Advice for a successful declaration letter",
+    "point1": "1. Avoid using informal language, such as abbreviations or slang.\n\t• Do not use profanity.\n\t• Don’t Use - dude, gig, pov\n\t• Use - Mr./Mrs. (last name), job, point of view",
+    "point2": "2. Write in complete sentences and remember to use punctuation at the end.\n\t• Don’t Use - expunge my record because I need a new job\n\t• Use - I want to expunge my record because I want to apply for jobs.",
+    "point3": "3. Use first person when answering questions. You are telling your story from your point of view.",
+    "point4": "4. Keep your responses between 3-5 sentences for each section."
+  },
+
   "affirmations": {
-    "step1": {
-      "titleText": "Welcome",
-      "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
-    },
     "step2": {
       "titleText": "Thank you",
       "description": "Now that you have introduced yourself, it’s time to start writing your letter."
@@ -23,12 +46,91 @@
       "description": "Now that you have completed the first section of your letter, it’s time to write the next section.\n\nTake a break now if you need one."
     },
     "step4": {
-      "titleText": "Hooray",
+      "titleText": "Well done",
       "description": "Now that you have completed the second section of your letter, it’s time to write the final section.\n\nTake a break now if you need one."
     },
     "step5": {
       "titleText": "Almost done",
       "description": "Just one more step. Next, you can preview your entire letter and make changes.\n\nWhen you are done, email or download a copy of your letter."
     }
+  },
+
+  "sections": {
+    "previewing": "Previewing",
+    "introduce_yourself": "Introduce Yourself",
+    "involvement": "Involvement",
+    "job": "Job",
+    "unemployed": "Unemployed",
+    "recovery": "Recovery",
+    "education": "Education",
+    "parenting": "Parenting",
+    "community_service": "Community Service",
+    "goals": "Future Goals",
+    "why": "Why",
+    "finalize": "My declaration letter"
+  },
+
+  "introduction_form": {
+    "fullName_input_label": "What is your full name?",
+    "fullName_input_placeholder": "Firstname Lastname",
+    "age_input_label": "How old are you?",
+    "age_input_append": "years old",
+    "isVeteran_label": "Are you a veteran of the United States of America? (y/n)"
+  },
+  "involvement_form": {
+    "checkboxgroup_label": "What have you been involved with since your conviction?\n\nCheck all that apply:",
+    "none_above": "None of the above"
+  },
+  "job_form": {
+    "companyName_input_label": "What is the name of the company you work for?",
+    "companyName_input_placeholder": "Name of company",
+    "jobTitle_input_label": "What is your current job title?",
+    "jobTitle_input_placeholder": "Job title",
+    "jobDescription_input_label": "What do you do at this job? How has your role at work impacted your life for the better?\n(2-3 complete sentences)",
+    "jobDescription_input_placeholder": ""
+  },
+  "unemployed_form": {
+    "unemploymentDescription_input_label": "Describe how and why you are having trouble finding work.\n(2-3 complete sentences)",
+    "unemploymentDescription_input_placeholder": ""
+  },
+  "community_service_form": {
+    "organizationName_input_label": "What is the name of the community service organization that you are involved with?",
+    "organizationName_input_placeholder": "Name of organization",
+    "serviceDescription_input_label": "What do you do at this community service organization? How has your volunteer work impacted your life for the better?\n(2-3 complete sentences)",
+    "serviceDescription_input_placeholder": ""
+  },
+  "recovery_form": {
+    "recoveryName_input_label": "What is the name of the recovery program you are involved with?",
+    "recoveryName_input_placeholder": "Name of organization",
+    "recoveryDescription_input_label": "Why is this recovery program important to you?\n(2-3 complete sentences)",
+    "recoveryDescription_input_placeholder": ""
+  },
+  "education_form": {
+    "schoolName_input_label": "What is the name of the school or educational program you are attending?\nThis can include a four year university, community college, trade school, GED preparation, etc.",
+    "schoolName_input_placeholder": "Name of school",
+    "studyName_input_label": "What are you currently studying?",
+    "studyName_input_placeholder": "Name of subject/study area, or program",
+    "passionDescription_input_label": "Why have you chosen to study this? Why does it matter to you?\n(2-3 complete sentences)",
+    "passionDescription_input_placeholder": ""
+  },
+  "parenting_form": {
+    "childName_input_label": "What is the name of your child?",
+    "childName_input_placeholder": "Name of child",
+    "parentYears_number_label": "How old is your child?",
+    "parentYears_number_append": "year(s)",
+    "parentDescription_input_label": "What is important about parenting for you now? How has parenting changed your perspective?\n(2-3 complete sentences)",
+    "parentDescription_input_placeholder": ""
+  },
+  "goals_form": {
+    "goals_input_label": "Describe what goals you have to improve your life even further, like getting specialized training, starting therapy or counseling, etc.\n(2-3 complete sentences)",
+    "goals_input_placeholder": "",
+    "goalsHow_input_label": "How are you working towards achieving these goals? What concrete steps are you taking?\n(2-3 complete sentences)",
+    "goalsHow_input_placeholder": ""
+  },
+  "why_form": {
+    "clearRecordWhy_input_label": "Why do you want to clear your record?\nStart with, for example, \"I want to clear my record because…\"",
+    "clearRecordWhy_input_placeholder": "",
+    "clearRecordHow_input_label": "How is your criminal record barring you from achieving your goals?\n(2-3 complete sentences)",
+    "clearRecordHow_input_placeholder": ""
   }
 }

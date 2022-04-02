@@ -7,10 +7,10 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
-import { getPreviewStatement } from 'helpers/previewHelper';
+import { getPreviewStatement, PREVIEW_KEYS } from 'helpers/previewHelper';
 
 const useStyles = makeStyles(({ palette }) =>
   createStyles({
@@ -60,15 +60,19 @@ function FinalizeStep() {
       <div className={classes.preview}>
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
-        <p>{getPreviewStatement(formState, AppUrl.IntroductionPreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.JobPreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.CommunityServicePreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.RecoveryPreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.SchoolPreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.ParentingPreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.UnemployedPreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.GoalsPreview)}</p>
-        <p>{getPreviewStatement(formState, AppUrl.WhyPreview)}</p>
+
+        {PREVIEW_KEYS.map((previewKey) => {
+          const statement = getPreviewStatement(
+            formState,
+            previewKey as AppUrl
+          );
+
+          if (statement === '') {
+            return null;
+          }
+
+          return <p key={`${previewKey}-final-paragraph-key`}>{statement}</p>;
+        })}
       </div>
 
       <FlowNavigation />

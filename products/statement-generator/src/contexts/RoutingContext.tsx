@@ -23,12 +23,11 @@ const PreRoutingContextProvider = ({
 }: RoutingProviderProps) => {
   const [appHistory, setAppHistory] = useState([AppUrl.Landing]);
   const [historyIdx, setHistoryIdx] = useState(0);
+  const [appTheme, setAppTheme] = useState('transparent');
   const [canShowAffirmation, setCanShowAffirmation] = useState(true);
 
   const currentStep = appHistory[historyIdx];
   const { pathname } = history.location;
-
-  const topLevelPageTheme = 'transparent';
 
   const navigateToFormUrl = (newAppUrl: AppUrl) => {
     history.push(newAppUrl);
@@ -111,6 +110,18 @@ const PreRoutingContextProvider = ({
     }
   }, [pathname]);
 
+  // update `appTheme` depending on page
+  useEffect(() => {
+    switch (currentStep) {
+      case AppUrl.Welcome:
+        setAppTheme('pink');
+        break;
+      default:
+        setAppTheme('transparent');
+        break;
+    }
+  }, [currentStep]);
+
   return (
     <RoutingContext.Provider
       value={{
@@ -118,7 +129,8 @@ const PreRoutingContextProvider = ({
         goBackPage,
         currentStep,
         canShowAffirmation,
-        topLevelPageTheme,
+        appTheme,
+        setAppTheme,
       }}
     >
       {children}

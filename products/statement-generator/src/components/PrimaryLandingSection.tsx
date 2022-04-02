@@ -87,7 +87,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
 );
 
 const PrimaryLandingSection = ({ goNextPage }: ComponentProps) => {
-  const classes = useStyles({ theme: 'light' });
+  const classes = useStyles({ theme: 'pink' });
   const landingImage = 'https://via.placeholder.com/590x350';
   const landingImageAlt = 'A placeholder waiting for the correct image';
 

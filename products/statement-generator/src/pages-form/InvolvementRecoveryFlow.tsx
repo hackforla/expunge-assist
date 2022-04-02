@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 function InvolvementRecoveryFlow() {
+  const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { recoveryName, recoveryDescription } = formState.recoveryState;
 
@@ -30,19 +32,18 @@ function InvolvementRecoveryFlow() {
       <FormContainer>
         <Input
           id="recoveryName"
-          label="What is the name of the recovery program you are involved with?"
+          label={t('recovery_form.recoveryName_input_label')}
+          placeholder={t('recovery_form.recoveryName_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Name of Organization"
           defaultValue={recoveryName}
           type="text"
         />
 
         <Textarea
           id="recoveryDescription"
-          label="Why is this recovery program important to you? (2-3 sentences
-        suggested)"
+          label={t('recovery_form.recoveryDescription_input_label')}
+          placeholder={t('recovery_form.recoveryDescription_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="This program is important to me because..."
           disabled={!recoveryNameValid}
           defaultValue={recoveryDescription}
           rows={3}

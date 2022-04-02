@@ -6,23 +6,25 @@ import { AppUrl } from 'contexts/RoutingProps';
 
 import ProgressBar from 'components/ProgressBar';
 
+import { getSectionTitle } from 'helpers/i18nHelper';
+
 const useStyles = makeStyles<Theme>(
-  ({ palette, breakpoints, spacing, typography }) =>
+  ({ palette, breakpoints, globals, spacing, typography }) =>
     createStyles({
-      root: {
+      outerWrapper: {
         background: palette.primary.lighter,
-        color: palette.common.black,
-        padding: spacing(2),
         borderBottomRightRadius: '64px',
 
         [breakpoints.up(breakpoints.values.md)]: {
-          marginLeft: spacing(2),
-          marginRight: spacing(2),
+          borderBottomLeftRadius: '64px',
         },
-
-        '& h2': {
-          fontWeight: '300',
-        },
+      },
+      formHeader: {
+        maxWidth: globals.wideWidth,
+        color: palette.common.black,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        padding: spacing(1, 2),
       },
       stepText: {
         color: palette.common.grey,
@@ -66,52 +68,6 @@ function convertStepToNum(url: AppUrl): number {
   }
 }
 
-function convertStepToTitle(url: AppUrl): string {
-  switch (url) {
-    case AppUrl.Introduction:
-    case AppUrl.IntroductionPreview:
-      return 'Introduce Yourself!';
-    case AppUrl.Involvement:
-      return 'Involvement';
-    case AppUrl.Job:
-      return 'Involvement: Job';
-    case AppUrl.JobPreview:
-      return 'Involvement: Job';
-    case AppUrl.CommunityService:
-      return 'Involvement: Community Service';
-    case AppUrl.CommunityServicePreview:
-      return 'Involvement: Community Service';
-    case AppUrl.Recovery:
-      return 'Involvement: Recovery';
-    case AppUrl.RecoveryPreview:
-      return 'Involvement: Recovery';
-    case AppUrl.School:
-      return 'Involvement: School';
-    case AppUrl.SchoolPreview:
-      return 'Involvement: School';
-    case AppUrl.Parenting:
-      return 'Involvement: Parenting';
-    case AppUrl.ParentingPreview:
-      return 'Involvement: Parenting';
-    case AppUrl.Unemployed:
-      return 'Involvement: Unemployment';
-    case AppUrl.UnemployedPreview:
-      return 'Involvement: Unemployment';
-    case AppUrl.Goals:
-      return 'Goals';
-    case AppUrl.GoalsPreview:
-      return 'Goals';
-    case AppUrl.Why:
-      return 'Why';
-    case AppUrl.WhyPreview:
-      return 'Why';
-    case AppUrl.Finalize:
-      return 'My Personal Statement';
-    default:
-      return '';
-  }
-}
-
 const FormHeader = () => {
   const classes = useStyles();
   const { currentStep } = React.useContext(RoutingContext);
@@ -120,22 +76,26 @@ const FormHeader = () => {
   const stepNum = convertStepToNum(currentStep);
   const percentageComplete = (stepNum / maxNum) * 100;
 
+  const formTitle = getSectionTitle(currentStep);
+
   if (stepNum === 0) {
     return null;
   }
 
-  const formTitle = convertStepToTitle(currentStep);
-
   return (
-    <div className={classes.root}>
-      <h2>{formTitle}</h2>
+    <div className={classes.outerWrapper}>
+      <div className={classes.formHeader}>
+        <h3>{formTitle}</h3>
 
-      <ProgressBar percentage={percentageComplete} />
+        <ProgressBar percentage={percentageComplete} />
 
-      {stepNum < maxNum && (
-        <div className={classes.stepText}>Step {stepNum} of 5</div>
-      )}
-      {stepNum === maxNum && <div className={classes.stepText}>Completed</div>}
+        {stepNum < maxNum && (
+          <div className={classes.stepText}>Step {stepNum} of 5</div>
+        )}
+        {stepNum === maxNum && (
+          <div className={classes.stepText}>Completed</div>
+        )}
+      </div>
     </div>
   );
 };

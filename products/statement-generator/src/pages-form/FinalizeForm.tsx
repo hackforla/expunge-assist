@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
@@ -8,15 +9,16 @@ import TextPreview from 'components/TextPreview';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
-import { getPreviewStatement, PREVIEW_MAP } from 'helpers/previewHelper';
+import { getSectionTitle } from 'helpers/i18nHelper';
 
-const PREVIEW_LIST = Object.keys(PREVIEW_MAP).map((previewKey) => ({
-  ...PREVIEW_MAP[previewKey],
-  stepUrl: previewKey as AppUrl,
-}));
+import {
+  getPreviewStatement,
+  PREVIEW_MAP,
+  PREVIEW_KEYS,
+} from 'helpers/previewHelper';
 
 const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
@@ -40,6 +42,7 @@ const useStyles = makeStyles(({ palette, spacing }) =>
 );
 
 function FinalizeForm() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
 
@@ -52,6 +55,29 @@ function FinalizeForm() {
     });
   }
 
+  const previewComponents = PREVIEW_KEYS.map((previewKey) => {
+    const statement = getPreviewStatement(formState, previewKey as AppUrl);
+    if (statement === '') {
+      return null;
+    }
+
+    const previewConfig = PREVIEW_MAP[previewKey];
+
+    return (
+      <TextPreview
+        key={`${previewKey}-preview-key`}
+        className={classes.previewItem}
+        onSaveClick={(newText: string) =>
+          updatePreviewItem(newText, previewConfig.stateKey)
+        }
+        content={statement}
+        nameOfStep={`${t('sections.previewing')} ${getSectionTitle(
+          previewKey as AppUrl
+        )}`}
+      />
+    );
+  });
+
   return (
     <ContentContainer>
       <div className={classes.purpleTitle}>
@@ -59,17 +85,7 @@ function FinalizeForm() {
         Editing Final Statement
       </div>
 
-      {PREVIEW_LIST.map((previewConfigItem) => (
-        <TextPreview
-          key={`${previewConfigItem.stepUrl}-preview-key`}
-          className={classes.previewItem}
-          onSaveClick={(newText: string) =>
-            updatePreviewItem(newText, previewConfigItem.stateKey)
-          }
-          content={getPreviewStatement(formState, previewConfigItem.stepUrl)}
-          nameOfStep={previewConfigItem.title}
-        />
-      ))}
+      {previewComponents}
 
       <FlowNavigation />
     </ContentContainer>

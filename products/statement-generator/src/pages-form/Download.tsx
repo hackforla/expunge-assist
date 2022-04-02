@@ -3,13 +3,12 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import { getPreviewStatement } from 'helpers/previewHelper';
+import { generateFinal } from 'helpers/previewHelper';
 
 import FormStateContext from 'contexts/FormStateContext';
-import { AppUrl } from 'contexts/RoutingProps';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
-import ContentContainer from 'page-layout/ContentContainer';
+import ContentContainer from 'components-layout/ContentContainer';
 
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -47,20 +46,10 @@ function Download() {
   };
 
   // create a mailto link with the statement in the body
-  const str = `${getPreviewStatement(formState, AppUrl.IntroductionPreview)}
-  ${getPreviewStatement(formState, AppUrl.JobPreview)}}
-  ${getPreviewStatement(formState, AppUrl.CommunityServicePreview)}
-  ${getPreviewStatement(formState, AppUrl.RecoveryPreview)}
-  ${getPreviewStatement(formState, AppUrl.SchoolPreview)}
-  ${getPreviewStatement(formState, AppUrl.ParentingPreview)}
-  ${getPreviewStatement(
-    formState,
-    AppUrl.UnemployedPreview
-  )} ${getPreviewStatement(formState, AppUrl.GoalsPreview)}
-  ${getPreviewStatement(formState, AppUrl.WhyPreview)}`;
+  const finalStatement = generateFinal(formState);
 
   const mailtoLink = `mailto:?&subject=my%20personal%20statement&body=+${encodeURIComponent(
-    str
+    finalStatement
   )}`;
 
   // send email
@@ -70,12 +59,12 @@ function Download() {
 
   // copy to clipboard
   const handleClickClipboard = () => {
-    navigator.clipboard.writeText(str);
+    navigator.clipboard.writeText(finalStatement);
   };
 
   // download txt
   const handleClickTXT = () => {
-    const blob = new Blob([str], { type: 'text/plain' });
+    const blob = new Blob([finalStatement], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
 
     const div = document.createElement('div');
@@ -100,7 +89,7 @@ function Download() {
   const handleClickPDF = () => {
     const doc = new jsPDF('p', 'mm', 'letter');
     doc.setFontSize(12);
-    const lines = doc.splitTextToSize(str, 170);
+    const lines = doc.splitTextToSize(finalStatement, 170);
     doc.text(20, 50, lines);
     doc.save('MyPersonalStatement.pdf');
   };
