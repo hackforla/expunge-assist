@@ -28,6 +28,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
       appHeader: {
         display: 'flex',
         flexDirection: 'row',
+        alignItems: 'center',
         height: '100%',
         padding: spacing(1, 2),
       },
