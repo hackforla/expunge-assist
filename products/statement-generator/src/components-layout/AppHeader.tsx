@@ -7,8 +7,10 @@ import RoutingContext from 'contexts/RoutingContext';
 
 import Logo from 'components/Logo';
 
+import useUtilityStyles from 'styles/utilityStyles';
+
 const useStyles = makeStyles<Theme, IUseUtilityStyle>(
-  ({ palette, globals, breakpoints, spacing }) =>
+  ({ palette, breakpoints, spacing }) =>
     createStyles({
       headerWrapper: {
         height: 60,
@@ -26,10 +28,6 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
       appHeader: {
         display: 'flex',
         flexDirection: 'row',
-        maxWidth: globals.wideWidth,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        alignItems: 'center',
         height: '100%',
         padding: spacing(1, 2),
       },
@@ -81,10 +79,11 @@ function HeaderLink({ to, children, isActive }: IHeaderLink) {
 const AppHeader = () => {
   const { appTheme } = useContext(RoutingContext);
   const classes = useStyles({ pageTheme: appTheme });
+  const utilityClasses = useUtilityStyles();
 
   return (
     <div className={classes.headerWrapper}>
-      <div className={classes.appHeader}>
+      <div className={`${classes.appHeader} ${utilityClasses.widePage}`}>
         <Logo />
 
         <div className={classes.rightContainer}>
