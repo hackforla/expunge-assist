@@ -23,18 +23,6 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
             pageTheme === 'dark' ? 'white' : 'black',
         },
 
-        '& .logo-title': {
-          display: 'flex',
-          flexDirection: 'column',
-          marginLeft: spacing(3),
-          textTransform: 'uppercase',
-          fontSize: '12px',
-
-          [breakpoints.down(breakpoints.values.sm)]: {
-            display: 'none',
-          },
-        },
-
         [breakpoints.down(breakpoints.values.md)]: {
           background: palette.primary.lighter,
         },
@@ -43,8 +31,32 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
           display: 'none',
         },
       },
+
+      logoLink: {
+        textDecoration: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        marginLeft: spacing(3),
+        textTransform: 'uppercase',
+        fontSize: '12px',
+
+        [breakpoints.down(breakpoints.values.sm)]: {
+          display: 'none',
+        },
+      },
     })
 );
+
+function LogoSmall() {
+  const classes = useStyles({});
+
+  return (
+    <Link to="/" className={classes.logoLink}>
+      <span>Expunge</span>
+      <span>Assist</span>
+    </Link>
+  );
+}
 
 const AppHeader = () => {
   const { appTheme } = useContext(RoutingContext);
@@ -57,16 +69,7 @@ const AppHeader = () => {
       <Link to="/">
         <img src={logoIcon} alt="" />
       </Link>
-      <Link
-        to="/"
-        style={{
-          textDecoration: 'none',
-        }}
-        className="logo-title"
-      >
-        <span>Expunge</span>
-        <span>Assist</span>
-      </Link>
+      <LogoSmall />
     </div>
   );
 };
