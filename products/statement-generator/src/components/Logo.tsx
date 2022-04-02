@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
-
-import RoutingContext from 'contexts/RoutingContext';
 
 import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
@@ -46,9 +44,12 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     })
 );
 
-function TextLogo() {
-  const { appTheme } = useContext(RoutingContext);
-  const classes = useStyles({ pageTheme: appTheme });
+interface ILogoComponent {
+  theme?: string; // dark, light
+}
+
+function TextLogo({ theme }: ILogoComponent) {
+  const classes = useStyles({ pageTheme: theme });
 
   return (
     <Link to="/" className={classes.logoLink}>
@@ -58,11 +59,10 @@ function TextLogo() {
   );
 }
 
-export default function Logo() {
-  const { appTheme } = useContext(RoutingContext);
-  const classes = useStyles({ pageTheme: appTheme });
+export default function Logo({ theme }: ILogoComponent) {
+  const classes = useStyles({ pageTheme: theme });
 
-  const logoIcon = appTheme === 'dark' ? iconWhite : iconBlack;
+  const logoIcon = theme === 'dark' ? iconWhite : iconBlack;
 
   return (
     <div className={classes.logoContainer}>
@@ -70,7 +70,7 @@ export default function Logo() {
         <img src={logoIcon} alt="" />
       </Link>
 
-      <TextLogo />
+      <TextLogo theme={theme} />
     </div>
   );
 }
