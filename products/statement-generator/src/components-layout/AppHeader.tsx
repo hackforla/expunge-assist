@@ -38,12 +38,17 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         textDecoration: 'none',
         color: palette.common.black,
         padding: spacing(1),
+        fontSize: '14px',
 
         '&:hover': {
           color: palette.primary.main,
         },
         '&:active': {
           color: palette.primary.main,
+        },
+
+        '&$headerLink + $headerLink': {
+          marginLeft: 4,
         },
       },
     })

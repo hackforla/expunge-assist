@@ -10,20 +10,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
   createStyles({
-    widePage: {
-      maxWidth: globals.wideWidth,
-      padding: spacing(6, 3),
-      width: '100%',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-
-      [breakpoints.down(breakpoints.values.md)]: {
-        padding: spacing(3),
-      },
-    },
     backgroundBlock: {
       backgroundColor: palette.primary.lighter,
       zIndex: 1,
@@ -161,7 +147,7 @@ function LandingPage() {
   return (
     <div>
       <div className={classes.backgroundBlock}>
-        <div className={classes.widePage}>
+        <div className={utilityClasses.widePage}>
           <section className={`${classes.section} ${classes.firstSection}`}>
             <div className={classes.firstSectionContent}>
               <h2>{t('landingPage.sectionTitle1')}</h2>
@@ -194,7 +180,7 @@ function LandingPage() {
 
       <WaveBackground />
 
-      <div className={classes.widePage}>
+      <div className={utilityClasses.widePage}>
         <LandingSection
           header={t('landingPage.sectionTitle2')}
           paragraph={t('landingPage.sectionParagraph2')}

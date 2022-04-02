@@ -33,6 +33,20 @@ const useUtilityStyles = makeStyles<Theme>(
           }
         },
       },
+      widePage: {
+        maxWidth: globals.wideWidth,
+        padding: spacing(6, 3),
+        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+
+        [breakpoints.down(breakpoints.values.md)]: {
+          padding: spacing(3),
+        },
+      },
       buttonContainer: {
         marginTop: 'auto',
         paddingTop: spacing(3),
