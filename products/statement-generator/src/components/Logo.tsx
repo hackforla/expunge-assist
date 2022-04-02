@@ -12,6 +12,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     createStyles({
       logoContainer: {
         display: 'flex',
+        alignSelf: 'flex-start',
 
         [breakpoints.down(breakpoints.values.md)]: {
           background: palette.primary.lighter,
