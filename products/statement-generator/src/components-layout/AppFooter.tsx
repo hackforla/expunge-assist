@@ -42,7 +42,7 @@ const useStyles = makeStyles(({ palette, spacing }) =>
         color: palette.primary.main,
       },
 
-      '&$headerLink + $headerLink': {
+      '&$linkBtn + $linkBtn': {
         marginLeft: 4,
       },
     },

@@ -87,11 +87,13 @@ const AppHeader = () => {
       <div className={`${classes.appHeader} ${utilityClasses.widePage}`}>
         <Logo />
 
-        <div className={classes.rightContainer}>
-          <HeaderLink to={AppUrl.AboutUs}>About</HeaderLink>
-          <HeaderLink to={AppUrl.Landing}>Partnership</HeaderLink>
-          <HeaderLink to={AppUrl.Landing}>Contact</HeaderLink>
-        </div>
+        {false && (
+          <div className={classes.rightContainer}>
+            <HeaderLink to={AppUrl.AboutUs}>About</HeaderLink>
+            <HeaderLink to={AppUrl.Landing}>Partnership</HeaderLink>
+            <HeaderLink to={AppUrl.Landing}>Contact</HeaderLink>
+          </div>
+        )}
       </div>
     </div>
   );
