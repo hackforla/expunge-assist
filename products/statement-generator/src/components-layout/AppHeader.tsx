@@ -35,19 +35,26 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
       logoLink: {
         textDecoration: 'none',
         display: 'flex',
-        flexDirection: 'column',
-        marginLeft: spacing(3),
+        marginLeft: spacing(2),
         textTransform: 'uppercase',
-        fontSize: '12px',
+        fontWeight: 800,
 
-        [breakpoints.down(breakpoints.values.sm)]: {
-          display: 'none',
+        [breakpoints.up(breakpoints.values.md)]: {
+          flexDirection: 'row',
+          fontSize: '24px',
+          '& span + span': {
+            marginLeft: 8,
+          },
+        },
+        [breakpoints.down(breakpoints.values.md)]: {
+          flexDirection: 'column',
+          fontSize: '12px',
         },
       },
     })
 );
 
-function LogoSmall() {
+function TextLogo() {
   const classes = useStyles({});
 
   return (
@@ -69,7 +76,8 @@ const AppHeader = () => {
       <Link to="/">
         <img src={logoIcon} alt="" />
       </Link>
-      <LogoSmall />
+
+      <TextLogo />
     </div>
   );
 };
