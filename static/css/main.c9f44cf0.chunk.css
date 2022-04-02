@@ -1,2 +1,0 @@
-*{margin:0;padding:0;box-sizing:border-box}li{list-style-type:none}body{font-family:Roboto;font-weight:400;height:100vh}#root{display:flex;flex-direction:column;height:100%}h1{font-size:clamp(34px,5vw,48px);font-weight:700}p{white-space:pre-wrap}h1+p,h2+h3,h2+p,p+h3{margin-top:2rem}h3+p,p+p{margin-top:1rem}code{font-family:source-code-pro,Menlo,Monaco,Consolas,"Courier New",monospace}
-/*# sourceMappingURL=main.c9f44cf0.chunk.css.map */
