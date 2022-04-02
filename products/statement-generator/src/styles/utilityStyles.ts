@@ -33,6 +33,13 @@ const useUtilityStyles = makeStyles<Theme>(
           }
         },
       },
+      widePage: {
+        maxWidth: globals.wideWidth,
+        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      },
+
       buttonContainer: {
         marginTop: 'auto',
         paddingTop: spacing(3),

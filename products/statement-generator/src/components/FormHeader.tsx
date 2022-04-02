@@ -9,22 +9,22 @@ import ProgressBar from 'components/ProgressBar';
 import { getSectionTitle } from 'helpers/i18nHelper';
 
 const useStyles = makeStyles<Theme>(
-  ({ palette, breakpoints, spacing, typography }) =>
+  ({ palette, breakpoints, globals, spacing, typography }) =>
     createStyles({
-      root: {
+      outerWrapper: {
         background: palette.primary.lighter,
-        color: palette.common.black,
-        padding: spacing(2),
         borderBottomRightRadius: '64px',
 
         [breakpoints.up(breakpoints.values.md)]: {
-          marginLeft: spacing(2),
-          marginRight: spacing(2),
+          borderBottomLeftRadius: '64px',
         },
-
-        '& h2': {
-          fontWeight: '300',
-        },
+      },
+      formHeader: {
+        maxWidth: globals.wideWidth,
+        color: palette.common.black,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        padding: spacing(1, 2),
       },
       stepText: {
         color: palette.common.grey,
@@ -83,15 +83,19 @@ const FormHeader = () => {
   }
 
   return (
-    <div className={classes.root}>
-      <h3>{formTitle}</h3>
+    <div className={classes.outerWrapper}>
+      <div className={classes.formHeader}>
+        <h3>{formTitle}</h3>
 
-      <ProgressBar percentage={percentageComplete} />
+        <ProgressBar percentage={percentageComplete} />
 
-      {stepNum < maxNum && (
-        <div className={classes.stepText}>Step {stepNum} of 5</div>
-      )}
-      {stepNum === maxNum && <div className={classes.stepText}>Completed</div>}
+        {stepNum < maxNum && (
+          <div className={classes.stepText}>Step {stepNum} of 5</div>
+        )}
+        {stepNum === maxNum && (
+          <div className={classes.stepText}>Completed</div>
+        )}
+      </div>
     </div>
   );
 };

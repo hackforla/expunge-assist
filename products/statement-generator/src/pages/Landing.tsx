@@ -10,12 +10,8 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
   createStyles({
-    widePage: {
-      maxWidth: globals.wideWidth,
+    wideSection: {
       padding: spacing(6, 3),
-      width: '100%',
-      marginLeft: 'auto',
-      marginRight: 'auto',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -24,19 +20,10 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         padding: spacing(3),
       },
     },
-    marginTopChildren: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-
-      [breakpoints.up(breakpoints.values.md)]: {
-        width: 400,
-      },
-
-      '&> * + *': {
-        marginTop: spacing(2),
-        paddingTop: 0,
-      },
+    backgroundBlock: {
+      backgroundColor: palette.primary.lighter,
+      zIndex: 1,
+      position: 'relative',
     },
     section: {
       display: 'flex',
@@ -63,18 +50,28 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         width: '100%',
       },
     },
-
-    primaryContainer: {
-      backgroundColor: palette.primary.lighter,
-      zIndex: 1,
-      position: 'relative',
-    },
-    primarySection: {
+    firstSection: {
       display: 'flex',
       flexDirection: 'row',
       width: '100%',
     },
+    firstSectionContent: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+
+      [breakpoints.up(breakpoints.values.md)]: {
+        width: 400,
+      },
+
+      '&> * + *': {
+        marginTop: spacing(2),
+        paddingTop: 0,
+      },
+    },
+
     horizontalImage: {
+      // desktop view
       width: '40%',
       marginLeft: 'auto',
 
@@ -83,6 +80,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       },
     },
     verticalImage: {
+      // mobile view
       width: '100%',
       maxWidth: globals.contentWidth,
       alignSelf: 'center',
@@ -90,6 +88,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         display: 'none',
       },
     },
+
     startButtonContainer: {
       [breakpoints.down(breakpoints.values.md)]: {
         justifyContent: 'center',
@@ -98,10 +97,13 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
 
     waveBg: {
       zIndex: -2,
+      marginTop: '-5%',
 
       [breakpoints.up(breakpoints.values.md)]: {
         height: 100,
-        marginTop: -50,
+      },
+      [breakpoints.up(breakpoints.values.lg)]: {
+        height: 125,
       },
     },
   })
@@ -154,10 +156,10 @@ function LandingPage() {
 
   return (
     <div>
-      <div className={classes.primaryContainer}>
-        <div className={classes.widePage}>
-          <section className={`${classes.section} ${classes.primarySection}`}>
-            <div className={classes.marginTopChildren}>
+      <div className={classes.backgroundBlock}>
+        <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
+          <section className={`${classes.section} ${classes.firstSection}`}>
+            <div className={classes.firstSectionContent}>
               <h2>{t('landingPage.sectionTitle1')}</h2>
               <img
                 className={classes.verticalImage}
@@ -165,7 +167,6 @@ function LandingPage() {
                 alt="placeholder graphic"
               />
               <p>{t('landingPage.sectionParagraph1')}</p>
-
               <div
                 className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
               >
@@ -189,7 +190,7 @@ function LandingPage() {
 
       <WaveBackground />
 
-      <div className={classes.widePage}>
+      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
         <LandingSection
           header={t('landingPage.sectionTitle2')}
           paragraph={t('landingPage.sectionParagraph2')}

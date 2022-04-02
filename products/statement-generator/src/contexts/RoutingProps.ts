@@ -17,6 +17,7 @@ export enum AppUrl {
   Welcome = '/welcome',
   BeforeYouBegin = '/agreement',
   Advice = '/advice',
+
   Introduction = '/form/intro',
   IntroductionPreview = '/form/introduction/preview',
   Involvement = '/form/involvement',
@@ -41,6 +42,7 @@ export enum AppUrl {
   FinalizePreview = '/form/finalize/preview',
   Editing = '/form/editing',
   Download = '/form/download',
+
   PrivacyPolicy = '/privacy-policy',
   TermsOfUse = '/terms-of-use',
   FAQ = '/faq',

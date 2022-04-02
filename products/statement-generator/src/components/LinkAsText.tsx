@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     linkAsText: {
-      color: 'white',
+      color: palette.common.black,
     },
   })
 );

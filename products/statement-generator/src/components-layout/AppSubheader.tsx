@@ -13,7 +13,6 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
-      // padding: spacing(1, 3),
 
       background: ({ pageTheme }: IUseUtilityStyle) => {
         switch (pageTheme) {
