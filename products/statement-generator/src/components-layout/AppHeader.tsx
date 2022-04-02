@@ -8,16 +8,12 @@ import RoutingContext from 'contexts/RoutingContext';
 import Logo from 'components/Logo';
 
 const useStyles = makeStyles<Theme, IUseUtilityStyle>(
-  ({ palette, breakpoints, spacing }) =>
+  ({ palette, globals, breakpoints, spacing }) =>
     createStyles({
-      appHeader: {
+      headerWrapper: {
         height: 60,
         background: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'dark' ? palette.primary.main : palette.primary.lighter,
-
-        padding: spacing(2),
-        display: 'flex',
-        flexDirection: 'row',
 
         [breakpoints.down(breakpoints.values.md)]: {
           background: palette.primary.lighter,
@@ -26,6 +22,14 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         [breakpoints.down(breakpoints.values.sm)]: {
           display: 'none',
         },
+      },
+      appHeader: {
+        display: 'flex',
+        flexDirection: 'row',
+        maxWidth: globals.wideWidth,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        padding: spacing(2, 3),
       },
       rightContainer: {
         marginLeft: 'auto',
@@ -78,13 +82,15 @@ const AppHeader = () => {
   const classes = useStyles({ pageTheme: appTheme });
 
   return (
-    <div className={classes.appHeader}>
-      <Logo />
+    <div className={classes.headerWrapper}>
+      <div className={classes.appHeader}>
+        <Logo />
 
-      <div className={classes.rightContainer}>
-        <HeaderLink to={AppUrl.AboutUs}>About</HeaderLink>
-        <HeaderLink to={AppUrl.Landing}>Partnership</HeaderLink>
-        <HeaderLink to={AppUrl.Landing}>Contact</HeaderLink>
+        <div className={classes.rightContainer}>
+          <HeaderLink to={AppUrl.AboutUs}>About</HeaderLink>
+          <HeaderLink to={AppUrl.Landing}>Partnership</HeaderLink>
+          <HeaderLink to={AppUrl.Landing}>Contact</HeaderLink>
+        </div>
       </div>
     </div>
   );
