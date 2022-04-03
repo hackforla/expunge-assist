@@ -44,7 +44,6 @@ function InvolvementRecoveryFlow() {
           label={t('recovery_form.recoveryDescription_input_label')}
           placeholder={t('recovery_form.recoveryDescription_input_placeholder')}
           handleChange={onInputChange}
-          disabled={!recoveryNameValid}
           defaultValue={recoveryDescription}
           rows={3}
         />

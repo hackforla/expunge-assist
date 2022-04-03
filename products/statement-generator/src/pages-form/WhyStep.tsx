@@ -43,7 +43,6 @@ function WhyStep() {
           label={t('why_form.clearRecordHow_input_label')}
           placeholder={t('why_form.clearRecordHow_input_placeholder')}
           handleChange={onInputChange}
-          disabled={!clearRecordWhyValid}
           defaultValue={clearRecordHow}
           rows={3}
         />

@@ -52,7 +52,6 @@ function InvolvementCommunityServiceFlow() {
             'community_service_form.serviceDescription_input_placeholder'
           )}
           handleChange={onInputChange}
-          disabled={!organizationNameValid}
           defaultValue={serviceDescription}
           rows={3}
         />
