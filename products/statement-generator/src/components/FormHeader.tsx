@@ -184,7 +184,7 @@ const FormHeader = () => {
   }
 
   if(currentStep === AppUrl.Involvement) {
-    maxNum = 4
+    maxNum = 5
   }
   
   const percentageComplete = (stepNum / maxNum) * 100;
