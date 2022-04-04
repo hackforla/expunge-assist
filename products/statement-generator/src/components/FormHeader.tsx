@@ -53,11 +53,16 @@ function convertStepToNum(
     }
     involvementActivities.push(-1);
   });
-  const stepAdjustment: number[] = [];
-  involvementActivities.reduce((a, b) => {
-    stepAdjustment.push(b);
-    return a + b;
-  });
+  const stepAdjustmentArr: number[] = [];
+  involvementActivities.forEach((step, i) => {
+    const prevStep = stepAdjustmentArr[i-1];
+    if(i===0) {
+      stepAdjustmentArr.push(step);
+      return;
+    }
+    const adjustedStep = step + prevStep
+    stepAdjustmentArr.push(adjustedStep);
+  })
 
   switch (url) {
     case AppUrl.Introduction:
@@ -67,7 +72,7 @@ function convertStepToNum(
       return 2;
     case AppUrl.CommunityService:
     case AppUrl.CommunityServicePreview: {
-      return 7 + stepAdjustment[3];
+      return 7 + stepAdjustmentArr[3];
     }
     case AppUrl.Recovery:
     case AppUrl.RecoveryPreview: {
@@ -75,11 +80,11 @@ function convertStepToNum(
     }
     case AppUrl.School:
     case AppUrl.SchoolPreview: {
-      return 5 + stepAdjustment[1];
+      return 5 + stepAdjustmentArr[1];
     }
     case AppUrl.Parenting:
     case AppUrl.ParentingPreview: {
-      return 6 + stepAdjustment[2];
+      return 6 + stepAdjustmentArr[2];
     }
     case AppUrl.Job:
     case AppUrl.JobPreview:
@@ -162,7 +167,7 @@ const FormHeader = () => {
     isRecoveryChecked,
     isNoneChecked,
   } = involvement;
-  let maxNum = 5;
+  let maxNum = 6;
   const stepNum = convertStepToNum(currentStep, involvement);
   if (isJobChecked) {
     maxNum += 1;
@@ -184,9 +189,8 @@ const FormHeader = () => {
   }
 
   if(currentStep === AppUrl.Involvement) {
-    maxNum = 5
+    maxNum = 6
   }
-  
   const percentageComplete = (stepNum / maxNum) * 100;
 
 
