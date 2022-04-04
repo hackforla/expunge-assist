@@ -45,7 +45,7 @@ function convertStepToNum(
   involvementArr.shift();
   involvementArr.pop();
   const involvementActivities: number[] = [];
-  involvementArr.forEach((value, i) => {
+  involvementArr.forEach(value => {
     if (value) {
       additionalStepCounter += 1;
       involvementActivities.push(0);
@@ -58,7 +58,6 @@ function convertStepToNum(
     stepAdjustment.push(b);
     return a + b;
   });
-  console.log(stepAdjustment);
 
   switch (url) {
     case AppUrl.Introduction:
@@ -183,7 +182,13 @@ const FormHeader = () => {
   if (isNoneChecked) {
     maxNum += 1;
   }
+
+  if(currentStep === AppUrl.Involvement) {
+    maxNum = 4
+  }
+  
   const percentageComplete = (stepNum / maxNum) * 100;
+
 
   if (stepNum === 0) {
     return null;
