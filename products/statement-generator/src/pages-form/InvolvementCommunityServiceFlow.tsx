@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 import Input from '../components/Input';
 
 function InvolvementCommunityServiceFlow() {
+  const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     organizationName,
@@ -34,20 +36,22 @@ function InvolvementCommunityServiceFlow() {
       <FormContainer>
         <Input
           id="organizationName"
-          label="What is the name of the community service organization that you are
-        involved with?"
+          label={t('community_service_form.organizationName_input_label')}
+          placeholder={t(
+            'community_service_form.organizationName_input_placeholder'
+          )}
           handleChange={onInputChange}
-          placeholder="Name of Organization"
           defaultValue={organizationName}
           type="text"
         />
 
         <Textarea
           id="serviceDescription"
-          label="What do you do at this community service organization? Why is this
-        important to you? (2-3 sentences suggested)"
+          label={t('community_service_form.serviceDescription_input_label')}
+          placeholder={t(
+            'community_service_form.serviceDescription_input_placeholder'
+          )}
           handleChange={onInputChange}
-          placeholder="I have taken on responsibilities including..."
           disabled={!organizationNameValid}
           defaultValue={serviceDescription}
           rows={3}

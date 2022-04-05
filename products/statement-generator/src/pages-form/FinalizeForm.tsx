@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
@@ -8,9 +9,14 @@ import TextPreview from 'components/TextPreview';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
+<<<<<<< HEAD:products/statement-generator/src/flows/FinalizeForm.tsx
+=======
+import { getSectionTitle } from 'helpers/i18nHelper';
+
+>>>>>>> d7afa6d0d114ede41d738279f6301e4b8b8f79ce:products/statement-generator/src/pages-form/FinalizeForm.tsx
 import {
   getPreviewStatement,
   PREVIEW_MAP,
@@ -39,6 +45,7 @@ const useStyles = makeStyles(({ palette, spacing }) =>
 );
 
 function FinalizeForm() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
 
@@ -67,7 +74,13 @@ function FinalizeForm() {
           updatePreviewItem(newText, previewConfig.stateKey)
         }
         content={statement}
+<<<<<<< HEAD:products/statement-generator/src/flows/FinalizeForm.tsx
         nameOfStep={previewConfig.title}
+=======
+        nameOfStep={`${t('sections.previewing')} ${getSectionTitle(
+          previewKey as AppUrl
+        )}`}
+>>>>>>> d7afa6d0d114ede41d738279f6301e4b8b8f79ce:products/statement-generator/src/pages-form/FinalizeForm.tsx
       />
     );
   });

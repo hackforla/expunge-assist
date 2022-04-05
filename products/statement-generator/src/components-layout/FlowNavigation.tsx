@@ -33,16 +33,14 @@ export default function FlowNavigation({
   showBack = true,
 }: IFlowNavigation) {
   const { goNextStep, goBackStep } = useContext(FormStateContext);
-  const { topLevelPageTheme } = useContext(RoutingContext);
+  const { appTheme } = useContext(RoutingContext);
 
-  const utilityClasses = useUtilityStyles({ pageTheme: topLevelPageTheme });
+  const utilityClasses = useUtilityStyles({ pageTheme: appTheme });
   const classes = useStyles();
 
   const backBtnTheme =
-    topLevelPageTheme === 'dark'
-      ? 'transparent-on-dark'
-      : 'transparent-on-light';
-  const nextBtnTheme = topLevelPageTheme === 'dark' ? 'dark' : 'landing';
+    appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
+  const nextBtnTheme = appTheme === 'dark' ? 'dark' : 'landing';
 
   function handleBack() {
     if (onBack) {

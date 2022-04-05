@@ -13,13 +13,12 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
-      // padding: spacing(1, 3),
 
       background: ({ pageTheme }: IUseUtilityStyle) => {
         switch (pageTheme) {
           case 'dark':
             return palette.primary.main;
-          case 'light':
+          case 'pink':
             return palette.primary.lighter;
           case 'transparent':
           default:
@@ -31,7 +30,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
         switch (pageTheme) {
           case 'dark':
             return 'white';
-          case 'light':
+          case 'pink':
           case 'transparent':
           default:
             return palette.primary.darker;
@@ -42,10 +41,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
 );
 
 const AppSubheader = () => {
-  const { topLevelPageTheme, currentStep } = useContext(RoutingContext);
+  const { appTheme, currentStep } = useContext(RoutingContext);
 
   const classes = useStyles({
-    pageTheme: topLevelPageTheme,
+    pageTheme: appTheme,
   });
 
   const isLandingPage = currentStep === AppUrl.Landing;

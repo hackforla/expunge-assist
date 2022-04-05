@@ -4,12 +4,14 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   export interface Theme {
     globals: {
       contentWidth: number;
+      wideWidth: number;
     };
   }
 
   export interface ThemeOptions {
     globals: {
       contentWidth: number;
+      wideWidth: number;
     };
   }
 }
