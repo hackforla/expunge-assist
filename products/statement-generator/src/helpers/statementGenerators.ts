@@ -132,15 +132,7 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
     unemployedState: { unemploymentDescription },
   } = formState;
 
-<<<<<<< HEAD
-  if (!formState.involvement.isNoneChecked) {
-    return '';
-  }
-
-  if (unemploymentDescription === '' || wouldClearanceHelp === '') {
-=======
   if (unemploymentDescription === '') {
->>>>>>> d7afa6d0d114ede41d738279f6301e4b8b8f79ce
     return '';
   }
 

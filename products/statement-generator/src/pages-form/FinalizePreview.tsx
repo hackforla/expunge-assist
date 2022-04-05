@@ -61,27 +61,17 @@ function FinalizeStep() {
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
 
-<<<<<<< HEAD:products/statement-generator/src/flows/FinalizePreview.tsx
-        { PREVIEW_KEYS.map((previewKey) => {
-          const statement = getPreviewStatement(formState, previewKey as AppUrl);
-=======
         {PREVIEW_KEYS.map((previewKey) => {
           const statement = getPreviewStatement(
             formState,
             previewKey as AppUrl
           );
 
->>>>>>> d7afa6d0d114ede41d738279f6301e4b8b8f79ce:products/statement-generator/src/pages-form/FinalizePreview.tsx
           if (statement === '') {
             return null;
           }
 
-<<<<<<< HEAD:products/statement-generator/src/flows/FinalizePreview.tsx
-          return <p>{statement}</p>
-
-=======
           return <p key={`${previewKey}-final-paragraph-key`}>{statement}</p>;
->>>>>>> d7afa6d0d114ede41d738279f6301e4b8b8f79ce:products/statement-generator/src/pages-form/FinalizePreview.tsx
         })}
       </div>
 
