@@ -47,7 +47,7 @@ function convertStepToNum(
   involvementArr.shift();
   involvementArr.pop();
   const involvementActivities: number[] = [];
-  involvementArr.forEach(value => {
+  involvementArr.forEach((value) => {
     if (value) {
       additionalStepCounter += 1;
       involvementActivities.push(0);
@@ -57,14 +57,14 @@ function convertStepToNum(
   });
   const stepAdjustmentArr: number[] = [];
   involvementActivities.forEach((step, i) => {
-    const prevStep = stepAdjustmentArr[i-1];
-    if(i===0) {
+    const prevStep = stepAdjustmentArr[i - 1];
+    if (i === 0) {
       stepAdjustmentArr.push(step);
       return;
     }
-    const adjustedStep = step + prevStep
+    const adjustedStep = step + prevStep;
     stepAdjustmentArr.push(adjustedStep);
-  })
+  });
 
   switch (url) {
     case AppUrl.Introduction:
@@ -144,8 +144,8 @@ const FormHeader = () => {
     maxNum += 1;
   }
 
-  if(currentStep === AppUrl.Involvement) {
-    maxNum = 6
+  if (currentStep === AppUrl.Involvement) {
+    maxNum = 6;
   }
   const percentageComplete = (stepNum / maxNum) * 100;
 
@@ -167,7 +167,9 @@ const FormHeader = () => {
             Step {stepNum} of {maxNum}
           </div>
         )}
-        {stepNum === maxNum && <div className={classes.stepText}>Completed</div>}
+        {stepNum === maxNum && (
+          <div className={classes.stepText}>Completed</div>
+        )}
       </div>
     </div>
   );
