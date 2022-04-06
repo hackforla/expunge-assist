@@ -170,3 +170,15 @@ export function generateWhy(formState: IStepState): string {
 
   return `I want to clear my record because ${clearRecordWhy} ${clearRecordHow} Getting my record cleared will have a major impact on my life.`;
 }
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
+export function generateCloser(formState: IStepState): string {
+  const {
+    introduction: { fullName },
+  } = formState;
+
+  return `Sincerly,\n\n${fullName}`;
+}
