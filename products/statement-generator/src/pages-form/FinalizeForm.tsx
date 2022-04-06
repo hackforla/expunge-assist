@@ -78,8 +78,6 @@ function FinalizeForm() {
     );
   });
 
-  const closerText = formState.statements.closer || `Sincerly,\n${formState.introduction.fullName}`;
-
   return (
     <ContentContainer>
       <div className={classes.purpleTitle}>
@@ -94,7 +92,7 @@ function FinalizeForm() {
         onSaveClick={(newText: string) =>
           updatePreviewItem(newText, 'closer')
         }
-        content={closerText}
+        content={formState.statements.closer}
         nameOfStep="Closer"
       />
 
