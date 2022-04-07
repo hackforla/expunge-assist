@@ -100,13 +100,13 @@ Explain the different ways people can contribute. For example:
 
 # Contact info
 
-Gretchen Howard - Product Manager - gretchenschwab@gmail.com or on Slack @Gretchen Howard
+Thomas Demoner - Product Manager - Slack: @Thomas Demoner
 
-Apurva Barve - UX Research Lead - apurva.barve@gmail.com or on Slack @Apurva Barve
+Valeriya Metla - PM (Research) - Slack: @Valeriya Metla
 
-Andan Eddy - Product Manager - andaneddy@gmail.com - or on Slack @Andan Eddy
+Jamie Siu - PM (Design) - Slack: @Jamie Siu
 
-Daniel Xiao - Tech Lead - on Slack @Daniel Xiao
+Daniel Xiao - Tech Lead - Slack: @Daniel Xiao
 
 
 ### Licensing {TBA}
