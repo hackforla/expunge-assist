@@ -8,7 +8,7 @@ import { AppUrl } from 'contexts/RoutingProps';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
-const useStyles = makeStyles(({ palette, spacing }) =>
+const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
   createStyles({
     footerWrapper: {
       width: '100%',
@@ -20,21 +20,37 @@ const useStyles = makeStyles(({ palette, spacing }) =>
       display: 'flex',
       alignItems: 'center',
       padding: spacing(1, 3),
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        flexDirection: 'column-reverse',
+        padding: spacing(2),
+        justifyContent: 'center',
+      },
     },
-    leftContainer: {
+    textContainer: {
       display: 'flex',
       flexDirection: 'column',
       marginLeft: spacing(1),
     },
-    middleContainer: {
+    leftContainer: {
       display: 'flex',
-      marginLeft: 'auto',
+      flexDirection: 'row',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        marginTop: spacing(3),
+      },
+    },
+    rightContainer: {
+      display: 'flex',
+      [breakpoints.up(breakpoints.values.md)]: {
+        marginLeft: 'auto',
+      },
     },
     linkBtn: {
       textDecoration: 'none',
       color: palette.common.black,
       padding: spacing(1),
-      fontSize: '14px',
+      fontSize: '12px',
 
       '&:hover': {
         color: palette.primary.main,
@@ -71,22 +87,24 @@ const AppFooter: React.FC = () => {
   return (
     <div className={classes.footerWrapper}>
       <div className={`${classes.appFooter} ${utilityClasses.widePage}`}>
-        <a href="https://www.hackforla.org/" target="_blank" rel="noreferrer">
-          <img
-            className={classes.hackforlaIcon}
-            src={hackForLALogo}
-            alt="Hack for LA Logo"
-          />
-        </a>
-
         <div className={classes.leftContainer}>
-          <span style={{ fontSize: 13, fontWeight: 'bold' }}>
-            © 2022 Hack for LA
-          </span>
-          <span style={{ fontSize: 12 }}>info@expungeassist.org</span>
+          <a href="https://www.hackforla.org/" target="_blank" rel="noreferrer">
+            <img
+              className={classes.hackforlaIcon}
+              src={hackForLALogo}
+              alt="Hack for LA Logo"
+            />
+          </a>
+
+          <div className={classes.textContainer}>
+            <span style={{ fontSize: 13, fontWeight: 'bold' }}>
+              © 2022 Hack for LA
+            </span>
+            <span style={{ fontSize: 12 }}>info@expungeassist.org</span>
+          </div>
         </div>
 
-        <div className={classes.middleContainer}>
+        <div className={classes.rightContainer}>
           <AppFooterLink url={AppUrl.PrivacyPolicy}>
             Privacy Policy
           </AppFooterLink>
