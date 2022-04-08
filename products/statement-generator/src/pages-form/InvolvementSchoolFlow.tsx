@@ -46,7 +46,6 @@ function InvolvementSchoolFlow() {
           label={t('education_form.studyName_input_label')}
           placeholder={t('education_form.studyName_input_placeholder')}
           handleChange={onInputChange}
-          disabled={!schoolNameValid}
           defaultValue={studyName}
           type="text"
         />
@@ -56,7 +55,6 @@ function InvolvementSchoolFlow() {
           label={t('education_form.passionDescription_input_label')}
           placeholder={t('education_form.passionDescription_input_placeholder')}
           handleChange={onInputChange}
-          disabled={!studyNameValid}
           defaultValue={passionDescription}
           rows={3}
         />
