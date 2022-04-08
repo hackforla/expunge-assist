@@ -40,9 +40,9 @@ export default function Welcome() {
       </div>
 
       <ContentContainer>
-        <h1>{t('welcomePage.titleText')}</h1>
+        <h1>{t('welcome_page.titleText')}</h1>
 
-        <p>{t('welcomePage.description')}</p>
+        <p>{t('welcome_page.description')}</p>
 
         <FlowNavigation showBack={false} />
       </ContentContainer>

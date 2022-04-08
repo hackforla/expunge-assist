@@ -9,7 +9,7 @@
     "no": "No"
   },
 
-  "landingPage": {
+  "landing_page": {
     "sectionTitle1": "The quick and easy way to create a declaration letter",
     "sectionParagraph1": "This tool guides justice impacted individuals through the declaration letter writing process to accelerate their path toward record clearance.",
     "sectionTitle2": "What is Expunge Assist?",
@@ -20,15 +20,15 @@
     "sectionParagraph4": "We are a group of volunteer designers, engineers, researchers, writers, and activists who are using the power of technology to improve LA County."
   },
 
-  "disclaimer": {
+  "before_you_begin_page": {
     "header": "Before you begin",
     "text": "Please make sure you are eligible for getting your record cleared. If you need help with this please look at our FAQ.\n\nBe aware your statement is stored locally on your device, and never transmitted to our servers or any third-party.\n\nThis software is developed by a non-governmental third party, Hack for LA.\n\nPlease allocate enough time to complete this.\n\nPlease also review our Privacy Policy and Terms of Use before beginning."
   },
-  "welcomePage": {
+  "welcome_page": {
     "titleText": "Welcome",
     "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
   },
-  "advicePage": {
+  "advice_page": {
     "header": "Advice for a successful declaration letter",
     "point1": "1. Avoid using informal language, such as abbreviations or slang.\n\t• Do not use profanity.\n\t• Don’t Use - dude, gig, pov\n\t• Use - Mr./Mrs. (last name), job, point of view",
     "point2": "2. Write in complete sentences and remember to use punctuation at the end.\n\t• Don’t Use - expunge my record because I need a new job\n\t• Use - I want to expunge my record because I want to apply for jobs.",
@@ -36,7 +36,7 @@
     "point4": "4. Keep your responses between 3-5 sentences for each section."
   },
 
-  "affirmations": {
+  "affirmation_popup": {
     "step2": {
       "titleText": "Thank you",
       "description": "Now that you have introduced yourself, it’s time to start writing your letter."

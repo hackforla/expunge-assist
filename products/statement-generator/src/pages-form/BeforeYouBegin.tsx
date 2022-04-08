@@ -9,9 +9,9 @@ const BeforeYouBegin = () => {
 
   return (
     <ContentContainer>
-      <h2>{t('disclaimer.header')}</h2>
+      <h2>{t('before_you_begin_page.header')}</h2>
 
-      <p>{t('disclaimer.text')}</p>
+      <p>{t('before_you_begin_page.text')}</p>
 
       <FlowNavigation />
     </ContentContainer>
