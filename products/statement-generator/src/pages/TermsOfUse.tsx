@@ -60,7 +60,7 @@ function TermsOfUse() {
         <Button
           onClick={() => history.goBack()}
           buttonText="Back"
-          theme="transparent-on-dark"
+          theme="transparent-on-light"
         />
       </div>
     </ContentContainer>
