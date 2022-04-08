@@ -15,7 +15,7 @@ export enum AppUrl {
   Landing = '',
   NotFound = '404',
   Welcome = '/welcome',
-  BeforeYouBegin = '/agreement',
+  BeforeYouBegin = '/before-you-begin',
   Advice = '/advice',
 
   Introduction = '/form/intro',
