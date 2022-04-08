@@ -88,9 +88,9 @@ function FinalizeForm() {
 
       <TextPreview
         className={classes.previewItem}
-        onSaveClick={(newText: string) => updatePreviewItem(newText, 'closer')}
-        content={formState.statements.closer}
-        nameOfStep="Closer"
+        onSaveClick={(newText: string) => updatePreviewItem(newText, 'closing')}
+        content={formState.statements.closing}
+        nameOfStep="Closing"
       />
 
       <FlowNavigation />

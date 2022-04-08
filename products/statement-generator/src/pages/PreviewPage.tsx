@@ -34,7 +34,7 @@ function PreviewPage() {
       updateStepToForm({
         statements: {
           ...formState.statements,
-          closer: `Sincerly,\n${formState.introduction.fullName}`,
+          closing: `Sincerly,\n${formState.introduction.fullName}`,
         },
       });
     }

@@ -75,7 +75,7 @@ export const defaultStepState = {
     unemployed: '',
     goals: '',
     why: '',
-    closer: '',
+    closing: '',
   },
 };
 

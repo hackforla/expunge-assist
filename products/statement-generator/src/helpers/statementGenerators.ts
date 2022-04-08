@@ -175,7 +175,7 @@ export function generateWhy(formState: IStepState): string {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateCloser(formState: IStepState): string {
+export function generateClosing(formState: IStepState): string {
   const {
     introduction: { fullName },
   } = formState;
