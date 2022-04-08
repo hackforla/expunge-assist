@@ -14,6 +14,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     createStyles({
       headerWrapper: {
         height: 60,
+        flex: '0 0 auto',
         background: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'dark' ? palette.primary.main : palette.primary.lighter,
 

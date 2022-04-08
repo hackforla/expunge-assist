@@ -13,6 +13,7 @@ const useStyles = makeStyles(({ palette, spacing }) =>
     footerWrapper: {
       width: '100%',
       background: palette.primary.light,
+      flex: '0 0 auto',
     },
     appFooter: {
       color: palette.common.black,
