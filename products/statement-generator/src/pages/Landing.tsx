@@ -160,13 +160,13 @@ function LandingPage() {
         <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
           <section className={`${classes.section} ${classes.firstSection}`}>
             <div className={classes.firstSectionContent}>
-              <h2>{t('landingPage.sectionTitle1')}</h2>
+              <h2>{t('landing_page.sectionTitle1')}</h2>
               <img
                 className={classes.verticalImage}
                 src="https://via.placeholder.com/300x200"
                 alt="placeholder graphic"
               />
-              <p>{t('landingPage.sectionParagraph1')}</p>
+              <p>{t('landing_page.sectionParagraph1')}</p>
               <div
                 className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
               >
@@ -192,16 +192,16 @@ function LandingPage() {
 
       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
         <LandingSection
-          header={t('landingPage.sectionTitle2')}
-          paragraph={t('landingPage.sectionParagraph2')}
+          header={t('landing_page.sectionTitle2')}
+          paragraph={t('landing_page.sectionParagraph2')}
         />
         <LandingSection
-          header={t('landingPage.sectionTitle3')}
-          paragraph={t('landingPage.sectionParagraph3')}
+          header={t('landing_page.sectionTitle3')}
+          paragraph={t('landing_page.sectionParagraph3')}
         />
         <LandingSection
-          header={t('landingPage.sectionTitle4')}
-          paragraph={t('landingPage.sectionParagraph4')}
+          header={t('landing_page.sectionTitle4')}
+          paragraph={t('landing_page.sectionParagraph4')}
         />
       </div>
     </div>
