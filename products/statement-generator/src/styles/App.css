@@ -34,7 +34,7 @@ h2 + h3,
 p + h3,
 h1 + p,
 h2 + p {
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 h3 + p,
