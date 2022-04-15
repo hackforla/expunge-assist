@@ -166,9 +166,7 @@ function LandingSection({
         <h2>{header}</h2>
         <p>{paragraph}</p>
       </div>
-      <div className={classes.sectionRight}>
-        {children}
-      </div>
+      <div className={classes.sectionRight}>{children}</div>
     </section>
   );
 }
