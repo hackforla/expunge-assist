@@ -41,7 +41,6 @@ function GoalsStep() {
         label={t('goals_form.goalsHow_input_label')}
         placeholder={t('goals_form.goalsHow_input_placeholder')}
         handleChange={onInputChange}
-        disabled={!goalsValid}
         defaultValue={goalsHow}
         rows={3}
       />

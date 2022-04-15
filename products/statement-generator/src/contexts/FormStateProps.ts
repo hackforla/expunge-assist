@@ -75,6 +75,7 @@ export const defaultStepState = {
     unemployed: '',
     goals: '',
     why: '',
+    closing: '',
   },
 };
 
@@ -147,6 +148,7 @@ export interface IStatementState {
   unemployed: string;
   goals: string;
   why: string;
+  closing: string;
 }
 
 export const sampleStepState = {
@@ -200,5 +202,8 @@ export const sampleStepState = {
     clearRecordWhy: 'It will help me make a better life for me and my family.',
     clearRecordHow:
       'If my record no longer says I have poison resistance, I can be hired for other jobs.',
+  },
+  statements: {
+    closing: 'Yours Truly,\nDan the Man',
   },
 };

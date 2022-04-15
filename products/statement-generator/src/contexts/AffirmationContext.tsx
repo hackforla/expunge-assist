@@ -9,23 +9,23 @@ const AFFIRMATION_DATA = {
   // even though it is on the Involvement page,
   //  this is to thank new users after the Introduction
   [AppUrl.Involvement as string]: {
-    titleText: 'affirmations.step2.titleText',
-    description: 'affirmations.step2.description',
+    titleText: 'affirmation_popup.step2.titleText',
+    description: 'affirmation_popup.step2.description',
     buttonText: 'button.next',
   },
   [AppUrl.Goals as string]: {
-    titleText: 'affirmations.step3.titleText',
-    description: 'affirmations.step3.description',
+    titleText: 'affirmation_popup.step3.titleText',
+    description: 'affirmation_popup.step3.description',
     buttonText: 'button.next',
   },
   [AppUrl.Why as string]: {
-    titleText: 'affirmations.step4.titleText',
-    description: 'affirmations.step4.description',
+    titleText: 'affirmation_popup.step4.titleText',
+    description: 'affirmation_popup.step4.description',
     buttonText: 'button.next',
   },
   [AppUrl.Finalize as string]: {
-    titleText: 'affirmations.step5.titleText',
-    description: 'affirmations.step5.description',
+    titleText: 'affirmation_popup.step5.titleText',
+    description: 'affirmation_popup.step5.description',
     buttonText: 'button.next',
   },
 };
@@ -47,9 +47,9 @@ const AffirmationContextProvider = ({ children }: AffirmationProviderProps) => {
   const { currentStep, canShowAffirmation } = useContext(RoutingContext);
   const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
     isActive: false,
-    titleText: 'affirmations.step2.titleText',
+    titleText: 'affirmation_popup.step2.titleText',
     buttonText: 'button.next',
-    description: 'affirmations.step2.description',
+    description: 'affirmation_popup.step2.description',
   });
 
   const updateAffirmationData = (newState: object) => {

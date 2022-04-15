@@ -73,6 +73,8 @@ function FinalizeStep() {
 
           return <p key={`${previewKey}-final-paragraph-key`}>{statement}</p>;
         })}
+
+        <p>{formState.statements.closing}</p>
       </div>
 
       <FlowNavigation />

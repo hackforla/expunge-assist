@@ -4,10 +4,11 @@ const useUtilityStyles = makeStyles<Theme>(
   ({ palette, breakpoints, globals, spacing }) =>
     createStyles({
       primaryContainer: {
+        minHeight: '475px',
+        width: '100%',
         display: 'flex',
         flex: '1 0 auto',
         flexDirection: 'column',
-        width: '100%',
         position: 'relative',
 
         background: ({ pageTheme }: IUseUtilityStyle) => {

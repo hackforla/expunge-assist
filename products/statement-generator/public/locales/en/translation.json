@@ -9,7 +9,7 @@
     "no": "No"
   },
 
-  "landingPage": {
+  "landing_page": {
     "sectionTitle1": "The quick and easy way to create a declaration letter",
     "sectionParagraph1": "This tool guides justice impacted individuals through the declaration letter writing process to accelerate their path toward record clearance.",
     "sectionTitle2": "What is Expunge Assist?",
@@ -20,23 +20,23 @@
     "sectionParagraph4": "We are a group of volunteer designers, engineers, researchers, writers, and activists who are using the power of technology to improve LA County."
   },
 
-  "disclaimer": {
+  "before_you_begin_page": {
     "header": "Before you begin",
     "text": "Please make sure you are eligible for getting your record cleared. If you need help with this please look at our FAQ.\n\nBe aware your statement is stored locally on your device, and never transmitted to our servers or any third-party.\n\nThis software is developed by a non-governmental third party, Hack for LA.\n\nPlease allocate enough time to complete this.\n\nPlease also review our Privacy Policy and Terms of Use before beginning."
   },
-  "welcomePage": {
+  "welcome_page": {
     "titleText": "Welcome",
     "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
   },
-  "advicePage": {
+  "advice_page": {
     "header": "Advice for a successful declaration letter",
-    "point1": "1. Avoid using informal language, such as abbreviations or slang.\n\t• Do not use profanity.\n\t• Don’t Use - dude, gig, pov\n\t• Use - Mr./Mrs. (last name), job, point of view",
-    "point2": "2. Write in complete sentences and remember to use punctuation at the end.\n\t• Don’t Use - expunge my record because I need a new job\n\t• Use - I want to expunge my record because I want to apply for jobs.",
+    "point1": "1. Avoid using informal language, such as abbreviations or slang. Don't use profanity\n\t• Don’t Use - \"dude, gig, pov\"\n\t• Use - \"Mr./Mrs. (last name), job, point of view\"",
+    "point2": "2. Write in complete sentences and remember to use punctuation at the end.\n\t• Don’t Use - \"expunge my record because I need a new job\"\n\t• Use - \"I want to expunge my record because I want to apply for jobs.\"",
     "point3": "3. Use first person when answering questions. You are telling your story from your point of view.",
     "point4": "4. Keep your responses between 3-5 sentences for each section."
   },
 
-  "affirmations": {
+  "affirmation_popup": {
     "step2": {
       "titleText": "Thank you",
       "description": "Now that you have introduced yourself, it’s time to start writing your letter."
@@ -129,8 +129,39 @@
   },
   "why_form": {
     "clearRecordWhy_input_label": "Why do you want to clear your record?\nStart with, for example, \"I want to clear my record because…\"",
-    "clearRecordWhy_input_placeholder": "",
+    "clearRecordWhy_input_placeholder": "A “declaration letter” is sometimes called a “personal letter” or “personal statement.”",
     "clearRecordHow_input_label": "How is your criminal record barring you from achieving your goals?\n(2-3 complete sentences)",
     "clearRecordHow_input_placeholder": ""
+  },
+
+  "faq_page": {
+    "page_header": "FAQ",
+    "title1": "What is expungement?",
+    "paragraph1": "Expungement in California means that people with certain low level, non violent criminal convictions may clear their records, meaning the penalties of their crimes will be removed or reduced.  Expungement lifts many of the negative consequences of a criminal record, giving people a fresh start to their lives.",
+    "title2": "What is a declaration letter?",
+    "paragraph2": "A “declaration letter” is sometimes called a “personal letter” or “personal statement.”\n\nYour letter allows you to tell the judge your story.\n\nA good letter shows your motivation and efforts to better your life since conviction, explains your personal story, and how expungement, reclassification, or reduction would make a difference for you.\n\nIt is often about one page long.\n\nThis is your story. Use the space to say what is important to you. ",
+    "title3": "Why do I need a declaration letter?",
+    "paragraph3": "When you file a petition with the court, you have the opportunity to attach a personal letter called a “declaration letter” explaining why you deserve a fresh start.\n\nThe declaration letter is your opportunity to explain to a judge, in your own voice, why you want your criminal record cleared or your charges reduced. A declaration letter can help your case by adding your personal reasons and motivation to your legal case.",
+    "title4": "Why does expungement or reclassification matter to me?",
+    "paragraph4": "The word “expungement” can be confusing. Expungement means that in most cases your past criminal record cannot be used against you when applying for a job, housing or student loans. You also regain some of your rights, like serving on a jury or owning a firearm.\n\nEven though your criminal record does not disappear from the public record forever, your record will be updated to show that the conviction has been dismissed.\n\nReclassification allows you to change past felony convictions to a misdemeanor, even if you have served a sentence and parole. Once the felony has been removed from your criminal record, you may be eligible for benefits not previously available to you.",
+    "title5": "How does Proposition 47 help me?",
+    "paragraph5": "Proposition 47 changed the law in California so that six kinds of low level, non-violent crimes like theft or drug possession can be reduced from felonies to misdemeanors.\n\nFor example:\n\t• If you have been convicted of a non-violent felony in the past, you can ask the court to have your felony reduced to a misdemeanor.\n\t• If you are currently serving a sentence for a felony, you can ask the court to have your sentence reduced to a misdemeanor and be released.\n\t• If you have already served a sentence for a felony, you can ask the court to reduce your old case to a misdemeanor.",
+    "paragraph5b": "Most importantly, Proposition 47 means if you are granted a reduction by a court, you can truthfully say you have never been convicted of a felony when asked on a job, housing, or other application.\n\nExamples of eligible offenses include:\n\t• Simple drug possession\n\t• Petty theft under $950\n\t• Shoplifting under $950\n\t• Forgery under $950\n\t• Writing a bad check under $950 \n\t• Receipt of stolen property under $950",
+    "paragraph5c": "For more information about Prop 47 exceptions and restrictions, visit",
+    "title6": "How does Proposition 64 help me?",
+    "paragraph6": "Proposition 64 legalized the sale and use of recreational marijuana among people aged 21 and older in California.  At the same time, Proposition 64 also reduced or eliminated certain penalties related to previous marijuana convictions. If you qualify, you might be able to have your criminal record reduced or dismissed completely.",
+    "paragraph6b": "Examples of eligible offenses include:\n\t• Possession of marijuana or concentrated marijuana\n\t• Cultivation of marijuana\n\t• Possession with intent to sell marijuana\n\t• Sales or transport of marijuana",
+    "paragraph6c": "If you were between 18 and 20 at the time of the offense, it may be more likely that you can get your criminal records sealed and/or destroyed OR have the crimes reduced to a misdemeanor.\n\nIf you were charged with a Proposition 64 qualifying offense, you may apply to reduce your sentence if you are:\n\t• Currently serving a sentence\n\t• On probation\n\t• Under post-release supervision\n\t• On parole",
+    "paragraph6d": "If you have already served a sentence for a Proposition 64 qualifying offense, you may apply for a reduction in your criminal charge.\n\nThere is no time limit for when you can apply for a reduction or dismissal under Proposition 64.\n\nFor more information about Proposition 64, please see",
+    "title7": "How is Proposition 64 different from Proposition 47?",
+    "paragraph7": "Proposition 64 differs from Proposition 47 in a few important ways. Passed in 2014, Proposition 47 made major changes affecting people charged with certain non-violent, low level crimes. Specifically, Proposition 47 reduced the legal penalties for six kinds of theft and drug possession charges from a more serious, a felony, to less serious, a misdemeanor. Passed in 2016, Proposition 64 built upon Proposition 47 by reducing or dismissing the remaining criminal charges for most marijuana convictions.\n\nImportantly, Proposition 47 has a deadline by which you must file your “Petition for Resentencing/Reduction to Misdemeanor” form with the Superior Court where you were convicted no later than Nov. 4, 2022.",
+    "title8": "Are there any deadlines?",
+    "paragraph8": "Under Proposition 47, you must file the “Petition for Resentencing/Reduction to Misdemeanor” form with the Superior Court where you were convicted no later than Nov. 4, 2022.",
+    "title9": "What does the Expunge Assist website do?",
+    "paragraph9": "This website serves as a guide to create your own letter by taking you through the writing process step by step.\n\nPlease note that the website does not replace any professional legal advice you receive from an attorney.",
+    "title10": "Is there incorrect information on this website?",
+    "paragraph10": "Get in touch at info@expungeassist.org. The laws are changing often in California, and that could mean some information is outdated in this website. We strive to provide correct information, so please let us know if we missed something.\n\nPlease note: the information provided here is only a very brief overview.",
+    "title11": "",
+    "paragraph11": ""
   }
 }

@@ -1,7 +1,11 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import EmailIcon from '@material-ui/icons/Email';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 import { generateFinal } from 'helpers/previewHelper';
 
@@ -10,9 +14,7 @@ import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
 import ContentContainer from 'components-layout/ContentContainer';
 
-import EmailIcon from '@material-ui/icons/Email';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
+import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -37,6 +39,8 @@ const useStyles = makeStyles(() =>
 function Download() {
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
+  const utilityClasses = useUtilityStyles();
+  const history = useHistory();
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -144,6 +148,14 @@ function Download() {
           />
         </div>
       </form>
+
+      <div className={utilityClasses.buttonContainer}>
+        <Button
+          onClick={() => history.goBack()}
+          buttonText="Back"
+          theme="transparent-on-light"
+        />
+      </div>
     </ContentContainer>
   );
 }

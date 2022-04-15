@@ -57,9 +57,7 @@ function FinalizeForm() {
 
   const previewComponents = PREVIEW_KEYS.map((previewKey) => {
     const statement = getPreviewStatement(formState, previewKey as AppUrl);
-    if (statement === '') {
-      return null;
-    }
+    const isUnused = statement === '';
 
     const previewConfig = PREVIEW_MAP[previewKey];
 
@@ -67,6 +65,7 @@ function FinalizeForm() {
       <TextPreview
         key={`${previewKey}-preview-key`}
         className={classes.previewItem}
+        style={{ display: isUnused ? 'none' : 'block' }}
         onSaveClick={(newText: string) =>
           updatePreviewItem(newText, previewConfig.stateKey)
         }
@@ -86,6 +85,13 @@ function FinalizeForm() {
       </div>
 
       {previewComponents}
+
+      <TextPreview
+        className={classes.previewItem}
+        onSaveClick={(newText: string) => updatePreviewItem(newText, 'closing')}
+        content={formState.statements.closing}
+        nameOfStep="Closing"
+      />
 
       <FlowNavigation />
     </ContentContainer>

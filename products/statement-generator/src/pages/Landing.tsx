@@ -2,6 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 
+import landingTeamImg from 'assets/landingTeamImg.svg';
+import landingWorkImg from 'assets/landingWorkImg.svg';
+
 import { LinkButtonComponent } from 'components/Button';
 
 import { AppUrl } from 'contexts/RoutingProps';
@@ -27,27 +30,46 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     },
     section: {
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      width: '100%',
 
       '&$section ~ $section': {
         marginTop: spacing(6),
       },
 
-      [breakpoints.up(breakpoints.values.md)]: {
-        width: 400,
-        '&$section:nth-child(odd)': {
-          marginRight: 'auto',
-        },
-        '&$section:nth-child(even)': {
-          alignSelf: 'flex-end',
-          marginLeft: 'auto',
-        },
-      },
-
       [breakpoints.down(breakpoints.values.md)]: {
         maxWidth: globals.contentWidth,
+        flexDirection: 'column',
+      },
+
+      [breakpoints.up(breakpoints.values.md)]: {
+        '&$section:nth-child(even)': {
+          flexDirection: 'row-reverse',
+        },
+      },
+    },
+    sectionLeft: {
+      flex: '0 0 auto',
+      width: 400,
+
+      [breakpoints.down(breakpoints.values.md)]: {
         width: '100%',
+      },
+    },
+    sectionRight: {
+      flex: '1 1 auto',
+      maxWidth: 400,
+      textAlign: 'center',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+
+      '&:not(:empty)': {
+        [breakpoints.down(breakpoints.values.md)]: {
+          padding: spacing(1),
+          width: '100%',
+          marginTop: spacing(2),
+        },
       },
     },
     firstSection: {
@@ -140,11 +162,13 @@ function LandingSection({
   const classes = useStyles();
   return (
     <section className={`${classes.section} ${className}`}>
-      <div>
+      <div className={classes.sectionLeft}>
         <h2>{header}</h2>
         <p>{paragraph}</p>
       </div>
-      {children}
+      <div className={classes.sectionRight}>
+        {children}
+      </div>
     </section>
   );
 }
@@ -160,13 +184,13 @@ function LandingPage() {
         <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
           <section className={`${classes.section} ${classes.firstSection}`}>
             <div className={classes.firstSectionContent}>
-              <h2>{t('landingPage.sectionTitle1')}</h2>
+              <h2>{t('landing_page.sectionTitle1')}</h2>
               <img
                 className={classes.verticalImage}
-                src="https://via.placeholder.com/300x200"
-                alt="placeholder graphic"
+                src={landingWorkImg}
+                alt="Person working on a laptop"
               />
-              <p>{t('landingPage.sectionParagraph1')}</p>
+              <p>{t('landing_page.sectionParagraph1')}</p>
               <div
                 className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
               >
@@ -180,8 +204,8 @@ function LandingPage() {
             <div className={classes.horizontalImage}>
               <img
                 style={{ width: '100%' }}
-                src="https://via.placeholder.com/300x200"
-                alt="placeholder graphic"
+                src={landingWorkImg}
+                alt="Person working on a laptop"
               />
             </div>
           </section>
@@ -192,17 +216,23 @@ function LandingPage() {
 
       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
         <LandingSection
-          header={t('landingPage.sectionTitle2')}
-          paragraph={t('landingPage.sectionParagraph2')}
+          header={t('landing_page.sectionTitle2')}
+          paragraph={t('landing_page.sectionParagraph2')}
         />
         <LandingSection
-          header={t('landingPage.sectionTitle3')}
-          paragraph={t('landingPage.sectionParagraph3')}
+          header={t('landing_page.sectionTitle3')}
+          paragraph={t('landing_page.sectionParagraph3')}
         />
         <LandingSection
-          header={t('landingPage.sectionTitle4')}
-          paragraph={t('landingPage.sectionParagraph4')}
-        />
+          header={t('landing_page.sectionTitle4')}
+          paragraph={t('landing_page.sectionParagraph4')}
+        >
+          <img
+            style={{ width: '100%' }}
+            src={landingTeamImg}
+            alt="Group of diverse teammates"
+          />
+        </LandingSection>
       </div>
     </div>
   );
