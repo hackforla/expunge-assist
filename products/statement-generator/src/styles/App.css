@@ -33,7 +33,9 @@ label {
 h2 + h3,
 p + h3,
 h1 + p,
-h2 + p {
+h2 + p,
+ul + h3,
+ul + p {
   margin-top: 24px;
 }
 
