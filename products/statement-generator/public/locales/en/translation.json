@@ -57,15 +57,15 @@
 
   "sections": {
     "previewing": "Previewing",
-    "introduce_yourself": "Introduce Yourself",
+    "introduce_yourself": "Introduce yourself",
     "involvement": "Involvement",
     "job": "Job",
     "unemployed": "Unemployed",
     "recovery": "Recovery",
     "education": "Education",
     "parenting": "Parenting",
-    "community_service": "Community Service",
-    "goals": "Future Goals",
+    "community_service": "Community service",
+    "goals": "Future goals",
     "why": "Why",
     "finalize": "My declaration letter"
   },
