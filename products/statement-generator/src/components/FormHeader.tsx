@@ -16,6 +16,7 @@ const useStyles = makeStyles<Theme>(
       outerWrapper: {
         background: palette.primary.lighter,
         borderBottomRightRadius: '64px',
+        paddingBottom: spacing(1),
 
         [breakpoints.up(breakpoints.values.md)]: {
           borderBottomLeftRadius: '64px',
@@ -161,15 +162,6 @@ const FormHeader = () => {
         <h3>{formTitle}</h3>
 
         <ProgressBar percentage={percentageComplete} />
-
-        {stepNum < maxNum && (
-          <div className={classes.stepText}>
-            Step {stepNum} of {maxNum}
-          </div>
-        )}
-        {stepNum === maxNum && (
-          <div className={classes.stepText}>Completed</div>
-        )}
       </div>
     </div>
   );
