@@ -81,7 +81,7 @@ function FinalizeForm() {
     <ContentContainer>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
-        Editing Final Statement
+        Editing final letter
       </div>
 
       {previewComponents}

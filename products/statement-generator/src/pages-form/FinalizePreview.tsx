@@ -54,7 +54,7 @@ function FinalizeStep() {
     <ContentContainer>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
-        Previewing Final Statement
+        Previewing final letter
       </div>
 
       <div className={classes.preview}>
