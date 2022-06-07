@@ -180,5 +180,5 @@ export function generateClosing(formState: IStepState): string {
     introduction: { fullName },
   } = formState;
 
-  return `Sincerly,\n\n${fullName}`;
+  return `Sincerely,\n\n${fullName}`;
 }
