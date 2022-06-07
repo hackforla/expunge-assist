@@ -133,6 +133,13 @@
     "clearRecordHow_input_label": "How is your criminal record barring you from achieving your goals?\n(2-3 complete sentences)",
     "clearRecordHow_input_placeholder": ""
   },
+  "download_page": {
+    "agreement_checkbox_label": "By checking this box you take full responsibility for this letter, and release all association with Hack for LA.",
+    "email_btn": "send in an email",
+    "clipboard_btn": "copy to clipboard",
+    "txt_btn": "download txt",
+    "pdf_btn": "download pdf"
+  },
 
   "faq_page": {
     "page_header": "FAQ",
