@@ -8,6 +8,13 @@
     "yes": "Yes",
     "no": "No"
   },
+  "links": {
+    "home": "Home",
+    "about_us": "About Us",
+    "faq": "FAQ",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_use": "Terms Of Use"
+  },
 
   "landing_page": {
     "sectionTitle1": "The quick and easy way to create a declaration letter",

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import { AppUrl } from 'contexts/RoutingProps';
@@ -79,6 +80,7 @@ function HeaderLink({ to, children, isActive }: IHeaderLink) {
 }
 
 const AppHeader = () => {
+  const { t } = useTranslation();
   const { appTheme } = useContext(RoutingContext);
   const classes = useStyles({ pageTheme: appTheme });
   const utilityClasses = useUtilityStyles();
@@ -89,9 +91,9 @@ const AppHeader = () => {
         <Logo />
 
         <div className={classes.rightContainer}>
-          <HeaderLink to={AppUrl.Landing}>Home</HeaderLink>
-          <HeaderLink to={AppUrl.AboutUs}>About Us</HeaderLink>
-          <HeaderLink to={AppUrl.FAQ}>FAQ</HeaderLink>
+          <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
+          <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
+          <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
         </div>
       </div>
     </div>

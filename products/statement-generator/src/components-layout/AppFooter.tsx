@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import hackForLALogo from 'assets/hackForLALogo.svg';
@@ -81,6 +82,7 @@ function AppFooterLink(props: any) {
 }
 
 const AppFooter: React.FC = () => {
+  const { t } = useTranslation();
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
 
@@ -106,9 +108,11 @@ const AppFooter: React.FC = () => {
 
         <div className={classes.rightContainer}>
           <AppFooterLink url={AppUrl.PrivacyPolicy}>
-            Privacy Policy
+            {t('links.privacy_policy')}
           </AppFooterLink>
-          <AppFooterLink url={AppUrl.TermsOfUse}>Terms Of Use</AppFooterLink>
+          <AppFooterLink url={AppUrl.TermsOfUse}>
+            {t('links.terms_of_use')}
+          </AppFooterLink>
         </div>
       </div>
     </div>
