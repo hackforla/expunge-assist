@@ -43,7 +43,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         textDecoration: 'none',
         color: palette.common.black,
         padding: spacing(1),
-        fontSize: '14px',
+        fontSize: '16px',
 
         '&:hover': {
           color: palette.primary.main,
@@ -88,13 +88,10 @@ const AppHeader = () => {
       <div className={`${classes.appHeader} ${utilityClasses.widePage}`}>
         <Logo />
 
-        {false && (
-          <div className={classes.rightContainer}>
-            <HeaderLink to={AppUrl.AboutUs}>About</HeaderLink>
-            <HeaderLink to={AppUrl.Landing}>Partnership</HeaderLink>
-            <HeaderLink to={AppUrl.Landing}>Contact</HeaderLink>
-          </div>
-        )}
+        <div className={classes.rightContainer}>
+          <HeaderLink to={AppUrl.AboutUs}>About Us</HeaderLink>
+          <HeaderLink to={AppUrl.FAQ}>FAQ</HeaderLink>
+        </div>
       </div>
     </div>
   );

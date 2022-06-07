@@ -109,8 +109,6 @@ const AppFooter: React.FC = () => {
             Privacy Policy
           </AppFooterLink>
           <AppFooterLink url={AppUrl.TermsOfUse}>Terms Of Use</AppFooterLink>
-          <AppFooterLink url={AppUrl.AboutUs}>About Us</AppFooterLink>
-          <AppFooterLink url={AppUrl.FAQ}>FAQ</AppFooterLink>
         </div>
       </div>
     </div>
