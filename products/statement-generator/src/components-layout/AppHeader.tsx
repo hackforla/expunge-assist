@@ -89,6 +89,7 @@ const AppHeader = () => {
         <Logo />
 
         <div className={classes.rightContainer}>
+          <HeaderLink to={AppUrl.Landing}>Home</HeaderLink>
           <HeaderLink to={AppUrl.AboutUs}>About Us</HeaderLink>
           <HeaderLink to={AppUrl.FAQ}>FAQ</HeaderLink>
         </div>
