@@ -129,7 +129,7 @@
   },
   "why_form": {
     "clearRecordWhy_input_label": "Why do you want to clear your record?\nStart with, for example, \"I want to clear my record because…\"",
-    "clearRecordWhy_input_placeholder": "A “declaration letter” is sometimes called a “personal letter” or “personal statement.”",
+    "clearRecordWhy_input_placeholder": "",
     "clearRecordHow_input_label": "How is your criminal record barring you from achieving your goals?\n(2-3 complete sentences)",
     "clearRecordHow_input_placeholder": ""
   },
