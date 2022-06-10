@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -37,6 +38,7 @@ const useStyles = makeStyles(() =>
 );
 
 function Download() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
   const utilityClasses = useUtilityStyles();
@@ -114,8 +116,7 @@ function Download() {
         <Checkbox
           checked={!isDisabled}
           onChange={handleClickCheck}
-          label="By checking this box you take full responsibility for this personal
-            statement, and release all association with Hack for LA."
+          label={t('download_page.agreement_checkbox_label')}
         />
         <div className={classes.downloadButtonsContainer}>
           <Button
@@ -123,28 +124,28 @@ function Download() {
             onClick={handleClickEmail}
             disabled={isDisabled}
             icon={<EmailIcon />}
-            buttonText={buttonText('email', 'send in an email')}
+            buttonText={buttonText('email', t('download_page.email_btn'))}
           />
           <Button
             className={classes.buttonSpacing}
             onClick={handleClickClipboard}
             disabled={isDisabled}
             icon={<FileCopyIcon />}
-            buttonText={buttonText('copy', 'copy to clipboard')}
+            buttonText={buttonText('copy', t('download_page.clipboard_btn'))}
           />
           <Button
             className={classes.buttonSpacing}
             onClick={handleClickTXT}
             disabled={isDisabled}
             icon={<GetAppIcon />}
-            buttonText={buttonText('txt', 'download txt')}
+            buttonText={buttonText('txt', t('download_page.txt_btn'))}
           />
           <Button
             className={classes.buttonSpacing}
             onClick={handleClickPDF}
             disabled={isDisabled}
             icon={<GetAppIcon />}
-            buttonText={buttonText('pdf', 'download pdf')}
+            buttonText={buttonText('pdf', t('download_page.pdf_btn'))}
           />
         </div>
       </form>
