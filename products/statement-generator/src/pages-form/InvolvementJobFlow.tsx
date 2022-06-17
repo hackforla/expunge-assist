@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 function InvolvementJobFlow() {
+  const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
     companyName,
@@ -36,30 +38,27 @@ function InvolvementJobFlow() {
       <FormContainer>
         <Input
           id="companyName"
-          label="What is the name of the company you work for?"
+          label={t('job_form.companyName_input_label')}
+          placeholder={t('job_form.companyName_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Name of company"
           defaultValue={companyName}
           type="text"
         />
 
         <Input
           id="jobTitle"
-          label="What is your current job title?"
+          label={t('job_form.jobTitle_input_label')}
+          placeholder={t('job_form.jobTitle_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Job Title"
-          disabled={!companyNameValid}
           defaultValue={jobTitle}
           type="text"
         />
 
         <Textarea
           id="jobDescription"
-          label="What do you do at this job? Why is this important to you? (2-3
-        sentences suggested)"
+          label={t('job_form.jobDescription_input_label')}
+          placeholder={t('job_form.jobDescription_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="I have had the chance to..."
-          disabled={!jobTitleValid}
           defaultValue={jobDescription}
           rows={3}
         />

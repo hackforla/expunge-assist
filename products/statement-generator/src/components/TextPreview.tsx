@@ -40,6 +40,7 @@ interface ComponentProps {
   content: string;
   nameOfStep: string;
   className?: string;
+  style?: object;
 }
 
 const TextPreview = ({
@@ -47,6 +48,7 @@ const TextPreview = ({
   content,
   nameOfStep,
   className = '',
+  style,
 }: ComponentProps) => {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
@@ -57,7 +59,7 @@ const TextPreview = ({
   };
 
   return (
-    <div className={`${classes.root} ${className}`}>
+    <div className={`${classes.root} ${className}`} style={style}>
       <div className={classes.previewHeader}>
         <h3>{nameOfStep}</h3>
 

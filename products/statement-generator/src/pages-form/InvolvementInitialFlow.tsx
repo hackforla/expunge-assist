@@ -3,14 +3,15 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
 import Checkbox from 'components/Checkbox';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
@@ -30,6 +31,7 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
 );
 
 function InvolvementInitialFlow() {
+  const { t } = useTranslation();
   const classes = useStyles();
 
   const { formState, updateStepToForm } = useContext(FormStateContext);
@@ -80,51 +82,49 @@ function InvolvementInitialFlow() {
       <FormContainer>
         <FormControl className={classes.checkboxGroup}>
           <FormLabel htmlFor="involvement-checkboxes">
-            What things have you been involved with since your conviction?
-            <br />
-            Please check all that apply:
+            {t('involvement_form.checkboxgroup_label')}
           </FormLabel>
           <FormGroup id="involvement-checkboxes">
             <Checkbox
               id="isJobChecked"
               checked={isJobChecked}
               onChange={onCheckboxChange}
-              label="Jobs"
+              label={t('sections.job')}
             />
 
             <Checkbox
               id="isRecoveryChecked"
               checked={isRecoveryChecked}
               onChange={onCheckboxChange}
-              label="Recovery"
+              label={t('sections.recovery')}
             />
 
             <Checkbox
               id="isSchoolChecked"
               checked={isSchoolChecked}
               onChange={onCheckboxChange}
-              label="School"
+              label={t('sections.education')}
             />
 
             <Checkbox
               id="isParentingChecked"
               checked={isParentingChecked}
               onChange={onCheckboxChange}
-              label="Parenting"
+              label={t('sections.parenting')}
             />
 
             <Checkbox
               id="isCommunityChecked"
               checked={isCommunityChecked}
               onChange={onCheckboxChange}
-              label="Community Service"
+              label={t('sections.community_service')}
             />
 
             <Checkbox
               id="isNoneChecked"
               checked={isNoneChecked}
               onChange={onCheckboxChange}
-              label="None of the above"
+              label={t('involvement_form.none_above')}
             />
           </FormGroup>
         </FormControl>

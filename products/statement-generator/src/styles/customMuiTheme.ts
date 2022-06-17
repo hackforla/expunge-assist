@@ -3,9 +3,10 @@ import { createMuiTheme } from '@material-ui/core';
 /**
  * @link https://v4.mui.com/customization/theming/
  */
-const appTheme = createMuiTheme({
+const customMuiTheme = createMuiTheme({
   globals: {
     contentWidth: 600,
+    wideWidth: 960,
   },
   palette: {
     primary: {
@@ -54,4 +55,4 @@ const appTheme = createMuiTheme({
   },
 });
 
-export default appTheme;
+export default customMuiTheme;

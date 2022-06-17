@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
@@ -8,8 +9,10 @@ import TextPreview from 'components/TextPreview';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+
+import { getSectionTitle } from 'helpers/i18nHelper';
 
 import {
   getPreviewStatement,
@@ -39,6 +42,7 @@ const useStyles = makeStyles(({ palette, spacing }) =>
 );
 
 function FinalizeForm() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
 
@@ -53,9 +57,7 @@ function FinalizeForm() {
 
   const previewComponents = PREVIEW_KEYS.map((previewKey) => {
     const statement = getPreviewStatement(formState, previewKey as AppUrl);
-    if (statement === '') {
-      return null;
-    }
+    const isUnused = statement === '';
 
     const previewConfig = PREVIEW_MAP[previewKey];
 
@@ -63,11 +65,14 @@ function FinalizeForm() {
       <TextPreview
         key={`${previewKey}-preview-key`}
         className={classes.previewItem}
+        style={{ display: isUnused ? 'none' : 'block' }}
         onSaveClick={(newText: string) =>
           updatePreviewItem(newText, previewConfig.stateKey)
         }
         content={statement}
-        nameOfStep={previewConfig.title}
+        nameOfStep={`${t('sections.previewing')} ${getSectionTitle(
+          previewKey as AppUrl
+        )}`}
       />
     );
   });
@@ -76,10 +81,17 @@ function FinalizeForm() {
     <ContentContainer>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
-        Editing Final Statement
+        Editing final letter
       </div>
 
       {previewComponents}
+
+      <TextPreview
+        className={classes.previewItem}
+        onSaveClick={(newText: string) => updatePreviewItem(newText, 'closing')}
+        content={formState.statements.closing}
+        nameOfStep="Closing"
+      />
 
       <FlowNavigation />
     </ContentContainer>
