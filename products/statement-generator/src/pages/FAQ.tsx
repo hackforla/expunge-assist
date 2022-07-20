@@ -1,14 +1,16 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import Button from 'components/Button';
 import LinkAsText from 'components/LinkAsText';
 
-import ContentContainer from 'page-layout/ContentContainer';
+import ContentContainer from 'components-layout/ContentContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
 function FAQ() {
+  const { t } = useTranslation();
   const utilityClasses = useUtilityStyles({
     pageTheme: 'dark',
   });
@@ -16,96 +18,95 @@ function FAQ() {
 
   return (
     <ContentContainer>
-      <h2>FAQ</h2>
+      <h2>{t('faq_page.page_header')}</h2>
 
-      <h3>Why do I need a personal statement?</h3>
+      <h3>{t('faq_page.title1')}</h3>
+      <p>{t('faq_page.paragraph1')}</p>
+
+      <h3>{t('faq_page.title2')}</h3>
+      <p>{t('faq_page.paragraph2')}</p>
+      <p>{t('faq_page.paragraph2b')}</p>
+      <p>{t('faq_page.paragraph2c')}</p>
+      <p>{t('faq_page.paragraph2d')}</p>
+      <p>{t('faq_page.paragraph2e')}</p>
+
+      <h3>{t('faq_page.title3')}</h3>
+      <p>{t('faq_page.paragraph3')}</p>
+      <p>{t('faq_page.paragraph3b')}</p>
+
+      <h3>{t('faq_page.title4')}</h3>
+      <p>{t('faq_page.paragraph4')}</p>
+      <p>{t('faq_page.paragraph4b')}</p>
+      <p>{t('faq_page.paragraph4c')}</p>
+
+      <h3>{t('faq_page.title5')}</h3>
+      <p>{t('faq_page.paragraph5')}</p>
+      <p>{t('faq_page.paragraph5b')}</p>
+      <ul>
+        <li>{t('faq_page.paragraph5b_li1')}</li>
+        <li>{t('faq_page.paragraph5b_li2')}</li>
+        <li>{t('faq_page.paragraph5b_li3')}</li>
+      </ul>
+      <p>{t('faq_page.paragraph5c')}</p>
+      <p>{t('faq_page.paragraph5d')}</p>
+      <ul>
+        <li>{t('faq_page.paragraph5d_li1')}</li>
+        <li>{t('faq_page.paragraph5d_li2')}</li>
+        <li>{t('faq_page.paragraph5d_li3')}</li>
+        <li>{t('faq_page.paragraph5d_li4')}</li>
+        <li>{t('faq_page.paragraph5d_li5')}</li>
+        <li>{t('faq_page.paragraph5d_li6')}</li>
+      </ul>
       <p>
-        The personal statement is a brief essay about your current life
-        situation. You can use it to tell the judge why you’re worthy of having
-        your felony conviction re-classified as a misdemeanor under Prop 47. You
-        can also use it for the same purpose to reclassify your marijuana felony
-        conviction to a misdemeanor or have it completely expunged under Pro 64.
+        {t('faq_page.paragraph5e')}
+        <LinkAsText link="https://www.courts.ca.gov/documents/Prop47FAQs.pdf" />
       </p>
 
-      <h3>
-        What type of convictions are eligible to be reclassified to a
-        misdemeanor under Prop 47?
-      </h3>
+      <h3>{t('faq_page.title6')}</h3>
+      <p>{t('faq_page.paragraph6')}</p>
+      <p>{t('faq_page.paragraph6b')}</p>
+      <ul>
+        <li>{t('faq_page.paragraph6b_li1')}</li>
+        <li>{t('faq_page.paragraph6b_li2')}</li>
+        <li>{t('faq_page.paragraph6b_li3')}</li>
+        <li>{t('faq_page.paragraph6b_li4')}</li>
+      </ul>
+
+      <p>{t('faq_page.paragraph6c')}</p>
+      <p>{t('faq_page.paragraph6d')}</p>
+      <ul>
+        <li>{t('faq_page.paragraph6d_li1')}</li>
+        <li>{t('faq_page.paragraph6d_li2')}</li>
+        <li>{t('faq_page.paragraph6d_li3')}</li>
+        <li>{t('faq_page.paragraph6d_li4')}</li>
+      </ul>
+      <p>{t('faq_page.paragraph6e')}</p>
+      <p>{t('faq_page.paragraph6f')}</p>
       <p>
-        Certain individuals with a low-level non-violent prior felony record or
-        who are currently incarcerated may qualify to change their record or
-        their sentence to a misdemeanor for the following offenses:
-        <br />
-        <br />
-        • Simple drug possession
-        <br />
-        • Petty theft under $950
-        <br />
-        • Shoplifting under $950
-        <br />
-        • Forgery under $950
-        <br />
-        • Writing a bad check under $950
-        <br />
-        • Receipt of stolen property under $950
-        <br />
-        <br />
-        However there are some very important exceptions and restrictions so
-        please visit
-        <LinkAsText link="https://www.courts.ca.gov/prop47.htm" />
-        for more information.
+        {t('faq_page.paragraph6g')}
+        <LinkAsText link="https://drugpolicy.org/sites/default/files/Prop64-Resentencing-Guide-July2017.pdf" />
       </p>
 
-      <h3>When do I need to file my Prop 47 application?</h3>
-      <p>
-        You need to file your Prop 47 application by November 4, 2022. However,
-        you can still file past that dateline if you have a valid excuse. Please
-        visit
-        <LinkAsText link="https://www.courts.ca.gov/prop47.htm" />
-        for more information.
-      </p>
+      <h3>{t('faq_page.title7')}</h3>
+      <p>{t('faq_page.paragraph7')}</p>
+      <p>{t('faq_page.paragraph7b')}</p>
 
-      <h3>
-        What type of marijuana convictions are eligible to be reclassified to a
-        misdemeanor or completely expunged under Prop 64?
-      </h3>
-      <p>
-        There is a long list of mariruana offenses that can be reclassified or
-        completely expunged under California’s Prop 64. It includes:
-        <br />
-        <br />
-        • Possession of one ounce or less of marijuana
-        <br />
-        • Possession of marijuana for sale.
-        <br />
-        <br />
-        Please visit
-        <LinkAsText link="https://www.courts.ca.gov/prop64.htm" />
-        for a complete list and for more information.
-      </p>
+      <h3>{t('faq_page.title8')}</h3>
+      <p>{t('faq_page.paragraph8')}</p>
 
-      <h3>When do I need to file my Prop 64 application?</h3>
-      <p>
-        There is no deadline for filing a Prop 64 application. You may file any
-        time.
-      </p>
+      <h3>{t('faq_page.title9')}</h3>
+      <p>{t('faq_page.paragraph9')}</p>
+      <p>{t('faq_page.paragraph9b')}</p>
 
-      <h3>Are there any helpful resources for getting my record cleared?</h3>
-      <p>
-        There are a lot of organizations that help with record clearance. Here
-        is a non-comprehensive list of organizations that provide support:
-        <br />
-        <br />
-        Clear My Record (Code for America)
-        <br />
-        <br />• NDICA
-      </p>
+      <h3>{t('faq_page.title10')}</h3>
+      <p>{t('faq_page.paragraph10')}</p>
+      <p>{t('faq_page.paragraph10b')}</p>
 
       <div className={utilityClasses.buttonContainer}>
         <Button
           onClick={() => history.goBack()}
           buttonText="Back"
-          theme="transparent-on-dark"
+          theme="transparent-on-light"
         />
       </div>
     </ContentContainer>

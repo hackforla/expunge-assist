@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import arrowRight from 'assets/arrowRight.svg';
@@ -25,6 +26,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
       display: 'flex',
       borderRadius: '24px',
       lineHeight: '16px',
+      textDecoration: 'none',
 
       border: ({ theme }) => {
         switch (theme) {
@@ -156,5 +158,27 @@ const ButtonComponent = ({
     </Button>
   );
 };
+
+interface ILinkButtonComponent {
+  className?: string;
+  theme?: string;
+  buttonText: string;
+  to: string;
+}
+
+export function LinkButtonComponent({
+  className = '',
+  theme,
+  buttonText,
+  to,
+}: ILinkButtonComponent) {
+  const styleProps = { theme };
+  const classes = useStyles(styleProps);
+  return (
+    <Link type="button" className={`${classes.root} ${className}`} to={to!}>
+      {buttonText}
+    </Link>
+  );
+}
 
 export default ButtonComponent;

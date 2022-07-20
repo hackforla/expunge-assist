@@ -7,8 +7,8 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
 
 import { getPreviewStatement, PREVIEW_KEYS } from 'helpers/previewHelper';
 
@@ -54,22 +54,27 @@ function FinalizeStep() {
     <ContentContainer>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
-        Previewing Final Statement
+        Previewing final letter
       </div>
 
       <div className={classes.preview}>
         <span>{`${displayDate},\n\n`}</span>
         <span>{`To whom it may concern,\n\n`}</span>
 
-        { PREVIEW_KEYS.map((previewKey) => {
-          const statement = getPreviewStatement(formState, previewKey as AppUrl);
+        {PREVIEW_KEYS.map((previewKey) => {
+          const statement = getPreviewStatement(
+            formState,
+            previewKey as AppUrl
+          );
+
           if (statement === '') {
             return null;
           }
 
-          return <p>{statement}</p>
-
+          return <p key={`${previewKey}-final-paragraph-key`}>{statement}</p>;
         })}
+
+        <p>{formState.statements.closing}</p>
       </div>
 
       <FlowNavigation />

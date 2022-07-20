@@ -56,7 +56,6 @@ export const defaultStepState = {
   },
   unemployedState: {
     unemploymentDescription: '',
-    wouldClearanceHelp: '',
   },
   goalsState: {
     goals: '',
@@ -76,6 +75,7 @@ export const defaultStepState = {
     unemployed: '',
     goals: '',
     why: '',
+    closing: '',
   },
 };
 
@@ -125,7 +125,6 @@ export interface IParentingState {
 // step 2f
 export interface IUnemployedState {
   unemploymentDescription: string;
-  wouldClearanceHelp: string;
 }
 
 export interface IGoalsState {
@@ -149,6 +148,7 @@ export interface IStatementState {
   unemployed: string;
   goals: string;
   why: string;
+  closing: string;
 }
 
 export const sampleStepState = {
@@ -193,7 +193,6 @@ export const sampleStepState = {
   unemployedState: {
     unemploymentDescription:
       'I have not been able to find any jobs that are not about licking or eating things.',
-    wouldClearanceHelp: 'Yes',
   },
   goalsState: {
     goals: 'I want to get a new job so I do not have to eat any more poison.',
@@ -203,5 +202,8 @@ export const sampleStepState = {
     clearRecordWhy: 'It will help me make a better life for me and my family.',
     clearRecordHow:
       'If my record no longer says I have poison resistance, I can be hired for other jobs.',
+  },
+  statements: {
+    closing: 'Yours Truly,\nDan the Man',
   },
 };

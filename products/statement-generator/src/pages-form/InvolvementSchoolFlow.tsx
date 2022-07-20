@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'page-layout/ContentContainer';
-import FlowNavigation from 'page-layout/FlowNavigation';
-import FormContainer from 'page-layout/FormContainer';
+import ContentContainer from 'components-layout/ContentContainer';
+import FlowNavigation from 'components-layout/FlowNavigation';
+import FormContainer from 'components-layout/FormContainer';
 
 function InvolvementSchoolFlow() {
+  const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { schoolName, studyName, passionDescription } = formState.schoolState;
 
@@ -32,29 +34,27 @@ function InvolvementSchoolFlow() {
       <FormContainer>
         <Input
           id="schoolName"
-          label="What is the name of the school you are attending?"
+          label={t('education_form.schoolName_input_label')}
+          placeholder={t('education_form.schoolName_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Name of School"
           defaultValue={schoolName}
           type="text"
         />
 
         <Input
           id="studyName"
-          label="What are you currently studying?"
+          label={t('education_form.studyName_input_label')}
+          placeholder={t('education_form.studyName_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="Name of Subject/Study Area"
-          disabled={!schoolNameValid}
           defaultValue={studyName}
           type="text"
         />
 
         <Textarea
           id="passionDescription"
-          label="Why are you passionate about studying this? (2-3 sentences suggested)"
+          label={t('education_form.passionDescription_input_label')}
+          placeholder={t('education_form.passionDescription_input_placeholder')}
           handleChange={onInputChange}
-          placeholder="I am passionate about..."
-          disabled={!studyNameValid}
           defaultValue={passionDescription}
           rows={3}
         />

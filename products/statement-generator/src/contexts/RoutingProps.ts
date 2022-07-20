@@ -3,7 +3,8 @@ export interface RoutingContextProps {
   goBackPage: () => void;
   currentStep: AppUrl;
   canShowAffirmation: boolean;
-  topLevelPageTheme: string;
+  appTheme: string;
+  setAppTheme: () => void;
 }
 
 /**
@@ -13,9 +14,10 @@ export interface RoutingContextProps {
 export enum AppUrl {
   Landing = '',
   NotFound = '404',
-  Start = '/start',
-  BeforeYouBegin = '/agreement',
   Welcome = '/welcome',
+  BeforeYouBegin = '/before-you-begin',
+  Advice = '/advice',
+
   Introduction = '/form/intro',
   IntroductionPreview = '/form/introduction/preview',
   Involvement = '/form/involvement',
@@ -40,6 +42,7 @@ export enum AppUrl {
   FinalizePreview = '/form/finalize/preview',
   Editing = '/form/editing',
   Download = '/form/download',
+
   PrivacyPolicy = '/privacy-policy',
   TermsOfUse = '/terms-of-use',
   FAQ = '/faq',
@@ -60,15 +63,13 @@ export function isAppUrl(url: AppUrlOrString): boolean {
 export function getNextFormUrl(url: AppUrl): AppUrl {
   switch (url) {
     case AppUrl.Landing:
-      return AppUrl.Start;
-
-    case AppUrl.Start:
-      return AppUrl.BeforeYouBegin;
-
-    case AppUrl.BeforeYouBegin:
       return AppUrl.Welcome;
 
     case AppUrl.Welcome:
+      return AppUrl.BeforeYouBegin;
+    case AppUrl.BeforeYouBegin:
+      return AppUrl.Advice;
+    case AppUrl.Advice:
       return AppUrl.Introduction;
 
     case AppUrl.Introduction:

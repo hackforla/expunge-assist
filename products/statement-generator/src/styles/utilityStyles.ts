@@ -4,17 +4,18 @@ const useUtilityStyles = makeStyles<Theme>(
   ({ palette, breakpoints, globals, spacing }) =>
     createStyles({
       primaryContainer: {
+        minHeight: '475px',
+        width: '100%',
         display: 'flex',
         flex: '1 0 auto',
         flexDirection: 'column',
-        width: '100%',
         position: 'relative',
 
         background: ({ pageTheme }: IUseUtilityStyle) => {
           switch (pageTheme) {
             case 'dark':
               return palette.primary.main;
-            case 'light':
+            case 'pink':
               return palette.primary.lighter;
             case 'transparent':
             default:
@@ -26,13 +27,20 @@ const useUtilityStyles = makeStyles<Theme>(
           switch (pageTheme) {
             case 'dark':
               return 'white';
-            case 'light':
+            case 'pink':
             case 'transparent':
             default:
               return palette.primary.darker;
           }
         },
       },
+      widePage: {
+        maxWidth: globals.wideWidth,
+        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      },
+
       buttonContainer: {
         marginTop: 'auto',
         paddingTop: spacing(3),

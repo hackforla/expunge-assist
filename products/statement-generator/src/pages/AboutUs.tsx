@@ -4,7 +4,7 @@ import { makeStyles, createStyles, Link } from '@material-ui/core';
 
 import Button from 'components/Button';
 
-import ContentContainer from 'page-layout/ContentContainer';
+import ContentContainer from 'components-layout/ContentContainer';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -50,7 +50,7 @@ export default function AboutUs() {
         <Button
           onClick={() => history.goBack()}
           buttonText="Back"
-          theme="transparent-on-dark"
+          theme="transparent-on-light"
         />
       </div>
     </ContentContainer>

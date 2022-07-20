@@ -3,6 +3,7 @@ body {
   font-family: Roboto;
   font-weight: 400;
   height: 100vh;
+  overflow-y: overlay;
 }
 
 #root {
@@ -13,26 +14,41 @@ body {
 
 h1 {
   font-size: clamp(34px, 5vw, 48px);
-  font-weight: 700;
+  font-weight: 400;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+h3 {
+  font-size: 1.25rem;
+  font-weight: normal;
 }
 
-p {
+p,
+label {
   white-space: pre-wrap;
 }
 
 h2 + h3,
 p + h3,
 h1 + p,
-h2 + p {
-  margin-top: 2rem;
+h2 + p,
+ul + h3,
+ul + p {
+  margin-top: 24px;
 }
 
 h3 + p,
 p + p {
-  margin-top: 1rem;
+  margin-top: 8px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  padding-left: 2rem;
 }
