@@ -7,6 +7,7 @@ import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
 import Logo from 'components/Logo';
+import { LinkButtonComponent } from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -16,8 +17,12 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
       headerWrapper: {
         height: 60,
         flex: '0 0 auto',
-        background: ({ pageTheme }: IUseUtilityStyle) =>
-          pageTheme === 'dark' ? palette.primary.main : palette.primary.lighter,
+        background: '#fff',
+        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
+        zIndex: 1100,
+        position: 'fixed',
+        top: 0,
+        width: '100%',
 
         [breakpoints.down(breakpoints.values.md)]: {
           background: palette.primary.lighter,
@@ -45,6 +50,9 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         color: palette.common.black,
         padding: spacing(1),
         fontSize: '16px',
+        fontWeight: 500,
+        display: 'flex',
+        alignItems: 'center',
 
         '&:hover': {
           color: palette.primary.main,
@@ -56,6 +64,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         '&$headerLink + $headerLink': {
           marginLeft: 4,
         },
+      },
+      linkButtonComponent: {
+        padding: '12px 18px',
+        marginLeft: '15px',
       },
     })
 );
@@ -94,6 +106,11 @@ const AppHeader = () => {
           <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
           <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
           <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
+          <LinkButtonComponent
+            to={AppUrl.Welcome}
+            buttonText={t('button.startNow')}
+            className={classes.linkButtonComponent}
+          />
         </div>
       </div>
     </div>

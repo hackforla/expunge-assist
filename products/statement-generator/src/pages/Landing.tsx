@@ -13,6 +13,9 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
   createStyles({
+    extraSpace: {
+      marginTop: '60px',
+    },
     wideSection: {
       padding: spacing(6, 3),
       display: 'flex',
@@ -177,7 +180,7 @@ function LandingPage() {
   const utilityClasses = useUtilityStyles();
 
   return (
-    <div>
+    <div className={classes.extraSpace}>
       <div className={classes.backgroundBlock}>
         <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
           <section className={`${classes.section} ${classes.firstSection}`}>
