@@ -66,8 +66,8 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         },
       },
       linkButtonComponent: {
-        padding: '12px 18px !important',
-        marginLeft: '15px !important',
+        padding: '12px 18px',
+        marginLeft: '15px',
       },
     })
 );
