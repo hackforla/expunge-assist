@@ -32,7 +32,6 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     textContainer: {
       display: 'flex',
       flexDirection: 'column',
-      marginLeft: spacing(1),
       fontSize: '16px',
     },
     leftContainer: {
