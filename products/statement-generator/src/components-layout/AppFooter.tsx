@@ -104,7 +104,7 @@ const AppFooter: React.FC = () => {
     <footer className={classes.footerWrapper}>
       <div className={`${classes.appFooter} ${utilityClasses.widePage}`}>
         <div className={classes.leftContainer}>
-          <Logo />
+          <Logo footer/>
 
           <div className={classes.textContainer}>
             <p>Contact: info@expungeassist.org</p>
