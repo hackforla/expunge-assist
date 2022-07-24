@@ -58,6 +58,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
 
       '&:hover': {
         color: palette.primary.main,
+        textDecoration: 'underline',
       },
       '&:active': {
         color: palette.primary.main,
@@ -69,7 +70,18 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     },
     hackforlaIcon: {
       height: 25,
+      margin: 'auto 10px',
     },
+    reg: {
+      margin: 'auto 0',
+    },
+    line: {
+      margin: 'auto 0',
+      fontWeight: 300,
+    },
+    logoContainer: {
+      display: 'flex',
+    }
   })
 );
 
@@ -104,17 +116,19 @@ const AppFooter: React.FC = () => {
           <AppFooterLink url={AppUrl.PrivacyPolicy}>
             {t('links.privacy_policy')}
           </AppFooterLink>
+          <span className={classes.line}>|</span>
           <AppFooterLink url={AppUrl.TermsOfUse}>
             {t('links.terms_of_use')}
           </AppFooterLink>
-          <a href="https://www.hackforla.org/" target="_blank" rel="noreferrer">
+          <span className={classes.line}>|</span>
+          <a href="https://www.hackforla.org/" target="_blank" rel="noreferrer" className={classes.logoContainer}>
             <img
               className={classes.hackforlaIcon}
               src={hackForLALogo}
               alt="Hack for LA Logo"
             />
           </a>
-          <span style={{ fontSize: 13 }}>© 2022 Hack for LA</span>
+          <span className={classes.reg}>© 2022 Hack for LA</span>
         </div>
       </div>
     </footer>
