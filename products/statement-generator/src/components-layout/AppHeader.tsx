@@ -93,9 +93,28 @@ function HeaderLink({ to, children, isActive }: IHeaderLink) {
 
 const AppHeader = () => {
   const { t } = useTranslation();
-  const { appTheme } = useContext(RoutingContext);
+  const { appTheme, currentStep } = useContext(RoutingContext);
   const classes = useStyles({ pageTheme: appTheme });
   const utilityClasses = useUtilityStyles();
+
+  const startNowButtonHandler = () => {
+    if (
+      currentStep === '' ||
+      currentStep === '/about-us' ||
+      currentStep === '/privacy-policy' ||
+      currentStep === '/terms-of-use' ||
+      currentStep === '/faq'
+    ) {
+      return (
+        <LinkButtonComponent
+          to={AppUrl.Welcome}
+          buttonText={t('button.startNow')}
+          className={classes.linkButtonComponent}
+        />
+      );
+    }
+    return null;
+  };
 
   return (
     <div className={classes.headerWrapper}>
@@ -106,11 +125,7 @@ const AppHeader = () => {
           <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
           <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
           <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
-          <LinkButtonComponent
-            to={AppUrl.Welcome}
-            buttonText={t('button.startNow')}
-            className={classes.linkButtonComponent}
-          />
+          {startNowButtonHandler()}
         </div>
       </div>
     </div>

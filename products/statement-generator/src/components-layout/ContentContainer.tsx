@@ -22,7 +22,9 @@ const ContentContainer = ({ children, className = '' }: IContentContainer) => {
   const classes = useStyles({});
 
   return (
-    <div className={`${utilityClasses.contentContainer} ${className} ${classes.extraSpace}`}>
+    <div
+      className={`${utilityClasses.contentContainer} ${className} ${classes.extraSpace}`}
+    >
       {children}
     </div>
   );

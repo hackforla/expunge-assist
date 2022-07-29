@@ -10,8 +10,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     createStyles({
       logoContainer: {
         display: 'flex',
-        maxHeight: ({ footer }: IUseUtilityStyle) =>
-          footer ? '25px' : 'null',
+        maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
         marginBottom: ({ footer }: IUseUtilityStyle) =>
           footer ? '10px' : 'null',
         [breakpoints.down(breakpoints.values.md)]: {
@@ -27,7 +26,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
       logoLink: {
         textDecoration: 'none',
         display: 'flex',
-        flexDirection: ({ footer} : IUseUtilityStyle) =>
+        flexDirection: ({ footer }: IUseUtilityStyle) =>
           footer ? 'column' : 'row',
         marginLeft: spacing(2),
         textTransform: 'uppercase',
@@ -37,11 +36,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
 
         [breakpoints.up(breakpoints.values.md)]: {
           flexDirection: 'row',
-          fontSize:({ footer }: IUseUtilityStyle) =>
+          fontSize: ({ footer }: IUseUtilityStyle) =>
             footer ? '12px' : '24px',
           '& span + span': {
-            marginLeft: ({ footer }: IUseUtilityStyle) =>
-              footer ? 0 : 8,
+            marginLeft: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 8),
           },
         },
         [breakpoints.down(breakpoints.values.md)]: {
@@ -79,7 +77,7 @@ export default function Logo({ theme, footer }: ILogoComponent) {
         <img src={logoIcon} alt="" />
       </Link>
 
-      <TextLogo theme={theme} footer={footer}/>
+      <TextLogo theme={theme} footer={footer} />
     </div>
   );
 }
