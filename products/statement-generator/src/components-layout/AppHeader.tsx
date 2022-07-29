@@ -98,13 +98,21 @@ const AppHeader = () => {
   const utilityClasses = useUtilityStyles();
 
   const startNowButtonHandler = () => {
-    if(currentStep === '' || currentStep === '/about-us' || currentStep === '/privacy-policy' || currentStep === '/terms-of-use' || currentStep === '/faq' ) {
-      return ( <LinkButtonComponent
-        to={AppUrl.Welcome}
-        buttonText={t('button.startNow')}
-        className={classes.linkButtonComponent}
-      /> )
-    } 
+    if (
+      currentStep === '' ||
+      currentStep === '/about-us' ||
+      currentStep === '/privacy-policy' ||
+      currentStep === '/terms-of-use' ||
+      currentStep === '/faq'
+    ) {
+      return (
+        <LinkButtonComponent
+          to={AppUrl.Welcome}
+          buttonText={t('button.startNow')}
+          className={classes.linkButtonComponent}
+        />
+      );
+    }
     return null;
   };
 
@@ -117,7 +125,7 @@ const AppHeader = () => {
           <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
           <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
           <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
-          {startNowButtonHandler()} 
+          {startNowButtonHandler()}
         </div>
       </div>
     </div>

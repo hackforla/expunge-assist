@@ -80,7 +80,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     },
     logoContainer: {
       display: 'flex',
-    }
+    },
   })
 );
 
@@ -104,7 +104,7 @@ const AppFooter: React.FC = () => {
     <footer className={classes.footerWrapper}>
       <div className={`${classes.appFooter} ${utilityClasses.widePage}`}>
         <div className={classes.leftContainer}>
-          <Logo footer/>
+          <Logo footer />
 
           <div className={classes.textContainer}>
             <p>Contact: info@expungeassist.org</p>
@@ -120,7 +120,12 @@ const AppFooter: React.FC = () => {
             {t('links.terms_of_use')}
           </AppFooterLink>
           <span className={classes.line}>|</span>
-          <a href="https://www.hackforla.org/" target="_blank" rel="noreferrer" className={classes.logoContainer}>
+          <a
+            href="https://www.hackforla.org/"
+            target="_blank"
+            rel="noreferrer"
+            className={classes.logoContainer}
+          >
             <img
               className={classes.hackforlaIcon}
               src={hackForLALogo}
