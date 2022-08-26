@@ -36,6 +36,8 @@ export function getSectionTitle(url: AppUrl): string {
       return t('sections.why');
     case AppUrl.Finalize:
       return t('sections.finalize');
+    case AppUrl.FinalizePreview:
+      return t('sections.completed');
     default:
       return '';
   }
