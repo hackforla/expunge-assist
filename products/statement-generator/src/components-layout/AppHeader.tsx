@@ -12,10 +12,10 @@ import { LinkButtonComponent } from 'components/Button';
 import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles<Theme, IUseUtilityStyle>(
-  ({ palette, breakpoints, spacing }) =>
+  ({ globals, palette, breakpoints, spacing }) =>
     createStyles({
       headerWrapper: {
-        height: 60,
+        height: globals.headerHeight,
         flex: '0 0 auto',
         background: '#fff',
         boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',

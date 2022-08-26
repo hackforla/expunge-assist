@@ -5,6 +5,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
     globals: {
       contentWidth: number;
       wideWidth: number;
+      headerHeight: number;
     };
   }
 
@@ -12,6 +13,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
     globals: {
       contentWidth: number;
       wideWidth: number;
+      headerHeight: number;
     };
   }
 }
