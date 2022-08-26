@@ -153,7 +153,6 @@ const FormHeader = () => {
   const percentageComplete = (stepNum / maxNum) * 100;
 
   const formTitle = getSectionTitle(currentStep);
-  console.log('formTitle', stepNum, currentStep);
 
   if (stepNum === 0) {
     return null;

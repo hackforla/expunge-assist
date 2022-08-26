@@ -6,9 +6,12 @@ import FormHeader from 'components/FormHeader';
 import RoutingContext from 'contexts/RoutingContext';
 import { isFormPage } from 'contexts/RoutingProps';
 
-const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette }) =>
+const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ globals, palette }) =>
   createStyles({
     subheaderContainer: {
+      // note: this will push most content down by the headerHeight,
+      //  since most pages have the AppSubheader component even if there is nothing there
+      marginTop: globals.headerHeight,
       display: 'flex',
       flexDirection: 'column',
       width: '100%',
