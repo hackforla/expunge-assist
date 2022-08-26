@@ -44,12 +44,6 @@ function FinalizeStep() {
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
 
-  const displayDate = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-
   return (
     <ContentContainer>
       <div className={classes.purpleTitle}>
@@ -58,8 +52,7 @@ function FinalizeStep() {
       </div>
 
       <div className={classes.preview}>
-        <span>{`${displayDate},\n\n`}</span>
-        <span>{`To whom it may concern,\n\n`}</span>
+        <p>{formState.statements.heading}</p>
 
         {PREVIEW_KEYS.map((previewKey) => {
           const statement = getPreviewStatement(
