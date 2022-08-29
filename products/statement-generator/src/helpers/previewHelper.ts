@@ -79,7 +79,7 @@ export function getPreviewStatement(
 }
 
 export function generateFinal(formState: IStepState): string {
-  return PREVIEW_KEYS.reduce((accumulator, previewKey) => {
+  const statementBody = PREVIEW_KEYS.reduce((accumulator, previewKey) => {
     const statement = getPreviewStatement(formState, previewKey as AppUrl);
 
     // blank statement
@@ -95,4 +95,6 @@ export function generateFinal(formState: IStepState): string {
     // concat statement
     return `${accumulator}\n\n${statement}`;
   }, '');
+
+  return `${formState.statements.heading}\n\n${statementBody}\n\n${formState.statements.closing}`;
 }

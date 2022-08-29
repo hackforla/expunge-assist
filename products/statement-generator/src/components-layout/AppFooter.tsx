@@ -6,6 +6,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import hackForLALogo from 'assets/hackForLALogo.svg';
 
 import { AppUrl } from 'contexts/RoutingProps';
+import Logo from 'components/Logo';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -13,14 +14,14 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
   createStyles({
     footerWrapper: {
       width: '100%',
-      background: palette.primary.light,
+      background: '#F7EBFF',
       flex: '0 0 auto',
     },
     appFooter: {
       color: palette.common.black,
       display: 'flex',
       alignItems: 'center',
-      padding: spacing(1, 3),
+      padding: spacing(2, 3),
 
       [breakpoints.down(breakpoints.values.md)]: {
         flexDirection: 'column-reverse',
@@ -31,11 +32,11 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     textContainer: {
       display: 'flex',
       flexDirection: 'column',
-      marginLeft: spacing(1),
+      fontSize: '16px',
     },
     leftContainer: {
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: 'column',
 
       [breakpoints.down(breakpoints.values.md)]: {
         marginTop: spacing(3),
@@ -50,11 +51,13 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     linkBtn: {
       textDecoration: 'none',
       color: palette.common.black,
+      fontWeight: 500,
       padding: spacing(1),
-      fontSize: '12px',
+      fontSize: '16px',
 
       '&:hover': {
         color: palette.primary.main,
+        textDecoration: 'underline',
       },
       '&:active': {
         color: palette.primary.main,
@@ -66,6 +69,17 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     },
     hackforlaIcon: {
       height: 25,
+      margin: 'auto 10px',
+    },
+    reg: {
+      margin: 'auto 0',
+    },
+    line: {
+      margin: 'auto 0',
+      fontWeight: 300,
+    },
+    logoContainer: {
+      display: 'flex',
     },
   })
 );
@@ -87,22 +101,13 @@ const AppFooter: React.FC = () => {
   const utilityClasses = useUtilityStyles();
 
   return (
-    <div className={classes.footerWrapper}>
+    <footer className={classes.footerWrapper}>
       <div className={`${classes.appFooter} ${utilityClasses.widePage}`}>
         <div className={classes.leftContainer}>
-          <a href="https://www.hackforla.org/" target="_blank" rel="noreferrer">
-            <img
-              className={classes.hackforlaIcon}
-              src={hackForLALogo}
-              alt="Hack for LA Logo"
-            />
-          </a>
+          <Logo footer />
 
           <div className={classes.textContainer}>
-            <span style={{ fontSize: 13, fontWeight: 'bold' }}>
-              © 2022 Hack for LA
-            </span>
-            <span style={{ fontSize: 12 }}>info@expungeassist.org</span>
+            <p>Contact: info@expungeassist.org</p>
           </div>
         </div>
 
@@ -110,12 +115,27 @@ const AppFooter: React.FC = () => {
           <AppFooterLink url={AppUrl.PrivacyPolicy}>
             {t('links.privacy_policy')}
           </AppFooterLink>
+          <span className={classes.line}>|</span>
           <AppFooterLink url={AppUrl.TermsOfUse}>
             {t('links.terms_of_use')}
           </AppFooterLink>
+          <span className={classes.line}>|</span>
+          <a
+            href="https://www.hackforla.org/"
+            target="_blank"
+            rel="noreferrer"
+            className={classes.logoContainer}
+          >
+            <img
+              className={classes.hackforlaIcon}
+              src={hackForLALogo}
+              alt="Hack for LA Logo"
+            />
+          </a>
+          <span className={classes.reg}>© 2022 Hack for LA</span>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

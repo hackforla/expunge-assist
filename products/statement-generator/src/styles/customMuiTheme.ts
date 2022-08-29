@@ -7,6 +7,7 @@ const customMuiTheme = createMuiTheme({
   globals: {
     contentWidth: 600,
     wideWidth: 960,
+    headerHeight: 60,
   },
   palette: {
     primary: {

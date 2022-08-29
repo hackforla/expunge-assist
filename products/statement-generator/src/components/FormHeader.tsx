@@ -102,8 +102,10 @@ function convertStepToNum(
       return 5 + additionalStepCounter;
     case AppUrl.Finalize:
       return 6 + additionalStepCounter;
+    case AppUrl.FinalizePreview:
+      return 7 + additionalStepCounter;
     case AppUrl.Download:
-      return 6 + additionalStepCounter;
+      return 7 + additionalStepCounter;
     default:
       return 0;
   }

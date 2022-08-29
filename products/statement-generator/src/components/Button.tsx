@@ -22,7 +22,7 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
   createStyles({
     root: {
-      padding: '12px 16px',
+      padding: '8px 16px',
       display: 'flex',
       borderRadius: '24px',
       lineHeight: '16px',

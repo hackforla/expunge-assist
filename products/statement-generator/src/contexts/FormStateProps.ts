@@ -66,6 +66,7 @@ export const defaultStepState = {
     clearRecordHow: '',
   },
   statements: {
+    heading: '',
     introduction: '',
     job: '',
     service: '',
@@ -204,6 +205,7 @@ export const sampleStepState = {
       'If my record no longer says I have poison resistance, I can be hired for other jobs.',
   },
   statements: {
+    heading: 'Today,\n\nDearly beloved,',
     closing: 'Yours Truly,\nDan the Man',
   },
 };
