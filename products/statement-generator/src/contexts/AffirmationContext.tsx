@@ -11,22 +11,22 @@ const AFFIRMATION_DATA = {
   [AppUrl.Involvement as string]: {
     titleText: 'affirmation_popup.step2.titleText',
     description: 'affirmation_popup.step2.description',
-    buttonText: 'button.next',
+    buttonText: 'button.letsContinue',
   },
   [AppUrl.Goals as string]: {
     titleText: 'affirmation_popup.step3.titleText',
     description: 'affirmation_popup.step3.description',
-    buttonText: 'button.next',
+    buttonText: 'button.letsContinue',
   },
   [AppUrl.Why as string]: {
     titleText: 'affirmation_popup.step4.titleText',
     description: 'affirmation_popup.step4.description',
-    buttonText: 'button.next',
+    buttonText: 'button.letsContinue',
   },
   [AppUrl.Finalize as string]: {
     titleText: 'affirmation_popup.step5.titleText',
     description: 'affirmation_popup.step5.description',
-    buttonText: 'button.next',
+    buttonText: 'button.letsContinue',
   },
 };
 

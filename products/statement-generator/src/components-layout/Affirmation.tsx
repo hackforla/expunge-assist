@@ -61,6 +61,7 @@ const Affirmation = () => {
 
       <div className={utilityClasses.buttonContainer}>
         <Button
+          hasArrow
           className={utilityClasses.buttonRight}
           onClick={() => updateAffirmationData({ isActive: false })}
           buttonText={t(affirmationData.buttonText)}
