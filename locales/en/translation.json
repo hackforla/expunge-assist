@@ -3,6 +3,7 @@
     "startNow": "Start Now",
     "begin": "Begin",
     "next": "Next",
+    "letsContinue": "Let's Continue",
     "cancel": "Cancel",
     "save": "Save",
     "yes": "Yes",
@@ -74,7 +75,8 @@
     "community_service": "Community service",
     "goals": "Future goals",
     "why": "Why",
-    "finalize": "My declaration letter"
+    "finalize": "My declaration letter",
+    "completed": "Completed"
   },
 
   "introduction_form": {
