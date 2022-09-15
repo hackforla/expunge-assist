@@ -9,20 +9,18 @@ import { AppUrl } from 'contexts/RoutingProps';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
+import Download from 'pages-form/Download';
 
 import { getPreviewStatement, PREVIEW_KEYS } from 'helpers/previewHelper';
 
-const useStyles = makeStyles(({ palette }) =>
+const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
     preview: {
       padding: '15px',
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
       whiteSpace: 'pre-line',
-
-      '& p': {
-        marginBottom: 15,
-      },
+      marginBottom: spacing(4),
     },
     purpleTitle: {
       color: palette.primary.main,
@@ -70,7 +68,9 @@ function FinalizeStep() {
         <p>{formState.statements.closing}</p>
       </div>
 
-      <FlowNavigation />
+      <Download />
+
+      <FlowNavigation showNext={false} />
     </ContentContainer>
   );
 }
