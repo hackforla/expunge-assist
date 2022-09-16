@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import FormStateContext from 'contexts/FormStateContext';
+import { AppUrl } from 'contexts/RoutingProps';
 
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
-import { AppUrl } from 'contexts/RoutingProps';
+import InfoBlock from 'components/InfoBlock';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
@@ -67,6 +68,10 @@ function FinalizeStep() {
 
         <p>{formState.statements.closing}</p>
       </div>
+
+      <InfoBlock title="Review your completed declaration letter">
+        If you want to make edits after downloading your completed letter, you can edit it with a text editor such as Microsoft Word, Google Docs, or Pages.
+      </InfoBlock>
 
       <Download />
 
