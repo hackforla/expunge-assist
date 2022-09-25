@@ -36,10 +36,10 @@ const customMuiTheme = createMuiTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 320,
-      md: 960,
-      lg: 1200,
-      xl: 1920,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
     },
   },
   typography: {
