@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
 import Logo from 'components/Logo';
-import { LinkButtonComponent } from 'components/Button';
+import Button, { LinkButtonComponent } from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -22,8 +24,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         position: 'fixed',
         top: 0,
         width: '100%',
-
-        [breakpoints.up(breakpoints.values.sm)]: {},
+        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
       },
       appHeader: {
         display: 'flex',
@@ -32,7 +33,9 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         height: '100%',
         zIndex: 1,
         padding: spacing(1, 2),
-        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
+        [breakpoints.down(breakpoints.values.sm)]: {
+          borderBottom: '2px solid #e2e2e2',
+        },
       },
       rightContainer: {
         marginLeft: 'auto',
@@ -59,7 +62,13 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
           display: 'flex',
         },
       },
-
+      menuButton: {
+        marginLeft: 'auto',
+        display: 'none',
+        [breakpoints.down(breakpoints.values.sm)]: {
+          display: 'block',
+        },
+      },
       headerLink: {
         textDecoration: 'none',
         color: palette.common.black,
@@ -119,6 +128,7 @@ const AppHeader = () => {
   const { appTheme, currentStep } = useContext(RoutingContext);
   const classes = useStyles({ pageTheme: appTheme });
   const utilityClasses = useUtilityStyles();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const startNowButtonHandler = () => {
     if (
@@ -151,12 +161,23 @@ const AppHeader = () => {
           {startNowButtonHandler()}
         </div>
 
-        <div className={classes.floatingMenuContainer}>
-          <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
-          <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
-          <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
-          {startNowButtonHandler()}
-        </div>
+        <Button
+          className={classes.menuButton}
+          theme="transparent-on-light"
+          icon={isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+        />
+
+        {isMenuOpen && (
+          <div className={classes.floatingMenuContainer}>
+            <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
+            <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
+            <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
+            {startNowButtonHandler()}
+          </div>
+        )}
       </div>
     </div>
   );
