@@ -18,31 +18,46 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         height: globals.headerHeight,
         flex: '0 0 auto',
         background: '#fff',
-        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
         zIndex: 1100,
         position: 'fixed',
         top: 0,
         width: '100%',
 
-        [breakpoints.down(breakpoints.values.md)]: {
-          background: palette.primary.lighter,
-        },
-
-        [breakpoints.down(breakpoints.values.sm)]: {
-          display: 'none',
-        },
+        [breakpoints.up(breakpoints.values.sm)]: {},
       },
       appHeader: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         height: '100%',
+        zIndex: 1,
         padding: spacing(1, 2),
+        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
       },
       rightContainer: {
         marginLeft: 'auto',
         display: 'flex',
         flexDirection: 'row',
+
+        [breakpoints.down(breakpoints.values.sm)]: {
+          display: 'none',
+        },
+      },
+      floatingMenuContainer: {
+        marginLeft: 'auto',
+        display: 'none',
+        flexDirection: 'column',
+        background: 'white',
+        position: 'fixed',
+        left: 0,
+        right: 0,
+        top: globals.headerHeight,
+        padding: spacing(1, 1, 2, 1),
+        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
+
+        [breakpoints.down(breakpoints.values.sm)]: {
+          display: 'flex',
+        },
       },
 
       headerLink: {
@@ -61,13 +76,21 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
           color: palette.primary.main,
         },
 
-        '&$headerLink + $headerLink': {
-          marginLeft: 4,
+        [breakpoints.up(breakpoints.values.sm)]: {
+          '&$headerLink + $headerLink': {
+            marginLeft: 4,
+          },
         },
       },
       linkButtonComponent: {
-        padding: '12px 18px',
-        marginLeft: '15px',
+        padding: spacing(1, 2),
+
+        [breakpoints.up(breakpoints.values.sm)]: {
+          marginLeft: '15px',
+        },
+        [breakpoints.down(breakpoints.values.sm)]: {
+          marginTop: spacing(1),
+        },
       },
     })
 );
@@ -122,6 +145,13 @@ const AppHeader = () => {
         <Logo />
 
         <div className={classes.rightContainer}>
+          <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
+          <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
+          <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
+          {startNowButtonHandler()}
+        </div>
+
+        <div className={classes.floatingMenuContainer}>
           <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
           <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
           <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>

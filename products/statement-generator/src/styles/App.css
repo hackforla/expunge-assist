@@ -3,7 +3,7 @@ body {
   font-family: Roboto;
   font-weight: 400;
   height: 100vh;
-  overflow-y: overlay;
+  overflow-y: auto;
 }
 
 #root {
