@@ -57,6 +57,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         top: globals.headerHeight,
         padding: spacing(1, 1, 2, 1),
         boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
+        alignItems: 'flex-start',
 
         [breakpoints.down(breakpoints.values.sm)]: {
           display: 'flex',
@@ -65,6 +66,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
       menuButton: {
         marginLeft: 'auto',
         display: 'none',
+        marginRight: spacing(-2),
         [breakpoints.down(breakpoints.values.sm)]: {
           display: 'block',
         },
@@ -148,6 +150,10 @@ const AppHeader = () => {
     }
     return null;
   };
+
+  React.useEffect(() => {
+    setIsMenuOpen(false);
+  }, [currentStep]);
 
   return (
     <div className={classes.headerWrapper}>

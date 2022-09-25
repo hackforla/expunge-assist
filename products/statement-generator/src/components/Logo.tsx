@@ -10,6 +10,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     createStyles({
       logoContainer: {
         display: 'flex',
+        fontSize: 20,
         maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
         marginBottom: ({ footer }: IUseUtilityStyle) =>
           footer ? '10px' : 'null',
