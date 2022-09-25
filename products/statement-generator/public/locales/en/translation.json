@@ -142,6 +142,11 @@
     "clearRecordHow_input_label": "How is your criminal record barring you from achieving your goals?\n(2-3 complete sentences)",
     "clearRecordHow_input_placeholder": ""
   },
+  "finalize_preview": {
+    "header_title": "Previewing final letter",
+    "review_info_title": "Review your completed declaration letter",
+    "review_info_content": "If you want to make edits after downloading your completed letter, you can edit it with a text editor such as Microsoft Word, Google Docs, or Pages."
+  },
   "download_page": {
     "agreement_checkbox_label": "By checking this box you take full responsibility for this letter, and release all association with Hack for LA.",
     "email_btn": "send in an email",

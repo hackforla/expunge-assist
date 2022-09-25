@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
@@ -13,8 +12,6 @@ import { generateFinal } from 'helpers/previewHelper';
 import FormStateContext from 'contexts/FormStateContext';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
-
-import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -40,8 +37,6 @@ function Download() {
   const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
-  const utilityClasses = useUtilityStyles();
-  const history = useHistory();
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);

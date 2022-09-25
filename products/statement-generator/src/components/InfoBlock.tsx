@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 
-const useStyles = makeStyles<Theme>(({ palette }) =>
+const useStyles = makeStyles<Theme>(() =>
   createStyles({
-    root: {
+    infoBlockContainer: {
       padding: '16px',
       display: 'flex',
       flexDirection: 'row',
@@ -41,7 +41,7 @@ export function InfoBlock({
 }: IInfoBlockComponent) {
   const classes = useStyles();
   return (
-    <div className={`${classes.root} ${className}`}>
+    <div className={`${classes.infoBlockContainer} ${className}`}>
       <InfoIcon className={classes.icon} />
       <div className={classes.infoInner}>
         {title && <div className={classes.title}>{title}</div>}

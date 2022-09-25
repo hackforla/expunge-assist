@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 import { AppUrl } from 'contexts/RoutingProps';
@@ -36,10 +37,14 @@ const useStyles = makeStyles(({ palette, spacing }) =>
       fontSize: '20px',
       marginRight: '0.5rem',
     },
+    contentMargin: {
+      marginBottom: spacing(4),
+    },
   })
 );
 
 function FinalizeStep() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
 
@@ -47,7 +52,7 @@ function FinalizeStep() {
     <ContentContainer>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
-        Previewing final letter
+        {t('finalize_preview.header_title')}
       </div>
 
       <div className={classes.preview}>
@@ -69,8 +74,11 @@ function FinalizeStep() {
         <p>{formState.statements.closing}</p>
       </div>
 
-      <InfoBlock title="Review your completed declaration letter">
-        If you want to make edits after downloading your completed letter, you can edit it with a text editor such as Microsoft Word, Google Docs, or Pages.
+      <InfoBlock
+        className={classes.contentMargin}
+        title={t('finalize_preview.review_info_title')}
+      >
+        {t('finalize_preview.review_info_content')}
       </InfoBlock>
 
       <Download />
