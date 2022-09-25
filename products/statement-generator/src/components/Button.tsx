@@ -10,7 +10,7 @@ interface ComponentProps {
   hasArrow?: boolean;
   disabled?: boolean;
   icon?: React.ReactNode;
-  buttonText: string;
+  buttonText?: string;
   onClick: () => void;
 }
 
