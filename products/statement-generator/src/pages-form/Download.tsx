@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
@@ -24,7 +23,7 @@ const useStyles = makeStyles(() =>
       flexDirection: 'column',
       alignItems: 'center',
       '& button': {
-        width: '50%',
+        width: 225,
         '& svg': {
           marginRight: '1rem',
         },
@@ -94,16 +93,6 @@ function Download() {
     doc.save('MyPersonalStatement.pdf');
   };
 
-  const buttonText = (smallText: string, bigText: string) => {
-    const matches = useMediaQuery<Theme>((theme) =>
-      theme.breakpoints.down('sm')
-    );
-    if (matches) {
-      return smallText;
-    }
-    return bigText;
-  };
-
   return (
     <form>
       <Checkbox
@@ -114,31 +103,31 @@ function Download() {
       <div className={classes.downloadButtonsContainer}>
         <Button
           className={classes.buttonSpacing}
-          onClick={handleClickEmail}
+          onClick={handleClickPDF}
           disabled={isDisabled}
-          icon={<EmailIcon />}
-          buttonText={buttonText('email', t('download_page.email_btn'))}
+          icon={<GetAppIcon />}
+          buttonText={t('download_page.pdf_btn')}
         />
         <Button
           className={classes.buttonSpacing}
           onClick={handleClickClipboard}
           disabled={isDisabled}
           icon={<FileCopyIcon />}
-          buttonText={buttonText('copy', t('download_page.clipboard_btn'))}
+          buttonText={t('download_page.clipboard_btn')}
         />
         <Button
           className={classes.buttonSpacing}
           onClick={handleClickTXT}
           disabled={isDisabled}
           icon={<GetAppIcon />}
-          buttonText={buttonText('txt', t('download_page.txt_btn'))}
+          buttonText={t('download_page.txt_btn')}
         />
         <Button
           className={classes.buttonSpacing}
-          onClick={handleClickPDF}
+          onClick={handleClickEmail}
           disabled={isDisabled}
-          icon={<GetAppIcon />}
-          buttonText={buttonText('pdf', t('download_page.pdf_btn'))}
+          icon={<EmailIcon />}
+          buttonText={t('download_page.email_btn')}
         />
       </div>
     </form>
