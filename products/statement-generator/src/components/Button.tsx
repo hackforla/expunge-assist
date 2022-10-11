@@ -22,8 +22,10 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
   createStyles({
     root: {
-      padding: '8px 16px',
+      minHeight: '44px',
       display: 'flex',
+      alignItems: 'center',
+      padding: '12px 16px',
       borderRadius: '24px',
       lineHeight: '16px',
       textDecoration: 'none',
