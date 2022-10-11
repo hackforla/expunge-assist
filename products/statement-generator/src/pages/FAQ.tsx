@@ -1,20 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import Button from 'components/Button';
 import LinkAsText from 'components/LinkAsText';
 
 import ContentContainer from 'components-layout/ContentContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
-
 function FAQ() {
   const { t } = useTranslation();
-  const utilityClasses = useUtilityStyles({
-    pageTheme: 'dark',
-  });
-  const history = useHistory();
 
   return (
     <ContentContainer>
@@ -101,14 +93,6 @@ function FAQ() {
       <h3>{t('faq_page.title10')}</h3>
       <p>{t('faq_page.paragraph10')}</p>
       <p>{t('faq_page.paragraph10b')}</p>
-
-      <div className={utilityClasses.buttonContainer}>
-        <Button
-          onClick={() => history.goBack()}
-          buttonText="Back"
-          theme="transparent-on-light"
-        />
-      </div>
     </ContentContainer>
   );
 }
