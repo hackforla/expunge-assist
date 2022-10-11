@@ -1,12 +1,7 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 
-import Button from 'components/Button';
-
 import ContentContainer from 'components-layout/ContentContainer';
-
-import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -18,10 +13,6 @@ const useStyles = makeStyles(() =>
 
 export default function AboutUs() {
   const classes = useStyles();
-  const utilityClasses = useUtilityStyles({
-    pageTheme: 'dark',
-  });
-  const history = useHistory();
 
   return (
     <ContentContainer>
@@ -45,14 +36,6 @@ export default function AboutUs() {
           recordclearance@hackforla.org
         </Link>
       </p>
-
-      <div className={utilityClasses.buttonContainer}>
-        <Button
-          onClick={() => history.goBack()}
-          buttonText="Back"
-          theme="transparent-on-light"
-        />
-      </div>
     </ContentContainer>
   );
 }
