@@ -25,7 +25,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
       minHeight: '44px',
       display: 'flex',
       alignItems: 'center',
-      padding: '12px 16px',
+      padding: '8px 16px',
       borderRadius: '24px',
       lineHeight: '16px',
       textDecoration: 'none',
@@ -33,12 +33,12 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
       border: ({ theme }) => {
         switch (theme) {
           case 'white':
-            return `1px solid ${palette.primary.light}`;
           case 'transparent':
           case 'transparent-on-dark':
           case 'transparent-on-light':
           default:
-            return '1px solid transparent';
+            return `1px solid ${palette.primary.light}`;
+          // return '1px solid transparent';
         }
       },
 
@@ -124,7 +124,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
             case 'transparent-on-light':
               return 'transparent';
             default:
-              return '#ba85de';
+              return '#C5B3D1';
           }
         },
       },
