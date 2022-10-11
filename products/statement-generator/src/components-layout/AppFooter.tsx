@@ -24,7 +24,8 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       padding: spacing(2, 3),
 
       [breakpoints.down(breakpoints.values.md)]: {
-        flexDirection: 'column-reverse',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
         padding: spacing(2),
         justifyContent: 'center',
       },
@@ -37,15 +38,16 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     leftContainer: {
       display: 'flex',
       flexDirection: 'column',
-
-      [breakpoints.down(breakpoints.values.md)]: {
-        marginTop: spacing(3),
-      },
+      padding: spacing(1),
     },
     rightContainer: {
       display: 'flex',
       [breakpoints.up(breakpoints.values.md)]: {
         marginLeft: 'auto',
+      },
+
+      [breakpoints.down(breakpoints.values.sm)]: {
+        flexDirection: 'column',
       },
     },
     linkBtn: {
@@ -66,6 +68,17 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       '&$linkBtn + $linkBtn': {
         marginLeft: 4,
       },
+
+      [breakpoints.down(breakpoints.values.sm)]: {
+        marginTop: 16,
+      },
+    },
+    copyrightContainer: {
+      display: 'flex',
+
+      [breakpoints.down(breakpoints.values.sm)]: {
+        marginTop: 16,
+      },
     },
     hackforlaIcon: {
       height: 25,
@@ -77,6 +90,10 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     line: {
       margin: 'auto 0',
       fontWeight: 300,
+
+      [breakpoints.down(breakpoints.values.sm)]: {
+        display: 'none',
+      },
     },
     logoContainer: {
       display: 'flex',
@@ -92,6 +109,28 @@ function AppFooterLink(props: any) {
     <Link className={classes.linkBtn} to={url}>
       {children}
     </Link>
+  );
+}
+
+function HackForLACopyright() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.copyrightContainer}>
+      <a
+        href="https://www.hackforla.org/"
+        target="_blank"
+        rel="noreferrer"
+        className={classes.logoContainer}
+      >
+        <img
+          className={classes.hackforlaIcon}
+          src={hackForLALogo}
+          alt="Hack for LA Logo"
+        />
+      </a>
+      <span className={classes.reg}>© 2022 Hack for LA</span>
+    </div>
   );
 }
 
@@ -120,19 +159,7 @@ const AppFooter: React.FC = () => {
             {t('links.terms_of_use')}
           </AppFooterLink>
           <span className={classes.line}>|</span>
-          <a
-            href="https://www.hackforla.org/"
-            target="_blank"
-            rel="noreferrer"
-            className={classes.logoContainer}
-          >
-            <img
-              className={classes.hackforlaIcon}
-              src={hackForLALogo}
-              alt="Hack for LA Logo"
-            />
-          </a>
-          <span className={classes.reg}>© 2022 Hack for LA</span>
+          <HackForLACopyright />
         </div>
       </div>
     </footer>
