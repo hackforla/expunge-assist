@@ -47,12 +47,12 @@
       "description": "Now that you have introduced yourself, it’s time to start writing your letter."
     },
     "step3": {
-      "titleText": "Keep going",
+      "titleText": "Well done",
       "description": "Now that you have completed the first section of your letter, it’s time to write the next section.\n\nTake a break now if you need one."
     },
     "step4": {
-      "titleText": "Well done",
-      "description": "Now that you have completed the second section of your letter, it’s time to write the final section.\n\nTake a break now if you need one."
+      "titleText": "Keep going",
+      "description": "Now that you have completed the second section of your letter, it’s time to write the final section."
     },
     "step5": {
       "titleText": "Almost done",
