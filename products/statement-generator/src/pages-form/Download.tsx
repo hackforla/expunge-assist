@@ -1,9 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core';
 import jsPDF from 'jspdf';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
@@ -13,9 +11,6 @@ import { generateFinal } from 'helpers/previewHelper';
 import FormStateContext from 'contexts/FormStateContext';
 import Checkbox from 'components/Checkbox';
 import Button from 'components/Button';
-import ContentContainer from 'components-layout/ContentContainer';
-
-import useUtilityStyles from 'styles/utilityStyles';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -28,7 +23,7 @@ const useStyles = makeStyles(() =>
       flexDirection: 'column',
       alignItems: 'center',
       '& button': {
-        width: '50%',
+        width: 225,
         '& svg': {
           marginRight: '1rem',
         },
@@ -41,8 +36,6 @@ function Download() {
   const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
-  const utilityClasses = useUtilityStyles();
-  const history = useHistory();
 
   // disable all buttons unless consent is checked
   const [isDisabled, setIsDisabled] = useState(true);
@@ -100,64 +93,44 @@ function Download() {
     doc.save('MyPersonalStatement.pdf');
   };
 
-  const buttonText = (smallText: string, bigText: string) => {
-    const matches = useMediaQuery<Theme>((theme) =>
-      theme.breakpoints.down('sm')
-    );
-    if (matches) {
-      return smallText;
-    }
-    return bigText;
-  };
-
   return (
-    <ContentContainer>
-      <form>
-        <Checkbox
-          checked={!isDisabled}
-          onChange={handleClickCheck}
-          label={t('download_page.agreement_checkbox_label')}
-        />
-        <div className={classes.downloadButtonsContainer}>
-          <Button
-            className={classes.buttonSpacing}
-            onClick={handleClickEmail}
-            disabled={isDisabled}
-            icon={<EmailIcon />}
-            buttonText={buttonText('email', t('download_page.email_btn'))}
-          />
-          <Button
-            className={classes.buttonSpacing}
-            onClick={handleClickClipboard}
-            disabled={isDisabled}
-            icon={<FileCopyIcon />}
-            buttonText={buttonText('copy', t('download_page.clipboard_btn'))}
-          />
-          <Button
-            className={classes.buttonSpacing}
-            onClick={handleClickTXT}
-            disabled={isDisabled}
-            icon={<GetAppIcon />}
-            buttonText={buttonText('txt', t('download_page.txt_btn'))}
-          />
-          <Button
-            className={classes.buttonSpacing}
-            onClick={handleClickPDF}
-            disabled={isDisabled}
-            icon={<GetAppIcon />}
-            buttonText={buttonText('pdf', t('download_page.pdf_btn'))}
-          />
-        </div>
-      </form>
-
-      <div className={utilityClasses.buttonContainer}>
+    <form>
+      <Checkbox
+        checked={!isDisabled}
+        onChange={handleClickCheck}
+        label={t('download_page.agreement_checkbox_label')}
+      />
+      <div className={classes.downloadButtonsContainer}>
         <Button
-          onClick={() => history.goBack()}
-          buttonText="Back"
-          theme="transparent-on-light"
+          className={classes.buttonSpacing}
+          onClick={handleClickPDF}
+          disabled={isDisabled}
+          icon={<GetAppIcon />}
+          buttonText={t('download_page.pdf_btn')}
+        />
+        <Button
+          className={classes.buttonSpacing}
+          onClick={handleClickClipboard}
+          disabled={isDisabled}
+          icon={<FileCopyIcon />}
+          buttonText={t('download_page.clipboard_btn')}
+        />
+        <Button
+          className={classes.buttonSpacing}
+          onClick={handleClickTXT}
+          disabled={isDisabled}
+          icon={<GetAppIcon />}
+          buttonText={t('download_page.txt_btn')}
+        />
+        <Button
+          className={classes.buttonSpacing}
+          onClick={handleClickEmail}
+          disabled={isDisabled}
+          icon={<EmailIcon />}
+          buttonText={t('download_page.email_btn')}
         />
       </div>
-    </ContentContainer>
+    </form>
   );
 }
 
