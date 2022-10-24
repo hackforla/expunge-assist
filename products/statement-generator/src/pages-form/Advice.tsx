@@ -10,10 +10,11 @@ export default function Advice() {
   return (
     <ContentContainer>
       <h2>{t('advice_page.header')}</h2>
-      <p>{t('advice_page.point1')}</p>
-      <p>{t('advice_page.point2')}</p>
-      <p>{t('advice_page.point3')}</p>
-      <p>{t('advice_page.point4')}</p>
+      <p>{t('advice_page.point1.content')}</p>
+      
+      <p>{t('advice_page.point2.content')}</p>
+      <p>{t('advice_page.point3.content')}</p>
+      <p>{t('advice_page.followUp')}</p>
       <FlowNavigation />
     </ContentContainer>
   );

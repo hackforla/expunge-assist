@@ -36,10 +36,22 @@
   },
   "advice_page": {
     "header": "Advice for a successful declaration letter",
-    "point1": "1. Avoid using informal language, such as abbreviations or slang. Don't use profanity\n\t• Don’t Use - \"dude, gig, pov\"\n\t• Use - \"Mr./Mrs. (last name), job, point of view\"",
-    "point2": "2. Write in complete sentences and remember to use punctuation at the end.\n\t• Don’t Use - \"expunge my record because I need a new job\"\n\t• Use - \"I want to expunge my record because I want to apply for jobs.\"",
-    "point3": "3. Use first person when answering questions. You are telling your story from your point of view.",
-    "point4": "4. Keep your responses between 3-5 sentences for each section."
+    "point1": {
+      "content": "Remember to avoid using informal language, such as abbreviations, slang and profanity:",
+      "yes": "Dude, gig, DOJ",
+      "no": "Judge LastName, job, Department of Justice"
+    },
+    "point2": {
+      "content": "Remember to answer in complete sentences and use punctuation (like periods) at the end:",
+      "yes": "because I want a job",
+      "no": "I want to expunge my record because I want to apply for jobs."
+    },
+    "point3": {
+      "content": "Be sure to use “the first person” when answering questions. This is from your point of view:",
+      "yes": "Kim wants to clear their record.",
+      "no": "I want to clear my record."
+    },
+    "followUp": "Keep your responses between 3-5 sentences for each section."
   },
   "affirmation_popup": {
     "step2": {
