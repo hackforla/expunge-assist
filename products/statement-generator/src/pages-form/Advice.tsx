@@ -8,18 +8,26 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 import YesIcon from 'assets/Check.png';
 import NoIcon from 'assets/Cancel.png';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ breakpoints }) =>
   createStyles({
     title: {
       marginBottom: '32px',
-      letterSpacing: '0.25%',
+      letterSpacing: '0.25px',
       lineHeight: '40px',
       fontSize: '34px',
+      [breakpoints.down(breakpoints.values.sm)]: {
+        fontSize: '24px',
+        lineHeight: '28px',
+      },
     },
     yesNoContainer: {
       display: 'flex',
       justifyContent: 'space-between',
       margin: '16px 0',
+      [breakpoints.down(breakpoints.values.sm)]: {
+        flexDirection: 'column',
+        margin: '24px 0',
+      },
     },
     borderContainer: {
       border: '1px solid #C5B3D1',
@@ -29,9 +37,16 @@ const useStyles = makeStyles(() =>
       padding: '0 14px',
       height: '79px',
       alignItems: 'center',
+      [breakpoints.down(breakpoints.values.sm)]: {
+        margin: '4px 0',
+        maxWidth: '400px',
+      },
     },
     marginRight: {
       marginRight: '11px',
+      [breakpoints.down(breakpoints.values.sm)]: {
+        marginRight: '0'
+      },
     },
     icon: {
       width: '44px',
@@ -43,6 +58,9 @@ const useStyles = makeStyles(() =>
     followUp: {
       margin: '24px 0 47px',
     },
+    'p': {
+      marginTop: '24px',
+    }
   })
 );
 
