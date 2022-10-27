@@ -45,7 +45,7 @@ const useStyles = makeStyles(({ breakpoints }) =>
     marginRight: {
       marginRight: '11px',
       [breakpoints.down(breakpoints.values.sm)]: {
-        marginRight: '0'
+        marginRight: '0',
       },
     },
     icon: {
@@ -58,9 +58,11 @@ const useStyles = makeStyles(({ breakpoints }) =>
     followUp: {
       margin: '24px 0 47px',
     },
-    'p': {
-      marginTop: '24px',
-    }
+    text: {
+      [breakpoints.down(breakpoints.values.sm)]: {
+        marginTop: '24px',
+      },
+    },
   })
 );
 
@@ -72,7 +74,7 @@ export default function Advice() {
     <ContentContainer>
       <h2 className={classes.title}>{t('advice_page.header')}</h2>
       <div>
-        <p>{t('advice_page.point1.content')}</p>
+        <p className={classes.text}>{t('advice_page.point1.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
             <img src={YesIcon} alt="" className={classes.icon} />
@@ -83,7 +85,7 @@ export default function Advice() {
             <p className={classes.textMargin}>{t('advice_page.point1.no')}</p>
           </div>
         </div>
-        <p>{t('advice_page.point2.content')}</p>
+        <p className={classes.text}>{t('advice_page.point2.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
             <img src={YesIcon} alt="" className={classes.icon} />
@@ -94,7 +96,7 @@ export default function Advice() {
             <p className={classes.textMargin}>{t('advice_page.point2.no')}</p>
           </div>
         </div>
-        <p>{t('advice_page.point3.content')}</p>
+        <p className={classes.text}>{t('advice_page.point3.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
             <img src={YesIcon} alt="" className={classes.icon} />
@@ -106,7 +108,9 @@ export default function Advice() {
           </div>
         </div>
       </div>
-      <p className={classes.followUp}>{t('advice_page.followUp')}</p>
+      <p className={`${classes.followUp} ${classes.text}`}>
+        {t('advice_page.followUp')}
+      </p>
       <FlowNavigation />
     </ContentContainer>
   );
