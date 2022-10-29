@@ -13,10 +13,7 @@ import FormContainer from 'components-layout/FormContainer';
 function InvolvementParentingFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
-  const {
-    numberChildren,
-    parentDescription,
-  } = formState.parentingState;
+  const { numberChildren, parentDescription } = formState.parentingState;
 
   const numberChildrenValid = numberChildren !== '';
   const parentDescriptionValid = parentDescription !== '';
