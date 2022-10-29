@@ -120,7 +120,9 @@ export function generateInvolvementParenting(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have prioritized my parenting. ${numberChildren} years old. ${parentDescription}`;
+  const numberChildrenDescription = (Number(numberChildren) > 1) ? `I have ${numberChildren} children.` : `I have a child.`;
+
+  return `Since my conviction, I have prioritized my parenting. ${numberChildrenDescription} ${parentDescription}`;
 }
 
 /**

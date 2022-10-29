@@ -184,8 +184,7 @@ export const sampleStepState = {
     passionDescription: 'I always liked looking at how chemicals affected ',
   },
   parentingState: {
-    childName: 'Cyanide Nx11',
-    numberChildren: '11',
+    numberChildren: '2',
     parentDescription:
       'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
   },
