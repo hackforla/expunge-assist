@@ -109,18 +109,18 @@ export function generateInvolvementSchool(formState: IStepState): string {
  */
 export function generateInvolvementParenting(formState: IStepState): string {
   const {
-    parentingState: { childName, parentYears, parentDescription },
+    parentingState: { numberChildren, parentDescription },
   } = formState;
 
   if (!formState.involvement.isParentingChecked) {
     return '';
   }
 
-  if (childName === '' || parentYears === '' || parentDescription === '') {
+  if (numberChildren === '' || parentDescription === '') {
     return '';
   }
 
-  return `Since my conviction, I have prioritized my parenting. My child, ${childName}, is ${parentYears} years old. ${parentDescription}`;
+  return `Since my conviction, I have prioritized my parenting. ${numberChildren} years old. ${parentDescription}`;
 }
 
 /**

@@ -14,16 +14,13 @@ function InvolvementParentingFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
-    childName,
-    parentYears,
+    numberChildren,
     parentDescription,
   } = formState.parentingState;
 
-  const childNameValid = childName !== '';
-  const parentYearsValid = parentYears !== '';
+  const numberChildrenValid = numberChildren !== '';
   const parentDescriptionValid = parentDescription !== '';
-  const isNextDisabled =
-    !childNameValid || !parentYearsValid || !parentDescriptionValid;
+  const isNextDisabled = !numberChildrenValid || !parentDescriptionValid;
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
@@ -37,22 +34,12 @@ function InvolvementParentingFlow() {
     <ContentContainer>
       <FormContainer>
         <Input
-          id="childName"
-          label={t('parenting_form.childName_input_label')}
-          placeholder={t('parenting_form.childName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={childName}
-          type="text"
-        />
-
-        <Input
-          id="parentYears"
-          label={t('parenting_form.parentYears_number_label')}
-          adornment={t('parenting_form.parentYears_number_append')}
+          id="numberChildren"
+          label={t('parenting_form.parentChildren_number_label')}
           type="number"
-          placeholder="1"
+          placeholder="0"
           handleChange={onInputChange}
-          defaultValue={parentYears}
+          defaultValue={numberChildren}
         />
 
         <Textarea
