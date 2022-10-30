@@ -42,7 +42,6 @@ export default function FlowNavigation({
 
   const backBtnTheme =
     appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
-  const nextBtnTheme = appTheme === 'dark' ? 'dark' : 'landing';
 
   function handleBack() {
     if (onBack) {
@@ -78,7 +77,7 @@ export default function FlowNavigation({
           onClick={handleNext}
           disabled={isNextDisabled}
           buttonText="NEXT"
-          theme={nextBtnTheme}
+          theme='dark'
           hasArrow
         />
       )}
