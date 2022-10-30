@@ -53,6 +53,7 @@ const useUtilityStyles = makeStyles<Theme>(
         minWidth: '300px',
         width: '100%',
         padding: spacing(3),
+        paddingTop: spacing(7),
 
         marginLeft: 'auto',
         marginRight: 'auto',
