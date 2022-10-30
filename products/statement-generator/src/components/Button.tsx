@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
-
-import arrowRight from 'assets/arrowRight.svg';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 interface ComponentProps {
   className?: string;
@@ -128,10 +127,6 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
           }
         },
       },
-      '& img': {
-        marginLeft: '10px',
-        marginRight: '0px',
-      },
     },
   })
 );
@@ -156,7 +151,7 @@ const ButtonComponent = ({
     >
       {icon}
       {buttonText}
-      {hasArrow && <img src={arrowRight} alt="arrow right" />}
+      {hasArrow && <ArrowForwardIcon style={{ height: '.8em' }} />}
     </Button>
   );
 };

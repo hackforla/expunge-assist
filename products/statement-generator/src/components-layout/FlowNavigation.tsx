@@ -77,7 +77,7 @@ export default function FlowNavigation({
           onClick={handleNext}
           disabled={isNextDisabled}
           buttonText="NEXT"
-          theme='dark'
+          theme="dark"
           hasArrow
         />
       )}
