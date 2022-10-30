@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
-
-import arrowRight from 'assets/arrowRight.svg';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 interface ComponentProps {
   className?: string;
@@ -38,7 +37,6 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
           case 'transparent-on-light':
           default:
             return `1px solid ${palette.primary.light}`;
-          // return '1px solid transparent';
         }
       },
 
@@ -49,6 +47,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
           case 'transparent-on-dark':
           case 'transparent-on-light':
             return 'none';
+          case 'dark':
           default:
             return `4px 4px 16px rgba(61, 0, 102, 0.25)`;
         }
@@ -60,6 +59,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
           case 'transparent-on-light':
             return palette.primary.darker;
           case 'transparent-on-dark':
+          case 'dark':
           default:
             return '#FFFFFF';
         }
@@ -67,8 +67,6 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
 
       background: (props) => {
         switch (props.theme) {
-          case 'dark':
-            return palette.primary.darker;
           case 'white':
             return '#FFFFFF';
           case 'transparent':
@@ -77,7 +75,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
             return 'transparent';
           case 'cancel':
             return palette.warning.main;
-          case 'landing':
+          case 'dark':
           default:
             return palette.primary.main;
         }
@@ -85,8 +83,6 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
       '&:hover': {
         background: (props) => {
           switch (props.theme) {
-            case 'dark':
-              return '#330652';
             case 'white':
               return '#FFFFFF';
             case 'transparent':
@@ -95,6 +91,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
               return 'transparent';
             case 'cancel':
               return palette.warning.main;
+            case 'dark':
             default:
               return palette.primary.main;
           }
@@ -103,34 +100,32 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
       '&:disabled': {
         color: (props) => {
           switch (props.theme) {
-            case 'dark':
             case 'white':
             case 'transparent-on-dark':
               return '#757575';
             case 'transparent-on-light':
             case 'transparent':
               return '#b7b7b7';
+            case 'dark':
+              return 'rgba(37, 0, 63, 0.8)';
             default:
               return '#FFFFFF';
           }
         },
         background: (props) => {
           switch (props.theme) {
-            case 'dark':
             case 'white':
               return palette.common.lightgrey;
             case 'transparent':
             case 'transparent-on-dark':
             case 'transparent-on-light':
               return 'transparent';
+            case 'dark':
+              return palette.primary.dark;
             default:
               return '#C5B3D1';
           }
         },
-      },
-      '& img': {
-        marginLeft: '10px',
-        marginRight: '0px',
       },
     },
   })
@@ -156,7 +151,7 @@ const ButtonComponent = ({
     >
       {icon}
       {buttonText}
-      {hasArrow && <img src={arrowRight} alt="arrow right" />}
+      {hasArrow && <ArrowForwardIcon style={{ height: '.8em' }} />}
     </Button>
   );
 };

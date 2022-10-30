@@ -14,7 +14,7 @@ const customMuiTheme = createMuiTheme({
       lighter: '#F7EBFF', // pink-purple
       light: '#e5c0ff', // light purple
       main: '#9903FF',
-      // dark: '#c5b3d1',
+      dark: '#c5b3d1', // thistle
       darker: '#25003F',
     },
     secondary: {
