@@ -9,12 +9,14 @@ import useUtilityStyles from 'styles/utilityStyles';
 
 interface StyleProps {
   disabled?: boolean;
+  useShort?: boolean;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>(({ palette, spacing }) =>
   createStyles({
     inputComponent: {
       borderRadius: '16px',
+      width: ({ useShort }) => (useShort ? 144 : undefined),
 
       '&.Mui-focused': {
         boxShadow: '0 0 10px 2px #F7EBFF',
@@ -95,7 +97,10 @@ const InputArea: React.FC<InputFieldProps> = ({
   className = '',
 }) => {
   const utilityClasses = useUtilityStyles();
-  const classes = useStyles({ disabled });
+  const classes = useStyles({
+    disabled,
+    useShort: type === 'number',
+  });
 
   const [valid, isValid] = useState(false);
   const checkValid = (e: string) => {
