@@ -38,18 +38,18 @@
     "header": "Advice for a successful declaration letter",
     "point1": {
       "content": "Remember to avoid using informal language, such as abbreviations, slang and profanity:",
-      "yes": "Dude, gig, DOJ",
-      "no": "Judge LastName, job, Department of Justice"
+      "no": "Dude, gig, DOJ",
+      "yes": "Judge LastName, job, Department of Justice"
     },
     "point2": {
       "content": "Remember to answer in complete sentences and use punctuation (like periods) at the end:",
-      "yes": "because I want a job",
-      "no": "I want to expunge my record because I want to apply for jobs."
+      "no": "because I want a job",
+      "yes": "I want to expunge my record because I want to apply for jobs."
     },
     "point3": {
       "content": "Be sure to use “the first person” when answering questions. This is from your point of view:",
-      "yes": "Kim wants to clear their record.",
-      "no": "I want to clear my record."
+      "no": "Kim wants to clear their record.",
+      "yes": "I want to clear my record."
     },
     "followUp": "Keep your responses between 3-5 sentences for each section."
   },

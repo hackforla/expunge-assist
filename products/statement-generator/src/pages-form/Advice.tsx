@@ -1,12 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
+import CancelIcon from '@material-ui/icons/Cancel';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
-
-import YesIcon from 'assets/Check.png';
-import NoIcon from 'assets/Cancel.png';
 
 const useStyles = makeStyles(({ breakpoints }) =>
   createStyles({
@@ -77,34 +76,34 @@ export default function Advice() {
         <p className={classes.text}>{t('advice_page.point1.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <img src={YesIcon} alt="" className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point1.yes')}</p>
+            <CancelIcon style={{ color: '#E87461'}} className={classes.icon} />
+            <p className={classes.textMargin}>{t('advice_page.point1.no')}</p>
           </div>
           <div className={classes.borderContainer}>
-            <img src={NoIcon} alt="" className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point1.no')}</p>
+            <CheckCircleIcon style={{ color: '#0AEBA0'}} className={classes.icon} />
+            <p className={classes.textMargin}>{t('advice_page.point1.yes')}</p>
           </div>
         </div>
         <p className={classes.text}>{t('advice_page.point2.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <img src={YesIcon} alt="" className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point2.yes')}</p>
+            <CancelIcon style={{ color: '#E87461'}} className={classes.icon} />
+            <p className={classes.textMargin}>{t('advice_page.point2.no')}</p>
           </div>
           <div className={classes.borderContainer}>
-            <img src={NoIcon} alt="" className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point2.no')}</p>
+            <CheckCircleIcon style={{ color:'#0AEBA0'}} className={classes.icon} />
+            <p className={classes.textMargin}>{t('advice_page.point2.yes')}</p>
           </div>
         </div>
         <p className={classes.text}>{t('advice_page.point3.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <img src={YesIcon} alt="" className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point3.yes')}</p>
+            <CancelIcon style={{ color: '#E87461' }} className={classes.icon} />
+            <p className={classes.textMargin}>{t('advice_page.point3.no')}</p>
           </div>
           <div className={classes.borderContainer}>
-            <img src={NoIcon} alt="" className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point3.no')}</p>
+            <CheckCircleIcon style={{ color: '#0AEBA0'}} className={classes.icon} />
+            <p className={classes.textMargin}>{t('advice_page.point3.yes')}</p>
           </div>
         </div>
       </div>
