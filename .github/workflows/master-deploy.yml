@@ -5,11 +5,11 @@ on:
     branches:
       - main
 
-permissions: read-all|write-all
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions: read-all|write-all
     strategy:
       matrix:
         node-version: [10.x]
