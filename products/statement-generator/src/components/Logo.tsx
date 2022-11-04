@@ -10,41 +10,39 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
     createStyles({
       logoContainer: {
         display: 'flex',
+        fontSize: 20,
         maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
         marginBottom: ({ footer }: IUseUtilityStyle) =>
           footer ? '10px' : 'null',
-        [breakpoints.down(breakpoints.values.md)]: {
-          background: palette.primary.lighter,
-          justifyContent: 'center',
-        },
 
         [breakpoints.down(breakpoints.values.sm)]: {
-          display: 'none',
+          // display: 'none',
         },
       },
 
       logoLink: {
         textDecoration: 'none',
         display: 'flex',
-        flexDirection: ({ footer }: IUseUtilityStyle) =>
-          footer ? 'column' : 'row',
         marginLeft: spacing(2),
         textTransform: 'uppercase',
         fontWeight: 800,
         color: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'dark' ? 'white' : palette.common.black,
 
-        [breakpoints.up(breakpoints.values.md)]: {
-          flexDirection: 'row',
-          fontSize: ({ footer }: IUseUtilityStyle) =>
-            footer ? '12px' : '24px',
+        // we want the text to be stacked vertically,
+        //  when we are in the footer AND when in mobile view
+        [breakpoints.up(breakpoints.values.sm)]: {
           '& span + span': {
             marginLeft: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 8),
           },
         },
-        [breakpoints.down(breakpoints.values.md)]: {
+
+        flexDirection: ({ footer }: IUseUtilityStyle) =>
+          footer ? 'column' : 'row',
+        fontSize: ({ footer }: IUseUtilityStyle) => (footer ? 12 : 'inherit'),
+        [breakpoints.down(breakpoints.values.sm)]: {
           flexDirection: 'column',
-          fontSize: '12px',
+          fontSize: 12,
         },
       },
     })

@@ -1,28 +1,28 @@
 import React, { useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
+import { AppUrl } from 'contexts/RoutingProps';
 
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
-import { AppUrl } from 'contexts/RoutingProps';
+import InfoBlock from 'components/InfoBlock';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
+import Download from 'pages-form/Download';
 
 import { getPreviewStatement, PREVIEW_KEYS } from 'helpers/previewHelper';
 
-const useStyles = makeStyles(({ palette }) =>
+const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
     preview: {
       padding: '15px',
       boxShadow: '4px 4px 16px rgba(61, 0, 102, 0.25)',
       borderRadius: '20px',
       whiteSpace: 'pre-line',
-
-      '& p': {
-        marginBottom: 15,
-      },
+      marginBottom: spacing(4),
     },
     purpleTitle: {
       color: palette.primary.main,
@@ -37,10 +37,14 @@ const useStyles = makeStyles(({ palette }) =>
       fontSize: '20px',
       marginRight: '0.5rem',
     },
+    contentMargin: {
+      marginBottom: spacing(4),
+    },
   })
 );
 
 function FinalizeStep() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
 
@@ -48,7 +52,7 @@ function FinalizeStep() {
     <ContentContainer>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
-        Previewing final letter
+        {t('finalize_preview.header_title')}
       </div>
 
       <div className={classes.preview}>
@@ -70,7 +74,16 @@ function FinalizeStep() {
         <p>{formState.statements.closing}</p>
       </div>
 
-      <FlowNavigation />
+      <InfoBlock
+        className={classes.contentMargin}
+        title={t('finalize_preview.review_info_title')}
+      >
+        {t('finalize_preview.review_info_content')}
+      </InfoBlock>
+
+      <Download />
+
+      <FlowNavigation showNext={false} />
     </ContentContainer>
   );
 }

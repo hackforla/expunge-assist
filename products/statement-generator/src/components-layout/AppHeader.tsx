@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
 import Logo from 'components/Logo';
-import { LinkButtonComponent } from 'components/Button';
+import Button, { LinkButtonComponent } from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -18,33 +20,57 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         height: globals.headerHeight,
         flex: '0 0 auto',
         background: '#fff',
-        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
         zIndex: 1100,
         position: 'fixed',
         top: 0,
         width: '100%',
-
-        [breakpoints.down(breakpoints.values.md)]: {
-          background: palette.primary.lighter,
-        },
-
-        [breakpoints.down(breakpoints.values.sm)]: {
-          display: 'none',
-        },
+        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
       },
       appHeader: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         height: '100%',
+        zIndex: 1,
         padding: spacing(1, 2),
+        [breakpoints.down(breakpoints.values.sm)]: {
+          borderBottom: '2px solid #e2e2e2',
+        },
       },
       rightContainer: {
         marginLeft: 'auto',
         display: 'flex',
         flexDirection: 'row',
-      },
 
+        [breakpoints.down(breakpoints.values.sm)]: {
+          display: 'none',
+        },
+      },
+      floatingMenuContainer: {
+        marginLeft: 'auto',
+        display: 'none',
+        flexDirection: 'column',
+        background: 'white',
+        position: 'fixed',
+        left: 0,
+        right: 0,
+        top: globals.headerHeight,
+        padding: spacing(1, 1, 2, 1),
+        boxShadow: '0px 9px 13px 0px rgb(0,0,0,0.07)',
+        alignItems: 'flex-start',
+
+        [breakpoints.down(breakpoints.values.sm)]: {
+          display: 'flex',
+        },
+      },
+      menuButton: {
+        marginLeft: 'auto',
+        display: 'none',
+        marginRight: spacing(-2),
+        [breakpoints.down(breakpoints.values.sm)]: {
+          display: 'block',
+        },
+      },
       headerLink: {
         textDecoration: 'none',
         color: palette.common.black,
@@ -61,13 +87,21 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
           color: palette.primary.main,
         },
 
-        '&$headerLink + $headerLink': {
-          marginLeft: 4,
+        [breakpoints.up(breakpoints.values.sm)]: {
+          '&$headerLink + $headerLink': {
+            marginLeft: 4,
+          },
         },
       },
       linkButtonComponent: {
-        padding: '12px 18px',
-        marginLeft: '15px',
+        padding: spacing(1, 2),
+
+        [breakpoints.up(breakpoints.values.sm)]: {
+          marginLeft: '15px',
+        },
+        [breakpoints.down(breakpoints.values.sm)]: {
+          marginTop: spacing(1),
+        },
       },
     })
 );
@@ -96,6 +130,7 @@ const AppHeader = () => {
   const { appTheme, currentStep } = useContext(RoutingContext);
   const classes = useStyles({ pageTheme: appTheme });
   const utilityClasses = useUtilityStyles();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const startNowButtonHandler = () => {
     if (
@@ -116,6 +151,10 @@ const AppHeader = () => {
     return null;
   };
 
+  React.useEffect(() => {
+    setIsMenuOpen(false);
+  }, [currentStep]);
+
   return (
     <div className={classes.headerWrapper}>
       <div className={`${classes.appHeader} ${utilityClasses.widePage}`}>
@@ -127,6 +166,24 @@ const AppHeader = () => {
           <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
           {startNowButtonHandler()}
         </div>
+
+        <Button
+          className={classes.menuButton}
+          theme="transparent-on-light"
+          icon={isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+        />
+
+        {isMenuOpen && (
+          <div className={classes.floatingMenuContainer}>
+            <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>
+            <HeaderLink to={AppUrl.AboutUs}>{t('links.about_us')}</HeaderLink>
+            <HeaderLink to={AppUrl.FAQ}>{t('links.faq')}</HeaderLink>
+            {startNowButtonHandler()}
+          </div>
+        )}
       </div>
     </div>
   );

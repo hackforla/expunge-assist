@@ -42,6 +42,7 @@ function InvolvementCommunityServiceFlow() {
           )}
           handleChange={onInputChange}
           defaultValue={organizationName}
+          shortWidth
           type="text"
         />
 

@@ -86,6 +86,7 @@ function InvolvementInitialFlow() {
           </FormLabel>
           <FormGroup id="involvement-checkboxes">
             <Checkbox
+              useTeal
               id="isJobChecked"
               checked={isJobChecked}
               onChange={onCheckboxChange}
@@ -93,6 +94,7 @@ function InvolvementInitialFlow() {
             />
 
             <Checkbox
+              useTeal
               id="isRecoveryChecked"
               checked={isRecoveryChecked}
               onChange={onCheckboxChange}
@@ -100,6 +102,7 @@ function InvolvementInitialFlow() {
             />
 
             <Checkbox
+              useTeal
               id="isSchoolChecked"
               checked={isSchoolChecked}
               onChange={onCheckboxChange}
@@ -107,6 +110,7 @@ function InvolvementInitialFlow() {
             />
 
             <Checkbox
+              useTeal
               id="isParentingChecked"
               checked={isParentingChecked}
               onChange={onCheckboxChange}
@@ -114,6 +118,7 @@ function InvolvementInitialFlow() {
             />
 
             <Checkbox
+              useTeal
               id="isCommunityChecked"
               checked={isCommunityChecked}
               onChange={onCheckboxChange}
@@ -121,6 +126,7 @@ function InvolvementInitialFlow() {
             />
 
             <Checkbox
+              useTeal
               id="isNoneChecked"
               checked={isNoneChecked}
               onChange={onCheckboxChange}

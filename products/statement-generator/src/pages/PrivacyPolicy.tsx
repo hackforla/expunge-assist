@@ -1,18 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-
-import Button from 'components/Button';
 
 import ContentContainer from 'components-layout/ContentContainer';
 
-import useUtilityStyles from 'styles/utilityStyles';
-
 function PrivacyPolicy() {
-  const utilityClasses = useUtilityStyles({
-    pageTheme: 'dark',
-  });
-  const history = useHistory();
-
   return (
     <ContentContainer>
       <h2>Privacy Policy</h2>
@@ -34,14 +24,6 @@ function PrivacyPolicy() {
         ALL SESSION DATA IS KEPT PRIVATE AND PERSONAL INFORMATION IS
         CONFIDENTIAL.
       </p>
-
-      <div className={utilityClasses.buttonContainer}>
-        <Button
-          onClick={() => history.goBack()}
-          buttonText="Back"
-          theme="transparent-on-light"
-        />
-      </div>
     </ContentContainer>
   );
 }

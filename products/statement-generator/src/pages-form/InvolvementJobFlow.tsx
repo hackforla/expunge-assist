@@ -42,6 +42,7 @@ function InvolvementJobFlow() {
           placeholder={t('job_form.companyName_input_placeholder')}
           handleChange={onInputChange}
           defaultValue={companyName}
+          shortWidth
           type="text"
         />
 
@@ -51,6 +52,7 @@ function InvolvementJobFlow() {
           placeholder={t('job_form.jobTitle_input_placeholder')}
           handleChange={onInputChange}
           defaultValue={jobTitle}
+          shortWidth
           type="text"
         />
 

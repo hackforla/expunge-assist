@@ -50,8 +50,7 @@ export const defaultStepState = {
     passionDescription: '',
   },
   parentingState: {
-    childName: '',
-    parentYears: '',
+    numberChildren: '',
     parentDescription: '',
   },
   unemployedState: {
@@ -119,8 +118,7 @@ export interface ISchoolState {
 }
 // step 2e
 export interface IParentingState {
-  childName: string;
-  parentYears: string;
+  numberChildren: string;
   parentDescription: string;
 }
 // step 2f
@@ -186,8 +184,7 @@ export const sampleStepState = {
     passionDescription: 'I always liked looking at how chemicals affected ',
   },
   parentingState: {
-    childName: 'Cyanide Nx11',
-    parentYears: '11',
+    numberChildren: '2',
     parentDescription:
       'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
   },

@@ -14,7 +14,7 @@ const customMuiTheme = createMuiTheme({
       lighter: '#F7EBFF', // pink-purple
       light: '#e5c0ff', // light purple
       main: '#9903FF',
-      // dark: '#c5b3d1',
+      dark: '#c5b3d1', // thistle
       darker: '#25003F',
     },
     secondary: {
@@ -36,10 +36,10 @@ const customMuiTheme = createMuiTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 320,
-      md: 960,
-      lg: 1200,
-      xl: 1920,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
     },
   },
   typography: {

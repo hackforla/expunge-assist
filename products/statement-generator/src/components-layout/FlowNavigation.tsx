@@ -23,6 +23,7 @@ interface IFlowNavigation {
   onBack?: () => void;
   isBackDisabled?: boolean;
   showBack?: boolean;
+  showNext?: boolean;
 }
 
 export default function FlowNavigation({
@@ -31,6 +32,7 @@ export default function FlowNavigation({
   isNextDisabled,
   isBackDisabled,
   showBack = true,
+  showNext = true,
 }: IFlowNavigation) {
   const { goNextStep, goBackStep } = useContext(FormStateContext);
   const { appTheme } = useContext(RoutingContext);
@@ -40,7 +42,6 @@ export default function FlowNavigation({
 
   const backBtnTheme =
     appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
-  const nextBtnTheme = appTheme === 'dark' ? 'dark' : 'landing';
 
   function handleBack() {
     if (onBack) {
@@ -70,14 +71,16 @@ export default function FlowNavigation({
         />
       )}
 
-      <Button
-        className={classes.buttonRight}
-        onClick={handleNext}
-        disabled={isNextDisabled}
-        buttonText="NEXT"
-        theme={nextBtnTheme}
-        hasArrow
-      />
+      {showNext && (
+        <Button
+          className={classes.buttonRight}
+          onClick={handleNext}
+          disabled={isNextDisabled}
+          buttonText="NEXT"
+          theme="dark"
+          hasArrow
+        />
+      )}
     </div>
   );
 }

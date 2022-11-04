@@ -36,6 +36,7 @@ function InvolvementRecoveryFlow() {
           placeholder={t('recovery_form.recoveryName_input_placeholder')}
           handleChange={onInputChange}
           defaultValue={recoveryName}
+          shortWidth
           type="text"
         />
 
