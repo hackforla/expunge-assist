@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions: read-all|write-all
+    permissions: read-all
     strategy:
       matrix:
         node-version: [10.x]
