@@ -28,7 +28,7 @@ jobs:
           npm run build
 
       - name: Publish generated content to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           folder: products/statement-generator/build
           branch: gh-pages
