@@ -36,10 +36,8 @@ function InvolvementSomethingElseFlow() {
       <FormContainer>
         <Input
           id="organizationName"
-          label={t('community_service_form.organizationName_input_label')}
-          placeholder={t(
-            'community_service_form.organizationName_input_placeholder'
-          )}
+          label={t('something_else_form.activityName_input_label')}
+          placeholder={t('something_else_form.activityName_input_placeholder')}
           handleChange={onInputChange}
           defaultValue={organizationName}
           type="text"
@@ -47,9 +45,9 @@ function InvolvementSomethingElseFlow() {
 
         <Textarea
           id="serviceDescription"
-          label={t('community_service_form.serviceDescription_input_label')}
+          label={t('something_else_form.activityDescription_input_label')}
           placeholder={t(
-            'community_service_form.serviceDescription_input_placeholder'
+            'something_else_form.activityDescription_input_placeholder'
           )}
           handleChange={onInputChange}
           defaultValue={serviceDescription}
