@@ -37,6 +37,7 @@ export enum AppUrl {
   Goals = '/form/goals',
   GoalsPreview = '/form/goals/preview',
   SomethingElse = '/form/something-else',
+  SomethingElsePreview ='/form/something-else/preview',
   Why = '/form/why',
   WhyPreview = '/form/why/preview',
   Finalize = '/form/finalize',
@@ -144,6 +145,8 @@ export function isFormPage(appUrl: AppUrl): Boolean {
     appUrl === AppUrl.Involvement ||
     appUrl === AppUrl.Job ||
     appUrl === AppUrl.JobPreview ||
+    appUrl === AppUrl.SomethingElse ||
+    appUrl === AppUrl.SomethingElsePreview ||
     appUrl === AppUrl.CommunityService ||
     appUrl === AppUrl.CommunityServicePreview ||
     appUrl === AppUrl.Recovery ||
