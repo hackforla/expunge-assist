@@ -24,6 +24,7 @@ import InvolvementParentingFlow from 'pages-form/InvolvementParentingFlow';
 import InvolvementRecoveryFlow from 'pages-form/InvolvementRecoveryFlow';
 import InvolvementSchoolFlow from 'pages-form/InvolvementSchoolFlow';
 import InvolvementUnemployedFlow from 'pages-form/InvolvementUnemployedFlow';
+import InvolvementSomethingElseFlow from 'pages-form/InvolvementSomethingElseFlow';
 import FinalizeForm from 'pages-form/FinalizeForm';
 import FinalizePreview from 'pages-form/FinalizePreview';
 import GoalsStep from 'pages-form/GoalsStep';
@@ -113,6 +114,12 @@ const App: React.FC = () => {
                     exact
                     path={AppUrl.Job}
                     component={InvolvementJobFlow}
+                  />
+
+                  <Route
+                    exact
+                    path={AppUrl.SomethingElse}
+                    component={InvolvementSomethingElseFlow}
                   />
 
                   <Route
