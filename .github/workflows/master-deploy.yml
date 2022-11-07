@@ -32,4 +32,4 @@ jobs:
         with:
           folder: products/statement-generator/build
           branch: gh-pages
-          token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+          token: ${{secrets.ACCESS_TOKEN_BY_DANIELX}}
