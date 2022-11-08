@@ -89,6 +89,10 @@ function convertStepToNum(
     case AppUrl.ParentingPreview: {
       return 6 + stepAdjustmentArr[2];
     }
+    case AppUrl.SomethingElse:
+    case AppUrl.SomethingElsePreview: {
+      return 8 + stepAdjustmentArr[4];
+    }
     case AppUrl.Job:
     case AppUrl.JobPreview:
     case AppUrl.Unemployed:
@@ -125,6 +129,7 @@ const FormHeader = () => {
     isSchoolChecked,
     isRecoveryChecked,
     isNoneChecked,
+    isSomethingElseChecked,
   } = involvement;
   let maxNum = 6;
   const stepNum = convertStepToNum(currentStep, involvement);
@@ -144,6 +149,9 @@ const FormHeader = () => {
     maxNum += 1;
   }
   if (isNoneChecked) {
+    maxNum += 1;
+  }
+  if(isSomethingElseChecked) {
     maxNum += 1;
   }
 

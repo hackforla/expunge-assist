@@ -31,6 +31,7 @@ export const defaultStepState = {
     isParentingChecked: false,
     isCommunityChecked: false,
     isNoneChecked: false,
+    isSomethingElseChecked: true,
   },
   involvementJobState: {
     companyName: '',
@@ -97,6 +98,7 @@ export interface IInvolvementInitialState {
   isJobChecked?: boolean;
   isRecoveryChecked?: boolean;
   isSchoolChecked?: boolean;
+  isSomethingElseChecked?: boolean;
   isParentingChecked?: boolean;
   isCommunityChecked?: boolean;
   isNoneChecked?: boolean;
