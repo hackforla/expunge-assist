@@ -37,7 +37,7 @@ export enum AppUrl {
   Goals = '/form/goals',
   GoalsPreview = '/form/goals/preview',
   SomethingElse = '/form/something-else',
-  SomethingElsePreview ='/form/something-else/preview',
+  SomethingElsePreview = '/form/something-else/preview',
   Why = '/form/why',
   WhyPreview = '/form/why/preview',
   Finalize = '/form/finalize',
@@ -109,6 +109,11 @@ export function getNextFormUrl(url: AppUrl): AppUrl {
     case AppUrl.CommunityService:
       return AppUrl.CommunityServicePreview;
     case AppUrl.CommunityServicePreview:
+      return AppUrl.SomethingElse;
+
+    case AppUrl.SomethingElse:
+      return AppUrl.SomethingElsePreview;
+    case AppUrl.SomethingElsePreview:
       return AppUrl.Goals;
 
     case AppUrl.Goals:
