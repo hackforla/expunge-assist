@@ -148,12 +148,14 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
  * @param {IStepState} formState
  * @returns {String}
  */
-export function generateInvolvementSomethingElse(formState: IStepState): string {
+export function generateInvolvementSomethingElse(
+  formState: IStepState
+): string {
   const {
     somethingElseState: { activityDescription, activityName },
   } = formState;
 
-  if (activityDescription === '' ) {
+  if (activityDescription === '') {
     return '';
   }
 

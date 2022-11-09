@@ -14,10 +14,7 @@ import Input from '../components/Input';
 function InvolvementSomethingElseFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
-  const {
-    activityName,
-    activityDescription,
-  } = formState.somethingElseState;
+  const { activityName, activityDescription } = formState.somethingElseState;
 
   const activityNameValid = activityName !== '';
   const activityDescriptionValid = activityDescription !== '';
