@@ -35,6 +35,7 @@ export function IntroductionStep() {
           label={t('introduction_form.fullName_input_label')}
           placeholder={t('introduction_form.fullName_input_placeholder')}
           defaultValue={fullName}
+          shortWidth
           handleChange={onInputChange}
           type="text"
         />

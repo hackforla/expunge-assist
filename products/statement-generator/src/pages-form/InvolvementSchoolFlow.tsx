@@ -38,6 +38,7 @@ function InvolvementSchoolFlow() {
           placeholder={t('education_form.schoolName_input_placeholder')}
           handleChange={onInputChange}
           defaultValue={schoolName}
+          shortWidth
           type="text"
         />
 
@@ -47,6 +48,7 @@ function InvolvementSchoolFlow() {
           placeholder={t('education_form.studyName_input_placeholder')}
           handleChange={onInputChange}
           defaultValue={studyName}
+          shortWidth
           type="text"
         />
 

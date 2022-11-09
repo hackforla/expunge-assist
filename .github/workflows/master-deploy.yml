@@ -5,9 +5,11 @@ on:
     branches:
       - main
 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions: write-all
     strategy:
       matrix:
         node-version: [10.x]
@@ -32,4 +34,4 @@ jobs:
         with:
           folder: products/statement-generator/build
           branch: gh-pages
-          token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+          token: ${{secrets.GITHUB_TOKEN}}
