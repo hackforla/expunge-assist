@@ -41,12 +41,9 @@ function convertStepToNum(
   url: AppUrl,
   involvement: IInvolvementInitialState
 ): number {
-  let additionalStepCounter = 0;
+  let additionalStepCounter = -1;
   // get the boolean values of involvement
   const involvementArr = Object.values(involvement);
-  // isJobChecked and isNoneChecked are already accounted for; so we're removing them
-  involvementArr.shift();
-  involvementArr.pop();
   const involvementActivities: number[] = [];
   involvementArr.forEach((value) => {
     if (value) {
@@ -132,9 +129,9 @@ const FormHeader = () => {
     isSomethingElseChecked,
   } = involvement;
   let maxNum = 6;
-  const stepNum = convertStepToNum(currentStep, involvement);
+  let stepNum = convertStepToNum(currentStep, involvement);
   if (isJobChecked) {
-    maxNum += 1;
+    stepNum -= 1;
   }
   if (isCommunityChecked) {
     maxNum += 1;
