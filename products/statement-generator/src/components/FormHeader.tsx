@@ -148,7 +148,7 @@ const FormHeader = () => {
   if (isNoneChecked) {
     maxNum += 1;
   }
-  if(isSomethingElseChecked) {
+  if (isSomethingElseChecked) {
     maxNum += 1;
   }
 
