@@ -15,19 +15,19 @@ function InvolvementSomethingElseFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
-    organizationName,
-    serviceDescription,
-  } = formState.communityServiceState;
+    activityName,
+    activityDescription,
+  } = formState.somethingElseState;
 
-  const organizationNameValid = organizationName !== '';
-  const serviceDescriptionValid = serviceDescription !== '';
-  const isNextDisabled = !organizationNameValid || !serviceDescriptionValid;
+  const activityNameValid = activityName !== '';
+  const activityDescriptionValid = activityDescription !== '';
+  const isNextDisabled = !activityNameValid || !activityDescriptionValid;
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
     const changes = { [id]: value };
     updateStepToForm({
-      communityServiceState: { ...formState.communityServiceState, ...changes },
+      somethingElseState: { ...formState.somethingElseState, ...changes },
     });
   };
 
@@ -35,22 +35,22 @@ function InvolvementSomethingElseFlow() {
     <ContentContainer>
       <FormContainer>
         <Input
-          id="organizationName"
+          id="activityName"
           label={t('something_else_form.activityName_input_label')}
           placeholder={t('something_else_form.activityName_input_placeholder')}
           handleChange={onInputChange}
-          defaultValue={organizationName}
+          defaultValue={activityName}
           type="text"
         />
 
         <Textarea
-          id="serviceDescription"
+          id="activityDescription"
           label={t('something_else_form.activityDescription_input_label')}
           placeholder={t(
             'something_else_form.activityDescription_input_placeholder'
           )}
           handleChange={onInputChange}
-          defaultValue={serviceDescription}
+          defaultValue={activityDescription}
           rows={3}
         />
       </FormContainer>
