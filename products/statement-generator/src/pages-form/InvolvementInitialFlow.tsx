@@ -42,6 +42,7 @@ function InvolvementInitialFlow() {
     isParentingChecked,
     isCommunityChecked,
     isNoneChecked,
+    isSomethingElseChecked,
   } = formState.involvement;
 
   const isNextEnabled =
@@ -50,6 +51,7 @@ function InvolvementInitialFlow() {
     isSchoolChecked ||
     isParentingChecked ||
     isCommunityChecked ||
+    isSomethingElseChecked ||
     isNoneChecked;
 
   const onCheckboxChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,6 +125,14 @@ function InvolvementInitialFlow() {
               checked={isCommunityChecked}
               onChange={onCheckboxChange}
               label={t('sections.community_service')}
+            />
+
+            <Checkbox
+              useTeal
+              id="isSomethingElseChecked"
+              checked={isSomethingElseChecked}
+              onChange={onCheckboxChange}
+              label={t('sections.something_else')}
             />
 
             <Checkbox
