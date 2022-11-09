@@ -31,7 +31,7 @@ export const defaultStepState = {
     isParentingChecked: false,
     isCommunityChecked: false,
     isNoneChecked: false,
-    isSomethingElseChecked: true,
+    isSomethingElseChecked: false,
   },
   involvementJobState: {
     companyName: '',
