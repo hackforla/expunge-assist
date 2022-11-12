@@ -4,6 +4,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import landingWorkImg from 'assets/landingWorkImg.svg';
 import eaImage from 'assets/eaImage.png';
+import screenshotExample from 'assets/screenshotExample.png';
 
 import { LinkButtonComponent } from 'components/Button';
 
@@ -223,14 +224,14 @@ function LandingPage() {
             <div className={classes.sectionLeft}>
               <h2>{t('landing_page.sectionTitle3')}</h2>
               <p>{t('landing_page.sectionParagraph3')}</p>
+              <ul>
+                <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
+                <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
+                <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
+              </ul>
             </div>
-            <LinkButtonComponent
-              className={classes.button}
-              to="https://expungeassist.org/#/./about-us"
-              buttonText={t('ABOUT US')}
-            />
           </div>
-          <img src={eaImage} alt="expunge" />
+          <img src={screenshotExample} alt="screenshot example" />
         </section>
       </div>
     </div>
