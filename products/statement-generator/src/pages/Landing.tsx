@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import landingTeamImg from 'assets/landingTeamImg.svg';
 import landingWorkImg from 'assets/landingWorkImg.svg';
+import eaImage from 'assets/eaImage.png';
 
 import { LinkButtonComponent } from 'components/Button';
 
@@ -31,6 +31,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     section: {
       display: 'flex',
       flexDirection: 'row',
+        justifyContent: 'center',
       alignItems: 'flex-start',
       width: '100%',
 
@@ -71,6 +72,12 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
           marginTop: spacing(2),
         },
       },
+    },
+    sectionText: {
+      margin: '0',
+      padding: '50px 0',
+      display: 'flex',
+      flexDirection: 'column',
     },
     firstSection: {
       display: 'flex',
@@ -116,10 +123,16 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         justifyContent: 'center',
       },
     },
-
+    button: {
+      width: '140px',
+      margin: '24px 0 0 0',
+      padding: '15px',
+      justifyContent: 'center',
+    },
     waveBg: {
       zIndex: -2,
       marginTop: '-5%',
+      marginBottom: '24px',
 
       [breakpoints.up(breakpoints.values.md)]: {
         height: 100,
@@ -143,31 +156,6 @@ function WaveBackground() {
         />
       </svg>
     </div>
-  );
-}
-
-interface ILandingSection {
-  header: string;
-  paragraph: string;
-  children?: React.ReactNode;
-  className?: string;
-}
-
-function LandingSection({
-  header,
-  paragraph,
-  children,
-  className = '',
-}: ILandingSection) {
-  const classes = useStyles();
-  return (
-    <section className={`${classes.section} ${className}`}>
-      <div className={classes.sectionLeft}>
-        <h2>{header}</h2>
-        <p>{paragraph}</p>
-      </div>
-      <div className={classes.sectionRight}>{children}</div>
-    </section>
   );
 }
 
@@ -213,24 +201,20 @@ function LandingPage() {
       <WaveBackground />
 
       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
-        <LandingSection
-          header={t('landing_page.sectionTitle2')}
-          paragraph={t('landing_page.sectionParagraph2')}
-        />
-        <LandingSection
-          header={t('landing_page.sectionTitle3')}
-          paragraph={t('landing_page.sectionParagraph3')}
-        />
-        <LandingSection
-          header={t('landing_page.sectionTitle4')}
-          paragraph={t('landing_page.sectionParagraph4')}
-        >
-          <img
-            style={{ width: '100%' }}
-            src={landingTeamImg}
-            alt="Group of diverse teammates"
-          />
-        </LandingSection>
+        <section className={`${classes.section}`}>
+          <div className={classes.sectionText}>
+            <div className={classes.sectionLeft}>
+              <h2>{t('landing_page.sectionTitle2')}</h2>
+              <p>{t('landing_page.sectionParagraph2')}</p>
+            </div>
+            <LinkButtonComponent
+              className={classes.button}
+              to="https://expungeassist.org/#/./about-us"
+              buttonText={t('ABOUT US')}
+            />
+          </div>
+          <img src={eaImage} alt="expunge" />
+        </section>
       </div>
     </div>
   );
