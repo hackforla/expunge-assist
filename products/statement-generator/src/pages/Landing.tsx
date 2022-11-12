@@ -31,7 +31,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     section: {
       display: 'flex',
       flexDirection: 'row',
-        justifyContent: 'center',
+      justifyContent: 'center',
       alignItems: 'flex-start',
       width: '100%',
 
@@ -206,6 +206,23 @@ function LandingPage() {
             <div className={classes.sectionLeft}>
               <h2>{t('landing_page.sectionTitle2')}</h2>
               <p>{t('landing_page.sectionParagraph2')}</p>
+            </div>
+            <LinkButtonComponent
+              className={classes.button}
+              to="https://expungeassist.org/#/./about-us"
+              buttonText={t('ABOUT US')}
+            />
+          </div>
+          <img src={eaImage} alt="expunge" />
+        </section>
+      </div>
+
+      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
+        <section className={`${classes.section}`}>
+          <div className={classes.sectionText}>
+            <div className={classes.sectionLeft}>
+              <h2>{t('landing_page.sectionTitle3')}</h2>
+              <p>{t('landing_page.sectionParagraph3')}</p>
             </div>
             <LinkButtonComponent
               className={classes.button}
