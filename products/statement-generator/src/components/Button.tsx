@@ -172,7 +172,7 @@ export function LinkButtonComponent({
   const styleProps = { theme };
   const classes = useStyles(styleProps);
   return (
-    <Link type="button" className={`${classes.root} ${className}`} to={to!} >
+    <Link type="button" className={`${classes.root} ${className}`} to={to!}>
       {buttonText}
     </Link>
   );

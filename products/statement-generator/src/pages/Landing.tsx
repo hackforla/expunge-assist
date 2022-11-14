@@ -338,7 +338,10 @@ function LandingPage() {
         <div className={classes.opportunity}>
           <h2>{t('landing_page.sectionTitle8')}</h2>
           <p>{t('landing_page.sectionParagraph8')}</p>
-          <ButtonComponent onClick={() => handleContactUs()} buttonText={t('CONTACT US')} />
+          <ButtonComponent
+            onClick={() => handleContactUs()}
+            buttonText={t('CONTACT US')}
+          />
         </div>
       </section>
     </div>
