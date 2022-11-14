@@ -6,6 +6,7 @@ import landingWorkImg from 'assets/landingWorkImg.svg';
 import eaImage from 'assets/eaImage.png';
 import screenshotExample from 'assets/screenshotExample.png';
 import howItWorks from 'assets/howItWorks.png';
+import completeLetter from 'assets/completeLetter.png';
 
 import { LinkButtonComponent } from 'components/Button';
 
@@ -74,6 +75,15 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
           marginTop: spacing(2),
         },
       },
+    },
+
+    sectionCenter: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      width: 400,
+      margin: '0 auto',
+      textAlign: 'center',
     },
     wrapperDivTest: {
       display: 'flex',
@@ -264,6 +274,19 @@ function LandingPage() {
           <img src={howItWorks} alt="how it works" />
         </section>
       </div>
+
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionCenter}>
+          <h2>{t('landing_page.sectionTitle5')}</h2>
+          <p>{t('landing_page.sectionParagraph5a')}</p>
+          <img
+            style={{ display: 'block' }}
+            src={completeLetter}
+            alt="a complete letter"
+          />
+          <p>{t('landing_page.sectionParagraph5b')}</p>
+        </div>
+      </section>
     </div>
   );
 }
