@@ -7,6 +7,7 @@ import eaImage from 'assets/eaImage.png';
 import screenshotExample from 'assets/screenshotExample.png';
 import howItWorks from 'assets/howItWorks.png';
 import completeLetter from 'assets/completeLetter.png';
+import privacyPolicy from 'assets/privacyPolicy.png';
 
 import { LinkButtonComponent } from 'components/Button';
 
@@ -145,8 +146,14 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         justifyContent: 'center',
       },
     },
-    button: {
+    aboutButton: {
       width: '140px',
+      margin: '24px 0 0 0',
+      padding: '15px',
+      justifyContent: 'center',
+    },
+    privacyButton: {
+      width: '244px',
       margin: '24px 0 0 0',
       padding: '15px',
       justifyContent: 'center',
@@ -222,6 +229,21 @@ function LandingPage() {
 
       <WaveBackground />
 
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <div className={classes.sectionLeft}>
+            <h2>{t('landing_page.sectionTitle6')}</h2>
+            <p>{t('landing_page.sectionParagraph6')}</p>
+          </div>
+          <LinkButtonComponent
+            className={classes.privacyButton}
+            to="https://expungeassist.org/#/./about-us"
+            buttonText={t('VIEW PRIVACY POLICY')}
+          />
+        </div>
+        <img src={privacyPolicy} alt="privacy policy" />
+      </section>
+
       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
         <section className={`${classes.section}`}>
           <img src={eaImage} alt="expunge" />
@@ -231,7 +253,7 @@ function LandingPage() {
               <p>{t('landing_page.sectionParagraph2')}</p>
             </div>
             <LinkButtonComponent
-              className={classes.button}
+              className={classes.aboutButton}
               to="https://expungeassist.org/#/./about-us"
               buttonText={t('ABOUT US')}
             />
