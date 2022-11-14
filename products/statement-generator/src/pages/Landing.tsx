@@ -37,11 +37,15 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'flex-start',
+      alignItems: 'center',
       width: '100%',
+      marginBottom: '96px',
 
       '&$section ~ $section': {
         marginTop: spacing(6),
+      },
+      '& h2': {
+        fontWeight: '600',
       },
 
       [breakpoints.down(breakpoints.values.md)]: {
@@ -102,7 +106,6 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     },
     sectionText: {
       margin: '0',
-      padding: '50px 0',
       display: 'flex',
       flexDirection: 'column',
     },
@@ -243,22 +246,20 @@ function LandingPage() {
 
       <WaveBackground />
 
-      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
-        <section className={`${classes.section}`}>
-          <img src={eaImage} alt="expunge" />
-          <div className={classes.sectionText}>
-            <div className={classes.sectionLeft}>
-              <h2>{t('landing_page.sectionTitle2')}</h2>
-              <p>{t('landing_page.sectionParagraph2')}</p>
-            </div>
-            <LinkButtonComponent
-              className={classes.aboutButton}
-              to={AppUrl.AboutUs}
-              buttonText={t('ABOUT US')}
-            />
+      <section className={`${classes.section}`} style={{ marginTop: '104px' }}>
+        <img src={eaImage} alt="expunge" />
+        <div className={classes.sectionText}>
+          <div className={classes.sectionLeft}>
+            <h2>{t('landing_page.sectionTitle2')}</h2>
+            <p>{t('landing_page.sectionParagraph2')}</p>
           </div>
-        </section>
-      </div>
+          <LinkButtonComponent
+            className={classes.aboutButton}
+            to={AppUrl.AboutUs}
+            buttonText={t('ABOUT US')}
+          />
+        </div>
+      </section>
 
       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
         <section className={`${classes.section}`}>

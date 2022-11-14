@@ -52,7 +52,7 @@ export const Accordions: React.FC = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion className={classes.accordionWrapper} >
+      <Accordion className={classes.accordionWrapper}>
         <AccordionSummary aria-controls="panel2-content" id="panel2-header">
           <Typography>{t('landing_page.section7Dropdown2Title')}</Typography>
         </AccordionSummary>
