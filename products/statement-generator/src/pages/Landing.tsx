@@ -74,6 +74,16 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         },
       },
     },
+    wrapperDivTest: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    unorderedList: {
+      margin: '10px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
     sectionText: {
       margin: '0',
       padding: '50px 0',
@@ -203,6 +213,7 @@ function LandingPage() {
 
       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
         <section className={`${classes.section}`}>
+          <img src={eaImage} alt="expunge" />
           <div className={classes.sectionText}>
             <div className={classes.sectionLeft}>
               <h2>{t('landing_page.sectionTitle2')}</h2>
@@ -214,24 +225,32 @@ function LandingPage() {
               buttonText={t('ABOUT US')}
             />
           </div>
-          <img src={eaImage} alt="expunge" />
         </section>
       </div>
 
       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
         <section className={`${classes.section}`}>
           <div className={classes.sectionText}>
-            <div className={classes.sectionLeft}>
-              <h2>{t('landing_page.sectionTitle3')}</h2>
-              <p>{t('landing_page.sectionParagraph3')}</p>
-              <ul>
-                <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
-                <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
-                <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
-              </ul>
+            <h2 style={{ textAlign: 'center', margin: '96px 0 56px 0' }}>
+              {t('landing_page.sectionTitle3')}
+            </h2>
+            <div className={classes.wrapperDivTest}>
+              <div>
+                <img src={screenshotExample} alt="screenshot example" />
+              </div>
+              <div
+                className={`${classes.sectionLeft} ${classes.unorderedList}`}
+              >
+                <p>{t('landing_page.sectionParagraph3')}</p>
+                <br />
+                <ul>
+                  <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
+                  <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
+                  <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <img src={screenshotExample} alt="screenshot example" />
         </section>
       </div>
     </div>
