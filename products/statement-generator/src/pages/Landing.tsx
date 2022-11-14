@@ -9,7 +9,7 @@ import howItWorks from 'assets/howItWorks.png';
 import completeLetter from 'assets/completeLetter.png';
 import privacyPolicy from 'assets/privacyPolicy.png';
 
-import { LinkButtonComponent } from 'components/Button';
+import ButtonComponent, { LinkButtonComponent } from 'components/Button';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
@@ -96,6 +96,9 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
+    },
+    opportunity: {
+      backgroundColor: `${palette.primary.lighter}`,
     },
     sectionText: {
       margin: '0',
@@ -199,6 +202,10 @@ function LandingPage() {
   const { t } = useTranslation();
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
+
+  const handleContactUs = () => {
+    window.open('mailto:info@expungeassist.org');
+  };
 
   return (
     <div>
@@ -325,6 +332,14 @@ function LandingPage() {
           to={AppUrl.FAQ}
           buttonText={t('READ OUR FAQ')}
         />
+      </section>
+
+      <section>
+        <div className={classes.opportunity}>
+          <h2>{t('landing_page.sectionTitle8')}</h2>
+          <p>{t('landing_page.sectionParagraph8')}</p>
+          <ButtonComponent onClick={() => handleContactUs()} buttonText={t('CONTACT US')} />
+        </div>
       </section>
     </div>
   );
