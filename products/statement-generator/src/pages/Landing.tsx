@@ -14,6 +14,7 @@ import { LinkButtonComponent } from 'components/Button';
 import { AppUrl } from 'contexts/RoutingProps';
 
 import useUtilityStyles from 'styles/utilityStyles';
+import { Accordions } from '../components/Accordions';
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
   createStyles({
@@ -158,6 +159,12 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       padding: '15px',
       justifyContent: 'center',
     },
+    faqButton: {
+      width: '171px',
+      margin: '24px 0 0 0',
+      padding: '15px',
+      justifyContent: 'center',
+    },
     waveBg: {
       zIndex: -2,
       marginTop: '-5%',
@@ -239,7 +246,7 @@ function LandingPage() {
             </div>
             <LinkButtonComponent
               className={classes.aboutButton}
-              to="https://expungeassist.org/#/./about-us"
+              to={AppUrl.AboutUs}
               buttonText={t('ABOUT US')}
             />
           </div>
@@ -303,13 +310,22 @@ function LandingPage() {
           </div>
           <LinkButtonComponent
             className={classes.privacyButton}
-            to="https://expungeassist.org/#/./about-us"
+            to={AppUrl.PrivacyPolicy}
             buttonText={t('VIEW PRIVACY POLICY')}
           />
         </div>
         <img src={privacyPolicy} alt="privacy policy" />
       </section>
 
+      <section>
+        <h2>{t('landing_page.sectionTitle7')}</h2>
+        <Accordions />
+        <LinkButtonComponent
+          className={classes.faqButton}
+          to={AppUrl.FAQ}
+          buttonText={t('READ OUR FAQ')}
+        />
+      </section>
     </div>
   );
 }

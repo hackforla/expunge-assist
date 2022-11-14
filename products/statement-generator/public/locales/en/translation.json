@@ -32,7 +32,14 @@
     "sectionParagraph5a": "This tool results in a complete and downloadable declaration letter.",
     "sectionParagraph5b": "We recommend applicants meet with a lawyer or clinic to review the letter before submitting it to a judge. ",
     "sectionTitle6": "Committed to data safety",
-    "sectionParagraph6": "To keep your data safe, Expunge Assist does not share, store, or save anything you enter into this website on any server.\n\nWhen you close the webpage, your data is erased forever, everywhere. Only you keep your downloaded or emailed copy."
+    "sectionParagraph6": "To keep your data safe, Expunge Assist does not share, store, or save anything you enter into this website on any server.\n\nWhen you close the webpage, your data is erased forever, everywhere. Only you keep your downloaded or emailed copy.",
+    "sectionTitle7": "Frequently asked questions",
+    "section7Dropdown1Title": "Why do I need a declaration letter?",
+    "section7Dropdown1Paragraph": "When you file a petition with the court, you have the opportunity to attach a personal letter called a “declaration letter” explaining why you deserve a fresh start.\n\nThe declaration letter is your opportunity to explain to a judge why you want your criminal record cleared or your charges reduced. A declaration letter can help your case by adding your personal reasons and motivation to your legal case.\n",
+    "section7Dropdown2Title": "Why does expungement or reclassification matter to me?",
+    "section7Dropdown2Paragraph": "The word “expungement” can be confusing. Expungement means that in most cases your past criminal record cannot be used against you when applying for a job, housing or student loans. You also regain some of your rights like serving on a jury or owning a gun.\n\nEven though your criminal record does not disappear from the public record forever, your record will be updated to show that the conviction has been dismissed.\n\nReclassification allows you to change past felony convictions to a misdemeanor, even if you have served a sentence and parole. Once the felony has been removed from your criminal record, you may be eligible for benefits not previously available to you.\n",
+    "section7Dropdown3Title": "Can law enforcement get a search warrant to access my data on this site?",
+    "section7Dropdown3Paragraph": "No. Even if law enforcement were to search this site for your data, there would be no data to find. We do not store or save any of your data, ever. There would be nothing to find.\n"
   },
   "before_you_begin_page": {
     "header": "Before you begin",
