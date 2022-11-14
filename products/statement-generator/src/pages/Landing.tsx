@@ -5,6 +5,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import landingWorkImg from 'assets/landingWorkImg.svg';
 import eaImage from 'assets/eaImage.png';
 import screenshotExample from 'assets/screenshotExample.png';
+import howItWorks from 'assets/howItWorks.png';
 
 import { LinkButtonComponent } from 'components/Button';
 
@@ -235,9 +236,7 @@ function LandingPage() {
               {t('landing_page.sectionTitle3')}
             </h2>
             <div className={classes.wrapperDivTest}>
-              <div>
-                <img src={screenshotExample} alt="screenshot example" />
-              </div>
+              <img src={screenshotExample} alt="screenshot example" />
               <div
                 className={`${classes.sectionLeft} ${classes.unorderedList}`}
               >
@@ -251,6 +250,18 @@ function LandingPage() {
               </div>
             </div>
           </div>
+        </section>
+      </div>
+
+      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
+        <section className={`${classes.section}`}>
+          <div className={classes.sectionText}>
+            <div className={classes.sectionLeft}>
+              <h2>{t('landing_page.sectionTitle4')}</h2>
+              <p>{t('landing_page.sectionParagraph4')}</p>
+            </div>
+          </div>
+          <img src={howItWorks} alt="how it works" />
         </section>
       </div>
     </div>
