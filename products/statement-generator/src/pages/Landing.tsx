@@ -36,10 +36,10 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     section: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'center',
+      justifyContent: 'space-around',
       alignItems: 'center',
-      width: '100%',
-      marginBottom: '96px',
+      width: '65%',
+      margin: '0 auto 96px auto',
 
       '&$section ~ $section': {
         marginTop: spacing(6),
@@ -87,11 +87,14 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      width: 400,
+      width: 600,
       margin: '0 auto',
       textAlign: 'center',
+      '& img': {
+        margin: '42px 0 10px 0',
+      },
     },
-    wrapperDivTest: {
+    section2Wrapper: {
       display: 'flex',
       justifyContent: 'center',
     },
@@ -103,6 +106,17 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     },
     opportunity: {
       backgroundColor: `${palette.primary.lighter}`,
+        width: '80%',
+      padding: '100px 0px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      textAlign: 'center',
+      margin: '0 auto',
+      '& button': {
+        margin: '30px auto 0 auto',
+        width: '173px',
+      },
     },
     sectionText: {
       margin: '0',
@@ -153,6 +167,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         justifyContent: 'center',
       },
     },
+    // refactor these styles
     aboutButton: {
       width: '140px',
       margin: '24px 0 0 0',
@@ -167,7 +182,6 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     },
     faqButton: {
       width: '171px',
-      margin: '24px 0 0 0',
       padding: '15px',
       justifyContent: 'center',
     },
@@ -261,41 +275,33 @@ function LandingPage() {
         </div>
       </section>
 
-      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
-        <section className={`${classes.section}`}>
-          <div className={classes.sectionText}>
-            <h2 style={{ textAlign: 'center', margin: '96px 0 56px 0' }}>
-              {t('landing_page.sectionTitle3')}
-            </h2>
-            <div className={classes.wrapperDivTest}>
-              <img src={screenshotExample} alt="screenshot example" />
-              <div
-                className={`${classes.sectionLeft} ${classes.unorderedList}`}
-              >
-                <p>{t('landing_page.sectionParagraph3')}</p>
-                <br />
-                <ul>
-                  <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
-                  <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
-                  <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
-                </ul>
-              </div>
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <h2 style={{ textAlign: 'center', marginBottom: '56px' }}>
+            {t('landing_page.sectionTitle3')}
+          </h2>
+          <div className={classes.section2Wrapper}>
+            <img src={screenshotExample} alt="screenshot example" />
+            <div className={`${classes.sectionLeft} ${classes.unorderedList}`}>
+              <p>{t('landing_page.sectionParagraph3')}</p>
+              <br />
+              <ul>
+                <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
+                <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
+                <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
+              </ul>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
-        <section className={`${classes.section}`}>
-          <div className={classes.sectionText}>
-            <div className={classes.sectionLeft}>
-              <h2>{t('landing_page.sectionTitle4')}</h2>
-              <p>{t('landing_page.sectionParagraph4')}</p>
-            </div>
-          </div>
-          <img src={howItWorks} alt="how it works" />
-        </section>
-      </div>
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <h2>{t('landing_page.sectionTitle4')}</h2>
+          <p>{t('landing_page.sectionParagraph4')}</p>
+        </div>
+        <img src={howItWorks} alt="how it works" />
+      </section>
 
       <section className={`${classes.section}`}>
         <div className={classes.sectionCenter}>
@@ -325,17 +331,22 @@ function LandingPage() {
         <img src={privacyPolicy} alt="privacy policy" />
       </section>
 
-      <section>
-        <h2>{t('landing_page.sectionTitle7')}</h2>
-        <Accordions />
-        <LinkButtonComponent
-          className={classes.faqButton}
-          to={AppUrl.FAQ}
-          buttonText={t('READ OUR FAQ')}
-        />
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <h2>{t('landing_page.sectionTitle7')}</h2>
+          <Accordions />
+          <LinkButtonComponent
+            className={classes.faqButton}
+            to={AppUrl.FAQ}
+            buttonText={t('READ OUR FAQ')}
+          />
+        </div>
       </section>
 
-      <section>
+      <section
+        className={`${classes.section}`}
+        style={{ marginBottom: '24px' }}
+      >
         <div className={classes.opportunity}>
           <h2>{t('landing_page.sectionTitle8')}</h2>
           <p>{t('landing_page.sectionParagraph8')}</p>

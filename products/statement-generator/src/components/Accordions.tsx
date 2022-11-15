@@ -13,10 +13,9 @@ import { styled } from '@mui/material/styles';
 const useStyles = makeStyles(({ palette }) =>
   createStyles({
     accordionWrapper: {
-      width: '1042px',
+      width: '80%',
       border: `1px solid ${palette.primary.main}`,
       borderRadius: '16px!important',
-      margin: '16px 0 16px 0',
     },
     '& .accordionSummary-expandIconWrapper.accordionSummary-expanded': {
       transform: 'rotate(90deg)',
@@ -34,6 +33,9 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
   },
+  '& .MuiAccordionSummary-content.Mui-expanded': {
+    color: 'red', // able to change color but not font weight.
+  },
 }));
 
 export const Accordions: React.FC = () => {
@@ -41,9 +43,14 @@ export const Accordions: React.FC = () => {
   const classes = useStyles();
   return (
     <>
-      <Accordion className={classes.accordionWrapper}>
+      <Accordion
+        className={classes.accordionWrapper}
+        style={{ marginTop: '24px', marginBottom: '16px' }}
+      >
         <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-          <Typography>{t('landing_page.section7Dropdown1Title')}</Typography>
+          <Typography>
+            {t('landing_page.section7Dropdown1Title')}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -52,7 +59,10 @@ export const Accordions: React.FC = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion className={classes.accordionWrapper}>
+      <Accordion
+        className={classes.accordionWrapper}
+        style={{ marginTop: '0', marginBottom: '16px' }}
+      >
         <AccordionSummary aria-controls="panel2-content" id="panel2-header">
           <Typography>{t('landing_page.section7Dropdown2Title')}</Typography>
         </AccordionSummary>
@@ -63,7 +73,10 @@ export const Accordions: React.FC = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion className={classes.accordionWrapper}>
+      <Accordion
+        className={classes.accordionWrapper}
+        style={{ marginTop: '0', marginBottom: '24px' }}
+      >
         <AccordionSummary aria-controls="panel3-content" id="panel3-header">
           <Typography>{t('landing_page.section7Dropdown3Title')}</Typography>
         </AccordionSummary>
