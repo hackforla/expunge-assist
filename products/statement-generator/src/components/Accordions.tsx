@@ -20,8 +20,6 @@ const useStyles = makeStyles(({ palette }) =>
   })
 );
 
-// className={expanded === 'panel1' ? classes.expandedText : classes.heading} // add this to the heading typography
-
 // override default MUI styling
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary
