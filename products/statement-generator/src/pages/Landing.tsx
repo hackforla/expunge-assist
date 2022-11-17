@@ -6,6 +6,7 @@ import landingTeamImg from 'assets/landingTeamImg.svg';
 import landingWorkImg from 'assets/landingWorkImg.svg';
 
 import { LinkButtonComponent } from 'components/Button';
+import {Accordions} from 'components/Accordions';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
@@ -231,6 +232,7 @@ function LandingPage() {
             alt="Group of diverse teammates"
           />
         </LandingSection>
+        <Accordions />
       </div>
     </div>
   );
