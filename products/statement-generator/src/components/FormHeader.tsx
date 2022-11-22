@@ -129,9 +129,9 @@ const FormHeader = () => {
     isSomethingElseChecked,
   } = involvement;
   let maxNum = 6;
-  let stepNum = convertStepToNum(currentStep, involvement);
+  const stepNum = convertStepToNum(currentStep, involvement);
   if (isJobChecked) {
-    stepNum -= 1;
+    maxNum += 1;
   }
   if (isCommunityChecked) {
     maxNum += 1;
@@ -155,6 +155,7 @@ const FormHeader = () => {
   if (currentStep === AppUrl.Involvement) {
     maxNum = 6;
   }
+  console.log(stepNum, maxNum)
   const percentageComplete = (stepNum / maxNum) * 100;
 
   const formTitle = getSectionTitle(currentStep);
