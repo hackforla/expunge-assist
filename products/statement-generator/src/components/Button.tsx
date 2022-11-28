@@ -28,6 +28,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
       borderRadius: '24px',
       lineHeight: '16px',
       textDecoration: 'none',
+      width: 'fit-content',
 
       border: ({ theme }) => {
         switch (theme) {

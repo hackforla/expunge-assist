@@ -4,9 +4,14 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import landingTeamImg from 'assets/landingTeamImg.svg';
 import landingWorkImg from 'assets/landingWorkImg.svg';
+import eaImage from 'assets/eaImage.png';
+import screenshotExample from 'assets/screenshotExample.png';
+import howItWorks from 'assets/howItWorks.png';
+import completeLetter from 'assets/completeLetter.png';
+import privacyPolicy from 'assets/privacyPolicy.png';
 
-import { LinkButtonComponent } from 'components/Button';
-import {Accordions} from 'components/Accordions';
+import { Accordions } from 'components/Accordions';
+import ButtonComponent, { LinkButtonComponent } from 'components/Button';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
@@ -32,13 +37,15 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     section: {
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'flex-start',
-      width: '100%',
-
+      justifyContent: 'space-around',
+      alignItems: 'center',
       '&$section ~ $section': {
         marginTop: spacing(6),
       },
 
+      '& h2': {
+        fontWeight: '600',
+      },
       [breakpoints.down(breakpoints.values.md)]: {
         maxWidth: globals.contentWidth,
         flexDirection: 'column',
@@ -50,9 +57,20 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         },
       },
     },
+    // dont forget to refactor this
+    sectionText: {
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      width: '80vw',
+
+      '& h2': {
+        width: '80vw',
+      },
+    },
     sectionLeft: {
       flex: '0 0 auto',
-      width: 400,
+            width: 400,
 
       [breakpoints.down(breakpoints.values.md)]: {
         width: '100%',
@@ -121,6 +139,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     waveBg: {
       zIndex: -2,
       marginTop: '-5%',
+      marginBottom: '24px',
 
       [breakpoints.up(breakpoints.values.md)]: {
         height: 100,
@@ -177,6 +196,10 @@ function LandingPage() {
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
 
+  const handleContactUs = () => {
+    window.open('mailto:info@expungeassist.org');
+  };
+
   return (
     <div>
       <div className={classes.backgroundBlock}>
@@ -213,27 +236,49 @@ function LandingPage() {
 
       <WaveBackground />
 
-      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
-        <LandingSection
-          header={t('landing_page.sectionTitle2')}
-          paragraph={t('landing_page.sectionParagraph2')}
-        />
-        <LandingSection
-          header={t('landing_page.sectionTitle3')}
-          paragraph={t('landing_page.sectionParagraph3')}
-        />
-        <LandingSection
-          header={t('landing_page.sectionTitle4')}
-          paragraph={t('landing_page.sectionParagraph4')}
-        >
-          <img
-            style={{ width: '100%' }}
-            src={landingTeamImg}
-            alt="Group of diverse teammates"
+      <section className={`${classes.section}`} style={{ marginTop: '104px' }}>
+        <img src={eaImage} alt="expunge" />
+        <div className={classes.sectionText}>
+          <div className={classes.sectionLeft}>
+            <h2>{t('landing_page.sectionTitle2')}</h2>
+            <p>{t('landing_page.sectionParagraph2')}</p>
+          </div>
+          <LinkButtonComponent
+            className={classes.aboutButton}
+            to={AppUrl.AboutUs}
+            buttonText={t('ABOUT US')}
           />
-        </LandingSection>
-        <Accordions />
-      </div>
+        </div>
+      </section>
+
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <h2>{t('landing_page.sectionTitle7')}</h2>
+          <Accordions />
+          <LinkButtonComponent to={AppUrl.FAQ} buttonText={t('READ OUR FAQ')} />
+        </div>
+      </section>
+
+      {/*       <div className={`${utilityClasses.widePage} ${classes.wideSection}`}> */}
+      {/*         <LandingSection */}
+      {/*           header={t('landing_page.sectionTitle2')} */}
+      {/*           paragraph={t('landing_page.sectionParagraph2')} */}
+      {/*         /> */}
+      {/*         <LandingSection */}
+      {/*           header={t('landing_page.sectionTitle3')} */}
+      {/*           paragraph={t('landing_page.sectionParagraph3')} */}
+      {/*         /> */}
+      {/*         <LandingSection */}
+      {/*           header={t('landing_page.sectionTitle4')} */}
+      {/*           paragraph={t('landing_page.sectionParagraph4')} */}
+      {/*         > */}
+      {/*           <img */}
+      {/*             style={{ width: '100%' }} */}
+      {/*             src={landingTeamImg} */}
+      {/*             alt="Group of diverse teammates" */}
+      {/*           /> */}
+      {/*         </LandingSection> */}
+      {/*       </div> */}
     </div>
   );
 }

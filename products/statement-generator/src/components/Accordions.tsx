@@ -31,7 +31,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
     transform: 'rotate(90deg)',
   },
   '& .MuiAccordionSummary-content': {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 }));
 
@@ -45,9 +45,7 @@ export const Accordions: React.FC = () => {
         style={{ marginTop: '24px', marginBottom: '16px' }}
       >
         <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-          <Typography class="">
-            {t('landing_page.section7Dropdown1Title')}
-          </Typography>
+          <Typography>{t('landing_page.section7Dropdown1Title')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -61,7 +59,7 @@ export const Accordions: React.FC = () => {
         style={{ marginTop: '0', marginBottom: '16px' }}
       >
         <AccordionSummary aria-controls="panel2-content" id="panel2-header">
-          <Typography class="">{t('landing_page.section7Dropdown2Title')}</Typography>
+          <Typography>{t('landing_page.section7Dropdown2Title')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -75,7 +73,7 @@ export const Accordions: React.FC = () => {
         style={{ marginTop: '0', marginBottom: '24px' }}
       >
         <AccordionSummary aria-controls="panel3-content" id="panel3-header">
-          <Typography class="">{t('landing_page.section7Dropdown3Title')}</Typography>
+          <Typography>{t('landing_page.section7Dropdown3Title')}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
