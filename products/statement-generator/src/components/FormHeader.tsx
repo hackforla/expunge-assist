@@ -155,7 +155,6 @@ const FormHeader = () => {
   if (currentStep === AppUrl.Involvement) {
     maxNum = 6;
   }
-  console.log(stepNum, maxNum)
   const percentageComplete = (stepNum / maxNum) * 100;
 
   const formTitle = getSectionTitle(currentStep);
