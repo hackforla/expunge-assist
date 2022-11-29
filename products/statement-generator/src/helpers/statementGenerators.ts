@@ -148,6 +148,24 @@ export function generateInvolvementUnemployed(formState: IStepState): string {
  * @param {IStepState} formState
  * @returns {String}
  */
+export function generateInvolvementSomethingElse(
+  formState: IStepState
+): string {
+  const {
+    somethingElseState: { activityDescription, activityName },
+  } = formState;
+
+  if (activityDescription === '') {
+    return '';
+  }
+
+  return `I have been involved with ${activityName}. ${activityDescription}`;
+}
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
 export function generateFutureGoals(formState: IStepState): string {
   const {
     goalsState: { goals, goalsHow },

@@ -37,6 +37,10 @@ export const PREVIEW_MAP = {
     generator: statementGenerators.generateInvolvementParenting,
     stateKey: 'parenting',
   },
+  [AppUrl.SomethingElsePreview as string]: {
+    generator: statementGenerators.generateInvolvementSomethingElse,
+    stateKey: 'somethingElse',
+  },
   [AppUrl.GoalsPreview as string]: {
     generator: statementGenerators.generateFutureGoals,
     stateKey: 'goals',

@@ -36,13 +36,14 @@ export enum AppUrl {
   UnemployedPreview = '/form/unemployed/preview',
   Goals = '/form/goals',
   GoalsPreview = '/form/goals/preview',
+  SomethingElse = '/form/something-else',
+  SomethingElsePreview = '/form/something-else/preview',
   Why = '/form/why',
   WhyPreview = '/form/why/preview',
   Finalize = '/form/finalize',
   FinalizePreview = '/form/finalize/preview',
   Editing = '/form/editing',
   Download = '/form/download',
-
   PrivacyPolicy = '/privacy-policy',
   TermsOfUse = '/terms-of-use',
   FAQ = '/faq',
@@ -108,6 +109,11 @@ export function getNextFormUrl(url: AppUrl): AppUrl {
     case AppUrl.CommunityService:
       return AppUrl.CommunityServicePreview;
     case AppUrl.CommunityServicePreview:
+      return AppUrl.SomethingElse;
+
+    case AppUrl.SomethingElse:
+      return AppUrl.SomethingElsePreview;
+    case AppUrl.SomethingElsePreview:
       return AppUrl.Goals;
 
     case AppUrl.Goals:
@@ -144,6 +150,8 @@ export function isFormPage(appUrl: AppUrl): Boolean {
     appUrl === AppUrl.Involvement ||
     appUrl === AppUrl.Job ||
     appUrl === AppUrl.JobPreview ||
+    appUrl === AppUrl.SomethingElse ||
+    appUrl === AppUrl.SomethingElsePreview ||
     appUrl === AppUrl.CommunityService ||
     appUrl === AppUrl.CommunityServicePreview ||
     appUrl === AppUrl.Recovery ||

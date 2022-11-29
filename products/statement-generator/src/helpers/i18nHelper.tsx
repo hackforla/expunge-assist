@@ -13,6 +13,9 @@ export function getSectionTitle(url: AppUrl): string {
     case AppUrl.Job:
     case AppUrl.JobPreview:
       return `${t('sections.involvement')}: ${t('sections.job')}`;
+    case AppUrl.SomethingElse:
+    case AppUrl.SomethingElsePreview:
+      return `${t('sections.involvement')}: ${t('sections.something_else')}`;
     case AppUrl.CommunityService:
     case AppUrl.CommunityServicePreview:
       return `${t('sections.involvement')}: ${t('sections.community_service')}`;

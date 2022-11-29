@@ -8,6 +8,7 @@ export interface IStepState {
   involvement: IInvolvementInitialState;
   involvementJobState: IInvolvementJobState;
   communityServiceState: ICommunityServiceState;
+  somethingElseState: ISomethingElseState;
   recoveryState: IRecoveryState;
   schoolState: ISchoolState;
   parentingState: IParentingState;
@@ -30,6 +31,7 @@ export const defaultStepState = {
     isParentingChecked: false,
     isCommunityChecked: false,
     isNoneChecked: false,
+    isSomethingElseChecked: false,
   },
   involvementJobState: {
     companyName: '',
@@ -53,6 +55,10 @@ export const defaultStepState = {
     numberChildren: '',
     parentDescription: '',
   },
+  somethingElseState: {
+    activityName: '',
+    activityDescription: '',
+  },
   unemployedState: {
     unemploymentDescription: '',
   },
@@ -73,6 +79,7 @@ export const defaultStepState = {
     school: '',
     parenting: '',
     unemployed: '',
+    somethingElse: '',
     goals: '',
     why: '',
     closing: '',
@@ -90,6 +97,7 @@ export interface IInvolvementInitialState {
   isJobChecked?: boolean;
   isRecoveryChecked?: boolean;
   isSchoolChecked?: boolean;
+  isSomethingElseChecked?: boolean;
   isParentingChecked?: boolean;
   isCommunityChecked?: boolean;
   isNoneChecked?: boolean;
@@ -121,6 +129,10 @@ export interface IParentingState {
   numberChildren: string;
   parentDescription: string;
 }
+export interface ISomethingElseState {
+  activityName: string;
+  activityDescription: string;
+}
 // step 2f
 export interface IUnemployedState {
   unemploymentDescription: string;
@@ -145,6 +157,7 @@ export interface IStatementState {
   school: string;
   parenting: string;
   unemployed: string;
+  somethingElse: string;
   goals: string;
   why: string;
   closing: string;
