@@ -30,9 +30,9 @@ function InvolvementUnemployedFlow() {
       <FormContainer>
         <Textarea
           id="unemploymentDescription"
-          label={t('unemployed_form.unemploymentDescription_input_label')}
+          label={t('unemployment_form.unemploymentDescription_input_label')}
           placeholder={t(
-            'unemployed_form.unemploymentDescription_input_placeholder'
+            'unemployment_form.unemploymentDescription_input_placeholder'
           )}
           defaultValue={unemploymentDescription}
           handleChange={onInputChange}
