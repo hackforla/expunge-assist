@@ -41,8 +41,8 @@ function InvolvementInitialFlow() {
     isSchoolChecked,
     isParentingChecked,
     isCommunityChecked,
-    isNoneChecked,
     isSomethingElseChecked,
+    isUnemploymentChecked,
   } = formState.involvement;
 
   const isNextEnabled =
@@ -52,7 +52,7 @@ function InvolvementInitialFlow() {
     isParentingChecked ||
     isCommunityChecked ||
     isSomethingElseChecked ||
-    isNoneChecked;
+    isUnemploymentChecked;
 
   const onCheckboxChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = evt.currentTarget;
@@ -60,22 +60,18 @@ function InvolvementInitialFlow() {
       updateStepToForm({
         involvement: {
           isJobChecked: false,
+          isUnemployementChecked: false,
           isRecoveryChecked: false,
           isSchoolChecked: false,
           isParentingChecked: false,
           isCommunityChecked: false,
-          isNoneChecked: true,
         },
       });
       return;
     }
 
-    const changes = {
-      [id]: Boolean(checked),
-      isNoneChecked: false,
-    };
     updateStepToForm({
-      involvement: { ...formState.involvement, ...changes },
+      involvement: { ...formState.involvement },
     });
   };
 
@@ -94,7 +90,13 @@ function InvolvementInitialFlow() {
               onChange={onCheckboxChange}
               label={t('sections.job')}
             />
-
+            <Checkbox
+              useTeal
+              id="isUnemploymentChecked"
+              checked={isUnemploymentChecked}
+              onChange={onCheckboxChange}
+              label={t('sections.unemployment')}
+            />
             <Checkbox
               useTeal
               id="isRecoveryChecked"
@@ -133,14 +135,6 @@ function InvolvementInitialFlow() {
               checked={isSomethingElseChecked}
               onChange={onCheckboxChange}
               label={t('sections.something_else')}
-            />
-
-            <Checkbox
-              useTeal
-              id="isNoneChecked"
-              checked={isNoneChecked}
-              onChange={onCheckboxChange}
-              label={t('involvement_form.none_above')}
             />
           </FormGroup>
         </FormControl>
