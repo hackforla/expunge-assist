@@ -9,7 +9,7 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
-function InvolvementUnemployedFlow() {
+function InvolvementUnemploymentFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { unemploymentDescription } = formState.unemployedState;
@@ -45,4 +45,4 @@ function InvolvementUnemployedFlow() {
   );
 }
 
-export default InvolvementUnemployedFlow;
+export default InvolvementUnemploymentFlow;

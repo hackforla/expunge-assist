@@ -47,6 +47,26 @@ export function generateInvolvementJob(formState: IStepState): string {
  * @param {IStepState} formState
  * @returns {String}
  */
+export function generateInvolvementUnemployment(formState: IStepState): string {
+  const {
+    involvementJobState: { companyName, jobTitle, jobDescription },
+  } = formState;
+
+  if (!formState.involvement.isUnemploymentChecked) {
+    return '';
+  }
+
+  if (companyName === '' || jobTitle === '' || jobDescription === '') {
+    return '';
+  }
+
+  return `Since my conviction, I have been working at ${companyName} as a ${jobTitle}. At ${companyName}, ${jobDescription}`;
+}
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
 export function generateInvolvementCommunity(formState: IStepState): string {
   const {
     communityServiceState: { organizationName, serviceDescription },

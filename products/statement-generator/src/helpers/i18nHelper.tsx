@@ -28,9 +28,9 @@ export function getSectionTitle(url: AppUrl): string {
     case AppUrl.Parenting:
     case AppUrl.ParentingPreview:
       return `${t('sections.involvement')}: ${t('sections.parenting')}`;
-    case AppUrl.Unemployed:
-    case AppUrl.UnemployedPreview:
-      return `${t('sections.involvement')}: ${t('sections.unemployed')}`;
+    case AppUrl.Unemployment:
+    case AppUrl.UnemploymentPreview:
+      return `${t('sections.involvement')}: ${t('sections.Unemployment')}`;
     case AppUrl.Goals:
     case AppUrl.GoalsPreview:
       return t('sections.goals');
