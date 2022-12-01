@@ -69,9 +69,11 @@ function InvolvementInitialFlow() {
       });
       return;
     }
-
+    const changes = {
+      [id]: Boolean(checked),
+    };
     updateStepToForm({
-      involvement: { ...formState.involvement },
+      involvement: { ...formState.involvement, ...changes },
     });
   };
 
