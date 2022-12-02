@@ -36,8 +36,8 @@ export const FormStateContextProvider = ({
     }
 
     if (
-      (suggestedNext === AppUrl.Unemployed ||
-        suggestedNext === AppUrl.UnemployedPreview) &&
+      (suggestedNext === AppUrl.Unemployment ||
+        suggestedNext === AppUrl.UnemploymentPreview) &&
       formState.involvement.isJobChecked
     ) {
       return getNextStep(suggestedNext);

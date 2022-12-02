@@ -92,8 +92,8 @@ function convertStepToNum(
     }
     case AppUrl.Job:
     case AppUrl.JobPreview:
-    case AppUrl.Unemployed:
-    case AppUrl.UnemployedPreview:
+    case AppUrl.Unemployment:
+    case AppUrl.UnemploymentPreview:
       return 3;
     case AppUrl.Goals:
     case AppUrl.GoalsPreview:

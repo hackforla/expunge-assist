@@ -12,7 +12,7 @@ import FormContainer from 'components-layout/FormContainer';
 function InvolvementUnemploymentFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
-  const { unemploymentDescription } = formState.unemployedState;
+  const { unemploymentDescription } = formState.unemploymentState;
 
   const unemploymentDescriptionValid = unemploymentDescription !== '';
   const isNextDisabled = !unemploymentDescriptionValid;
@@ -21,7 +21,7 @@ function InvolvementUnemploymentFlow() {
     const { id, value } = evt.currentTarget;
     const changes = { [id]: value };
     updateStepToForm({
-      unemployedState: { ...formState.unemployedState, ...changes },
+      unemploymentState: { ...formState.unemploymentState, ...changes },
     });
   };
 
