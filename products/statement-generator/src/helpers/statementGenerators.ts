@@ -48,7 +48,6 @@ export function generateInvolvementJob(formState: IStepState): string {
  * @returns {String}
  */
 export function generateInvolvementUnemployment(formState: IStepState): string {
-  
   const {
     unemploymentState: { unemploymentDescription },
   } = formState;
