@@ -30,7 +30,7 @@ export function getSectionTitle(url: AppUrl): string {
       return `${t('sections.involvement')}: ${t('sections.parenting')}`;
     case AppUrl.Unemployment:
     case AppUrl.UnemploymentPreview:
-      return `${t('sections.involvement')}: ${t('sections.Unemployment')}`;
+      return `${t('sections.involvement')}: ${t('sections.unemployment')}`;
     case AppUrl.Goals:
     case AppUrl.GoalsPreview:
       return t('sections.goals');
