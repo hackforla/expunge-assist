@@ -125,8 +125,8 @@ const FormHeader = () => {
     isParentingChecked,
     isSchoolChecked,
     isRecoveryChecked,
-    isNoneChecked,
     isSomethingElseChecked,
+    isUnemploymentChecked,
   } = involvement;
   let maxNum = 6;
   const stepNum = convertStepToNum(currentStep, involvement);
@@ -145,7 +145,7 @@ const FormHeader = () => {
   if (isRecoveryChecked) {
     maxNum += 1;
   }
-  if (isNoneChecked) {
+  if (isUnemploymentChecked) {
     maxNum += 1;
   }
   if (isSomethingElseChecked) {
@@ -155,6 +155,7 @@ const FormHeader = () => {
   if (currentStep === AppUrl.Involvement) {
     maxNum = 6;
   }
+
   const percentageComplete = (stepNum / maxNum) * 100;
 
   const formTitle = getSectionTitle(currentStep);
