@@ -9,10 +9,10 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
-function InvolvementUnemployedFlow() {
+function InvolvementUnemploymentFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
-  const { unemploymentDescription } = formState.unemployedState;
+  const { unemploymentDescription } = formState.unemploymentState;
 
   const unemploymentDescriptionValid = unemploymentDescription !== '';
   const isNextDisabled = !unemploymentDescriptionValid;
@@ -21,7 +21,7 @@ function InvolvementUnemployedFlow() {
     const { id, value } = evt.currentTarget;
     const changes = { [id]: value };
     updateStepToForm({
-      unemployedState: { ...formState.unemployedState, ...changes },
+      unemploymentState: { ...formState.unemploymentState, ...changes },
     });
   };
 
@@ -30,9 +30,9 @@ function InvolvementUnemployedFlow() {
       <FormContainer>
         <Textarea
           id="unemploymentDescription"
-          label={t('unemployed_form.unemploymentDescription_input_label')}
+          label={t('unemployment_form.unemploymentDescription_input_label')}
           placeholder={t(
-            'unemployed_form.unemploymentDescription_input_placeholder'
+            'unemployment_form.unemploymentDescription_input_placeholder'
           )}
           defaultValue={unemploymentDescription}
           handleChange={onInputChange}
@@ -45,4 +45,4 @@ function InvolvementUnemployedFlow() {
   );
 }
 
-export default InvolvementUnemployedFlow;
+export default InvolvementUnemploymentFlow;

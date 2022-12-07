@@ -47,6 +47,26 @@ export function generateInvolvementJob(formState: IStepState): string {
  * @param {IStepState} formState
  * @returns {String}
  */
+export function generateInvolvementUnemployment(formState: IStepState): string {
+  const {
+    unemploymentState: { unemploymentDescription },
+  } = formState;
+
+  if (!formState.involvement.isUnemploymentChecked) {
+    return '';
+  }
+
+  if (unemploymentDescription === '') {
+    return '';
+  }
+
+  return `Finding employment hasn’t been easy with a conviction on my record. ${unemploymentDescription}`;
+}
+
+/**
+ * @param {IStepState} formState
+ * @returns {String}
+ */
 export function generateInvolvementCommunity(formState: IStepState): string {
   const {
     communityServiceState: { organizationName, serviceDescription },
@@ -126,22 +146,6 @@ export function generateInvolvementParenting(formState: IStepState): string {
       : `I have 1 child.`;
 
   return `Since my conviction, I have prioritized my parenting. ${numberChildrenDescription} ${parentDescription}`;
-}
-
-/**
- * @param {IStepState} formState
- * @returns {String}
- */
-export function generateInvolvementUnemployed(formState: IStepState): string {
-  const {
-    unemployedState: { unemploymentDescription },
-  } = formState;
-
-  if (unemploymentDescription === '') {
-    return '';
-  }
-
-  return `Since my conviction, ${unemploymentDescription} I believe that having my record cleared would help me find a job and be more involved in my community.`;
 }
 
 /**
