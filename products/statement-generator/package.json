@@ -18,7 +18,7 @@
     "gh-pages": "^3.1.0",
     "i18next": "^20.1.0",
     "i18next-browser-languagedetector": "^6.1.0",
-    "i18next-http-backend": "^1.2.1",
+    "i18next-http-backend": "^1.4.5",
     "jspdf": "^2.3.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
