@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -43,21 +43,21 @@ export default function FlowNavigation({
   const backBtnTheme =
     appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
 
-  function handleBack() {
+  const handleBack = useCallback(() => {
     if (onBack) {
       onBack();
     } else {
       goBackStep();
     }
-  }
+  }, []);
 
-  function handleNext() {
+  const handleNext = useCallback(() => {
     if (onNext) {
       onNext();
     } else {
       goNextStep();
     }
-  }
+  }, [])
 
   return (
     <div className={utilityClasses.buttonContainer}>
