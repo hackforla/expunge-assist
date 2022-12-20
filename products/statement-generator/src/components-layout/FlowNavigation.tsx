@@ -57,7 +57,7 @@ export default function FlowNavigation({
     } else {
       goNextStep();
     }
-  }, [])
+  }, []);
 
   return (
     <div className={utilityClasses.buttonContainer}>
