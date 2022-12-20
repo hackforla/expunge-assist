@@ -3,6 +3,10 @@
   "version": "0.8.0",
   "homepage": "./",
   "private": true,
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
