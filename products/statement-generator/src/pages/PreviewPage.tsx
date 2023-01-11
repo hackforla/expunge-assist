@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 
 import TextPreview from 'components/TextPreview';
 import ContentContainer from 'components-layout/ContentContainer';
@@ -16,7 +16,7 @@ function PreviewPage() {
   const previewConfigItem = getPreviewConfig(currentStep);
   const hasPreviewConfig = previewConfigItem !== undefined;
 
-  function updateStatement(newStatement: string) {
+  const updateStatement = useCallback((newStatement: string) => {
     if (hasPreviewConfig) {
       updateStepToForm({
         statements: {
@@ -25,7 +25,7 @@ function PreviewPage() {
         },
       });
     }
-  }
+  }, []);
 
   // hacky implementation to generate the heading & closing statement here
   //  because it does not have a unique page to be generated via a preview

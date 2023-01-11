@@ -69,7 +69,7 @@ Explain the different ways people can contribute. For example:
 - Join the team 
      on Slack channel and at our biweekly Monday hack night in person or teleconference (start at 6pm).
 - To help with user research, sync with Apurva.
-- To provide design support, sync with Gretchen.
+- To provide design support, sync with Anita or Serena.
 - To contribute to the code, sync with Daniel.
 
 
