@@ -185,7 +185,10 @@ interface FormRouteButtonProps extends ComponentProps {
   appUrl: AppUrl;
 }
 
-export function FormRouteButton({ appUrl, ...otherProps }: FormRouteButtonProps) {
+export function FormRouteButton({
+  appUrl,
+  ...otherProps
+}: FormRouteButtonProps) {
   const { goNextPage } = useContext(RoutingContext);
   return <ButtonComponent {...otherProps} onClick={() => goNextPage(appUrl)} />;
 }
