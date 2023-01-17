@@ -100,11 +100,13 @@ Explain the different ways people can contribute. For example:
 
 # Contact info
 
-Thomas Demoner - Product Manager - Slack: @Thomas Demoner
+Thomas Demoner - Product Manager (Dev) - Slack: @Thomas Demoner
 
-Valeriya Metla - PM (Research) - Slack: @Valeriya Metla
+Jamie Siu - Product Manager (Design / Content) - Slack: @Jamie Siu
 
-Jamie Siu - PM (Design) - Slack: @Jamie Siu
+James Shin - Product Manager (Design / Content) - Slack: @James Shin
+
+Sheron Virani - Product Manager (Research) - Slack @Sheron
 
 Daniel Xiao - Tech Lead - Slack: @Daniel Xiao
 
