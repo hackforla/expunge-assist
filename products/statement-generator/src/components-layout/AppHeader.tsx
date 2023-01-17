@@ -9,7 +9,7 @@ import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
 import Logo from 'components/Logo';
-import Button, { LinkButtonComponent } from 'components/Button';
+import Button, { FormRouteButton } from 'components/Button';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -141,8 +141,8 @@ const AppHeader = () => {
       currentStep === '/faq'
     ) {
       return (
-        <LinkButtonComponent
-          to={AppUrl.Welcome}
+        <FormRouteButton
+          appUrl={AppUrl.Welcome}
           buttonText={t('button.startNow')}
           className={classes.linkButtonComponent}
         />
