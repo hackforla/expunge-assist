@@ -66,10 +66,10 @@ Besides the On-boarding doc you can find insight on this project by reviewing;
 
 Explain the different ways people can contribute. For example:
 
-- Join the team 
-     on Slack channel and at our biweekly Monday hack night in person or teleconference (start at 6pm).
-- To help with user research, sync with Apurva.
+- Join the team Slack channel #expunge-assist.
+- To help with user research, sync with Kelsey or Yumeng.
 - To provide design support, sync with Anita or Serena.
+- To support content writing, sync with Sam Hyler.
 - To contribute to the code, sync with Daniel.
 
 
@@ -100,11 +100,13 @@ Explain the different ways people can contribute. For example:
 
 # Contact info
 
-Thomas Demoner - Product Manager - Slack: @Thomas Demoner
+Thomas Demoner - Product Manager (Dev) - Slack: @Thomas Demoner
 
-Valeriya Metla - PM (Research) - Slack: @Valeriya Metla
+Jamie Siu - Product Manager (Design / Content) - Slack: @Jamie Siu
 
-Jamie Siu - PM (Design) - Slack: @Jamie Siu
+James Shin - Product Manager (Design / Content) - Slack: @James Shin
+
+Sheron Virani - Product Manager (Research) - Slack @Sheron
 
 Daniel Xiao - Tech Lead - Slack: @Daniel Xiao
 

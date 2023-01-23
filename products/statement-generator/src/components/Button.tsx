@@ -1,17 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-
-interface ComponentProps {
-  className?: string;
-  theme?: string;
-  hasArrow?: boolean;
-  disabled?: boolean;
-  icon?: React.ReactNode;
-  buttonText?: string;
-  onClick: () => void;
-}
+import { AppUrl } from 'contexts/RoutingProps';
+import RoutingContext from 'contexts/RoutingContext';
 
 interface StyleProps {
   theme?: string;
@@ -131,6 +123,16 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
   })
 );
 
+interface ComponentProps {
+  className?: string;
+  theme?: string;
+  hasArrow?: boolean;
+  disabled?: boolean;
+  icon?: React.ReactNode;
+  buttonText?: string;
+  onClick?: () => void;
+}
+
 const ButtonComponent = ({
   className = '',
   theme,
@@ -176,6 +178,19 @@ export function LinkButtonComponent({
       {buttonText}
     </Link>
   );
+}
+
+// <FormRouteButton /> is a workaround to make sure RoutingContext.tsx knows that a page has been changed
+interface FormRouteButtonProps extends ComponentProps {
+  appUrl: AppUrl;
+}
+
+export function FormRouteButton({
+  appUrl,
+  ...otherProps
+}: FormRouteButtonProps) {
+  const { goNextPage } = useContext(RoutingContext);
+  return <ButtonComponent {...otherProps} onClick={() => goNextPage(appUrl)} />;
 }
 
 export default ButtonComponent;

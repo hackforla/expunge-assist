@@ -5,7 +5,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import landingTeamImg from 'assets/landingTeamImg.svg';
 import landingWorkImg from 'assets/landingWorkImg.svg';
 
-import { LinkButtonComponent } from 'components/Button';
+import { FormRouteButton } from 'components/Button';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
@@ -192,8 +192,8 @@ function LandingPage() {
               <div
                 className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
               >
-                <LinkButtonComponent
-                  to={AppUrl.Welcome}
+                <FormRouteButton
+                  appUrl={AppUrl.Welcome}
                   buttonText={t('button.startNow')}
                 />
               </div>
