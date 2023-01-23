@@ -40,7 +40,7 @@ export function generateInvolvementJob(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have been working at ${companyName} as a ${jobTitle}. At ${companyName}, ${jobDescription}`;
+  return `I have been working at ${companyName} as a ${jobTitle}. At ${companyName}, ${jobDescription} Having my record cleared would help me continue to advance in my career.`;
 }
 
 /**
@@ -60,7 +60,7 @@ export function generateInvolvementUnemployment(formState: IStepState): string {
     return '';
   }
 
-  return `Finding employment hasn’t been easy with a conviction on my record. ${unemploymentDescription}`;
+  return `Finding employment hasn’t been easy with a conviction on my record. ${unemploymentDescription} Having my record cleared would help me find a job and be more self-sufficient.`;
 }
 
 /**
@@ -80,7 +80,7 @@ export function generateInvolvementCommunity(formState: IStepState): string {
     return '';
   }
 
-  return `I have also been really involved in community service. In particular, I’ve been working with ${organizationName}. ${serviceDescription}`;
+  return `I have been volunteering with ${organizationName}. At ${organizationName}, ${serviceDescription} Serving others has been fulfilling for me. `;
 }
 
 /**
@@ -100,7 +100,7 @@ export function generateInvolvementRecovery(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have gotten serious about my recovery. I am involved with ${recoveryName}. ${recoveryDescription}`;
+  return `${recoveryName} has been part of my self-improvement process. ${recoveryDescription} I believe my involvement in this shows that I am committed to improving my life.`;
 }
 
 /**
@@ -120,7 +120,7 @@ export function generateInvolvementSchool(formState: IStepState): string {
     return '';
   }
 
-  return `Since my conviction, I have begun attending ${schoolName}, where I have been studying ${studyName}. ${passionDescription}`;
+  return `Education is important to me. I have been attending ${schoolName}, where I have been studying ${studyName}. ${passionDescription} Furthering my education has been significant in my life.`;
 }
 
 /**
@@ -145,7 +145,7 @@ export function generateInvolvementParenting(formState: IStepState): string {
       ? `I have ${numberChildren} children.`
       : `I have 1 child.`;
 
-  return `Since my conviction, I have prioritized my parenting. ${numberChildrenDescription} ${parentDescription}`;
+  return `I have been prioritizing my parenting. ${numberChildrenDescription} ${parentDescription} Focusing on parenting has changed my life for the better.`;
 }
 
 /**
@@ -163,7 +163,7 @@ export function generateInvolvementSomethingElse(
     return '';
   }
 
-  return `I have been involved with ${activityName}. ${activityDescription}`;
+  return `I have benefited from ${activityName}. ${activityDescription} This has been important to me personally as I work towards my goals. `;
 }
 
 /**
@@ -179,7 +179,7 @@ export function generateFutureGoals(formState: IStepState): string {
     return '';
   }
 
-  return `${goals} To work towards my goals, ${goalsHow} Having my record cleared would help me achieve these goals for my future.`;
+  return `I believe my activities support my case for expungement by showing that I am committed to being a productive citizen. I have also set important goals for myself. ${goals} To work towards my goals, ${goalsHow} This is important to me and the future I want for myself.`;
 }
 
 /**
@@ -195,7 +195,7 @@ export function generateWhy(formState: IStepState): string {
     return '';
   }
 
-  return `I want to clear my record because ${clearRecordWhy} ${clearRecordHow} Getting my record cleared will have a major impact on my life.`;
+  return `Getting my record cleared would have a major impact on my life. ${clearRecordWhy} ${clearRecordHow} Thank you for considering my case.`;
 }
 
 /**
