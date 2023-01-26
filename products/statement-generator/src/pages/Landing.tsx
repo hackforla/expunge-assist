@@ -2,14 +2,20 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 
-import landingTeamImg from 'assets/landingTeamImg.svg';
-import landingWorkImg from 'assets/landingWorkImg.svg';
-
-import { FormRouteButton } from 'components/Button';
-
 import { AppUrl } from 'contexts/RoutingProps';
 
 import useUtilityStyles from 'styles/utilityStyles';
+
+import landingWorkImg from 'assets/landingWorkImg.svg';
+import eaImage from 'assets/eaImage.png';
+import screenshotExample from 'assets/screenshotExample.png';
+import howItWorks from 'assets/howItWorks.png';
+import completeLetter from 'assets/completeLetter.png';
+import privacyPolicy from 'assets/privacyPolicy.png';
+
+import ButtonComponent, { LinkButtonComponent } from 'components/Button';
+import LandingAccordions from '../components/LandingAccordions';
+
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
   createStyles({
@@ -31,11 +37,16 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     section: {
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'flex-start',
-      width: '100%',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      width: '65%',
+      margin: '0 auto 96px auto',
 
       '&$section ~ $section': {
         marginTop: spacing(6),
+      },
+      '& h2': {
+        fontWeight: '600',
       },
 
       [breakpoints.down(breakpoints.values.md)]: {
@@ -71,6 +82,47 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
           marginTop: spacing(2),
         },
       },
+    },
+
+    sectionCenter: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      width: 600,
+      margin: '0 auto',
+      textAlign: 'center',
+      '& img': {
+        margin: '42px 0 10px 0',
+      },
+    },
+    section2Wrapper: {
+      display: 'flex',
+      justifyContent: 'center',
+    },
+    unorderedList: {
+      margin: '10px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
+    opportunity: {
+      backgroundColor: `${palette.primary.lighter}`,
+        width: '80%',
+      padding: '100px 0px',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      textAlign: 'center',
+      margin: '0 auto',
+      '& button': {
+        margin: '30px auto 0 auto',
+        width: '173px',
+      },
+    },
+    sectionText: {
+      margin: '0',
+      display: 'flex',
+      flexDirection: 'column',
     },
     firstSection: {
       display: 'flex',
@@ -116,10 +168,28 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         justifyContent: 'center',
       },
     },
-
+    // refactor these styles
+    aboutButton: {
+      width: '140px',
+      margin: '24px 0 0 0',
+      padding: '15px',
+      justifyContent: 'center',
+    },
+    privacyButton: {
+      width: '244px',
+      margin: '24px 0 0 0',
+      padding: '15px',
+      justifyContent: 'center',
+    },
+    faqButton: {
+      width: '171px',
+      padding: '15px',
+      justifyContent: 'center',
+    },
     waveBg: {
       zIndex: -2,
       marginTop: '-5%',
+      marginBottom: '24px',
 
       [breakpoints.up(breakpoints.values.md)]: {
         height: 100,
@@ -146,35 +216,14 @@ function WaveBackground() {
   );
 }
 
-interface ILandingSection {
-  header: string;
-  paragraph: string;
-  children?: React.ReactNode;
-  className?: string;
-}
-
-function LandingSection({
-  header,
-  paragraph,
-  children,
-  className = '',
-}: ILandingSection) {
-  const classes = useStyles();
-  return (
-    <section className={`${classes.section} ${className}`}>
-      <div className={classes.sectionLeft}>
-        <h2>{header}</h2>
-        <p>{paragraph}</p>
-      </div>
-      <div className={classes.sectionRight}>{children}</div>
-    </section>
-  );
-}
-
 function LandingPage() {
   const { t } = useTranslation();
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
+
+  const handleContactUs = () => {
+    window.open('mailto:info@expungeassist.org');
+  };
 
   return (
     <div>
@@ -192,8 +241,8 @@ function LandingPage() {
               <div
                 className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
               >
-                <FormRouteButton
-                  appUrl={AppUrl.Welcome}
+                <LinkButtonComponent
+                  to={AppUrl.Welcome}
                   buttonText={t('button.startNow')}
                 />
               </div>
@@ -212,26 +261,102 @@ function LandingPage() {
 
       <WaveBackground />
 
-      <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
-        <LandingSection
-          header={t('landing_page.sectionTitle2')}
-          paragraph={t('landing_page.sectionParagraph2')}
-        />
-        <LandingSection
-          header={t('landing_page.sectionTitle3')}
-          paragraph={t('landing_page.sectionParagraph3')}
-        />
-        <LandingSection
-          header={t('landing_page.sectionTitle4')}
-          paragraph={t('landing_page.sectionParagraph4')}
-        >
-          <img
-            style={{ width: '100%' }}
-            src={landingTeamImg}
-            alt="Group of diverse teammates"
+      <section className={`${classes.section}`} style={{ marginTop: '104px' }}>
+        <img src={eaImage} alt="expunge" />
+        <div className={classes.sectionText}>
+          <div className={classes.sectionLeft}>
+            <h2>{t('landing_page.sectionTitle2')}</h2>
+            <p>{t('landing_page.sectionParagraph2')}</p>
+          </div>
+          <LinkButtonComponent
+            className={classes.aboutButton}
+            to={AppUrl.AboutUs}
+            buttonText={t('ABOUT US')}
           />
-        </LandingSection>
-      </div>
+        </div>
+      </section>
+
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <h2 style={{ textAlign: 'center', marginBottom: '56px' }}>
+            {t('landing_page.sectionTitle3')}
+          </h2>
+          <div className={classes.section2Wrapper}>
+            <img src={screenshotExample} alt="screenshot example" />
+            <div className={`${classes.sectionLeft} ${classes.unorderedList}`}>
+              <p>{t('landing_page.sectionParagraph3')}</p>
+              <br />
+              <ul>
+                <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
+                <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
+                <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <h2>{t('landing_page.sectionTitle4')}</h2>
+          <p>{t('landing_page.sectionParagraph4')}</p>
+        </div>
+        <img src={howItWorks} alt="how it works" />
+      </section>
+
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionCenter}>
+          <h2>{t('landing_page.sectionTitle5')}</h2>
+          <p>{t('landing_page.sectionParagraph5a')}</p>
+          <img
+            style={{ display: 'block' }}
+            src={completeLetter}
+            alt="a complete letter"
+          />
+          <p>{t('landing_page.sectionParagraph5b')}</p>
+        </div>
+      </section>
+
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <div className={classes.sectionLeft}>
+            <h2>{t('landing_page.sectionTitle6')}</h2>
+            <p>{t('landing_page.sectionParagraph6')}</p>
+          </div>
+          <LinkButtonComponent
+            className={classes.privacyButton}
+            to={AppUrl.PrivacyPolicy}
+            buttonText={t('VIEW PRIVACY POLICY')}
+          />
+        </div>
+        <img src={privacyPolicy} alt="privacy policy" />
+      </section>
+
+      <section className={`${classes.section}`}>
+        <div className={classes.sectionText}>
+          <h2>{t('landing_page.sectionTitle7')}</h2>
+          <LandingAccordions />
+          <LinkButtonComponent
+            className={classes.faqButton}
+            to={AppUrl.FAQ}
+            buttonText={t('READ OUR FAQ')}
+          />
+        </div>
+      </section>
+
+      <section
+        className={`${classes.section}`}
+        style={{ marginBottom: '24px' }}
+      >
+        <div className={classes.opportunity}>
+          <h2>{t('landing_page.sectionTitle8')}</h2>
+          <p>{t('landing_page.sectionParagraph8')}</p>
+          <ButtonComponent
+            onClick={() => handleContactUs()}
+            buttonText={t('CONTACT US')}
+          />
+        </div>
+      </section>
     </div>
   );
 }

@@ -20,11 +20,28 @@
     "sectionTitle1": "The quick and easy way to create a declaration letter",
     "sectionParagraph1": "This tool guides justice impacted individuals through the declaration letter writing process to accelerate their path toward record clearance.",
     "sectionTitle2": "What is Expunge Assist?",
-    "sectionParagraph2": "Expunge Assist aims to help people in California with criminal records accomplish record clearance, expungement, or a reduction and subsequently a second chance as a part of society.\n\nWe work with verifiable non-profits, the government, and partners to build digital tools that can affect changes in the lives of justice impacted individuals.\n\nOur first product, a declaration letter generator, will help streamline the expungement application process.",
-    "sectionTitle3": "Partnership opportunities",
-    "sectionParagraph3": "Expunge Assist is currently looking for partner organizations to refine and tailor the product to the needs of their organizations. Reach out to learn more.",
-    "sectionTitle4": "The team",
-    "sectionParagraph4": "We are a group of volunteer designers, engineers, researchers, writers, and activists who are using the power of technology to improve LA County."
+    "sectionParagraph2": "Expunge Assist is a non-profit organization under Hack for LA. We aim to help people with criminal records accomplish record clearance, expungement, or a reduction to their sentence.\n\nAs of now, this service is only available to people who have criminal records in California.",
+    "sectionTitle3": "Making letter writing less intimidating",
+    "sectionParagraph3": "This is a tool for applicants who are writing a letter to a judge that addresses their progress and motivations for seeking expungement.",
+    "sectionParagraph3BulletPoint1": "Targeted question prompts guide the writer",
+    "sectionParagraph3BulletPoint2": "Sections help keep writing organized",
+    "sectionParagraph3BulletPoint3": "Edit function gives reader control",
+    "sectionTitle4": "How it works",
+    "sectionParagraph4": "We provide step-by-step guidance through the\nprocess of writing and downloading a letter to\na judge for your expungement application.",
+    "sectionTitle5": "A complete letter",
+    "sectionParagraph5a": "This tool results in a complete and downloadable declaration letter.",
+    "sectionParagraph5b": "We recommend applicants meet with a lawyer or clinic to review the letter before submitting it to a judge. ",
+    "sectionTitle6": "Committed to data safety",
+    "sectionParagraph6": "To keep your data safe, Expunge Assist does not share, store, or save anything you enter into this website on any server.\n\nWhen you close the webpage, your data is erased forever, everywhere. Only you keep your downloaded or emailed copy.",
+    "sectionTitle7": "Frequently asked questions",
+    "section7Dropdown1Title": "Why do I need a declaration letter?",
+    "section7Dropdown1Paragraph": "When you file a petition with the court, you have the opportunity to attach a personal letter called a “declaration letter” explaining why you deserve a fresh start.\n\nThe declaration letter is your opportunity to explain to a judge why you want your criminal record cleared or your charges reduced. A declaration letter can help your case by adding your personal reasons and motivation to your legal case.\n",
+    "section7Dropdown2Title": "Why does expungement or reclassification matter to me?",
+    "section7Dropdown2Paragraph": "The word “expungement” can be confusing. Expungement means that in most cases your past criminal record cannot be used against you when applying for a job, housing or student loans. You also regain some of your rights like serving on a jury or owning a gun.\n\nEven though your criminal record does not disappear from the public record forever, your record will be updated to show that the conviction has been dismissed.\n\nReclassification allows you to change past felony convictions to a misdemeanor, even if you have served a sentence and parole. Once the felony has been removed from your criminal record, you may be eligible for benefits not previously available to you.\n",
+    "section7Dropdown3Title": "Can law enforcement get a search warrant to access my data on this site?",
+    "section7Dropdown3Paragraph": "No. Even if law enforcement were to search this site for your data, there would be no data to find. We do not store or save any of your data, ever. There would be nothing to find.\n",
+    "sectionTitle8": "Partnership opportunities",
+    "sectionParagraph8": "Expunge Assist is currently looking for partner organizations to refine and tailor the\nproduct to the needs of their organizations. Contact us to learn more."
   },
   "before_you_begin_page": {
     "header": "Before you begin",
@@ -75,13 +92,12 @@
     "previewing": "Previewing",
     "introduce_yourself": "Introduce yourself",
     "involvement": "Involvement",
-    "job": "Employment",
-    "unemployment": "Unemployment",
+    "job": "Job",
+    "unemployed": "Unemployed",
     "recovery": "Recovery",
     "education": "Education",
     "parenting": "Parenting",
     "community_service": "Community service",
-    "something_else": "Something else",
     "goals": "Future goals",
     "why": "Why",
     "finalize": "My declaration letter",
@@ -99,20 +115,14 @@
     "none_above": "None of the above"
   },
   "job_form": {
-    "companyName_input_label": "What is the name of the company or organization where you work?",
-    "companyName_input_placeholder": "Name of company/organization",
+    "companyName_input_label": "What is the name of the company you work for?",
+    "companyName_input_placeholder": "Name of company",
     "jobTitle_input_label": "What is your current job title?",
     "jobTitle_input_placeholder": "Job title",
     "jobDescription_input_label": "What do you do at this job? How has your role at work impacted your life for the better?\n(2-3 complete sentences)",
     "jobDescription_input_placeholder": ""
   },
-  "something_else_form": {
-    "activityName_input_label": "What else have you been involved in?",
-    "activityName_input_placeholder": "Name of activity",
-    "activityDescription_input_label": "Why is this important to you? How has it changed your perspective?\n(2-3 complete sentences)",
-    "activityDescription_input_placeholder": ""
-  },
-  "unemployment_form": {
+  "unemployed_form": {
     "unemploymentDescription_input_label": "Describe how and why you are having trouble finding work.\n(2-3 complete sentences)",
     "unemploymentDescription_input_placeholder": ""
   },
