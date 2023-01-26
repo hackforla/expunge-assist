@@ -16,7 +16,6 @@ import privacyPolicy from 'assets/privacyPolicy.png';
 import ButtonComponent, { LinkButtonComponent } from 'components/Button';
 import LandingAccordions from '../components/LandingAccordions';
 
-
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
   createStyles({
     wideSection: {
@@ -98,6 +97,10 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     section2Wrapper: {
       display: 'flex',
       justifyContent: 'center',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        flexDirection: 'column',
+      },
     },
     unorderedList: {
       margin: '10px',
@@ -107,16 +110,16 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     },
     opportunity: {
       backgroundColor: `${palette.primary.lighter}`,
-        width: '80%',
-      padding: '100px 0px',
+      width: '100%',
+      padding: '100px 80px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       textAlign: 'center',
       margin: '0 auto',
       '& button': {
-        margin: '30px auto 0 auto',
-        width: '173px',
+        width: '170px',
+        margin: `${spacing(2)}px auto 0px auto`,
       },
     },
     sectionText: {
@@ -216,147 +219,212 @@ function WaveBackground() {
   );
 }
 
-function LandingPage() {
+function LandingSectionPrimary() {
   const { t } = useTranslation();
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
+  return (
+    <section className={`${classes.section} ${classes.firstSection}`}>
+      <div className={classes.firstSectionContent}>
+        <h2>{t('landing_page.sectionTitle1')}</h2>
+        <img
+          className={classes.verticalImage}
+          src={landingWorkImg}
+          alt="Person working on a laptop"
+        />
+        <p>{t('landing_page.sectionParagraph1')}</p>
+        <div
+          className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
+        >
+          <LinkButtonComponent
+            to={AppUrl.Welcome}
+            buttonText={t('button.startNow')}
+          />
+        </div>
+      </div>
+
+      <div className={classes.horizontalImage}>
+        <img
+          style={{ width: '100%' }}
+          src={landingWorkImg}
+          alt="Person working on a laptop"
+        />
+      </div>
+    </section>
+  );
+}
+
+function LandingSection1() {
+  const { t } = useTranslation();
+  const classes = useStyles();
+  // const utilityClasses = useUtilityStyles();
+
+  return (
+    <section className={`${classes.section}`} style={{ marginTop: '104px' }}>
+      <img src={eaImage} alt="expunge" />
+      <div className={classes.sectionText}>
+        <div className={classes.sectionLeft}>
+          <h2>{t('landing_page.sectionTitle2')}</h2>
+          <p>{t('landing_page.sectionParagraph2')}</p>
+        </div>
+        <LinkButtonComponent
+          className={classes.aboutButton}
+          to={AppUrl.AboutUs}
+          buttonText={t('ABOUT US')}
+        />
+      </div>
+    </section>
+  );
+}
+
+function LandingSection2() {
+  const { t } = useTranslation();
+  const classes = useStyles();
+  // const utilityClasses = useUtilityStyles();
+
+  return (
+    <section className={`${classes.section}`}>
+      <div className={classes.sectionText}>
+        <h2 style={{ textAlign: 'center', marginBottom: '56px' }}>
+          {t('landing_page.sectionTitle3')}
+        </h2>
+        <div className={classes.section2Wrapper}>
+          <img src={screenshotExample} alt="screenshot example" />
+          <div className={`${classes.sectionLeft} ${classes.unorderedList}`}>
+            <p>{t('landing_page.sectionParagraph3')}</p>
+            <br />
+            <ul>
+              <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
+              <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
+              <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function LandingSection3() {
+  const { t } = useTranslation();
+  const classes = useStyles();
+  // const utilityClasses = useUtilityStyles();
+
+  return (
+    <section className={`${classes.section}`}>
+      <div className={classes.sectionText}>
+        <h2>{t('landing_page.sectionTitle4')}</h2>
+        <p>{t('landing_page.sectionParagraph4')}</p>
+      </div>
+      <img src={howItWorks} alt="how it works" />
+    </section>
+  );
+}
+
+function LandingSection4() {
+  const { t } = useTranslation();
+  const classes = useStyles();
+  // const utilityClasses = useUtilityStyles();
+
+  return (
+    <section className={`${classes.section}`}>
+      <div className={classes.sectionCenter}>
+        <h2>{t('landing_page.sectionTitle5')}</h2>
+        <p>{t('landing_page.sectionParagraph5a')}</p>
+        <img
+          style={{ display: 'block' }}
+          src={completeLetter}
+          alt="a complete letter"
+        />
+        <p>{t('landing_page.sectionParagraph5b')}</p>
+      </div>
+    </section>
+  );
+}
+
+function LandingSection5() {
+  const { t } = useTranslation();
+  const classes = useStyles();
+  return (
+    <section className={`${classes.section}`}>
+      <div className={classes.sectionText}>
+        <div className={classes.sectionLeft}>
+          <h2>{t('landing_page.sectionTitle6')}</h2>
+          <p>{t('landing_page.sectionParagraph6')}</p>
+        </div>
+        <LinkButtonComponent
+          className={classes.privacyButton}
+          to={AppUrl.PrivacyPolicy}
+          buttonText={t('VIEW PRIVACY POLICY')}
+        />
+      </div>
+      <img src={privacyPolicy} alt="privacy policy" />
+    </section>
+  );
+}
+
+function LandingSection6() {
+  const { t } = useTranslation();
+  const classes = useStyles();
+  return (
+    <section className={`${classes.section}`}>
+      <div className={classes.sectionText}>
+        <h2>{t('landing_page.sectionTitle7')}</h2>
+        <LandingAccordions />
+        <LinkButtonComponent
+          className={classes.faqButton}
+          to={AppUrl.FAQ}
+          buttonText={t('READ OUR FAQ')}
+        />
+      </div>
+    </section>
+  );
+}
+
+function LandingSection7() {
+  const { t } = useTranslation();
+  const classes = useStyles();
 
   const handleContactUs = () => {
     window.open('mailto:info@expungeassist.org');
   };
 
   return (
+    <section className={`${classes.section}`} style={{ marginBottom: '24px' }}>
+      <div className={classes.opportunity}>
+        <h2>{t('landing_page.sectionTitle8')}</h2>
+        <p>{t('landing_page.sectionParagraph8')}</p>
+        <ButtonComponent
+          onClick={() => handleContactUs()}
+          buttonText={t('CONTACT US')}
+        />
+      </div>
+    </section>
+  );
+}
+
+function LandingPage() {
+  // const { t } = useTranslation();
+  const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
+
+  return (
     <div>
       <div className={classes.backgroundBlock}>
         <div className={`${utilityClasses.widePage} ${classes.wideSection}`}>
-          <section className={`${classes.section} ${classes.firstSection}`}>
-            <div className={classes.firstSectionContent}>
-              <h2>{t('landing_page.sectionTitle1')}</h2>
-              <img
-                className={classes.verticalImage}
-                src={landingWorkImg}
-                alt="Person working on a laptop"
-              />
-              <p>{t('landing_page.sectionParagraph1')}</p>
-              <div
-                className={`${utilityClasses.buttonContainer} ${classes.startButtonContainer}`}
-              >
-                <LinkButtonComponent
-                  to={AppUrl.Welcome}
-                  buttonText={t('button.startNow')}
-                />
-              </div>
-            </div>
-
-            <div className={classes.horizontalImage}>
-              <img
-                style={{ width: '100%' }}
-                src={landingWorkImg}
-                alt="Person working on a laptop"
-              />
-            </div>
-          </section>
+          <LandingSectionPrimary />
         </div>
       </div>
 
       <WaveBackground />
 
-      <section className={`${classes.section}`} style={{ marginTop: '104px' }}>
-        <img src={eaImage} alt="expunge" />
-        <div className={classes.sectionText}>
-          <div className={classes.sectionLeft}>
-            <h2>{t('landing_page.sectionTitle2')}</h2>
-            <p>{t('landing_page.sectionParagraph2')}</p>
-          </div>
-          <LinkButtonComponent
-            className={classes.aboutButton}
-            to={AppUrl.AboutUs}
-            buttonText={t('ABOUT US')}
-          />
-        </div>
-      </section>
-
-      <section className={`${classes.section}`}>
-        <div className={classes.sectionText}>
-          <h2 style={{ textAlign: 'center', marginBottom: '56px' }}>
-            {t('landing_page.sectionTitle3')}
-          </h2>
-          <div className={classes.section2Wrapper}>
-            <img src={screenshotExample} alt="screenshot example" />
-            <div className={`${classes.sectionLeft} ${classes.unorderedList}`}>
-              <p>{t('landing_page.sectionParagraph3')}</p>
-              <br />
-              <ul>
-                <li>{t('landing_page.sectionParagraph3BulletPoint1')}</li>
-                <li>{t('landing_page.sectionParagraph3BulletPoint2')}</li>
-                <li>{t('landing_page.sectionParagraph3BulletPoint3')}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className={`${classes.section}`}>
-        <div className={classes.sectionText}>
-          <h2>{t('landing_page.sectionTitle4')}</h2>
-          <p>{t('landing_page.sectionParagraph4')}</p>
-        </div>
-        <img src={howItWorks} alt="how it works" />
-      </section>
-
-      <section className={`${classes.section}`}>
-        <div className={classes.sectionCenter}>
-          <h2>{t('landing_page.sectionTitle5')}</h2>
-          <p>{t('landing_page.sectionParagraph5a')}</p>
-          <img
-            style={{ display: 'block' }}
-            src={completeLetter}
-            alt="a complete letter"
-          />
-          <p>{t('landing_page.sectionParagraph5b')}</p>
-        </div>
-      </section>
-
-      <section className={`${classes.section}`}>
-        <div className={classes.sectionText}>
-          <div className={classes.sectionLeft}>
-            <h2>{t('landing_page.sectionTitle6')}</h2>
-            <p>{t('landing_page.sectionParagraph6')}</p>
-          </div>
-          <LinkButtonComponent
-            className={classes.privacyButton}
-            to={AppUrl.PrivacyPolicy}
-            buttonText={t('VIEW PRIVACY POLICY')}
-          />
-        </div>
-        <img src={privacyPolicy} alt="privacy policy" />
-      </section>
-
-      <section className={`${classes.section}`}>
-        <div className={classes.sectionText}>
-          <h2>{t('landing_page.sectionTitle7')}</h2>
-          <LandingAccordions />
-          <LinkButtonComponent
-            className={classes.faqButton}
-            to={AppUrl.FAQ}
-            buttonText={t('READ OUR FAQ')}
-          />
-        </div>
-      </section>
-
-      <section
-        className={`${classes.section}`}
-        style={{ marginBottom: '24px' }}
-      >
-        <div className={classes.opportunity}>
-          <h2>{t('landing_page.sectionTitle8')}</h2>
-          <p>{t('landing_page.sectionParagraph8')}</p>
-          <ButtonComponent
-            onClick={() => handleContactUs()}
-            buttonText={t('CONTACT US')}
-          />
-        </div>
-      </section>
+      <LandingSection1 />
+      <LandingSection2 />
+      <LandingSection3 />
+      <LandingSection4 />
+      <LandingSection5 />
+      <LandingSection6 />
+      <LandingSection7 />
     </div>
   );
 }
