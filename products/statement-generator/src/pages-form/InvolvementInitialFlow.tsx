@@ -104,7 +104,7 @@ function InvolvementInitialFlow() {
               id="isRecoveryChecked"
               checked={isRecoveryChecked}
               onChange={onCheckboxChange}
-              label={t('sections.recovery')}
+              label={t('sections.self_improvement')}
             />
 
             <Checkbox
