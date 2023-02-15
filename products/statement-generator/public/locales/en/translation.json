@@ -91,7 +91,7 @@
     "fullName_input_placeholder": "Firstname Lastname",
     "age_input_label": "How old are you?",
     "age_input_append": "years old",
-    "isVeteran_label": "Are you a veteran of the United States of America? (y/n)"
+    "isVeteran_label": "Are you a veteran of the United States of America?"
   },
   "involvement_form": {
     "checkboxgroup_label": "What have you been involved with since your conviction?\n\nCheck all that apply:",
