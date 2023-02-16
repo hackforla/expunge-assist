@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
@@ -49,6 +49,7 @@ function FinalizeStep() {
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
   const history = useHistory();
+  const [disableNext, setDisableNext] = useState(true);
 
   return (
     <ContentContainer>
@@ -83,9 +84,15 @@ function FinalizeStep() {
         {t('finalize_preview.review_info_content')}
       </InfoBlock>
 
-      <Download />
+      <Download
+        onDownloadAgreementCheck={(isChecked) => setDisableNext(!isChecked)}
+      />
 
-      <FlowNavigation onNext={() => history.push('/')} nextButtonLabel="HOME" />
+      <FlowNavigation
+        isNextDisabled={disableNext}
+        onNext={() => history.push('/')}
+        nextButtonLabel="HOME"
+      />
     </ContentContainer>
   );
 }
