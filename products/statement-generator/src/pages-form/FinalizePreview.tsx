@@ -91,7 +91,7 @@ function FinalizeStep() {
       <FlowNavigation
         isNextDisabled={disableNext}
         onNext={() => history.push('/')}
-        nextButtonLabel="HOME"
+        nextButtonLabel="RETURN HOME"
       />
     </ContentContainer>
   );
