@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
@@ -47,6 +48,7 @@ function FinalizeStep() {
   const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
+  const history = useHistory();
 
   return (
     <ContentContainer>
@@ -83,7 +85,7 @@ function FinalizeStep() {
 
       <Download />
 
-      <FlowNavigation showNext={false} />
+      <FlowNavigation onNext={() => history.push('/')} nextButtonLabel="HOME" />
     </ContentContainer>
   );
 }

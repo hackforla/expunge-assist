@@ -18,19 +18,23 @@ const useStyles = makeStyles(() =>
 );
 
 interface IFlowNavigation {
-  onNext?: () => void;
-  isNextDisabled?: boolean;
-  onBack?: () => void;
   isBackDisabled?: boolean;
+  isNextDisabled?: boolean;
+  backButtonLabel?: string;
+  nextButtonLabel?: string;
+  onBack?: () => void;
+  onNext?: () => void;
   showBack?: boolean;
   showNext?: boolean;
 }
 
 export default function FlowNavigation({
-  onNext,
-  onBack,
-  isNextDisabled,
   isBackDisabled,
+  isNextDisabled,
+  backButtonLabel,
+  nextButtonLabel,
+  onBack,
+  onNext,
   showBack = true,
   showNext = true,
 }: IFlowNavigation) {
@@ -66,7 +70,7 @@ export default function FlowNavigation({
           className={classes.buttonLeft}
           onClick={handleBack}
           disabled={isBackDisabled}
-          buttonText="BACK"
+          buttonText={backButtonLabel || 'BACK'}
           theme={backBtnTheme}
         />
       )}
@@ -76,7 +80,7 @@ export default function FlowNavigation({
           className={classes.buttonRight}
           onClick={handleNext}
           disabled={isNextDisabled}
-          buttonText="NEXT"
+          buttonText={nextButtonLabel || 'NEXT'}
           theme="dark"
           hasArrow
         />
