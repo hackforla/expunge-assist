@@ -32,7 +32,11 @@ const useStyles = makeStyles(() =>
   })
 );
 
-function Download() {
+interface IDownload {
+  onDownloadAgreementCheck: (isChecked: boolean) => void;
+}
+
+export default function Download({ onDownloadAgreementCheck }: IDownload) {
   const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
@@ -42,6 +46,7 @@ function Download() {
 
   const handleClickCheck = (event: any) => {
     setIsDisabled(!event.target.checked);
+    onDownloadAgreementCheck(event.target.checked);
   };
 
   // create a mailto link with the statement in the body
@@ -133,5 +138,3 @@ function Download() {
     </form>
   );
 }
-
-export default Download;
