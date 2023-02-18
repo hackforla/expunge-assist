@@ -34,25 +34,6 @@ function FAQ() {
       <h3>{t('faq_page.title5')}</h3>
       <p>{t('faq_page.paragraph5')}</p>
       <p>{t('faq_page.paragraph5b')}</p>
-      <ul>
-        <li>{t('faq_page.paragraph5b_li1')}</li>
-        <li>{t('faq_page.paragraph5b_li2')}</li>
-        <li>{t('faq_page.paragraph5b_li3')}</li>
-      </ul>
-      <p>{t('faq_page.paragraph5c')}</p>
-      <p>{t('faq_page.paragraph5d')}</p>
-      <ul>
-        <li>{t('faq_page.paragraph5d_li1')}</li>
-        <li>{t('faq_page.paragraph5d_li2')}</li>
-        <li>{t('faq_page.paragraph5d_li3')}</li>
-        <li>{t('faq_page.paragraph5d_li4')}</li>
-        <li>{t('faq_page.paragraph5d_li5')}</li>
-        <li>{t('faq_page.paragraph5d_li6')}</li>
-      </ul>
-      <p>
-        {t('faq_page.paragraph5e')}
-        <LinkAsText link="https://www.courts.ca.gov/documents/Prop47FAQs.pdf" />
-      </p>
 
       <h3>{t('faq_page.title6')}</h3>
       <p>{t('faq_page.paragraph6')}</p>
@@ -61,9 +42,7 @@ function FAQ() {
         <li>{t('faq_page.paragraph6b_li1')}</li>
         <li>{t('faq_page.paragraph6b_li2')}</li>
         <li>{t('faq_page.paragraph6b_li3')}</li>
-        <li>{t('faq_page.paragraph6b_li4')}</li>
       </ul>
-
       <p>{t('faq_page.paragraph6c')}</p>
       <p>{t('faq_page.paragraph6d')}</p>
       <ul>
@@ -71,28 +50,53 @@ function FAQ() {
         <li>{t('faq_page.paragraph6d_li2')}</li>
         <li>{t('faq_page.paragraph6d_li3')}</li>
         <li>{t('faq_page.paragraph6d_li4')}</li>
+        <li>{t('faq_page.paragraph6d_li5')}</li>
+        <li>{t('faq_page.paragraph6d_li6')}</li>
       </ul>
-      <p>{t('faq_page.paragraph6e')}</p>
-      <p>{t('faq_page.paragraph6f')}</p>
       <p>
-        {t('faq_page.paragraph6g')}
-        <LinkAsText link="https://drugpolicy.org/sites/default/files/Prop64-Resentencing-Guide-July2017.pdf" />
+        {t('faq_page.paragraph6e')}
+        <LinkAsText link="https://www.courts.ca.gov/documents/Prop47FAQs.pdf" />
       </p>
 
       <h3>{t('faq_page.title7')}</h3>
       <p>{t('faq_page.paragraph7')}</p>
       <p>{t('faq_page.paragraph7b')}</p>
+      <ul>
+        <li>{t('faq_page.paragraph7b_li1')}</li>
+        <li>{t('faq_page.paragraph7b_li2')}</li>
+        <li>{t('faq_page.paragraph7b_li3')}</li>
+        <li>{t('faq_page.paragraph7b_li4')}</li>
+      </ul>
+
+      <p>{t('faq_page.paragraph7c')}</p>
+      <p>{t('faq_page.paragraph7d')}</p>
+      <ul>
+        <li>{t('faq_page.paragraph7d_li1')}</li>
+        <li>{t('faq_page.paragraph7d_li2')}</li>
+        <li>{t('faq_page.paragraph7d_li3')}</li>
+        <li>{t('faq_page.paragraph7d_li4')}</li>
+      </ul>
+      <p>{t('faq_page.paragraph7e')}</p>
+      <p>{t('faq_page.paragraph7f')}</p>
+      <p>
+        {t('faq_page.paragraph7g')}
+        <LinkAsText link="https://drugpolicy.org/sites/default/files/Prop64-Resentencing-Guide-July2017.pdf" />
+      </p>
 
       <h3>{t('faq_page.title8')}</h3>
       <p>{t('faq_page.paragraph8')}</p>
+      <p>{t('faq_page.paragraph8b')}</p>
 
       <h3>{t('faq_page.title9')}</h3>
       <p>{t('faq_page.paragraph9')}</p>
-      <p>{t('faq_page.paragraph9b')}</p>
 
       <h3>{t('faq_page.title10')}</h3>
       <p>{t('faq_page.paragraph10')}</p>
       <p>{t('faq_page.paragraph10b')}</p>
+
+      <h3>{t('faq_page.title11')}</h3>
+      <p>{t('faq_page.paragraph11')}</p>
+      <p>{t('faq_page.paragraph11b')}</p>
     </ContentContainer>
   );
 }
