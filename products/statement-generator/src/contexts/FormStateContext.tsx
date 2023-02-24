@@ -75,6 +75,14 @@ export const FormStateContextProvider = ({
       return getNextStep(suggestedNext);
     }
 
+    if (
+      (suggestedNext === AppUrl.SomethingElse ||
+        suggestedNext === AppUrl.SomethingElsePreview) &&
+      !formState.involvement.isSomethingElseChecked
+    ) {
+      return getNextStep(suggestedNext);
+    }
+
     return suggestedNext;
   }
 
