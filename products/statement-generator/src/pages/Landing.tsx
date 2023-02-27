@@ -38,9 +38,14 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      width: '65%',
-      margin: '0 auto 96px auto',
+      maxWidth: '960px',
+      padding: spacing(3),
+      marginLeft: 'auto',
+      marginRight: 'auto',
 
+      '&.column': {
+        flexDirection: 'column',
+      },
       // adjacent sections are spaced apart
       '&$section ~ $section': {
         marginTop: spacing(6),
@@ -53,54 +58,52 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         maxWidth: globals.contentWidth,
         flexDirection: 'column',
       },
-
-      [breakpoints.up(breakpoints.values.md)]: {
-        '&$section:nth-child(even)': {
-          flexDirection: 'row-reverse',
-        },
-      },
     },
     sectionLeft: {
-      flex: '0 0 auto',
-      width: 400,
+      display: 'flex',
+      justifyContent: 'flex-end',
+      flex: '1 1 50%',
 
       [breakpoints.down(breakpoints.values.md)]: {
         width: '100%',
+        justifyContent: 'center',
       },
     },
     sectionRight: {
-      flex: '1 1 auto',
-      maxWidth: 400,
+      display: 'flex',
+      justifyContent: 'flex-start',
+      flex: '1 1 50%',
       textAlign: 'center',
-      marginLeft: 'auto',
-      marginRight: 'auto',
 
       '&:not(:empty)': {
+        [breakpoints.up(breakpoints.values.md)]: {
+          marginLeft: spacing(2),
+        },
         [breakpoints.down(breakpoints.values.md)]: {
           padding: spacing(1),
           width: '100%',
           marginTop: spacing(2),
         },
       },
+      [breakpoints.down(breakpoints.values.md)]: {
+        justifyContent: 'center',
+      },
+    },
+    sectionContent: {
+      margin: '0',
+      display: 'flex',
+      flexDirection: 'column',
     },
 
     sectionCenter: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      width: 600,
-      margin: '0 auto',
+      alignItems: 'center',
+      width: '100%',
       textAlign: 'center',
       '& img': {
         margin: '42px 0 10px 0',
-      },
-    },
-    section2Wrapper: {
-      display: 'flex',
-      justifyContent: 'center',
-
-      [breakpoints.down(breakpoints.values.md)]: {
-        flexDirection: 'column',
       },
     },
     unorderedList: {
@@ -123,11 +126,6 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         margin: `${spacing(2)}px auto 0px auto`,
       },
     },
-    sectionContent: {
-      margin: '0',
-      display: 'flex',
-      flexDirection: 'column',
-    },
     firstSection: {
       display: 'flex',
       flexDirection: 'row',
@@ -147,9 +145,21 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         paddingTop: 0,
       },
     },
+    section2Image: {
+      width: '200px',
+      [breakpoints.up(breakpoints.values.md)]: {
+        width: '300px',
+      },
+      [breakpoints.down(breakpoints.values.md)]: {
+        width: '300px',
+      },
+    },
+    sectionImage: {
+      maxWidth: '400px',
+    },
 
+    // only shows up on desktop sizes
     horizontalImage: {
-      // desktop view
       width: '40%',
       marginLeft: 'auto',
 
@@ -157,6 +167,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         display: 'none',
       },
     },
+    // only shows up on mobile sizes
     verticalImage: {
       // mobile view
       width: '100%',
@@ -258,13 +269,14 @@ function LandingSection1() {
 function LandingSection2() {
   const { t } = useTranslation();
   const classes = useStyles();
-  // const utilityClasses = useUtilityStyles();
 
   return (
-    <section className={`${classes.section}`} style={{ marginTop: '104px' }}>
-      <img src={eaImage} alt="expunge" />
-      <div className={classes.sectionContent}>
-        <div className={classes.sectionLeft}>
+    <section className={classes.section} style={{ marginTop: '104px' }}>
+      <div className={classes.sectionLeft}>
+        <img className={classes.section2Image} src={eaImage} alt="expunge" />
+      </div>
+      <div className={`${classes.sectionRight} ${classes.sectionContent}`}>
+        <div>
           <h2>{t('landing_page.sectionTitle2')}</h2>
           <p>{t('landing_page.sectionParagraph2')}</p>
         </div>
@@ -284,16 +296,20 @@ function LandingSection3() {
   // const utilityClasses = useUtilityStyles();
 
   return (
-    <section className={`${classes.section}`}>
-      <div className={classes.sectionContent}>
-        <div className={classes.sectionLeft} >
+    <section className={`${classes.section} column`}>
+      <h2 style={{ textAlign: 'center', marginBottom: '56px' }}>
+        {t('landing_page.sectionTitle3')}
+      </h2>
 
-        <h2 style={{ textAlign: 'center', marginBottom: '56px' }}>
-          {t('landing_page.sectionTitle3')}
-        </h2>
+      <div className={classes.section}>
+        <div className={classes.sectionLeft}>
+          <img
+            className={classes.sectionImage}
+            src={screenshotExample}
+            alt="screenshot example"
+          />
         </div>
-        <div className={classes.section2Wrapper}>
-          <img src={screenshotExample} alt="screenshot example" />
+        <div className={classes.sectionRight}>
           <div className={`${classes.unorderedList}`}>
             <p>{t('landing_page.sectionParagraph3')}</p>
             <br />
@@ -316,11 +332,19 @@ function LandingSection4() {
 
   return (
     <section className={`${classes.section}`}>
-      <div className={classes.sectionContent}>
-        <h2>{t('landing_page.sectionTitle4')}</h2>
-        <p>{t('landing_page.sectionParagraph4')}</p>
+      <div className={classes.sectionLeft}>
+        <div className={classes.sectionContent}>
+          <h2>{t('landing_page.sectionTitle4')}</h2>
+          <p>{t('landing_page.sectionParagraph4')}</p>
+        </div>
       </div>
-      <img src={howItWorks} alt="how it works" />
+      <div className={classes.sectionRight}>
+        <img
+          className={classes.sectionImage}
+          src={howItWorks}
+          alt="how it works"
+        />
+      </div>
     </section>
   );
 }
@@ -336,6 +360,7 @@ function LandingSection5() {
         <h2>{t('landing_page.sectionTitle5')}</h2>
         <p>{t('landing_page.sectionParagraph5a')}</p>
         <img
+          className={classes.sectionImage}
           style={{ display: 'block' }}
           src={completeLetter}
           alt="a complete letter"
@@ -351,18 +376,24 @@ function LandingSection6() {
   const classes = useStyles();
   return (
     <section className={`${classes.section}`}>
-      <div className={classes.sectionContent}>
-        <div className={classes.sectionLeft}>
+      <div className={classes.sectionLeft}>
+        <div className={classes.sectionContent}>
           <h2>{t('landing_page.sectionTitle6')}</h2>
           <p>{t('landing_page.sectionParagraph6')}</p>
+          <LinkButtonComponent
+            className={classes.privacyButton}
+            to={AppUrl.PrivacyPolicy}
+            buttonText={t('VIEW PRIVACY POLICY')}
+          />
         </div>
-        <LinkButtonComponent
-          className={classes.privacyButton}
-          to={AppUrl.PrivacyPolicy}
-          buttonText={t('VIEW PRIVACY POLICY')}
+      </div>
+      <div className={classes.sectionRight}>
+        <img
+          className={classes.sectionImage}
+          src={privacyPolicy}
+          alt="privacy policy"
         />
       </div>
-      <img src={privacyPolicy} alt="privacy policy" />
     </section>
   );
 }
@@ -371,9 +402,9 @@ function LandingSection7() {
   const { t } = useTranslation();
   const classes = useStyles();
   return (
-    <section className={`${classes.section}`}>
+    <section className={`${classes.section} column`}>
+      <h2>{t('landing_page.sectionTitle7')}</h2>
       <div className={classes.sectionContent}>
-        <h2>{t('landing_page.sectionTitle7')}</h2>
         <LandingAccordions />
         <LinkButtonComponent
           className={classes.faqButton}
@@ -408,7 +439,6 @@ function LandingSection8() {
 }
 
 function LandingPage() {
-  // const { t } = useTranslation();
   const classes = useStyles();
   const utilityClasses = useUtilityStyles();
 

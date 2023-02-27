@@ -10,10 +10,10 @@ import MuiAccordionSummary, {
 } from '@material-ui/core/AccordionSummary';
 import { styled } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette }) =>
+const useStyles = makeStyles(({ breakpoints, palette }) =>
   createStyles({
     accordionWrapper: {
-      width: '80%',
+      width: '100%',
       border: `1px solid ${palette.primary.main}`,
       borderRadius: '16px!important',
     },
