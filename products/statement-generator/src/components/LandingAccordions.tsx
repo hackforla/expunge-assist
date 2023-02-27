@@ -10,7 +10,7 @@ import MuiAccordionSummary, {
 } from '@material-ui/core/AccordionSummary';
 import { styled } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ breakpoints, palette }) =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     accordionWrapper: {
       width: '100%',
@@ -30,8 +30,8 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
   },
-  '& .MuiAccordionSummary-content.Mui-expanded': {
-    color: 'red', // able to change color but not font weight.
+  '& .MuiAccordionSummary-content .MuiTypography-root': {
+    fontWeight: '600',
   },
 }));
 
