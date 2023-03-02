@@ -92,12 +92,13 @@
     "previewing": "Previewing",
     "introduce_yourself": "Introduce yourself",
     "involvement": "Involvement",
-    "job": "Job",
-    "unemployed": "Unemployed",
+    "job": "Employment",
+    "unemployment": "Unemployment",
     "recovery": "Recovery",
     "education": "Education",
     "parenting": "Parenting",
     "community_service": "Community service",
+    "something_else": "Something else",
     "goals": "Future goals",
     "why": "Why",
     "finalize": "My declaration letter",
@@ -115,14 +116,20 @@
     "none_above": "None of the above"
   },
   "job_form": {
-    "companyName_input_label": "What is the name of the company you work for?",
-    "companyName_input_placeholder": "Name of company",
+    "companyName_input_label": "What is the name of the company or organization where you work?",
+    "companyName_input_placeholder": "Name of company/organization",
     "jobTitle_input_label": "What is your current job title?",
     "jobTitle_input_placeholder": "Job title",
     "jobDescription_input_label": "What do you do at this job? How has your role at work impacted your life for the better?\n(2-3 complete sentences)",
     "jobDescription_input_placeholder": ""
   },
-  "unemployed_form": {
+  "something_else_form": {
+    "activityName_input_label": "What else have you been involved in?",
+    "activityName_input_placeholder": "Name of activity",
+    "activityDescription_input_label": "Why is this important to you? How has it changed your perspective?\n(2-3 complete sentences)",
+    "activityDescription_input_placeholder": ""
+  },
+  "unemployment_form": {
     "unemploymentDescription_input_label": "Describe how and why you are having trouble finding work.\n(2-3 complete sentences)",
     "unemploymentDescription_input_placeholder": ""
   },
