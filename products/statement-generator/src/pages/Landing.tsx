@@ -215,23 +215,10 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         justifyContent: 'center',
       },
     },
-    // refactor these styles
-    aboutButton: {
-      width: '140px',
-      margin: '24px 0 0 0',
-      padding: '15px',
-      justifyContent: 'center',
-    },
-    privacyButton: {
-      width: '244px',
-      margin: '24px 0 0 0',
-      padding: '15px',
-      justifyContent: 'center',
-    },
-    faqButton: {
-      width: '171px',
-      padding: '15px',
-      justifyContent: 'center',
+    sectionButton: {
+      marginTop: spacing(3),
+      display: 'flex',
+      flexDirection: 'row',
     },
     waveBg: {
       zIndex: -2,
@@ -312,11 +299,9 @@ function LandingSection2() {
           <h2>{t('landing_page.sectionTitle2')}</h2>
           <p>{t('landing_page.sectionParagraph2')}</p>
         </div>
-        <LinkButtonComponent
-          className={classes.aboutButton}
-          to={AppUrl.AboutUs}
-          buttonText={t('ABOUT US')}
-        />
+        <div className={classes.sectionButton}>
+          <LinkButtonComponent to={AppUrl.AboutUs} buttonText={t('ABOUT US')} />
+        </div>
       </div>
     </section>
   );
@@ -407,11 +392,12 @@ function LandingSection6() {
         <div className={classes.sectionContent}>
           <h2>{t('landing_page.sectionTitle6')}</h2>
           <p>{t('landing_page.sectionParagraph6')}</p>
-          <LinkButtonComponent
-            className={classes.privacyButton}
-            to={AppUrl.PrivacyPolicy}
-            buttonText={t('VIEW PRIVACY POLICY')}
-          />
+          <div className={classes.sectionButton}>
+            <LinkButtonComponent
+              to={AppUrl.PrivacyPolicy}
+              buttonText={t('VIEW PRIVACY POLICY')}
+            />
+          </div>
         </div>
       </div>
       <div className={classes.sectionRight}>
@@ -433,11 +419,9 @@ function LandingSection7() {
       <h2>{t('landing_page.sectionTitle7')}</h2>
       <div className={classes.sectionContent}>
         <LandingAccordions />
-        <LinkButtonComponent
-          className={classes.faqButton}
-          to={AppUrl.FAQ}
-          buttonText={t('READ OUR FAQ')}
-        />
+        <div className={classes.sectionButton}>
+          <LinkButtonComponent to={AppUrl.FAQ} buttonText={t('READ OUR FAQ')} />
+        </div>
       </div>
     </section>
   );
