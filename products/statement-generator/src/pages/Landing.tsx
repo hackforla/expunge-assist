@@ -52,6 +52,10 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       },
       '& h2': {
         fontWeight: '600',
+        [breakpoints.down(breakpoints.values.sm)]: {
+          textAlign: 'left',
+          alignSelf: 'flex-start',
+        },
       },
 
       [breakpoints.down(breakpoints.values.md)]: {
@@ -65,6 +69,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       flex: '1 1 50%',
 
       [breakpoints.down(breakpoints.values.md)]: {
+        flex: '1 1 auto',
         width: '100%',
         justifyContent: 'center',
       },
@@ -73,14 +78,13 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       display: 'flex',
       justifyContent: 'flex-start',
       flex: '1 1 50%',
-      textAlign: 'center',
 
       '&:not(:empty)': {
         [breakpoints.up(breakpoints.values.md)]: {
           marginLeft: spacing(2),
         },
         [breakpoints.down(breakpoints.values.md)]: {
-          padding: spacing(1),
+          flex: '1 1 auto',
           width: '100%',
           marginTop: spacing(2),
         },
@@ -88,11 +92,16 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       [breakpoints.down(breakpoints.values.md)]: {
         justifyContent: 'center',
       },
+      [breakpoints.down(breakpoints.values.sm)]: {
+        textAlign: 'left',
+        alignItems: 'flex-start',
+      },
     },
     sectionContent: {
       margin: '0',
       display: 'flex',
       flexDirection: 'column',
+      width: '100%',
     },
 
     sectionCenter: {
@@ -105,14 +114,17 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       '& img': {
         margin: '42px 0 10px 0',
       },
+      [breakpoints.down(breakpoints.values.sm)]: {
+        textAlign: 'left',
+        alignItems: 'flex-start',
+      },
     },
     unorderedList: {
-      margin: '10px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
     },
-    opportunity: {
+    opportunitySection: {
       backgroundColor: `${palette.primary.lighter}`,
       width: '100%',
       padding: '100px 80px',
@@ -124,6 +136,9 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       '& button': {
         width: '170px',
         margin: `${spacing(2)}px auto 0px auto`,
+      },
+      [breakpoints.down(breakpoints.values.sm)]: {
+        padding: '24px',
       },
     },
     firstSection: {
@@ -145,6 +160,18 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         paddingTop: 0,
       },
     },
+    section3inner: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: spacing(3),
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        maxWidth: globals.contentWidth,
+        flexDirection: 'column',
+      },
+    },
     section2Image: {
       width: '200px',
       [breakpoints.up(breakpoints.values.md)]: {
@@ -155,7 +182,12 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       },
     },
     sectionImage: {
-      maxWidth: '400px',
+      [breakpoints.down(breakpoints.values.md)]: {
+        width: '300px',
+      },
+      [breakpoints.down(breakpoints.values.sm)]: {
+        width: '100%',
+      },
     },
 
     // only shows up on desktop sizes
@@ -293,15 +325,12 @@ function LandingSection2() {
 function LandingSection3() {
   const { t } = useTranslation();
   const classes = useStyles();
-  // const utilityClasses = useUtilityStyles();
 
   return (
     <section className={`${classes.section} column`}>
-      <h2 style={{ textAlign: 'center', marginBottom: '56px' }}>
-        {t('landing_page.sectionTitle3')}
-      </h2>
+      <h2>{t('landing_page.sectionTitle3')}</h2>
 
-      <div className={classes.section}>
+      <div className={classes.section3inner}>
         <div className={classes.sectionLeft}>
           <img
             className={classes.sectionImage}
@@ -328,7 +357,6 @@ function LandingSection3() {
 function LandingSection4() {
   const { t } = useTranslation();
   const classes = useStyles();
-  // const utilityClasses = useUtilityStyles();
 
   return (
     <section className={`${classes.section}`}>
@@ -352,7 +380,6 @@ function LandingSection4() {
 function LandingSection5() {
   const { t } = useTranslation();
   const classes = useStyles();
-  // const utilityClasses = useUtilityStyles();
 
   return (
     <section className={`${classes.section}`}>
@@ -426,7 +453,7 @@ function LandingSection8() {
 
   return (
     <section className={`${classes.section}`} style={{ marginBottom: '24px' }}>
-      <div className={classes.opportunity}>
+      <div className={classes.opportunitySection}>
         <h2>{t('landing_page.sectionTitle8')}</h2>
         <p>{t('landing_page.sectionParagraph8')}</p>
         <ButtonComponent
