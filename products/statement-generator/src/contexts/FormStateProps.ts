@@ -8,10 +8,11 @@ export interface IStepState {
   involvement: IInvolvementInitialState;
   involvementJobState: IInvolvementJobState;
   communityServiceState: ICommunityServiceState;
+  somethingElseState: ISomethingElseState;
   recoveryState: IRecoveryState;
   schoolState: ISchoolState;
   parentingState: IParentingState;
-  unemployedState: IUnemployedState;
+  unemploymentState: IUnemploymentState;
   goalsState: IGoalsState;
   whyState: IWhyState;
   statements: IStatementState;
@@ -29,7 +30,8 @@ export const defaultStepState = {
     isSchoolChecked: false,
     isParentingChecked: false,
     isCommunityChecked: false,
-    isNoneChecked: false,
+    isSomethingElseChecked: false,
+    isUnemploymentChecked: false,
   },
   involvementJobState: {
     companyName: '',
@@ -53,7 +55,11 @@ export const defaultStepState = {
     numberChildren: '',
     parentDescription: '',
   },
-  unemployedState: {
+  somethingElseState: {
+    activityName: '',
+    activityDescription: '',
+  },
+  unemploymentState: {
     unemploymentDescription: '',
   },
   goalsState: {
@@ -72,7 +78,8 @@ export const defaultStepState = {
     recovery: '',
     school: '',
     parenting: '',
-    unemployed: '',
+    unemployment: '',
+    somethingElse: '',
     goals: '',
     why: '',
     closing: '',
@@ -88,8 +95,10 @@ export interface IIntroductionState {
 // involvement checkboxes
 export interface IInvolvementInitialState {
   isJobChecked?: boolean;
+  isUnemploymentChecked?: boolean;
   isRecoveryChecked?: boolean;
   isSchoolChecked?: boolean;
+  isSomethingElseChecked?: boolean;
   isParentingChecked?: boolean;
   isCommunityChecked?: boolean;
   isNoneChecked?: boolean;
@@ -121,8 +130,12 @@ export interface IParentingState {
   numberChildren: string;
   parentDescription: string;
 }
+export interface ISomethingElseState {
+  activityName: string;
+  activityDescription: string;
+}
 // step 2f
-export interface IUnemployedState {
+export interface IUnemploymentState {
   unemploymentDescription: string;
 }
 
@@ -144,7 +157,8 @@ export interface IStatementState {
   recovery: string;
   school: string;
   parenting: string;
-  unemployed: string;
+  unemployment: string;
+  somethingElse: string;
   goals: string;
   why: string;
   closing: string;
@@ -188,7 +202,7 @@ export const sampleStepState = {
     parentDescription:
       'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
   },
-  unemployedState: {
+  unemploymentState: {
     unemploymentDescription:
       'I have not been able to find any jobs that are not about licking or eating things.',
   },

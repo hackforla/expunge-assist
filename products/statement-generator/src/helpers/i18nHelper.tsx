@@ -13,6 +13,9 @@ export function getSectionTitle(url: AppUrl): string {
     case AppUrl.Job:
     case AppUrl.JobPreview:
       return `${t('sections.involvement')}: ${t('sections.job')}`;
+    case AppUrl.SomethingElse:
+    case AppUrl.SomethingElsePreview:
+      return `${t('sections.involvement')}: ${t('sections.something_else')}`;
     case AppUrl.CommunityService:
     case AppUrl.CommunityServicePreview:
       return `${t('sections.involvement')}: ${t('sections.community_service')}`;
@@ -25,9 +28,9 @@ export function getSectionTitle(url: AppUrl): string {
     case AppUrl.Parenting:
     case AppUrl.ParentingPreview:
       return `${t('sections.involvement')}: ${t('sections.parenting')}`;
-    case AppUrl.Unemployed:
-    case AppUrl.UnemployedPreview:
-      return `${t('sections.involvement')}: ${t('sections.unemployed')}`;
+    case AppUrl.Unemployment:
+    case AppUrl.UnemploymentPreview:
+      return `${t('sections.involvement')}: ${t('sections.unemployment')}`;
     case AppUrl.Goals:
     case AppUrl.GoalsPreview:
       return t('sections.goals');

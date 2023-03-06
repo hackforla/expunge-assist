@@ -41,7 +41,8 @@ function InvolvementInitialFlow() {
     isSchoolChecked,
     isParentingChecked,
     isCommunityChecked,
-    isNoneChecked,
+    isSomethingElseChecked,
+    isUnemploymentChecked,
   } = formState.involvement;
 
   const isNextEnabled =
@@ -50,27 +51,13 @@ function InvolvementInitialFlow() {
     isSchoolChecked ||
     isParentingChecked ||
     isCommunityChecked ||
-    isNoneChecked;
+    isSomethingElseChecked ||
+    isUnemploymentChecked;
 
   const onCheckboxChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = evt.currentTarget;
-    if (id === 'isNoneChecked' && checked) {
-      updateStepToForm({
-        involvement: {
-          isJobChecked: false,
-          isRecoveryChecked: false,
-          isSchoolChecked: false,
-          isParentingChecked: false,
-          isCommunityChecked: false,
-          isNoneChecked: true,
-        },
-      });
-      return;
-    }
-
     const changes = {
       [id]: Boolean(checked),
-      isNoneChecked: false,
     };
     updateStepToForm({
       involvement: { ...formState.involvement, ...changes },
@@ -92,7 +79,13 @@ function InvolvementInitialFlow() {
               onChange={onCheckboxChange}
               label={t('sections.job')}
             />
-
+            <Checkbox
+              useTeal
+              id="isUnemploymentChecked"
+              checked={isUnemploymentChecked}
+              onChange={onCheckboxChange}
+              label={t('sections.unemployment')}
+            />
             <Checkbox
               useTeal
               id="isRecoveryChecked"
@@ -127,10 +120,10 @@ function InvolvementInitialFlow() {
 
             <Checkbox
               useTeal
-              id="isNoneChecked"
-              checked={isNoneChecked}
+              id="isSomethingElseChecked"
+              checked={isSomethingElseChecked}
               onChange={onCheckboxChange}
-              label={t('involvement_form.none_above')}
+              label={t('sections.something_else')}
             />
           </FormGroup>
         </FormControl>

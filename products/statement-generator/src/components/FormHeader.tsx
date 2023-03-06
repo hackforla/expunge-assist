@@ -41,12 +41,9 @@ function convertStepToNum(
   url: AppUrl,
   involvement: IInvolvementInitialState
 ): number {
-  let additionalStepCounter = 0;
+  let additionalStepCounter = -1;
   // get the boolean values of involvement
   const involvementArr = Object.values(involvement);
-  // isJobChecked and isNoneChecked are already accounted for; so we're removing them
-  involvementArr.shift();
-  involvementArr.pop();
   const involvementActivities: number[] = [];
   involvementArr.forEach((value) => {
     if (value) {
@@ -89,10 +86,14 @@ function convertStepToNum(
     case AppUrl.ParentingPreview: {
       return 6 + stepAdjustmentArr[2];
     }
+    case AppUrl.SomethingElse:
+    case AppUrl.SomethingElsePreview: {
+      return 8 + stepAdjustmentArr[4];
+    }
     case AppUrl.Job:
     case AppUrl.JobPreview:
-    case AppUrl.Unemployed:
-    case AppUrl.UnemployedPreview:
+    case AppUrl.Unemployment:
+    case AppUrl.UnemploymentPreview:
       return 3;
     case AppUrl.Goals:
     case AppUrl.GoalsPreview:
@@ -124,7 +125,8 @@ const FormHeader = () => {
     isParentingChecked,
     isSchoolChecked,
     isRecoveryChecked,
-    isNoneChecked,
+    isSomethingElseChecked,
+    isUnemploymentChecked,
   } = involvement;
   let maxNum = 6;
   const stepNum = convertStepToNum(currentStep, involvement);
@@ -143,13 +145,17 @@ const FormHeader = () => {
   if (isRecoveryChecked) {
     maxNum += 1;
   }
-  if (isNoneChecked) {
+  if (isUnemploymentChecked) {
+    maxNum += 1;
+  }
+  if (isSomethingElseChecked) {
     maxNum += 1;
   }
 
   if (currentStep === AppUrl.Involvement) {
     maxNum = 6;
   }
+
   const percentageComplete = (stepNum / maxNum) * 100;
 
   const formTitle = getSectionTitle(currentStep);

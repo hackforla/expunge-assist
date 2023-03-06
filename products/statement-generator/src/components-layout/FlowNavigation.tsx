@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -18,19 +18,23 @@ const useStyles = makeStyles(() =>
 );
 
 interface IFlowNavigation {
-  onNext?: () => void;
-  isNextDisabled?: boolean;
-  onBack?: () => void;
   isBackDisabled?: boolean;
+  isNextDisabled?: boolean;
+  backButtonLabel?: string;
+  nextButtonLabel?: string;
+  onBack?: () => void;
+  onNext?: () => void;
   showBack?: boolean;
   showNext?: boolean;
 }
 
 export default function FlowNavigation({
-  onNext,
-  onBack,
-  isNextDisabled,
   isBackDisabled,
+  isNextDisabled,
+  backButtonLabel,
+  nextButtonLabel,
+  onBack,
+  onNext,
   showBack = true,
   showNext = true,
 }: IFlowNavigation) {
@@ -43,21 +47,21 @@ export default function FlowNavigation({
   const backBtnTheme =
     appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
 
-  const handleBack = useCallback(() => {
+  const handleBack = () => {
     if (onBack) {
       onBack();
     } else {
       goBackStep();
     }
-  }, []);
+  };
 
-  const handleNext = useCallback(() => {
+  const handleNext = () => {
     if (onNext) {
       onNext();
     } else {
       goNextStep();
     }
-  }, []);
+  };
 
   return (
     <div className={utilityClasses.buttonContainer}>
@@ -66,7 +70,7 @@ export default function FlowNavigation({
           className={classes.buttonLeft}
           onClick={handleBack}
           disabled={isBackDisabled}
-          buttonText="BACK"
+          buttonText={backButtonLabel || 'BACK'}
           theme={backBtnTheme}
         />
       )}
@@ -76,7 +80,7 @@ export default function FlowNavigation({
           className={classes.buttonRight}
           onClick={handleNext}
           disabled={isNextDisabled}
-          buttonText="NEXT"
+          buttonText={nextButtonLabel || 'NEXT'}
           theme="dark"
           hasArrow
         />

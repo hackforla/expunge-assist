@@ -36,9 +36,9 @@ export const FormStateContextProvider = ({
     }
 
     if (
-      (suggestedNext === AppUrl.Unemployed ||
-        suggestedNext === AppUrl.UnemployedPreview) &&
-      formState.involvement.isJobChecked
+      (suggestedNext === AppUrl.Unemployment ||
+        suggestedNext === AppUrl.UnemploymentPreview) &&
+      !formState.involvement.isUnemploymentChecked
     ) {
       return getNextStep(suggestedNext);
     }
@@ -71,6 +71,14 @@ export const FormStateContextProvider = ({
       (suggestedNext === AppUrl.Parenting ||
         suggestedNext === AppUrl.ParentingPreview) &&
       !formState.involvement.isParentingChecked
+    ) {
+      return getNextStep(suggestedNext);
+    }
+
+    if (
+      (suggestedNext === AppUrl.SomethingElse ||
+        suggestedNext === AppUrl.SomethingElsePreview) &&
+      !formState.involvement.isSomethingElseChecked
     ) {
       return getNextStep(suggestedNext);
     }
