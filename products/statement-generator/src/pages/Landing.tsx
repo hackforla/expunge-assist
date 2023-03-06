@@ -373,7 +373,7 @@ function LandingSection5() {
         <p>{t('landing_page.sectionParagraph5a')}</p>
         <img
           className={classes.sectionImage}
-          style={{ display: 'block' }}
+          style={{ display: 'block', width: '100%' }}
           src={completeLetter}
           alt="a complete letter"
         />
