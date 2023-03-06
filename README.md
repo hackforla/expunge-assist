@@ -6,9 +6,8 @@ Please refer to the [wiki](https://github.com/hackforla/expunge-assist/wiki) to 
 
 1. Project Definition
 2. Joining the Team
-3. Tools by Role
-4. Resources by Role
-5. Project Terminology
+3. Team Resources/Bookmarks
+4. Meeting Schedules
 
 The [Expunge Assist site](https://expungeassist.org/#/) is hosted on [GitHub pages](https://pages.github.com/).
 
