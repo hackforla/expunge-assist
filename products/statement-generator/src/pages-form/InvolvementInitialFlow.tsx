@@ -56,19 +56,6 @@ function InvolvementInitialFlow() {
 
   const onCheckboxChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = evt.currentTarget;
-    if (id === 'isNoneChecked' && checked) {
-      updateStepToForm({
-        involvement: {
-          isJobChecked: false,
-          isUnemployementChecked: false,
-          isRecoveryChecked: false,
-          isSchoolChecked: false,
-          isParentingChecked: false,
-          isCommunityChecked: false,
-        },
-      });
-      return;
-    }
     const changes = {
       [id]: Boolean(checked),
     };
