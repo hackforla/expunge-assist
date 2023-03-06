@@ -22,6 +22,9 @@ module.exports = {
     'prettier/prettier': 'warn',
     'no-use-before-define': 'off',
     'import/extensions': 'off',
+    
+    // makes alias imports legal
+    'import/no-unresolved': 'off',
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
