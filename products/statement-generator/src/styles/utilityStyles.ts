@@ -47,6 +47,7 @@ const useUtilityStyles = makeStyles<Theme>(
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
+        justifyContent: 'flex-end',
       },
       contentContainer: {
         maxWidth: globals.contentWidth,
