@@ -38,6 +38,7 @@ const Affirmation = () => {
 
   const utilityClasses = useUtilityStyles({
     pageTheme: 'transparent',
+    justifyContent: 'flex-end',
   });
   const classes = useStyles({ isActive: affirmationData.isActive });
 
@@ -59,7 +60,9 @@ const Affirmation = () => {
         <p>{t(affirmationData.description)}</p>
       </div>
 
-      <div className={utilityClasses.buttonContainer}>
+      <div
+        className={`${utilityClasses.buttonContainer} ${utilityClasses.btnJustifyRight}`}
+      >
         <Button
           hasArrow
           className={utilityClasses.buttonRight}

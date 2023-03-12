@@ -50,7 +50,6 @@ const AlertDialog: React.FC<AlertDialogProps> = ({ title, info }) => {
       >
         <HelpIcon fontSize="large" />
       </IconButton>
-
       <Dialog
         open={open}
         onClose={handleClose}
