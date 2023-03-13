@@ -38,7 +38,6 @@ const Affirmation = () => {
 
   const utilityClasses = useUtilityStyles({
     pageTheme: 'transparent',
-    justifyContent: 'flex-end',
   });
   const classes = useStyles({ isActive: affirmationData.isActive });
 
