@@ -60,7 +60,7 @@ const Affirmation = () => {
       </div>
 
       <div
-        className={`${utilityClasses.buttonContainer} ${utilityClasses.btnJustifyRight}`}
+        className={`${utilityClasses.buttonContainer} ${utilityClasses.justifyRight}`}
       >
         <Button
           hasArrow
