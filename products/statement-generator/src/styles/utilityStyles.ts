@@ -81,6 +81,9 @@ const useUtilityStyles = makeStyles<Theme>(
       buttonRight: {
         marginLeft: 'auto',
       },
+      justifyRight: {
+        justifyContent: 'flex-end',
+      },
       flexGrow: {
         flex: '1 1 auto',
       },
