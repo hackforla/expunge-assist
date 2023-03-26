@@ -245,6 +245,21 @@
     "paragraph11": "Get in touch at info@expungeassist.org. The laws are changing often in California, and that could mean some information is outdated in this website. We strive to provide correct information, so please let us know if we missed something.",
     "paragraph11b": "Please note: the information provided here is only a very brief overview."
   },
+  "about_us_page": {
+    "page_header": "About Us",
+    "title1": "Who we are",
+    "paragraph1": "We are a team of volunteer designers, engineers, researchers, writers, and activists building technology to improve LA County. Meet the current team and past contributors on Hack for LA’s website.",
+    "title2": "Part of a national effort",
+    "paragraph2_li2": "Code for America’s goal is to clear all eligible records in America",
+    "paragraph2_li3":"500,000 records were cleared in Utah when Code for America’s Clear my Record initiative partnered with the state *source",
+    "title3": "Why record clearance matters",
+    "paragraph3_li1":"1 in 3 people in America have a criminal record",
+    "paragraph3_li2": "Black and BIPOC people are disproportionally convicted of low-level, nonviolent crimes",
+    "paragraph3_li3": "144,000 eligible marijuana records for clearance (reduced or dismissed) in California",
+    "title4": "Partner with us",
+    "paragraph4": "Expunge Assist is actively looking to partner with clinics and organizations focused on criminal justice reform. Partnership means, in part, that Expunge Assist would refine and tailor this product to the needs of your organization and clients." ,
+    "paragraph4b": "Contacts us to learn more."
+  },
   "terms_of_use_page": {
     "generator_heading": "The declaration letter generator",
     "generator_description": "The declaration letter generator is a website created to help people write a letter to a judge as part of their record clearance application. The main use is to help applications generate a declaration letter to submit to a judge for expungement. The Application is not tailored to comply with industry-specific regulations (Health Insurance Portability and Accountability Act (HIPAA), Federal Information Security Management Act (FISMA), etc.), so if your interactions would be subjected to such laws, you may not use this application. You may not use the Application in a way that would violate the Gramm-Leach-Bliley Act (GLBA)",
