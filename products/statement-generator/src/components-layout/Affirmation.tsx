@@ -59,10 +59,11 @@ const Affirmation = () => {
         <p>{t(affirmationData.description)}</p>
       </div>
 
-      <div className={utilityClasses.buttonContainer}>
+      <div
+        className={`${utilityClasses.buttonContainer} ${utilityClasses.justifyRight}`}
+      >
         <Button
           hasArrow
-          className={utilityClasses.buttonRight}
           onClick={() => updateAffirmationData({ isActive: false })}
           buttonText={t(affirmationData.buttonText)}
         />
