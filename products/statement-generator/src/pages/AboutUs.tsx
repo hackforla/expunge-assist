@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
+import ButtonComponent, { LinkButtonComponent } from 'components/Button';
+
 import ContentContainer from 'components-layout/ContentContainer';
 
 const useStyles = makeStyles(() =>
@@ -11,8 +13,8 @@ const useStyles = makeStyles(() =>
       textDecorationColor: 'gray',
     },
     buttonStyle: {
-      background: '#9904FF',
-      color: 'white',
+      width: 'fit-content',
+      fontWeight: 'normal',
     },
     pointStyle: {
       fontSize: '8pt',
@@ -27,12 +29,26 @@ export default function AboutUs() {
   const classes = useStyles();
   const { t } = useTranslation();
 
+  const handleMeetTheTeam = () => {
+    window.open('https://www.hackforla.org/projects/expunge-assist');
+  };
+
+  const handleContactUs = () => {
+    window.open('mailto:info@expungeassist.org');
+  };
   return (
     <ContentContainer>
       <h2>{t('about_us_page.page_header')}</h2>
       <h3>{t('about_us_page.title1')}</h3>
       <br />
       <p>{t('about_us_page.paragraph1')}</p>
+      <br />
+      <ButtonComponent
+        onClick={() => handleMeetTheTeam()}
+        buttonText={t('Meet the Team')}
+        className={classes.buttonStyle}
+      />
+      <br />
       <h3>{t('about_us_page.title2')}</h3>
       <br />
       <ul>
@@ -100,6 +116,13 @@ export default function AboutUs() {
       <p>{t('about_us_page.paragraph4')}</p>
       <br />
       <p>{t('about_us_page.paragraph4b')}</p>
+      <br />
+      <ButtonComponent
+        onClick={() => handleContactUs()}
+        buttonText={t('Contact Us')}
+        className={classes.buttonStyle}
+      />
+      <br />
     </ContentContainer>
   );
 }
