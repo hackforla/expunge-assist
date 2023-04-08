@@ -47,6 +47,7 @@ const PreRoutingContextProvider = ({
   const goBackPage = () => {
     const prevHistoryIdx = Math.max(historyIdx - 1, 0);
     const prevUrl = appHistory[prevHistoryIdx];
+    setAppHistory((prevArr) => prevArr.slice(0, -1));
     setHistoryIdx(prevHistoryIdx);
 
     setCanShowAffirmation(false);
