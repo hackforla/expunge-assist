@@ -94,7 +94,7 @@
     "involvement": "Involvement",
     "job": "Employment",
     "unemployment": "Unemployment",
-    "recovery": "Recovery",
+    "recovery": "Self-improvement",
     "education": "Education",
     "parenting": "Parenting",
     "community_service": "Community service",
@@ -140,9 +140,9 @@
     "serviceDescription_input_placeholder": ""
   },
   "recovery_form": {
-    "recoveryName_input_label": "What is the name of the recovery program you are involved with?",
-    "recoveryName_input_placeholder": "Name of organization",
-    "recoveryDescription_input_label": "Why is this recovery program important to you?\n(2-3 complete sentences)",
+    "recoveryName_input_label": "What have you been doing for your own self-improvement? (For example, seeking therapy, getting help for addiction, exercising, etc.)",
+    "recoveryName_input_placeholder": "Name of activity",
+    "recoveryDescription_input_label": "Why is this important to you?\n(2-3 complete sentences)",
     "recoveryDescription_input_placeholder": ""
   },
   "education_form": {
