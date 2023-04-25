@@ -41,6 +41,8 @@ const Affirmation = () => {
   });
   const classes = useStyles({ isActive: affirmationData.isActive });
 
+  const image = affirmationData.image || AffirmationImage;
+
   return (
     <Dialog
       classes={{
@@ -52,7 +54,7 @@ const Affirmation = () => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <img src={AffirmationImage} alt="affirmation illustration" />
+      <img src={image} alt="affirmation illustration" />
 
       <div className={classes.messageContainer}>
         <h2 className={classes.titleText}>{t(affirmationData.titleText)}</h2>
