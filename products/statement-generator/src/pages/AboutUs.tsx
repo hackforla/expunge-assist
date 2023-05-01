@@ -43,11 +43,13 @@ export default function AboutUs() {
       <br />
       <p>{t('about_us_page.paragraph1')}</p>
       <br />
+
       <ButtonComponent
         onClick={() => handleMeetTheTeam()}
         buttonText={t('Meet the Team')}
         className={classes.buttonStyle}
       />
+
       <br />
       <h3>{t('about_us_page.title2')}</h3>
       <br />
@@ -117,11 +119,13 @@ export default function AboutUs() {
       <br />
       <p>{t('about_us_page.paragraph4b')}</p>
       <br />
+
       <ButtonComponent
         onClick={() => handleContactUs()}
         buttonText={t('Contact Us')}
         className={classes.buttonStyle}
       />
+
       <br />
     </ContentContainer>
   );
