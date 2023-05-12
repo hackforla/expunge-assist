@@ -3,6 +3,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
+import FutureGoalsImg from 'assets/future-goals-img.svg';
+import WhyImg from 'assets/why-img.svg';
+import AlmostThereImg from 'assets/almost-there-img.svg';
+
 // TODO: its kind of confusing that the data is which url this should show up
 //  as opposed to the step that it is referring to
 const AFFIRMATION_DATA = {
@@ -17,16 +21,19 @@ const AFFIRMATION_DATA = {
     titleText: 'affirmation_popup.step3.titleText',
     description: 'affirmation_popup.step3.description',
     buttonText: 'button.letsContinue',
+    image: FutureGoalsImg,
   },
   [AppUrl.Why as string]: {
     titleText: 'affirmation_popup.step4.titleText',
     description: 'affirmation_popup.step4.description',
     buttonText: 'button.letsContinue',
+    image: WhyImg,
   },
   [AppUrl.Finalize as string]: {
     titleText: 'affirmation_popup.step5.titleText',
     description: 'affirmation_popup.step5.description',
     buttonText: 'button.letsContinue',
+    image: AlmostThereImg,
   },
 };
 
@@ -39,6 +46,7 @@ interface AffirmationProps {
   titleText: string;
   buttonText: string;
   description: string;
+  image?: string;
 }
 
 export const AffirmationContext = React.createContext<any>(undefined);
