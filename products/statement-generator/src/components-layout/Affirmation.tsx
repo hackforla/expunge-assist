@@ -65,7 +65,7 @@ const Affirmation = () => {
         className={`${utilityClasses.buttonContainer} ${utilityClasses.justifyRight}`}
       >
         <Button
-          hasArrow
+          hasForwardArrow
           onClick={() => updateAffirmationData({ isActive: false })}
           buttonText={t(affirmationData.buttonText)}
         />

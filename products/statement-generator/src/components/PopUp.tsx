@@ -67,7 +67,11 @@ const AlertDialog: React.FC<AlertDialogProps> = ({ title, info }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleClose()} buttonText="OK" hasArrow />
+          <Button
+            onClick={() => handleClose()}
+            buttonText="OK"
+            hasForwardArrow
+          />
         </DialogActions>
       </Dialog>
     </div>
