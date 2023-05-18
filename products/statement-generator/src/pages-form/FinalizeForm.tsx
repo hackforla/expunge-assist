@@ -61,6 +61,8 @@ function FinalizeForm() {
 
     const previewConfig = PREVIEW_MAP[previewKey];
 
+    const sectionTitle = getSectionTitle(previewKey as AppUrl);
+
     return (
       <TextPreview
         key={`${previewKey}-preview-key`}
@@ -70,9 +72,11 @@ function FinalizeForm() {
           updatePreviewItem(newText, previewConfig.stateKey)
         }
         content={statement}
-        nameOfStep={`${t('sections.previewing')} ${getSectionTitle(
-          previewKey as AppUrl
-        )}`}
+        nameOfStep={
+          sectionTitle.includes('Involvement')
+            ? `${t('sections.previewing')} ${sectionTitle}`
+            : `${t('sections.previewing')}: ${sectionTitle}`
+        }
       />
     );
   });
