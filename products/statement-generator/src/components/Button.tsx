@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
@@ -126,7 +127,8 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
 interface ComponentProps {
   className?: string;
   theme?: string;
-  hasArrow?: boolean;
+  hasBackArrow?: boolean;
+  hasForwardArrow?: boolean;
   disabled?: boolean;
   icon?: React.ReactNode;
   buttonText?: string;
@@ -136,13 +138,14 @@ interface ComponentProps {
 const ButtonComponent = ({
   className = '',
   theme,
-  hasArrow,
+  hasBackArrow,
+  hasForwardArrow,
   disabled = false,
   icon,
   buttonText,
   onClick,
 }: ComponentProps) => {
-  const styleProps = { theme, hasArrow };
+  const styleProps = { theme, hasBackArrow, hasForwardArrow };
   const classes = useStyles(styleProps);
   return (
     <Button
@@ -151,9 +154,10 @@ const ButtonComponent = ({
       className={`${classes.root} ${className}`}
       onClick={onClick}
     >
+      {hasBackArrow && <ArrowBackIcon style={{ height: '.8em' }} />}
       {icon}
       {buttonText}
-      {hasArrow && <ArrowForwardIcon style={{ height: '.8em' }} />}
+      {hasForwardArrow && <ArrowForwardIcon style={{ height: '.8em' }} />}
     </Button>
   );
 };

@@ -72,6 +72,7 @@ export default function FlowNavigation({
           disabled={isBackDisabled}
           buttonText={backButtonLabel || 'BACK'}
           theme={backBtnTheme}
+          hasBackArrow
         />
       )}
 
@@ -82,7 +83,7 @@ export default function FlowNavigation({
           disabled={isNextDisabled}
           buttonText={nextButtonLabel || 'NEXT'}
           theme="dark"
-          hasArrow
+          hasForwardArrow
         />
       )}
     </div>
