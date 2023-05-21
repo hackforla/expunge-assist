@@ -1,8 +1,0 @@
-{
-  "workbench.settings.editor": "json",
-  "editor.formatOnSave": true,
-  "[javascript]": { "editor.formatOnSave": false },
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
-  "eslint.alwaysShowStatus": true,
-  "prettier.disableLanguages": [ "js" ]
-}
