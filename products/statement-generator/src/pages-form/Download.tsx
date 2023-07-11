@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { saveAs } from 'file-saver';
+import { Document, Packer, Paragraph } from 'docx';
 import jsPDF from 'jspdf';
+import { makeStyles, createStyles } from '@material-ui/core';
 import EmailIcon from '@material-ui/icons/Email';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
@@ -66,6 +68,44 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
     navigator.clipboard.writeText(finalStatement);
   };
 
+  // implemented with https://docx.js.org/#/?id=welcome
+  const handleClickDOCX = async () => {
+    const fileName = 'MyPersonalStatement.docx';
+
+    if (typeof finalStatement !== 'string') {
+      return;
+    }
+
+    const textSections = finalStatement
+      .split(/[\r\n]+/)
+      .filter((line) => line.trim() !== '');
+
+    if (!textSections.length) {
+      return;
+    }
+
+    const docxSections = textSections.map((sectionText) => {
+      return new Paragraph({
+        text: sectionText,
+        spacing: {
+          after: 360, // 360 TWIPs = 24px
+        },
+      });
+    });
+
+    const doc = new Document({
+      sections: [
+        {
+          children: docxSections,
+        },
+      ],
+    });
+
+    Packer.toBlob(doc).then((blob) => {
+      saveAs(blob, 'MyPersonalStatement.docx');
+    });
+  };
+
   // download txt
   const handleClickTXT = () => {
     const blob = new Blob([finalStatement], { type: 'text/plain' });
@@ -108,17 +148,17 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
       <div className={classes.downloadButtonsContainer}>
         <Button
           className={classes.buttonSpacing}
+          onClick={handleClickDOCX}
+          disabled={isDisabled}
+          icon={<GetAppIcon />}
+          buttonText={t('download_page.docx_btn')}
+        />
+        <Button
+          className={classes.buttonSpacing}
           onClick={handleClickPDF}
           disabled={isDisabled}
           icon={<GetAppIcon />}
           buttonText={t('download_page.pdf_btn')}
-        />
-        <Button
-          className={classes.buttonSpacing}
-          onClick={handleClickClipboard}
-          disabled={isDisabled}
-          icon={<FileCopyIcon />}
-          buttonText={t('download_page.clipboard_btn')}
         />
         <Button
           className={classes.buttonSpacing}
@@ -133,6 +173,13 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
           disabled={isDisabled}
           icon={<EmailIcon />}
           buttonText={t('download_page.email_btn')}
+        />
+        <Button
+          className={classes.buttonSpacing}
+          onClick={handleClickClipboard}
+          disabled={isDisabled}
+          icon={<FileCopyIcon />}
+          buttonText={t('download_page.clipboard_btn')}
         />
       </div>
     </form>
