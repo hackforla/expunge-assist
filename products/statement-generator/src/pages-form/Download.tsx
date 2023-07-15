@@ -102,7 +102,7 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
     });
 
     Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, 'MyPersonalStatement.docx');
+      saveAs(blob, fileName);
     });
   };
 
