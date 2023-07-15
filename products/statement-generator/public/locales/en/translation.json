@@ -186,8 +186,9 @@
     "agreement_checkbox_label": "By checking this box you take full responsibility for this letter, and release all association with Hack for LA.",
     "email_btn": "send in an email",
     "clipboard_btn": "copy to clipboard",
-    "txt_btn": "download txt",
-    "pdf_btn": "download pdf"
+    "txt_btn": "download .txt",
+    "pdf_btn": "download .pdf",
+    "docx_btn": "download .docx"
   },
   "faq_page": {
     "page_header": "FAQ",
