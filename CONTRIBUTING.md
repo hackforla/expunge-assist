@@ -76,5 +76,7 @@ When you finish making your changes and commit them, you can now make a pull req
 * Go to the Pull Requests tab on github.com and click "New pull request"
 * Change so the base branch is `base:dev`
 * Create a meaningful title and description
-* Link the PR to the relevant Issue
+* Link the PR to the relevant issue
+* Move issue to `Ready for Review` section and post in `#expunge-assist-dev` with a link to the PR
+* Once you have 1 approval, assign to the dev lead to have issue merged.
 
