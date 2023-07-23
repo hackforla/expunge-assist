@@ -1,16 +1,15 @@
 # Contributing
-Thanks for being interested in helping out with Expunge Assist! 🎉
+Thanks for being interested in helping out with Expunge Assist! 🎉 
 
+For any questions, please feel free to ask for help in the `#expunge-assist-dev` slack channel or message the dev lead on slack. 
 
 # Prerequisites
-This guide assumes you've already been through onboarding through HackforLA. If you haven't, [start here!](https://www.hackforla.org/getting-started)
+This guide assumes you've already been through onboarding through HackforLA. This onboarding includes getting organization access to Slack, Github, and Google Drive. If you haven't, [start here!](https://www.hackforla.org/getting-started)
 
 Here are some things you'll want to be familiar with:
 * command line (cli)
 * git & github
 * npm & node
-
-but you're always welcome to ask for help in the `#expunge-assist-dev` slack channel.
 
 
 # Getting Started
