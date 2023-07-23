@@ -40,9 +40,11 @@ Join the following Slack channels:
 
 ### Finding an Issue
 
-The filtered Dev issues are located [here](https://github.com/hackforla/expunge-assist/projects/1?card_filter_query=label%3A%22role%3A+development%22). Issues are organized by role, size, priority, and feature. Please choose from the top couple tasks in the `Prioritized Backlog` column. Look for `good first issue`, `size: 1pt` or `size: small` labels which are simpler tasks.
+The filtered Dev issues are located [here](https://github.com/hackforla/expunge-assist/projects/1?card_filter_query=label%3A%22role%3A+development%22). 
 
-Once you find an issue you're interested in, please assign yourself and move it `In Progress (active)`. 
+See the entire project board [here](https://github.com/hackforla/expunge-assist/projects/1). Issues are organized by role, size, priority, and feature. Please choose from the top couple tasks in the `Prioritized Backlog` column. Look for `good first issue`, `size: 1pt` or `size: small` labels which are simpler tasks.
+
+Once you find an issue you're interested in, please assign yourself and move it to `In Progress (active)`. 
 
 ## Development
 
