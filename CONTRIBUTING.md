@@ -3,14 +3,14 @@ Thanks for being interested in helping out with Expunge Assist!
 
 
 # Prerequisites
-Hopefully by now you have had onboarding and had your github account set up with an ssh key and connected to the HackForLA organization.
+This guide assumes you've already been through onboarding through HackforLA. If you haven't, [start here!](https://www.hackforla.org/getting-started)
 
 Here are some things you'll want to be familiar with:
 * command line (cli)
 * git & github
 * npm & node
 
-but you're always welcome to ask for help in the `#expunge-assist-frontend` slack channel.
+but you're always welcome to ask for help in the `#expunge-assist-dev` slack channel.
 
 
 # Getting Started
@@ -36,7 +36,7 @@ We have tasks with things that need to get done located here https://github.com/
 
 
 ### Development
-Expunge-Assist was developed in [TypeScript](https://www.typescriptlang.org/). It's not too much different than JavaScript other than it has type checking. We also have a [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) pacakage for code formatting preferences. If there are anything we don't notice in PRs we'll probably run auto-format on the codebase.
+Expunge-Assist was developed in [TypeScript](https://www.typescriptlang.org/). It's not too much different than JavaScript other than it has type checking. We also have a [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) package for code formatting preferences. If there are anything we don't notice in PRs we'll probably run auto-format on the codebase.
 
 #### Files
 * `App.tsx`: This is the entry point for the app which renders different pages based on the route.
