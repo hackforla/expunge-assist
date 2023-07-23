@@ -67,11 +67,10 @@ Branch names should be descriptive of the task and include the issue number. For
 
 ### Create a Pull Request
 When you finish making your changes and commit them, you can now make a pull request (PR).
+* before pushing, run our reformatter and linter using `npm run lint:fix`
 * Push your changes to the github repo with `git push origin BRANCHNAME`
 * Go to the Pull Requests tab on github.com and click "New pull request"
 * Change so the base branch is `base:dev`
 * Create a meaningful title and description
 * Link the PR to the relevant Issue
 
-
-Once at least one person approves it, you can squash and merge it into the dev branch!
