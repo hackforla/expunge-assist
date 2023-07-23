@@ -67,7 +67,7 @@ Once you've claimed an issue for your own, you're welcome to get started on it.
 - Create a new branch with `git checkout -b BRANCHNAME`
 - Make your changes
 
-Branch names should be descriptive of the task and include the issue number. For example, if you were working on [this issue](https://github.com/hackforla/expunge-assist/issues/698) creating the 'something else' flow in the statement generator, a good branch name would be something like `something-else-689`
+Branch names should be descriptive of the task and include the issue number. For example, if you were working on [this issue](https://github.com/hackforla/expunge-assist/issues/698) creating the 'something else' flow in the statement generator, a good branch name would be something like `689-something-else`. Make sure not to use a `#` sign to start your branch name as git hates them.
 
 ### Create a Pull Request
 
