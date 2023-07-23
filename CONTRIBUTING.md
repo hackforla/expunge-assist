@@ -85,7 +85,7 @@ When you finish making your changes and commit them, you can now make a pull req
 
 Pull Requests that are ready for review can be found two places: the `#expunge-assist-dev` channel on slack and linked in issues in the `Ready to Review` column on the project board. 
 
-Assign to yourself.
+Assign yourself as a reviewer on the PR.
 
 Using the branch listed in the PR, run the app locally. Ask yourself these questions:
 1. Does it solve the issue listed?
@@ -93,6 +93,6 @@ Using the branch listed in the PR, run the app locally. Ask yourself these quest
 
 Bonus points for evaluating the rest of the page for any bugs or design mistakes. If you find any unrelated to the PR you're reviewing, please [write a new issue](https://github.com/hackforla/expunge-assist/issues/new?assignees=&labels=&projects=&template=blank-issue.md&title=).
 
-If the PR needs updates, leave specific comments on the PR for the developer to address. Reassign to the developer.
+If the PR needs updates, leave specific comments on the PR for the developer to address. Tag the developer and update status to `request changes`.
 
 If the PR passes the questions above, approve it and assign to the dev lead to be merged!
