@@ -1,4 +1,5 @@
 # Contributing
+
 Thanks for being interested in helping out with Expunge Assist! 🎉 
 
 This is a developer specific guide. For more general Expunge Assist questions, see our [wiki](https://github.com/hackforla/expunge-assist/wiki) or reach out to `#expunge-assist` on slack. 
@@ -6,7 +7,10 @@ This is a developer specific guide. For more general Expunge Assist questions, s
 For any dev-related questions, please feel free to ask for help in the `#expunge-assist-dev` slack channel or message the [dev lead](https://github.com/hackforla/expunge-assist/wiki/The-Current-Team) on slack. 
 
 ## Prerequisites
+
 This guide assumes you've already been through onboarding through HackforLA. This onboarding includes getting organization access to Slack, Github, and Google Drive. If you haven't, [start here!](https://www.hackforla.org/getting-started)
+
+Otherwise, please take a look through our [wiki](https://github.com/hackforla/expunge-assist/wiki) to get familiar with the project, our team, and processes. 
 
 Here are some things you'll want to be familiar with:
 * command line (cli)
@@ -16,6 +20,7 @@ Here are some things you'll want to be familiar with:
 
 
 ## Getting Started
+
 Join the following Slack channels: 
 - #expunge-assist 
 - #expunge-assist-dev 
@@ -53,23 +58,19 @@ The Expunge Assist app was developed in [TypeScript](https://www.typescriptlang.
 We develop off of the `dev` branch which will contain the latest changes. The `master` branch is left for the production build.
 
 
-### Create a Branch
+### Working on an Issue
+
+Once you've claimed an issue for your own, you're welcome to get started on it. 
 
 - Start in the `dev` repo with `git checkout dev`
 - Make sure you're up to date with `git pull`
 - Create a new branch with `git checkout -b BRANCHNAME`
+- Make your changes
 
 Branch names should be descriptive of the task and include the issue number. For example, if you were working on [this issue](https://github.com/hackforla/expunge-assist/issues/698) creating the 'something else' flow in the statement generator, a good branch name would be something like `something-else-689`
 
-#### Files
-* `App.tsx`: This is the entry point for the app which renders different pages based on the route.
-  * `PageContainer.tsx` -> `Form.tsx`: This is where different pages and steps of the Form gets rendered.
-
-* `RoutingContext.tsx`: We use React Context to handle giving each page component the state and functions relating to navigating.
-* `FormStateContext.tsx`: This handles tracking the current state of the filled out form.
-
-
 ### Create a Pull Request
+
 When you finish making your changes and commit them, you can now make a pull request (PR).
 * before pushing, run our reformatter and linter using `npm run lint:fix`
 * Push your changes to the github repo with `git push origin BRANCHNAME`
@@ -80,3 +81,19 @@ When you finish making your changes and commit them, you can now make a pull req
 * Move issue to `Ready for Review` section and post in `#expunge-assist-dev` with a link to the PR
 * Once you have 1 approval, assign to the dev lead to have issue merged.
 
+### Reviewing a Pull Request
+
+Pull Requests that are ready for review can be found two places: the `#expunge-assist-dev` channel on slack and linked in issues in the `Ready to Review` column on the project board. 
+
+Assign to yourself.
+
+Using the branch listed in the PR, run the app locally. Ask yourself these questions:
+1. Does it solve the issue listed?
+2. Are there unnecessary comments or console logs?
+3. Is it responsive?
+
+Bonus points for evaluating the rest of the page for any bugs or design mistakes. If you find any unrelated to the PR you're reviewing, please [write a new issue](https://github.com/hackforla/expunge-assist/issues/new?assignees=&labels=&projects=&template=blank-issue.md&title=).
+
+If the PR needs updates, leave specific comments on the PR for the developer to address. Reassign to the developer.
+
+If the PR passes the questions above, approve it and assign to the dev lead to be merged!
