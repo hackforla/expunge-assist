@@ -89,8 +89,7 @@ Assign to yourself.
 
 Using the branch listed in the PR, run the app locally. Ask yourself these questions:
 1. Does it solve the issue listed?
-2. Are there unnecessary comments or console logs?
-3. Is it responsive?
+2. Could it be refactored?
 
 Bonus points for evaluating the rest of the page for any bugs or design mistakes. If you find any unrelated to the PR you're reviewing, please [write a new issue](https://github.com/hackforla/expunge-assist/issues/new?assignees=&labels=&projects=&template=blank-issue.md&title=).
 
