@@ -3,22 +3,31 @@ Thanks for being interested in helping out with Expunge Assist! 🎉
 
 For any questions, please feel free to ask for help in the `#expunge-assist-dev` slack channel or message the dev lead on slack. 
 
-# Prerequisites
+## Prerequisites
 This guide assumes you've already been through onboarding through HackforLA. This onboarding includes getting organization access to Slack, Github, and Google Drive. If you haven't, [start here!](https://www.hackforla.org/getting-started)
 
 Here are some things you'll want to be familiar with:
 * command line (cli)
 * git & github
 * npm & node
+* TypeScript (or JavaScript)
 
 
-# Getting Started
-We develop off of the `dev` branch which will contain the latest changes. The `master` branch is left for the production build.
+## Getting Started
+Join the following Slack channels: 
+- #expunge-assist 
+- #expunge-assist-dev 
+- #expunge-assist-design-and-content
 
-We have tasks with things that need to get done located here https://github.com/hackforla/expunge-assist/projects/1. Look for `good first issue` label which are simpler tasks.
+### Meetings - (as of July 23, 2023)
+
+- Dev Meeting: Thursdays 6pm-6:30pm PST 
+- All Teams Meeting: First Monday of the Month from 5-6pm PST
+- Dev/Design/Product Check-in: Mondays 5-5:30pm PST
 
 
-### Setup
+### Local Setup
+
 * Clone the repo by running `git clone git@github.com:hackforla/expunge-assist.git` in your command line.
 * Navigate to the following folder in your cli `/expunge-assist/products/statement-generator/`
   - Because of how the project was originally set up, this is where the javascript app resides and I am going to refer to this as the __root folder__  from now on.
@@ -27,15 +36,26 @@ We have tasks with things that need to get done located here https://github.com/
 * You can now make changes and the page should live update!
 
 
+### Finding an Issue
+
+The filtered Dev issues are located [here](https://github.com/hackforla/expunge-assist/projects/1?card_filter_query=label%3A%22role%3A+development%22). Issues are organized by role, size, priority, and feature. Please choose from the top couple tasks in the `Prioritized Backlog` column. Look for `good first issue`, `size: 1pt` or `size: small` labels which are simpler tasks.
+
+Once you find an issue you're interested in, please assign yourself and move it `In Progress (active)`. 
+
+## Development
+
+The Expunge Assist app was developed in [TypeScript](https://www.typescriptlang.org/). It's not too much different than JavaScript other than it has type checking. We also have a [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) package for code formatting preferences.
+
+We develop off of the `dev` branch which will contain the latest changes. The `master` branch is left for the production build.
+
+
 ### Create a Branch
-* Start in the `dev` repo with `git checkout dev`
-* Make sure you're up to date with `git pull`
-* Create a new branch with `git checkout -b BRANCHNAME`
-* You're ready to make changes!
 
+- Start in the `dev` repo with `git checkout dev`
+- Make sure you're up to date with `git pull`
+- Create a new branch with `git checkout -b BRANCHNAME`
 
-### Development
-The Expunge Assist app was developed in [TypeScript](https://www.typescriptlang.org/). It's not too much different than JavaScript other than it has type checking. We also have a [Prettier](https://prettier.io/) and [ESLint](https://eslint.org/) package for code formatting preferences. If there are anything we don't notice in PRs we'll probably run auto-format on the codebase.
+Branch names should be descriptive of the task and include the issue number. For example, if you were working on [this issue](https://github.com/hackforla/expunge-assist/issues/698) creating the 'something else' flow in the statement generator, a good branch name would be something like `something-else-689`
 
 #### Files
 * `App.tsx`: This is the entry point for the app which renders different pages based on the route.
