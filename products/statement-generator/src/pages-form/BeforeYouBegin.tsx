@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { makeStyles, createStyles } from '@material-ui/core';
+import { makeStyles, createStyles, useMediaQuery } from '@material-ui/core';
+
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
@@ -13,8 +14,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         lineHeight: 1.15,
         fontWeight: 500,
         letterSpacing: '0.0015em',
-        [breakpoints.up(breakpoints.values.md)]: {
-          fontSize: '34px',
+        [breakpoints.down(breakpoints.values.md)]: {
+          fontSize: '24px',
           letterSpacing: '0.0025em',
           fontWeight: 400,
         },
@@ -23,9 +24,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         marginTop: 0,
         lineHeight: 1.175,
         letterSpacing: '0.005em',
-        [breakpoints.up(breakpoints.values.md)]: {
-          marginTop: '8px',
-        },
       },
       '& a': {
         color: palette.primary.darker,
@@ -33,16 +31,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       '& h6': {
         fontSize: '16px',
         marginTop: '24px',
-        fontWeight: 700,
+        fontWeight: 400,
         lineHeight: 1.2,
-        [breakpoints.up(breakpoints.values.md)]: {
+        paddingBottom: '8px',
+        [breakpoints.down(breakpoints.values.md)]: {
           fontSize: '20px',
           fontWeight: 400,
+          
         },
       },
     },
     italicDesktop: {
-      [breakpoints.up(breakpoints.values.md)]: {
+      [breakpoints.down(breakpoints.values.md)]: {
         fontStyle: 'italic',
       },
     },
@@ -52,6 +52,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
 const BeforeYouBegin = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
 
   return (
     <ContentContainer className={classes.root}>
@@ -59,10 +60,10 @@ const BeforeYouBegin = () => {
 
       <h6>{t('before_you_begin_page.sectionTitle1')}</h6>
       <p
-        className={`${classes.italicDesktop}`}
         /* eslint-disable-next-line  react/no-danger */
         dangerouslySetInnerHTML={{
-          __html: t('before_you_begin_page.sectionParagraph1'),
+          __html: isMobile ? t('before_you_begin_page.mobileLineBreak') : t('before_you_begin_page.sectionParagraph1'),
+          
         }}
       />
       <h6>{t('before_you_begin_page.sectionTitle2')}</h6>
