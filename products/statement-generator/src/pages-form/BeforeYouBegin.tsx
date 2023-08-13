@@ -2,7 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles, useMediaQuery } from '@material-ui/core';
 
-
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 
@@ -37,7 +36,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         [breakpoints.down(breakpoints.values.md)]: {
           fontSize: '20px',
           fontWeight: 400,
-          
         },
       },
     },
@@ -62,8 +60,9 @@ const BeforeYouBegin = () => {
       <p
         /* eslint-disable-next-line  react/no-danger */
         dangerouslySetInnerHTML={{
-          __html: isMobile ? t('before_you_begin_page.mobileLineBreak') : t('before_you_begin_page.sectionParagraph1'),
-          
+          __html: isMobile
+            ? t('before_you_begin_page.mobileLineBreak')
+            : t('before_you_begin_page.sectionParagraph1'),
         }}
       />
       <h6>{t('before_you_begin_page.sectionTitle2')}</h6>
