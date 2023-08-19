@@ -54,7 +54,6 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
 const BeforeYouBegin = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  
 
   return (
     <ContentContainer className={classes.root}>
@@ -64,8 +63,7 @@ const BeforeYouBegin = () => {
       <p
         /* eslint-disable-next-line  react/no-danger */
         dangerouslySetInnerHTML={{
-          __html: 
-             t('before_you_begin_page.sectionParagraph1'),
+          __html: t('before_you_begin_page.sectionParagraph1'),
         }}
       />
       <h6>{t('before_you_begin_page.sectionTitle2')}</h6>
