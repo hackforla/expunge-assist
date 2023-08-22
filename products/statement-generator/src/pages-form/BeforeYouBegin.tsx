@@ -9,9 +9,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
     root: {
       '& h3': {
-        fontSize: '20px',
+        fontSize: '24px',
         lineHeight: 1.15,
-        fontWeight: 500,
+        fontWeight: 400,
         letterSpacing: '0.0015em',
         [breakpoints.up(breakpoints.values.md)]: {
           fontSize: '34px',
@@ -29,12 +29,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       },
       '& a': {
         color: palette.primary.darker,
+        whiteSpace: 'noWrap',
       },
       '& h6': {
-        fontSize: '16px',
+        fontSize: '20px',
         marginTop: '24px',
-        fontWeight: 700,
+        fontWeight: 400,
         lineHeight: 1.2,
+        paddingBottom: '8px',
         [breakpoints.up(breakpoints.values.md)]: {
           fontSize: '20px',
           fontWeight: 400,
@@ -59,7 +61,6 @@ const BeforeYouBegin = () => {
 
       <h6>{t('before_you_begin_page.sectionTitle1')}</h6>
       <p
-        className={`${classes.italicDesktop}`}
         /* eslint-disable-next-line  react/no-danger */
         dangerouslySetInnerHTML={{
           __html: t('before_you_begin_page.sectionParagraph1'),
