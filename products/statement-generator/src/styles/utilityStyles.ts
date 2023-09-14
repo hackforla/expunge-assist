@@ -4,7 +4,7 @@ const useUtilityStyles = makeStyles<Theme>(
   ({ palette, breakpoints, globals, spacing }) =>
     createStyles({
       primaryContainer: {
-        minHeight: '475px',
+        minHeight: 'calc(100vh - 160px)',
         width: '100%',
         display: 'flex',
         flex: '1 0 auto',

@@ -49,6 +49,7 @@ const Affirmation = () => {
         paper: classes.affirmationContainer,
       }}
       fullWidth
+      disableScrollLock
       open={affirmationData.isActive}
       onClose={() => updateAffirmationData({ isActive: false })}
       aria-labelledby="alert-dialog-title"
