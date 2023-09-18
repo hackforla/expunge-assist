@@ -269,7 +269,7 @@ function LandingSection1() {
         >
           <LinkButtonComponent
             to={AppUrl.Welcome}
-            buttonText={t('START NOW')}
+            buttonText={t('button.startNow')}
           />
         </div>
       </div>
