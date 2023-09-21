@@ -45,7 +45,7 @@ export function IntroductionStep() {
           label={t('introduction_form.age_input_label')}
           adornment={t('introduction_form.age_input_append')}
           type="number"
-          defaultValue={age}
+          errorText="Please enter a non-negative number"
           placeholder="0"
           handleChange={onInputChange}
         />
