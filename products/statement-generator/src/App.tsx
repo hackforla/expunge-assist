@@ -37,6 +37,7 @@ import PreviewPage from 'pages/PreviewPage';
 import PrivacyPolicy from 'pages/PrivacyPolicy';
 import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
+import FAQ2 from 'pages/FAQ2';
 import AboutUs from 'pages/AboutUs';
 
 import 'styles/App.css';
@@ -177,6 +178,7 @@ const App: React.FC = () => {
                   />
                   <Route path={AppUrl.TermsOfUse} component={TermsOfUse} />
                   <Route path={AppUrl.FAQ} component={FAQ} />
+                  <Route path={AppUrl.FAQ2} component={FAQ2} />
                   <Route path={AppUrl.AboutUs} component={AboutUs} />
 
                   <Route component={NotFound} />

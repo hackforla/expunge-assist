@@ -71,6 +71,29 @@ const useUtilityStyles = makeStyles<Theme>(
           width: '100%',
         },
       },
+      contentContainer2: {
+        maxWidth: globals.contentWidth,
+        minWidth: '300px',
+        width: '100%',
+        padding: spacing(3),
+        paddingTop: spacing(7),
+
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'flex',
+        flex: '1 0 auto',
+        flexDirection: 'column',
+
+        [breakpoints.down('sm')]: {
+          padding: spacing(2),
+        },
+
+        [breakpoints.down('xs')]: {
+          marginLeft: 'initial',
+          marginRight: 'initial',
+          width: '100%',
+        },
+      },
       disabledColor: {
         color: palette.common.grey,
       },

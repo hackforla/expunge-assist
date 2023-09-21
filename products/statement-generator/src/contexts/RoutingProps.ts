@@ -47,6 +47,7 @@ export enum AppUrl {
   PrivacyPolicy = '/privacy-policy',
   TermsOfUse = '/terms-of-use',
   FAQ = '/faq',
+  FAQ2 = '/faq2',
   AboutUs = '/about-us',
 }
 
