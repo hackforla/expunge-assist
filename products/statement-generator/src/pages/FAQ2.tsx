@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import LinkAsText from 'components/LinkAsText';
+// import LinkAsText from 'components/LinkAsText';
 
 import ContentContainer2 from 'components-layout/ContentContainer';
 
@@ -35,9 +35,21 @@ function FAQ2() {
 
         <h3>{t('faq2_page.title1.4')}</h3>
         <p>{t('faq2_page.paragraph1.4a')}</p>
-        <p><a href="https://selfhelp.courts.ca.gov/clean-your-record">{t('faq2_page.paragraph1.4b')}</a></p>
-        <p><a href="https://www.courts.ca.gov/partners/documents/ExpSBS.pdf">{t('faq2_page.paragraph1.4c')}</a></p>
-        <p><a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220SB731">{t('faq2_page.paragraph1.4d')}</a></p>
+        <p>
+          <a href="https://selfhelp.courts.ca.gov/clean-your-record">
+            {t('faq2_page.paragraph1.4b')}
+          </a>
+        </p>
+        <p>
+          <a href="https://www.courts.ca.gov/partners/documents/ExpSBS.pdf">
+            {t('faq2_page.paragraph1.4c')}
+          </a>
+        </p>
+        <p>
+          <a href="https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202120220SB731">
+            {t('faq2_page.paragraph1.4d')}
+          </a>
+        </p>
       </section>
 
       <section>
@@ -91,7 +103,7 @@ function FAQ2() {
         <p>{t('faq2_page.paragraph3.5a')}</p>
       </section>
     </ContentContainer2>
-  )
+  );
 }
 
 export default FAQ2;
