@@ -124,7 +124,7 @@ const InputArea: React.FC<InputFieldProps> = ({
         if (errorText) {
           alert(errorText);
         } else {
-          alert('Please enter a number greater than 0');
+          alert('Please enter a valid number');
         }
       } else {
         isValid(true);
