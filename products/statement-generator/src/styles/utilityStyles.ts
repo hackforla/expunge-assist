@@ -71,13 +71,12 @@ const useUtilityStyles = makeStyles<Theme>(
           width: '100%',
         },
       },
-      contentContainer2: {
-        maxWidth: globals.contentWidth,
+      FAQContainer: {
+        maxWidth: '996px',
         minWidth: '300px',
-        width: '100%',
+        width: '69.2%',
         padding: spacing(3),
-        paddingTop: spacing(7),
-
+        paddingTop: 0,
         marginLeft: 'auto',
         marginRight: 'auto',
         display: 'flex',
