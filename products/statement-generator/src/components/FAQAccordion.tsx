@@ -16,7 +16,6 @@ interface CustomAccordionProps {
 
 // type FAQAccordionProps = AccordionProps & CustomAccordionProps;
 
-
 const useStyles = makeStyles(({ palette }) =>
   createStyles({
     accordionWrapper: {
@@ -71,7 +70,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 export const FAQAccordion: React.FC<CustomAccordionProps> = ({
   title,
   content,
-  children
+  children,
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -87,10 +86,7 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
       expanded={expanded}
       onChange={handleAccordionChange}
     >
-      <AccordionSummary
-        aria-controls="panel1-content"
-        id="panel1-header"
-      >
+      <AccordionSummary aria-controls="panel1-content" id="panel1-header">
         <ExpandMoreIcon
           className={`${classes.expandIcon} ${
             expanded ? classes.rotateIcon : classes.rightIcon
@@ -100,9 +96,10 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
       </AccordionSummary>
       <AccordionDetails style={{ padding: 0, width: '100%' }}>
         <div className={classes.accordionDetailsContainer}>
-          {content && content.map((paragraph) => {
-            return <Typography>{t(paragraph)}</Typography>;
-          })}
+          {content &&
+            content.map((paragraph) => {
+              return <Typography>{t(paragraph)}</Typography>;
+            })}
           {children && children}
         </div>
       </AccordionDetails>

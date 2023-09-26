@@ -72,7 +72,6 @@ const useUtilityStyles = makeStyles<Theme>(
         },
       },
       FAQContainer: {
-        color: palette.primary.darker,
         maxWidth: '996px',
         minWidth: '300px',
         width: '69.2%',
