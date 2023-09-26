@@ -72,6 +72,7 @@ const useUtilityStyles = makeStyles<Theme>(
         },
       },
       FAQContainer: {
+        color: palette.primary.darker,
         maxWidth: '996px',
         minWidth: '300px',
         width: '69.2%',
@@ -79,6 +80,7 @@ const useUtilityStyles = makeStyles<Theme>(
         paddingTop: 0,
         marginLeft: 'auto',
         marginRight: 'auto',
+        marginTop: '36px',
         display: 'flex',
         flex: '1 0 auto',
         flexDirection: 'column',

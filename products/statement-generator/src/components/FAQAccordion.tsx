@@ -11,21 +11,27 @@ import { styled } from '@material-ui/core/styles';
 
 interface CustomAccordionProps {
   title: string;
-  content: string[];
+  content?: string[];
 }
 
-type FAQAccordionProps = AccordionProps & CustomAccordionProps;
+// type FAQAccordionProps = AccordionProps & CustomAccordionProps;
 
-const useStyles = makeStyles(() =>
+
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     accordionWrapper: {
       width: '100%',
+      marginTop: '0px',
+      marginBottom: '0px',
+      color: palette.primary.darker,
       boxShadow: 'none',
       border: 'none',
-      position: 'static', // when position is 'relative' a vertical line appears above the accordion (unclear why)
+      position: 'static', // when position is 'relative' or not specified a vertical line appears above the accordion (unclear why)
     },
     accordionSummary: {
       fontSize: '20px',
+      lineHeight: '24px',
+      color: palette.primary.darker,
     },
     expandIcon: {
       marginLeft: '0',
@@ -58,12 +64,14 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   padding: 0,
   '& .MuiAccordionSummary-content .MuiTypography-root': {
     fontWeight: '400',
+    margin: 0,
   },
 }));
 
-export const FAQAccordion: React.FC<FAQAccordionProps> = ({
+export const FAQAccordion: React.FC<CustomAccordionProps> = ({
   title,
   content,
+  children
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -76,11 +84,13 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
   return (
     <Accordion
       className={classes.accordionWrapper}
-      style={{ marginTop: '24px', marginBottom: '16px' }}
       expanded={expanded}
       onChange={handleAccordionChange}
     >
-      <AccordionSummary aria-controls="panel1-content" id="panel1-header">
+      <AccordionSummary
+        aria-controls="panel1-content"
+        id="panel1-header"
+      >
         <ExpandMoreIcon
           className={`${classes.expandIcon} ${
             expanded ? classes.rotateIcon : classes.rightIcon
@@ -90,9 +100,10 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
       </AccordionSummary>
       <AccordionDetails style={{ padding: 0, width: '100%' }}>
         <div className={classes.accordionDetailsContainer}>
-          {content.map((paragraph) => {
+          {content && content.map((paragraph) => {
             return <Typography>{t(paragraph)}</Typography>;
           })}
+          {children && children}
         </div>
       </AccordionDetails>
     </Accordion>
