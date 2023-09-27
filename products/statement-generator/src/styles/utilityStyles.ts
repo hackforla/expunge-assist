@@ -71,29 +71,6 @@ const useUtilityStyles = makeStyles<Theme>(
           width: '100%',
         },
       },
-      FAQContainer: {
-        maxWidth: '996px',
-        minWidth: '300px',
-        width: '69.2%',
-        padding: spacing(3),
-        paddingTop: 0,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: '36px',
-        display: 'flex',
-        flex: '1 0 auto',
-        flexDirection: 'column',
-
-        [breakpoints.down('sm')]: {
-          padding: spacing(2),
-        },
-
-        [breakpoints.down('xs')]: {
-          marginLeft: 'initial',
-          marginRight: 'initial',
-          width: '100%',
-        },
-      },
       disabledColor: {
         color: palette.common.grey,
       },

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles, createStyles, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Accordion, { AccordionProps } from '@material-ui/core/Accordion';
+import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import MuiAccordionSummary, {
   AccordionSummaryProps,
@@ -20,8 +20,6 @@ const useStyles = makeStyles(({ palette }) =>
   createStyles({
     accordionWrapper: {
       width: '100%',
-      marginTop: '0px',
-      marginBottom: '0px',
       color: palette.primary.darker,
       boxShadow: 'none',
       border: 'none',
@@ -61,9 +59,9 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   flexDirection: 'row-reverse',
   width: '100%',
   padding: 0,
-  '& .MuiAccordionSummary-content .MuiTypography-root': {
-    fontWeight: '400',
-    margin: 0,
+
+  '& .MuiAccordionSummary-content': {
+    minHeight: 0,
   },
 }));
 

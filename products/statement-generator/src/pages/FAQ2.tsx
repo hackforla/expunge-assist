@@ -4,8 +4,10 @@ import FAQContainer from 'components-layout/FAQContainer';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { FAQHeader } from 'components/FAQHeader';
 import { FAQAccordion } from 'components/FAQAccordion';
+import { AppUrl } from 'contexts/RoutingProps';
+import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles(({ palette }) =>
+const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
     sectionTitle: {
       color: palette.primary.main,
@@ -16,6 +18,10 @@ const useStyles = makeStyles(({ palette }) =>
       border: 'none',
       marginTop: '24px',
       marginBottom: '12px',
+
+      [breakpoints.down('sm')]: {
+        marginTop: '24px',
+      },
     },
     // manualText styles so that text can match the text style of the accordion typography
     manualText: {
@@ -128,14 +134,13 @@ function FAQ2() {
             {/* todo: update from hard-coded privacy policy link */}
             <p className={classes.manualText}>
               Check our{' '}
-              <a
-                href="https://expungeassist.org/#/./privacy-policy"
+              <Link
+                to={AppUrl.PrivacyPolicy}
                 target="_blank"
-                rel="noreferrer"
                 style={{ textDecoration: 'underline' }}
               >
                 Privacy Policy
-              </a>{' '}
+              </Link>{' '}
               to learn more.
             </p>
           </FAQAccordion>
