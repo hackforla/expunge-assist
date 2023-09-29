@@ -98,7 +98,9 @@ export const FormStateContextProvider = ({
   function test(evt: KeyboardEvent) {
     // ` (backquote)
     if (evt.keyCode === 192) {
-      updateStepToForm(sampleStepState);
+      if (process.env.NODE_ENV === 'development') {
+        updateStepToForm(sampleStepState);
+      }
     }
   }
 
