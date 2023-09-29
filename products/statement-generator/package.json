@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.8.0",
-  "homepage": "./",
+  "homepage": "https://davidwiese.github.io/expunge-assist/",
   "private": true,
   "engines": {
     "npm": ">=8.0.0",
