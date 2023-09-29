@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.8.0",
-  "homepage": "./",
+  "homepage": "https://expungeassist.org/",
   "private": true,
   "engines": {
     "npm": ">=8.0.0",
