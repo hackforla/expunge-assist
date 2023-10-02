@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={customMuiTheme}>
-      <Router basename={`${process.env.PUBLIC_URL}/`} hashType="slash">
+      <Router basename="/" hashType="slash">
         <RoutingContextProvider>
           <AffirmationContextProvider>
             <FormStateContextProvider>
