@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
@@ -53,7 +53,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={customMuiTheme}>
-      <Router basename="/" hashType="slash">
+      <Router basename={`${process.env.PUBLIC_URL}/`}>
         <RoutingContextProvider>
           <AffirmationContextProvider>
             <FormStateContextProvider>
