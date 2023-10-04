@@ -96,7 +96,11 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
         <div className={classes.accordionDetailsContainer}>
           {content &&
             content.map((paragraph) => {
-              return <Typography>{t(paragraph)}</Typography>;
+              return (
+                <Typography
+                  dangerouslySetInnerHTML={{ __html: t(paragraph) }}
+                />
+              );
             })}
           {children && children}
         </div>
