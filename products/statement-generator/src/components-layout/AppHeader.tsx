@@ -138,8 +138,7 @@ const AppHeader = () => {
       currentStep === '/about-us' ||
       currentStep === '/privacy-policy' ||
       currentStep === '/terms-of-use' ||
-      currentStep === '/faq' ||
-      currentStep === '/faq2'
+      currentStep === '/faq'
     ) {
       return (
         <FormRouteButton
