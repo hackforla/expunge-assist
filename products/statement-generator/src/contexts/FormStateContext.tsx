@@ -99,7 +99,7 @@ export const FormStateContextProvider = ({
     // ` (backquote)
     if (evt.keyCode === 192) {
       if (process.env.NODE_ENV === 'development') {
-        updateStepToForm(sampleStepState);
+        updateStepToForm(sampleStepState); 
       }
     }
   }
