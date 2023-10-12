@@ -14,8 +14,6 @@ interface CustomAccordionProps {
   content?: string[];
 }
 
-// type FAQAccordionProps = AccordionProps & CustomAccordionProps;
-
 const useStyles = makeStyles(({ palette }) =>
   createStyles({
     accordionWrapper: {

@@ -4,12 +4,6 @@ import ContentContainer from 'components-layout/ContentContainer';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { FAQAccordion } from 'components/FAQAccordion';
 import faqDesktop from '../assets/faqDesktop.svg';
-import faqMobile from '../assets/faqMobile.svg';
-
-interface IContentContainer {
-  children?: any;
-  className?: string;
-}
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
@@ -78,23 +72,10 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
     },
     FAQContainer: {
       maxWidth: '996px',
-      minWidth: '300px',
       width: '69.2%',
-      padding: spacing(3),
       paddingTop: 0,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-
-      [breakpoints.down('sm')]: {
-        padding: spacing(2),
-      },
 
       [breakpoints.down('xs')]: {
-        marginLeft: 'initial',
-        marginRight: 'initial',
         width: '100%',
       },
     },
@@ -138,14 +119,6 @@ export const FAQHeader: React.FC = () => {
   );
 };
 
-const FAQContainer = ({ children, className = '' }: IContentContainer) => {
-  const classes = useStyles();
-
-  return (
-    <div className={`${classes.FAQContainer} ${className}`}>{children}</div>
-  );
-};
-
 function FAQ() {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -153,7 +126,7 @@ function FAQ() {
   return (
     <>
       <FAQHeader />
-      <FAQContainer>
+      <ContentContainer className={classes.FAQContainer}>
         <section>
           <h3 className={classes.sectionTitle}>{t('faq_page.section1')}</h3>
           <FAQAccordion
@@ -244,7 +217,7 @@ function FAQ() {
             content={['faq_page.paragraph3.5a']}
           />
         </section>
-      </FAQContainer>
+      </ContentContainer>
     </>
   );
 }
