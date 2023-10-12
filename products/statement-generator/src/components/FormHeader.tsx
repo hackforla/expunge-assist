@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import '../styles/App.css';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
@@ -167,7 +168,7 @@ const FormHeader = () => {
   return (
     <div className={classes.outerWrapper}>
       <div className={classes.formHeader}>
-        <h3>{formTitle}</h3>
+        <h3 className="formTitle">{formTitle}</h3>
 
         <ProgressBar percentage={percentageComplete} />
       </div>

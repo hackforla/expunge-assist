@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) =>
     root: {
       borderRadius: 10,
       backgroundColor: '#FFFFFF',
+      height: '8px',
       '& .MuiLinearProgress-bar': {
         borderRadius: 10,
         backgroundColor: theme.palette.primary.main,
@@ -18,6 +19,8 @@ const useStyles = makeStyles((theme) =>
     },
     box: {
       width: '95%',
+      marginTop: '12px',
+      marginBottom: '10px',
     },
   })
 );
