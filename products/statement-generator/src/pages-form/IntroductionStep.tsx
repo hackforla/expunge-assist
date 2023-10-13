@@ -37,6 +37,7 @@ export function IntroductionStep() {
           defaultValue={fullName}
           shortWidth
           handleChange={onInputChange}
+          min={1}
           type="text"
         />
 
@@ -46,9 +47,9 @@ export function IntroductionStep() {
           adornment={t('introduction_form.age_input_append')}
           type="number"
           defaultValue={age}
-          errorText="Please enter a non-negative number"
           placeholder="0"
           handleChange={onInputChange}
+          min={1}
         />
 
         <RadioGroup

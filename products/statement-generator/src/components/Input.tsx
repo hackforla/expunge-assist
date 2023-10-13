@@ -83,12 +83,12 @@ interface InputFieldProps {
   label?: string; // todo: make required
   placeholder: string;
   type: string;
-  errorText?: string;
   defaultValue?: string;
   disabled?: boolean;
   adornment?: string;
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
+  min?: number;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -102,7 +102,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   adornment,
   className = '',
   shortWidth = false,
-  errorText,
+  min,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
@@ -110,31 +110,9 @@ const InputArea: React.FC<InputFieldProps> = ({
     useShort: shortWidth || type === 'number',
   });
 
-  const [valid, isValid] = useState(true);
-
-  const [value, setValue] = useState(defaultValue || '');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.currentTarget.value;
-
-    if (type === 'number') {
-      const numericValue = parseFloat(inputValue);
-      if (Number.isNaN(numericValue) || numericValue < 0) {
-        isValid(false);
-        if (errorText) {
-          alert(errorText);
-        } else {
-          alert('Please enter a valid number');
-        }
-      } else {
-        isValid(true);
-        setValue(numericValue.toString());
-        handleChange(e);
-      }
-    } else {
-      setValue(inputValue);
-      handleChange(e);
-    }
+  const [valid, isValid] = useState(false);
+  const checkValid = (e: string) => {
+    isValid(e.length > 0);
   };
 
   return (
@@ -147,20 +125,22 @@ const InputArea: React.FC<InputFieldProps> = ({
         label={label}
         id={id}
         className={classes.inputComponent}
-        onChange={handleInputChange}
-        value={value}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          checkValid(e.currentTarget.value);
+          handleChange(e);
+        }}
+        defaultValue={defaultValue}
         placeholder={placeholder}
         disabled={disabled}
         type={type}
+        inputProps={{ min: 1 }}
         notched={false}
         fullWidth
         endAdornment={
           <InputAdornment position="end">
             {adornment !== undefined && <span>{adornment}</span>}
 
-            {valid && parseFloat(value) > 0 ? (
-              <CheckCircleIcon className={classes.icon} />
-            ) : null}
+            {valid ? <CheckCircleIcon className={classes.icon} /> : null}
           </InputAdornment>
         }
       />
