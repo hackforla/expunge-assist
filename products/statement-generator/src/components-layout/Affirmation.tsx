@@ -10,6 +10,8 @@ import Button from 'components/Button';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 
 import useUtilityStyles from 'styles/utilityStyles';
+import RoutingContext from 'contexts/RoutingContext';
+import { AppUrl } from 'contexts/RoutingProps';
 
 interface CustomStyleProps {
   isActive: boolean;
@@ -31,6 +33,7 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
 );
 
 const Affirmation = () => {
+  const { currentStep, canShowAffirmation, goBackPage } = useContext(RoutingContext);
   const { t } = useTranslation();
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
@@ -65,11 +68,19 @@ const Affirmation = () => {
       <div
         className={`${utilityClasses.buttonContainer} ${utilityClasses.justifyRight}`}
       >
+        {AppUrl.FinalizePreview === currentStep ?? (
+          <Button
+            hasBackArrow
+            onClick={() => goBackPage()}
+            buttonText={t(affirmationData.backButtonText)}
+          />
+        )}
         <Button
           hasForwardArrow
           onClick={() => updateAffirmationData({ isActive: false })}
           buttonText={t(affirmationData.buttonText)}
         />
+        
       </div>
     </Dialog>
   );

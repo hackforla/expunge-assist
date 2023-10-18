@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 import { AppUrl } from 'contexts/RoutingProps';
+import { AffirmationContext } from 'contexts/AffirmationContext';
 
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
@@ -50,6 +51,9 @@ function FinalizeStep() {
   const { formState } = useContext(FormStateContext);
   const history = useHistory();
   const [disableNext, setDisableNext] = useState(true);
+  const { affirmationData, updateAffirmationData } = useContext(
+    AffirmationContext
+  );
 
   return (
     <ContentContainer>
@@ -90,7 +94,7 @@ function FinalizeStep() {
 
       <FlowNavigation
         isNextDisabled={disableNext}
-        onNext={() => history.push('/')}
+        onNext={() => updateAffirmationData({ isActive: true })}
         nextButtonLabel="RETURN HOME"
       />
     </ContentContainer>
