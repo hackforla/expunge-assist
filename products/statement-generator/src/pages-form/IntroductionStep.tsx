@@ -37,7 +37,7 @@ export function IntroductionStep() {
           defaultValue={fullName}
           shortWidth
           handleChange={onInputChange}
-          min={1}
+          min={0}
           type="text"
         />
 

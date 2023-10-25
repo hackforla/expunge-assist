@@ -133,7 +133,7 @@ const InputArea: React.FC<InputFieldProps> = ({
         placeholder={placeholder}
         disabled={disabled}
         type={type}
-        inputProps={{ min: 1 }}
+        inputProps={{ min: 0 }}
         notched={false}
         fullWidth
         endAdornment={
