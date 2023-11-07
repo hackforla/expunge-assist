@@ -88,7 +88,6 @@ interface InputFieldProps {
   adornment?: string;
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
-  min?: number;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -102,7 +101,6 @@ const InputArea: React.FC<InputFieldProps> = ({
   adornment,
   className = '',
   shortWidth = false,
-  min,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
