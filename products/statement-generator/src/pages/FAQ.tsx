@@ -5,7 +5,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import { FAQAccordion } from 'components/FAQAccordion';
 import faqDesktop from '../assets/faqDesktop.svg';
 
-const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
+const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
     Header: {
       width: '100vw',
@@ -135,7 +135,6 @@ function FAQ() {
               'faq_page.paragraph1.1a',
               'faq_page.paragraph1.1b',
               'faq_page.paragraph1.1c',
-              'faq_page.link-hfla',
             ]}
           />
           <FAQAccordion
