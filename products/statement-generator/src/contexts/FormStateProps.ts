@@ -172,11 +172,12 @@ export const sampleStepState = {
   },
   involvement: {
     isJobChecked: process.env.REACT_APP_IS_JOB_CHECKED,
-    isCommunityChecked: process.env.REACT_APP_IS_COMMUNITY_CHECKED,
     isRecoveryChecked: process.env.REACT_APP_IS_RECOVERY_CHECKED,
     isSchoolChecked: process.env.REACT_APP_IS_SCHOOL_CHECKED,
     isParentingChecked: process.env.REACT_APP_IS_PARENTING_CHECKED,
-    isNoneChecked: process.env.REACT_APP_IS_NONE_CHECKED,
+    isCommunityChecked: process.env.REACT_APP_IS_COMMUNITY_CHECKED,
+    isSomethingElseChecked: process.env.REACT_APP_IS_SOMETHING_ELSE_CHECKED,
+    isUnemploymentChecked: process.env.REACT_APP_IS_UNEMPLOYMENT_CHECKED,
   },
   involvementJobState: {
     companyName: process.env.REACT_APP_COMPANY_NAME,
