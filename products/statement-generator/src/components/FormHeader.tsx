@@ -119,6 +119,11 @@ const FormHeader = () => {
     formState: { involvement },
   } = useContext(FormStateContext);
 
+  const isFrozen = currentStep === AppUrl.Involvement;
+
+  const stepNum = convertStepToNum(currentStep, involvement);
+  let maxNum = 6;
+
   const {
     isJobChecked,
     isCommunityChecked,
@@ -128,8 +133,7 @@ const FormHeader = () => {
     isSomethingElseChecked,
     isUnemploymentChecked,
   } = involvement;
-  let maxNum = 6;
-  const stepNum = convertStepToNum(currentStep, involvement);
+
   if (isJobChecked) {
     maxNum += 1;
   }
@@ -152,11 +156,13 @@ const FormHeader = () => {
     maxNum += 1;
   }
 
-  if (currentStep === AppUrl.Involvement) {
-    maxNum = 6;
-  }
+  let percentageComplete;
 
-  const percentageComplete = (stepNum / maxNum) * 100;
+  if (isFrozen) {
+    percentageComplete = 20;
+  } else {
+    percentageComplete = (stepNum / maxNum) * 100;
+  }
 
   const formTitle = getSectionTitle(currentStep);
 
