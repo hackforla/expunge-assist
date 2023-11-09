@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.d179a2df.css",
-    "main.js": "/static/js/main.59c962bf.js",
+    "main.js": "/static/js/main.d346a746.js",
     "static/js/498.39efee7c.chunk.js": "/static/js/498.39efee7c.chunk.js",
     "static/js/703.06b14e3e.chunk.js": "/static/js/703.06b14e3e.chunk.js",
     "static/js/606.b671d24d.chunk.js": "/static/js/606.b671d24d.chunk.js",
@@ -16,13 +16,14 @@
     "static/media/almost-there-img.svg": "/static/media/almost-there-img.4f0606b76c40122e6f3b292ec1e4cb33.svg",
     "static/media/affirmation-img.svg": "/static/media/affirmation-img.21752d979a4c00461b4d91dfcefecdc7.svg",
     "static/media/hackForLALogo.svg": "/static/media/hackForLALogo.1329edabc3e075dc0482929cf5567915.svg",
+    "static/media/faqDesktop.svg": "/static/media/faqDesktop.73849bc4c83cc14948a14253d774d6fc.svg",
     "static/media/privacyPolicy.png": "/static/media/privacyPolicy.d28d32c55904ac9fc9d1.png",
     "static/media/iconBlack.svg": "/static/media/iconBlack.bc853aafa8d104e7e925bcf52320459c.svg",
     "static/media/iconWhite.svg": "/static/media/iconWhite.efc331e77ae3b17b4ba76f8c27739bf0.svg",
     "index.html": "/index.html",
     "static/media/getFetch.cjs": "/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.d179a2df.css.map": "/static/css/main.d179a2df.css.map",
-    "main.59c962bf.js.map": "/static/js/main.59c962bf.js.map",
+    "main.d346a746.js.map": "/static/js/main.d346a746.js.map",
     "498.39efee7c.chunk.js.map": "/static/js/498.39efee7c.chunk.js.map",
     "703.06b14e3e.chunk.js.map": "/static/js/703.06b14e3e.chunk.js.map",
     "606.b671d24d.chunk.js.map": "/static/js/606.b671d24d.chunk.js.map",
@@ -30,6 +31,6 @@
   },
   "entrypoints": [
     "static/css/main.d179a2df.css",
-    "static/js/main.59c962bf.js"
+    "static/js/main.d346a746.js"
   ]
 }
