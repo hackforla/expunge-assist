@@ -35,6 +35,10 @@ const useStyles = makeStyles<Theme>(
         marginTop: spacing(1),
         fontSize: typography.fontSize,
       },
+      formTitle: {
+        marginTop: '12px',
+        marginBottom: '10px',
+      },
     })
 );
 
@@ -168,7 +172,7 @@ const FormHeader = () => {
   return (
     <div className={classes.outerWrapper}>
       <div className={classes.formHeader}>
-        <h3 className="formTitle">{formTitle}</h3>
+        <h3 className={classes.formTitle}>{formTitle}</h3>
 
         <ProgressBar percentage={percentageComplete} />
       </div>
