@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
-import '../styles/App.css';
 
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
