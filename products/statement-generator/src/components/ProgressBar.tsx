@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) =>
     root: {
       borderRadius: 10,
       backgroundColor: '#FFFFFF',
-      height: '8px',
+      height: '6px',
       '& .MuiLinearProgress-bar': {
         borderRadius: 10,
         backgroundColor: theme.palette.primary.main,

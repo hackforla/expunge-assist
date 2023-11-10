@@ -35,8 +35,8 @@ const useStyles = makeStyles<Theme>(
         fontSize: typography.fontSize,
       },
       formTitle: {
-        marginTop: '12px',
-        marginBottom: '10px',
+        marginTop: '10px',
+        marginBottom: '8px',
       },
     })
 );
