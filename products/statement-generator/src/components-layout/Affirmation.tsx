@@ -33,7 +33,7 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
 );
 
 const Affirmation = () => {
-  const { currentStep, canShowAffirmation, goBackPage } = useContext(RoutingContext);
+  const { currentStep, goBackPage, appTheme } = useContext(RoutingContext);
   const { t } = useTranslation();
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
@@ -45,6 +45,8 @@ const Affirmation = () => {
   const classes = useStyles({ isActive: affirmationData.isActive });
 
   const image = affirmationData.image || AffirmationImage;
+  const backBtnTheme =
+    appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
 
   return (
     <Dialog
@@ -66,11 +68,16 @@ const Affirmation = () => {
       </div>
 
       <div
-        className={`${utilityClasses.buttonContainer} ${utilityClasses.justifyRight}`}
+        className={`${utilityClasses.buttonContainer} ${
+          utilityClasses.justifyRight
+        } ${
+          AppUrl.FinalizePreview === currentStep && utilityClasses.spaceBetween
+        }`}
       >
-        {AppUrl.FinalizePreview === currentStep ?? (
+        {AppUrl.FinalizePreview === currentStep && (
           <Button
             hasBackArrow
+            theme={backBtnTheme}
             onClick={() => goBackPage()}
             buttonText={t(affirmationData.backButtonText)}
           />
@@ -80,7 +87,6 @@ const Affirmation = () => {
           onClick={() => updateAffirmationData({ isActive: false })}
           buttonText={t(affirmationData.buttonText)}
         />
-        
       </div>
     </Dialog>
   );

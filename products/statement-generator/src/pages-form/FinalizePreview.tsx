@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +13,7 @@ import InfoBlock from 'components/InfoBlock';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import Download from 'pages-form/Download';
+import DoneImg from 'assets/done-img.svg';
 
 import { getPreviewStatement, PREVIEW_KEYS } from 'helpers/previewHelper';
 
@@ -49,11 +49,8 @@ function FinalizeStep() {
   const { t } = useTranslation();
   const classes = useStyles();
   const { formState } = useContext(FormStateContext);
-  const history = useHistory();
   const [disableNext, setDisableNext] = useState(true);
-  const { affirmationData, updateAffirmationData } = useContext(
-    AffirmationContext
-  );
+  const { updateAffirmationData } = useContext(AffirmationContext);
 
   return (
     <ContentContainer>
@@ -94,7 +91,16 @@ function FinalizeStep() {
 
       <FlowNavigation
         isNextDisabled={disableNext}
-        onNext={() => updateAffirmationData({ isActive: true })}
+        onNext={() =>
+          updateAffirmationData({
+            isActive: true,
+            titleText: 'affirmation_popup.done.titleText',
+            description: 'affirmation_popup.done.description',
+            buttonText: 'button.returnHome',
+            backButtonText: 'button.back',
+            image: DoneImg,
+          })
+        }
         nextButtonLabel="RETURN HOME"
       />
     </ContentContainer>

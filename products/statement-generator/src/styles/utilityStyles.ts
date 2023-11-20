@@ -84,6 +84,10 @@ const useUtilityStyles = makeStyles<Theme>(
       justifyRight: {
         justifyContent: 'flex-end',
       },
+      spaceBetween: {
+        justifyContent: 'space-between'
+      },
+
       flexGrow: {
         flex: '1 1 auto',
       },

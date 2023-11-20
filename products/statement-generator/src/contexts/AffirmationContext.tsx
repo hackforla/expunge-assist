@@ -35,15 +35,6 @@ const AFFIRMATION_DATA = {
     buttonText: 'button.letsContinue',
     image: AlmostThereImg,
   },
-  // TODO: work in progress
-  [AppUrl.FinalizePreview as string]: {
-    titleText: 'affirmation_popup.done.titleText',
-    description: 'affirmation_popup.done.description',
-    buttonText: 'button.returnHome',
-    backButtonText: 'button.back',
-    isActive: false,
-    image: AlmostThereImg,
-  },
 };
 
 interface AffirmationProviderProps {
