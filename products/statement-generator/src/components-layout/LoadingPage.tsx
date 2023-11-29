@@ -2,11 +2,13 @@ import React from 'react';
 import { useLottie } from 'lottie-react';
 import loadingData from '../assets/loading.json';
 import Logo from '../components/Logo';
+import ProgressCircle from '../components/ProgressCircle';
 
 const LoadingPage: React.FC = () => {
   const options = {
     animationData: loadingData,
     loop: true,
+    autoplay: true,
   };
 
   const { View } = useLottie(options);
@@ -20,7 +22,10 @@ const LoadingPage: React.FC = () => {
       <div style={logoContainerStyle}>
         <Logo />
       </div>
-      {View}
+      <div>{View}</div>
+      <div>
+        <ProgressCircle /> Loading
+      </div>
     </div>
   );
 };
