@@ -23,6 +23,7 @@
     "i18next-browser-languagedetector": "^6.1.0",
     "i18next-http-backend": "^1.4.5",
     "jspdf": "^2.3.1",
+    "lottie-react": "^2.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.8.12",
