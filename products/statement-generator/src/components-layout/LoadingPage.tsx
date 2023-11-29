@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLottie } from 'lottie-react';
 import loadingData from '../assets/loading.json';
+import Logo from '../components/Logo';
 
 const LoadingPage: React.FC = () => {
   const options = {
@@ -10,9 +11,15 @@ const LoadingPage: React.FC = () => {
 
   const { View } = useLottie(options);
 
+  const logoContainerStyle: React.CSSProperties = {
+    pointerEvents: 'none',
+  };
+
   return (
     <div>
-      <p>TESTING</p>
+      <div style={logoContainerStyle}>
+        <Logo />
+      </div>
       {View}
     </div>
   );
