@@ -24,7 +24,7 @@ const LoadingPage: React.FC = () => {
       </div>
       <div>{View}</div>
       <div>
-        <ProgressCircle /> Loading
+        <ProgressCircle /> <strong>Loading</strong>
       </div>
     </div>
   );
