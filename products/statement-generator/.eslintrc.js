@@ -45,9 +45,4 @@ module.exports = {
 
     'react/jsx-props-no-spreading': 'off',
   },
-  resolve: {
-    alias: {
-      '@mui/styled-engine': '@mui/styled-engine-sc',
-    },
-  },
 };
