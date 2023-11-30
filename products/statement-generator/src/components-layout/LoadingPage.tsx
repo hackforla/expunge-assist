@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLottie } from 'lottie-react';
 import loadingData from '../assets/loading.json';
-import Logo from '../components/Logo';
+import LoadingLogo from '../components/LoadingLogo';
 import ProgressCircle from '../components/ProgressCircle';
 
 const LoadingPage: React.FC = () => {
@@ -50,7 +50,7 @@ const LoadingPage: React.FC = () => {
   return (
     <div style={{ height: '100vh', position: 'relative' }}>
       <div style={logoContainerStyle}>
-        <Logo />
+        <LoadingLogo />
       </div>
       <div style={animationContainerStyle}>
         <div>{View}</div>

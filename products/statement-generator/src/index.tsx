@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import 'styles/cssreset.css';
 
 import App from './App';
+import LoadingPage from './components-layout/LoadingPage';
 import reportWebVitals from './reportWebVitals';
 
 import './moduleAugmentation';
@@ -11,7 +12,7 @@ import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingPage />}>
       <App />
     </Suspense>
   </React.StrictMode>,
