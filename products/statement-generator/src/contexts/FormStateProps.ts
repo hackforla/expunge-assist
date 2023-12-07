@@ -176,6 +176,7 @@ export const sampleStepState = {
     isRecoveryChecked: true,
     isSchoolChecked: false,
     isParentingChecked: false,
+    isSomethingElseChecked: false,
     isNoneChecked: false,
   },
   involvementJobState: {
@@ -214,6 +215,10 @@ export const sampleStepState = {
     clearRecordWhy: 'It will help me make a better life for me and my family.',
     clearRecordHow:
       'If my record no longer says I have poison resistance, I can be hired for other jobs.',
+  },
+  somethingElseState: {
+    activityName: 'Helping rescue cats',
+    activityDescription: 'Making sure they have a safe home',
   },
   statements: {
     heading: 'Today,\n\nDearly beloved,',
