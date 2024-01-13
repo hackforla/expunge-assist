@@ -176,7 +176,6 @@ export const sampleStepState = {
     isRecoveryChecked: true,
     isSchoolChecked: false,
     isParentingChecked: false,
-    isNoneChecked: false,
   },
   involvementJobState: {
     companyName: 'Cool Company',
