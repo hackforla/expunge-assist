@@ -101,7 +101,6 @@ export interface IInvolvementInitialState {
   isSomethingElseChecked?: boolean;
   isParentingChecked?: boolean;
   isCommunityChecked?: boolean;
-  isNoneChecked?: boolean;
 }
 // step 2a
 export interface IInvolvementJobState {
