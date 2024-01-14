@@ -165,56 +165,54 @@ export interface IStatementState {
 
 export const sampleStepState = {
   introduction: {
-    fullName: 'Daniel Xiao',
-    age: '29',
-    isVeteran: 'Yes',
+    fullName: process.env.REACT_APP_FULL_NAME,
+    age: process.env.REACT_APP_AGE,
+    isVeteran: process.env.REACT_APP_IS_VETERAN,
   },
   involvement: {
-    isJobChecked: true,
-    isCommunityChecked: true,
-    isRecoveryChecked: true,
-    isSchoolChecked: false,
-    isParentingChecked: false,
+    isJobChecked: process.env.REACT_APP_IS_JOB_CHECKED,
+    isRecoveryChecked: process.env.REACT_APP_IS_RECOVERY_CHECKED,
+    isSchoolChecked: process.env.REACT_APP_IS_SCHOOL_CHECKED,
+    isParentingChecked: process.env.REACT_APP_IS_PARENTING_CHECKED,
+    isCommunityChecked: process.env.REACT_APP_IS_COMMUNITY_CHECKED,
+    isSomethingElseChecked: process.env.REACT_APP_IS_SOMETHING_ELSE_CHECKED,
+    isUnemploymentChecked: process.env.REACT_APP_IS_UNEMPLOYMENT_CHECKED,
   },
   involvementJobState: {
-    companyName: 'Cool Company',
-    jobTitle: 'Big Boss',
-    jobDescription: 'I make the decisions on what the biggest cake should be.',
+    companyName: process.env.REACT_APP_COMPANY_NAME,
+    jobTitle: process.env.REACT_APP_JOB_TITLE,
+    jobDescription: process.env.REACT_APP_JOB_DESCRIPTION,
   },
   communityServiceState: {
-    organizationName: 'Taste Tester',
-    serviceDescription: 'I check cakes for poison. It is a very serious job.',
+    organizationName: process.env.REACT_APP_ORGANIZATION_NAME,
+    serviceDescription: process.env.REACT_APP_SERVICE_DESCRIPTION,
   },
   recoveryState: {
-    recoveryName: 'Addicts Anonymous',
-    recoveryDescription:
-      'I go to a meeting every week to help me overcome my addiction to poisons.',
+    recoveryName: process.env.REACT_APP_RECOVERY_NAME,
+    recoveryDescription: process.env.REACT_APP_RECOVERY_DESCRIPTION,
   },
   schoolState: {
-    schoolName: 'Villians University',
-    studyName: 'Chemistry',
-    passionDescription: 'I always liked looking at how chemicals affected ',
+    schoolName: process.env.REACT_APP_SCHOOL_NAME,
+    studyName: process.env.REACT_APP_STUDY_NAME,
+    passionDescription: process.env.REACT_APP_PASSION_DESCRIPTION,
   },
   parentingState: {
-    numberChildren: '2',
-    parentDescription:
-      'I have been taking care of my baby for over 11 years. I hope that this will be the best one ever.',
+    numberChildren: process.env.REACT_APP_NUMBER_CHILDREN,
+    parentDescription: process.env.REACT_APP_PARENT_DESCRIPTION,
   },
   unemploymentState: {
-    unemploymentDescription:
-      'I have not been able to find any jobs that are not about licking or eating things.',
+    unemploymentDescription: process.env.REACT_APP_UNEMPLOYMENT_DESCRIPTION,
   },
   goalsState: {
-    goals: 'I want to get a new job so I do not have to eat any more poison.',
-    goalsHow: 'I am learning new ways to work that go beyond eating.',
+    goals: process.env.REACT_APP_GOALS,
+    goalsHow: process.env.REACT_APP_GOALS_HOW,
   },
   whyState: {
-    clearRecordWhy: 'It will help me make a better life for me and my family.',
-    clearRecordHow:
-      'If my record no longer says I have poison resistance, I can be hired for other jobs.',
+    clearRecordWhy: process.env.REACT_APP_CLEAR_RECORD_WHY,
+    clearRecordHow: process.env.REACT_APP_CLEAR_RECORD_HOW,
   },
   statements: {
-    heading: 'Today,\n\nDearly beloved,',
-    closing: 'Yours Truly,\nDan the Man',
+    heading: process.env.REACT_APP_HEADING,
+    closing: process.env.REACT_APP_CLOSING,
   },
 };
