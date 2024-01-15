@@ -11,15 +11,17 @@ import { IInvolvementInitialState } from 'contexts/FormStateProps';
 import { getSectionTitle } from 'helpers/i18nHelper';
 
 const useStyles = makeStyles<Theme>(
-  ({ palette, breakpoints, globals, spacing, typography }) =>
+  ({ palette, globals, spacing, typography }) =>
     createStyles({
       outerWrapper: {
         background: palette.primary.lighter,
         borderBottomRightRadius: '64px',
         paddingBottom: spacing(1),
-
-        [breakpoints.up(breakpoints.values.md)]: {
-          borderBottomLeftRadius: '64px',
+        maxWidth: '80%',
+        marginLeft: '10%',
+        '@media (max-height:759px)': {
+          maxWidth: '100%',
+          marginLeft: '0%',
         },
       },
       formHeader: {
