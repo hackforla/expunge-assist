@@ -51,20 +51,28 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
     },
     alert: {
       background: '#f0f5ff',
-      display: 'flex',
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      gridTemplateAreas: `
+                          'icon title'
+                          'icon paragraph'
+                        `,
+      alignItems: 'start',
       boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
       borderRadius: '8px',
       padding: '16px',
       marginTop: '24px',
-      '& img': {
+      '& span': {
         height: '24px',
+        gridArea: 'icon',
+        marginRight: '8px',
       },
       '& h6': {
+        margin: 0,
         fontSize: '20px',
-        marginTop: '24px',
         fontWeight: 400,
         lineHeight: 1.2,
-        paddingBottom: '8px',
+        gridArea: 'title',
         [breakpoints.up(breakpoints.values.md)]: {
           fontSize: '20px',
           fontWeight: 400,
@@ -74,8 +82,9 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         marginTop: 0,
         lineHeight: 1.175,
         letterSpacing: '0.005em',
+        gridArea: 'paragraph',
         [breakpoints.up(breakpoints.values.md)]: {
-          marginTop: '8px',
+          marginTop: 0,
         },
       },
     },
@@ -112,7 +121,9 @@ const BeforeYouBegin = () => {
         }}
       />
       <div className={classes.alert}>
-        <img src={alert} alt="" />
+        <span>
+          <img src={alert} alt="alert icon" />
+        </span>
         <h6>{t('before_you_begin_page.sectionTitle4')}</h6>
         <p
           /* eslint-disable-next-line  react/no-danger */
