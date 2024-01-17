@@ -56,6 +56,10 @@ interface ILogoComponent {
 function TextLogo({ theme, footer }: ILogoComponent) {
   const classes = useStyles({ pageTheme: theme, footer });
 
+  if (footer) {
+    return null;
+  }
+
   return (
     <Link to="/" className={classes.logoLink}>
       <span>Expunge</span>
