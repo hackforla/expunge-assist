@@ -4,7 +4,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
-import alert from '../assets/Alert.png';
+import ErrorIcon from '@material-ui/icons/Error';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
@@ -63,7 +63,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       padding: '16px',
       marginTop: '24px',
       '& span': {
-        height: '24px',
+        height: 'auto',
+        width: '24px',
         gridArea: 'icon',
         marginRight: '8px',
       },
@@ -122,7 +123,7 @@ const BeforeYouBegin = () => {
       />
       <div className={classes.alert}>
         <span>
-          <img src={alert} alt="alert icon" />
+          <ErrorIcon style={{ color: '#2F6FED' }} />
         </span>
         <h6>{t('before_you_begin_page.sectionTitle4')}</h6>
         <p
