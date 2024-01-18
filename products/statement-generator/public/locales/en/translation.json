@@ -50,9 +50,9 @@
     "sectionTitle2": "Keep your browser open",
     "sectionParagraph2": "This website doesn’t save anything you write, so be sure to keep your browser open until you are done. You can download your completed letter at the end.",
     "sectionTitle3": "Using this site",
-    "sectionParagraph3": "Remember to read our <a target='_blank' href='/#/privacy-policy'>Privacy Policy</a> and <a target='_blank' href='/#/terms-of-use'>Terms of Use</a>.",
+    "sectionParagraph3": "Remember to read our <a target='_blank' href='/privacy-policy'>Privacy Policy</a> and <a target='_blank' href='/terms-of-use'>Terms of Use</a>.",
     "sectionTitle4": "Need help?",
-    "sectionParagraph4": "If you have questions at any point, you can always check our <a target='_blank' href='/#/faq'>FAQ</a>."
+    "sectionParagraph4": "If you have questions at any point, you can always check our <a target='_blank' href='/faq'>FAQ</a>."
   },
   "welcome_page": {
     "titleText": "Welcome",
