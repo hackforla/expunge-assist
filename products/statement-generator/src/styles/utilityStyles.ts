@@ -47,13 +47,6 @@ const useUtilityStyles = makeStyles<Theme>(
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
-        [breakpoints.down('sm')]: {
-          marginTop: 40,
-        },
-
-        [breakpoints.down('xs')]: {
-          marginTop: 40,
-        },
       },
 
       contentContainer: {

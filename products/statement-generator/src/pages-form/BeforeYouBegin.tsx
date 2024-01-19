@@ -62,6 +62,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       borderRadius: '8px',
       padding: '16px',
       marginTop: '24px',
+      marginBottom: '40px',
       '& span': {
         height: 'auto',
         width: '24px',
