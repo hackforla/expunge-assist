@@ -45,6 +45,11 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       [breakpoints.up(breakpoints.values.md)]: {
         marginLeft: 'auto',
       },
+      // Add custom media query for screen sizes between 640px and 767px
+      '@media (min-width: 640px) and (max-width: 767px)': {
+        flexDirection: 'column',
+        // Any other styles you want to apply for this range
+      },
 
       [breakpoints.down(breakpoints.values.sm)]: {
         flexDirection: 'column',
@@ -92,6 +97,9 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       fontWeight: 300,
 
       [breakpoints.down(breakpoints.values.sm)]: {
+        display: 'none',
+      },
+      '@media (min-width: 640px) and (max-width: 767px)': {
         display: 'none',
       },
     },
