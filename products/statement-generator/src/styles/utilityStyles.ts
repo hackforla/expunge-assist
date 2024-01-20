@@ -48,7 +48,6 @@ const useUtilityStyles = makeStyles<Theme>(
         flexDirection: 'row',
         width: '100%',
       },
-
       contentContainer: {
         maxWidth: globals.contentWidth,
         minWidth: '300px',
