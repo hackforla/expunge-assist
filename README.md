@@ -9,7 +9,7 @@ Please refer to the [wiki](https://github.com/hackforla/expunge-assist/wiki) to 
 3. Team Resources/Bookmarks
 4. Meeting Schedules
 
-The [Expunge Assist site](https://expungeassist.org/#/) is hosted on [GitHub pages](https://pages.github.com/).
+The [Expunge Assist site](https://expungeassist.org/) is hosted on [GitHub pages](https://pages.github.com/).
 
 ## Contributing
 

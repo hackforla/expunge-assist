@@ -203,6 +203,10 @@ export const sampleStepState = {
   unemploymentState: {
     unemploymentDescription: process.env.REACT_APP_UNEMPLOYMENT_DESCRIPTION,
   },
+  somethingElseState: {
+    activityName: process.env.REACT_APP_ACTIVITY_NAME,
+    activityDescription: process.env.REACT_APP_ACTIVITY_DESCRIPTION,
+  },
   goalsState: {
     goals: process.env.REACT_APP_GOALS,
     goalsHow: process.env.REACT_APP_GOALS_HOW,
