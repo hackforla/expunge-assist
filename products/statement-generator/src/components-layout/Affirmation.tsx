@@ -23,17 +23,28 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
       background: palette.primary.lighter,
       padding: spacing(2),
     },
+    doneAffirmationConatiner: {
+      background: palette.primary.lighter,
+      borderRadius: '23px',
+      maxWidth: '35rem',
+    },
     messageContainer: {
       marginTop: spacing(2),
     },
+    doneMessageContainer: {
+      margin: spacing(2),
+    },
     titleText: {
       fontSize: '2rem',
+    },
+    buttonSpacing: {
+      padding: spacing(2),
     },
   })
 );
 
 const Affirmation = () => {
-  const { currentStep, goBackPage, appTheme } = useContext(RoutingContext);
+  const { currentStep, appTheme } = useContext(RoutingContext);
   const { t } = useTranslation();
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
@@ -50,9 +61,15 @@ const Affirmation = () => {
 
   return (
     <Dialog
-      classes={{
-        paper: classes.affirmationContainer,
-      }}
+      classes={
+        AppUrl.FinalizePreview === currentStep
+          ? {
+              paper: classes.doneAffirmationConatiner,
+            }
+          : {
+              paper: classes.affirmationConatiner,
+            }
+      }
       fullWidth
       disableScrollLock
       open={affirmationData.isActive}
@@ -62,7 +79,13 @@ const Affirmation = () => {
     >
       <img src={image} alt="affirmation illustration" />
 
-      <div className={classes.messageContainer}>
+      <div
+        className={
+          AppUrl.FinalizePreview === currentStep
+            ? classes.doneMessageContainer
+            : classes.messageContainer
+        }
+      >
         <h2 className={classes.titleText}>{t(affirmationData.titleText)}</h2>
         <p>{t(affirmationData.description)}</p>
       </div>
@@ -72,13 +95,13 @@ const Affirmation = () => {
           utilityClasses.justifyRight
         } ${
           AppUrl.FinalizePreview === currentStep && utilityClasses.spaceBetween
-        }`}
+        } ${classes.buttonSpacing}`}
       >
         {AppUrl.FinalizePreview === currentStep && (
           <Button
             hasBackArrow
             theme={backBtnTheme}
-            onClick={() => goBackPage()}
+            onClick={() => updateAffirmationData({ isActive: false })}
             buttonText={t(affirmationData.backButtonText)}
           />
         )}
