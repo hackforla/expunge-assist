@@ -4,6 +4,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
+import ErrorIcon from '@material-ui/icons/Error';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
@@ -48,6 +49,47 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         fontStyle: 'italic',
       },
     },
+    alert: {
+      background: '#f0f5ff',
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      gridTemplateAreas: `
+                          'icon title'
+                          'icon paragraph'
+                        `,
+      alignItems: 'start',
+      boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
+      borderRadius: '8px',
+      padding: '16px',
+      marginTop: '24px',
+      marginBottom: '40px',
+      '& span': {
+        height: 'auto',
+        width: '24px',
+        gridArea: 'icon',
+        marginRight: '8px',
+      },
+      '& h6': {
+        margin: 0,
+        fontSize: '20px',
+        fontWeight: 400,
+        lineHeight: 1.2,
+        gridArea: 'title',
+        [breakpoints.up(breakpoints.values.md)]: {
+          fontSize: '20px',
+          fontWeight: 400,
+        },
+      },
+      '& p': {
+        marginTop: 0,
+        lineHeight: 1.175,
+        letterSpacing: '0.005em',
+        gridArea: 'paragraph',
+        [breakpoints.up(breakpoints.values.md)]: {
+          marginTop: 0,
+        },
+      },
+    },
   })
 );
 
@@ -80,13 +122,18 @@ const BeforeYouBegin = () => {
           __html: t('before_you_begin_page.sectionParagraph3'),
         }}
       />
-      <h6>{t('before_you_begin_page.sectionTitle4')}</h6>
-      <p
-        /* eslint-disable-next-line  react/no-danger */
-        dangerouslySetInnerHTML={{
-          __html: t('before_you_begin_page.sectionParagraph4'),
-        }}
-      />
+      <div className={classes.alert}>
+        <span>
+          <ErrorIcon style={{ color: '#2F6FED' }} />
+        </span>
+        <h6>{t('before_you_begin_page.sectionTitle4')}</h6>
+        <p
+          /* eslint-disable-next-line  react/no-danger */
+          dangerouslySetInnerHTML={{
+            __html: t('before_you_begin_page.sectionParagraph4'),
+          }}
+        />
+      </div>
       <FlowNavigation />
     </ContentContainer>
   );
