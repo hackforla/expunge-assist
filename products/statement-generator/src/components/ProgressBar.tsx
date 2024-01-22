@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) =>
       borderRadius: 10,
       backgroundColor: '#FFFFFF',
       height: '8px',
-      '@media (min-height: 749px)': {
+      '@media (max-width: 400px)': {
         height: '6px',
       },
       '& .MuiLinearProgress-bar': {
