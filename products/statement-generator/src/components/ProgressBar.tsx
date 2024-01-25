@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) =>
       borderRadius: 10,
       backgroundColor: '#FFFFFF',
       height: '8px',
-      '@media (max-width: 400px)': {
+      
+      [theme.breakpoints.down(theme.breakpoints.values.md)]: {
         height: '6px',
       },
       '& .MuiLinearProgress-bar': {

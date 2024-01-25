@@ -17,13 +17,11 @@ const useStyles = makeStyles<Theme>(
         background: palette.primary.lighter,
         borderBottomRightRadius: '64px',
         paddingBottom: spacing(1),
+        maxWidth: '80%',
+        marginLeft: '10%',
 
         [breakpoints.down(breakpoints.values.md)]: {
           borderBottomLeftRadius: '0px',
-        },
-        maxWidth: '80%',
-        marginLeft: '10%',
-        '@media (max-width:400px)': {
           maxWidth: '100%',
           marginLeft: '0%',
         },
