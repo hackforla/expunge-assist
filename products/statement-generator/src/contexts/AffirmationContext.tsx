@@ -45,6 +45,7 @@ interface AffirmationProps {
   isActive: boolean;
   titleText: string;
   buttonText: string;
+  backButtonText?: string;
   description: string;
   image?: string;
 }
