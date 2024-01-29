@@ -4,6 +4,8 @@
     "begin": "Begin",
     "next": "Next",
     "letsContinue": "Let's Continue",
+    "returnHome": "RETURN HOME",
+    "back": "BACK",
     "cancel": "Cancel",
     "save": "Save",
     "yes": "Yes",
@@ -93,6 +95,10 @@
     "step5": {
       "titleText": "Almost done",
       "description": "Just one more step. Next, you can preview your entire letter and make changes.\n\nWhen you are done, email or download a copy of your letter."
+    },
+    "done": {
+      "titleText": "Done",
+      "description": "You have downloaded your declaration letter. Select \"Back\" to reuse the tool or \"Return Home\" to exit and erase your data."
     }
   },
   "sections": {
