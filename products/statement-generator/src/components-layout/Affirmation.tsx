@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Dialog from '@material-ui/core/Dialog';
-
+import { useHistory } from 'react-router-dom';
 import AffirmationImage from 'assets/affirmation-img.svg';
-
+import { defaultStepState } from 'contexts/FormStateProps';
 import Button from 'components/Button';
 
 import { AffirmationContext } from 'contexts/AffirmationContext';
@@ -12,6 +12,7 @@ import { AffirmationContext } from 'contexts/AffirmationContext';
 import useUtilityStyles from 'styles/utilityStyles';
 import RoutingContext from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
+import FormStateContext from 'contexts/FormStateContext';
 
 interface CustomStyleProps {
   isActive: boolean;
@@ -23,7 +24,7 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
       background: palette.primary.lighter,
       padding: spacing(2),
     },
-    doneAffirmationConatiner: {
+    doneAffirmationContainer: {
       background: palette.primary.lighter,
       borderRadius: '23px',
       maxWidth: '35rem',
@@ -45,10 +46,18 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
 
 const Affirmation = () => {
   const { currentStep, appTheme } = useContext(RoutingContext);
+  const { updateStepToForm } = useContext(FormStateContext);
+  const history = useHistory();
   const { t } = useTranslation();
   const { affirmationData, updateAffirmationData } = useContext(
     AffirmationContext
   );
+  const returnHome = () => {
+    const path = AppUrl.Landing;
+    updateAffirmationData({ isActive: false });
+    updateStepToForm(defaultStepState);
+    history.push(path);
+  };
 
   const utilityClasses = useUtilityStyles({
     pageTheme: 'transparent',
@@ -64,10 +73,10 @@ const Affirmation = () => {
       classes={
         AppUrl.FinalizePreview === currentStep
           ? {
-              paper: classes.doneAffirmationConatiner,
+              paper: classes.doneAffirmationContainer,
             }
           : {
-              paper: classes.affirmationConatiner,
+              paper: classes.affirmationContainer,
             }
       }
       fullWidth
@@ -107,7 +116,11 @@ const Affirmation = () => {
         )}
         <Button
           hasForwardArrow
-          onClick={() => updateAffirmationData({ isActive: false })}
+          onClick={() =>
+            AppUrl.FinalizePreview === currentStep
+              ? returnHome()
+              : updateAffirmationData({ isActive: false })
+          }
           buttonText={t(affirmationData.buttonText)}
         />
       </div>
