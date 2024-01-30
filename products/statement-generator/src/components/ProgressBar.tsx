@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) =>
       borderRadius: 10,
       backgroundColor: '#FFFFFF',
       height: '8px',
-      
+
       [theme.breakpoints.down(theme.breakpoints.values.md)]: {
         height: '6px',
       },
