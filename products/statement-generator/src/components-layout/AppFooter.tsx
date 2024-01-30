@@ -43,12 +43,16 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     rightContainer: {
       display: 'flex',
       [breakpoints.up(breakpoints.values.md)]: {
+        flexDirection: 'row',
         marginLeft: 'auto',
       },
-      // Add custom media query for screen sizes between 640px and 767px
-      '@media (min-width: 640px) and (max-width: 767px)': {
+
+      [breakpoints.between('sm', 'md')]: {
+        flexDirection: 'row',
+      },
+
+      [breakpoints.between('xs', 'sm')]: {
         flexDirection: 'column',
-        // Any other styles you want to apply for this range
       },
 
       [breakpoints.down(breakpoints.values.sm)]: {
@@ -96,10 +100,15 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       margin: 'auto 0',
       fontWeight: 300,
 
-      [breakpoints.down(breakpoints.values.sm)]: {
+      [breakpoints.between('md', 'lg')]: {
+        display: 'flex',
+      },
+
+      [breakpoints.between('xs', 'sm')]: {
         display: 'none',
       },
-      '@media (min-width: 640px) and (max-width: 767px)': {
+
+      [breakpoints.down(breakpoints.values.sm)]: {
         display: 'none',
       },
     },
