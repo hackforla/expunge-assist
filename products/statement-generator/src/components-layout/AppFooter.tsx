@@ -43,19 +43,10 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     rightContainer: {
       display: 'flex',
       [breakpoints.up(breakpoints.values.md)]: {
-        flexDirection: 'row',
         marginLeft: 'auto',
       },
 
-      [breakpoints.between('sm', 'md')]: {
-        flexDirection: 'row',
-      },
-
-      [breakpoints.between('xs', 'sm')]: {
-        flexDirection: 'column',
-      },
-
-      [breakpoints.down(breakpoints.values.sm)]: {
+      [breakpoints.down(breakpoints.values.md)]: {
         flexDirection: 'column',
       },
     },
@@ -100,15 +91,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       margin: 'auto 0',
       fontWeight: 300,
 
-      [breakpoints.between('md', 'lg')]: {
-        display: 'flex',
-      },
-
-      [breakpoints.between('xs', 'sm')]: {
-        display: 'none',
-      },
-
-      [breakpoints.down(breakpoints.values.sm)]: {
+      [breakpoints.down(breakpoints.values.md)]: {
         display: 'none',
       },
     },
