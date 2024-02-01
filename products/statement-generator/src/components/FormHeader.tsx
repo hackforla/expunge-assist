@@ -17,9 +17,13 @@ const useStyles = makeStyles<Theme>(
         background: palette.primary.lighter,
         borderBottomRightRadius: '64px',
         paddingBottom: spacing(1),
+        maxWidth: '80%',
+        marginLeft: '10%',
 
-        [breakpoints.up(breakpoints.values.md)]: {
-          borderBottomLeftRadius: '64px',
+        [breakpoints.down(breakpoints.values.md)]: {
+          borderBottomLeftRadius: '0px',
+          maxWidth: '100%',
+          marginLeft: '0%',
         },
       },
       formHeader: {
@@ -33,6 +37,10 @@ const useStyles = makeStyles<Theme>(
         color: palette.common.grey,
         marginTop: spacing(1),
         fontSize: typography.fontSize,
+      },
+      formTitle: {
+        marginTop: '10px',
+        marginBottom: '8px',
       },
     })
 );
@@ -173,7 +181,7 @@ const FormHeader = () => {
   return (
     <div className={classes.outerWrapper}>
       <div className={classes.formHeader}>
-        <h3>{formTitle}</h3>
+        <h3 className={classes.formTitle}>{formTitle}</h3>
 
         <ProgressBar percentage={percentageComplete} />
       </div>
