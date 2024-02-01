@@ -46,7 +46,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
         marginLeft: 'auto',
       },
 
-      [breakpoints.down(breakpoints.values.sm)]: {
+      [breakpoints.down(breakpoints.values.md)]: {
         flexDirection: 'column',
       },
     },
@@ -91,7 +91,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       margin: 'auto 0',
       fontWeight: 300,
 
-      [breakpoints.down(breakpoints.values.sm)]: {
+      [breakpoints.down(breakpoints.values.md)]: {
         display: 'none',
       },
     },
@@ -144,10 +144,6 @@ const AppFooter: React.FC = () => {
       <div className={`${classes.appFooter} ${utilityClasses.widePage}`}>
         <div className={classes.leftContainer}>
           <Logo footer />
-
-          <div className={classes.textContainer}>
-            <p>Contact: info@expungeassist.org</p>
-          </div>
         </div>
 
         <div className={classes.rightContainer}>
