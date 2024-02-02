@@ -80,7 +80,6 @@ const Affirmation = () => {
             }
       }
       fullWidth
-      disableScrollLock
       open={affirmationData.isActive}
       onClose={() => updateAffirmationData({ isActive: false })}
       aria-labelledby="alert-dialog-title"
