@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -19,6 +19,8 @@ import {
   PREVIEW_MAP,
   PREVIEW_KEYS,
 } from 'helpers/previewHelper';
+
+import { AffirmationContext } from 'contexts/AffirmationContext';
 
 const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
@@ -45,6 +47,16 @@ function FinalizeForm() {
   const { t } = useTranslation();
   const classes = useStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
+
+  const { affirmationData } = useContext(AffirmationContext);
+
+  const finalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!affirmationData.isActive) {
+      finalRef.current?.focus();
+    }
+  }, [affirmationData.isActive]);
 
   function updatePreviewItem(newStatement: string, stateKey: string) {
     updateStepToForm({

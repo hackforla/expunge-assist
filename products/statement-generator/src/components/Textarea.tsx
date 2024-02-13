@@ -78,45 +78,51 @@ interface TextFieldProps {
   rows?: number;
 }
 
-const MultilineTextFields: React.FC<TextFieldProps> = ({
-  handleChange,
-  id,
-  label,
-  placeholder,
-  defaultValue,
-  disabled = false,
-  value,
-  rows,
-}) => {
-  const utilityClasses = useUtilityStyles();
-  const classes = useStyles();
+const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
+  (
+    {
+      handleChange,
+      id,
+      label,
+      placeholder,
+      defaultValue,
+      disabled = false,
+      value,
+      rows,
+    },
+    ref
+  ) => {
+    const utilityClasses = useUtilityStyles();
+    const classes = useStyles();
 
-  return (
-    <div className={utilityClasses.formInput}>
-      {label && (
-        <InputLabel htmlFor={id} disabled={disabled}>
-          {label}
-        </InputLabel>
-      )}
+    return (
+      <div className={utilityClasses.formInput}>
+        {label && (
+          <InputLabel htmlFor={id} disabled={disabled}>
+            {label}
+          </InputLabel>
+        )}
 
-      <TextField
-        id={id}
-        className={classes.textfieldComponent}
-        onChange={handleChange}
-        placeholder={placeholder}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        value={value}
-        rows={rows}
-        multiline
-        fullWidth
-        variant="outlined"
-        InputProps={{
-          notched: false,
-        }}
-      />
-    </div>
-  );
-};
+        <TextField
+          id={id}
+          className={classes.textfieldComponent}
+          onChange={handleChange}
+          placeholder={placeholder}
+          defaultValue={defaultValue}
+          disabled={disabled}
+          value={value}
+          rows={rows}
+          multiline
+          fullWidth
+          variant="outlined"
+          InputProps={{
+            notched: false,
+          }}
+          inputRef={ref}
+        />
+      </div>
+    );
+  }
+);
 
 export default MultilineTextFields;
