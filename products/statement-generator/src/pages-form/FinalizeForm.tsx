@@ -55,7 +55,7 @@ function FinalizeForm() {
   useEffect(() => {
     if (!affirmationData.isActive) {
       const firstFocusableElement = previewsContainerRef.current?.querySelector(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="0"])'
       );
 
       // Use type assertion to tell TypeScript this is an HTMLElement
