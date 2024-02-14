@@ -58,7 +58,7 @@ const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
         ref={ref}
         className={`${classes.root} ${className}`}
         style={style}
-        tabIndex={-1} // Make this div focusable
+        tabIndex={-1}
       >
         <div className={classes.previewHeader}>
           <h3>{nameOfStep}</h3>
@@ -72,10 +72,9 @@ const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
                 role="button"
                 aria-label="Edit content"
                 onKeyDown={(e) => {
-                  // Check if the key pressed is Enter or Spacebar
                   if (e.key === 'Enter' || e.key === ' ') {
                     handleClick();
-                    e.preventDefault(); // Prevent the default action to avoid scrolling on Spacebar press
+                    e.preventDefault();
                   }
                 }}
               />

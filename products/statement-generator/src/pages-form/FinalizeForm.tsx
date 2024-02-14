@@ -58,7 +58,6 @@ function FinalizeForm() {
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="0"])'
       );
 
-      // Use type assertion to tell TypeScript this is an HTMLElement
       if (firstFocusableElement instanceof HTMLElement) {
         firstFocusableElement.focus();
       }
