@@ -50,11 +50,18 @@ function FinalizeForm() {
 
   const { affirmationData } = useContext(AffirmationContext);
 
-  const finalRef = useRef<HTMLDivElement>(null);
+  const previewsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!affirmationData.isActive) {
-      finalRef.current?.focus();
+      const firstFocusableElement = previewsContainerRef.current?.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+
+      // Use type assertion to tell TypeScript this is an HTMLElement
+      if (firstFocusableElement instanceof HTMLElement) {
+        firstFocusableElement.focus();
+      }
     }
   }, [affirmationData.isActive]);
 
@@ -100,7 +107,7 @@ function FinalizeForm() {
         Editing final letter
       </div>
 
-      {previewComponents}
+      <div ref={previewsContainerRef}>{previewComponents}</div>
 
       <TextPreview
         className={classes.previewItem}

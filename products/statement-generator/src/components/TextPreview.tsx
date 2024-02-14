@@ -66,8 +66,18 @@ const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
           <div className={classes.actionHeader}>
             {!isEditing && (
               <CreateIcon
-                className={utilityClasses.iconButton}
+                className={`${utilityClasses.iconButton} create-icon-focusable`}
                 onClick={handleClick}
+                tabIndex={0}
+                role="button"
+                aria-label="Edit content"
+                onKeyDown={(e) => {
+                  // Check if the key pressed is Enter or Spacebar
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleClick();
+                    e.preventDefault(); // Prevent the default action to avoid scrolling on Spacebar press
+                  }
+                }}
               />
             )}
           </div>
