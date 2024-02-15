@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
@@ -41,6 +42,9 @@ const useStyles = makeStyles<Theme>(
       formTitle: {
         marginTop: '10px',
         marginBottom: '8px',
+      },
+      hidden: {
+        display: 'none',
       },
     })
 );
@@ -127,6 +131,12 @@ const FormHeader = () => {
     formState: { involvement },
   } = useContext(FormStateContext);
 
+  const location = useLocation();
+  const isFormRoute =
+    location.pathname.startsWith('/form/') || location.pathname === '/form';
+
+  const headerClass = isFormRoute ? '' : classes.hidden;
+
   const isFrozen = currentStep === AppUrl.Involvement;
 
   const stepNum = convertStepToNum(currentStep, involvement);
@@ -179,7 +189,7 @@ const FormHeader = () => {
   }
 
   return (
-    <div className={classes.outerWrapper}>
+    <div className={`${classes.outerWrapper} ${headerClass}`}>
       <div className={classes.formHeader}>
         <h3 className={classes.formTitle}>{formTitle}</h3>
 
