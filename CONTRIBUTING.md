@@ -31,7 +31,6 @@ Join the following Slack channels:
 
 - Dev Meeting: Thursdays 6pm-6:30pm PST
 - All Teams Meeting: First Monday of the Month from 5-6pm PST
-- Dev/Design/Product Check-in: Mondays 5:30-6pm PST (as needed)
 
 ### Local Setup
 
