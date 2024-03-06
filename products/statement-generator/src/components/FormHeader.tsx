@@ -43,9 +43,6 @@ const useStyles = makeStyles<Theme>(
         marginTop: '10px',
         marginBottom: '8px',
       },
-      hidden: {
-        display: 'none',
-      },
     })
 );
 
@@ -135,8 +132,6 @@ const FormHeader = () => {
   const isFormRoute =
     location.pathname.startsWith('/form/') || location.pathname === '/form';
 
-  const headerClass = isFormRoute ? '' : classes.hidden;
-
   const isFrozen = currentStep === AppUrl.Involvement;
 
   const stepNum = convertStepToNum(currentStep, involvement);
@@ -184,12 +179,12 @@ const FormHeader = () => {
 
   const formTitle = getSectionTitle(currentStep);
 
-  if (stepNum === 0) {
+  if (!isFormRoute || stepNum === 0) {
     return null;
   }
 
   return (
-    <div className={`${classes.outerWrapper} ${headerClass}`}>
+    <div className={classes.outerWrapper}>
       <div className={classes.formHeader}>
         <h3 className={classes.formTitle}>{formTitle}</h3>
 
