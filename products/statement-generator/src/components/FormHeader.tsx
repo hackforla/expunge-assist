@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
 
 import RoutingContext from 'contexts/RoutingContext';
@@ -127,6 +128,10 @@ const FormHeader = () => {
     formState: { involvement },
   } = useContext(FormStateContext);
 
+  const location = useLocation();
+  const isFormRoute =
+    location.pathname.startsWith('/form/') || location.pathname === '/form';
+
   const isFrozen = currentStep === AppUrl.Involvement;
 
   const stepNum = convertStepToNum(currentStep, involvement);
@@ -174,7 +179,7 @@ const FormHeader = () => {
 
   const formTitle = getSectionTitle(currentStep);
 
-  if (stepNum === 0) {
+  if (!isFormRoute || stepNum === 0) {
     return null;
   }
 
