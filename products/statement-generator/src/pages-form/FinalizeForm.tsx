@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -19,6 +19,8 @@ import {
   PREVIEW_MAP,
   PREVIEW_KEYS,
 } from 'helpers/previewHelper';
+
+import { AffirmationContext } from 'contexts/AffirmationContext';
 
 const useStyles = makeStyles(({ palette, spacing }) =>
   createStyles({
@@ -45,6 +47,22 @@ function FinalizeForm() {
   const { t } = useTranslation();
   const classes = useStyles();
   const { formState, updateStepToForm } = useContext(FormStateContext);
+
+  const { affirmationData } = useContext(AffirmationContext);
+
+  const previewsContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!affirmationData.isActive) {
+      const firstFocusableElement = previewsContainerRef.current?.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="0"])'
+      );
+
+      if (firstFocusableElement instanceof HTMLElement) {
+        firstFocusableElement.focus();
+      }
+    }
+  }, [affirmationData.isActive]);
 
   function updatePreviewItem(newStatement: string, stateKey: string) {
     updateStepToForm({
@@ -88,7 +106,7 @@ function FinalizeForm() {
         Editing final letter
       </div>
 
-      {previewComponents}
+      <div ref={previewsContainerRef}>{previewComponents}</div>
 
       <TextPreview
         className={classes.previewItem}

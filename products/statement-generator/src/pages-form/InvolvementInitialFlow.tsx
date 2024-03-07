@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -6,6 +6,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
+
+import { AffirmationContext } from 'contexts/AffirmationContext';
 
 import Checkbox from 'components/Checkbox';
 
@@ -33,6 +35,14 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
 function InvolvementInitialFlow() {
   const { t } = useTranslation();
   const classes = useStyles();
+  const { affirmationData } = useContext(AffirmationContext);
+  const firstCheckboxRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!affirmationData.isActive) {
+      firstCheckboxRef.current?.focus();
+    }
+  }, [affirmationData.isActive]);
 
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
@@ -73,6 +83,7 @@ function InvolvementInitialFlow() {
           </FormLabel>
           <FormGroup id="involvement-checkboxes">
             <Checkbox
+              ref={firstCheckboxRef}
               useTeal
               id="isJobChecked"
               checked={isJobChecked}

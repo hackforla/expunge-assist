@@ -44,29 +44,29 @@ interface IInnerCheckboxProps extends CheckboxProps {
   useTeal?: boolean;
 }
 
-const InnerCheckbox = ({
-  checked,
-  onChange,
-  id,
-  useTeal,
-}: IInnerCheckboxProps) => {
-  const classes = useStyles({ theme: useTeal ? 'teal' : 'black' });
-  return (
-    <Checkbox classes={classes} checked={checked} onChange={onChange} id={id} />
-  );
-};
+const InnerCheckbox = React.forwardRef<HTMLInputElement, IInnerCheckboxProps>(
+  ({ checked, onChange, id, useTeal }, ref) => {
+    const classes = useStyles({ theme: useTeal ? 'teal' : 'black' });
+    return (
+      <Checkbox
+        classes={classes}
+        checked={checked}
+        onChange={onChange}
+        id={id}
+        inputRef={ref}
+      />
+    );
+  }
+);
 
 interface IWrapperCheckboxProps extends IInnerCheckboxProps {
   label: string;
 }
 
-const CheckboxLabels: React.FC<IWrapperCheckboxProps> = ({
-  label,
-  checked,
-  onChange,
-  id,
-  useTeal = false,
-}) => {
+const CheckboxLabels = React.forwardRef<
+  HTMLInputElement,
+  IWrapperCheckboxProps
+>(({ label, checked, onChange, id, useTeal = false }, ref) => {
   return (
     <FormControlLabel
       control={
@@ -75,11 +75,12 @@ const CheckboxLabels: React.FC<IWrapperCheckboxProps> = ({
           id={id}
           checked={checked}
           onChange={onChange}
+          ref={ref}
         />
       }
       label={label}
     />
   );
-};
+});
 
 export default CheckboxLabels;
