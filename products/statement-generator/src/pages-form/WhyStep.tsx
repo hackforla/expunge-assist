@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -9,10 +9,22 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
+import { AffirmationContext } from 'contexts/AffirmationContext';
+
 function WhyStep() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { clearRecordWhy, clearRecordHow } = formState.whyState;
+
+  const { affirmationData } = useContext(AffirmationContext);
+
+  const whyRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!affirmationData.isActive) {
+      whyRef.current?.focus();
+    }
+  }, [affirmationData.isActive]);
 
   const clearRecordWhyValid = clearRecordWhy !== '';
   const clearRecordHowValid = clearRecordHow !== '';
@@ -30,6 +42,7 @@ function WhyStep() {
     <ContentContainer>
       <FormContainer>
         <Textarea
+          ref={whyRef}
           id="clearRecordWhy"
           label={t('why_form.clearRecordWhy_input_label')}
           placeholder={t('why_form.clearRecordWhy_input_placeholder')}

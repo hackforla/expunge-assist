@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 
 import { makeStyles, createStyles } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
@@ -43,47 +43,57 @@ interface ComponentProps {
   style?: object;
 }
 
-const TextPreview = ({
-  onSaveClick,
-  content,
-  nameOfStep,
-  className = '',
-  style,
-}: ComponentProps) => {
-  const classes = useStyles();
-  const utilityClasses = useUtilityStyles();
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
+  ({ onSaveClick, content, nameOfStep, className = '', style }, ref) => {
+    const classes = useStyles();
+    const utilityClasses = useUtilityStyles();
+    const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const handleClick = () => {
-    setIsEditing(true);
-  };
+    const handleClick = () => {
+      setIsEditing(true);
+    };
 
-  return (
-    <div className={`${classes.root} ${className}`} style={style}>
-      <div className={classes.previewHeader}>
-        <h3>{nameOfStep}</h3>
+    return (
+      <div
+        ref={ref}
+        className={`${classes.root} ${className}`}
+        style={style}
+        tabIndex={-1}
+      >
+        <div className={classes.previewHeader}>
+          <h3>{nameOfStep}</h3>
 
-        <div className={classes.actionHeader}>
-          {!isEditing && (
-            <CreateIcon
-              className={utilityClasses.iconButton}
-              onClick={handleClick}
-            />
-          )}
+          <div className={classes.actionHeader}>
+            {!isEditing && (
+              <CreateIcon
+                className={`${utilityClasses.iconButton} create-icon-focusable`}
+                onClick={handleClick}
+                tabIndex={0}
+                role="button"
+                aria-label="Edit content"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleClick();
+                    e.preventDefault();
+                  }
+                }}
+              />
+            )}
+          </div>
         </div>
-      </div>
 
-      {isEditing ? (
-        <EditContent
-          content={content}
-          setIsEditing={setIsEditing}
-          onSaveClick={onSaveClick}
-        />
-      ) : (
-        <p>{content}</p>
-      )}
-    </div>
-  );
-};
+        {isEditing ? (
+          <EditContent
+            content={content}
+            setIsEditing={setIsEditing}
+            onSaveClick={onSaveClick}
+          />
+        ) : (
+          <p>{content}</p>
+        )}
+      </div>
+    );
+  }
+);
 
 export default TextPreview;
