@@ -23,6 +23,7 @@ jobs:
             repo: context.repo.repo,
             state: 'open',
             assignee: '*',
+            labels: 'role: development',
           });
 
           for (const issue of issues.data) {
