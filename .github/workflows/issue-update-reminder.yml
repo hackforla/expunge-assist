@@ -1,0 +1,58 @@
+name: Issue Update Reminder
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight
+
+jobs:
+  issue-update-reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check issue activity
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const daysInactive = 8;
+          const label = 'Status: Update Requested';
+          const cutoffTime = new Date(Date.now() - daysInactive * 24 * 60 * 60 * 1000);
+
+          const issues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            assignee: '*',
+          });
+
+          for (const issue of issues.data) {
+            const lastCommentTime = new Date(issue.updated_at);
+
+            if (lastCommentTime < cutoffTime) {
+              const assignees = issue.assignees.map(assignee => `@${assignee.login}`).join(', ');
+
+              const commentBody = `Hey ${assignees}! Thanks again for taking this issue.
+
+              Time for an update! Please comment the following update:
+              **Progress:** What's the status of the project? What have you done and what still needs to be done?
+              **Estimated Time to Completion (ETC):** When do you estimate to be finished?
+              **Blockers:** Anything preventing you from finishing?
+
+              Thanks again!
+              `;
+
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: [label],
+              });
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: commentBody,
+              });
+            }
+          }
