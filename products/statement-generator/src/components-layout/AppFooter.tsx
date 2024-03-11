@@ -126,7 +126,7 @@ function HackForLACopyright() {
         <img
           className={classes.hackforlaIcon}
           src={hackForLALogo}
-          alt="Hack for LA Logo"
+          alt="Link to Hack for LA site"
         />
       </a>
       <span className={classes.reg}>© 2022 Hack for LA</span>
