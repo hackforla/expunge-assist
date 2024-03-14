@@ -19,10 +19,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       },
     },
     HeaderContent: {
-      maxWidth: '996px',
+      maxWidth: '945px',
       minWidth: '342px',
-      width: '69.2%',
-      margin: '45px 222px 54.64px',
+      width: '100%',
+      margin: '45px auto 54.64px',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
