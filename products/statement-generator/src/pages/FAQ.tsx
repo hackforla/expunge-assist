@@ -38,12 +38,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       backgroundColor: palette.primary.lighter,
-      marginRight: '113.5px',
+      flex: '1 1 60%',
+      marginRight: '36px',
 
       [breakpoints.down('md')]: {
         marginRight: 0,
+        alignItems: 'center',
       },
 
       [breakpoints.down('sm')]: {
@@ -64,6 +66,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
     ImgContainer: {
       width: '100%',
       textAlign: 'center',
+      flex: '1 1 40%',
+      marginRight: '16px',
     },
     Img: {
       width: 'auto',
