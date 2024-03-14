@@ -39,6 +39,11 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       display: 'flex',
       flexDirection: 'column',
       padding: spacing(1),
+      marginLeft: '-16px',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        marginLeft: '-8px',
+      },
     },
     rightContainer: {
       display: 'flex',
@@ -48,6 +53,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
 
       [breakpoints.down(breakpoints.values.md)]: {
         flexDirection: 'column',
+        marginLeft: '-8px',
       },
     },
     linkBtn: {
