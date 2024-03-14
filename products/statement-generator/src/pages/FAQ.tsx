@@ -72,7 +72,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
     },
     FAQContainer: {
       maxWidth: '996px',
-      width: '69.2%',
+      width: '100%',
       paddingTop: 0,
 
       [breakpoints.down('xs')]: {
