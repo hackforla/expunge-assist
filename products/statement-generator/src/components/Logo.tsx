@@ -75,7 +75,7 @@ export default function Logo({ theme, footer }: ILogoComponent) {
 
   return (
     <div className={classes.logoContainer}>
-      <Link to="/">
+      <Link to="/" aria-label="Expunge Assist home">
         <img src={logoIcon} alt="" />
       </Link>
 
