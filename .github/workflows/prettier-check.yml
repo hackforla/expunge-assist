@@ -1,0 +1,17 @@
+name: Prettier Lint
+
+on: [pull_request]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+      - name: Install Dependencies
+        run: npm install
+      - name: Check Prettier Format
+        run: npx prettier --check .
