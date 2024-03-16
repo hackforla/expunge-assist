@@ -10,7 +10,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "16"
+      - name: Debug Information
+        run: |
+          echo "Node.js version:"
+          node --version
+          echo "NPM version:"
+          npm --version
+          echo "Prettier version:"
+          npx prettier --version
+          echo "Listing .prettierrc.json:"
+          cat .prettierrc.json
+          echo "Listing all files to be checked:"
+          ls -R
+
       - name: Install Dependencies
         run: npm install
         working-directory: ./products/statement-generator
