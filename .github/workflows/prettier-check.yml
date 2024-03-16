@@ -12,6 +12,7 @@ jobs:
         with:
           node-version: "16"
       - name: Debug Information
+        working-directory: ./products/statement-generator
         run: |
           echo "Node.js version:"
           node --version
