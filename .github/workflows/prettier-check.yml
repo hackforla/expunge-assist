@@ -13,6 +13,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
         run: npm install
-        working-directory: ./products/statement generator
+        working-directory: ./products/statement-generator
       - name: Check Prettier Format
         run: npx prettier --check .
