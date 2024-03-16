@@ -16,3 +16,4 @@ jobs:
         working-directory: ./products/statement-generator
       - name: Check Prettier Format
         run: npx prettier --check .
+        working-directory: ./products/statement-generator
