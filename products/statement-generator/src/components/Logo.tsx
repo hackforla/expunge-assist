@@ -61,7 +61,7 @@ function TextLogo({ theme, footer }: ILogoComponent) {
   }
 
   return (
-    <Link to="/" className={classes.logoLink}>
+    <Link to="/" className={classes.logoLink} aria-label="Expunge Assist home">
       <span>Expunge</span>
       <span>Assist</span>
     </Link>
