@@ -1,0 +1,20 @@
+name: Prettier Lint
+
+on: [pull_request]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies and Check Prettier Format
+        run: |
+          cd ./products/statement-generator
+          npm install
+          npx prettier --check .
