@@ -61,7 +61,7 @@ function TextLogo({ theme, footer }: ILogoComponent) {
   }
 
   return (
-    <Link to="/" className={classes.logoLink}>
+    <Link to="/" className={classes.logoLink} aria-label="Expunge Assist home">
       <span>Expunge</span>
       <span>Assist</span>
     </Link>
@@ -75,7 +75,7 @@ export default function Logo({ theme, footer }: ILogoComponent) {
 
   return (
     <div className={classes.logoContainer}>
-      <Link to="/">
+      <Link to="/" aria-label="Expunge Assist home">
         <img src={logoIcon} alt="" />
       </Link>
 
