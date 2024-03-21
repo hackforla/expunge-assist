@@ -47,7 +47,6 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
 
       [breakpoints.down(breakpoints.values.md)]: {
         flexDirection: 'column',
-        justifyContent: 'start',
         marginTop: spacing(1),
       },
     },
@@ -67,27 +66,27 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       },
 
       '&$linkBtn + $linkBtn': {
-        marginLeft: 4,
+        marginLeft: spacing(0.5),
       },
 
       [breakpoints.down(breakpoints.values.md)]: {
-        marginTop: 16,
+        marginTop: spacing(2),
         padding: spacing(1, 0),
       },
 
       [breakpoints.down(breakpoints.values.sm)]: {
-        marginTop: 16,
+        marginTop: spacing(2),
       },
     },
     copyrightContainer: {
       display: 'flex',
 
       [breakpoints.down(breakpoints.values.md)]: {
-        marginTop: 16,
+        marginTop: spacing(2),
       },
 
       [breakpoints.down(breakpoints.values.sm)]: {
-        marginTop: 16,
+        marginTop: spacing(2),
       },
     },
     hackforlaIcon: {
