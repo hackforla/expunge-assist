@@ -63,7 +63,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       lineHeight: '36px',
       fontWeight: 400,
 
-      [breakpoints.down(breakpoints.values.md)]: {
+      [breakpoints.down(breakpoints.values.lg)]: {
         textAlign: 'center',
       },
     },
