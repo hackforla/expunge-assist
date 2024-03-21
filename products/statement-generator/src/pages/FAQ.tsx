@@ -62,7 +62,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       fontSize: '24px',
       lineHeight: '36px',
       fontWeight: 400,
-      textAlign: 'center',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        textAlign: 'center',
+      },
     },
     ImgContainer: {
       width: '100%',
