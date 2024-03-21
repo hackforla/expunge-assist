@@ -12,8 +12,7 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         display: 'flex',
         fontSize: 20,
         maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
-        marginBottom: ({ footer }: IUseUtilityStyle) =>
-          footer ? '10px' : 'null',
+        marginBottom: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 'null'),
 
         [breakpoints.down(breakpoints.values.sm)]: {
           // display: 'none',

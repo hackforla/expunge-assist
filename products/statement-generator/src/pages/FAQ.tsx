@@ -62,6 +62,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       fontSize: '24px',
       lineHeight: '36px',
       fontWeight: 400,
+      textAlign: 'center',
     },
     ImgContainer: {
       width: '100%',
@@ -75,7 +76,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       minWidth: '182px',
     },
     FAQContainer: {
-      maxWidth: '996px',
+      maxWidth: '980px',
       width: '100%',
       paddingTop: 0,
 

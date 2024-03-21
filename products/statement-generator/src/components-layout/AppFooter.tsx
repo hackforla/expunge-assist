@@ -21,7 +21,7 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
       color: palette.common.black,
       display: 'flex',
       alignItems: 'center',
-      padding: spacing(2, 3),
+      padding: spacing(1, 2),
 
       [breakpoints.down(breakpoints.values.md)]: {
         flexDirection: 'column',
@@ -38,12 +38,6 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     leftContainer: {
       display: 'flex',
       flexDirection: 'column',
-      padding: spacing(1),
-      marginLeft: '-16px',
-
-      [breakpoints.down(breakpoints.values.md)]: {
-        marginLeft: '-8px',
-      },
     },
     rightContainer: {
       display: 'flex',
@@ -53,7 +47,8 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
 
       [breakpoints.down(breakpoints.values.md)]: {
         flexDirection: 'column',
-        marginLeft: '-8px',
+        justifyContent: 'start',
+        marginTop: spacing(1),
       },
     },
     linkBtn: {
@@ -75,12 +70,21 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
         marginLeft: 4,
       },
 
+      [breakpoints.down(breakpoints.values.md)]: {
+        marginTop: 16,
+        padding: spacing(1, 0),
+      },
+
       [breakpoints.down(breakpoints.values.sm)]: {
         marginTop: 16,
       },
     },
     copyrightContainer: {
       display: 'flex',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        marginTop: 16,
+      },
 
       [breakpoints.down(breakpoints.values.sm)]: {
         marginTop: 16,
@@ -89,9 +93,17 @@ const useStyles = makeStyles(({ breakpoints, palette, spacing }) =>
     hackforlaIcon: {
       height: 25,
       margin: 'auto 10px',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        margin: 'auto 0',
+      },
     },
     reg: {
       margin: 'auto 0',
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        marginLeft: spacing(1),
+      },
     },
     line: {
       margin: 'auto 0',
