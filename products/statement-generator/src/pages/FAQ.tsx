@@ -19,10 +19,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       },
     },
     HeaderContent: {
-      maxWidth: '996px',
+      maxWidth: '945px',
       minWidth: '342px',
-      width: '69.2%',
-      margin: '45px 222px 54.64px',
+      width: '100%',
+      margin: '45px auto 54.64px',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -38,12 +38,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       backgroundColor: palette.primary.lighter,
-      marginRight: '113.5px',
+      flex: '1 1 60%',
+      marginRight: '36px',
 
       [breakpoints.down('md')]: {
         marginRight: 0,
+        alignItems: 'center',
       },
 
       [breakpoints.down('sm')]: {
@@ -60,10 +62,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       fontSize: '24px',
       lineHeight: '36px',
       fontWeight: 400,
+
+      [breakpoints.down(breakpoints.values.lg)]: {
+        textAlign: 'center',
+      },
     },
     ImgContainer: {
       width: '100%',
       textAlign: 'center',
+      flex: '1 1 40%',
+      marginRight: '16px',
     },
     Img: {
       width: 'auto',
@@ -71,8 +79,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       minWidth: '182px',
     },
     FAQContainer: {
-      maxWidth: '996px',
-      width: '69.2%',
+      maxWidth: '980px',
+      width: '100%',
       paddingTop: 0,
 
       [breakpoints.down('xs')]: {
