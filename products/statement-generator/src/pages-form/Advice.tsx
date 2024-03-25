@@ -77,42 +77,54 @@ export default function Advice() {
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
             <CancelIcon style={{ color: '#E87461' }} className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point1.no')}</p>
+            <p className={classes.textMargin} aria-label="Bad Example">
+              {t('advice_page.point1.no')}
+            </p>
           </div>
           <div className={classes.borderContainer}>
             <CheckCircleIcon
               style={{ color: '#0AEBA0' }}
               className={classes.icon}
             />
-            <p className={classes.textMargin}>{t('advice_page.point1.yes')}</p>
+            <p className={classes.textMargin} aria-label="Good Example">
+              {t('advice_page.point1.yes')}
+            </p>
           </div>
         </div>
         <p className={classes.text}>{t('advice_page.point2.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
             <CancelIcon style={{ color: '#E87461' }} className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point2.no')}</p>
+            <p className={classes.textMargin} aria-label="Bad Example">
+              {t('advice_page.point2.no')}
+            </p>
           </div>
           <div className={classes.borderContainer}>
             <CheckCircleIcon
               style={{ color: '#0AEBA0' }}
               className={classes.icon}
             />
-            <p className={classes.textMargin}>{t('advice_page.point2.yes')}</p>
+            <p className={classes.textMargin} aria-label="Good Example">
+              {t('advice_page.point2.yes')}
+            </p>
           </div>
         </div>
         <p className={classes.text}>{t('advice_page.point3.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
             <CancelIcon style={{ color: '#E87461' }} className={classes.icon} />
-            <p className={classes.textMargin}>{t('advice_page.point3.no')}</p>
+            <p className={classes.textMargin} aria-label="Bad Example">
+              {t('advice_page.point3.no')}
+            </p>
           </div>
           <div className={classes.borderContainer}>
             <CheckCircleIcon
               style={{ color: '#0AEBA0' }}
               className={classes.icon}
             />
-            <p className={classes.textMargin}>{t('advice_page.point3.yes')}</p>
+            <p className={classes.textMargin} aria-label="Good Example">
+              {t('advice_page.point3.yes')}
+            </p>
           </div>
         </div>
       </div>
