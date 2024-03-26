@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -41,6 +41,9 @@ export default function FlowNavigation({
   const { goNextStep, goBackStep } = useContext(FormStateContext);
   const { appTheme } = useContext(RoutingContext);
 
+  const backButtonRef = useRef<HTMLButtonElement>(null);
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
+
   const utilityClasses = useUtilityStyles({ pageTheme: appTheme });
   const classes = useStyles();
 
@@ -63,11 +66,22 @@ export default function FlowNavigation({
     }
   };
 
+  const handleNextButtonKeyDown = (
+    event: React.KeyboardEvent<HTMLButtonElement>
+  ) => {
+    if (event.shiftKey && event.key === 'Tab') {
+      event.preventDefault();
+      backButtonRef.current?.focus();
+    }
+  };
+
   return (
     <div className={utilityClasses.buttonContainer}>
       {showBack && (
         <Button
+          ref={backButtonRef}
           className={classes.buttonLeft}
+          tabIndex={-1}
           onClick={handleBack}
           disabled={isBackDisabled}
           buttonText={backButtonLabel || 'BACK'}
@@ -78,8 +92,11 @@ export default function FlowNavigation({
 
       {showNext && (
         <Button
+          ref={nextButtonRef}
           className={classes.buttonRight}
+          tabIndex={0}
           onClick={handleNext}
+          onKeyDown={handleNextButtonKeyDown}
           disabled={isNextDisabled}
           buttonText={nextButtonLabel || 'NEXT'}
           theme="dark"

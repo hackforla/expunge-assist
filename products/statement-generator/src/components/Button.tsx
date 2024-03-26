@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -133,34 +133,46 @@ interface ComponentProps {
   icon?: React.ReactNode;
   buttonText?: string;
   onClick?: () => void;
+  tabIndex?: number;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
-const ButtonComponent = ({
-  className = '',
-  theme,
-  hasBackArrow,
-  hasForwardArrow,
-  disabled = false,
-  icon,
-  buttonText,
-  onClick,
-}: ComponentProps) => {
-  const styleProps = { theme, hasBackArrow, hasForwardArrow };
-  const classes = useStyles(styleProps);
-  return (
-    <Button
-      disabled={disabled}
-      type="button"
-      className={`${classes.root} ${className}`}
-      onClick={onClick}
-    >
-      {hasBackArrow && <ArrowBackIcon style={{ height: '.8em' }} />}
-      {icon}
-      {buttonText}
-      {hasForwardArrow && <ArrowForwardIcon style={{ height: '.8em' }} />}
-    </Button>
-  );
-};
+const ButtonComponent = forwardRef<HTMLButtonElement, ComponentProps>(
+  (
+    {
+      className = '',
+      theme,
+      hasBackArrow,
+      hasForwardArrow,
+      disabled = false,
+      icon,
+      buttonText,
+      onClick,
+      tabIndex,
+      onKeyDown,
+    },
+    ref
+  ) => {
+    const styleProps = { theme, hasBackArrow, hasForwardArrow };
+    const classes = useStyles(styleProps);
+    return (
+      <Button
+        ref={ref}
+        disabled={disabled}
+        type="button"
+        className={`${classes.root} ${className}`}
+        onClick={onClick}
+        tabIndex={tabIndex}
+        onKeyDown={onKeyDown}
+      >
+        {hasBackArrow && <ArrowBackIcon style={{ height: '.8em' }} />}
+        {icon}
+        {buttonText}
+        {hasForwardArrow && <ArrowForwardIcon style={{ height: '.8em' }} />}
+      </Button>
+    );
+  }
+);
 
 interface ILinkButtonComponent {
   className?: string;
