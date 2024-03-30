@@ -2,7 +2,7 @@
 name: Blank Issue
 about: Consistent formatting make issues concise and easy to navigate
 title: ''
-labels: 'feature: missing, priority: missing, role: missing, size: missing'
+labels: 'feature: missing, priority: missing, role: missing, size: missing, issue level: missing'
 assignees: ''
 
 ---
@@ -12,7 +12,6 @@ REPLACE THIS TEXT - Text here that clearly states the purpose of this issue in 2
 
 ### Action Items
 - [ ] REPLACE THIS TEXT -If this is the beginning of the task this is most likely something to be researched and documented.
-
 - [ ] REPLACE THIS TEXT -If the issue has already been researched, and the course of action is clear, this will describe the steps.  However, if the steps can be divided into tasks for more than one person, we recommend dividing it up into separate issues, or assigning it as a pair programming task.
 
 ### Resources/Notes
