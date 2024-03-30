@@ -2,7 +2,7 @@
 name: "Designer Pre-work"
 about: "An issue to help new designers get acquainted with our processes."
 title: "Self-Onboarding Designer: [NAME]"
-labels: "issue level I, priority: medium, role: missing, size: 1pt, feature: onboard / offboard"
+labels: "issue level I: request, priority: medium, role: missing, size: 1pt, feature: onboard / offboard"
 assignees: ""
 ---
 
@@ -18,7 +18,7 @@ To help you jump into the team and make Expunge Assist even better, this onboard
 | Your first issue        | Learn how to take your first Github issue and team best practices.                                       |
 | Team Resources          | A list of team resources that would be helpful to bookmark                                               |
 
-### Tip: Take your time :sparkles:
+### Tip: Take your time ✨
 
 Navigating through a lot of information can be overwhelming at first, but it's perfectly natural. Don't hesitate to ask questions whenever you need clarification. Embrace the journey of learning as you progress. Take your time with your onboarding tasks; there's no rush to be at full speed right away!
 
