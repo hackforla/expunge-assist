@@ -14,8 +14,17 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
     },
+    stepLabel: {
+      fontSize: '1.2rem', // Adjust font size
+      fontWeight: 'bold', // Adjust font weight
+    },
     stepContent: {
       marginLeft: theme.spacing(2),
+      marginTop: theme.spacing(2),
+      fontSize: '1rem', // Adjust font size
+    },
+    stepConnector: {
+      backgroundColor: theme.palette.primary.main, // Customize step connector color
     },
   })
 );
@@ -46,9 +55,10 @@ export default function VerticalStep() {
       <Stepper orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-
-            <Typography className={classes.stepContent} color="textPrimary">
+            <StepLabel style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+              {label}
+            </StepLabel>
+            <Typography className={classes.stepContent}>
               {getStepContent(index)}
             </Typography>
           </Step>
