@@ -3,8 +3,6 @@ import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -12,15 +10,12 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       width: '100%',
     },
-    button: {
-      marginTop: theme.spacing(1),
-      marginRight: theme.spacing(1),
+    step: {
+      display: 'flex',
+      alignItems: 'center',
     },
-    actionsContainer: {
-      marginBottom: theme.spacing(2),
-    },
-    resetContainer: {
-      padding: theme.spacing(3),
+    stepContent: {
+      marginLeft: theme.spacing(2),
     },
   })
 );
@@ -44,17 +39,18 @@ function getStepContent(step: number) {
 
 export default function VerticalStep() {
   const classes = useStyles();
-
   const steps = getSteps();
+
   return (
     <div className={classes.root}>
       <Stepper orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
-            <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
-            </StepContent>
+
+            <Typography className={classes.stepContent} color="textPrimary">
+              {getStepContent(index)}
+            </Typography>
           </Step>
         ))}
       </Stepper>

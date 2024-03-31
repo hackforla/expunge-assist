@@ -9,7 +9,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 import landingWorkImg from 'assets/landingWorkImg.svg';
 import eaImage from 'assets/eaImage.png';
 import screenshotExample from 'assets/screenshotExample.svg';
-import howItWorks from 'assets/howItWorks.png';
 import completeLetter from 'assets/completeLetter.svg';
 import privacyPolicy from 'assets/privacyPolicy.png';
 
