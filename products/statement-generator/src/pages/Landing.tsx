@@ -14,6 +14,7 @@ import completeLetter from 'assets/completeLetter.svg';
 import privacyPolicy from 'assets/privacyPolicy.png';
 
 import ButtonComponent, { LinkButtonComponent } from 'components/Button';
+import VerticalStep from 'components/VerticalStep';
 import LandingAccordions from '../components/LandingAccordions';
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
@@ -352,11 +353,7 @@ function LandingSection4() {
         </div>
       </div>
       <div className={classes.sectionRight}>
-        <img
-          className={classes.sectionImage}
-          src={howItWorks}
-          alt="how it works"
-        />
+        <VerticalStep />
       </div>
     </section>
   );
