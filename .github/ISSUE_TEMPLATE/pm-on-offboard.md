@@ -1,3 +1,4 @@
+---
 name: Onboarding/Offboarding PM
 about: This template is for Leadershiop outlining the process of on and offboarding new members to the PM team
 title: 'Onboarding/Offboarding PM: [NAME]'
@@ -10,11 +11,19 @@ assignees: ''
 
 We need to have a checklist of items to do when a product manager onboard and offboards so that the process can be consistent and fast.
 
+### Member Info
+
+name: [NAME] 
+role: [ROLE]
+github: [USERNAME]
+email: [EMAIL]
+
+
 ### Action Items
 
 - [ ] Remove unrelated tasks
 
-```
+
 #### Onboard
 - [ ] Google Drive
    - [ ] Add to drive as Manager
@@ -43,9 +52,7 @@ We need to have a checklist of items to do when a product manager onboard and of
    - [ ] setup chrome shortcut for adding to desktop
    - [ ] use zoom spreadsheet, vault and accounts
    - [ ] calendar invite
-```
 
-```
 #### Offboard
   - [ ] 1password setup
     - [ ] remove from team vaults
@@ -64,7 +71,7 @@ We need to have a checklist of items to do when a product manager onboard and of
 - [ ] Remove from email address(s)
    - [ ] expungeassist@hackforla.org
 - [ ] Go over the person's assigned Github issues and Close or Reassign them
-```
+
 
 ### Resources/Instructions
 
