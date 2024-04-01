@@ -2,7 +2,7 @@
 name: Onboarding/Offboarding PM
 about: This template is for Leadership outlining the process of on and offboarding new members to the PM team
 title: 'Onboarding/Offboarding PM: [NAME]'
-labels: 'issue level I, priority: high, role: product management, size: 1pt, feature: onboard / offboard'
+labels: 'issue level I: request, priority: high, role: product management, size: 1pt, feature: onboard / offboard'
 assignees: ''
 
 ---
