@@ -5,6 +5,17 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
 
+export interface VerticalStepperStep {
+  id: string;
+  label: string;
+  description: string;
+  isCompleted?: boolean;
+}
+
+interface VerticalStepProps {
+  steps: VerticalStepperStep[];
+}
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -14,56 +25,34 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
     },
-    stepLabel: {
-      fontSize: '1.2rem', // Adjust font size
-      fontWeight: 'bold', // Adjust font weight
-    },
+
     stepContent: {
       marginLeft: theme.spacing(2),
       marginTop: theme.spacing(2),
       fontSize: '1rem', // Adjust font size
     },
-    stepConnector: {
-      backgroundColor: theme.palette.primary.main, // Customize step connector color
-    },
   })
 );
 
-function getSteps() {
-  return ['Answer Questions', 'Preview and edit text', 'Download letter'];
-}
-
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return `Follow simple question prompts to know what and how much to say.`;
-    case 1:
-      return `Preview what you’ve written and make any changes after each section and at the end.`;
-    case 2:
-      return `When you’re happy with the letter, download, copy, or email it to use in your application.`;
-    default:
-      return 'Unknown step';
-  }
-}
-
-export default function VerticalStep() {
+const VerticalStepper: React.FC<VerticalStepProps> = ({ steps }) => {
   const classes = useStyles();
-  const steps = getSteps();
 
   return (
     <div className={classes.root}>
       <Stepper orientation="vertical">
-        {steps.map((label, index) => (
-          <Step key={label}>
+        {steps.map((step) => (
+          <Step key={step.id}>
             <StepLabel style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-              {label}
+              {step.label}
             </StepLabel>
             <Typography className={classes.stepContent}>
-              {getStepContent(index)}
+              {step.description}
             </Typography>
           </Step>
         ))}
       </Stepper>
     </div>
   );
-}
+};
+
+export default VerticalStepper;

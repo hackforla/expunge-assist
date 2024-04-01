@@ -5,15 +5,16 @@ import { makeStyles, createStyles } from '@material-ui/core';
 import { AppUrl } from 'contexts/RoutingProps';
 
 import useUtilityStyles from 'styles/utilityStyles';
-
+import steps from 'data/stepData';
 import landingWorkImg from 'assets/landingWorkImg.svg';
 import eaImage from 'assets/eaImage.png';
 import screenshotExample from 'assets/screenshotExample.svg';
 import completeLetter from 'assets/completeLetter.svg';
 import privacyPolicy from 'assets/privacyPolicy.png';
-
+import VerticalStepper from 'components/VerticalStepper';
+import Timeline from 'components/Timeline';
 import ButtonComponent, { LinkButtonComponent } from 'components/Button';
-import VerticalStep from 'components/VerticalStep';
+
 import LandingAccordions from '../components/LandingAccordions';
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
@@ -352,7 +353,7 @@ function LandingSection4() {
         </div>
       </div>
       <div className={classes.sectionRight}>
-        <VerticalStep />
+        <Timeline steps={steps} />
       </div>
     </section>
   );
