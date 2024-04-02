@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'inline-block', // Change to inline-block to align with the line
     },
     circle: {
-      width: '2rem',
-      height: '2rem',
+      width: '3rem',
+      height: '3rem',
       backgroundColor: theme.palette.primary.light,
       color: '#fff',
       borderRadius: '50%',
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      left: '-1rem', // Adjust left position to center on the line
+      left: '-1.5rem', // Adjust left position to center on the line
     },
   })
 );

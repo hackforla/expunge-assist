@@ -4,9 +4,9 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     dashedVerticalLine: {
-      height: '275px', // Adjust the height as needed
+      height: '245px', // Adjust the height as needed
 
-      width: '1px', // Adjust the width as needed
+      width: '3px', // Adjust the width as needed
       backgroundColor: theme.palette.primary.darker, // Set the color of the dashes
       backgroundImage: 'linear-gradient(to bottom, transparent 50%, #ccc 50%)', // Set the color of the dashes
       backgroundSize: '100% 20px', // Adjust the dash size

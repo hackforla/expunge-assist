@@ -26,13 +26,13 @@ const useStyles = makeStyles((theme: Theme) =>
     step: {
       display: 'flex',
       alignItems: 'center',
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(2),
     },
     label: {
       fontWeight: 'bold',
     },
     description: {
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(0.2),
     },
     dashedline: {
       marginRight: theme.spacing(4),
