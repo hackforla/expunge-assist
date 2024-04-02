@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '4rem',
       height: '4rem',
       textDecoration: 'bold',
-      backgroundColor: theme.palette.primary.light,
+      backgroundColor: theme.palette.primary.lighter,
       color: theme.palette.primary.darker,
       borderRadius: '50%',
       display: 'flex',
@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       position: 'absolute',
       left: '-2rem', // Adjust left position to center on the line
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
     },
   })
 );

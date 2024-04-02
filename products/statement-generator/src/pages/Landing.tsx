@@ -1,9 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
-
 import { AppUrl } from 'contexts/RoutingProps';
-
 import useUtilityStyles from 'styles/utilityStyles';
 import steps from 'data/stepData';
 import landingWorkImg from 'assets/landingWorkImg.svg';
