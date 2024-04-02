@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Box, Typography } from '@material-ui/core';
-import { Brightness1 } from '@material-ui/icons';
+import { Box } from '@material-ui/core';
+import DashedVerticalLine from './DashedVerticalLine';
+import CustomTimeline from './CustomTimeline';
 
 export interface TimelineStep {
   id: string;
@@ -19,22 +21,12 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       display: 'flex',
       flexDirection: 'column',
+      marginTop: theme.spacing(2),
     },
     step: {
       display: 'flex',
       alignItems: 'center',
-      marginBottom: theme.spacing(2),
-    },
-    bullet: {
-      width: theme.spacing(1),
-      height: theme.spacing(1),
-      borderRadius: '50%',
-      backgroundColor: theme.palette.grey[400],
-      marginRight: theme.spacing(2.5),
-      boxSizing: 'border-box', // Ensure consistent sizing
-    },
-    bulletCompleted: {
-      backgroundColor: theme.palette.primary.main,
+      marginBottom: theme.spacing(4),
     },
     label: {
       fontWeight: 'bold',
@@ -42,25 +34,43 @@ const useStyles = makeStyles((theme: Theme) =>
     description: {
       marginTop: theme.spacing(1),
     },
+    dashedline: {
+      marginRight: theme.spacing(4),
+    },
   })
 );
 
 const Timeline: React.FC<TimelineProps> = ({ steps }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <Box className={classes.root}>
-      {steps.map((step) => (
-        <Box key={step.id} className={classes.step}>
-          <Brightness1 className={`${classes.bullet}`} />
-          <Box>
-            <Typography className={classes.label}>{step.label}</Typography>
-            <Typography className={classes.description}>
-              {step.description}
-            </Typography>
-          </Box>
+      <Box className={classes.step}>
+        <div className={classes.dashedline}>
+          <CustomTimeline />
+        </div>
+        <Box>
+          <h3>{t('landing_page.sectionTitle4BulletTitle1')}</h3>
+          <ul>
+            <p className={classes.description}>
+              {t('landing_page.sectionParagraph4BulletPoint1')}
+            </p>
+          </ul>
+          <h3>{t('landing_page.sectionTitle4BulletTitle2')}</h3>
+          <ul>
+            <p className={classes.description}>
+              {t('landing_page.sectionParagraph4BulletPoint2')}
+            </p>
+          </ul>
+          <h3>{t('landing_page.sectionTitle4BulletTitle3')}</h3>
+          <ul>
+            <p className={classes.description}>
+              {t('landing_page.sectionParagraph4BulletPoint3')}
+            </p>
+          </ul>
         </Box>
-      ))}
+      </Box>
     </Box>
   );
 };

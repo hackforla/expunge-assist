@@ -25,11 +25,17 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
     },
-
     stepContent: {
       marginLeft: theme.spacing(2),
       marginTop: theme.spacing(2),
-      fontSize: '1rem', // Adjust font size
+      fontSize: '1rem',
+    },
+    active: {
+      fontWeight: 'bold',
+      color: theme.palette.primary.darker,
+    },
+    stepLabel: {
+      color: theme.palette.primary.dark,
     },
   })
 );
@@ -42,10 +48,8 @@ const VerticalStepper: React.FC<VerticalStepProps> = ({ steps }) => {
       <Stepper orientation="vertical">
         {steps.map((step) => (
           <Step key={step.id}>
-            <StepLabel style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-              {step.label}
-            </StepLabel>
-            <Typography className={classes.stepContent}>
+            <StepLabel className={classes.active}>{step.label}</StepLabel>
+            <Typography className={classes.active}>
               {step.description}
             </Typography>
           </Step>
