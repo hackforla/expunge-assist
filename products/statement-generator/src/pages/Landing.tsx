@@ -11,7 +11,6 @@ import eaImage from 'assets/eaImage.png';
 import screenshotExample from 'assets/screenshotExample.svg';
 import completeLetter from 'assets/completeLetter.svg';
 import privacyPolicy from 'assets/privacyPolicy.png';
-import VerticalStepper from 'components/VerticalStepper';
 import Timeline from 'components/Timeline';
 import ButtonComponent, { LinkButtonComponent } from 'components/Button';
 

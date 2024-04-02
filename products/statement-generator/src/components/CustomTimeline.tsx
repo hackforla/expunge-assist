@@ -9,22 +9,23 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'inline-block', // Change to inline-block to align with the line
     },
     circle: {
-      width: '3rem',
-      height: '3rem',
+      width: '4rem',
+      height: '4rem',
+      textDecoration: 'bold',
       backgroundColor: theme.palette.primary.light,
-      color: '#fff',
+      color: theme.palette.primary.darker,
       borderRadius: '50%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       position: 'absolute',
-      left: '-1.5rem', // Adjust left position to center on the line
+      left: '-2rem', // Adjust left position to center on the line
     },
   })
 );
 const CustomTimeline = () => {
   const classes = useStyles();
-  const lineHeight = 230; // Adjust the line height as needed
+  const lineHeight = 375; // Adjust the line height as needed
   const topSpacing = 0; // Top spacing for the first circle
   const bottomSpacing = lineHeight; // Bottom spacing for the last circle
   const middlePosition = (bottomSpacing - topSpacing) / 2.3; // Middle position for the second circle
