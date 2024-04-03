@@ -1,9 +1,11 @@
 ---
-name: "Designer Pre-work"
-about: "An issue to help new designers get acquainted with our processes."
-title: "Self-Onboarding Designer: [NAME]"
-labels: "issue level I: request, priority: medium, role: missing, size: 1pt, feature: onboard / offboard"
-assignees: ""
+name: Designer Pre-work
+about: An issue to help new designers get acquainted with our processes.
+title: 'Self-Onboarding Designer: [NAME]'
+labels: 'feature: onboard / offboard, issue level I: request, priority: medium, role:
+  missing, size: 1pt'
+assignees: ''
+
 ---
 
 ## Overview
