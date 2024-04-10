@@ -1,10 +1,8 @@
 ---
 name: Onboarding/Offboarding Dev
-about: This template is for Dev PM and/or Lead outlining the process of on and offboarding
-  new members to the Development team
+about: This template is for Dev PM and/or Lead outlining the process of on and offboarding new members to the Development team
 title: 'Onboarding/Offboarding Dev: [NAME]'
-labels: 'feature: onboard / offboard, lead, priority: high, role: development, size:
-  1pt'
+labels: 'feature: onboard / offboard, lead, priority: high, role: development, size: 1pt, issue level I: request'
 assignees: ''
 
 ---
@@ -23,6 +21,11 @@ email: [EMAIL]
 ### Onboarding Action Items
 
 - [ ] Request google account email / GH Username
+- [ ] Inform new member to complete pre-work
+- [ ] GitHub
+   - [ ] Add to read (base) team
+   - [ ] Add to write team
+   - [ ] Add to wiki roster
 - [ ] Calendar invites
    - [ ] Dev Meeting
    - [ ] All Teams
@@ -31,9 +34,6 @@ email: [EMAIL]
       - Contributor for member 
       - OR Content Manager for PM/lead
    - [ ] Check for Public on Github and note in Google Drive roster
-- [ ] GitHub
-     - [ ] Add to read (base) team
-     - [ ] Add to write team
 - [ ] Figma
   - [ ] invite
 
