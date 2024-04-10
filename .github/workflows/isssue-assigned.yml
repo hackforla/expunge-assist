@@ -14,7 +14,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const assignee = context.issue.assignees[0].login;
+            const assignee = context.payload.issue.assignees[0].login;
 
             const commentBody = `Hey ${assignee}! Thanks for taking this issue.
 
@@ -23,7 +23,7 @@ jobs:
             Thanks again!
             `;
 
-            await github.issues.createComment({
+            await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
