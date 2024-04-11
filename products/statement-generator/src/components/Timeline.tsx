@@ -10,9 +10,8 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       marginTop: theme.spacing(2),
 
-      // Media query for smaller screen sizes
       [theme.breakpoints.down('sm')]: {
-        marginLeft: theme.spacing(4), // Adjust this value as needed
+        marginLeft: theme.spacing(3),
       },
     },
     step: {
