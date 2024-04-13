@@ -4,12 +4,16 @@ const useUtilityStyles = makeStyles<Theme>(
   ({ palette, breakpoints, globals, spacing }) =>
     createStyles({
       primaryContainer: {
-        minHeight: 'calc(100vh - 160px)',
+        minHeight: '100vh',
         width: '100%',
         display: 'flex',
         flex: '1 0 auto',
         flexDirection: 'column',
         position: 'relative',
+
+        [breakpoints.down('sm')]: {
+          minHeight: 'calc(100vh + 155px)',
+        },
 
         background: ({ pageTheme }: IUseUtilityStyle) => {
           switch (pageTheme) {
