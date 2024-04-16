@@ -11,10 +11,6 @@ const useUtilityStyles = makeStyles<Theme>(
         flexDirection: 'column',
         position: 'relative',
 
-        [breakpoints.down('sm')]: {
-          minHeight: 'calc(100vh + 155px)',
-        },
-
         background: ({ pageTheme }: IUseUtilityStyle) => {
           switch (pageTheme) {
             case 'dark':
