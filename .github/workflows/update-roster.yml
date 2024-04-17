@@ -1,0 +1,31 @@
+name: Duplicate Issue Monthly
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Runs on the 1st of every month at 00:00 UTC
+
+jobs:
+  duplicate-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Duplicate Issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          ISSUE_NUMBER=1065
+
+
+          ISSUE_DATA=$(gh issue view $ISSUE_NUMBER --json body,title --jq '. | {title: .title, body: .body}')
+
+
+          TITLE=$(echo "$ISSUE_DATA" | jq -r '.title')
+          BODY=$(echo "$ISSUE_DATA" | jq -r '.body')
+
+
+          NEW_TITLE="$(date +%Y-%m-%d) $TITLE"
+          gh issue create --body "$BODY" --title "$NEW_TITLE"
