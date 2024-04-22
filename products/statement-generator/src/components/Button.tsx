@@ -165,10 +165,17 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ComponentProps>(
         tabIndex={tabIndex}
         onKeyDown={onKeyDown}
       >
-        {hasBackArrow && <ArrowBackIcon data-testid="back-arrow" style={{ height: '.8em' }} />}
+        {hasBackArrow && (
+          <ArrowBackIcon data-testid="back-arrow" style={{ height: '.8em' }} />
+        )}
         {icon}
         {buttonText}
-        {hasForwardArrow && <ArrowForwardIcon data-testid="forward-arrow" style={{ height: '.8em' }} />}
+        {hasForwardArrow && (
+          <ArrowForwardIcon
+            data-testid="forward-arrow"
+            style={{ height: '.8em' }}
+          />
+        )}
       </Button>
     );
   }
