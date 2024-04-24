@@ -95,6 +95,8 @@ const Affirmation = () => {
       <img src={image} alt="affirmation illustration" />
 
       <div
+        ref={contentContainerRef}
+        tabIndex={-1}
         className={
           AppUrl.FinalizePreview === currentStep
             ? classes.doneMessageContainer
@@ -106,8 +108,6 @@ const Affirmation = () => {
       </div>
 
       <div
-        ref={contentContainerRef}
-        tabIndex={-1}
         className={`${utilityClasses.buttonContainer} ${
           utilityClasses.justifyRight
         } ${
