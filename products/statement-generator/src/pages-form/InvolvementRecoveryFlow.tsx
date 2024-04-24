@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -27,8 +27,15 @@ function InvolvementRecoveryFlow() {
     });
   };
 
+  const contentContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    contentContainerRef.current?.focus();
+  }, []);
+
   return (
-    <ContentContainer>
+    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
       <FormContainer>
         <Input
           id="recoveryName"
