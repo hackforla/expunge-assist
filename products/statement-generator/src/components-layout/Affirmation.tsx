@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Dialog from '@material-ui/core/Dialog';
@@ -68,6 +68,13 @@ const Affirmation = () => {
   const backBtnTheme =
     appTheme === 'dark' ? 'transparent-on-dark' : 'transparent-on-light';
 
+  const contentContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    contentContainerRef.current?.focus();
+  }, []);
+
   return (
     <Dialog
       classes={
@@ -99,6 +106,8 @@ const Affirmation = () => {
       </div>
 
       <div
+        ref={contentContainerRef}
+        tabIndex={-1}
         className={`${utilityClasses.buttonContainer} ${
           utilityClasses.justifyRight
         } ${
