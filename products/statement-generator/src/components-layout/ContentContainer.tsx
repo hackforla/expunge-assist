@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
 interface IContentContainer {
-  children?: any;
+  children?: React.ReactNode;
   className?: string;
 }
 
-const ContentContainer = ({ children, className = '' }: IContentContainer) => {
-  const utilityClasses = useUtilityStyles();
+const ContentContainer = forwardRef<HTMLDivElement, IContentContainer>(
+  ({ children, className = '' }, ref) => {
+    const utilityClasses = useUtilityStyles();
 
-  return (
-    <div className={`${utilityClasses.contentContainer} ${className}`}>
-      {children}
-    </div>
-  );
-};
+    return (
+      <div
+        ref={ref}
+        className={`${utilityClasses.contentContainer} ${className}`}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
 export default ContentContainer;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
@@ -28,6 +28,13 @@ const useStyles = makeStyles<Theme>(({ palette, spacing, globals }) =>
 export default function Welcome() {
   const { t } = useTranslation();
   const classes = useStyles();
+  const contentContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentContainerRef.current) {
+      contentContainerRef.current.focus();
+    }
+  }, []);
 
   return (
     <>
@@ -39,7 +46,7 @@ export default function Welcome() {
         />
       </div>
 
-      <ContentContainer>
+      <ContentContainer ref={contentContainerRef}>
         <h1>{t('welcome_page.titleText')}</h1>
 
         <p>{t('welcome_page.description')}</p>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 
@@ -96,9 +96,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
 const BeforeYouBegin = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const contentContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentContainerRef.current) {
+      contentContainerRef.current.focus();
+    }
+  }, []);
 
   return (
-    <ContentContainer className={classes.root}>
+    <ContentContainer ref={contentContainerRef} className={classes.root}>
       <h3>{t('before_you_begin_page.header')}</h3>
 
       <h6>{t('before_you_begin_page.sectionTitle1')}</h6>
