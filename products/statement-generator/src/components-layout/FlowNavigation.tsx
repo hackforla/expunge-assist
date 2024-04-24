@@ -24,6 +24,7 @@ interface IFlowNavigation {
   nextButtonLabel?: string;
   onBack?: () => void;
   onNext?: () => void;
+  focusRef?: React.RefObject<HTMLElement>;
   showBack?: boolean;
   showNext?: boolean;
 }
@@ -35,6 +36,7 @@ export default function FlowNavigation({
   nextButtonLabel,
   onBack,
   onNext,
+  focusRef,
   showBack = true,
   showNext = true,
 }: IFlowNavigation) {
@@ -64,6 +66,10 @@ export default function FlowNavigation({
     } else {
       goNextStep();
     }
+    // Focus the next page's main container after the navigation action
+    setTimeout(() => {
+      focusRef?.current?.focus();
+    }, 100); // A slight delay may be necessary to ensure the next component is ready
   };
 
   const handleNextButtonKeyDown = (

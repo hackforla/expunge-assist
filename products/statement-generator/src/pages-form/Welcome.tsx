@@ -31,9 +31,8 @@ export default function Welcome() {
   const contentContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (contentContainerRef.current) {
-      contentContainerRef.current.focus();
-    }
+    // Focus the container when the page loads
+    contentContainerRef.current?.focus();
   }, []);
 
   return (
@@ -46,7 +45,7 @@ export default function Welcome() {
         />
       </div>
 
-      <ContentContainer ref={contentContainerRef}>
+      <ContentContainer ref={contentContainerRef} tabIndex={-1}>
         <h1>{t('welcome_page.titleText')}</h1>
 
         <p>{t('welcome_page.description')}</p>

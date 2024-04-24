@@ -99,13 +99,16 @@ const BeforeYouBegin = () => {
   const contentContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (contentContainerRef.current) {
-      contentContainerRef.current.focus();
-    }
+    // Automatically focus the container when the component mounts
+    contentContainerRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} className={classes.root}>
+    <ContentContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      className={classes.root}
+    >
       <h3>{t('before_you_begin_page.header')}</h3>
 
       <h6>{t('before_you_begin_page.sectionTitle1')}</h6>
