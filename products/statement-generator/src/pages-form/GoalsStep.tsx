@@ -37,8 +37,15 @@ function GoalsStep() {
     });
   };
 
+  const contentContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    contentContainerRef.current?.focus();
+  }, []);
+
   return (
-    <ContentContainer>
+    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
       <Textarea
         ref={goalsRef}
         id="goals"
