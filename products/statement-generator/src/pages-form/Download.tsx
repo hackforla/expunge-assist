@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph } from 'docx';
@@ -138,8 +138,15 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
     doc.save('MyPersonalStatement.pdf');
   };
 
+  const contentContainerRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    contentContainerRef.current?.focus();
+  }, []);
+
   return (
-    <form>
+    <form ref={contentContainerRef} tabIndex={-1}>
       <Checkbox
         checked={!isDisabled}
         onChange={handleClickCheck}
