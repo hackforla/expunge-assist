@@ -24,25 +24,30 @@ jobs:
               issue_number: issueNumber
             });
 
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const currentMonth = months[new Date().getMonth()];
+
             const newIssue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `${new Date().toISOString().slice(0, 10)} ${issue.data.title}`,
+              title: `${currentMonth} ${issue.data.title}`,
               body: issue.data.body,
               labels: issue.data.labels.map(label => label.name),
               milestone: issue.data.milestone ? issue.data.milestone.number : undefined
             });
 
-
+            // Add the new issue to the same project as the original issue
             if (issue.data.project_url) {
               const projectId = issue.data.project_url.split('/').pop();
               const project = await github.rest.projects.get({
                 project_id: projectId
               });
-              const columnId = project.data.columns.find(column => column.name === "To do").id;
-              await github.rest.projects.createCard({
-                column_id: columnId,
-                content_id: newIssue.data.id,
-                content_type: 'Issue'
+              const projectNumber = project.data.number;
+
+              await github.rest.issues.addToProject({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: newIssue.data.number,
+                project_id: projectNumber
               });
             }
