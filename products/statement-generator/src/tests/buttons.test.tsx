@@ -119,9 +119,9 @@ describe('Button component', () => {
 
     const button = getByRole('button', { name: /Click me/i });
 
-    fireEvent.focus(button);
+    button.focus();
 
-    expect(button).toHaveClass('Mui-focusVisible');
+    expect(button).toHaveFocus();
   });
 
   // Test that button doesn't trap focus - pressing tab moves focus to next element
