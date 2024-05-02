@@ -35,19 +35,3 @@ jobs:
               labels: issue.data.labels.map(label => label.name),
               milestone: issue.data.milestone ? issue.data.milestone.number : undefined
             });
-
-            // Add the new issue to the same project as the original issue
-            if (issue.data.project_url) {
-              const projectId = issue.data.project_url.split('/').pop();
-              const project = await github.rest.projects.get({
-                project_id: projectId
-              });
-              const projectNumber = project.data.number;
-
-              await github.rest.issues.addToProject({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: newIssue.data.number,
-                project_id: projectNumber
-              });
-            }
