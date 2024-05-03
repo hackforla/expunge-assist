@@ -20,14 +20,14 @@ async function fetchOpenIssues() {
     const { data: issues } = await octokit.issues.listForRepo({
       owner: "hackforla",
       repo: "expunge-assist",
-      state: "open", // Only fetch open issues
+      state: "open",
       page: currentPage,
-      per_page: 100, // You can increase per_page if needed (up to 100)
+      per_page: 100,
     });
 
-    allIssues = allIssues.concat(issues); // Combine results from all pages
+    allIssues = allIssues.concat(issues);
 
-    hasNextPage = issues.length === 100; // Check if there's a next page
+    hasNextPage = issues.length === 100;
     currentPage++;
   }
 
@@ -38,10 +38,8 @@ async function fetchOpenIssues() {
   return allOpenIssues;
 }
 
-// Main function to process open issues
 async function main() {
   const openIssues = await fetchOpenIssues();
-  // console.log(openIssues.length);
 
   for (const issue of openIssues) {
     const labels = issue.labels.map((label) => label.name);
