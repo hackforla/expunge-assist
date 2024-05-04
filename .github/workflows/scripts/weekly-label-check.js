@@ -1,15 +1,11 @@
 const { Octokit } = require("@octokit/rest");
 
-// Create Octokit instance
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
-const REQUIRED_LABELS = ["priority", "role", "feature", "size"];
-const LABEL_MISSING = [
-  "priority: missing",
-  "role: missing",
-  "feature: missing",
-  "size: missing",
-];
+const REQUIRED_LABELS = ["priority", "role", "feature", "size", "issue level"];
+const LABEL_MISSING = REQUIRED_LABELS.map((label) => {
+  return `${label}: missing`;
+});
 
 async function fetchOpenIssues() {
   let allIssues = [];
@@ -74,7 +70,6 @@ function checkLabels(labels) {
       labelsToAdd.push(LABEL_MISSING[i]);
     }
   });
-
   return labelsToAdd;
 }
 
@@ -103,5 +98,4 @@ async function addLabels(
   }
 }
 
-// Call main function
 main().catch(console.error);
