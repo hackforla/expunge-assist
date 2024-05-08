@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import ContentContainer from 'components-layout/ContentContainer';
 import { createStyles, makeStyles } from '@material-ui/core';
+import creditsHeader from '../assets/creditsHeader.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
@@ -77,6 +77,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       maxWidth: '100%',
       minWidth: '182px',
     },
+    Filter: {
+      width: '100vw',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
+    FilterLinks: {
+      width: '100%',
+      textAlign: 'right',
+    },
   })
 );
 
@@ -94,30 +104,31 @@ export const CreditsHeader: React.FC = () => {
           </p>
         </div>
         <div className={classes.ImgContainer}>
-          <img className={classes.Img} alt="Two people talking" />
+          <img
+            className={classes.Img}
+            alt="Two people talking"
+            src={creditsHeader}
+          />
         </div>
       </div>
     </header>
   );
 };
 
+export const Filter: React.FC = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.Filter}>
+      <div className={classes.FilterLinks}>Here</div>
+    </div>
+  );
+};
+
 function Credits() {
-  const { t } = useTranslation();
   return (
     <>
       <CreditsHeader />
-      <ContentContainer>
-        <h2>{t('links.terms_of_use')}</h2>
-        <h3>{t('terms_of_use_page.generator_heading')}</h3>
-        <p>{t('terms_of_use_page.generator_description')}</p>
-
-        <h3>{t('terms_of_use_page.scope_heading')}</h3>
-        <p>{t('terms_of_use_page.scope_description')}</p>
-
-        <h3>{t('terms_of_use_page.contributions_heading')}</h3>
-        <p>{t('terms_of_use_page.contributions_description')}</p>
-        <p>{t('terms_of_use_page.liability_description')}</p>
-      </ContentContainer>
+      <Filter />
     </>
   );
 }
