@@ -31,15 +31,15 @@ function InvolvementCommunityServiceFlow() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const serviceLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    serviceLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Input
           id="organizationName"
@@ -51,6 +51,7 @@ function InvolvementCommunityServiceFlow() {
           defaultValue={organizationName}
           shortWidth
           type="text"
+          labelRef={serviceLabelRef}
         />
 
         <Textarea
