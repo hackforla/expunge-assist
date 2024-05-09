@@ -28,15 +28,15 @@ function InvolvementSomethingElseFlow() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const somethingElseLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    somethingElseLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Input
           id="activityName"
@@ -45,6 +45,7 @@ function InvolvementSomethingElseFlow() {
           handleChange={onInputChange}
           defaultValue={activityName}
           type="text"
+          labelRef={somethingElseLabelRef}
         />
 
         <Textarea
