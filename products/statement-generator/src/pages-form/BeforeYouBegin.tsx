@@ -96,20 +96,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
 const BeforeYouBegin = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    titleRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer
-      ref={contentContainerRef}
-      tabIndex={-1}
-      className={classes.root}
-    >
-      <h3>{t('before_you_begin_page.header')}</h3>
+    <ContentContainer className={classes.root}>
+      <h3 ref={titleRef} tabIndex={-1}>
+        {t('before_you_begin_page.header')}
+      </h3>
 
       <h6>{t('before_you_begin_page.sectionTitle1')}</h6>
       <p
