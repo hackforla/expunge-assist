@@ -25,15 +25,15 @@ function InvolvementUnemploymentFlow() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const unemploymentLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    unemploymentLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Textarea
           id="unemploymentDescription"
@@ -44,6 +44,7 @@ function InvolvementUnemploymentFlow() {
           defaultValue={unemploymentDescription}
           handleChange={onInputChange}
           rows={3}
+          labelRef={unemploymentLabelRef}
         />
       </FormContainer>
 
