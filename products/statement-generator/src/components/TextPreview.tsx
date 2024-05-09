@@ -59,27 +59,36 @@ interface ComponentProps {
 }
 
 const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
-  (
-    { onSaveClick, content, nameOfStep, className = '', style, isFirstPreview },
-    ref
-  ) => {
+  ({
+    onSaveClick,
+    content,
+    nameOfStep,
+    className = '',
+    style,
+    isFirstPreview,
+  }) => {
     const classes = useStyles();
     const utilityClasses = useUtilityStyles();
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const editButtonRef = useRef<HTMLButtonElement | null>(null);
+    const previewContainerRef = useRef<HTMLDivElement | null>(null);
 
     const handleClick = () => {
       setIsEditing(true);
     };
 
     useEffect(() => {
-      if (isFirstPreview && editButtonRef.current) {
-        editButtonRef.current.focus();
+      if (isFirstPreview && previewContainerRef.current) {
+        previewContainerRef.current.focus();
       }
     }, [isFirstPreview]);
 
     return (
-      <div ref={ref} className={`${classes.root} ${className}`} style={style}>
+      <div
+        ref={previewContainerRef}
+        className={`${classes.root} ${className}`}
+        style={style}
+      >
         <div className={classes.previewHeader}>
           <h3>{nameOfStep}</h3>
 
@@ -90,6 +99,7 @@ const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
                 onClick={handleClick}
                 aria-label="Edit content"
                 ref={editButtonRef}
+                tabIndex={0}
               >
                 <CreateIcon />
               </button>
