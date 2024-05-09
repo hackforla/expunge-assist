@@ -8,22 +8,12 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 import ContentContainer from 'components-layout/ContentContainer';
 import Textarea from 'components/Textarea';
 
-import { AffirmationContext } from 'contexts/AffirmationContext';
-
 function GoalsStep() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { goals, goalsHow } = formState.goalsState;
 
-  const { affirmationData } = useContext(AffirmationContext);
-
   const goalsRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!affirmationData.isActive) {
-      goalsRef.current?.focus();
-    }
-  }, [affirmationData.isActive]);
 
   const goalsValid = goals !== '';
   const goalsHowValid = goalsHow !== '';
