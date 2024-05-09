@@ -27,15 +27,15 @@ function InvolvementRecoveryFlow() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const recoveryLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    recoveryLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Input
           id="recoveryName"
@@ -45,6 +45,7 @@ function InvolvementRecoveryFlow() {
           defaultValue={recoveryName}
           shortWidth
           type="text"
+          labelRef={recoveryLabelRef}
         />
 
         <Textarea
