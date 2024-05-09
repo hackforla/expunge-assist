@@ -95,15 +95,19 @@ const Affirmation = () => {
       <img src={image} alt="affirmation illustration" />
 
       <div
-        ref={contentContainerRef}
-        tabIndex={-1}
         className={
           AppUrl.FinalizePreview === currentStep
             ? classes.doneMessageContainer
             : classes.messageContainer
         }
       >
-        <h2 className={classes.titleText}>{t(affirmationData.titleText)}</h2>
+        <h2
+          ref={contentContainerRef}
+          tabIndex={-1}
+          className={classes.titleText}
+        >
+          {t(affirmationData.titleText)}
+        </h2>
         <p>{t(affirmationData.description)}</p>
       </div>
 
