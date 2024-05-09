@@ -27,15 +27,15 @@ function InvolvementParentingFlow() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const parentLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    parentLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Input
           id="numberChildren"
@@ -44,6 +44,7 @@ function InvolvementParentingFlow() {
           placeholder="0"
           handleChange={onInputChange}
           defaultValue={numberChildren}
+          labelRef={parentLabelRef}
         />
 
         <Textarea
