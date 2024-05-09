@@ -9,22 +9,12 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
-import { AffirmationContext } from 'contexts/AffirmationContext';
-
 function WhyStep() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const { clearRecordWhy, clearRecordHow } = formState.whyState;
 
-  const { affirmationData } = useContext(AffirmationContext);
-
   const whyRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!affirmationData.isActive) {
-      whyRef.current?.focus();
-    }
-  }, [affirmationData.isActive]);
 
   const clearRecordWhyValid = clearRecordWhy !== '';
   const clearRecordHowValid = clearRecordHow !== '';
