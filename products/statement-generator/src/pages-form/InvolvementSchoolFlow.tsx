@@ -29,15 +29,15 @@ function InvolvementSchoolFlow() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const schoolLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    schoolLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Input
           id="schoolName"
@@ -47,6 +47,7 @@ function InvolvementSchoolFlow() {
           defaultValue={schoolName}
           shortWidth
           type="text"
+          labelRef={schoolLabelRef}
         />
 
         <Input
