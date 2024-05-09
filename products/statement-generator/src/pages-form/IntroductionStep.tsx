@@ -27,15 +27,15 @@ export function IntroductionStep() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const fullNameLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    fullNameLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Input
           id="fullName"
@@ -45,6 +45,7 @@ export function IntroductionStep() {
           shortWidth
           handleChange={onInputChange}
           type="text"
+          labelRef={fullNameLabelRef}
         />
 
         <Input

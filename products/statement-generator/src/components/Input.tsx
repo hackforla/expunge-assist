@@ -88,6 +88,7 @@ interface InputFieldProps {
   adornment?: string;
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
+  labelRef?: React.Ref<HTMLLabelElement>;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -101,6 +102,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   adornment,
   className = '',
   shortWidth = false,
+  labelRef,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
@@ -115,7 +117,13 @@ const InputArea: React.FC<InputFieldProps> = ({
 
   return (
     <div className={`${utilityClasses.formInput} ${className}`}>
-      <InputLabel htmlFor={id} disabled={disabled}>
+      <InputLabel
+        tabIndex={0}
+        disabled={disabled}
+        ref={labelRef}
+        aria-label={label}
+        htmlFor={id}
+      >
         {label}
       </InputLabel>
 
@@ -141,6 +149,7 @@ const InputArea: React.FC<InputFieldProps> = ({
             {valid ? <CheckCircleIcon className={classes.icon} /> : null}
           </InputAdornment>
         }
+        autoComplete="off"
       />
     </div>
   );
