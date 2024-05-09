@@ -68,16 +68,18 @@ const useStyles = makeStyles(({ breakpoints }) =>
 export default function Advice() {
   const { t } = useTranslation();
   const classes = useStyles();
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    titleRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
-      <h2 className={classes.title}>{t('advice_page.header')}</h2>
+    <ContentContainer>
+      <h2 ref={titleRef} tabIndex={-1} className={classes.title}>
+        {t('advice_page.header')}
+      </h2>
       <div>
         <p className={classes.text}>{t('advice_page.point1.content')}</p>
         <div className={classes.yesNoContainer}>
