@@ -33,15 +33,15 @@ function InvolvementJobFlow() {
     });
   };
 
-  const contentContainerRef = useRef<HTMLDivElement>(null);
+  const companyNameLabelRef = useRef<HTMLLabelElement>(null);
 
   useEffect(() => {
     // Automatically focus the container when the component mounts
-    contentContainerRef.current?.focus();
+    companyNameLabelRef.current?.focus();
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <ContentContainer>
       <FormContainer>
         <Input
           id="companyName"
@@ -51,6 +51,7 @@ function InvolvementJobFlow() {
           defaultValue={companyName}
           shortWidth
           type="text"
+          labelRef={companyNameLabelRef}
         />
 
         <Input
