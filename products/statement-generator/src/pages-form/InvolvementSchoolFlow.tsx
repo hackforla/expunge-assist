@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -29,6 +29,13 @@ function InvolvementSchoolFlow() {
     });
   };
 
+  const schoolLabelRef = useRef<HTMLLabelElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    schoolLabelRef.current?.focus();
+  }, []);
+
   return (
     <ContentContainer>
       <FormContainer>
@@ -40,6 +47,7 @@ function InvolvementSchoolFlow() {
           defaultValue={schoolName}
           shortWidth
           type="text"
+          labelRef={schoolLabelRef}
         />
 
         <Input

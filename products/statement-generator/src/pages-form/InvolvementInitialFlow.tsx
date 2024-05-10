@@ -7,8 +7,6 @@ import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
-import { AffirmationContext } from 'contexts/AffirmationContext';
-
 import Checkbox from 'components/Checkbox';
 
 import ContentContainer from 'components-layout/ContentContainer';
@@ -35,14 +33,12 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
 function InvolvementInitialFlow() {
   const { t } = useTranslation();
   const classes = useStyles();
-  const { affirmationData } = useContext(AffirmationContext);
-  const firstCheckboxRef = useRef<HTMLInputElement>(null);
+  const contentContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!affirmationData.isActive) {
-      firstCheckboxRef.current?.focus();
-    }
-  }, [affirmationData.isActive]);
+    // Automatically focus the container when the component mounts
+    contentContainerRef.current?.focus();
+  }, []);
 
   const { formState, updateStepToForm } = useContext(FormStateContext);
   const {
@@ -75,7 +71,7 @@ function InvolvementInitialFlow() {
   };
 
   return (
-    <ContentContainer>
+    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
       <FormContainer>
         <FormControl className={classes.checkboxGroup}>
           <FormLabel htmlFor="involvement-checkboxes">
@@ -83,7 +79,7 @@ function InvolvementInitialFlow() {
           </FormLabel>
           <FormGroup id="involvement-checkboxes">
             <Checkbox
-              ref={firstCheckboxRef}
+              // ref={firstCheckboxRef}
               useTeal
               id="isJobChecked"
               checked={isJobChecked}
