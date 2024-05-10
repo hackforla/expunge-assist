@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
 
 import TextPreview from 'components/TextPreview';
 import ContentContainer from 'components-layout/ContentContainer';
@@ -15,6 +15,7 @@ function PreviewPage() {
   const { currentStep } = useContext(RoutingContext);
   const previewConfigItem = getPreviewConfig(currentStep);
   const hasPreviewConfig = previewConfigItem !== undefined;
+  const contentContainerRef = useRef<HTMLDivElement>(null);
 
   const updateStatement = useCallback((newStatement: string) => {
     if (hasPreviewConfig) {
@@ -25,6 +26,11 @@ function PreviewPage() {
         },
       });
     }
+  }, []);
+
+  useEffect(() => {
+    // Focus the container when the page loads
+    contentContainerRef.current?.focus();
   }, []);
 
   // hacky implementation to generate the heading & closing statement here
@@ -48,7 +54,7 @@ function PreviewPage() {
   }, [currentStep]);
 
   return (
-    <ContentContainer>
+    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
       {hasPreviewConfig && (
         <TextPreview
           onSaveClick={updateStatement}

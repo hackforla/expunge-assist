@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
@@ -28,6 +28,12 @@ const useStyles = makeStyles<Theme>(({ palette, spacing, globals }) =>
 export default function Welcome() {
   const { t } = useTranslation();
   const classes = useStyles();
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    // Focus the container when the page loads
+    titleRef.current?.focus();
+  }, []);
 
   return (
     <>
@@ -40,7 +46,9 @@ export default function Welcome() {
       </div>
 
       <ContentContainer>
-        <h1>{t('welcome_page.titleText')}</h1>
+        <h1 ref={titleRef} tabIndex={-1}>
+          {t('welcome_page.titleText')}
+        </h1>
 
         <p>{t('welcome_page.description')}</p>
 

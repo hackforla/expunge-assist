@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -25,6 +25,13 @@ function InvolvementUnemploymentFlow() {
     });
   };
 
+  const unemploymentLabelRef = useRef<HTMLLabelElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    unemploymentLabelRef.current?.focus();
+  }, []);
+
   return (
     <ContentContainer>
       <FormContainer>
@@ -37,6 +44,7 @@ function InvolvementUnemploymentFlow() {
           defaultValue={unemploymentDescription}
           handleChange={onInputChange}
           rows={3}
+          labelRef={unemploymentLabelRef}
         />
       </FormContainer>
 

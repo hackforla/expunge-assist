@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -27,6 +27,13 @@ export function IntroductionStep() {
     });
   };
 
+  const fullNameLabelRef = useRef<HTMLLabelElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    fullNameLabelRef.current?.focus();
+  }, []);
+
   return (
     <ContentContainer>
       <FormContainer>
@@ -38,6 +45,7 @@ export function IntroductionStep() {
           shortWidth
           handleChange={onInputChange}
           type="text"
+          labelRef={fullNameLabelRef}
         />
 
         <Input
