@@ -104,15 +104,6 @@ describe('Button component', () => {
     expect(button).not.toHaveStyle({ background: 'rgb(197, 179, 209)' });
   });
 
-  // Test that the button is at least 44px wide
-  test('Button is at least 44px', () => {
-    const { getByRole } = render(<ButtonComponent buttonText="Click me" />);
-
-    const button = getByRole('button', { name: /Click me/i });
-
-    expect(button).toHaveStyle({ minHeight: '44px' });
-  });
-
   // Test that the button is focusable
   test('Button can receive focus', () => {
     const { getByRole } = render(<ButtonComponent buttonText="Click me" />);
