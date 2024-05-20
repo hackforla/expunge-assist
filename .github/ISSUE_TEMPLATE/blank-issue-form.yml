@@ -1,34 +1,26 @@
-name: "Blank Issue Form"
-description: "Standard Expunge Assist issue form"
-about: Consistent formatting make issues concise and easy to navigate
+name: Blank Issue
+description: Consistent formatting makes issues concise and easy to navigate
+title: ""
 labels:
-  [
-    feature: missing,
-    issue level: missing,
-    priority: missing,
-    role: missing,
-    size: missing',
-  ]
-
+  - "feature: missing"
+  - "issue level: missing"
+  - "priority: missing"
+  - "role: missing"
+  - "size: missing"
 body:
   - type: markdown
-    id: overview
     attributes:
-      label: Overview
-      description: Clearly state the purpose of this issue in 2 sentences or less
-    validations:
-      required: true
-  - type: textarea
-    id: action-items
+      value: |
+        ### Overview
+        REPLACE THIS TEXT - Text here that clearly states the purpose of this issue in 2 sentences or less.
+  - type: markdown
     attributes:
-      label: Action Items
-      description: "If this is the beginning of the task this is most likely something to be researched and documented."
-    validations:
-      required: true
-  - type: textarea
-    id: resources-instructions
+      value: |
+        ### Action Items
+        - [ ] REPLACE THIS TEXT -If this is the beginning of the task this is most likely something to be researched and documented.
+        - [ ] REPLACE THIS TEXT -If the issue has already been researched, and the course of action is clear, this will describe the steps. However, if the steps can be divided into tasks for more than one person, we recommend dividing it up into separate issues, or assigning it as a pair programming task.
+  - type: markdown
     attributes:
-      label: "Resources/Instructions"
-      description: "If the issue has already been researched, and the course of action is clear, this will describe the steps.  However, if the steps can be divided into tasks for more than one person, we recommend dividing it up into separate issues, or assigning it as a pair programming task."
-    validations:
-      required: true
+      value: |
+        ### Resources/Notes
+        REPLACE THIS TEXT -If there is a website which has documentation that helps with this issue provide the link(s) here.
