@@ -21,7 +21,27 @@ function GoalsStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value;
+
+    // Applying rules for goals
+    if (id === 'goals') {
+      formattedValue = value
+        .replace(/(^\s*\w|[.!?]\s*\w)/g, (c) => c.toUpperCase())
+        .trim();
+      if (!/[.!?]$/.test(formattedValue)) {
+        formattedValue += '.';
+      }
+    } else if (id === 'goalsHow') {
+      // Special rule for 'goalsHow' starting with 'i'
+      formattedValue = value
+        .replace(/(^\s*i\s|[.!?]\s*\w)/g, (c) => c.toUpperCase())
+        .trim();
+      if (!/[.!?]$/.test(formattedValue)) {
+        formattedValue += '.';
+      }
+    }
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       goalsState: { ...formState.goalsState, ...changes },
     });
