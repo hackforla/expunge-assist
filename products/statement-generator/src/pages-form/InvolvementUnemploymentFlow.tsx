@@ -19,7 +19,18 @@ function InvolvementUnemploymentFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value;
+
+    // Capitalize the first word of each sentence and ensure it ends with a period
+    formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+      c.toUpperCase()
+    );
+    // Check if the last character is not a punctuation mark, then add a period.
+    if (!/[.!?]$/.test(formattedValue.trim())) {
+      formattedValue = `${formattedValue.trim()}.`;
+    }
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       unemploymentState: { ...formState.unemploymentState, ...changes },
     });
