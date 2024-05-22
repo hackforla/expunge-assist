@@ -21,7 +21,25 @@ function InvolvementRecoveryFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value;
+
+    // Check if the input is for recoveryName or recoveryDescription
+    if (id === 'recoveryName') {
+      // Remove any punctuation at the end and capitalize only the first word
+      formattedValue = value.replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, ''); // Adjusted regex
+      formattedValue =
+        formattedValue.charAt(0).toUpperCase() + formattedValue.slice(1);
+    } else if (id === 'recoveryDescription') {
+      // Capitalize the first word of each sentence and ensure it ends with a period
+      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+        c.toUpperCase()
+      );
+      if (!/[.!?]$/.test(formattedValue.trim())) {
+        formattedValue = `${formattedValue.trim()}.`;
+      }
+    }
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       recoveryState: { ...formState.recoveryState, ...changes },
     });
