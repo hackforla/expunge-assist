@@ -21,7 +21,19 @@ function InvolvementParentingFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value;
+
+    if (id === 'parentDescription') {
+      // Capitalize the first letter of each sentence and add period if missing
+      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+        c.toUpperCase()
+      );
+      if (!/[.!?]$/.test(formattedValue.trim())) {
+        formattedValue = `${formattedValue.trim()}.`;
+      }
+    }
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       parentingState: { ...formState.parentingState, ...changes },
     });
