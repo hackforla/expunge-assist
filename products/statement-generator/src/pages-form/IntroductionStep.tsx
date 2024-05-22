@@ -25,8 +25,10 @@ export function IntroductionStep() {
     let finalValue = value;
     // Check if the input is for the fullName field
     if (id === 'fullName') {
+      // Remove any unwanted punctuation at the end of the string
+      finalValue = finalValue.replace(/[.,/#!$%^&*;?:{}=\-_`~()]+$/, '');
       // Split the full name into parts, capitalize each part, and join back
-      finalValue = value
+      finalValue = finalValue
         .split(' ')
         .map(
           (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
