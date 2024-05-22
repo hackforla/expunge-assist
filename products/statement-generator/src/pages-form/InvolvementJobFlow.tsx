@@ -27,7 +27,25 @@ function InvolvementJobFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value;
+
+    // Capitalize each word for companyName and jobTitle
+    if (id === 'companyName' || id === 'jobTitle') {
+      formattedValue = value.replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+
+    // Capitalize the first word of each sentence and ensure it ends with a period in jobDescription
+    if (id === 'jobDescription') {
+      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+        c.toUpperCase()
+      );
+      // Check if the last character is not a punctuation mark, then add a period.
+      if (!/[.!?]$/.test(formattedValue.trim())) {
+        formattedValue = `${formattedValue.trim()}.`;
+      }
+    }
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       involvementJobState: { ...formState.involvementJobState, ...changes },
     });

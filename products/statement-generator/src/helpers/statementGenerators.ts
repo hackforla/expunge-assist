@@ -15,12 +15,12 @@ export function generateIntroduction(formState: IStepState): string {
       ? `My name is ${introduction.fullName}, and I am ${introduction.age} years old.`
       : '';
 
-  const veteranSentance =
+  const veteranSentence =
     introduction.isVeteran === 'Yes'
       ? 'I am also a proud veteran of the United States Armed Forces.'
       : '';
 
-  return `${nameSentence} ${veteranSentance} ${lastSentence}`;
+  return `${nameSentence} ${veteranSentence} ${lastSentence}`;
 }
 
 /**
@@ -40,7 +40,10 @@ export function generateInvolvementJob(formState: IStepState): string {
     return '';
   }
 
-  return `I have been working at ${companyName} as a ${jobTitle}. At ${companyName}, ${jobDescription} Having my record cleared would help me continue to advance in my career.`;
+  // Determine the correct article "a" or "an" based on the first letter of the jobTitle
+  const article = /^[aeiou]/i.test(jobTitle) ? 'an' : 'a';
+
+  return `I have been working at ${companyName} as ${article} ${jobTitle}. At ${companyName}, ${jobDescription} Having my record cleared would help me continue to advance in my career.`;
 }
 
 /**
