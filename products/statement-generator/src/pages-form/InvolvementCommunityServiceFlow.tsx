@@ -25,7 +25,28 @@ function InvolvementCommunityServiceFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value;
+
+    if (id === 'organizationName') {
+      // Capitalize each word and remove punctuation at the end
+      formattedValue = value
+        .split(' ')
+        .map(
+          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+        )
+        .join(' ')
+        .replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+    } else if (id === 'serviceDescription') {
+      // Capitalize the first word of each sentence and ensure it ends with a period
+      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+        c.toUpperCase()
+      );
+      if (!/[.!?]$/.test(formattedValue.trim())) {
+        formattedValue = `${formattedValue.trim()}.`;
+      }
+    }
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       communityServiceState: { ...formState.communityServiceState, ...changes },
     });
