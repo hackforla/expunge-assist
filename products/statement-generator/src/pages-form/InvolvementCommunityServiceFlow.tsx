@@ -25,7 +25,7 @@ function InvolvementCommunityServiceFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value;
+    let formattedValue = value.trim();
 
     if (id === 'organizationName') {
       // Capitalize each word and remove punctuation at the end
@@ -35,7 +35,8 @@ function InvolvementCommunityServiceFlow() {
           (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
         )
         .join(' ')
-        .replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+        .replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '')
+        .trim();
     } else if (id === 'serviceDescription') {
       // Capitalize the first word of each sentence and ensure it ends with a period
       formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>

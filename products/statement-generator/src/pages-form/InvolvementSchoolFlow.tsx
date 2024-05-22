@@ -23,7 +23,7 @@ function InvolvementSchoolFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value;
+    let formattedValue = value.trim();
 
     if (id === 'schoolName' || id === 'studyName') {
       // Remove any unwanted punctuation at the end and capitalize each word
@@ -33,7 +33,8 @@ function InvolvementSchoolFlow() {
         .map(
           (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
         )
-        .join(' ');
+        .join(' ')
+        .trim();
     } else if (id === 'passionDescription') {
       // Capitalize the first word of each sentence and ensure it ends with a period
       formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>

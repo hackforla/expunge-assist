@@ -21,7 +21,7 @@ function GoalsStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value;
+    let formattedValue = value.trim();
 
     // Applying rules for goals
     if (id === 'goals') {

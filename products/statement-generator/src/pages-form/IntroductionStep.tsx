@@ -22,7 +22,7 @@ export function IntroductionStep() {
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
 
-    let finalValue = value;
+    let finalValue = value.trim();
     // Check if the input is for the fullName field
     if (id === 'fullName') {
       // Remove any unwanted punctuation at the end of the string

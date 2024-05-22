@@ -21,7 +21,7 @@ function InvolvementParentingFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value;
+    let formattedValue = value.trim();
 
     if (id === 'parentDescription') {
       // Capitalize the first letter of each sentence and add period if missing

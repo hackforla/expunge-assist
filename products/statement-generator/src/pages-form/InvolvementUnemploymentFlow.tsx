@@ -19,7 +19,7 @@ function InvolvementUnemploymentFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value;
+    let formattedValue = value.trim();
 
     // Capitalize the first word of each sentence and ensure it ends with a period
     formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>

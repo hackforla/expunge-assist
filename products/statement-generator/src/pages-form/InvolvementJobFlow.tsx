@@ -27,11 +27,13 @@ function InvolvementJobFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value;
+    let formattedValue = value.trim();
 
     // Capitalize each word for companyName and jobTitle
     if (id === 'companyName' || id === 'jobTitle') {
-      formattedValue = value.replace(/\b\w/g, (char) => char.toUpperCase());
+      formattedValue = value
+        .replace(/\b\w/g, (char) => char.toUpperCase())
+        .trim();
     }
 
     // Capitalize the first word of each sentence and ensure it ends with a period in jobDescription

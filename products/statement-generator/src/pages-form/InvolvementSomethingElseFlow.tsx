@@ -22,18 +22,19 @@ function InvolvementSomethingElseFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value;
+    let formattedValue = value.trim(); // Trim all trailing and leading whitespace
 
     // For activityName, remove any punctuation at the end
     if (id === 'activityName') {
-      formattedValue = value.replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+      formattedValue = formattedValue.replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
     }
-    // For activityDescription, capitalize the first word of each sentence and ensure it ends with a period
+    // For activityDescription, capitalize the first word of each sentence and ensure it ends with a period if no other punctuation marks are present
     else if (id === 'activityDescription') {
-      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+      formattedValue = formattedValue.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
         c.toUpperCase()
       );
-      if (!/[.!?]$/.test(formattedValue.trim())) {
+      // Check if it ends with punctuation, if not, add a period
+      if (!/[.!?]$/.test(formattedValue)) {
         formattedValue += '.';
       }
     }
