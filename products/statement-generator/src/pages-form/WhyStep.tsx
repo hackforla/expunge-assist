@@ -22,7 +22,15 @@ function WhyStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value
+      .replace(/(^\s*\w|[.!?]\s*\w)/g, (c) => c.toUpperCase())
+      .trim();
+
+    if (!/[.!?]$/.test(formattedValue)) {
+      formattedValue += '.';
+    }
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       whyState: { ...formState.whyState, ...changes },
     });
