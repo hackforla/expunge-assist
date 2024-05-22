@@ -21,7 +21,20 @@ export function IntroductionStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+
+    let finalValue = value;
+    // Check if the input is for the fullName field
+    if (id === 'fullName') {
+      // Split the full name into parts, capitalize each part, and join back
+      finalValue = value
+        .split(' ')
+        .map(
+          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+        )
+        .join(' ');
+    }
+
+    const changes = { [id]: finalValue };
     updateStepToForm({
       introduction: { ...formState.introduction, ...changes },
     });
