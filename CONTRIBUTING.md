@@ -27,10 +27,10 @@ Join the following Slack channels:
 - #expunge-assist-dev
 - #expunge-assist-design-and-content
 
-### Meetings - (as of July 23, 2023)
+### Meetings - (as of May 24, 2024)
 
-- Dev Meeting: Thursdays 6pm-6:30pm PST
-- All Teams Meeting: First Monday of the Month from 5-6pm PST
+- Dev Meeting: Wednesdays 6pm-6:30pm PST
+- All Teams Meeting: First Friday of the Month from 10:30am-11:30am PST
 
 ### Local Setup
 
