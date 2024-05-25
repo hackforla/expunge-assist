@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles } from '@material-ui/core';
@@ -79,21 +79,103 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
     },
     Filter: {
       width: '100vw',
+      marginBottom: '12px',
+      backgroundColor: 'red',
+    },
+    FilterContent: {
+      maxWidth: '945px',
+      minWidth: '342px',
+      width: '100%',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
+      margin: '45px auto 54.64px',
+      backgroundColor: 'yellow',
+      [breakpoints.down('md')]: {
+        width: '100%',
+        margin: '45px auto 54.64px',
+        padding: '16px',
+        gap: '36px',
+        backgroundColor: 'teal',
+      },
     },
-    FilterLinks: {
-      width: '100%',
+    FilterLink: {
+      background: 'none',
+      color: 'inherit',
+      border: 'none',
+      padding: 0,
+      font: 'inherit',
+      cursor: 'pointer',
+      outline: 'inherit',
+      '&:hover': {
+        color: '#9903FF',
+        textDecoration: 'underline',
+        cursor: 'pointer',
+      },
+    },
+    FilterHeader: {
+      maxWidth: '451px',
+      minWidth: '290px',
+      fontWeight: 'bolder',
+      marginLeft: 'auto',
       textAlign: 'right',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      alignItems: 'baseline',
+      gap: '16px',
+      width: '100%',
+      backgroundColor: 'lightblue',
+    },
+
+    CreditBox: {
+      boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
+      borderRadius: '8px',
+      padding: '16px',
+      marginTop: '24px',
+      marginBottom: '40px',
+      width: '32rem',
+      height: '217.69px',
+    },
+    line: {
+      margin: 'auto 0',
+      fontWeight: 300,
+
+      [breakpoints.down(breakpoints.values.md)]: {
+        display: 'none',
+      },
     },
   })
 );
 
+interface CreditsObject {
+  name: string;
+  used_in: string;
+  artist: string;
+  provider: string;
+  alt_text: string;
+}
+
+export const CreditObjects: CreditsObject[] = [
+  {
+    name: 'Group Chat',
+
+    used_in: 'FAQ',
+    artist: 'M/A',
+    provider: 'Freepik',
+    alt_text: 'People group chatting through smart phones',
+  },
+  {
+    name: 'Sharing Knowledge',
+    used_in: 'FAQ',
+    artist: 'M/A',
+    provider: 'https://undraw.co/search',
+    alt_text: '',
+  },
+];
+
 export const CreditsHeader: React.FC = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-
   return (
     <header className={classes.Header}>
       <div className={classes.HeaderContent}>
@@ -116,10 +198,44 @@ export const CreditsHeader: React.FC = () => {
 };
 
 export const Filter: React.FC = () => {
+  interface FilterButtonProps {
+    name: string;
+  }
+
+  const handleFilterClick = (e: any) => {
+    const [filter, setFilter] = useState<Number>(1);
+    if (e.target.value === 'All') {
+      setFilter(1);
+    } else if (e.target.value === 'Illustrations') {
+      setFilter(2);
+    }
+  };
+
+  const FilterButton = ({ name }: FilterButtonProps) => {
+    const classes = useStyles();
+    return (
+      <button
+        className={classes.FilterLink}
+        value={name}
+        onClick={handleFilterClick}
+      >
+        {name}
+      </button>
+    );
+  };
   const classes = useStyles();
   return (
     <div className={classes.Filter}>
-      <div className={classes.FilterLinks}>Here</div>
+      <div className={classes.FilterContent}>
+        <div className={classes.FilterHeader}>
+          <p>Filter:</p>
+          <FilterButton name="All" />
+          <span>|</span>
+          <FilterButton name="Illustrations" />
+          <span>|</span>
+          <FilterButton name="Icons" />
+        </div>
+      </div>
     </div>
   );
 };
