@@ -15,23 +15,6 @@ import notFoundBgMobile from '../assets/notFound-bg-mobile.svg';
 
 const useStyles = makeStyles(({ globals, breakpoints, spacing }) =>
   createStyles({
-    pageHeader: {
-      fontSize: '60px',
-      fontWeight: 600,
-      lineHeight: '80%',
-      [breakpoints.down(breakpoints.values.md)]: {
-        fontSize: '34px',
-      },
-    },
-
-    paragraphStyle: {
-      lineHeight: '1.5',
-      fontSize: '20px',
-      [breakpoints.down(breakpoints.values.md)]: {
-        lineHeight: '1.2',
-      },
-    },
-
     backgroundImage: {
       backgroundSize: 'auto',
       backgroundRepeat: 'no-repeat',
@@ -51,7 +34,7 @@ const useStyles = makeStyles(({ globals, breakpoints, spacing }) =>
       },
     },
 
-    section: {
+    container: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
@@ -70,15 +53,11 @@ const useStyles = makeStyles(({ globals, breakpoints, spacing }) =>
       },
     },
 
-    sectionContent: {
+    contentWrapper: {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-    },
-
-    sectionText: {
-      alignItems: 'center',
     },
 
     desktopImage: {
@@ -88,6 +67,7 @@ const useStyles = makeStyles(({ globals, breakpoints, spacing }) =>
         display: 'none',
       },
     },
+
     mobileImage: {
       width: '80%',
       maxWidth: globals.contentWidth,
@@ -95,6 +75,27 @@ const useStyles = makeStyles(({ globals, breakpoints, spacing }) =>
       marginBottom: spacing(3),
       [breakpoints.up(breakpoints.values.md)]: {
         display: 'none',
+      },
+    },
+
+    textContent: {
+      alignItems: 'center',
+    },
+
+    headerStyle: {
+      fontSize: '60px',
+      fontWeight: 600,
+      lineHeight: '80%',
+      [breakpoints.down(breakpoints.values.md)]: {
+        fontSize: '34px',
+      },
+    },
+
+    paragraphStyle: {
+      lineHeight: '1.5',
+      fontSize: '20px',
+      [breakpoints.down(breakpoints.values.md)]: {
+        lineHeight: '1.2',
       },
     },
 
@@ -117,15 +118,15 @@ export default function NotFound() {
 
   return (
     <div className={classes.backgroundImage}>
-      <div className={classes.section}>
-        <div className={classes.sectionContent}>
+      <div className={classes.container}>
+        <div className={classes.contentWrapper}>
           <img
             className={classes.mobileImage}
             src={notFoundMobile}
             alt="Person holding magnifying glass"
           />
-          <div className={classes.sectionText}>
-            <h1 className={classes.pageHeader}>404 Error Page</h1>
+          <div className={classes.textContent}>
+            <h1 className={classes.headerStyle}>404 Error Page</h1>
             <p className={classes.paragraphStyle}>
               The page you are looking for may have been renamed, removed, or
               deleted.
