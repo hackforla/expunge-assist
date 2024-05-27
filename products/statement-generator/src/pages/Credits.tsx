@@ -3,6 +3,25 @@ import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles } from '@material-ui/core';
 import creditsHeader from '../assets/creditsHeader.svg';
+import groupChat from '../assets/credits-assets/group-chat.jpg';
+import sharingKnowledge from '../assets/credits-assets/sharing-knowledge.svg';
+import error from '../assets/credits-assets/404error.svg';
+import collaboration from '../assets/credits-assets/almost-there.svg';
+import atTheOffice from '../assets/credits-assets/at-the-office.svg';
+import backArrow from '../assets/credits-assets/back-arrow.svg';
+import check from '../assets/credits-assets/check.svg';
+import confirmation from '../assets/credits-assets/confirmation.svg';
+import copy from '../assets/credits-assets/Copy.svg';
+import dataSecure from '../assets/credits-assets/data-secure.svg';
+import docX from '../assets/credits-assets/docx.svg';
+import download from '../assets/credits-assets/Download.svg';
+import eaMobile from '../assets/credits-assets/ea-mobile.svg';
+import multitasking from '../assets/credits-assets/Multitasking.svg';
+import eye from '../assets/credits-assets/Eye.svg';
+import email from '../assets/credits-assets/Email.svg';
+import pencil from '../assets/credits-assets/Pencil.svg';
+import support101 from '../assets/credits-assets/support-101.svg';
+import report from '../assets/credits-assets/Report.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
@@ -83,9 +102,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       backgroundColor: 'red',
     },
     FilterContent: {
-      maxWidth: '945px',
-      minWidth: '342px',
-      width: '100%',
+      maxWidth: '65rem',
       display: 'flex',
       flexDirection: 'column',
       margin: '45px auto 54.64px',
@@ -122,19 +139,36 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       flexDirection: 'row',
       justifyContent: 'flex-end',
       alignItems: 'baseline',
+      padding: '16px',
       gap: '16px',
       width: '100%',
       backgroundColor: 'lightblue',
     },
-
+    CreditContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      backgroundColor: 'salmon',
+      flexDirection: 'row',
+      gap: '16px',
+      flexWrap: 'wrap',
+    },
     CreditBox: {
       boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
       borderRadius: '8px',
       padding: '16px',
       marginTop: '24px',
       marginBottom: '40px',
-      width: '32rem',
+      maxWidth: '32rem',
+      minWidth: '21.5rem',
       height: '217.69px',
+      flex: '50%',
+    },
+    creditFlex: {
+      display: 'flex',
+      flexDirection: 'row',
+      gap: '32px',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     line: {
       margin: 'auto 0',
@@ -150,26 +184,41 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
 interface CreditsObject {
   name: string;
   used_in: string;
+  img: any;
   artist: string;
   provider: string;
+  provider_link: string;
   alt_text: string;
 }
 
 export const CreditObjects: CreditsObject[] = [
   {
     name: 'Group Chat',
-
+    img: groupChat,
     used_in: 'FAQ',
     artist: 'M/A',
     provider: 'Freepik',
+    provider_link:
+      'https://www.freepik.com/free-vector/characters-people-chatting-through-smartphones_3226068.htm#query=people%20chatting&position=11&from_view=search&track=ais#position=11&query=people%20chatting',
     alt_text: 'People group chatting through smart phones',
   },
   {
     name: 'Sharing Knowledge',
+    img: sharingKnowledge,
     used_in: 'FAQ',
     artist: 'M/A',
-    provider: 'https://undraw.co/search',
+    provider_link: 'https://undraw.co/search',
     alt_text: '',
+    provider: 'Undraw',
+  },
+  {
+    name: '404 Error',
+    img: error,
+    used_in: '404 page',
+    artist: 'Cuate',
+    provider_link: 'https://storyset.com/illustration/404-error/cuate',
+    provider: 'Storyset',
+    alt_text: '404 error',
   },
 ];
 
@@ -198,6 +247,7 @@ export const CreditsHeader: React.FC = () => {
 };
 
 export const Filter: React.FC = () => {
+  const classes = useStyles();
   interface FilterButtonProps {
     name: string;
   }
@@ -208,11 +258,38 @@ export const Filter: React.FC = () => {
       setFilter(1);
     } else if (e.target.value === 'Illustrations') {
       setFilter(2);
+    } else if (e.target.value === 'Icons') {
+      setFilter(3);
     }
   };
 
+  const FilterCards: React.FC = () => {
+    return (
+      <div className={classes.CreditContainer}>
+        {CreditObjects.map((credit) => {
+          return (
+            <div className={classes.CreditBox}>
+              <div className={classes.creditFlex}>
+                <div>
+                  <h2>{credit.name}</h2>
+                  <p>Used on: {credit.used_in}</p>
+                  <p>Artist: {credit.artist}</p>
+                  <p>
+                    Provider: <a href={credit.provider}>{credit.provider}</a>
+                  </p>
+                </div>
+                <div>
+                  <img src={credit.img} alt={credit.alt_text} width={144} />
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
   const FilterButton = ({ name }: FilterButtonProps) => {
-    const classes = useStyles();
     return (
       <button
         className={classes.FilterLink}
@@ -223,7 +300,7 @@ export const Filter: React.FC = () => {
       </button>
     );
   };
-  const classes = useStyles();
+
   return (
     <div className={classes.Filter}>
       <div className={classes.FilterContent}>
@@ -235,6 +312,7 @@ export const Filter: React.FC = () => {
           <span>|</span>
           <FilterButton name="Icons" />
         </div>
+        <FilterCards />
       </div>
     </div>
   );
