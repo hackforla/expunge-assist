@@ -2,8 +2,7 @@
 name: Bug Report
 about: Report a bug to help us improve Expunge Assist
 title: '[BUG]'
-labels: 'feature: missing, priority: high, role: missing, size: missing, bug'
-assignees: sydneywalcoff
+labels: 'feature: missing, priority: high, role: missing, size: missing, bug, ready for dev lead'
 ---
 
 ### What is the bug you're reporting?
