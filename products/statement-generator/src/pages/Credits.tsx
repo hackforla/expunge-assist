@@ -6,22 +6,26 @@ import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/credits-assets/group-chat.jpg';
 import sharingKnowledge from '../assets/credits-assets/sharing-knowledge.svg';
 import error from '../assets/credits-assets/404error.svg';
+import editorial from '../assets/credits-assets/editorial.svg';
 import collaboration from '../assets/credits-assets/almost-there.svg';
 import atTheOffice from '../assets/credits-assets/at-the-office.svg';
 import backArrow from '../assets/credits-assets/back-arrow.svg';
 import check from '../assets/credits-assets/check.svg';
 import confirmation from '../assets/credits-assets/confirmation.svg';
-import copy from '../assets/credits-assets/Copy.svg';
+import copy from '../assets/credits-assets/copy.svg';
 import dataSecure from '../assets/credits-assets/data-secure.svg';
 import docX from '../assets/credits-assets/docx.svg';
-import download from '../assets/credits-assets/Download.svg';
+import download from '../assets/credits-assets/download.svg';
 import eaMobile from '../assets/credits-assets/ea-mobile.svg';
-import multitasking from '../assets/credits-assets/Multitasking.svg';
-import eye from '../assets/credits-assets/Eye.svg';
-import email from '../assets/credits-assets/Email.svg';
-import pencil from '../assets/credits-assets/Pencil.svg';
+import multitasking from '../assets/credits-assets/multitasking.svg';
+import eye from '../assets/credits-assets/eye.svg';
+import email from '../assets/credits-assets/email.svg';
+import pencil from '../assets/credits-assets/pencil.svg';
+import informationAlert from '../assets/credits-assets/information-alert.svg';
 import support101 from '../assets/credits-assets/support-101.svg';
-import report from '../assets/credits-assets/Report.svg';
+import report from '../assets/credits-assets/report.svg';
+import cancel from '../assets/credits-assets/cancel.png';
+import nextArrow from '../assets/credits-assets/next-arrow.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
@@ -99,20 +103,16 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
     Filter: {
       width: '100vw',
       marginBottom: '12px',
-      backgroundColor: 'red',
     },
     FilterContent: {
       maxWidth: '65rem',
       display: 'flex',
       flexDirection: 'column',
       margin: '45px auto 54.64px',
-      backgroundColor: 'yellow',
       [breakpoints.down('md')]: {
         width: '100%',
         margin: '45px auto 54.64px',
         padding: '16px',
-        gap: '36px',
-        backgroundColor: 'teal',
       },
     },
     FilterLink: {
@@ -128,6 +128,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         textDecoration: 'underline',
         cursor: 'pointer',
       },
+      '&:focus': {
+        color: '#9903FF',
+        textDecoration: 'underline',
+      },
     },
     FilterHeader: {
       maxWidth: '451px',
@@ -142,13 +146,12 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       padding: '16px',
       gap: '16px',
       width: '100%',
-      backgroundColor: 'lightblue',
     },
     CreditContainer: {
       display: 'flex',
-      justifyContent: 'center',
-      backgroundColor: 'salmon',
       flexDirection: 'row',
+      flex: '50%',
+      flexShrink: 1,
       gap: '16px',
       flexWrap: 'wrap',
     },
@@ -156,19 +159,44 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
       borderRadius: '8px',
       padding: '16px',
-      marginTop: '24px',
-      marginBottom: '40px',
-      maxWidth: '32rem',
-      minWidth: '21.5rem',
-      height: '217.69px',
-      flex: '50%',
+      width: '32rem',
+      alignContent: 'center',
+      backgroundColor: 'salmon',
     },
     creditFlex: {
       display: 'flex',
       flexDirection: 'row',
-      gap: '32px',
-      justifyContent: 'center',
+      height: '100%',
+      width: '100%',
+      backgroundColor: 'lightblue',
+      justifyContent: 'space-between',
       alignItems: 'center',
+      objectFit: 'contain',
+    },
+    creditImgContainer: {
+      backgroundColor: 'pink',
+      maxWidth: '10rem',
+      minWidth: '10rem',
+      maxHeight: '12rem',
+      objectFit: 'contain',
+      display: 'block',
+      margin: 'auto',
+      '& img': {
+        alignItems: 'center',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        objectFit: 'contain',
+        display: 'block',
+        margin: 'auto',
+      },
+    },
+    creditText: {
+      '& h2': {
+        fontWeight: 'bold',
+        [breakpoints.down('md')]: {
+          fontSize: '16px',
+        },
+      },
     },
     line: {
       margin: 'auto 0',
@@ -183,8 +211,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
 
 interface CreditsObject {
   name: string;
+  class: number;
   used_in: string;
   img: any;
+  img_size: number;
   artist: string;
   provider: string;
   provider_link: string;
@@ -193,18 +223,43 @@ interface CreditsObject {
 
 export const CreditObjects: CreditsObject[] = [
   {
-    name: 'Group Chat',
-    img: groupChat,
-    used_in: 'FAQ',
-    artist: 'M/A',
-    provider: 'Freepik',
-    provider_link:
-      'https://www.freepik.com/free-vector/characters-people-chatting-through-smartphones_3226068.htm#query=people%20chatting&position=11&from_view=search&track=ais#position=11&query=people%20chatting',
-    alt_text: 'People group chatting through smart phones',
+    name: 'At the office',
+    img: atTheOffice,
+    class: 2,
+    img_size: 75,
+    used_in: 'Credits Page',
+    artist: 'N/A',
+    provider_link: 'https://storyset.com/illustration/on-the-office/pana',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'Back Arrow',
+    img: backArrow,
+    class: 3,
+    img_size: 75,
+    used_in: 'Buttons',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Go back',
+  },
+  {
+    name: 'Success',
+    img: check,
+    class: 3,
+    img_size: 75,
+    used_in: 'Advice Page and Letter Generator',
+    artist: 'N/A',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Correct',
   },
   {
     name: 'Sharing Knowledge',
     img: sharingKnowledge,
+    class: 2,
+    img_size: 144,
     used_in: 'FAQ',
     artist: 'M/A',
     provider_link: 'https://undraw.co/search',
@@ -214,11 +269,216 @@ export const CreditObjects: CreditsObject[] = [
   {
     name: '404 Error',
     img: error,
+    class: 2,
+    img_size: 200,
     used_in: '404 page',
     artist: 'Cuate',
     provider_link: 'https://storyset.com/illustration/404-error/cuate',
     provider: 'Storyset',
     alt_text: '404 error',
+  },
+  {
+    name: 'Multi-device targeting concept illustration',
+    img: confirmation,
+    class: 2,
+    img_size: 75,
+    used_in: 'Last Page Pop-Up',
+    artist: 'Storyset',
+    provider_link:
+      'https://www.freepik.com/free-vector/multi-device-targeting-concept-illustration_19949448.htm#&position=1&from_view=search&track=ais',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'Copy',
+    img: copy,
+    class: 3,
+    img_size: 75,
+    used_in: 'Download Page',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Copy to clipboard',
+  },
+  {
+    name: 'Data Secure',
+    img: dataSecure,
+    class: 2,
+    img_size: 75,
+    used_in: 'Landing Page',
+    artist: 'N/A',
+    provider_link: 'https://storyset.com/illustration/security/cuate',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'DOCX File',
+    img: docX,
+    class: 3,
+    img_size: 75,
+    used_in: 'Download Page',
+    artist: 'Unknown',
+    provider_link: 'https://expungeassist.com/credits/',
+    provider: 'Unknown',
+    alt_text: 'Download word document',
+  },
+  {
+    name: 'Collaboration',
+    img: collaboration,
+    class: 2,
+    img_size: 75,
+    used_in: 'Almost There Pop-Up',
+    artist: 'N/A',
+    provider_link: 'https://storyset.com/illustration/collaboration/rafiki',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'Support',
+    img: support101,
+    class: 2,
+    img_size: 75,
+    used_in: 'Landing Page',
+    artist: 'N/A',
+    provider_link: 'https://www.whoooa.rocks/',
+    provider: 'Whoooa',
+    alt_text: '',
+  },
+  {
+    name: 'Research',
+    img: editorial,
+    class: 2,
+    img_size: 75,
+    used_in: 'Why Pop-Up',
+    artist: 'N/A',
+    provider_link:
+      'https://storyset.com/illustration/editorial-commision/rafiki',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'Email',
+    img: email,
+    class: 3,
+    img_size: 75,
+    used_in: 'Download Page',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Send in an email',
+  },
+  {
+    name: 'Report',
+    img: report,
+    class: 2,
+    img_size: 75,
+    used_in: 'Future Goals Pop-Up',
+    artist: 'N/A',
+    provider_link: 'https://storyset.com/illustration/report/pana',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'Cancel',
+    img: cancel,
+    class: 3,
+    img_size: 75,
+    used_in: 'Advice Page',
+    artist: 'N/A',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Not correct',
+  },
+  {
+    name: 'Pencil',
+    img: pencil,
+    class: 3,
+    img_size: 75,
+    used_in: 'Letter Generator Edit Pages',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Edit',
+  },
+  {
+    name: 'Eye',
+    img: eye,
+    class: 3,
+    img_size: 75,
+    used_in: 'Preview Pages in Letter Generator',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Preview pages',
+  },
+  {
+    name: 'Information Alert',
+    img: informationAlert,
+    class: 3,
+    img_size: 75,
+    used_in: 'Download Page',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Information Alert',
+  },
+  {
+    name: 'MultiTasking',
+    img: multitasking,
+    class: 2,
+    img_size: 75,
+    used_in: 'Landing Page',
+    artist: 'N/A',
+    provider_link: 'https://storyset.com/illustration/multitasking/cuate',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'Next Arrow',
+    img: nextArrow,
+    class: 3,
+    img_size: 75,
+    used_in: 'Buttons',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Go forward',
+  },
+
+  {
+    name: 'Download',
+    img: download,
+    class: 3,
+    img_size: 75,
+    used_in: 'Download Page',
+    artist: 'Material Design',
+    provider_link: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    alt_text: 'Download',
+  },
+  {
+    name: 'EA Mobile',
+    img: eaMobile,
+    class: 2,
+    img_size: 75,
+    used_in: 'Landing Page',
+    artist: 'N/A',
+    provider_link:
+      'https://storyset.com/illustration/mobile-login/cuate#default&hide=&hide=false',
+    provider: 'Storyset',
+    alt_text: '',
+  },
+  {
+    name: 'Group Chat',
+    img: groupChat,
+    class: 2,
+    img_size: 200,
+    used_in: 'FAQ',
+    artist: 'M/A',
+    provider: 'Freepik',
+    provider_link:
+      'https://www.freepik.com/free-vector/characters-people-chatting-through-smartphones_3226068.htm#query=people%20chatting&position=11&from_view=search&track=ais#position=11&query=people%20chatting',
+    alt_text: 'People group chatting through smart phones',
   },
 ];
 
@@ -252,8 +512,8 @@ export const Filter: React.FC = () => {
     name: string;
   }
 
+  const [filter, setFilter] = useState<number>(1);
   const handleFilterClick = (e: any) => {
-    const [filter, setFilter] = useState<Number>(1);
     if (e.target.value === 'All') {
       setFilter(1);
     } else if (e.target.value === 'Illustrations') {
@@ -267,23 +527,67 @@ export const Filter: React.FC = () => {
     return (
       <div className={classes.CreditContainer}>
         {CreditObjects.map((credit) => {
-          return (
-            <div className={classes.CreditBox}>
-              <div className={classes.creditFlex}>
-                <div>
-                  <h2>{credit.name}</h2>
-                  <p>Used on: {credit.used_in}</p>
-                  <p>Artist: {credit.artist}</p>
-                  <p>
-                    Provider: <a href={credit.provider}>{credit.provider}</a>
-                  </p>
-                </div>
-                <div>
-                  <img src={credit.img} alt={credit.alt_text} width={144} />
+          if (filter === 1) {
+            return (
+              <div className={classes.CreditBox}>
+                <div className={classes.creditFlex}>
+                  <div className={classes.creditText}>
+                    <h2>{credit.name}</h2>
+                    <p>Used on: {credit.used_in}</p>
+                    <p>Artist: {credit.artist}</p>
+                    <p>
+                      Provider:{' '}
+                      <a href={credit.provider_link}>{credit.provider}</a>
+                    </p>
+                  </div>
+                  <div className={classes.creditImgContainer}>
+                    <img src={credit.img} alt={credit.alt_text} />
+                  </div>
                 </div>
               </div>
-            </div>
-          );
+            );
+          }
+          if (filter === 2 && credit.class === 2) {
+            return (
+              <div className={classes.CreditBox}>
+                <div className={classes.creditFlex}>
+                  <div className={classes.creditText}>
+                    <h2>{credit.name}</h2>
+                    <p>Used on: {credit.used_in}</p>
+                    <p>Artist: {credit.artist}</p>
+                    <p>
+                      Provider:{' '}
+                      <a href={credit.provider_link}>{credit.provider}</a>
+                    </p>
+                  </div>
+                  <div className={classes.creditImgContainer}>
+                    <img src={credit.img} alt={credit.alt_text} />
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          if (filter === 3 && credit.class === 3) {
+            return (
+              <div className={classes.CreditBox}>
+                <div className={classes.creditFlex}>
+                  <div className={classes.creditText}>
+                    <h2>{credit.name}</h2>
+                    <p>Used on: {credit.used_in}</p>
+                    <p>Artist: {credit.artist}</p>
+                    <p>
+                      Provider:{' '}
+                      <a href={credit.provider_link}>{credit.provider}</a>
+                    </p>
+                  </div>
+                  <div className={classes.creditImgContainer}>
+                    <img src={credit.img} alt={credit.alt_text} />
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          return null;
         })}
       </div>
     );
