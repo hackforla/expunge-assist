@@ -1,15 +1,11 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-
 import { AppUrl } from 'contexts/RoutingProps';
-
 import useUtilityStyles from 'styles/utilityStyles';
-
 import { LinkButtonComponent } from 'components/Button';
 
-import notFoundDesktop from '../assets/notFound-desktop.svg';
-import notFoundMobile from '../assets/notFound-mobile.svg';
+import notFound from '../assets/notFound.svg';
 import notFoundBgDesktop from '../assets/notFound-bg-desktop.svg';
 import notFoundBgMobile from '../assets/notFound-bg-mobile.svg';
 
@@ -122,7 +118,7 @@ export default function NotFound() {
         <div className={classes.contentWrapper}>
           <img
             className={classes.mobileImage}
-            src={notFoundMobile}
+            src={notFound}
             alt="Person holding magnifying glass"
           />
           <div className={classes.textContent}>
@@ -143,7 +139,7 @@ export default function NotFound() {
         </div>
 
         <div className={classes.desktopImage}>
-          <img src={notFoundDesktop} alt="Person holding magnifying glass" />
+          <img src={notFound} alt="Person holding magnifying glass" />
         </div>
       </div>
     </div>
