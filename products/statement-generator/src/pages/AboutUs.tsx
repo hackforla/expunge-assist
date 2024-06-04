@@ -72,7 +72,7 @@ export default function AboutUs() {
           <Link
             underline="always"
             className={classes.linkStyle}
-            href="https://codeforamerica.org/"
+            href="https://www.civictechstructure.org/"
           >
             Civic Tech Structure
           </Link>
