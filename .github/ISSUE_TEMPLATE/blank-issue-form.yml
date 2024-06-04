@@ -16,11 +16,6 @@ body:
       placeholder: "e.g., Bug in user login process"
     validations:
       required: true
-  - type: markdown
-    attributes:
-      value: |
-        ### Overview
-        Provide a brief description of the issue.
   - type: textarea
     id: overview
     attributes:
@@ -29,10 +24,6 @@ body:
       placeholder: "Provide a brief description of the issue."
     validations:
       required: true
-  - type: markdown
-    attributes:
-      value: |
-        ### Action Items
   - type: checkboxes
     id: action_items
     attributes:
@@ -42,13 +33,9 @@ body:
         - label: "Research and document initial findings"
         - label: "Outline steps to resolve the issue"
         - label: "Divide into separate tasks if needed"
-  - type: markdown
-    attributes:
-      value: |
-        ### Resources/Notes
   - type: input
     id: resources
     attributes:
       label: "Resources/Notes"
-      description: "If there is a website which has documentation that helps with this issue provide the link(s) here."
+      description: "If there is a website which has documentation that helps with this issue, provide the link(s) here."
       placeholder: "Add relevant resources or notes here, such as links to documentation."
