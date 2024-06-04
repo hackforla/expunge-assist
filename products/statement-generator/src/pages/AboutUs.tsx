@@ -54,49 +54,35 @@ export default function AboutUs() {
       />
 
       <br />
+      <br />
       <h3>{t('about_us_page.title2')}</h3>
       <br />
-      <ul className={classes.paragraphStyle}>
-        <li className={classes.pointStyle}>
-          <span className={classes.spanStyle}>
-            Expunge Assist is part of{' '}
-            <Link
-              underline="always"
-              className={classes.linkStyle}
-              href="https://www.hackforla.org/"
-            >
-              Hack for LA
-            </Link>{' '}
-            and{' '}
-            <Link
-              underline="always"
-              className={classes.linkStyle}
-              href="https://codeforamerica.org/"
-            >
-              Code for America{' '}
-            </Link>
-          </span>
-        </li>
-        <li className={classes.pointStyle}>
-          <span className={classes.spanStyle}>
-            {t('about_us_page.paragraph2_li2')}
-          </span>
-        </li>
-        <li className={classes.pointStyle}>
-          <span className={classes.spanStyle}>
-            {t('about_us_page.paragraph2_li3')}
-          </span>
-        </li>
-      </ul>
+      <p className={classes.paragraphStyle}>{t('about_us_page.paragraph2')}</p>
       <p className={classes.paragraphStyle}>
-        <Link
-          underline="always"
-          className={classes.linkStyle}
-          href="https://codeforamerica.org/programs/criminal-justice/automatic-record-clearance/"
-        >
-          *source
-        </Link>
+        <span className={classes.spanStyle}>
+          This tool is provided for free by{' '}
+          <Link
+            underline="always"
+            className={classes.linkStyle}
+            href="https://www.hackforla.org/"
+          >
+            Hack for LA
+          </Link>
+          , a project under the nonprofit{' '}
+          <Link
+            underline="always"
+            className={classes.linkStyle}
+            href="https://codeforamerica.org/"
+          >
+            Civic Tech Structure
+          </Link>
+          .
+        </span>
       </p>
+      <br />
+      <p className={classes.paragraphStyle}>{t('about_us_page.paragraph2c')}</p>
+      <br />
+
       <h3>{t('about_us_page.title3')}</h3>
       <br />
       <ul className={classes.paragraphStyle}>
