@@ -41,7 +41,7 @@ export function generateInvolvementJob(formState: IStepState): string {
   }
 
   // Determine the correct article "a" or "an" based on the first letter of the jobTitle
-  const article = /^[aeiou]/i.test(jobTitle) ? 'an' : 'a';
+  const article = generateArticle(jobTitle);
 
   return `I have been working at ${companyName} as ${article} ${jobTitle}. At ${companyName}, ${jobDescription} Having my record cleared would help me continue to advance in my career.`;
 }
@@ -243,4 +243,8 @@ export function removePunctuationAndCapitalizeFirstWord(text: string): string {
 
 export function removePunctuation(text: string): string {
   return text.trim().replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+}
+
+export function generateArticle(word: string): string {
+  return /^[aeiou]/i.test(word) ? 'an' : 'a';
 }
