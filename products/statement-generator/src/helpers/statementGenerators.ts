@@ -212,3 +212,31 @@ export function generateClosing(formState: IStepState): string {
 
   return `Sincerely,\n\n${fullName}`;
 }
+
+export function capitalizeSentences(text: string): string {
+  let formattedText = text.trim();
+  formattedText = formattedText.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+    c.toUpperCase()
+  );
+  if (!/[.!?]$/.test(formattedText)) {
+    formattedText += '.';
+  }
+  return formattedText;
+}
+
+export function capitalizeEachWord(text: string): string {
+  return text
+    .trim()
+    .replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '') // Remove unwanted punctuation
+    .split(' ')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(' ');
+}
+
+export function removePunctuationAndCapitalizeFirstWord(text: string): string {
+  let formattedText = text.trim();
+  formattedText = formattedText.replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+  formattedText =
+    formattedText.charAt(0).toUpperCase() + formattedText.slice(1);
+  return formattedText;
+}
