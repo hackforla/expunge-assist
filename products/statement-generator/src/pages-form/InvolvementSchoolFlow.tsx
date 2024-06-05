@@ -9,6 +9,10 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import {
+  capitalizeEachWord,
+  capitalizeSentences,
+} from 'helpers/statementGenerators';
 
 function InvolvementSchoolFlow() {
   const { t } = useTranslation();
@@ -26,23 +30,9 @@ function InvolvementSchoolFlow() {
     let formattedValue = value.trim();
 
     if (id === 'schoolName' || id === 'studyName') {
-      // Remove any unwanted punctuation at the end and capitalize each word
-      formattedValue = value.replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, ''); // Fixed regex to not include unnecessary escapes
-      formattedValue = formattedValue
-        .split(' ')
-        .map(
-          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
-        )
-        .join(' ')
-        .trim();
+      formattedValue = capitalizeEachWord(value);
     } else if (id === 'passionDescription') {
-      // Capitalize the first word of each sentence and ensure it ends with a period
-      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
-        c.toUpperCase()
-      );
-      if (!/[.!?]$/.test(formattedValue.trim())) {
-        formattedValue = `${formattedValue.trim()}.`;
-      }
+      formattedValue = capitalizeSentences(value);
     }
 
     const changes = { [id]: formattedValue };

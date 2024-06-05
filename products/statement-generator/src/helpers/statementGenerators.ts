@@ -240,3 +240,7 @@ export function removePunctuationAndCapitalizeFirstWord(text: string): string {
     formattedText.charAt(0).toUpperCase() + formattedText.slice(1);
   return formattedText;
 }
+
+export function removePunctuation(text: string): string {
+  return text.trim().replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+}

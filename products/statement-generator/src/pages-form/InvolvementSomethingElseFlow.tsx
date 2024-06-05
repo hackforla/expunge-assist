@@ -9,6 +9,10 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
+import {
+  capitalizeSentences,
+  removePunctuation,
+} from 'helpers/statementGenerators';
 import Input from '../components/Input';
 
 function InvolvementSomethingElseFlow() {
@@ -22,21 +26,12 @@ function InvolvementSomethingElseFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value.trim(); // Trim all trailing and leading whitespace
+    let formattedValue = value.trim();
 
-    // For activityName, remove any punctuation at the end
     if (id === 'activityName') {
-      formattedValue = formattedValue.replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
-    }
-    // For activityDescription, capitalize the first word of each sentence and ensure it ends with a period if no other punctuation marks are present
-    else if (id === 'activityDescription') {
-      formattedValue = formattedValue.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
-        c.toUpperCase()
-      );
-      // Check if it ends with punctuation, if not, add a period
-      if (!/[.!?]$/.test(formattedValue)) {
-        formattedValue += '.';
-      }
+      formattedValue = removePunctuation(value);
+    } else if (id === 'activityDescription') {
+      formattedValue = capitalizeSentences(value);
     }
 
     const changes = { [id]: formattedValue };

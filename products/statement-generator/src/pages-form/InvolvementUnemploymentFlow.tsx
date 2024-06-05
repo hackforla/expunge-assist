@@ -8,6 +8,7 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import { capitalizeSentences } from 'helpers/statementGenerators';
 
 function InvolvementUnemploymentFlow() {
   const { t } = useTranslation();
@@ -21,14 +22,7 @@ function InvolvementUnemploymentFlow() {
     const { id, value } = evt.currentTarget;
     let formattedValue = value.trim();
 
-    // Capitalize the first word of each sentence and ensure it ends with a period
-    formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
-      c.toUpperCase()
-    );
-    // Check if the last character is not a punctuation mark, then add a period.
-    if (!/[.!?]$/.test(formattedValue.trim())) {
-      formattedValue = `${formattedValue.trim()}.`;
-    }
+    formattedValue = capitalizeSentences(value);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({

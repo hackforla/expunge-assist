@@ -9,6 +9,7 @@ import RadioGroup from 'components/RadioGroup';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import { removePunctuation } from 'helpers/statementGenerators';
 
 export function IntroductionStep() {
   const { t } = useTranslation();
@@ -21,14 +22,10 @@ export function IntroductionStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-
     let finalValue = value.trim();
-    // Check if the input is for the fullName field
+
     if (id === 'fullName') {
-      // Remove any unwanted punctuation at the end of the string
-      finalValue = finalValue.replace(/[.,/#!$%^&*;?:{}=\-_`~()]+$/, '');
-      // Split the full name into parts, capitalize each part, and join back
-      finalValue = finalValue
+      finalValue = removePunctuation(value)
         .split(' ')
         .map(
           (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()

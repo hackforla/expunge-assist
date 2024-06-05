@@ -9,6 +9,7 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import { capitalizeSentences } from 'helpers/statementGenerators';
 
 function InvolvementParentingFlow() {
   const { t } = useTranslation();
@@ -24,13 +25,7 @@ function InvolvementParentingFlow() {
     let formattedValue = value.trim();
 
     if (id === 'parentDescription') {
-      // Capitalize the first letter of each sentence and add period if missing
-      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
-        c.toUpperCase()
-      );
-      if (!/[.!?]$/.test(formattedValue.trim())) {
-        formattedValue = `${formattedValue.trim()}.`;
-      }
+      formattedValue = capitalizeSentences(value);
     }
 
     const changes = { [id]: formattedValue };

@@ -9,6 +9,10 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
+import {
+  capitalizeEachWord,
+  capitalizeSentences,
+} from 'helpers/statementGenerators';
 import Input from '../components/Input';
 
 function InvolvementCommunityServiceFlow() {
@@ -28,23 +32,9 @@ function InvolvementCommunityServiceFlow() {
     let formattedValue = value.trim();
 
     if (id === 'organizationName') {
-      // Capitalize each word and remove punctuation at the end
-      formattedValue = value
-        .split(' ')
-        .map(
-          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
-        )
-        .join(' ')
-        .replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '')
-        .trim();
+      formattedValue = capitalizeEachWord(value);
     } else if (id === 'serviceDescription') {
-      // Capitalize the first word of each sentence and ensure it ends with a period
-      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
-        c.toUpperCase()
-      );
-      if (!/[.!?]$/.test(formattedValue.trim())) {
-        formattedValue = `${formattedValue.trim()}.`;
-      }
+      formattedValue = capitalizeSentences(value);
     }
 
     const changes = { [id]: formattedValue };

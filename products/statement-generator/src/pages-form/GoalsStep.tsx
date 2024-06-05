@@ -7,6 +7,7 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import Textarea from 'components/Textarea';
+import { capitalizeSentences } from 'helpers/statementGenerators';
 
 function GoalsStep() {
   const { t } = useTranslation();
@@ -23,16 +24,9 @@ function GoalsStep() {
     const { id, value } = evt.currentTarget;
     let formattedValue = value.trim();
 
-    // Applying rules for goals
     if (id === 'goals') {
-      formattedValue = value
-        .replace(/(^\s*\w|[.!?]\s*\w)/g, (c) => c.toUpperCase())
-        .trim();
-      if (!/[.!?]$/.test(formattedValue)) {
-        formattedValue += '.';
-      }
+      formattedValue = capitalizeSentences(value);
     } else if (id === 'goalsHow') {
-      // Special rule for 'goalsHow' starting with 'i'
       formattedValue = value
         .replace(/(^\s*i\s|[.!?]\s*\w)/g, (c) => c.toUpperCase())
         .trim();

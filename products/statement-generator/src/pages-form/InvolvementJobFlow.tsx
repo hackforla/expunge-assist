@@ -9,6 +9,10 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import {
+  capitalizeEachWord,
+  capitalizeSentences,
+} from 'helpers/statementGenerators';
 
 function InvolvementJobFlow() {
   const { t } = useTranslation();
@@ -29,22 +33,10 @@ function InvolvementJobFlow() {
     const { id, value } = evt.currentTarget;
     let formattedValue = value.trim();
 
-    // Capitalize each word for companyName and jobTitle
     if (id === 'companyName' || id === 'jobTitle') {
-      formattedValue = value
-        .replace(/\b\w/g, (char) => char.toUpperCase())
-        .trim();
-    }
-
-    // Capitalize the first word of each sentence and ensure it ends with a period in jobDescription
-    if (id === 'jobDescription') {
-      formattedValue = value.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
-        c.toUpperCase()
-      );
-      // Check if the last character is not a punctuation mark, then add a period.
-      if (!/[.!?]$/.test(formattedValue.trim())) {
-        formattedValue = `${formattedValue.trim()}.`;
-      }
+      formattedValue = capitalizeEachWord(value);
+    } else if (id === 'jobDescription') {
+      formattedValue = capitalizeSentences(value);
     }
 
     const changes = { [id]: formattedValue };

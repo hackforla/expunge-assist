@@ -8,6 +8,7 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import { capitalizeSentences } from 'helpers/statementGenerators';
 
 function WhyStep() {
   const { t } = useTranslation();
@@ -22,13 +23,9 @@ function WhyStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    let formattedValue = value
-      .replace(/(^\s*\w|[.!?]\s*\w)/g, (c) => c.toUpperCase())
-      .trim();
+    let formattedValue = value.trim();
 
-    if (!/[.!?]$/.test(formattedValue)) {
-      formattedValue += '.';
-    }
+    formattedValue = capitalizeSentences(value);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({
