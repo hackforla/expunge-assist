@@ -55,7 +55,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
     Heading: {
       fontSize: '34px',
       lineHeight: '51px',
-      marginBotton: '16px',
+      marginBottom: '16px',
       fontWeight: 700,
     },
     SubHeading: {
