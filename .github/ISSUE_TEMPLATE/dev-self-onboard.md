@@ -1,5 +1,5 @@
 ---
-name: Developer Pre-work
+name: "Pre-work: Developer"
 about: An issue to help new developers get acquainted with our processes.
 title: 'Self-Onboarding Dev: [NAME]'
 labels: 'feature: onboard / offboard, priority: medium, role: missing, size: 1pt, issue level I: request'
