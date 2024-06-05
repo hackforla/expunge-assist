@@ -29,7 +29,7 @@ body:
     attributes:
       label: "Action Items"
       description: "List the tasks that need to be completed."
-      placeholder: "- Task 1\n- Task 2\n- Task 3"
+      placeholder: "- Research and document initial findings\n- Outline steps to resolve issue\n- Divide into separate tasks if needed"
     validations:
       required: true
   - type: input
