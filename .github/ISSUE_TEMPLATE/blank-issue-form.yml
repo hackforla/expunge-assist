@@ -24,15 +24,14 @@ body:
       placeholder: "Provide a brief description of the issue."
     validations:
       required: true
-  - type: checkboxes
+  - type: textarea
     id: action_items
     attributes:
       label: "Action Items"
       description: "List the tasks that need to be completed."
-      options:
-        - label: "Research and document initial findings"
-        - label: "Outline steps to resolve the issue"
-        - label: "Divide into separate tasks if needed"
+      placeholder: "- Task 1\n- Task 2\n- Task 3"
+    validations:
+      required: true
   - type: input
     id: resources
     attributes:
