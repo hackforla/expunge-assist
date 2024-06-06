@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
-
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import {
   IStepState,
   defaultStepState,
@@ -19,6 +18,7 @@ export const FormStateContextProvider = ({
   children,
 }: FormStateProviderProps) => {
   const [formState, setFormState] = useState<IStepState>(defaultStepState);
+  const [stepShown, setStepShown] = useState<{ [key: string]: boolean }>({});
 
   const updateStepToForm = (stepState: any) =>
     setFormState({ ...formState, ...stepState });
@@ -104,7 +104,7 @@ export const FormStateContextProvider = ({
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     // initiate the event handler
     window.addEventListener('keydown', test);
 
@@ -114,6 +114,13 @@ export const FormStateContextProvider = ({
     };
   });
 
+  useEffect(() => {
+    if (!stepShown[currentStep]) {
+      setStepShown((prev) => ({ ...prev, [currentStep]: true }));
+      // Add any specific logic that should only run once per step here
+    }
+  }, [currentStep, stepShown]);
+
   return (
     <FormStateContext.Provider
       value={{
@@ -121,6 +128,8 @@ export const FormStateContextProvider = ({
         updateStepToForm,
         goNextStep,
         goBackStep,
+        stepShown,
+        setStepShown,
       }}
     >
       {children}
