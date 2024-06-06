@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
 import { AppUrl } from 'contexts/RoutingProps';
+
 import AffirmationContextProvider from 'contexts/AffirmationContext';
 import { FormStateContextProvider } from 'contexts/FormStateContext';
 
@@ -43,6 +44,7 @@ import 'styles/App.css';
 import customMuiTheme from 'styles/customMuiTheme';
 
 import { useTranslation } from 'react-i18next';
+import ScrollToTop from './components-layout/ScrollToTop';
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -55,6 +57,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={customMuiTheme}>
       <Router basename={`${process.env.PUBLIC_URL}/`}>
         <RoutingContextProvider>
+          <ScrollToTop />
           <AffirmationContextProvider>
             <FormStateContextProvider>
               <nav
