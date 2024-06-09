@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -27,6 +27,13 @@ function InvolvementParentingFlow() {
     });
   };
 
+  const parentLabelRef = useRef<HTMLLabelElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    parentLabelRef.current?.focus();
+  }, []);
+
   return (
     <ContentContainer>
       <FormContainer>
@@ -37,6 +44,7 @@ function InvolvementParentingFlow() {
           placeholder="0"
           handleChange={onInputChange}
           defaultValue={numberChildren}
+          labelRef={parentLabelRef}
         />
 
         <Textarea

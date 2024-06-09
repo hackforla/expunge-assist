@@ -76,6 +76,7 @@ interface TextFieldProps {
   disabled?: boolean;
   value?: string;
   rows?: number;
+  labelRef?: React.Ref<HTMLLabelElement>;
 }
 
 const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
@@ -89,6 +90,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
       disabled = false,
       value,
       rows,
+      labelRef,
     },
     ref
   ) => {
@@ -98,7 +100,13 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
     return (
       <div className={utilityClasses.formInput}>
         {label && (
-          <InputLabel htmlFor={id} disabled={disabled}>
+          <InputLabel
+            ref={labelRef}
+            aria-label={label}
+            htmlFor={id}
+            disabled={disabled}
+            tabIndex={0}
+          >
             {label}
           </InputLabel>
         )}
@@ -119,6 +127,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
             notched: false,
           }}
           inputRef={ref}
+          autoComplete="off"
         />
       </div>
     );

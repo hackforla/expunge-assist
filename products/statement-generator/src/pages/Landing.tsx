@@ -1,19 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
-
 import { AppUrl } from 'contexts/RoutingProps';
-
 import useUtilityStyles from 'styles/utilityStyles';
-
 import landingWorkImg from 'assets/landingWorkImg.svg';
 import eaImage from 'assets/eaImage.png';
 import screenshotExample from 'assets/screenshotExample.svg';
-import howItWorks from 'assets/howItWorks.png';
 import completeLetter from 'assets/completeLetter.svg';
 import privacyPolicy from 'assets/privacyPolicy.png';
-
+import Timeline from 'components/Timeline';
 import ButtonComponent, { LinkButtonComponent } from 'components/Button';
+
 import LandingAccordions from '../components/LandingAccordions';
 
 const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
@@ -352,11 +349,7 @@ function LandingSection4() {
         </div>
       </div>
       <div className={classes.sectionRight}>
-        <img
-          className={classes.sectionImage}
-          src={howItWorks}
-          alt="how it works"
-        />
+        <Timeline />
       </div>
     </section>
   );

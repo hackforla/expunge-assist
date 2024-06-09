@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useRef, useEffect, useContext, useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
@@ -52,8 +52,15 @@ function FinalizeStep() {
   const [disableNext, setDisableNext] = useState(true);
   const { updateAffirmationData } = useContext(AffirmationContext);
 
+  const contentContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    contentContainerRef.current?.focus();
+  }, []);
+
   return (
-    <ContentContainer>
+    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
       <div className={classes.purpleTitle}>
         <VisibilityIcon className={classes.purpleIcon} />
         {t('finalize_preview.header_title')}

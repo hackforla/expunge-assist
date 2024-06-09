@@ -140,6 +140,7 @@ const AppHeader = () => {
       currentStep === '/terms-of-use' ||
       currentStep === '/faq' ||
       currentStep === '/credits'
+      currentStep === '404'
     ) {
       return (
         <FormRouteButton

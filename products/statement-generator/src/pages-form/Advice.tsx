@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -68,10 +68,18 @@ const useStyles = makeStyles(({ breakpoints }) =>
 export default function Advice() {
   const { t } = useTranslation();
   const classes = useStyles();
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    titleRef.current?.focus();
+  }, []);
 
   return (
     <ContentContainer>
-      <h2 className={classes.title}>{t('advice_page.header')}</h2>
+      <h2 ref={titleRef} tabIndex={-1} className={classes.title}>
+        {t('advice_page.header')}
+      </h2>
       <div>
         <p className={classes.text}>{t('advice_page.point1.content')}</p>
         <div className={classes.yesNoContainer}>

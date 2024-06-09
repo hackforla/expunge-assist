@@ -1,0 +1,37 @@
+name: Monthly roster update
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Runs on the 1st of every month at 00:00 UTC
+
+jobs:
+  duplicate-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Duplicate Issue
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueNumber = 1065;
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber
+            });
+
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const currentMonth = months[new Date().getMonth()];
+
+            const newIssue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `${currentMonth} ${issue.data.title}`,
+              body: issue.data.body,
+              labels: issue.data.labels.map(label => label.name),
+              milestone: issue.data.milestone ? issue.data.milestone.number : undefined
+            });

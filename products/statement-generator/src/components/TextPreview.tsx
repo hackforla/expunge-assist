@@ -32,6 +32,20 @@ const useStyles = makeStyles(({ palette, spacing }) =>
         marginLeft: spacing(1),
       },
     },
+    editButton: {
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      padding: spacing(1),
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: palette.primary.main,
+      '&:focus': {
+        outline: 'none',
+        boxShadow: `0 0 0 2px ${palette.primary.main}`,
+      },
+    },
   })
 );
 
@@ -45,51 +59,50 @@ interface ComponentProps {
 }
 
 const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
-  (
-    { onSaveClick, content, nameOfStep, className = '', style, isFirstPreview },
-    ref
-  ) => {
+  ({
+    onSaveClick,
+    content,
+    nameOfStep,
+    className = '',
+    style,
+    isFirstPreview,
+  }) => {
     const classes = useStyles();
     const utilityClasses = useUtilityStyles();
     const [isEditing, setIsEditing] = useState<boolean>(false);
-    const editIconRef = useRef<SVGSVGElement | null>(null);
+    const editButtonRef = useRef<HTMLButtonElement | null>(null);
+    const previewContainerRef = useRef<HTMLDivElement | null>(null);
 
     const handleClick = () => {
       setIsEditing(true);
     };
 
     useEffect(() => {
-      if (isFirstPreview && editIconRef.current) {
-        editIconRef.current.focus();
+      if (isFirstPreview && previewContainerRef.current) {
+        previewContainerRef.current.focus();
       }
     }, [isFirstPreview]);
 
     return (
       <div
-        ref={ref}
+        ref={previewContainerRef}
         className={`${classes.root} ${className}`}
         style={style}
-        tabIndex={-1}
       >
         <div className={classes.previewHeader}>
           <h3>{nameOfStep}</h3>
 
           <div className={classes.actionHeader}>
             {!isEditing && (
-              <CreateIcon
-                className={`${utilityClasses.iconButton} create-icon-focusable`}
+              <button
+                className={`${utilityClasses.iconButton} ${classes.editButton}`}
                 onClick={handleClick}
-                tabIndex={0}
-                role="button"
                 aria-label="Edit content"
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    handleClick();
-                    e.preventDefault();
-                  }
-                }}
-                ref={editIconRef}
-              />
+                ref={editButtonRef}
+                tabIndex={0}
+              >
+                <CreateIcon />
+              </button>
             )}
           </div>
         </div>

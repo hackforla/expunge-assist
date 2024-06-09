@@ -4,6 +4,7 @@ on: [pull_request]
 
 jobs:
   prettier:
+    if: github.event.pull_request.head.ref != 'dev'
     runs-on: ubuntu-latest
     strategy:
       matrix:

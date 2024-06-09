@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -28,6 +28,13 @@ function InvolvementSomethingElseFlow() {
     });
   };
 
+  const somethingElseLabelRef = useRef<HTMLLabelElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    somethingElseLabelRef.current?.focus();
+  }, []);
+
   return (
     <ContentContainer>
       <FormContainer>
@@ -38,6 +45,7 @@ function InvolvementSomethingElseFlow() {
           handleChange={onInputChange}
           defaultValue={activityName}
           type="text"
+          labelRef={somethingElseLabelRef}
         />
 
         <Textarea

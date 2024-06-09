@@ -73,12 +73,11 @@ const App: React.FC = () => {
                 <button onClick={() => handleClick('ko')}>KO</button>
               </nav>
 
-              <AppHeader />
-              <AppSubheader />
-
-              <Affirmation />
-
               <PageContainer>
+                <AppHeader />
+                <AppSubheader />
+
+                <Affirmation />
                 <Switch>
                   <Route exact path="/" component={Landing} />
 
@@ -184,9 +183,8 @@ const App: React.FC = () => {
                   <Route component={NotFound} />
                   <Route path="/404" component={NotFound} />
                 </Switch>
+                <AppFooter />
               </PageContainer>
-
-              <AppFooter />
             </FormStateContextProvider>
           </AffirmationContextProvider>
         </RoutingContextProvider>

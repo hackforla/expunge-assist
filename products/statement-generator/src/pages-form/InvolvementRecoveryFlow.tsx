@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
@@ -27,6 +27,13 @@ function InvolvementRecoveryFlow() {
     });
   };
 
+  const recoveryLabelRef = useRef<HTMLLabelElement>(null);
+
+  useEffect(() => {
+    // Automatically focus the container when the component mounts
+    recoveryLabelRef.current?.focus();
+  }, []);
+
   return (
     <ContentContainer>
       <FormContainer>
@@ -38,6 +45,7 @@ function InvolvementRecoveryFlow() {
           defaultValue={recoveryName}
           shortWidth
           type="text"
+          labelRef={recoveryLabelRef}
         />
 
         <Textarea
