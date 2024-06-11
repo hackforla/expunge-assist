@@ -146,7 +146,9 @@ function HackForLACopyright() {
           alt="Link to Hack for LA site"
         />
       </a>
-      <span className={classes.reg}>© 2022 Hack for LA</span>
+      <span className={classes.reg}>
+        © {new Date().getFullYear().toString()} Hack for LA
+      </span>
     </div>
   );
 }
