@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # npm as the package ecosystem
-    directory: "/" # root directory where package.json is located
+    directory: "/products/statement-generator/" # directory where package.json is located
     schedule:
       interval: "daily" # daily update checks
     labels:
