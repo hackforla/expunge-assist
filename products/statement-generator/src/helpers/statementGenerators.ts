@@ -248,3 +248,7 @@ export function removePunctuation(text: string): string {
 export function generateArticle(word: string): string {
   return /^[aeiou]/i.test(word) ? 'an' : 'a';
 }
+
+export function capitalizeStandaloneI(text: string): string {
+  return text.replace(/\bi\b/g, 'I');
+}

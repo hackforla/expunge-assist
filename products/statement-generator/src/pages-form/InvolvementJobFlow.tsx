@@ -12,6 +12,7 @@ import FormContainer from 'components-layout/FormContainer';
 import {
   capitalizeEachWord,
   capitalizeSentences,
+  capitalizeStandaloneI,
 } from 'helpers/statementGenerators';
 
 function InvolvementJobFlow() {
@@ -38,6 +39,8 @@ function InvolvementJobFlow() {
     } else if (id === 'jobDescription') {
       formattedValue = capitalizeSentences(value);
     }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({

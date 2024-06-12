@@ -12,6 +12,7 @@ import FormContainer from 'components-layout/FormContainer';
 import {
   capitalizeSentences,
   removePunctuation,
+  capitalizeStandaloneI,
 } from 'helpers/statementGenerators';
 import Input from '../components/Input';
 
@@ -33,6 +34,8 @@ function InvolvementSomethingElseFlow() {
     } else if (id === 'activityDescription') {
       formattedValue = capitalizeSentences(value);
     }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({

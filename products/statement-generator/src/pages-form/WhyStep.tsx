@@ -8,7 +8,10 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
-import { capitalizeSentences } from 'helpers/statementGenerators';
+import {
+  capitalizeSentences,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 
 function WhyStep() {
   const { t } = useTranslation();
@@ -26,6 +29,8 @@ function WhyStep() {
     let formattedValue = value.trim();
 
     formattedValue = capitalizeSentences(value);
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({

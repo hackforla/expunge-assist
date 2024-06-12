@@ -12,6 +12,7 @@ import FormContainer from 'components-layout/FormContainer';
 import {
   capitalizeEachWord,
   capitalizeSentences,
+  capitalizeStandaloneI,
 } from 'helpers/statementGenerators';
 
 function InvolvementSchoolFlow() {
@@ -34,6 +35,8 @@ function InvolvementSchoolFlow() {
     } else if (id === 'passionDescription') {
       formattedValue = capitalizeSentences(value);
     }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({

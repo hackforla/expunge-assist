@@ -7,7 +7,10 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import Textarea from 'components/Textarea';
-import { capitalizeSentences } from 'helpers/statementGenerators';
+import {
+  capitalizeSentences,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 
 function GoalsStep() {
   const { t } = useTranslation();
@@ -34,6 +37,8 @@ function GoalsStep() {
         formattedValue += '.';
       }
     }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({

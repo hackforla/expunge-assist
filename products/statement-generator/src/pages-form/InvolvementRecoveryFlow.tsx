@@ -12,6 +12,7 @@ import FormContainer from 'components-layout/FormContainer';
 import {
   capitalizeSentences,
   removePunctuationAndCapitalizeFirstWord,
+  capitalizeStandaloneI,
 } from 'helpers/statementGenerators';
 
 function InvolvementRecoveryFlow() {
@@ -32,6 +33,8 @@ function InvolvementRecoveryFlow() {
     } else if (id === 'recoveryDescription') {
       formattedValue = capitalizeSentences(value);
     }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({

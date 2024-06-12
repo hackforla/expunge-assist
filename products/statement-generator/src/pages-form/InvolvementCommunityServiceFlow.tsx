@@ -12,6 +12,7 @@ import FormContainer from 'components-layout/FormContainer';
 import {
   capitalizeEachWord,
   capitalizeSentences,
+  capitalizeStandaloneI,
 } from 'helpers/statementGenerators';
 import Input from '../components/Input';
 
@@ -36,6 +37,8 @@ function InvolvementCommunityServiceFlow() {
     } else if (id === 'serviceDescription') {
       formattedValue = capitalizeSentences(value);
     }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
 
     const changes = { [id]: formattedValue };
     updateStepToForm({
