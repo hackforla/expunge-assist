@@ -172,6 +172,10 @@ const AppFooter: React.FC = () => {
             {t('links.terms_of_use')}
           </AppFooterLink>
           <span className={classes.line}>|</span>
+          <AppFooterLink url={AppUrl.Credits}>
+            {t('links.credits')}
+          </AppFooterLink>
+          <span className={classes.line}>|</span>
           <HackForLACopyright />
         </div>
       </div>

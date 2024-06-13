@@ -46,6 +46,7 @@ export enum AppUrl {
   Download = '/form/download',
   PrivacyPolicy = '/privacy-policy',
   TermsOfUse = '/terms-of-use',
+  Credits = '/credits',
   FAQ = '/faq',
   AboutUs = '/about-us',
 }
