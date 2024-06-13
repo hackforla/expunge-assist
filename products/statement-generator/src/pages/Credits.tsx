@@ -40,7 +40,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       },
     },
     HeaderContent: {
-      maxWidth: '65rem',
+      maxWidth: '59rem',
       minWidth: '342px',
       width: '100%',
       margin: '45px 16px 54.64px',
@@ -104,7 +104,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       marginBottom: '12px',
     },
     FilterContent: {
-      maxWidth: '65rem',
+      maxWidth: '59rem',
       display: 'flex',
       flexDirection: 'column',
       margin: '45px auto 54.64px',
@@ -159,7 +159,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
       borderRadius: '8px',
       padding: '16px',
-      width: '32rem',
+      width: '29rem',
       maxHeight: '13.606rem',
       minHeight: '13.606rem',
       alignContent: 'center',
