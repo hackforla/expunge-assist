@@ -4,26 +4,25 @@ import { useTranslation } from 'react-i18next';
 import { createStyles, makeStyles } from '@material-ui/core';
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/credits-assets/group-chat.jpg';
-import sharingKnowledge from '../assets/credits-assets/sharing-knowledge.svg';
-import error from '../assets/credits-assets/404error.svg';
-import editorial from '../assets/credits-assets/editorial.svg';
-import collaboration from '../assets/credits-assets/almost-there.svg';
-import atTheOffice from '../assets/credits-assets/at-the-office.svg';
+import sharingKnowledge from '../assets/faqDesktop.svg';
+import error from '../assets/notFound.svg';
+import editorial from '../assets/why-img.svg';
+import collaboration from '../assets/almost-there-img.svg';
 import backArrow from '../assets/credits-assets/back-arrow.svg';
 import check from '../assets/credits-assets/check.svg';
 import confirmation from '../assets/credits-assets/confirmation.svg';
 import copy from '../assets/credits-assets/copy.svg';
-import dataSecure from '../assets/credits-assets/data-secure.svg';
+import privacyPolicy from '../assets/privacyPolicy.png';
 import docX from '../assets/credits-assets/docx.svg';
 import download from '../assets/credits-assets/download.svg';
-import eaMobile from '../assets/credits-assets/ea-mobile.svg';
-import multitasking from '../assets/credits-assets/multitasking.svg';
+import eaImage from '../assets/eaImage.png';
+import multitasking from '../assets/landingWorkImg.svg';
 import eye from '../assets/credits-assets/eye.svg';
 import email from '../assets/credits-assets/email.svg';
 import pencil from '../assets/credits-assets/pencil.svg';
 import informationAlert from '../assets/credits-assets/information-alert.svg';
-import support101 from '../assets/credits-assets/support-101.svg';
-import report from '../assets/credits-assets/report.svg';
+import support101 from '../assets/affirmation-img.svg';
+import report from '../assets/future-goals-img.svg';
 import cancel from '../assets/credits-assets/cancel.png';
 import nextArrow from '../assets/credits-assets/next-arrow.svg';
 
@@ -41,10 +40,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       },
     },
     HeaderContent: {
-      maxWidth: '945px',
+      maxWidth: '65rem',
       minWidth: '342px',
       width: '100%',
-      margin: '45px auto 54.64px',
+      margin: '45px 16px 54.64px',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -149,6 +148,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
     },
     CreditContainer: {
       display: 'flex',
+      justifyContent: 'center',
       flexDirection: 'row',
       flex: '50%',
       flexShrink: 1,
@@ -160,6 +160,8 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       borderRadius: '8px',
       padding: '16px',
       width: '32rem',
+      maxHeight: '13.606rem',
+      minHeight: '13.606rem',
       alignContent: 'center',
     },
     creditFlex: {
@@ -221,7 +223,7 @@ interface CreditsObject {
 export const CreditObjects: CreditsObject[] = [
   {
     name: 'At the office',
-    img: atTheOffice,
+    img: creditsHeader,
     class: 2,
     img_size: 75,
     used_in: 'Credits Page',
@@ -299,7 +301,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Data Secure',
-    img: dataSecure,
+    img: privacyPolicy,
     class: 2,
     img_size: 75,
     used_in: 'Landing Page',
@@ -455,7 +457,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'EA Mobile',
-    img: eaMobile,
+    img: eaImage,
     class: 2,
     img_size: 75,
     used_in: 'Landing Page',
@@ -520,71 +522,38 @@ export const Filter: React.FC = () => {
     }
   };
 
+  const filteredCredits = CreditObjects.filter((obj) => {
+    if (filter === 2) {
+      return obj.class === 2;
+    }
+    if (filter === 3) {
+      return obj.class === 3;
+    }
+    return obj;
+  });
+
   const FilterCards: React.FC = () => {
     return (
       <div className={classes.CreditContainer}>
-        {CreditObjects.map((credit) => {
-          if (filter === 1) {
-            return (
-              <div className={classes.CreditBox}>
-                <div className={classes.creditFlex}>
-                  <div className={classes.creditText}>
-                    <h2>{credit.name}</h2>
-                    <p>Used on: {credit.used_in}</p>
-                    <p>Artist: {credit.artist}</p>
-                    <p>
-                      Provider:{' '}
-                      <a href={credit.provider_link}>{credit.provider}</a>
-                    </p>
-                  </div>
-                  <div className={classes.creditImgContainer}>
-                    <img src={credit.img} alt={credit.alt_text} />
-                  </div>
+        {filteredCredits.map((credit) => {
+          return (
+            <div className={classes.CreditBox}>
+              <div className={classes.creditFlex}>
+                <div className={classes.creditText}>
+                  <h2>{credit.name}</h2>
+                  <p>Used on: {credit.used_in}</p>
+                  <p>Artist: {credit.artist}</p>
+                  <p>
+                    Provider:{' '}
+                    <a href={credit.provider_link}>{credit.provider}</a>
+                  </p>
+                </div>
+                <div className={classes.creditImgContainer}>
+                  <img src={credit.img} alt={credit.alt_text} />
                 </div>
               </div>
-            );
-          }
-          if (filter === 2 && credit.class === 2) {
-            return (
-              <div className={classes.CreditBox}>
-                <div className={classes.creditFlex}>
-                  <div className={classes.creditText}>
-                    <h2>{credit.name}</h2>
-                    <p>Used on: {credit.used_in}</p>
-                    <p>Artist: {credit.artist}</p>
-                    <p>
-                      Provider:{' '}
-                      <a href={credit.provider_link}>{credit.provider}</a>
-                    </p>
-                  </div>
-                  <div className={classes.creditImgContainer}>
-                    <img src={credit.img} alt={credit.alt_text} />
-                  </div>
-                </div>
-              </div>
-            );
-          }
-          if (filter === 3 && credit.class === 3) {
-            return (
-              <div className={classes.CreditBox}>
-                <div className={classes.creditFlex}>
-                  <div className={classes.creditText}>
-                    <h2>{credit.name}</h2>
-                    <p>Used on: {credit.used_in}</p>
-                    <p>Artist: {credit.artist}</p>
-                    <p>
-                      Provider:{' '}
-                      <a href={credit.provider_link}>{credit.provider}</a>
-                    </p>
-                  </div>
-                  <div className={classes.creditImgContainer}>
-                    <img src={credit.img} alt={credit.alt_text} />
-                  </div>
-                </div>
-              </div>
-            );
-          }
-          return null;
+            </div>
+          );
         })}
       </div>
     );
