@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Dialog from '@material-ui/core/Dialog';
