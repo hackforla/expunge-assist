@@ -21,7 +21,7 @@
     "file-saver": "^2.0.5",
     "gh-pages": "^5.0.0",
     "i18next": "^20.1.0",
-    "i18next-browser-languagedetector": "^6.1.0",
+    "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^1.4.5",
     "jspdf": "^2.3.1",
     "react": "^17.0.1",
