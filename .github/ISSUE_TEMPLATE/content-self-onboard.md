@@ -1,5 +1,5 @@
 ---
-name: "Pre-work: Content"
+name: 'Pre-work: Content'
 about: An issue to help new content writers get acquainted with our processes.
 title: 'Self-Onboarding Content: [NAME]'
 labels: 'feature: onboard / offboard, issue level I: request, priority: medium, role:

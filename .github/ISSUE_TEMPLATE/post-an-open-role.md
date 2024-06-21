@@ -2,7 +2,7 @@
 name: Post an open role
 about: Recruit volunteers for specific open roles template
 title: 'EA: Open Role for: [Replace with NAME OF ROLE]'
-labels: 'Size: .25, feature: recruitment, role missing'
+labels: 'feature: recruitment, issue level I: request, role: missing, size: 0.25'
 assignees: ''
 
 ---

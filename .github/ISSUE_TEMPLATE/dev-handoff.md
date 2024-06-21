@@ -1,6 +1,9 @@
 ---
 name: Dev Handoff
 about: A snippet including the steps to handoff to development
+title: ''
+labels: ''
+assignees: ''
 
 ---
 

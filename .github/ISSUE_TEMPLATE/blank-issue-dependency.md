@@ -2,7 +2,8 @@
 name: Blank Issue w/ Dependency
 about: Consistent formatting make issues concise and easy to navigate
 title: ''
-labels: 'feature: missing, priority: missing, role: missing, size: missing, dependency, issue level: missing'
+labels: 'dependency, feature: missing, issue level: missing, priority: missing, role:
+  missing, size: missing'
 assignees: ''
 
 ---

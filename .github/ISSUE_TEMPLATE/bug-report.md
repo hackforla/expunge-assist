@@ -1,8 +1,11 @@
 ---
 name: Bug Report
 about: Report a bug to help us improve Expunge Assist
-title: '[BUG]'
-labels: 'feature: missing, priority: high, role: missing, size: missing, bug, ready for dev lead'
+title: "[BUG]"
+labels: 'bug, feature: missing, priority: high, ready for dev lead, role: missing,
+  size: missing'
+assignees: ''
+
 ---
 
 ### What is the bug you're reporting?
