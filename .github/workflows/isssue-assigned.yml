@@ -14,9 +14,10 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const assignee = `@${context.payload.issue.assignees[0].login}`;
+            const assignees = context.payload.issue.assignees;
+            const latestAssignee = `@${assignees[assignees.length - 1].login}`;
 
-            const commentBody = `Hey ${assignee}! Thanks for taking this issue.
+            const commentBody = `Hey ${latestAssignee}! Thanks for taking this issue.
 
             To help keep everyone in the loop, please comment your Estimated Time to Completion (ETC) below!
 
