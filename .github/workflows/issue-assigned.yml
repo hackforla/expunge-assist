@@ -15,14 +15,16 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const assignees = context.payload.issue.assignees;
-            const latestAssignee = `@${assignees[assignees.length - 1].login}`;
 
-            const commentBody = `Hey ${latestAssignee}! Thanks for taking this issue.
+            for (const assignee of assignees) {
+              const assigneeUsername = `@${assignee.login}`;
 
-            To help keep everyone in the loop, please comment your Estimated Time to Completion (ETC) below!
+              const commentBody = `Hey ${assigneeUsername}! Thanks for taking this issue.
 
-            Thanks again!
-            `;
+              To help keep everyone in the loop, please comment your Estimated Time to Completion (ETC) below!
+
+              Thanks again!
+              `;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
