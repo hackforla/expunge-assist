@@ -84,14 +84,15 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
       return;
     }
 
-    const docxSections = textSections.map((sectionText) => {
-      return new Paragraph({
-        text: sectionText,
-        spacing: {
-          after: 360, // 360 TWIPs = 24px
-        },
-      });
-    });
+    const docxSections = textSections.map(
+      (sectionText) =>
+        new Paragraph({
+          text: sectionText,
+          spacing: {
+            after: 360, // 360 TWIPs = 24px
+          },
+        })
+    );
 
     const doc = new Document({
       sections: [

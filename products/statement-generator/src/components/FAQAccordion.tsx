@@ -93,13 +93,9 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
       <AccordionDetails style={{ padding: 0, width: '100%' }}>
         <div className={classes.accordionDetailsContainer}>
           {content &&
-            content.map((paragraph) => {
-              return (
-                <Typography
-                  dangerouslySetInnerHTML={{ __html: t(paragraph) }}
-                />
-              );
-            })}
+            content.map((paragraph) => (
+              <Typography dangerouslySetInnerHTML={{ __html: t(paragraph) }} />
+            ))}
           {children && children}
         </div>
       </AccordionDetails>

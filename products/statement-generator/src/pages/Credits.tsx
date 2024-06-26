@@ -532,44 +532,37 @@ export const Filter: React.FC = () => {
     return obj;
   });
 
-  const FilterCards: React.FC = () => {
-    return (
-      <div className={classes.CreditContainer}>
-        {filteredCredits.map((credit) => {
-          return (
-            <div className={classes.CreditBox}>
-              <div className={classes.creditFlex}>
-                <div className={classes.creditText}>
-                  <h2>{credit.name}</h2>
-                  <p>Used on: {credit.used_in}</p>
-                  <p>Artist: {credit.artist}</p>
-                  <p>
-                    Provider:{' '}
-                    <a href={credit.provider_link}>{credit.provider}</a>
-                  </p>
-                </div>
-                <div className={classes.creditImgContainer}>
-                  <img src={credit.img} alt={credit.alt_text} />
-                </div>
-              </div>
+  const FilterCards: React.FC = () => (
+    <div className={classes.CreditContainer}>
+      {filteredCredits.map((credit) => (
+        <div className={classes.CreditBox}>
+          <div className={classes.creditFlex}>
+            <div className={classes.creditText}>
+              <h2>{credit.name}</h2>
+              <p>Used on: {credit.used_in}</p>
+              <p>Artist: {credit.artist}</p>
+              <p>
+                Provider: <a href={credit.provider_link}>{credit.provider}</a>
+              </p>
             </div>
-          );
-        })}
-      </div>
-    );
-  };
+            <div className={classes.creditImgContainer}>
+              <img src={credit.img} alt={credit.alt_text} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
-  const FilterButton = ({ name }: FilterButtonProps) => {
-    return (
-      <button
-        className={classes.FilterLink}
-        value={name}
-        onClick={handleFilterClick}
-      >
-        {name}
-      </button>
-    );
-  };
+  const FilterButton = ({ name }: FilterButtonProps) => (
+    <button
+      className={classes.FilterLink}
+      value={name}
+      onClick={handleFilterClick}
+    >
+      {name}
+    </button>
+  );
 
   return (
     <div className={classes.Filter}>
