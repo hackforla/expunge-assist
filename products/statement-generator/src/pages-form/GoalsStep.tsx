@@ -7,6 +7,10 @@ import FlowNavigation from 'components-layout/FlowNavigation';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import Textarea from 'components/Textarea';
+import {
+  capitalizeSentences,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 
 function GoalsStep() {
   const { t } = useTranslation();
@@ -21,7 +25,22 @@ function GoalsStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value.trim();
+
+    if (id === 'goals') {
+      formattedValue = capitalizeSentences(value);
+    } else if (id === 'goalsHow') {
+      formattedValue = value
+        .replace(/(^\s*i\s|[.!?]\s*\w)/g, (c) => c.toUpperCase())
+        .trim();
+      if (!/[.!?]$/.test(formattedValue)) {
+        formattedValue += '.';
+      }
+    }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       goalsState: { ...formState.goalsState, ...changes },
     });
