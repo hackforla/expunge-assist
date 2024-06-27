@@ -9,6 +9,11 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
+import {
+  capitalizeEachWord,
+  capitalizeSentences,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 import Input from '../components/Input';
 
 function InvolvementCommunityServiceFlow() {
@@ -25,7 +30,17 @@ function InvolvementCommunityServiceFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value.trim();
+
+    if (id === 'organizationName') {
+      formattedValue = capitalizeEachWord(value);
+    } else if (id === 'serviceDescription') {
+      formattedValue = capitalizeSentences(value);
+    }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       communityServiceState: { ...formState.communityServiceState, ...changes },
     });

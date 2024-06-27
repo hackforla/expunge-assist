@@ -9,6 +9,11 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import {
+  capitalizeSentences,
+  removePunctuationAndCapitalizeFirstWord,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 
 function InvolvementRecoveryFlow() {
   const { t } = useTranslation();
@@ -21,7 +26,17 @@ function InvolvementRecoveryFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value.trim();
+
+    if (id === 'recoveryName') {
+      formattedValue = removePunctuationAndCapitalizeFirstWord(value);
+    } else if (id === 'recoveryDescription') {
+      formattedValue = capitalizeSentences(value);
+    }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       recoveryState: { ...formState.recoveryState, ...changes },
     });

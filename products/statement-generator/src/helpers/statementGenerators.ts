@@ -15,12 +15,12 @@ export function generateIntroduction(formState: IStepState): string {
       ? `My name is ${introduction.fullName}, and I am ${introduction.age} years old.`
       : '';
 
-  const veteranSentance =
+  const veteranSentence =
     introduction.isVeteran === 'Yes'
       ? 'I am also a proud veteran of the United States Armed Forces.'
       : '';
 
-  return `${nameSentence} ${veteranSentance} ${lastSentence}`;
+  return `${nameSentence} ${veteranSentence} ${lastSentence}`;
 }
 
 /**
@@ -40,7 +40,10 @@ export function generateInvolvementJob(formState: IStepState): string {
     return '';
   }
 
-  return `I have been working at ${companyName} as a ${jobTitle}. At ${companyName}, ${jobDescription} Having my record cleared would help me continue to advance in my career.`;
+  // Determine the correct article "a" or "an" based on the first letter of the jobTitle
+  const article = generateArticle(jobTitle);
+
+  return `I have been working at ${companyName} as ${article} ${jobTitle}. At ${companyName}, ${jobDescription} Having my record cleared would help me continue to advance in my career.`;
 }
 
 /**
@@ -208,4 +211,44 @@ export function generateClosing(formState: IStepState): string {
   } = formState;
 
   return `Sincerely,\n\n${fullName}`;
+}
+
+export function capitalizeSentences(text: string): string {
+  let formattedText = text.trim();
+  formattedText = formattedText.replace(/(^\s*\w|[.!?]\s*\w)/g, (c) =>
+    c.toUpperCase()
+  );
+  if (!/[.!?]$/.test(formattedText)) {
+    formattedText += '.';
+  }
+  return formattedText;
+}
+
+export function capitalizeEachWord(text: string): string {
+  return text
+    .trim()
+    .replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '') // Remove unwanted punctuation
+    .split(' ')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join(' ');
+}
+
+export function removePunctuationAndCapitalizeFirstWord(text: string): string {
+  let formattedText = text.trim();
+  formattedText = formattedText.replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+  formattedText =
+    formattedText.charAt(0).toUpperCase() + formattedText.slice(1);
+  return formattedText;
+}
+
+export function removePunctuation(text: string): string {
+  return text.trim().replace(/[.,/#!$%^&*;:?{}=_`~()-]+$/, '');
+}
+
+export function generateArticle(word: string): string {
+  return /^[aeiou]/i.test(word) ? 'an' : 'a';
+}
+
+export function capitalizeStandaloneI(text: string): string {
+  return text.replace(/\bi\b/g, 'I');
 }
