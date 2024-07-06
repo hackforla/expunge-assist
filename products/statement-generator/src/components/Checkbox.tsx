@@ -66,21 +66,19 @@ interface IWrapperCheckboxProps extends IInnerCheckboxProps {
 const CheckboxLabels = React.forwardRef<
   HTMLInputElement,
   IWrapperCheckboxProps
->(({ label, checked, onChange, id, useTeal = false }, ref) => {
-  return (
-    <FormControlLabel
-      control={
-        <InnerCheckbox
-          useTeal={useTeal}
-          id={id}
-          checked={checked}
-          onChange={onChange}
-          ref={ref}
-        />
-      }
-      label={label}
-    />
-  );
-});
+>(({ label, checked, onChange, id, useTeal = false }, ref) => (
+  <FormControlLabel
+    control={
+      <InnerCheckbox
+        useTeal={useTeal}
+        id={id}
+        checked={checked}
+        onChange={onChange}
+        ref={ref}
+      />
+    }
+    label={label}
+  />
+));
 
 export default CheckboxLabels;
