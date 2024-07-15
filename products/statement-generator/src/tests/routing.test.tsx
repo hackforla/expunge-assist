@@ -5,6 +5,13 @@ import { MemoryRouter as Router } from 'react-router-dom';
 import App, { LocationDisplay } from '../App';
 
 describe('Routing Tests', () => {
+  // mock the scrollTo component
+  beforeEach(() => {
+    window.scrollTo = jest.fn();
+  });
+
+  console.warn = jest.fn();
+
   test('it can render a component that uses useLocation', () => {
     const route = '/';
 
