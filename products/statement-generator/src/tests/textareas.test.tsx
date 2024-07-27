@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
+
 import { ThemeProvider } from '@material-ui/core/styles';
 import customMuiTheme from 'styles/customMuiTheme';
 
@@ -20,6 +22,21 @@ describe('Textarea component', () => {
   });
 
   test('Textarea props are passed correctly', () => {
+    interface ExpectedProps {
+      placeholder: string;
+      id: string;
+      rows: string;
+    }
+
+    const checkTextareaProps = (
+      input: HTMLElement,
+      expectedProps: ExpectedProps
+    ) => {
+      expect(input).toHaveAttribute('placeholder', expectedProps.placeholder);
+      expect(input).toHaveAttribute('rows', expectedProps.rows);
+      expect(input).toHaveAttribute('id', expectedProps.id);
+    };
+
     const { getByText, rerender } = render(
       <ThemeProvider theme={customMuiTheme}>
         <Textarea
@@ -35,14 +52,12 @@ describe('Textarea component', () => {
 
     const textarea = getByText(/Type here/i);
 
-    // passed correct placeholder
-    expect(textarea).toHaveAttribute('placeholder', 'Type here');
-
-    // passed correct # of rows
-    expect(textarea).toHaveAttribute('rows', '3');
-
-    // passed correct id
-    expect(textarea).toHaveAttribute('id', 'test');
+    // passed correct placeholder, # of rows, and id
+    checkTextareaProps(textarea, {
+      placeholder: 'Type here',
+      rows: '3',
+      id: 'test',
+    });
 
     // passed correct label
     const label = getByText('label');
@@ -86,8 +101,12 @@ describe('Textarea component', () => {
     expect(label).toHaveAttribute('for', 'accessible-textarea');
 
     // textarea is focusable
-    const textarea = getByPlaceholderText('Type here');
-    textarea.focus();
-    expect(textarea).toHaveFocus();
+    const input = getByPlaceholderText('Type here');
+    userEvent.click(input);
+    expect(input).toHaveFocus();
+
+    // textarea does not trap focus
+    userEvent.tab();
+    expect(input).not.toHaveFocus();
   });
 });
