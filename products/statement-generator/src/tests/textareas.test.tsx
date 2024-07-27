@@ -32,9 +32,14 @@ describe('Textarea component', () => {
       input: HTMLElement,
       expectedProps: ExpectedProps
     ) => {
-      expect(input).toHaveAttribute('placeholder', expectedProps.placeholder);
-      expect(input).toHaveAttribute('rows', expectedProps.rows);
-      expect(input).toHaveAttribute('id', expectedProps.id);
+      const attributes: (keyof typeof expectedProps)[] = [
+        'placeholder',
+        'rows',
+        'id',
+      ];
+      attributes.forEach((attr) => {
+        expect(input).toHaveAttribute(attr, expectedProps[attr]);
+      });
     };
 
     const { getByText, rerender } = render(
