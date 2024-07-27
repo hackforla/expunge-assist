@@ -94,8 +94,6 @@ describe('Textarea component', () => {
           label="accessibleTextarea"
           placeholder="Type here"
           handleChange={() => {}}
-          defaultValue=""
-          rows={3}
         />
       </ThemeProvider>
     );
