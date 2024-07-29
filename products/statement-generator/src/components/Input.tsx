@@ -146,7 +146,12 @@ const InputArea: React.FC<InputFieldProps> = ({
           <InputAdornment position="end">
             {adornment !== undefined && <span>{adornment}</span>}
 
-            {valid ? <CheckCircleIcon className={classes.icon} /> : null}
+            {valid ? (
+              <CheckCircleIcon
+                className={classes.icon}
+                data-testid="valid-icon"
+              />
+            ) : null}
           </InputAdornment>
         }
         autoComplete="off"
