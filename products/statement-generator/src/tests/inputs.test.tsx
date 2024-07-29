@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
@@ -33,8 +33,8 @@ describe('Input component', () => {
         <Input
           id="test"
           handleChange={() => {}}
-          defaultValue="0"
           placeholder="0"
+          defaultValue="0"
           type="number"
         />
       </ThemeProvider>
@@ -43,8 +43,8 @@ describe('Input component', () => {
     const input = getByRole(/spinbutton/i) as HTMLInputElement;
 
     // number inputs don't allow numbers < 0
-    //
-    //
+    fireEvent.keyDown(input, { key: 'ArrowDown', code: 'ArrowDown' });
+    expect(input).toHaveValue(0);
 
     // valid responses show valid icon
     userEvent.type(input, '35');
@@ -60,13 +60,7 @@ describe('Input component', () => {
   test('Inputs validate text responses', () => {
     const { getByTestId, getByRole } = render(
       <ThemeProvider theme={customMuiTheme}>
-        <Input
-          id="test"
-          handleChange={() => {}}
-          defaultValue="0"
-          placeholder="0"
-          type="text"
-        />
+        <Input id="test" handleChange={() => {}} placeholder="" type="text" />
       </ThemeProvider>
     );
 
@@ -94,9 +88,14 @@ describe('Input component', () => {
       input: HTMLElement,
       expectedProps: ExpectedProps
     ) => {
-      expect(input).toHaveAttribute('placeholder', expectedProps.placeholder);
-      expect(input).toHaveAttribute('id', expectedProps.id);
-      expect(input).toHaveAttribute('type', expectedProps.type);
+      const attributes: (keyof typeof expectedProps)[] = [
+        'placeholder',
+        'id',
+        'type',
+      ];
+      attributes.forEach((attr) => {
+        expect(input).toHaveAttribute(attr, expectedProps[attr]);
+      });
     };
 
     const { getByPlaceholderText } = render(
