@@ -103,13 +103,19 @@ describe('Textarea component', () => {
     expect(label).toBeInTheDocument();
     expect(label).toHaveAttribute('for', 'accessible-textarea');
 
-    // textarea is focusable
+    // textarea and label focus on tab
     const input = getByPlaceholderText('Type here');
-    userEvent.click(input);
+    userEvent.tab();
+    expect(label).toHaveFocus();
+    userEvent.tab();
     expect(input).toHaveFocus();
 
     // textarea does not trap focus
     userEvent.tab();
     expect(input).not.toHaveFocus();
+
+    // textarea focuses on click
+    userEvent.click(input);
+    expect(input).toHaveFocus();
   });
 });
