@@ -1,5 +1,5 @@
 ---
-name: Onboarding/Offboarding Dev/Design
+name: "Onboarding/Offboarding: Dev & Design"
 about: This template is for Dev or Design team Leads or PMs outlining the process of on and offboarding
   new members
 title: 'Onboarding/Offboarding [TEAM]: [NAME]'
