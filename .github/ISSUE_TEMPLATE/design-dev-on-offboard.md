@@ -1,10 +1,10 @@
 ---
-name: Onboarding/Offboarding Dev
-about: This template is for Dev PM and/or Lead outlining the process of on and offboarding
-  new members to the Development team
-title: 'Onboarding/Offboarding Dev: [NAME]'
-labels: 'feature: onboard / offboard, issue level I: request, lead, priority: high,
-  role: development, size: 1pt'
+name: Onboarding/Offboarding Dev/Design
+about: This template is for Dev or Design team Leads or PMs outlining the process of on and offboarding
+  new members
+title: 'Onboarding/Offboarding [TEAM]: [NAME]'
+labels: 'feature: onboard / offboard, issue level I: request, priority: high,
+  role: missing, size: 1pt'
 assignees: ''
 
 ---
