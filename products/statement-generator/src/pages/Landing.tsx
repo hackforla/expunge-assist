@@ -124,7 +124,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     opportunitySection: {
       backgroundColor: `${palette.primary.lighter}`,
       width: '100%',
-      padding: '100px 80px',
+      padding: '100px 140px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -133,6 +133,9 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       '& button': {
         width: '170px',
         margin: `${spacing(2)}px auto 0px auto`,
+      },
+      [breakpoints.down(breakpoints.values.md)]: {
+        padding: '48px',
       },
       [breakpoints.down(breakpoints.values.sm)]: {
         padding: '24px',
