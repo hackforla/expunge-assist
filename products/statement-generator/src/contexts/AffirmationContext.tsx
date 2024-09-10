@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
@@ -7,11 +6,7 @@ import FutureGoalsImg from 'assets/future-goals-img.svg';
 import WhyImg from 'assets/why-img.svg';
 import AlmostThereImg from 'assets/almost-there-img.svg';
 
-// TODO: its kind of confusing that the data is which url this should show up
-//  as opposed to the step that it is referring to
 const AFFIRMATION_DATA = {
-  // even though it is on the Involvement page,
-  //  this is to thank new users after the Introduction
   [AppUrl.Involvement as string]: {
     titleText: 'affirmation_popup.step2.titleText',
     description: 'affirmation_popup.step2.description',
@@ -61,28 +56,37 @@ const AffirmationContextProvider = ({ children }: AffirmationProviderProps) => {
     description: 'affirmation_popup.step2.description',
   });
 
-  const updateAffirmationData = (newState: object) => {
-    setAffirmationData({ ...affirmationData, ...newState });
+  const [affirmationShown, setAffirmationShown] = useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const updateAffirmationData = (newState: Partial<AffirmationProps>) => {
+    setAffirmationData((prevState) => ({ ...prevState, ...newState }));
   };
 
   useEffect(() => {
     const newData = AFFIRMATION_DATA[currentStep as string];
 
-    if (newData !== undefined) {
+    if (newData && canShowAffirmation && !affirmationShown[currentStep]) {
       updateAffirmationData({
         ...newData,
-        isActive: canShowAffirmation,
+        isActive: true,
       });
+      setAffirmationShown((prev) => ({ ...prev, [currentStep]: true }));
     } else {
       updateAffirmationData({
         isActive: false,
       });
     }
-  }, [currentStep]);
+  }, [currentStep, canShowAffirmation]);
 
   return (
     <AffirmationContext.Provider
-      value={{ affirmationData, setAffirmationData, updateAffirmationData }}
+      value={{
+        affirmationData,
+        setAffirmationData,
+        updateAffirmationData,
+      }}
     >
       {children}
     </AffirmationContext.Provider>

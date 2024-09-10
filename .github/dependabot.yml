@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # npm as the package ecosystem
+    directory: "/products/statement-generator/" # directory where package.json is located
+    schedule:
+      interval: "daily" # daily update checks
+    labels:
+      - "ready for dev lead" # label to be added to PRs
+    target-branch: "dependencies" # target branch for updates

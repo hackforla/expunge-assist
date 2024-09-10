@@ -9,6 +9,11 @@ import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
 
+import {
+  capitalizeSentences,
+  removePunctuation,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 import Input from '../components/Input';
 
 function InvolvementSomethingElseFlow() {
@@ -22,7 +27,17 @@ function InvolvementSomethingElseFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value.trim();
+
+    if (id === 'activityName') {
+      formattedValue = removePunctuation(value);
+    } else if (id === 'activityDescription') {
+      formattedValue = capitalizeSentences(value);
+    }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       somethingElseState: { ...formState.somethingElseState, ...changes },
     });

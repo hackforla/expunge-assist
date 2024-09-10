@@ -9,6 +9,11 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import {
+  capitalizeEachWord,
+  capitalizeSentences,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 
 function InvolvementJobFlow() {
   const { t } = useTranslation();
@@ -27,7 +32,17 @@ function InvolvementJobFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value.trim();
+
+    if (id === 'companyName' || id === 'jobTitle') {
+      formattedValue = capitalizeEachWord(value);
+    } else if (id === 'jobDescription') {
+      formattedValue = capitalizeSentences(value);
+    }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       involvementJobState: { ...formState.involvementJobState, ...changes },
     });

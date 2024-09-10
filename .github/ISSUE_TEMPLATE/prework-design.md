@@ -1,5 +1,5 @@
 ---
-name: "Pre-work: Design"
+name: 'Pre-work: Design'
 about: An issue to help new designers get acquainted with our processes.
 title: 'Self-Onboarding Designer: [NAME]'
 labels: 'feature: onboard / offboard, issue level I: request, priority: medium, role:

@@ -9,6 +9,11 @@ import Textarea from 'components/Textarea';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import {
+  capitalizeEachWord,
+  capitalizeSentences,
+  capitalizeStandaloneI,
+} from 'helpers/statementGenerators';
 
 function InvolvementSchoolFlow() {
   const { t } = useTranslation();
@@ -23,7 +28,17 @@ function InvolvementSchoolFlow() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let formattedValue = value.trim();
+
+    if (id === 'schoolName' || id === 'studyName') {
+      formattedValue = capitalizeEachWord(value);
+    } else if (id === 'passionDescription') {
+      formattedValue = capitalizeSentences(value);
+    }
+
+    formattedValue = capitalizeStandaloneI(formattedValue);
+
+    const changes = { [id]: formattedValue };
     updateStepToForm({
       schoolState: { ...formState.schoolState, ...changes },
     });

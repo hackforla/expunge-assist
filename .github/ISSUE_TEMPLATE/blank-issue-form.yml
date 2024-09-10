@@ -1,34 +1,40 @@
-name: "Blank Issue Form"
-description: "Standard Expunge Assist issue form"
-about: Consistent formatting make issues concise and easy to navigate
+name: Blank Issue Form
+description: Standard Expunge Assist issue form
+title: "Provide a descriptive title for the issue"
 labels:
-  [
-    feature: missing,
-    issue level: missing,
-    priority: missing,
-    role: missing,
-    size: missing',
-  ]
-
+  - "feature: missing"
+  - "issue level: missing"
+  - "priority: missing"
+  - "role: missing"
+  - "size: missing"
 body:
-  - type: markdown
+  - type: input
+    id: title
+    attributes:
+      label: "Title"
+      description: "Provide a brief and descriptive title for the issue"
+      placeholder: "e.g., Bug in user login process"
+    validations:
+      required: true
+  - type: textarea
     id: overview
     attributes:
-      label: Overview
-      description: Clearly state the purpose of this issue in 2 sentences or less
+      label: "Overview"
+      description: "Text here that clearly states the purpose of this issue in 2 sentences or less."
+      placeholder: "Provide a brief description of the issue."
     validations:
       required: true
   - type: textarea
-    id: action-items
+    id: action_items
     attributes:
-      label: Action Items
-      description: "If this is the beginning of the task this is most likely something to be researched and documented."
+      label: "Action Items"
+      description: "List the tasks that need to be completed."
+      placeholder: "- Research and document initial findings\n- Outline steps to resolve issue\n- Divide into separate tasks if needed"
     validations:
       required: true
-  - type: textarea
-    id: resources-instructions
+  - type: input
+    id: resources
     attributes:
-      label: "Resources/Instructions"
-      description: "If the issue has already been researched, and the course of action is clear, this will describe the steps.  However, if the steps can be divided into tasks for more than one person, we recommend dividing it up into separate issues, or assigning it as a pair programming task."
-    validations:
-      required: true
+      label: "Resources/Notes"
+      description: "If there is a website which has documentation that helps with this issue, provide the link(s) here."
+      placeholder: "Add relevant resources or notes here, such as links to documentation."

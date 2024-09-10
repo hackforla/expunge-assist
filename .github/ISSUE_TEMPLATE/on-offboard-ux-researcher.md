@@ -1,5 +1,5 @@
 ---
-name: Onboarding/Offboarding UX Researcher
+name: "Onboarding/Offboarding: UX Researcher"
 about: 'This template provides checklist of the steps required for on/off boarding
   any UX Researcher. Issue should be created and completed by PM/Lead. '
 title: ''

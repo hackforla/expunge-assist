@@ -9,6 +9,7 @@ import RadioGroup from 'components/RadioGroup';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 import FormContainer from 'components-layout/FormContainer';
+import { removePunctuation } from 'helpers/statementGenerators';
 
 export function IntroductionStep() {
   const { t } = useTranslation();
@@ -21,7 +22,18 @@ export function IntroductionStep() {
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
-    const changes = { [id]: value };
+    let finalValue = value.trim();
+
+    if (id === 'fullName') {
+      finalValue = removePunctuation(value)
+        .split(' ')
+        .map(
+          (part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+        )
+        .join(' ');
+    }
+
+    const changes = { [id]: finalValue };
     updateStepToForm({
       introduction: { ...formState.introduction, ...changes },
     });
