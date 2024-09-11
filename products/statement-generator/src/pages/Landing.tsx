@@ -139,6 +139,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       },
       [breakpoints.down(breakpoints.values.sm)]: {
         padding: '24px',
+        textAlign: 'left',
       },
     },
     firstSection: {
