@@ -111,18 +111,6 @@ const PreRoutingContextProvider = ({
     }
   }, [pathname]);
 
-  // update `appTheme` depending on page
-  useEffect(() => {
-    switch (currentStep) {
-      case AppUrl.Welcome:
-        setAppTheme('pink');
-        break;
-      default:
-        setAppTheme('transparent');
-        break;
-    }
-  }, [currentStep]);
-
   return (
     <RoutingContext.Provider
       value={{
