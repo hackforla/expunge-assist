@@ -25,6 +25,6 @@ jobs:
         run: npm install @octokit/rest
 
       - name: Process Open Issues
-        run: node --experimental-modules .github/workflows/scripts/weekly-label-check.mjs
+        run: node .github/workflows/scripts/weekly-label-check.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
