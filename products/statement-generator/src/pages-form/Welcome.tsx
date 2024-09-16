@@ -7,7 +7,7 @@ import AffirmationImage from 'assets/affirmation-img.svg';
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
 
-const useStyles = makeStyles<Theme>(({ palette, spacing, globals }) =>
+const useStyles = makeStyles<Theme>(({ spacing, globals }) =>
   createStyles({
     illustrationContainer: {
       marginTop: spacing(3),
@@ -16,7 +16,6 @@ const useStyles = makeStyles<Theme>(({ palette, spacing, globals }) =>
       height: '400px',
     },
     illustration: {
-      background: palette.primary.lighter,
       width: globals.contentWidth,
       position: 'absolute',
       left: '50%',
