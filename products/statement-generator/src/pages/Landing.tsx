@@ -135,7 +135,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         margin: `${spacing(2)}px auto 0px auto`,
       },
       '& h3': {
-        fontSize: '24pt',
+        fontSize: '20pt',
       },
       [breakpoints.down(breakpoints.values.md)]: {
         padding: '48px',
