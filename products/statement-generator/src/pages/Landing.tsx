@@ -124,7 +124,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
     opportunitySection: {
       backgroundColor: `${palette.primary.lighter}`,
       width: '100%',
-      padding: '100px 80px',
+      padding: '100px 140px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -133,6 +133,12 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       '& button': {
         width: '170px',
         margin: `${spacing(2)}px auto 0px auto`,
+      },
+      '& h3': {
+        fontSize: '20pt',
+      },
+      [breakpoints.down(breakpoints.values.md)]: {
+        padding: '48px',
       },
       [breakpoints.down(breakpoints.values.sm)]: {
         padding: '24px',
@@ -431,7 +437,7 @@ function LandingSection8() {
   return (
     <section className={`${classes.section}`} style={{ marginBottom: '24px' }}>
       <div className={classes.opportunitySection}>
-        <h2>{t('landing_page.sectionTitle8')}</h2>
+        <h3>{t('landing_page.sectionTitle8')}</h3>
         <p>{t('landing_page.sectionParagraph8')}</p>
         <ButtonComponent
           onClick={() => handleContactUs()}
