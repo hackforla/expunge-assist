@@ -47,18 +47,18 @@ describe('Checkbox component', () => {
     const second = getByLabelText(/two/i);
     const third = getByLabelText(/three/i);
 
-    // Clicking checkbox changes state
+    // clicking checkbox changes state
 
     userEvent.click(first);
     expect(onChange).toHaveBeenCalledTimes(1);
     // expect(first).toBeChecked();
 
-    // Clicking checkbox does NOT change state of other checkboxes
+    // clicking checkbox does NOT change state of other checkboxes
 
     // expect(second).not.toBeChecked();
     // expect(third).not.toBeChecked();
 
-    // Multi-select is possible
+    // multi-select is possible
 
     userEvent.click(second);
     expect(onChange).toHaveBeenCalledTimes(2);
@@ -69,7 +69,7 @@ describe('Checkbox component', () => {
   });
 
   test('Checkbox props are passed correctly', () => {
-    const { getByRole } = render(
+    const { getByLabelText } = render(
       <ThemeProvider theme={customMuiTheme}>
         <Checkbox
           id="example"
@@ -80,57 +80,54 @@ describe('Checkbox component', () => {
       </ThemeProvider>
     );
 
-    const checkbox = getByRole('checkbox');
+    // label passed correctly
+    const checkbox = getByLabelText('test');
 
+    // id passed correctly
     expect(checkbox).toHaveAttribute('id', 'example');
   });
 
-  //   test('Checkbox is accessible and focusable', () => {
-  //     const { getByText, getByPlaceholderText } = render(
-  //       <ThemeProvider theme={customMuiTheme}>
-  //         <Textarea
-  //           id="accessible-textarea"
-  //           label="accessibleTextarea"
-  //           placeholder="Type here"
-  //           handleChange={() => {}}
-  //         />
-  //       </ThemeProvider>
-  //     );
+  test('Checkbox is accessible and focusable', () => {
+    const { getByRole, getByPlaceholderText } = render(
+      <ThemeProvider theme={customMuiTheme}>
+        <Checkbox
+          id="example"
+          label="test"
+          checked={false}
+          onChange={() => jest.fn()}
+        />
+      </ThemeProvider>
+    );
 
-  //     // label is associated with the textarea
-  //     const label = getByText('accessibleTextarea');
-  //     expect(label).toBeInTheDocument();
-  //     expect(label).toHaveAttribute('for', 'accessible-textarea');
+    // using spacebar changes state
+    // const input = getByPlaceholderText('Type here');
+    // userEvent.tab();
+    // expect(label).toHaveFocus();
+    // userEvent.tab();
+    // expect(input).toHaveFocus();
 
-  //     // using spacebar changes state
-  //     const input = getByPlaceholderText('Type here');
-  //     userEvent.tab();
-  //     expect(label).toHaveFocus();
-  //     userEvent.tab();
-  //     expect(input).toHaveFocus();
+    const checkbox = getByRole('checkbox');
 
-  //     // checkbox is focusable
-  //     userEvent.click(input);
-  //     expect(input).toHaveFocus();
+    // checkbox is focusable
+    userEvent.click(checkbox);
+    expect(checkbox).toHaveFocus();
 
-  //     // checkbox does not trap focus
-  //     userEvent.tab();
-  //     expect(input).not.toHaveFocus();
+    // checkbox does not trap focus
+    userEvent.tab();
+    expect(checkbox).not.toHaveFocus();
 
-  // passed disabled state correctly
-  //   rerender(
-  //     <ThemeProvider theme={customMuiTheme}>
-  //       <Textarea
-  //         id="test"
-  //         label="label"
-  //         handleChange={() => {}}
-  //         defaultValue="Type here"
-  //         rows={3}
-  //         disabled
-  //       />
-  //     </ThemeProvider>
-  //   );
+    // passed disabled state correctly
+    // rerender(
+    //   <ThemeProvider theme={customMuiTheme}>
+    //     <Checkbox
+    //       id="example"
+    //       label="test"
+    //       checked={false}
+    //       onChange={() => jest.fn()}
+    //     />
+    //   </ThemeProvider>
+    // );
 
-  //   expect(textarea).toBeDisabled();
-  //   });
+    // expect(textarea).toBeDisabled();
+  });
 });
