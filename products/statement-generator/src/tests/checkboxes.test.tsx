@@ -28,6 +28,8 @@ describe('Checkbox component', () => {
   });
 
   test('Checkbox functions correctly', () => {
+    // need to figure out how to control state in test file
+
     const onChange = jest.fn();
 
     const { getByLabelText } = render(
@@ -87,8 +89,8 @@ describe('Checkbox component', () => {
     expect(checkbox).toHaveAttribute('id', 'example');
   });
 
-  test('Checkbox is accessible and focusable', () => {
-    const { getByRole, getByPlaceholderText } = render(
+  test('Checkbox is accessible and focusable', async () => {
+    const { getByRole } = render(
       <ThemeProvider theme={customMuiTheme}>
         <Checkbox
           id="example"
@@ -99,18 +101,16 @@ describe('Checkbox component', () => {
       </ThemeProvider>
     );
 
-    // using spacebar changes state
-    // const input = getByPlaceholderText('Type here');
-    // userEvent.tab();
-    // expect(label).toHaveFocus();
-    // userEvent.tab();
-    // expect(input).toHaveFocus();
-
     const checkbox = getByRole('checkbox');
 
     // checkbox is focusable
     userEvent.click(checkbox);
     expect(checkbox).toHaveFocus();
+
+    // using spacebar changes state
+    await userEvent.type(checkbox, '{space}');
+
+    expect(checkbox).toBeChecked();
 
     // checkbox does not trap focus
     userEvent.tab();
