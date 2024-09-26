@@ -4,8 +4,8 @@
   "homepage": "https://expungeassist.org",
   "private": true,
   "engines": {
-    "npm": ">=8.0.0",
-    "node": ">=16.0.0"
+    "npm": "10.x",
+    "node": "20.x"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
