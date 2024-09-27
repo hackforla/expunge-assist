@@ -92,7 +92,6 @@ describe('Checkbox component', () => {
     expect(first).toHaveFocus();
 
     // pressing spacebar changes state
-    // using fireEvent - wasn't able to get test working with userEvent keyboard API
     userEvent.type(first, ' ');
     expect(first).toBeChecked();
 
