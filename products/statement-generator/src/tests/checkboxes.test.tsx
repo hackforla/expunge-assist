@@ -68,10 +68,12 @@ describe('Checkbox component', () => {
   });
 
   test('Checkbox props are passed correctly', () => {
-    const { getByRole } = render(<TestCheckbox id="example" label="test" />);
+    const { getByLabelText } = render(
+      <TestCheckbox id="example" label="test" />
+    );
 
     // label passed correctly
-    const checkbox = getByRole('checkbox');
+    const checkbox = getByLabelText(/test/i);
 
     // id passed correctly
     expect(checkbox).toHaveAttribute('id', 'example');
