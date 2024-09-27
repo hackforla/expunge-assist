@@ -85,18 +85,19 @@ describe('Checkbox component', () => {
       </>
     );
 
-    const checkbox = getByLabelText('first');
+    const first = getByLabelText('first');
 
     // checkbox is focusable
     userEvent.tab();
-    expect(checkbox).toHaveFocus();
+    expect(first).toHaveFocus();
 
     // pressing spacebar changes state
     // using fireEvent - wasn't able to get test working with userEvent keyboard API
-    fireEvent.keyPress(checkbox, { key: 'Spacebar', charCode: 32 });
+    userEvent.type(first, ' ');
+    expect(first).toBeChecked();
 
     // checkbox does not trap focus
     userEvent.tab();
-    expect(checkbox).not.toHaveFocus();
+    expect(first).not.toHaveFocus();
   });
 });
