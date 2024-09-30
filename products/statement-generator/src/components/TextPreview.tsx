@@ -59,10 +59,14 @@ interface ComponentProps {
 }
 
 const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
-  (
-    { onSaveClick, content, nameOfStep, className = '', style, isFirstPreview },
-    ref
-  ) => {
+  ({
+    onSaveClick,
+    content,
+    nameOfStep,
+    className = '',
+    style,
+    isFirstPreview,
+  }) => {
     const classes = useStyles();
     const utilityClasses = useUtilityStyles();
     const [isEditing, setIsEditing] = useState<boolean>(false);
