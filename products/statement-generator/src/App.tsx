@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useLocation,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import { RoutingContextProvider } from 'contexts/RoutingContext';
@@ -50,12 +45,6 @@ import customMuiTheme from 'styles/customMuiTheme';
 
 import { useTranslation } from 'react-i18next';
 import ScrollToTop from './components-layout/ScrollToTop';
-
-export const LocationDisplay = () => {
-  const location = useLocation();
-
-  return <div data-testid="location-display">{location.pathname}</div>;
-};
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -198,7 +187,6 @@ const App: React.FC = () => {
                 </Switch>
                 <AppFooter />
               </PageContainer>
-              <LocationDisplay />
             </FormStateContextProvider>
           </AffirmationContextProvider>
         </RoutingContextProvider>

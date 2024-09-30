@@ -1,9 +1,9 @@
-import { createTheme } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core';
 
 /**
  * @link https://v4.mui.com/customization/theming/
  */
-const customMuiTheme = createTheme({
+const customMuiTheme = createMuiTheme({
   globals: {
     contentWidth: 600,
     wideWidth: 960,
