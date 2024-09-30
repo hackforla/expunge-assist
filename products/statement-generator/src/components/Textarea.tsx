@@ -119,7 +119,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
           defaultValue={defaultValue}
           disabled={disabled}
           value={value}
-          rows={rows}
+          minRows={rows}
           multiline
           fullWidth
           variant="outlined"
