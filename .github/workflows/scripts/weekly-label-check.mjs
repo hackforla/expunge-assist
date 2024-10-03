@@ -36,6 +36,7 @@ async function fetchOpenIssues() {
 
 async function main() {
   const openIssues = await fetchOpenIssues();
+  let totalSuccessfulIssues = 0;
 
   for (const issue of openIssues) {
     const labels = issue.labels.map((label) => label.name);
@@ -48,9 +49,13 @@ async function main() {
       );
     } else {
       console.log(`Labels to add for issue #${issue.number}: `, labelsToAdd);
-      await addLabels(labelsToAdd, issue.number);
+      const successfulIssue = await addLabels(labelsToAdd, issue.number);
+      if (successfulIssue) {
+        totalSuccessfulIssues++;
+      }
     }
   }
+  console.log(totalSuccessfulIssues, " issues have been successfully labeled");
 }
 
 function filterLabels(labels) {
@@ -82,13 +87,13 @@ async function addLabels(
   const labels = [...new Set([...labelsToAdd])];
 
   try {
-    await octokit.issues.addLabels({
+    const successfulAdd = await octokit.issues.addLabels({
       owner: owner,
       repo: repo,
       issue_number: issueNum,
       labels: labels,
     });
-    if (labelsToAdd.length > 0) {
+    if (successfulAdd) {
       console.log("Successfully added labels to issue #", issueNum);
     }
     return true;
