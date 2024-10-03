@@ -52,6 +52,9 @@ async function main() {
       const successfulIssue = await addLabels(labelsToAdd, issue.number);
       if (successfulIssue) {
         totalSuccessfulIssues++;
+        console.log(`Successfully added labels to issue #${issue.number}`);
+      } else {
+        throw new Error(`Failed to process issue #${issue.number}`);
       }
     }
   }
@@ -87,20 +90,26 @@ async function addLabels(
   const labels = [...new Set([...labelsToAdd])];
 
   try {
-    const successfulAdd = await octokit.issues.addLabels({
+    await octokit.issues.addLabels({
       owner: owner,
       repo: repo,
       issue_number: issueNum,
       labels: labels,
     });
-    if (successfulAdd) {
-      console.log("Successfully added labels to issue #", issueNum);
-    }
     return true;
   } catch (err) {
     console.error("Error editing labels: ", err);
-    return false;
+    throw new Error(
+      `Failed to add labels to issue #${issueNum}: ${err.message}`
+    );
   }
 }
 
-main().catch(console.error);
+(async () => {
+  try {
+    await main();
+  } catch (err) {
+    console.error("Action aborted because error occurred:", err.message);
+    process.exit(1);
+  }
+})();
