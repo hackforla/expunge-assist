@@ -50,6 +50,7 @@ async function main() {
     } else {
       console.log(`Labels to add for issue #${issue.number}: `, labelsToAdd);
       const successfulIssue = await addLabels(labelsToAdd, issue.number);
+
       if (successfulIssue) {
         totalSuccessfulIssues++;
         console.log(`Successfully added labels to issue #${issue.number}`);
