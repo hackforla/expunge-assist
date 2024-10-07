@@ -48,8 +48,7 @@ const useStyles = makeStyles(() =>
       padding: 0,
       width: '100%',
       paddingLeft: '40px',
-      '& p': {  
-},
+      '& p': {},
     },
   })
 );
