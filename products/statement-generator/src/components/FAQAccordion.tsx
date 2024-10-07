@@ -18,7 +18,6 @@ const useStyles = makeStyles(() =>
   createStyles({
     accordionWrapper: {
       width: '100%',
-      color: '#25003F',
       boxShadow: 'none',
       border: 'none',
       position: 'static',
@@ -29,14 +28,12 @@ const useStyles = makeStyles(() =>
     accordionSummary: {
       fontSize: '20px',
       lineHeight: '24px',
-      color: '#25003F',
     },
     expandIcon: {
       marginLeft: '0',
       marginRight: '16px',
       width: '24px',
       transition: 'transform 0.4s ease-in-out',
-      color: '#25003F',
     },
     rotateIcon: {
       transform: 'rotate(360deg)',
@@ -51,9 +48,8 @@ const useStyles = makeStyles(() =>
       padding: 0,
       width: '100%',
       paddingLeft: '40px',
-      '& p': {
-        color: '#25003F',
-      },
+      '& p': {  
+},
     },
   })
 );
@@ -67,7 +63,6 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 
   '& .MuiAccordionSummary-content': {
     minHeight: 0,
-    color: '#25003F',
   },
 }));
 
@@ -102,10 +97,7 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
         <div className={classes.accordionDetailsContainer}>
           {content &&
             content.map((paragraph) => (
-              <Typography
-                key={`${title}-${paragraph}`}
-                dangerouslySetInnerHTML={{ __html: t(paragraph) }}
-              />
+              <Typography dangerouslySetInnerHTML={{ __html: t(paragraph) }} />
             ))}
           {children && children}
         </div>
