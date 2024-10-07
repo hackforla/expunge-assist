@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 
 // Override console.warn to suppress specific warnings
-const originalWarn = console.warn; // eslint-disable-line no-console
-// eslint-disable-next-line no-console
+const originalWarn = console.warn;
+
 console.warn = (...args) => {
   if (
     !args[0].includes(
