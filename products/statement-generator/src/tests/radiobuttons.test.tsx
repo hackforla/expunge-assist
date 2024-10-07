@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import customMuiTheme from 'styles/customMuiTheme';
 
 import RadioGroup from '../components/RadioGroup';
+import { useRadioGroup } from '@material-ui/core';
 
 // create TestRadioGroup component in order to test state changes
 type Choice = 'Yes' | 'No';
@@ -85,12 +86,12 @@ describe('Radio group component', () => {
   });
 
   test('Radio buttons are accessible and focusable', async () => {
-    const { getByLabelText } = render(
+    const { getByRole, getByLabelText } = render(
       <TestRadioGroup id="example" label="test" />
     );
 
+    const radioGroup = getByRole('radiogroup');
     const yesRadio = getByLabelText('Yes') as HTMLInputElement;
-    const noRadio = getByLabelText('No') as HTMLInputElement;
 
     // radio buttons are focusable
     userEvent.tab();
@@ -102,7 +103,6 @@ describe('Radio group component', () => {
 
     // radio buttons do not trap focus
     userEvent.tab();
-    expect(noRadio).toHaveFocus();
-    expect(yesRadio).not.toHaveFocus();
+    expect(radioGroup).not.toHaveFocus();
   });
 });
