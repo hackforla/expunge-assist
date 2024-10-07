@@ -7,7 +7,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import customMuiTheme from 'styles/customMuiTheme';
 
 import RadioGroup from '../components/RadioGroup';
-import { useRadioGroup } from '@material-ui/core';
 
 // create TestRadioGroup component in order to test state changes
 type Choice = 'Yes' | 'No';
