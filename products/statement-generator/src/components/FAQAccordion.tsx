@@ -14,15 +14,16 @@ interface CustomAccordionProps {
   content?: string[];
 }
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     accordionWrapper: {
       width: '100%',
+      color: palette.primary.darker,
       boxShadow: 'none',
       border: 'none',
       position: 'static',
-      '& *': {
-        color: '#25003F',
+      '& a': {
+        color: palette.primary.darker,
       },
     },
     accordionSummary: {
