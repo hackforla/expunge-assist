@@ -19,5 +19,6 @@ Fixes #ISSUE_NUMBER
 
 
 ### Action Items
+- [ ] change base branch to `dev`
 - [ ] review PR files to guarantee ONLY relevant code is present
 - [ ] add https://github.com/hackforla/expunge-assist/labels/ready%20for%20dev%20lead label
