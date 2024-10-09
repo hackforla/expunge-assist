@@ -1,8 +1,3 @@
----
-name: [ISSUE_NUMBER] - [DESCRIPTION]
-about: Pull Request Template
----
-
 Fixes #ISSUE_NUMBER
 
 ### Changes Made
