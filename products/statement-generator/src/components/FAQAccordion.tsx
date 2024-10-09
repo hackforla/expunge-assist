@@ -49,7 +49,6 @@ const useStyles = makeStyles(({ palette }) =>
       padding: 0,
       width: '100%',
       paddingLeft: '40px',
-      '& p': {},
     },
   })
 );
