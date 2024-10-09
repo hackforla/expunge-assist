@@ -10,6 +10,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^6.5.0",
+    "@types/testing-library__jest-dom": "^6.0.0",
     "docx": "^8.0.4",
     "file-saver": "^2.0.5",
     "gh-pages": "^5.0.0",
@@ -52,7 +54,6 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/file-saver": "^2.0.5",
