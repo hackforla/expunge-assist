@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { makeStyles, createStyles } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
@@ -58,63 +58,65 @@ interface ComponentProps {
   isFirstPreview?: boolean;
 }
 
-const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
-  (
-    { onSaveClick, content, nameOfStep, className = '', style, isFirstPreview },
-    ref
-  ) => {
-    const classes = useStyles();
-    const utilityClasses = useUtilityStyles();
-    const [isEditing, setIsEditing] = useState<boolean>(false);
-    const editButtonRef = useRef<HTMLButtonElement | null>(null);
-    const previewContainerRef = useRef<HTMLDivElement | null>(null);
+const TextPreview = ({
+  onSaveClick,
+  content,
+  nameOfStep,
+  className = '',
+  style,
+  isFirstPreview,
+}: ComponentProps) => {
+  const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const editButtonRef = useRef<HTMLButtonElement | null>(null);
+  const previewContainerRef = useRef<HTMLDivElement | null>(null);
 
-    const handleClick = () => {
-      setIsEditing(true);
-    };
+  const handleClick = () => {
+    setIsEditing(true);
+  };
 
-    useEffect(() => {
-      if (isFirstPreview && previewContainerRef.current) {
-        previewContainerRef.current.focus();
-      }
-    }, [isFirstPreview]);
+  useEffect(() => {
+    if (isFirstPreview && previewContainerRef.current) {
+      previewContainerRef.current.focus();
+    }
+  }, [isFirstPreview]);
 
-    return (
-      <div
-        ref={previewContainerRef}
-        className={`${classes.root} ${className}`}
-        style={style}
-      >
-        <div className={classes.previewHeader}>
-          <h3>{nameOfStep}</h3>
+  return (
+    <div
+      ref={previewContainerRef}
+      className={`${classes.root} ${className}`}
+      style={style}
+    >
+      <div className={classes.previewHeader}>
+        <h3>{nameOfStep}</h3>
 
-          <div className={classes.actionHeader}>
-            {!isEditing && (
-              <button
-                className={`${utilityClasses.iconButton} ${classes.editButton}`}
-                onClick={handleClick}
-                aria-label="Edit content"
-                ref={editButtonRef}
-                tabIndex={0}
-              >
-                <CreateIcon />
-              </button>
-            )}
-          </div>
+        <div className={classes.actionHeader}>
+          {!isEditing && (
+            <button
+              className={`${utilityClasses.iconButton} ${classes.editButton}`}
+              onClick={handleClick}
+              aria-label="Edit content"
+              ref={editButtonRef}
+              tabIndex={0}
+            >
+              <CreateIcon />
+            </button>
+          )}
         </div>
-
-        {isEditing ? (
-          <EditContent
-            content={content}
-            setIsEditing={setIsEditing}
-            onSaveClick={onSaveClick}
-          />
-        ) : (
-          <p>{content}</p>
-        )}
       </div>
-    );
-  }
-);
+
+      {isEditing ? (
+        <EditContent
+          content={content}
+          setIsEditing={setIsEditing}
+          onSaveClick={onSaveClick}
+        />
+      ) : (
+        <p>{content}</p>
+      )}
+    </div>
+  );
+};
 
 export default TextPreview;
