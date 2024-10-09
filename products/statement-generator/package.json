@@ -10,6 +10,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
+    "canvas": "^2.11.2",
     "docx": "^8.0.4",
     "file-saver": "^2.0.5",
     "gh-pages": "^5.0.0",

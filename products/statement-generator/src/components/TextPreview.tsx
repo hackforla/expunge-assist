@@ -66,7 +66,7 @@ const TextPreview = forwardRef<HTMLDivElement, ComponentProps>(
     className = '',
     style,
     isFirstPreview,
-  }) => {
+  }, ref) => {
     const classes = useStyles();
     const utilityClasses = useUtilityStyles();
     const [isEditing, setIsEditing] = useState<boolean>(false);
