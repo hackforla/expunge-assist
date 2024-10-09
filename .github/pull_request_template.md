@@ -1,0 +1,23 @@
+---
+title: [ISSUE_NUMBER] - [DESCRIPTION]
+
+---
+
+Fixes #ISSUE_NUMBER
+
+### Changes Made
+
+
+### Reason for Changes
+
+
+### Screenshots (if needed)
+#### before
+
+
+#### after
+
+
+### Action Items
+- [ ] review PR files to guarantee ONLY relevant code is present
+- [ ] add https://github.com/hackforla/expunge-assist/labels/ready%20for%20dev%20lead label
