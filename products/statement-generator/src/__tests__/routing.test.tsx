@@ -2,7 +2,8 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter as Router } from 'react-router-dom';
-import App, { LocationDisplay } from '../App';
+import App from '../App';
+import LocationDisplay from '../App';
 
 describe('Routing Tests', () => {
   // mock the scrollTo component
