@@ -204,7 +204,7 @@ export function LinkButtonComponent({
       className={`${classes.root} ${className}`}
       to={to!}
       data-testid={dataTestId}
-    />
+    >{buttonText}</Link>
   );
 }
 
