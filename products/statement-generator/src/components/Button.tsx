@@ -186,6 +186,7 @@ interface ILinkButtonComponent {
   theme?: string;
   buttonText: string;
   to: string;
+  dataTestId?: string;
 }
 
 export function LinkButtonComponent({
@@ -193,13 +194,17 @@ export function LinkButtonComponent({
   theme,
   buttonText,
   to,
+  dataTestId,
 }: ILinkButtonComponent) {
   const styleProps = { theme };
   const classes = useStyles(styleProps);
   return (
-    <Link type="button" className={`${classes.root} ${className}`} to={to!}>
-      {buttonText}
-    </Link>
+    <Link
+      type="button"
+      className={`${classes.root} ${className}`}
+      to={to!}
+      data-testid={dataTestId}
+    />
   );
 }
 

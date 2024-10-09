@@ -274,6 +274,7 @@ function LandingSection1() {
           <LinkButtonComponent
             to={AppUrl.Welcome}
             buttonText={t('button.startNow')}
+            dataTestId="start-now-button"
           />
         </div>
       </div>
