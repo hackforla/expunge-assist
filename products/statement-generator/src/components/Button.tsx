@@ -194,7 +194,7 @@ export function LinkButtonComponent({
   theme,
   buttonText,
   to,
-  dataTestId
+  dataTestId,
 }: ILinkButtonComponent) {
   const styleProps = { theme };
   const classes = useStyles(styleProps);
