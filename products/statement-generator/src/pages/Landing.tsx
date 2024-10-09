@@ -51,7 +51,7 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
         fontWeight: '600',
         fontSize: '1.5rem',
         [breakpoints.down(breakpoints.values.sm)]: {
-          textAlign: 'center',
+          textAlign: 'left',
           alignSelf: 'flex-start',
         },
       },
