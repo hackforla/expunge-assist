@@ -1,26 +1,15 @@
 import React from 'react';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     linkAsText: {
-      color: '#25003F',
-      '&:visited': {
-        color: '#25003F', // Same color for visited links
-      },
-      '&:hover': {
-        color: '#25003F', // Same color on hover
-      },
+      color: palette.common.black,
     },
   })
 );
 
-interface LinkAsTextProps {
-  link: string;
-  label?: string;
-}
-
-export default function LinkAsText({ link, label }: LinkAsTextProps) {
+export default function LinkAsText({ link }: any) {
   const classes = useStyles();
   return (
     <>
@@ -30,9 +19,8 @@ export default function LinkAsText({ link, label }: LinkAsTextProps) {
         className={classes.linkAsText}
         href={link}
         target="_blank"
-        rel="noopener noreferrer"
       >
-        {label || link}
+        {link}
       </Link>
       &nbsp;
     </>

@@ -21,12 +21,14 @@ const useStyles = makeStyles(({ palette }) =>
       color: palette.primary.darker,
       boxShadow: 'none',
       border: 'none',
-      position: 'static', // when position is 'relative' or not specified a vertical line appears above the accordion (unclear why)
+      position: 'static',
+      '& a': {
+        color: palette.primary.darker,
+      },
     },
     accordionSummary: {
       fontSize: '20px',
       lineHeight: '24px',
-      color: palette.primary.darker,
     },
     expandIcon: {
       marginLeft: '0',
