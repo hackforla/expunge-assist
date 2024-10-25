@@ -160,7 +160,7 @@ const AppHeader = () => {
   return (
     <div className={classes.headerWrapper}>
       <div className={`${classes.appHeader} ${utilityClasses.widePage}`}>
-        <Logo includeText />
+        <Logo />
 
         <div className={classes.rightContainer}>
           <HeaderLink to={AppUrl.Landing}>{t('links.home')}</HeaderLink>

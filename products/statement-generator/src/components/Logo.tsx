@@ -35,24 +35,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
 
 interface ILogoComponent {
   theme?: string; // dark, light
-  includeText?: boolean; // is logo located in the footer?
+  imageOnly?: boolean; // include text in logo?
 }
 
-function TextLogo({ theme, includeText }: ILogoComponent) {
-  const classes = useStyles({ pageTheme: theme });
-
-  if (!includeText) {
-    return null;
-  }
-
-  return (
-    <Link to="/" className={classes.logoLink} aria-label="Expunge Assist home">
-      <span>Expunge Assist</span>
-    </Link>
-  );
-}
-
-export default function Logo({ theme, includeText }: ILogoComponent) {
+export default function Logo({ theme, imageOnly }: ILogoComponent) {
   const classes = useStyles({ pageTheme: theme });
 
   const logoIcon = theme === 'dark' ? iconWhite : iconBlack;
@@ -63,7 +49,15 @@ export default function Logo({ theme, includeText }: ILogoComponent) {
         <img src={logoIcon} alt="" />
       </Link>
 
-      <TextLogo theme={theme} includeText={includeText} />
+      {!imageOnly && (
+        <Link
+          to="/"
+          className={classes.logoLink}
+          aria-label="Expunge Assist home"
+        >
+          Expunge Assist
+        </Link>
+      )}
     </div>
   );
 }
