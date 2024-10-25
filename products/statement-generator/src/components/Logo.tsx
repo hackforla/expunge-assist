@@ -5,32 +5,26 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import iconBlack from 'assets/iconBlack.svg';
 import iconWhite from 'assets/iconWhite.svg';
 
-const useStyles = makeStyles<Theme, IUseUtilityStyle>(
-  ({ palette, breakpoints, spacing }) =>
-    createStyles({
-      logoContainer: {
-        display: 'flex',
-        fontSize: 20,
-        maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
-        marginBottom: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 'null'),
-      },
+const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette, spacing }) =>
+  createStyles({
+    logoContainer: {
+      display: 'flex',
+      fontSize: 20,
+      maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
+      marginBottom: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 'null'),
+    },
 
-      logoLink: {
-        textDecoration: 'none',
-        display: 'flex',
-        marginLeft: spacing(2),
-        textTransform: 'uppercase',
-        fontWeight: 800,
-        color: ({ pageTheme }: IUseUtilityStyle) =>
-          pageTheme === 'dark' ? 'white' : palette.common.black,
-
-        fontSize: ({ footer }: IUseUtilityStyle) => (footer ? 12 : 'inherit'),
-        [breakpoints.down(breakpoints.values.sm)]: {
-          flexDirection: 'column',
-          fontSize: 12,
-        },
-      },
-    })
+    logoLink: {
+      textDecoration: 'none',
+      display: 'flex',
+      marginLeft: spacing(2),
+      textTransform: 'uppercase',
+      fontWeight: 800,
+      color: ({ pageTheme }: IUseUtilityStyle) =>
+        pageTheme === 'dark' ? 'white' : palette.common.black,
+      fontSize: ({ footer }: IUseUtilityStyle) => (footer ? 12 : 'inherit'),
+    },
+  })
 );
 
 interface ILogoComponent {
