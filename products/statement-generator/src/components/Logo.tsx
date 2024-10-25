@@ -13,10 +13,6 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         fontSize: 20,
         maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
         marginBottom: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 'null'),
-
-        [breakpoints.down(breakpoints.values.sm)]: {
-          // display: 'none',
-        },
       },
 
       logoLink: {
@@ -28,16 +24,6 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
         color: ({ pageTheme }: IUseUtilityStyle) =>
           pageTheme === 'dark' ? 'white' : palette.common.black,
 
-        // we want the text to be stacked vertically,
-        //  when we are in the footer AND when in mobile view
-        [breakpoints.up(breakpoints.values.sm)]: {
-          '& span + span': {
-            marginLeft: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 8),
-          },
-        },
-
-        flexDirection: ({ footer }: IUseUtilityStyle) =>
-          footer ? 'column' : 'row',
         fontSize: ({ footer }: IUseUtilityStyle) => (footer ? 12 : 'inherit'),
         [breakpoints.down(breakpoints.values.sm)]: {
           flexDirection: 'column',
@@ -49,26 +35,25 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(
 
 interface ILogoComponent {
   theme?: string; // dark, light
-  footer?: boolean; // is logo located in the footer?
+  includeText?: boolean; // is logo located in the footer?
 }
 
-function TextLogo({ theme, footer }: ILogoComponent) {
-  const classes = useStyles({ pageTheme: theme, footer });
+function TextLogo({ theme, includeText }: ILogoComponent) {
+  const classes = useStyles({ pageTheme: theme });
 
-  if (footer) {
+  if (!includeText) {
     return null;
   }
 
   return (
     <Link to="/" className={classes.logoLink} aria-label="Expunge Assist home">
-      <span>Expunge</span>
-      <span>Assist</span>
+      <span>Expunge Assist</span>
     </Link>
   );
 }
 
-export default function Logo({ theme, footer }: ILogoComponent) {
-  const classes = useStyles({ pageTheme: theme, footer });
+export default function Logo({ theme, includeText }: ILogoComponent) {
+  const classes = useStyles({ pageTheme: theme });
 
   const logoIcon = theme === 'dark' ? iconWhite : iconBlack;
 
@@ -78,7 +63,7 @@ export default function Logo({ theme, footer }: ILogoComponent) {
         <img src={logoIcon} alt="" />
       </Link>
 
-      <TextLogo theme={theme} footer={footer} />
+      <TextLogo theme={theme} includeText={includeText} />
     </div>
   );
 }
