@@ -10,8 +10,10 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette, spacing }) =>
     logoContainer: {
       display: 'flex',
       fontSize: 20,
-      maxHeight: ({ footer }: IUseUtilityStyle) => (footer ? '25px' : 'null'),
-      marginBottom: ({ footer }: IUseUtilityStyle) => (footer ? 0 : 'null'),
+      maxHeight: ({ imageOnly }: IUseUtilityStyle) =>
+        imageOnly ? '25px' : 'null',
+      marginBottom: ({ imageOnly }: IUseUtilityStyle) =>
+        imageOnly ? 0 : 'null',
     },
 
     logoLink: {
@@ -22,7 +24,8 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ palette, spacing }) =>
       fontWeight: 800,
       color: ({ pageTheme }: IUseUtilityStyle) =>
         pageTheme === 'dark' ? 'white' : palette.common.black,
-      fontSize: ({ footer }: IUseUtilityStyle) => (footer ? 12 : 'inherit'),
+      fontSize: ({ imageOnly }: IUseUtilityStyle) =>
+        imageOnly ? 12 : 'inherit',
     },
   })
 );

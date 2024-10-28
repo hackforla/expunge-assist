@@ -1,5 +1,5 @@
 //
 interface IUseUtilityStyle {
   pageTheme?: string;
-  footer?: boolean;
+  imageOnly?: boolean;
 }
