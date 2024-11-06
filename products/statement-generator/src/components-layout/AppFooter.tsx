@@ -162,7 +162,7 @@ const AppFooter: React.FC = () => {
     <footer className={classes.footerWrapper}>
       <div className={`${classes.appFooter} ${utilityClasses.widePage}`}>
         <div className={classes.leftContainer}>
-          <Logo footer />
+          <Logo imageOnly />
         </div>
 
         <div className={classes.rightContainer}>
