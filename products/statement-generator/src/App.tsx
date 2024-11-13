@@ -54,7 +54,11 @@ import ScrollToTop from './components-layout/ScrollToTop';
 export const LocationDisplay = () => {
   const location = useLocation();
 
-  return <div data-testid="location-display">{location.pathname}</div>;
+  return (
+    <div data-testid="location-display" style={{ display: 'none' }}>
+      {location.pathname}{' '}
+    </div>
+  );
 };
 
 const App: React.FC = () => {
