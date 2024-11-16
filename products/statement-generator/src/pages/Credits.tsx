@@ -11,6 +11,10 @@ import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
+import CancelIcon from '@material-ui/icons/Cancel';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/credits-assets/group-chat.jpg';
@@ -18,7 +22,6 @@ import sharingKnowledge from '../assets/faqDesktop.svg';
 import error from '../assets/notFound.svg';
 import editorial from '../assets/why-img.svg';
 import collaboration from '../assets/almost-there-img.svg';
-import check from '../assets/credits-assets/check.svg';
 import confirmation from '../assets/credits-assets/confirmation.svg';
 import copy from '../assets/credits-assets/copy.svg';
 import privacyPolicy from '../assets/privacyPolicy.png';
@@ -26,11 +29,8 @@ import docX from '../assets/credits-assets/docx.svg';
 import download from '../assets/credits-assets/download.svg';
 import eaImage from '../assets/eaImage.png';
 import multitasking from '../assets/landingWorkImg.svg';
-import eye from '../assets/credits-assets/eye.svg';
-import informationAlert from '../assets/credits-assets/information-alert.svg';
 import support101 from '../assets/affirmation-img.svg';
 import report from '../assets/future-goals-img.svg';
-import cancel from '../assets/credits-assets/cancel.png';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
@@ -233,6 +233,7 @@ interface CreditsObject {
   img?: any;
   imgSize?: number;
   icon?: SvgIconComponent;
+  iconColor?: string;
   artist: string;
   provider: string;
   providerLink: string;
@@ -263,9 +264,9 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Success',
-    img: check,
+    icon: CheckCircleIcon,
+    iconColor: '#0AEBA0',
     class: 3,
-    imgSize: 75,
     usedIn: 'Advice Page and Letter Generator',
     artist: 'N/A',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -396,9 +397,9 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Cancel',
-    img: cancel,
+    icon: CancelIcon,
+    iconColor: '#E87461',
     class: 3,
-    imgSize: 75,
     usedIn: 'Advice Page',
     artist: 'N/A',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -417,9 +418,9 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Eye',
-    img: eye,
     class: 3,
-    imgSize: 75,
+    icon: VisibilityIcon,
+    iconColor: '#9903FF',
     usedIn: 'Letter Generator',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -428,9 +429,9 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Information Alert',
-    img: informationAlert,
+    icon: InfoRoundedIcon,
     class: 3,
-    imgSize: 75,
+    iconColor: '#2F6FED',
     usedIn: 'Download Page',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -596,7 +597,7 @@ export const Filter: React.FC = () => {
             )}
             {credit.icon && (
               <div className={classes.creditIconContainer}>
-                <credit.icon />
+                <credit.icon style={{ color: credit.iconColor || 'inherit' }} />
               </div>
             )}
           </div>
