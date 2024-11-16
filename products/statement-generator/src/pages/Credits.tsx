@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles } from '@material-ui/core';
+
+import { SvgIconComponent } from '@material-ui/icons';
+import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
+
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/credits-assets/group-chat.jpg';
 import sharingKnowledge from '../assets/faqDesktop.svg';
 import error from '../assets/notFound.svg';
 import editorial from '../assets/why-img.svg';
 import collaboration from '../assets/almost-there-img.svg';
-import backArrow from '../assets/credits-assets/back-arrow.svg';
 import check from '../assets/credits-assets/check.svg';
 import confirmation from '../assets/credits-assets/confirmation.svg';
 import copy from '../assets/credits-assets/copy.svg';
@@ -19,12 +27,10 @@ import eaImage from '../assets/eaImage.png';
 import multitasking from '../assets/landingWorkImg.svg';
 import eye from '../assets/credits-assets/eye.svg';
 import email from '../assets/credits-assets/email.svg';
-import pencil from '../assets/credits-assets/pencil.svg';
 import informationAlert from '../assets/credits-assets/information-alert.svg';
 import support101 from '../assets/affirmation-img.svg';
 import report from '../assets/future-goals-img.svg';
 import cancel from '../assets/credits-assets/cancel.png';
-import nextArrow from '../assets/credits-assets/next-arrow.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
   createStyles({
@@ -189,6 +195,18 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         margin: 'auto',
       },
     },
+    creditIconContainer: {
+      maxWidth: '10rem',
+      minWidth: '10rem',
+      objectFit: 'contain',
+      margin: 'auto',
+      '& svg': {
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        margin: 'auto',
+      },
+    },
     creditText: {
       '& h2': {
         fontWeight: 'bold',
@@ -212,8 +230,9 @@ interface CreditsObject {
   name: string;
   class: number;
   usedIn: string;
-  img: any;
-  imgSize: number;
+  img?: any;
+  imgSize?: number;
+  icon?: SvgIconComponent;
   artist: string;
   provider: string;
   providerLink: string;
@@ -234,9 +253,8 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Back Arrow',
-    img: backArrow,
+    icon: ArrowBackRoundedIcon,
     class: 3,
-    imgSize: 75,
     usedIn: 'Buttons',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -390,10 +408,9 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Pencil',
-    img: pencil,
+    icon: CreateRoundedIcon,
     class: 3,
-    imgSize: 75,
-    usedIn: 'Letter Generator Edit Pages',
+    usedIn: 'Letter Generator',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
     provider: 'Pictogrammers',
@@ -404,7 +421,7 @@ export const CreditObjects: CreditsObject[] = [
     img: eye,
     class: 3,
     imgSize: 75,
-    usedIn: 'Preview Pages in Letter Generator',
+    usedIn: 'Letter Generator',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
     provider: 'Pictogrammers',
@@ -434,16 +451,44 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Next Arrow',
-    img: nextArrow,
     class: 3,
-    imgSize: 75,
+    icon: ArrowForwardRoundedIcon,
     usedIn: 'Buttons',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
     provider: 'Pictogrammers',
     altText: 'Go forward',
   },
-
+  {
+    name: 'Open Menu',
+    class: 3,
+    icon: MenuRoundedIcon,
+    usedIn: 'Mobile Menu',
+    artist: 'Material Design',
+    providerLink: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    altText: 'Open menu',
+  },
+  {
+    name: 'Close Menu',
+    class: 3,
+    icon: CloseRoundedIcon,
+    usedIn: 'Mobile Menu',
+    artist: 'Material Design',
+    providerLink: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    altText: 'Close menu',
+  },
+  {
+    name: 'Expand',
+    class: 3,
+    icon: ExpandMoreRoundedIcon,
+    usedIn: 'Landing Page and FAQ',
+    artist: 'Material Design',
+    providerLink: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    altText: 'Expand section',
+  },
   {
     name: 'Download',
     img: download,
@@ -545,9 +590,16 @@ export const Filter: React.FC = () => {
                 Provider: <a href={credit.providerLink}>{credit.provider}</a>
               </p>
             </div>
-            <div className={classes.creditImgContainer}>
-              <img src={credit.img} alt={credit.altText} />
-            </div>
+            {credit.img && (
+              <div className={classes.creditImgContainer}>
+                <img src={credit.img} alt={credit.altText} />
+              </div>
+            )}
+            {credit.icon && (
+              <div className={classes.creditIconContainer}>
+                <credit.icon />
+              </div>
+            )}
           </div>
         </div>
       ))}
