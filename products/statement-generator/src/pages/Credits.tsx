@@ -18,17 +18,18 @@ import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
 import HelpRoundedIcon from '@material-ui/icons/HelpRounded';
 
+import copy from '../assets/credits-assets/copy.svg';
+import docX from '../assets/credits-assets/docx.svg';
+import download from '../assets/credits-assets/download.svg';
+
 import creditsHeader from '../assets/creditsHeader.svg';
-import groupChat from '../assets/credits-assets/group-chat.jpg';
+import groupChat from '../assets/group-chat.jpg';
 import sharingKnowledge from '../assets/faqDesktop.svg';
 import error from '../assets/notFound.svg';
 import editorial from '../assets/why-img.svg';
 import collaboration from '../assets/almost-there-img.svg';
-import confirmation from '../assets/credits-assets/confirmation.svg';
-import copy from '../assets/credits-assets/copy.svg';
+import confirmation from '../assets/confirmation.svg';
 import privacyPolicy from '../assets/privacyPolicy.png';
-import docX from '../assets/credits-assets/docx.svg';
-import download from '../assets/credits-assets/download.svg';
 import eaImage from '../assets/eaImage.png';
 import multitasking from '../assets/landingWorkImg.svg';
 import support101 from '../assets/affirmation-img.svg';
