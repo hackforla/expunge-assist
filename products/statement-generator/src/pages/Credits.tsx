@@ -16,6 +16,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
+import HelpRoundedIcon from '@material-ui/icons/HelpRounded';
 
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/credits-assets/group-chat.jpg';
@@ -449,6 +450,17 @@ export const CreditObjects: CreditsObject[] = [
     providerLink: 'https://pictogrammers.com/library/mdi/',
     provider: 'Pictogrammers',
     altText: 'Error Alert',
+  },
+  {
+    name: 'Help',
+    icon: HelpRoundedIcon,
+    class: 3,
+    iconColor: '#2F6FED',
+    usedIn: 'Letter Generator Popups',
+    artist: 'Material Design',
+    providerLink: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    altText: 'Help',
   },
   {
     name: 'MultiTasking',
