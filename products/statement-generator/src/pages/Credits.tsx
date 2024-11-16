@@ -15,6 +15,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
+import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
 
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/credits-assets/group-chat.jpg';
@@ -437,6 +438,17 @@ export const CreditObjects: CreditsObject[] = [
     providerLink: 'https://pictogrammers.com/library/mdi/',
     provider: 'Pictogrammers',
     altText: 'Information Alert',
+  },
+  {
+    name: 'Error Alert',
+    icon: ErrorRoundedIcon,
+    class: 3,
+    iconColor: '#2F6FED',
+    usedIn: 'Before You Begin',
+    artist: 'Material Design',
+    providerLink: 'https://pictogrammers.com/library/mdi/',
+    provider: 'Pictogrammers',
+    altText: 'Error Alert',
   },
   {
     name: 'MultiTasking',
