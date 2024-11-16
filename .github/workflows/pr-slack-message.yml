@@ -1,0 +1,22 @@
+name: Dev PR Slack Message
+
+on: [pull_request]
+
+jobs:
+  pr-slack-message:
+    if: github.event.pull_request.head.ref != 'dev'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Post to expunge-assist-dev Slack channel
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "Hey <@channel>, *${{ github.event.pull_request.user.login }}* opened a new PR on the `dev` branch:
+            <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>."
