@@ -535,7 +535,7 @@ export const Filter: React.FC = () => {
   const FilterCards: React.FC = () => (
     <div className={classes.CreditContainer}>
       {filteredCredits.map((credit) => (
-        <div className={classes.CreditBox}>
+        <div className={classes.CreditBox} key={credit.name}>
           <div className={classes.creditFlex}>
             <div className={classes.creditText}>
               <h2>{credit.name}</h2>
