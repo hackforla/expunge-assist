@@ -10,6 +10,7 @@ import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
+import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/credits-assets/group-chat.jpg';
@@ -26,7 +27,6 @@ import download from '../assets/credits-assets/download.svg';
 import eaImage from '../assets/eaImage.png';
 import multitasking from '../assets/landingWorkImg.svg';
 import eye from '../assets/credits-assets/eye.svg';
-import email from '../assets/credits-assets/email.svg';
 import informationAlert from '../assets/credits-assets/information-alert.svg';
 import support101 from '../assets/affirmation-img.svg';
 import report from '../assets/future-goals-img.svg';
@@ -375,9 +375,8 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Email',
-    img: email,
+    icon: EmailRoundedIcon,
     class: 3,
-    imgSize: 75,
     usedIn: 'Download Page',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',

@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph } from 'docx';
 import jsPDF from 'jspdf';
 import { makeStyles, createStyles } from '@material-ui/core';
-import EmailIcon from '@material-ui/icons/Email';
+import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
@@ -179,7 +179,7 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
           className={classes.buttonSpacing}
           onClick={handleClickEmail}
           disabled={isDisabled}
-          icon={<EmailIcon />}
+          icon={<EmailRoundedIcon />}
           buttonText={t('download_page.email_btn')}
         />
         <Button
