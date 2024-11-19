@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import MuiAccordionSummary, {
@@ -85,7 +85,7 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
       onChange={handleAccordionChange}
     >
       <AccordionSummary aria-controls="panel1-content" id="panel1-header">
-        <ExpandMoreIcon
+        <ExpandMoreRoundedIcon
           className={`${classes.expandIcon} ${
             expanded ? classes.rotateIcon : classes.rightIcon
           }`}

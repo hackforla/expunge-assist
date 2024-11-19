@@ -3,7 +3,7 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -147,7 +147,7 @@ const InputArea: React.FC<InputFieldProps> = ({
             {adornment !== undefined && <span>{adornment}</span>}
 
             {valid ? (
-              <CheckCircleIcon
+              <CheckCircleRoundedIcon
                 className={classes.icon}
                 data-testid="valid-icon"
               />

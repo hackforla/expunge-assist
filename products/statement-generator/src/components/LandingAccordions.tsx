@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import Typography from '@material-ui/core/Typography';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import { useTranslation } from 'react-i18next';
@@ -25,7 +25,7 @@ const useStyles = makeStyles(({ palette }) =>
 
 // override default MUI styling
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary expandIcon={<ExpandMoreIcon />} {...props} />
+  <MuiAccordionSummary expandIcon={<ExpandMoreRoundedIcon />} {...props} />
 ))(() => ({
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',

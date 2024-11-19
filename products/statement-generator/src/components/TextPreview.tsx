@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 import { makeStyles, createStyles } from '@material-ui/core';
-import CreateIcon from '@material-ui/icons/Create';
+import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -100,7 +100,7 @@ const TextPreview = ({
               ref={editButtonRef}
               tabIndex={0}
             >
-              <CreateIcon />
+              <CreateRoundedIcon />
             </button>
           )}
         </div>

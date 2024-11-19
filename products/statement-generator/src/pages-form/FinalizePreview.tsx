@@ -6,7 +6,7 @@ import FormStateContext from 'contexts/FormStateContext';
 import { AppUrl } from 'contexts/RoutingProps';
 import { AffirmationContext } from 'contexts/AffirmationContext';
 
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityRoundedIcon from '@material-ui/icons/VisibilityRounded';
 
 import InfoBlock from 'components/InfoBlock';
 
@@ -62,7 +62,7 @@ function FinalizeStep() {
   return (
     <ContentContainer ref={contentContainerRef} tabIndex={-1}>
       <div className={classes.purpleTitle}>
-        <VisibilityIcon className={classes.purpleIcon} />
+        <VisibilityRoundedIcon className={classes.purpleIcon} />
         {t('finalize_preview.header_title')}
       </div>
 

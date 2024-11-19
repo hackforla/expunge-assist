@@ -1,8 +1,8 @@
 import React, { useContext, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Theme, makeStyles, createStyles } from '@material-ui/core';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
@@ -166,12 +166,15 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ComponentProps>(
         onKeyDown={onKeyDown}
       >
         {hasBackArrow && (
-          <ArrowBackIcon data-testid="back-arrow" style={{ height: '.8em' }} />
+          <ArrowBackRoundedIcon
+            data-testid="back-arrow"
+            style={{ height: '.8em' }}
+          />
         )}
         {icon}
         {buttonText}
         {hasForwardArrow && (
-          <ArrowForwardIcon
+          <ArrowForwardRoundedIcon
             data-testid="forward-arrow"
             style={{ height: '.8em' }}
           />

@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import MenuIcon from '@material-ui/icons/Menu';
+import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
+import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 
 import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
@@ -172,7 +172,7 @@ const AppHeader = () => {
         <Button
           className={classes.menuButton}
           theme="transparent-on-light"
-          icon={isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+          icon={isMenuOpen ? <CloseRoundedIcon /> : <MenuRoundedIcon />}
           onClick={() => {
             setIsMenuOpen(!isMenuOpen);
           }}

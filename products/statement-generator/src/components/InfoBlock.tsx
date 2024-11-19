@@ -1,6 +1,6 @@
 import React from 'react';
 import { Theme, makeStyles, createStyles } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 
 const useStyles = makeStyles<Theme>(() =>
   createStyles({
@@ -42,7 +42,7 @@ export function InfoBlock({
   const classes = useStyles();
   return (
     <div className={`${classes.infoBlockContainer} ${className}`}>
-      <InfoIcon className={classes.icon} />
+      <InfoRoundedIcon className={classes.icon} />
       <div className={classes.infoInner}>
         {title && <div className={classes.title}>{title}</div>}
         {children}
