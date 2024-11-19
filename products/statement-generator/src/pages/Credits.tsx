@@ -3,24 +3,24 @@ import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles } from '@material-ui/core';
 
-import { SvgIconComponent } from '@material-ui/icons';
-import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
-import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
-import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
-import CreateRoundedIcon from '@material-ui/icons/CreateRounded';
-import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
-import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
-import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
-import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
-import VisibilityRoundedIcon from '@material-ui/icons/VisibilityRounded';
-import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
-import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
-import HelpRoundedIcon from '@material-ui/icons/HelpRounded';
-
-import copy from '../assets/credits-assets/copy.svg';
-import docX from '../assets/credits-assets/docx.svg';
-import download from '../assets/credits-assets/download.svg';
+import {
+  SvgIconComponent,
+  ArrowForwardRounded,
+  ArrowBackRounded,
+  CancelRounded,
+  CheckCircleRounded,
+  CloseRounded,
+  CreateRounded,
+  EmailRounded,
+  ErrorRounded,
+  ExpandMoreRounded,
+  GetAppRounded,
+  HelpRounded,
+  InfoRounded,
+  FileCopyRounded,
+  MenuRounded,
+  VisibilityRounded,
+} from '@material-ui/icons';
 
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/group-chat.jpg';
@@ -257,7 +257,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Back Arrow',
-    icon: ArrowBackRoundedIcon,
+    icon: ArrowBackRounded,
     class: 3,
     usedIn: 'Buttons',
     artist: 'Material Design',
@@ -267,7 +267,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Success',
-    icon: CheckCircleRoundedIcon,
+    icon: CheckCircleRounded,
     iconColor: '#0AEBA0',
     class: 3,
     usedIn: 'Advice Page and Letter Generator',
@@ -312,9 +312,8 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Copy',
-    img: copy,
+    icon: FileCopyRounded,
     class: 3,
-    imgSize: 75,
     usedIn: 'Download Page',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -331,17 +330,6 @@ export const CreditObjects: CreditsObject[] = [
     providerLink: 'https://storyset.com/illustration/security/cuate',
     provider: 'Storyset',
     altText: '',
-  },
-  {
-    name: 'DOCX File',
-    img: docX,
-    class: 3,
-    imgSize: 75,
-    usedIn: 'Download Page',
-    artist: 'Unknown',
-    providerLink: 'https://expungeassist.com/credits/',
-    provider: 'Unknown',
-    altText: 'Download word document',
   },
   {
     name: 'Collaboration',
@@ -379,7 +367,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Email',
-    icon: EmailRoundedIcon,
+    icon: EmailRounded,
     class: 3,
     usedIn: 'Download Page',
     artist: 'Material Design',
@@ -400,7 +388,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Cancel',
-    icon: CancelRoundedIcon,
+    icon: CancelRounded,
     iconColor: '#E87461',
     class: 3,
     usedIn: 'Advice Page',
@@ -411,7 +399,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Pencil',
-    icon: CreateRoundedIcon,
+    icon: CreateRounded,
     class: 3,
     usedIn: 'Letter Generator',
     artist: 'Material Design',
@@ -422,7 +410,7 @@ export const CreditObjects: CreditsObject[] = [
   {
     name: 'Eye',
     class: 3,
-    icon: VisibilityRoundedIcon,
+    icon: VisibilityRounded,
     iconColor: '#9903FF',
     usedIn: 'Letter Generator',
     artist: 'Material Design',
@@ -432,7 +420,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Information Alert',
-    icon: InfoRoundedIcon,
+    icon: InfoRounded,
     class: 3,
     iconColor: '#2F6FED',
     usedIn: 'Download Page',
@@ -443,7 +431,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Error Alert',
-    icon: ErrorRoundedIcon,
+    icon: ErrorRounded,
     class: 3,
     iconColor: '#2F6FED',
     usedIn: 'Before You Begin',
@@ -454,7 +442,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Help',
-    icon: HelpRoundedIcon,
+    icon: HelpRounded,
     class: 3,
     iconColor: '#2F6FED',
     usedIn: 'Letter Generator Popups',
@@ -477,7 +465,7 @@ export const CreditObjects: CreditsObject[] = [
   {
     name: 'Next Arrow',
     class: 3,
-    icon: ArrowForwardRoundedIcon,
+    icon: ArrowForwardRounded,
     usedIn: 'Buttons',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -487,7 +475,7 @@ export const CreditObjects: CreditsObject[] = [
   {
     name: 'Open Menu',
     class: 3,
-    icon: MenuRoundedIcon,
+    icon: MenuRounded,
     usedIn: 'Mobile Menu',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -497,7 +485,7 @@ export const CreditObjects: CreditsObject[] = [
   {
     name: 'Close Menu',
     class: 3,
-    icon: CloseRoundedIcon,
+    icon: CloseRounded,
     usedIn: 'Mobile Menu',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -507,7 +495,7 @@ export const CreditObjects: CreditsObject[] = [
   {
     name: 'Expand',
     class: 3,
-    icon: ExpandMoreRoundedIcon,
+    icon: ExpandMoreRounded,
     usedIn: 'Landing Page and FAQ',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
@@ -516,9 +504,8 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Download',
-    img: download,
+    icon: GetAppRounded,
     class: 3,
-    imgSize: 75,
     usedIn: 'Download Page',
     artist: 'Material Design',
     providerLink: 'https://pictogrammers.com/library/mdi/',
