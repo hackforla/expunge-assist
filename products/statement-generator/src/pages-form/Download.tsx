@@ -4,8 +4,8 @@ import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph } from 'docx';
 import jsPDF from 'jspdf';
 import { makeStyles, createStyles } from '@material-ui/core';
-import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 import { generateFinal } from 'helpers/previewHelper';

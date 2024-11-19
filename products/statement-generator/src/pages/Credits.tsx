@@ -13,7 +13,7 @@ import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityRoundedIcon from '@material-ui/icons/VisibilityRounded';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
 import HelpRoundedIcon from '@material-ui/icons/HelpRounded';
@@ -422,7 +422,7 @@ export const CreditObjects: CreditsObject[] = [
   {
     name: 'Eye',
     class: 3,
-    icon: VisibilityIcon,
+    icon: VisibilityRoundedIcon,
     iconColor: '#9903FF',
     usedIn: 'Letter Generator',
     artist: 'Material Design',
@@ -592,7 +592,11 @@ export const Filter: React.FC = () => {
     }
   };
 
-  const filteredCredits = CreditObjects.filter((obj) => {
+  const alphabetizedCredits = CreditObjects.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
+  const filteredCredits = alphabetizedCredits.filter((obj) => {
     if (filter === 2) {
       return obj.class === 2;
     }

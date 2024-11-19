@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityRoundedIcon from '@material-ui/icons/VisibilityRounded';
 
 import FormStateContext from 'contexts/FormStateContext';
 
@@ -94,7 +94,7 @@ function FinalizeForm() {
   return (
     <ContentContainer ref={contentContainerRef} tabIndex={-1}>
       <div className={classes.purpleTitle} tabIndex={-1}>
-        <VisibilityIcon className={classes.purpleIcon} />
+        <VisibilityRoundedIcon className={classes.purpleIcon} />
         Editing final letter
       </div>
 
