@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
 import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
@@ -75,6 +75,17 @@ export default function Advice() {
     titleRef.current?.focus();
   }, []);
 
+  const RedCancelIcon = () => (
+    <CancelRoundedIcon style={{ color: '#E87461' }} className={classes.icon} />
+  );
+
+  const GreenCheckIcon = () => (
+    <CheckCircleRoundedIcon
+      style={{ color: '#0AEBA0' }}
+      className={classes.icon}
+    />
+  );
+
   return (
     <ContentContainer>
       <h2 ref={titleRef} tabIndex={-1} className={classes.title}>
@@ -84,19 +95,13 @@ export default function Advice() {
         <p className={classes.text}>{t('advice_page.point1.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <CancelRoundedIcon
-              style={{ color: '#E87461' }}
-              className={classes.icon}
-            />
+            <RedCancelIcon />
             <p className={classes.textMargin} aria-label="Bad Example">
               {t('advice_page.point1.no')}
             </p>
           </div>
           <div className={classes.borderContainer}>
-            <CheckCircleIcon
-              style={{ color: '#0AEBA0' }}
-              className={classes.icon}
-            />
+            <GreenCheckIcon />
             <p className={classes.textMargin} aria-label="Good Example">
               {t('advice_page.point1.yes')}
             </p>
@@ -105,19 +110,13 @@ export default function Advice() {
         <p className={classes.text}>{t('advice_page.point2.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <CancelRoundedIcon
-              style={{ color: '#E87461' }}
-              className={classes.icon}
-            />
+            <RedCancelIcon />
             <p className={classes.textMargin} aria-label="Bad Example">
               {t('advice_page.point2.no')}
             </p>
           </div>
           <div className={classes.borderContainer}>
-            <CheckCircleIcon
-              style={{ color: '#0AEBA0' }}
-              className={classes.icon}
-            />
+            <GreenCheckIcon />
             <p className={classes.textMargin} aria-label="Good Example">
               {t('advice_page.point2.yes')}
             </p>
@@ -126,19 +125,13 @@ export default function Advice() {
         <p className={classes.text}>{t('advice_page.point3.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <CancelRoundedIcon
-              style={{ color: '#E87461' }}
-              className={classes.icon}
-            />
+            <RedCancelIcon />
             <p className={classes.textMargin} aria-label="Bad Example">
               {t('advice_page.point3.no')}
             </p>
           </div>
           <div className={classes.borderContainer}>
-            <CheckCircleIcon
-              style={{ color: '#0AEBA0' }}
-              className={classes.icon}
-            />
+            <GreenCheckIcon />
             <p className={classes.textMargin} aria-label="Good Example">
               {t('advice_page.point3.yes')}
             </p>

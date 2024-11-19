@@ -12,7 +12,7 @@ import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
@@ -267,7 +267,7 @@ export const CreditObjects: CreditsObject[] = [
   },
   {
     name: 'Success',
-    icon: CheckCircleIcon,
+    icon: CheckCircleRoundedIcon,
     iconColor: '#0AEBA0',
     class: 3,
     usedIn: 'Advice Page and Letter Generator',
