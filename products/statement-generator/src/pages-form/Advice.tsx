@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, createStyles } from '@material-ui/core';
-import CancelIcon from '@material-ui/icons/Cancel';
+import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import ContentContainer from 'components-layout/ContentContainer';
@@ -84,7 +84,10 @@ export default function Advice() {
         <p className={classes.text}>{t('advice_page.point1.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <CancelIcon style={{ color: '#E87461' }} className={classes.icon} />
+            <CancelRoundedIcon
+              style={{ color: '#E87461' }}
+              className={classes.icon}
+            />
             <p className={classes.textMargin} aria-label="Bad Example">
               {t('advice_page.point1.no')}
             </p>
@@ -102,7 +105,10 @@ export default function Advice() {
         <p className={classes.text}>{t('advice_page.point2.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <CancelIcon style={{ color: '#E87461' }} className={classes.icon} />
+            <CancelRoundedIcon
+              style={{ color: '#E87461' }}
+              className={classes.icon}
+            />
             <p className={classes.textMargin} aria-label="Bad Example">
               {t('advice_page.point2.no')}
             </p>
@@ -120,7 +126,10 @@ export default function Advice() {
         <p className={classes.text}>{t('advice_page.point3.content')}</p>
         <div className={classes.yesNoContainer}>
           <div className={`${classes.borderContainer} ${classes.marginRight}`}>
-            <CancelIcon style={{ color: '#E87461' }} className={classes.icon} />
+            <CancelRoundedIcon
+              style={{ color: '#E87461' }}
+              className={classes.icon}
+            />
             <p className={classes.textMargin} aria-label="Bad Example">
               {t('advice_page.point3.no')}
             </p>
