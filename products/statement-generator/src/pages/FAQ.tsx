@@ -187,43 +187,6 @@ function FAQ() {
             content={['faq_page.paragraph2.5a', 'faq_page.paragraph2.5b']}
           />
         </section>
-
-        <section>
-          <h2 className={classes.sectionTitle}>{t('faq_page.section3')}</h2>
-          <FAQAccordion
-            title="faq_page.title3.1"
-            content={[
-              'faq_page.paragraph3.1a',
-              'faq_page.paragraph3.1b',
-              'faq_page.paragraph3.1c',
-              'faq_page.paragraph3.1d',
-            ]}
-          />
-          <FAQAccordion
-            title="faq_page.title3.2"
-            content={[
-              'faq_page.paragraph3.2a',
-              'faq_page.paragraph3.2b',
-              'faq_page.paragraph3.2c',
-            ]}
-          />
-          <FAQAccordion
-            title="faq_page.title3.3"
-            content={[
-              'faq_page.paragraph3.3a',
-              'faq_page.paragraph3.3b',
-              'faq_page.paragraph3.3c',
-            ]}
-          />
-          <FAQAccordion
-            title="faq_page.title3.4"
-            content={['faq_page.paragraph3.4a', 'faq_page.paragraph3.4b']}
-          />
-          <FAQAccordion
-            title="faq_page.title3.5"
-            content={['faq_page.paragraph3.5a']}
-          />
-        </section>
       </ContentContainer>
     </>
   );
