@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import HelpIcon from '@material-ui/icons/Help';
+import HelpRoundedIcon from '@material-ui/icons/HelpRounded';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 
@@ -48,7 +48,7 @@ const AlertDialog: React.FC<AlertDialogProps> = ({ title, info }) => {
         className={classes.infoButton}
         onClick={handleClickOpen}
       >
-        <HelpIcon fontSize="large" />
+        <HelpRoundedIcon fontSize="large" />
       </IconButton>
       <Dialog
         open={open}
