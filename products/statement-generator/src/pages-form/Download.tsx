@@ -4,9 +4,11 @@ import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph } from 'docx';
 import jsPDF from 'jspdf';
 import { makeStyles, createStyles } from '@material-ui/core';
-import EmailIcon from '@material-ui/icons/Email';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
+import {
+  GetAppRounded,
+  EmailRounded,
+  FileCopyRounded,
+} from '@material-ui/icons';
 
 import { generateFinal } from 'helpers/previewHelper';
 
@@ -158,35 +160,35 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
           className={classes.buttonSpacing}
           onClick={handleClickDOCX}
           disabled={isDisabled}
-          icon={<GetAppIcon />}
+          icon={<GetAppRounded />}
           buttonText={t('download_page.docx_btn')}
         />
         <Button
           className={classes.buttonSpacing}
           onClick={handleClickPDF}
           disabled={isDisabled}
-          icon={<GetAppIcon />}
+          icon={<GetAppRounded />}
           buttonText={t('download_page.pdf_btn')}
         />
         <Button
           className={classes.buttonSpacing}
           onClick={handleClickTXT}
           disabled={isDisabled}
-          icon={<GetAppIcon />}
+          icon={<GetAppRounded />}
           buttonText={t('download_page.txt_btn')}
         />
         <Button
           className={classes.buttonSpacing}
           onClick={handleClickEmail}
           disabled={isDisabled}
-          icon={<EmailIcon />}
+          icon={<EmailRounded />}
           buttonText={t('download_page.email_btn')}
         />
         <Button
           className={classes.buttonSpacing}
           onClick={handleClickClipboard}
           disabled={isDisabled}
-          icon={<FileCopyIcon />}
+          icon={<FileCopyRounded />}
           buttonText={t('download_page.clipboard_btn')}
         />
       </div>
