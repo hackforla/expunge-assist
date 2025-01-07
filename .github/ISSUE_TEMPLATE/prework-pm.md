@@ -1,7 +1,7 @@
 ---
 title: "Pre-work: Product Manager"
 description: "An issue to help new developers get acquainted with our processes."
-name: "Pre-work: Product Manager"
+name: "Self-Onboarding PM: [NAME]"
 labels: feature: onboard / offboard, issue level I: request, priority: medium, role: product management, size: 1pt
 ---
 
