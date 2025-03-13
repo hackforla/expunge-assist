@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import ContentContainer from 'components-layout/ContentContainer';
 import ButtonComponent from 'components/Button';
 import collaboraton from '../assets/aboutUs/collaboration.svg';
 import mobile from '../assets/aboutUs/mobile.svg';
@@ -10,30 +9,101 @@ import courtroom from '../assets/aboutUs/courtroom.svg';
 import handshake from '../assets/aboutUs/handshake.svg';
 
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ spacing, breakpoints }) =>
   createStyles({
-    linkStyle: {
+    link: {
       color: 'black',
-      textDecorationColor: 'gray',
+      fontSize: '20px',
+      lineHeight: 1.5,
+      textDecoration: "underline",
     },
     buttonStyle: {
       width: 'fit-content',
       fontWeight: 'normal',
+      marginTop: 10,
+    },
+    pageContainer: {
+      maxWidth: '72%',
+      minWidth: '300px',
+      width: '100%',
+      padding: spacing(3),
+      paddingTop: spacing(9),
+      paddingBottom: spacing(9),
+      margin: 'auto',
+      display: 'flex',
+      flex: '1 0 auto',
+      flexDirection: 'column',
+      gap: 90,
+
+      [breakpoints.down('xs')]: {
+        width: '100%',
+        padding: spacing(2),
+      },
+    },
+    section: {
+      display: 'flex',
+      flex: '1',
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: '50px',
+
+      [breakpoints.down('sm')]: {
+        flexDirection: 'column',
+        width: '100%',
+        gap: '36px',
+        margin: 0,
+      },
+    },
+    // sectionReverse: {
+    //   [breakpoints.down('sm')]: {
+    //     flexDirection: 'column-',
+    //   },
+    // },
+    sectionTitle: {
+      fontSize: 40,
+      fontWeight: 500,
+      boxShadow: 'none',
+      border: 'none',
+      margin: '34px 0 16px 0',
+
+      [breakpoints.down('sm')]: {
+        fontSize: 30,
+        marginTop: '24px',
+      },
+    },
+    subSectionTitle: {
+      fontSize: 30,
+      margin: '28px 0 12px 0',
+
+      [breakpoints.down('sm')]: {
+        fontSize: 25,
+      },
+    },
+    textSection: {
+      flex: '1 1 60%',
+      paddingLeft: '26px',
+      paddingRight: '26px',
+    },
+    text: {
+      fontSize: '20px',
+      lineHeight: 1.5,
+      paddingTop: '12px',
+      paddingBottom: '12px',
     },
     pointStyle: {
-      fontSize: '8pt',
+      fontSize: '10pt',
     },
-    spanStyle: {
-      fontSize: '12pt',
-    },
-    paragraphStyle: {
+    ulStyle: {
       lineHeight: '1.5',
+      marginLeft: -5,
     },
     imgContainer: {
-      width: '100%',
       textAlign: 'center',
       flex: '1 1 40%',
-      marginRight: '16px',
+
+      [breakpoints.down('sm')]: {
+        width: '100%',
+      },
     },
     img: {
       width: 'auto',
@@ -55,15 +125,14 @@ export default function AboutUs() {
     window.open('mailto:info@expungeassist.org');
   };
   return (
-    <ContentContainer>
-      {/* header section */}
-      <div>
-        <div>
-          <h2>{t('about_us_page.page_header')}</h2>
-          <p>{t('about_us_page.page_subtitle')}</p>
+    <div className={classes.pageContainer}>
+      <div className={classes.section}>
+        <div className={classes.textSection}>
+          <p className={classes.sectionTitle}>{t('about_us_page.page_header')}</p>
+          <p className={classes.text}>{t('about_us_page.page_subtitle')}</p>
         </div>
-        <div>
-        <img
+        <div className={classes.imgContainer}>
+          <img
             className={classes.img}
             src={collaboraton}
             alt="Four people looking at a laptop"
@@ -71,17 +140,15 @@ export default function AboutUs() {
         </div>
       </div>
 
-
-      {/* section 1: what section */}
-      <div>
-        <div>
-          <h2>{t('about_us_page.title1')}</h2>
-          <p>{t('about_us_page.paragraph1')}</p>
-          <p>{t('about_us_page.paragraph1b')}</p>
-          <p>{t('about_us_page.paragraph1c')}</p>
+      <div className={classes.section}>
+        <div className={classes.textSection}>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title1')}</h3>
+          <p className={classes.text}>{t('about_us_page.paragraph1')}</p>
+          <p className={classes.text}>{t('about_us_page.paragraph1b')}</p>
+          <p className={classes.text}>{t('about_us_page.paragraph1c')}</p>
         </div>
-        <div>
-        <img
+        <div className={classes.imgContainer}>
+          <img
             className={classes.img}
             src={mobile}
             alt="A team looking at a large screen"
@@ -89,19 +156,17 @@ export default function AboutUs() {
         </div>
       </div>
 
-
-      {/* section 2: who section */}
-      <div>
-        <div>
+      <div className={classes.section}>
+        <div className={classes.imgContainer}>
           <img
             className={classes.img}
             src={teamwork}
             alt="Four people looking at a laptop"
           />
         </div>
-        <div>
-          <h2>{t('about_us_page.title2')}</h2>
-          <p>{t('about_us_page.paragraph2')}</p>
+        <div className={classes.textSection}>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title2')}</h3>
+          <p className={classes.text}>{t('about_us_page.paragraph2')}</p>
           <ButtonComponent
             onClick={() => handleMeetTheTeam()}
             buttonText={t('Meet the Team')}
@@ -110,36 +175,38 @@ export default function AboutUs() {
         </div>
       </div>
 
-
-      {/* section 3: why section */}
-      <div>
-        <div>
-          <h2>{t('about_us_page.title3')}</h2>
-          <ul className={classes.paragraphStyle}>
+      <div className={classes.section}>
+        <div className={classes.textSection}>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title3')}</h3>
+          <ul className={classes.ulStyle}>
             <li className={classes.pointStyle}>
-              <span className={classes.spanStyle}>
+              <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li1')}
               </span>
-              <span className={classes.spanStyle}>
+              <Link href="https://safeandjust.org/interactivereport/repairing-the-road-to-redemption-in-california/#:~:text=Based%20on%20the%20experiences%20of,increase%20legal%20remedies%20and%20remove"
+              target="_blank"
+              className={classes.link}>
                 {t('about_us_page.paragraph3_li1_link')}
-              </span>
+              </Link>
             </li>
             <li className={classes.pointStyle}>
-              <span className={classes.spanStyle}>
+              <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li2')}
               </span>
             </li>
             <li className={classes.pointStyle}>
-              <span className={classes.spanStyle}>
+              <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li3')}
               </span>
-              <span className={classes.spanStyle}>
+              <Link href="https://asj.allianceforsafetyandjustice.org/people-with-records-survey/"
+              target="_blank"
+              className={classes.link}>
                 {t('about_us_page.paragraph3_li3_link')}
-              </span>
+              </Link>
             </li>
           </ul>
         </div>
-        <div>
+        <div className={classes.imgContainer}>
           <img
             className={classes.img}
             src={courtroom}
@@ -148,28 +215,25 @@ export default function AboutUs() {
         </div>
       </div>
 
-
-
-      {/* section 4: partner section */}
-      <div>
-        <div>
+      <div className={classes.section}>
+        <div className={classes.imgContainer}>
           <img
             className={classes.img}
             src={handshake}
             alt="Two people shaking hands"
           />
         </div>
-        <div>
-          <h2>{t('about_us_page.title4')}</h2>
-          <p>{t('about_us_page.paragraph4')}</p>
-          <p>{t('about_us_page.paragraph4b')}</p>
-        </div>
-        <ButtonComponent
+        <div className={classes.textSection}>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title4')}</h3>
+          <p className={classes.text}>{t('about_us_page.paragraph4')}</p>
+          <p className={classes.text}>{t('about_us_page.paragraph4b')}</p>
+          <ButtonComponent
             onClick={() => handleContactUs()}
             buttonText={t('Contact Us')}
             className={classes.buttonStyle}
           />
+        </div>
       </div>
-    </ContentContainer>
+    </div>
   );
 }
