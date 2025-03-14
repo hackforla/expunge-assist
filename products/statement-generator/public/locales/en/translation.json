@@ -244,7 +244,11 @@
     "page_subtitle": "Helping Californians seeking expungement",
     "title1": "What is Expunge Assist?",
     "paragraph1": "Expunge Assist is a free step-by-step tool that helps people with past convictions in California write a declaration. It is one part of the expungement process.",
-    "paragraph1b": "This free tool is provided by Hack for LA, a project under the nonprofit Civic Tech Structure.",
+    "paragraph1b_a": "This free tool is provided by ",
+    "paragraph1b_li1": "Hack for LA",
+    "paragraph1b_b": ", a project under the nonprofit ",
+    "paragraph1b_li2": "Civic Tech Structure",
+    "paragraph1b_c": ".",
     "paragraph1c": "Expunge Assist is not a replacement for legal advice.",
     "title2": "Who we are",
     "paragraph2": "We are a team of volunteer designers, writers, engineers, and researchers building technology to improve LA County. Meet the current team and past contributors on Hack for LA’s website.",
@@ -255,7 +259,7 @@
     "paragraph3_li3": "Half of those who successfully expunged their records found the process difficult. Source: ",
     "paragraph3_li3_link": "Alliance for Safety and Justice",
     "title4": "Partner with us",
-    "paragraph4": "Wee are seeking partnerships with clinics and organizations focused on expungement. Partnership means, in part, that Expunge Assist would tailor this product to the needs of your organization and clients, free of charge.",
+    "paragraph4": "We are seeking partnerships with clinics and organizations focused on expungement. Partnership means, in part, that Expunge Assist would tailor this product to the needs of your organization and clients, free of charge.",
     "paragraph4b": "Contact us to learn more."
   },
   "terms_of_use_page": {

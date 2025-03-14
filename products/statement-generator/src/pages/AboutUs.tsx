@@ -8,20 +8,8 @@ import teamwork from '../assets/aboutUs/teamwork.svg';
 import courtroom from '../assets/aboutUs/courtroom.svg';
 import handshake from '../assets/aboutUs/handshake.svg';
 
-
 const useStyles = makeStyles(({ spacing, breakpoints }) =>
   createStyles({
-    link: {
-      color: 'black',
-      fontSize: '20px',
-      lineHeight: 1.5,
-      textDecoration: "underline",
-    },
-    buttonStyle: {
-      width: 'fit-content',
-      fontWeight: 'normal',
-      marginTop: 10,
-    },
     pageContainer: {
       maxWidth: '72%',
       minWidth: '300px',
@@ -33,11 +21,13 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       display: 'flex',
       flex: '1 0 auto',
       flexDirection: 'column',
-      gap: 90,
+      gap: 94,
 
-      [breakpoints.down('xs')]: {
-        width: '100%',
-        padding: spacing(2),
+      [breakpoints.down('sm')]: {
+        maxWidth: '90%',
+        padding: 0,
+        gap: 38,
+        paddingBottom: spacing(7),
       },
     },
     section: {
@@ -47,27 +37,22 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       alignItems: 'center',
       gap: '50px',
 
-      [breakpoints.down('sm')]: {
+      [breakpoints.down('md')]: {
         flexDirection: 'column',
         width: '100%',
         gap: '36px',
         margin: 0,
       },
     },
-    // sectionReverse: {
-    //   [breakpoints.down('sm')]: {
-    //     flexDirection: 'column-',
-    //   },
-    // },
     sectionTitle: {
       fontSize: 40,
-      fontWeight: 500,
+      fontWeight: 600,
       boxShadow: 'none',
       border: 'none',
       margin: '34px 0 16px 0',
 
-      [breakpoints.down('sm')]: {
-        fontSize: 30,
+      [breakpoints.down('md')]: {
+        fontSize: '2em',
         marginTop: '24px',
       },
     },
@@ -75,20 +60,52 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       fontSize: 30,
       margin: '28px 0 12px 0',
 
-      [breakpoints.down('sm')]: {
-        fontSize: 25,
+      [breakpoints.down('md')]: {
+        fontSize: 23,
       },
     },
     textSection: {
       flex: '1 1 60%',
-      paddingLeft: '26px',
-      paddingRight: '26px',
+      padding: '0 2% 0 2%',
+
+      [breakpoints.down('md')]: {
+        padding: 0,
+        width: '100%',
+      },
     },
     text: {
       fontSize: '20px',
+      fontWeight: 200,
+      lineHeight: 1.5,
+      paddingTop: '8px',
+      paddingBottom: '8px',
+
+      [breakpoints.down('md')]: {
+        fontSize: 16,
+      },
+    },
+    headerText: {
+      fontSize: '20px',
+      fontWeight: 200,
       lineHeight: 1.5,
       paddingTop: '12px',
       paddingBottom: '12px',
+
+      [breakpoints.down('md')]: {
+        fontSize: 20,
+        lineHeight: 1.65,
+        marginTop: '6px',
+      },
+    },
+    link: {
+      color: 'black',
+      fontSize: '20px',
+      lineHeight: 1.5,
+      textDecoration: 'underline',
+
+      [breakpoints.down('md')]: {
+        fontSize: 16,
+      },
     },
     pointStyle: {
       fontSize: '10pt',
@@ -96,19 +113,64 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
     ulStyle: {
       lineHeight: '1.5',
       marginLeft: -5,
+
+      [breakpoints.down('md')]: {
+        marginLeft: 0,
+      },
+    },
+    headImgContainer: {
+      textAlign: 'center',
+      flex: '1 1 40%',
+
+      [breakpoints.down('md')]: {
+        width: '100%',
+      },
     },
     imgContainer: {
       textAlign: 'center',
       flex: '1 1 40%',
 
-      [breakpoints.down('sm')]: {
-        width: '100%',
+      [breakpoints.down('md')]: {
+        // width: '100%',
+        display: 'none',
+      },
+    },
+    mobileImgContainer: {
+      display: 'none',
+
+      [breakpoints.down('md')]: {
+        display: 'flex',
+        margin: 'auto',
+        paddingTop: spacing(2),
+        paddingBottom: spacing(2),
       },
     },
     img: {
       width: 'auto',
       maxWidth: '100%',
       minWidth: '182px',
+      [breakpoints.down('md')]: {
+        width: '80%',
+        margin: 'auto',
+      },
+    },
+    buttonStyle: {
+      width: 'fit-content',
+      fontWeight: 'normal',
+      marginTop: 10,
+
+      [breakpoints.down('md')]: {
+        display: 'flex',
+        margin: 'auto',
+        width: '80%',
+        fontSize: 18,
+        marginTop: 16,
+        paddingTop: spacing(2),
+        paddingBottom: spacing(2),
+      },
+      [breakpoints.down('sm')]: {
+        width: '100%',
+      },
     },
   })
 );
@@ -128,10 +190,14 @@ export default function AboutUs() {
     <div className={classes.pageContainer}>
       <div className={classes.section}>
         <div className={classes.textSection}>
-          <p className={classes.sectionTitle}>{t('about_us_page.page_header')}</p>
-          <p className={classes.text}>{t('about_us_page.page_subtitle')}</p>
+          <p className={classes.sectionTitle}>
+            {t('about_us_page.page_header')}
+          </p>
+          <p className={classes.headerText}>
+            {t('about_us_page.page_subtitle')}
+          </p>
         </div>
-        <div className={classes.imgContainer}>
+        <div className={classes.headImgContainer}>
           <img
             className={classes.img}
             src={collaboraton}
@@ -139,12 +205,44 @@ export default function AboutUs() {
           />
         </div>
       </div>
-
       <div className={classes.section}>
         <div className={classes.textSection}>
-          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title1')}</h3>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>
+            {t('about_us_page.title1')}
+          </h3>
+          <div className={classes.mobileImgContainer}>
+            <img
+              className={classes.img}
+              src={mobile}
+              alt="Expunge Assist website on a mobile phone"
+            />
+          </div>
           <p className={classes.text}>{t('about_us_page.paragraph1')}</p>
-          <p className={classes.text}>{t('about_us_page.paragraph1b')}</p>
+          <p className={classes.text}>
+            <span className={`${classes.text}`}>
+              {t('about_us_page.paragraph1b_a')}
+            </span>
+            <Link
+              href="https://www.hackforla.org/"
+              target="_blank"
+              className={classes.link}
+            >
+              {t('about_us_page.paragraph1b_li1')}
+            </Link>
+            <span className={`${classes.text}`}>
+              {t('about_us_page.paragraph1b_b')}
+            </span>
+            <Link
+              href="https://www.civictechstructure.org/"
+              target="_blank"
+              className={classes.link}
+            >
+              {t('about_us_page.paragraph1b_li2')}
+            </Link>
+            <span className={`${classes.text}`}>
+              {t('about_us_page.paragraph1b_c')}
+            </span>
+          </p>
           <p className={classes.text}>{t('about_us_page.paragraph1c')}</p>
         </div>
         <div className={classes.imgContainer}>
@@ -155,7 +253,6 @@ export default function AboutUs() {
           />
         </div>
       </div>
-
       <div className={classes.section}>
         <div className={classes.imgContainer}>
           <img
@@ -165,7 +262,16 @@ export default function AboutUs() {
           />
         </div>
         <div className={classes.textSection}>
-          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title2')}</h3>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>
+            {t('about_us_page.title2')}
+          </h3>
+          <div className={classes.mobileImgContainer}>
+            <img
+              className={classes.img}
+              src={teamwork}
+              alt="Four people looking at a laptop"
+            />
+          </div>
           <p className={classes.text}>{t('about_us_page.paragraph2')}</p>
           <ButtonComponent
             onClick={() => handleMeetTheTeam()}
@@ -174,18 +280,28 @@ export default function AboutUs() {
           />
         </div>
       </div>
-
       <div className={classes.section}>
         <div className={classes.textSection}>
-          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title3')}</h3>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>
+            {t('about_us_page.title3')}
+          </h3>
+          <div className={classes.mobileImgContainer}>
+            <img
+              className={classes.img}
+              src={courtroom}
+              alt="A lawyer speaking to a judge"
+            />
+          </div>
           <ul className={classes.ulStyle}>
             <li className={classes.pointStyle}>
               <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li1')}
               </span>
-              <Link href="https://safeandjust.org/interactivereport/repairing-the-road-to-redemption-in-california/#:~:text=Based%20on%20the%20experiences%20of,increase%20legal%20remedies%20and%20remove"
-              target="_blank"
-              className={classes.link}>
+              <Link
+                href="https://safeandjust.org/interactivereport/repairing-the-road-to-redemption-in-california/#:~:text=Based%20on%20the%20experiences%20of,increase%20legal%20remedies%20and%20remove"
+                target="_blank"
+                className={classes.link}
+              >
                 {t('about_us_page.paragraph3_li1_link')}
               </Link>
             </li>
@@ -198,9 +314,11 @@ export default function AboutUs() {
               <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li3')}
               </span>
-              <Link href="https://asj.allianceforsafetyandjustice.org/people-with-records-survey/"
-              target="_blank"
-              className={classes.link}>
+              <Link
+                href="https://asj.allianceforsafetyandjustice.org/people-with-records-survey/"
+                target="_blank"
+                className={classes.link}
+              >
                 {t('about_us_page.paragraph3_li3_link')}
               </Link>
             </li>
@@ -214,7 +332,6 @@ export default function AboutUs() {
           />
         </div>
       </div>
-
       <div className={classes.section}>
         <div className={classes.imgContainer}>
           <img
@@ -224,7 +341,16 @@ export default function AboutUs() {
           />
         </div>
         <div className={classes.textSection}>
-          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>{t('about_us_page.title4')}</h3>
+          <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>
+            {t('about_us_page.title4')}
+          </h3>
+          <div className={classes.mobileImgContainer}>
+            <img
+              className={classes.img}
+              src={handshake}
+              alt="Two people shaking hands"
+            />
+          </div>
           <p className={classes.text}>{t('about_us_page.paragraph4')}</p>
           <p className={classes.text}>{t('about_us_page.paragraph4b')}</p>
           <ButtonComponent
