@@ -9,7 +9,6 @@ import { AppUrl } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 import { getPreviewConfig, getPreviewStatement } from 'helpers/previewHelper';
 import { getSectionTitle } from 'helpers/i18nHelper';
-import { generateClosing } from 'helpers/statementGenerators';
 
 function PreviewPage() {
   const { formState, updateStepToForm } = useContext(FormStateContext);
@@ -37,7 +36,6 @@ function PreviewPage() {
   // hacky implementation to generate the heading & closing statement here
   //  because it does not have a unique page to be generated via a preview
   useEffect(() => {
-    console.log(currentStep)
     if (currentStep === AppUrl.IntroductionPreview) {
       const displayDate = new Date().toLocaleDateString('en-US', {
         year: 'numeric',
