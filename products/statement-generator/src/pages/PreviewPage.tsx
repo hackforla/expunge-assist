@@ -47,7 +47,7 @@ function PreviewPage() {
         statements: {
           ...formState.statements,
           heading: `${displayDate},\n\nTo whom it may concern,`,
-          closing: `Sincerely,\n${formState.introduction.fullName}`,
+          closing: `Thank you for considering my case.\n\nSincerely,\n${formState.introduction.fullName}`,
         },
       });
     }

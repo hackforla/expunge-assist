@@ -198,7 +198,7 @@ export function generateWhy(formState: IStepState): string {
     return '';
   }
 
-  return `Getting my record cleared would have a major impact on my life. ${clearRecordWhy} ${clearRecordHow} Thank you for considering my case.`;
+  return `Getting my record cleared would have a major impact on my life. ${clearRecordWhy} ${clearRecordHow}`;
 }
 
 /**
