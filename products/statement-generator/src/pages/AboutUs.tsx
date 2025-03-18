@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import ContentContainer from 'components-layout/ContentContainer';
 import ButtonComponent from 'components/Button';
 import collaboraton from '../assets/aboutUs/collaboration.svg';
 import mobile from '../assets/aboutUs/mobile.svg';
@@ -11,10 +12,8 @@ import handshake from '../assets/aboutUs/handshake.svg';
 const useStyles = makeStyles(({ spacing, breakpoints }) =>
   createStyles({
     pageContainer: {
-      maxWidth: '72%',
-      minWidth: '300px',
+      maxWidth: '980px',
       width: '100%',
-      padding: spacing(3),
       paddingTop: spacing(9),
       paddingBottom: spacing(9),
       margin: 'auto',
@@ -24,9 +23,9 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       gap: 94,
 
       [breakpoints.down('sm')]: {
-        maxWidth: '90%',
+        maxWidth: '94%',
         padding: 0,
-        gap: 38,
+        gap: 40,
         paddingBottom: spacing(7),
       },
     },
@@ -131,7 +130,6 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       flex: '1 1 40%',
 
       [breakpoints.down('md')]: {
-        // width: '100%',
         display: 'none',
       },
     },
@@ -152,11 +150,13 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       [breakpoints.down('md')]: {
         width: '80%',
         margin: 'auto',
+        maxWidth: '400px',
       },
     },
     buttonStyle: {
       width: 'fit-content',
       fontWeight: 'normal',
+      fontSize: 16,
       marginTop: 10,
 
       [breakpoints.down('md')]: {
@@ -187,7 +187,7 @@ export default function AboutUs() {
     window.open('mailto:info@expungeassist.org');
   };
   return (
-    <div className={classes.pageContainer}>
+    <ContentContainer className={classes.pageContainer}>
       <div className={classes.section}>
         <div className={classes.textSection}>
           <p className={classes.sectionTitle}>
@@ -360,6 +360,6 @@ export default function AboutUs() {
           />
         </div>
       </div>
-    </div>
+    </ContentContainer>
   );
 }
