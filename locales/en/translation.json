@@ -55,13 +55,13 @@
   "before_you_begin_page": {
     "header": "Before you begin",
     "sectionTitle1": "Are you eligible?",
-    "sectionParagraph1": "Be sure you are eligible to have your record cleared. If you’re not sure, the <a target='_blank' href='https://selfhelp.courts.ca.gov/clean-your-record'>California Courts Self-Help Guide</a> or the <a target='_blank' href='https://roadmap.rootandrebound.org/understanding-cleaning-up-your-criminal-record/cleaning-up-your-criminal-record-later-in-reentry/california-expungement-of-state-convictions/chart-which-type-of-expungement-am-i-eligible-for/'>Roadmap to Reentry</a> can help you get started.",
+    "sectionParagraph1": "Be sure you are eligible for expungement. If you’re not sure, the <a target='_blank' href='https://selfhelp.courts.ca.gov/clean-your-record'>California Courts Self-Help Guide</a> or the <a target='_blank' href='https://roadmap.rootandrebound.org/understanding-cleaning-up-your-criminal-record/cleaning-up-your-criminal-record-later-in-reentry/california-expungement-of-state-convictions/chart-which-type-of-expungement-am-i-eligible-for/'>Roadmap to Reentry</a> can help you get started.",
     "sectionTitle2": "Take your time",
     "sectionParagraph2": "This process may take 30 minutes or longer so it's important that you give yourself enough time to complete your letter.",
     "sectionTitle3": "Need help?",
     "sectionParagraph3": "If you have questions, check our <a target='_blank' href='/faq'>FAQ</a>.",
-    "sectionTitle4": "Keep your browser open",
-    "sectionParagraph4": "Expunge Assist doesn't save anything you write, so be sure to keep your browser open until you are done. You can download your completed letter at the end."
+    "sectionTitle4": "Avoid Browser Navigation",
+    "sectionParagraph4": "Using your browser’s back, forward, or refresh buttons will erase your answers. Be sure to use our “next” and “back” buttons only, and keep your browser window open until you are done."
   },
   "welcome_page": {
     "titleText": "Welcome",
