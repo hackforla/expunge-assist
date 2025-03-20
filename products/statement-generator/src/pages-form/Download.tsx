@@ -136,8 +136,28 @@ export default function Download({ onDownloadAgreementCheck }: IDownload) {
   const handleClickPDF = () => {
     const doc = new jsPDF('p', 'mm', 'letter');
     doc.setFontSize(12);
-    const lines = doc.splitTextToSize(finalStatement, 170);
-    doc.text(20, 50, lines);
+
+    const marginLeft = 20;
+    const marginTop = 30;
+    const marginBottom = 30;
+    const maxWidth = 170;
+    const lineHeight = 6;
+    const pageHeight = doc.internal.pageSize.height;
+
+    let y = marginTop;
+
+    const lines = doc.splitTextToSize(finalStatement, maxWidth);
+
+    // account for spillover onto multiple pages
+    lines.forEach((line: string) => {
+      if (y + lineHeight > pageHeight - marginBottom) {
+        doc.addPage();
+        y = 30;
+      }
+      doc.text(marginLeft, y, line);
+      y += lineHeight;
+    });
+
     doc.save('MyPersonalStatement.pdf');
   };
 
