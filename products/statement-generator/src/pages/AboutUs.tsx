@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import ContentContainer from 'components-layout/ContentContainer';
 import ButtonComponent from 'components/Button';
 import collaboraton from '../assets/aboutUs/collaboration.svg';
 import mobile from '../assets/aboutUs/mobile.svg';
@@ -12,10 +11,8 @@ import handshake from '../assets/aboutUs/handshake.svg';
 const useStyles = makeStyles(({ spacing, breakpoints }) =>
   createStyles({
     pageContainer: {
-      maxWidth: '980px',
       width: '100%',
-      paddingTop: spacing(9),
-      paddingBottom: spacing(9),
+      paddingBottom: spacing(12),
       margin: 'auto',
       display: 'flex',
       flex: '1 0 auto',
@@ -23,7 +20,6 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       gap: 94,
 
       [breakpoints.down('sm')]: {
-        maxWidth: '94%',
         padding: 0,
         gap: 40,
         paddingBottom: spacing(7),
@@ -35,32 +31,45 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       flexDirection: 'row',
       alignItems: 'center',
       gap: '50px',
+      maxWidth: '980px',
+      margin: 'auto',
 
       [breakpoints.down('md')]: {
         flexDirection: 'column',
-        width: '100%',
+        maxWidth: '94%',
         gap: '36px',
-        margin: 0,
+      },
+    },
+    heroBg: {
+      width: '100%',
+      backgroundColor: '#F7EBFF',
+      paddingTop: spacing(9),
+      paddingBottom: spacing(9),
+
+      [breakpoints.down('md')]: {
+        paddingTop: spacing(1),
+        paddingBottom: spacing(3),
       },
     },
     sectionTitle: {
       fontSize: 40,
-      fontWeight: 600,
+      fontWeight: 500,
       boxShadow: 'none',
       border: 'none',
-      margin: '34px 0 16px 0',
+      margin: '34px 0 36px 0',
 
       [breakpoints.down('md')]: {
-        fontSize: '2em',
-        marginTop: '24px',
+        fontSize: 34,
+        margin: '24px 0 30px 0',
       },
     },
     subSectionTitle: {
-      fontSize: 30,
-      margin: '28px 0 12px 0',
+      fontSize: 34,
+      margin: '28px 0 36px 0',
 
       [breakpoints.down('md')]: {
-        fontSize: 23,
+        fontSize: 24,
+        margin: '28px 0 16px 0',
       },
     },
     textSection: {
@@ -73,10 +82,9 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     text: {
-      fontSize: '20px',
+      fontSize: 24,
       fontWeight: 200,
       lineHeight: 1.5,
-      paddingTop: '8px',
       paddingBottom: '8px',
 
       [breakpoints.down('md')]: {
@@ -84,21 +92,19 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     headerText: {
-      fontSize: '20px',
+      fontSize: 24,
       fontWeight: 200,
       lineHeight: 1.5,
-      paddingTop: '12px',
       paddingBottom: '12px',
 
       [breakpoints.down('md')]: {
-        fontSize: 20,
         lineHeight: 1.65,
         marginTop: '6px',
       },
     },
     link: {
       color: 'black',
-      fontSize: '20px',
+      fontSize: 24,
       lineHeight: 1.5,
       textDecoration: 'underline',
 
@@ -107,7 +113,7 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     pointStyle: {
-      fontSize: '10pt',
+      fontSize: 10,
     },
     ulStyle: {
       lineHeight: '1.5',
@@ -140,7 +146,7 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
         display: 'flex',
         margin: 'auto',
         paddingTop: spacing(2),
-        paddingBottom: spacing(2),
+        paddingBottom: spacing(6),
       },
     },
     img: {
@@ -156,15 +162,14 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
     buttonStyle: {
       width: 'fit-content',
       fontWeight: 'normal',
-      fontSize: 16,
-      marginTop: 10,
+      fontSize: 20,
+      marginTop: 18,
 
       [breakpoints.down('md')]: {
         display: 'flex',
         margin: 'auto',
+        marginTop: 18,
         width: '80%',
-        fontSize: 18,
-        marginTop: 16,
         paddingTop: spacing(2),
         paddingBottom: spacing(2),
       },
@@ -184,27 +189,30 @@ export default function AboutUs() {
   };
 
   const handleContactUs = () => {
-    window.open('mailto:info@expungeassist.org');
+    window.open('mailto:expungeassist@hackforla.org');
   };
   return (
-    <ContentContainer className={classes.pageContainer}>
-      <div className={classes.section}>
-        <div className={classes.textSection}>
-          <p className={classes.sectionTitle}>
-            {t('about_us_page.page_header')}
-          </p>
-          <p className={classes.headerText}>
-            {t('about_us_page.page_subtitle')}
-          </p>
-        </div>
-        <div className={classes.headImgContainer}>
-          <img
-            className={classes.img}
-            src={collaboraton}
-            alt="Four people looking at a laptop"
-          />
+    <div className={classes.pageContainer}>
+      <div className={classes.heroBg}>
+        <div className={classes.section}>
+          <div className={classes.textSection}>
+            <p className={classes.sectionTitle}>
+              {t('about_us_page.page_header')}
+            </p>
+            <p className={classes.headerText}>
+              {t('about_us_page.page_subtitle')}
+            </p>
+          </div>
+          <div className={classes.headImgContainer}>
+            <img
+              className={classes.img}
+              src={collaboraton}
+              alt="Four people looking at a laptop"
+            />
+          </div>
         </div>
       </div>
+
       <div className={classes.section}>
         <div className={classes.textSection}>
           <h3 className={`${classes.sectionTitle} ${classes.subSectionTitle}`}>
@@ -360,6 +368,6 @@ export default function AboutUs() {
           />
         </div>
       </div>
-    </ContentContainer>
+    </div>
   );
 }
