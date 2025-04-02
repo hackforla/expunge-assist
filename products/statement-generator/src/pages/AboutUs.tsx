@@ -20,8 +20,7 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       gap: 94,
 
       [breakpoints.down('sm')]: {
-        padding: 0,
-        gap: 40,
+        gap: 24,
         paddingBottom: spacing(7),
       },
     },
@@ -36,8 +35,8 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
 
       [breakpoints.down('md')]: {
         flexDirection: 'column',
-        maxWidth: '94%',
-        gap: '36px',
+        padding: '24px 16px 24px 16px',
+        gap: 0,
       },
     },
     heroBg: {
@@ -52,24 +51,22 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     sectionTitle: {
-      fontSize: 40,
+      fontSize: 48,
       fontWeight: 500,
-      boxShadow: 'none',
-      border: 'none',
-      margin: '34px 0 36px 0',
+      margin: '34px 0 24px 0',
 
       [breakpoints.down('md')]: {
         fontSize: 34,
-        margin: '24px 0 30px 0',
+        margin: '0 0 0 0',
       },
     },
     subSectionTitle: {
       fontSize: 34,
-      margin: '28px 0 36px 0',
+      margin: '28px 0 0 0',
 
       [breakpoints.down('md')]: {
         fontSize: 24,
-        margin: '28px 0 16px 0',
+        margin: '22px 0 8px 0',
       },
     },
     textSection: {
@@ -85,21 +82,27 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       fontSize: 24,
       fontWeight: 200,
       lineHeight: 1.5,
-      paddingBottom: '8px',
+      paddingTop: '36px',
 
       [breakpoints.down('md')]: {
         fontSize: 16,
+        paddingTop: 0,
+
+        '& + p': {
+          paddingTop: '24px',
+        },
       },
     },
     headerText: {
       fontSize: 24,
       fontWeight: 200,
       lineHeight: 1.5,
-      paddingBottom: '12px',
+      marginBottom: '12px',
 
       [breakpoints.down('md')]: {
         lineHeight: 1.65,
-        marginTop: '6px',
+        marginTop: '24px',
+        marginBottom: '24px',
       },
     },
     link: {
@@ -113,14 +116,19 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     pointStyle: {
-      fontSize: 10,
+      fontSize: 20,
+
+      [breakpoints.down('md')]: {
+        fontSize: 12,
+      },
     },
     ulStyle: {
       lineHeight: '1.5',
-      marginLeft: -5,
+      margin: '36px 0 0 -5px',
 
       [breakpoints.down('md')]: {
-        marginLeft: 0,
+        margin: '24px 0 0 0',
+        lineHeight: '1.2',
       },
     },
     headImgContainer: {
@@ -145,8 +153,8 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       [breakpoints.down('md')]: {
         display: 'flex',
         margin: 'auto',
-        paddingTop: spacing(2),
-        paddingBottom: spacing(6),
+        paddingTop: '24px',
+        paddingBottom: '36px',
       },
     },
     img: {
@@ -163,19 +171,23 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       width: 'fit-content',
       fontWeight: 'normal',
       fontSize: 20,
-      marginTop: 18,
+      marginTop: 36,
+      padding: '12px 16px',
+      lineHeight: '1.5',
+      borderRadius: 24,
 
       [breakpoints.down('md')]: {
         display: 'flex',
         margin: 'auto',
-        marginTop: 18,
+        marginTop: '28px',
         width: '80%',
-        paddingTop: spacing(2),
-        paddingBottom: spacing(2),
       },
       [breakpoints.down('sm')]: {
         width: '100%',
       },
+    },
+    contactButton: {
+      marginTop: 28,
     },
   })
 );
@@ -364,7 +376,7 @@ export default function AboutUs() {
           <ButtonComponent
             onClick={() => handleContactUs()}
             buttonText={t('Contact Us')}
-            className={classes.buttonStyle}
+            className={`${classes.buttonStyle} ${classes.contactButton}`}
           />
         </div>
       </div>
