@@ -51,21 +51,17 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     sectionTitle: {
-      fontSize: 48,
       fontWeight: 500,
       margin: '34px 0 24px 0',
 
       [breakpoints.down('md')]: {
-        fontSize: 34,
         margin: '0 0 0 0',
       },
     },
     subSectionTitle: {
-      fontSize: 34,
       margin: '28px 0 0 0',
 
       [breakpoints.down('md')]: {
-        fontSize: 24,
         margin: '22px 0 8px 0',
       },
     },
@@ -79,13 +75,12 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     text: {
-      fontSize: 24,
+      fontSize: 16,
       fontWeight: 200,
       lineHeight: 1.5,
       paddingTop: '36px',
 
       [breakpoints.down('md')]: {
-        fontSize: 16,
         paddingTop: 0,
 
         '& + p': {
@@ -94,7 +89,6 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
       },
     },
     headerText: {
-      fontSize: 24,
       fontWeight: 200,
       lineHeight: 1.5,
       marginBottom: '12px',
@@ -107,20 +101,9 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
     },
     link: {
       color: 'black',
-      fontSize: 24,
+      fontSize: 16,
       lineHeight: 1.5,
       textDecoration: 'underline',
-
-      [breakpoints.down('md')]: {
-        fontSize: 16,
-      },
-    },
-    pointStyle: {
-      fontSize: 20,
-
-      [breakpoints.down('md')]: {
-        fontSize: 12,
-      },
     },
     ulStyle: {
       lineHeight: '1.5',
@@ -170,7 +153,7 @@ const useStyles = makeStyles(({ spacing, breakpoints }) =>
     buttonStyle: {
       width: 'fit-content',
       fontWeight: 'normal',
-      fontSize: 20,
+      // fontSize: 20,
       marginTop: 36,
       padding: '12px 16px',
       lineHeight: '1.5',
@@ -208,9 +191,9 @@ export default function AboutUs() {
       <div className={classes.heroBg}>
         <div className={classes.section}>
           <div className={classes.textSection}>
-            <p className={classes.sectionTitle}>
+            <h2 className={classes.sectionTitle}>
               {t('about_us_page.page_header')}
-            </p>
+            </h2>
             <p className={classes.headerText}>
               {t('about_us_page.page_subtitle')}
             </p>
@@ -313,7 +296,7 @@ export default function AboutUs() {
             />
           </div>
           <ul className={classes.ulStyle}>
-            <li className={classes.pointStyle}>
+            <li>
               <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li1')}
               </span>
@@ -325,12 +308,12 @@ export default function AboutUs() {
                 {t('about_us_page.paragraph3_li1_link')}
               </Link>
             </li>
-            <li className={classes.pointStyle}>
+            <li>
               <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li2')}
               </span>
             </li>
-            <li className={classes.pointStyle}>
+            <li>
               <span className={`${classes.text}`}>
                 {t('about_us_page.paragraph3_li3')}
               </span>
