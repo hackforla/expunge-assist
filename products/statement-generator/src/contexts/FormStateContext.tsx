@@ -4,7 +4,7 @@ import {
   defaultStepState,
   sampleStepState,
 } from 'contexts/FormStateProps';
-import { AppUrl, getNextFormUrl } from 'contexts/RoutingProps';
+import { AppUrl, getNextFormUrl, isFormPage } from 'contexts/RoutingProps';
 import RoutingContext from 'contexts/RoutingContext';
 
 interface FormStateProviderProps {
@@ -19,6 +19,7 @@ export const FormStateContextProvider = ({
 }: FormStateProviderProps) => {
   const [formState, setFormState] = useState<IStepState>(defaultStepState);
   const [stepShown, setStepShown] = useState<{ [key: string]: boolean }>({});
+  const [showOopsReminder, setShowOopsReminder] = useState(false);
 
   const updateStepToForm = (stepState: any) =>
     setFormState({ ...formState, ...stepState });
@@ -119,6 +120,15 @@ export const FormStateContextProvider = ({
       setStepShown((prev) => ({ ...prev, [currentStep]: true }));
       // Add any specific logic that should only run once per step here
     }
+
+    // Check if current step is form with empty formstate
+    if (
+      isFormPage(currentStep) &&
+      currentStep !== AppUrl.Introduction &&
+      formState.introduction.fullName === ''
+    ) {
+      setShowOopsReminder(true);
+    }
   }, [currentStep, stepShown]);
 
   return (
@@ -130,6 +140,7 @@ export const FormStateContextProvider = ({
         goBackStep,
         stepShown,
         setStepShown,
+        showOopsReminder,
       }}
     >
       {children}
