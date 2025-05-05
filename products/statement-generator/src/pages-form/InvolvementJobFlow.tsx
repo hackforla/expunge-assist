@@ -5,10 +5,8 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
 import {
   capitalizeEachWord,
   capitalizeSentences,
@@ -56,41 +54,37 @@ function InvolvementJobFlow() {
   }, []);
 
   return (
-    <ContentContainer>
-      <FormContainer>
-        <Input
-          id="companyName"
-          label={t('job_form.companyName_input_label')}
-          placeholder={t('job_form.companyName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={companyName}
-          shortWidth
-          type="text"
-          labelRef={companyNameLabelRef}
-        />
+    <FormFlowContainer isNextDisabled={isNextDisabled}>
+      <Input
+        id="companyName"
+        label={t('job_form.companyName_input_label')}
+        placeholder={t('job_form.companyName_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={companyName}
+        shortWidth
+        type="text"
+        labelRef={companyNameLabelRef}
+      />
 
-        <Input
-          id="jobTitle"
-          label={t('job_form.jobTitle_input_label')}
-          placeholder={t('job_form.jobTitle_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={jobTitle}
-          shortWidth
-          type="text"
-        />
+      <Input
+        id="jobTitle"
+        label={t('job_form.jobTitle_input_label')}
+        placeholder={t('job_form.jobTitle_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={jobTitle}
+        shortWidth
+        type="text"
+      />
 
-        <Textarea
-          id="jobDescription"
-          label={t('job_form.jobDescription_input_label')}
-          placeholder={t('job_form.jobDescription_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={jobDescription}
-          rows={3}
-        />
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+      <Textarea
+        id="jobDescription"
+        label={t('job_form.jobDescription_input_label')}
+        placeholder={t('job_form.jobDescription_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={jobDescription}
+        rows={3}
+      />
+    </FormFlowContainer>
   );
 }
 

@@ -4,10 +4,7 @@ import { useTranslation } from 'react-i18next';
 import FormStateContext from 'contexts/FormStateContext';
 
 import Textarea from 'components/Textarea';
-
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
 
 import {
   capitalizeSentences,
@@ -51,8 +48,7 @@ function InvolvementSomethingElseFlow() {
   }, []);
 
   return (
-    <ContentContainer>
-      <FormContainer>
+    <FormFlowContainer isNextDisabled={isNextDisabled}>
         <Input
           id="activityName"
           label={t('something_else_form.activityName_input_label')}
@@ -73,10 +69,7 @@ function InvolvementSomethingElseFlow() {
           defaultValue={activityDescription}
           rows={3}
         />
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 

@@ -6,9 +6,8 @@ import FormStateContext from 'contexts/FormStateContext';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
+
 import {
   capitalizeEachWord,
   capitalizeSentences,
@@ -52,8 +51,7 @@ function InvolvementSchoolFlow() {
   }, []);
 
   return (
-    <ContentContainer>
-      <FormContainer>
+    <FormFlowContainer isNextDisabled={isNextDisabled}>
         <Input
           id="schoolName"
           label={t('education_form.schoolName_input_label')}
@@ -83,10 +81,7 @@ function InvolvementSchoolFlow() {
           defaultValue={passionDescription}
           rows={3}
         />
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 

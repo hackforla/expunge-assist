@@ -6,9 +6,8 @@ import FormStateContext from 'contexts/FormStateContext';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
+
 import {
   capitalizeSentences,
   removePunctuationAndCapitalizeFirstWord,
@@ -48,33 +47,28 @@ function InvolvementRecoveryFlow() {
     // Automatically focus the container when the component mounts
     recoveryLabelRef.current?.focus();
   }, []);
-
   return (
-    <ContentContainer>
-      <FormContainer>
-        <Input
-          id="recoveryName"
-          label={t('recovery_form.recoveryName_input_label')}
-          placeholder={t('recovery_form.recoveryName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={recoveryName}
-          shortWidth
-          type="text"
-          labelRef={recoveryLabelRef}
-        />
+    <FormFlowContainer isNextDisabled={isNextDisabled}>
+      <Input
+        id="recoveryName"
+        label={t('recovery_form.recoveryName_input_label')}
+        placeholder={t('recovery_form.recoveryName_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={recoveryName}
+        shortWidth
+        type="text"
+        labelRef={recoveryLabelRef}
+      />
 
-        <Textarea
-          id="recoveryDescription"
-          label={t('recovery_form.recoveryDescription_input_label')}
-          placeholder={t('recovery_form.recoveryDescription_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={recoveryDescription}
-          rows={3}
-        />
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+      <Textarea
+        id="recoveryDescription"
+        label={t('recovery_form.recoveryDescription_input_label')}
+        placeholder={t('recovery_form.recoveryDescription_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={recoveryDescription}
+        rows={3}
+      />
+    </FormFlowContainer>
   );
 }
 

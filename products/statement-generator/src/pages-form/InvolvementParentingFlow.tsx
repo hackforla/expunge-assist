@@ -6,9 +6,8 @@ import FormStateContext from 'contexts/FormStateContext';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
+
 import {
   capitalizeSentences,
   capitalizeStandaloneI,
@@ -47,8 +46,7 @@ function InvolvementParentingFlow() {
   }, []);
 
   return (
-    <ContentContainer>
-      <FormContainer>
+    <FormFlowContainer isNextDisabled={isNextDisabled}>
         <Input
           id="numberChildren"
           label={t('parenting_form.parentChildren_number_label')}
@@ -67,10 +65,7 @@ function InvolvementParentingFlow() {
           defaultValue={parentDescription}
           rows={3}
         />
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 

@@ -5,9 +5,8 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
+
 import {
   capitalizeSentences,
   capitalizeStandaloneI,
@@ -43,8 +42,7 @@ function InvolvementUnemploymentFlow() {
   }, []);
 
   return (
-    <ContentContainer>
-      <FormContainer>
+    <FormFlowContainer isNextDisabled={isNextDisabled}>
         <Textarea
           id="unemploymentDescription"
           label={t('unemployment_form.unemploymentDescription_input_label')}
@@ -56,10 +54,7 @@ function InvolvementUnemploymentFlow() {
           rows={3}
           labelRef={unemploymentLabelRef}
         />
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 
