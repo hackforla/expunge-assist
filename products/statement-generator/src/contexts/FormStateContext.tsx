@@ -24,7 +24,7 @@ export const FormStateContextProvider = ({
   const updateStepToForm = (stepState: any) =>
     setFormState({ ...formState, ...stepState });
 
-  const { currentStep, goNextPage, goBackPage } = useContext(RoutingContext);
+  const { currentStep, goNextPage, goBackPage, setCanShowAffirmation } = useContext(RoutingContext);
 
   function getNextStep(givenUrl: AppUrl): AppUrl {
     const suggestedNext = getNextFormUrl(givenUrl);
@@ -128,6 +128,7 @@ export const FormStateContextProvider = ({
       formState.introduction.fullName === ''
     ) {
       setShowOopsReminder(true);
+      setCanShowAffirmation(false);
     }
   }, [currentStep, stepShown]);
 
