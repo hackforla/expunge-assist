@@ -8,10 +8,7 @@ import { useTranslation } from 'react-i18next';
 import FormStateContext from 'contexts/FormStateContext';
 
 import Checkbox from 'components/Checkbox';
-
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
 
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
@@ -71,15 +68,13 @@ function InvolvementInitialFlow() {
   };
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
-      <FormContainer>
+    <FormFlowContainer ref={contentContainerRef} tabIndex={-1} isNextDisabled={!isNextEnabled}>
         <FormControl className={classes.checkboxGroup}>
           <FormLabel htmlFor="involvement-checkboxes">
             {t('involvement_form.checkboxgroup_label')}
           </FormLabel>
           <FormGroup id="involvement-checkboxes">
             <Checkbox
-              // ref={firstCheckboxRef}
               useTeal
               id="isJobChecked"
               checked={isJobChecked}
@@ -134,10 +129,7 @@ function InvolvementInitialFlow() {
             />
           </FormGroup>
         </FormControl>
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={!isNextEnabled} />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 
