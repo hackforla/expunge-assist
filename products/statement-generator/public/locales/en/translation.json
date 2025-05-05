@@ -274,5 +274,11 @@
   "credits_page": {
     "page_header": "Image credits",
     "page_subheader": "Check out the illustrations and icons used on Expunge Assist."
+  },
+  "oops_reminder": {
+    "header": "The Page Refreshed",
+    "paragraph_1": "Your declaration was erased.",
+    "paragraph_2": "To avoid this, do not use your browser's forward and back buttons.",
+    "button_text": "Start Again"
   }
 }
