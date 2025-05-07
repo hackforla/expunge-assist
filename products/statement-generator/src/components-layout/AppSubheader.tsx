@@ -4,6 +4,7 @@ import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import FormHeader from 'components/FormHeader';
 
 import RoutingContext from 'contexts/RoutingContext';
+import FormStateContext from 'contexts/FormStateContext';
 import { isFormPage } from 'contexts/RoutingProps';
 
 const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ globals, palette }) =>
@@ -44,14 +45,17 @@ const useStyles = makeStyles<Theme, IUseUtilityStyle>(({ globals, palette }) =>
 
 const AppSubheader = () => {
   const { appTheme, currentStep } = useContext(RoutingContext);
+  const { showOopsReminder } = useContext(FormStateContext);
 
   const classes = useStyles({
     pageTheme: appTheme,
   });
 
+  const showSubheader = isFormPage(currentStep) && !showOopsReminder;
+
   return (
     <div className={classes.subheaderContainer}>
-      {isFormPage(currentStep) && <FormHeader />}
+      { showSubheader && <FormHeader />}
     </div>
   );
 };
