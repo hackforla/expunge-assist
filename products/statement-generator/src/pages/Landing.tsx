@@ -433,7 +433,7 @@ function LandingSection8() {
   const classes = useStyles();
 
   const handleContactUs = () => {
-    window.open('mailto:info@expungeassist.org');
+    window.open('mailto:expungeassist@hackforla.org');
   };
 
   return (
