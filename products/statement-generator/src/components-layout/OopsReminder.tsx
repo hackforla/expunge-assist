@@ -34,7 +34,9 @@ const useStyles = makeStyles<Theme>(({ spacing, globals }) => createStyles({
   },
   textContainer: {
     minWidth: '540px',
-
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   }
 }));
 
