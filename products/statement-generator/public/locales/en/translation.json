@@ -104,8 +104,8 @@
       "description": "Just one more step. Next, you can preview your entire letter and make changes.\n\nWhen you are done, email or download a copy of your letter."
     },
     "done": {
-      "titleText": "Done",
-      "description": "You have downloaded your declaration letter. Select \"Back\" to reuse the tool or \"Return Home\" to exit and erase your data."
+      "titleText": "Return home?",
+      "description": "Once you leave this page, your declaration will be erased. Be sure to save it to your device before exiting."
     }
   },
   "sections": {
