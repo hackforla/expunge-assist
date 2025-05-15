@@ -16,7 +16,6 @@ const useStyles = makeStyles<Theme>(({ spacing, globals }) => createStyles({
     display: 'flex',
   },
   oopsHeader: {
-    fontSize: '60px',
     "font-weight": '600',
     letterSpacing: '-0.5px'
   },
@@ -33,7 +32,7 @@ const useStyles = makeStyles<Theme>(({ spacing, globals }) => createStyles({
     width: '50%',
   },
   textContainer: {
-    minWidth: '540px',
+    // minWidth: '540px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
