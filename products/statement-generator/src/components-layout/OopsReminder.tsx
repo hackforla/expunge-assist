@@ -17,26 +17,27 @@ const useStyles = makeStyles<Theme>(({ spacing, globals }) => createStyles({
   },
   oopsHeader: {
     "font-weight": '600',
-    letterSpacing: '-0.5px'
+    letterSpacing: '-0.5px',
+    width: '100%',
   },
   oopsText: {
     fontSize: '20px',
     lineHeight: '1.5',
+    maxWidth: '415px'
   },
   buttonContainer: {
     width: '100%',
     display: 'flex',
     padding: spacing(3, 0),
   },
-  contentContainer: {
+  imageContainer: {
     width: '50%',
   },
   textContainer: {
-    // minWidth: '540px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    marginRight: '35px',
+    marginRight: spacing(4)
   },
   image: {
     width: '100%',
@@ -61,7 +62,7 @@ const OopsReminder = () => {
           <LinkButtonComponent buttonText={t('oops_reminder.button_text')} to={AppUrl.Introduction} />
         </div>
       </div>
-      <div className={`image-container ${styles.contentContainer}`}>
+      <div className={`${styles.imageContainer}`}>
         <img className={styles.image} src={OopsReminderImage} alt={t('oops_reminder.image_alt_text')} />
       </div>
     </div>
