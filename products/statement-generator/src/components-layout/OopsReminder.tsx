@@ -17,13 +17,13 @@ const useStyles = makeStyles<Theme>(({ spacing, globals }) => createStyles({
   },
   oopsHeader: {
     fontSize: '60px',
-    lineHeight: '90px',
+    "font-weight": '600',
+    letterSpacing: '-0.5px'
   },
   oopsText: {
-    fontSize: '24px',
-    lineHeight: '36px',
+    fontSize: '20px',
+    lineHeight: '1.5',
   },
-
   buttonContainer: {
     width: '100%',
     display: 'flex',
@@ -37,6 +37,10 @@ const useStyles = makeStyles<Theme>(({ spacing, globals }) => createStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginRight: '35px',
+  },
+  image: {
+    width: '100%',
   }
 }));
 
@@ -59,7 +63,7 @@ const OopsReminder = () => {
         </div>
       </div>
       <div className={`image-container ${styles.contentContainer}`}>
-        <img src={OopsReminderImage} alt={t('oops_reminder.image_alt_text')} />
+        <img className={styles.image} src={OopsReminderImage} alt={t('oops_reminder.image_alt_text')} />
       </div>
     </div>
   );
