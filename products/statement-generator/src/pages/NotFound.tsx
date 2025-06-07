@@ -4,32 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { AppUrl } from 'contexts/RoutingProps';
 import useUtilityStyles from 'styles/utilityStyles';
 import { LinkButtonComponent } from 'components/Button';
+import BackgroundCircle from 'components-layout/BackgroundCircle';
 
 import notFound from '../assets/notFound.svg';
-import notFoundBgDesktop from '../assets/notFound-bg-desktop.svg';
-import notFoundBgMobile from '../assets/notFound-bg-mobile.svg';
 
 const useStyles = makeStyles(({ globals, breakpoints, spacing }) =>
   createStyles({
-    backgroundImage: {
-      backgroundSize: 'auto',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'right center',
-      backgroundImage: `url(${notFoundBgDesktop})`,
-      display: 'flex',
-      flexGrow: 1,
-
-      [breakpoints.down(breakpoints.values.lg)]: {
-        backgroundSize: 'contain',
-      },
-
-      [breakpoints.down(breakpoints.values.md)]: {
-        backgroundSize: 'contain',
-        backgroundPosition: 'right top',
-        backgroundImage: `url(${notFoundBgMobile})`,
-      },
-    },
-
     container: {
       display: 'flex',
       flexDirection: 'row',
@@ -113,7 +93,7 @@ export default function NotFound() {
   const { t } = useTranslation();
 
   return (
-    <div className={classes.backgroundImage}>
+    <BackgroundCircle>
       <div className={classes.container}>
         <div className={classes.contentWrapper}>
           <img
@@ -142,6 +122,6 @@ export default function NotFound() {
           <img src={notFound} alt="Person holding magnifying glass" />
         </div>
       </div>
-    </div>
+    </BackgroundCircle>
   );
 }
