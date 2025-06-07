@@ -130,6 +130,9 @@ export const FormStateContextProvider = ({
       setShowOopsReminder(true);
       setCanShowAffirmation(false);
     }
+    else {
+      setShowOopsReminder(false);
+    }
   }, [currentStep, stepShown]);
 
   return (
