@@ -9,7 +9,7 @@ interface BackgroundCircleProps {
   children: React.ReactNode;
 }
 
-const useStyles = makeStyles(({ breakpoints, spacing }) =>
+const useStyles = makeStyles(({ breakpoints }) =>
   createStyles({
     backgroundImage: {
       backgroundSize: 'auto',
