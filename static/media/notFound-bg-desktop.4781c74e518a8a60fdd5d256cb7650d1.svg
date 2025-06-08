@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1013" height="900" viewBox="0 0 1013 900" fill="none">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M613.5 -34H1145V961H613.5H612V960.998C337.928 960.189 116 737.761 116 463.5C116 189.239 337.928 -33.1889 612 -33.9978V-34H613.5Z" fill="#FBF7FF"/>
-<ellipse opacity="0.2" cx="613.5" cy="463.5" rx="552.5" ry="553.5" fill="#F7EBFF"/>
-<ellipse opacity="0.15" cx="613.5" cy="476.5" rx="600.5" ry="601.5" fill="#F7EBFF"/>
-<script xmlns="" type="text/javascript" src="chrome-extension://hejbmebodbijjdhflfknehhcgaklhano/../window/testing-library.js"/></svg>
