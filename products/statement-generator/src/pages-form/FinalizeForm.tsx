@@ -9,8 +9,7 @@ import TextPreview from 'components/TextPreview';
 
 import { AppUrl } from 'contexts/RoutingProps';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
 
 import { getSectionTitle } from 'helpers/i18nHelper';
 
@@ -92,7 +91,11 @@ function FinalizeForm() {
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={false}
+    >
       <div className={classes.purpleTitle} tabIndex={-1}>
         <VisibilityRoundedIcon className={classes.purpleIcon} />
         Editing final letter
@@ -106,9 +109,7 @@ function FinalizeForm() {
         content={formState.statements.closing}
         nameOfStep="Closing"
       />
-
-      <FlowNavigation />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 

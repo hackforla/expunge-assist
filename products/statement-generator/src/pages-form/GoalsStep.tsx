@@ -3,10 +3,9 @@ import { useTranslation } from 'react-i18next';
 
 import FormStateContext from 'contexts/FormStateContext';
 
-import FlowNavigation from 'components-layout/FlowNavigation';
-
-import ContentContainer from 'components-layout/ContentContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
 import Textarea from 'components/Textarea';
+
 import {
   capitalizeSentences,
   capitalizeStandaloneI,
@@ -54,7 +53,11 @@ function GoalsStep() {
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={isNextDisabled}
+    >
       <Textarea
         ref={goalsRef}
         id="goals"
@@ -73,9 +76,7 @@ function GoalsStep() {
         defaultValue={goalsHow}
         rows={3}
       />
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 

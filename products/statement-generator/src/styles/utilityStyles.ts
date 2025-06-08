@@ -10,6 +10,7 @@ const useUtilityStyles = makeStyles<Theme>(
         flex: '1 0 auto',
         flexDirection: 'column',
         position: 'relative',
+        justifyContent: 'space-between',
 
         background: ({ pageTheme }: IUseUtilityStyle) => {
           switch (pageTheme) {
