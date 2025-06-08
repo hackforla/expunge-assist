@@ -10,10 +10,18 @@ import { LinkButtonComponent } from 'components/Button';
 import OopsReminderImage from 'assets/oopsReminder.svg';
 import useUtilityStyles from 'styles/utilityStyles';
 
-const useStyles = makeStyles<Theme>(({ spacing }) => createStyles({
+const useStyles = makeStyles<Theme>(({ spacing, breakpoints }) => createStyles({
   outerOopsWrap: {
     padding: spacing(2),
     display: 'flex',
+    [breakpoints.down(breakpoints.values.md)]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+      textAlign: 'center',
+      margin: '60px 0',
+      paddingTop: '0',
+      paddingBottom: '0',
+    }
   },
   oopsHeader: {
     "font-weight": '600',
@@ -23,15 +31,26 @@ const useStyles = makeStyles<Theme>(({ spacing }) => createStyles({
   oopsText: {
     fontSize: '20px',
     lineHeight: '1.5',
-    maxWidth: '415px'
+    maxWidth: '415px',
+    [breakpoints.down(breakpoints.values.md)]: {
+      fontSize: '16px',
+    }
   },
   buttonContainer: {
     width: '100%',
     display: 'flex',
     padding: spacing(3, 0),
+    [breakpoints.down(breakpoints.values.md)]: {
+      justifyContent: 'center',
+    }
   },
   imageContainer: {
     width: '50%',
+    [breakpoints.down(breakpoints.values.md)]: {
+      padding: spacing(2),
+      width: '100%',
+      maxWidth: '450px'
+    } 
   },
   textContainer: {
     display: 'flex',
