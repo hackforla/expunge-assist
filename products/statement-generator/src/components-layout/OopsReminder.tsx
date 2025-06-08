@@ -78,7 +78,7 @@ const OopsReminder = () => {
         <br />
         <p className={styles.oopsText}>{t('oops_reminder.paragraph_2')}</p>
         <div className={styles.buttonContainer}>
-          <LinkButtonComponent buttonText={t('oops_reminder.button_text')} to={AppUrl.Introduction} />
+          <LinkButtonComponent buttonText={t('oops_reminder.button_text')} to={AppUrl.Welcome} />
         </div>
       </div>
       <div className={`${styles.imageContainer}`}>
