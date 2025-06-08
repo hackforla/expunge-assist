@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles, Typography } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -43,9 +43,7 @@ const useStyles = makeStyles(({ palette }) =>
       transform: 'rotate(270deg)',
     },
     accordionDetailsContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1rem',
+      display: 'inline',
       padding: 0,
       width: '100%',
       paddingLeft: '40px',
@@ -96,7 +94,9 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
         <div className={classes.accordionDetailsContainer}>
           {content &&
             content.map((paragraph) => (
-              <Typography dangerouslySetInnerHTML={{ __html: t(paragraph) }} />
+              // disabling -- lint is not recognizing that hrefs are being dynamically pulled from i18n translations 
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid 
+              <Trans i18nKey={paragraph} components={{ Link: <a>text</a> }} />
             ))}
           {children && children}
         </div>
