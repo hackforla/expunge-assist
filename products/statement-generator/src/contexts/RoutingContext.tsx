@@ -118,6 +118,7 @@ const PreRoutingContextProvider = ({
         goBackPage,
         currentStep,
         canShowAffirmation,
+        setCanShowAffirmation,
         appTheme,
         setAppTheme,
       }}

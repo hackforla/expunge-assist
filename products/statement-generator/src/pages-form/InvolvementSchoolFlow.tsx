@@ -6,9 +6,8 @@ import FormStateContext from 'contexts/FormStateContext';
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
-import FormContainer from 'components-layout/FormContainer';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
+
 import {
   capitalizeEachWord,
   capitalizeSentences,
@@ -52,41 +51,37 @@ function InvolvementSchoolFlow() {
   }, []);
 
   return (
-    <ContentContainer>
-      <FormContainer>
-        <Input
-          id="schoolName"
-          label={t('education_form.schoolName_input_label')}
-          placeholder={t('education_form.schoolName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={schoolName}
-          shortWidth
-          type="text"
-          labelRef={schoolLabelRef}
-        />
+    <FormFlowContainer isNextDisabled={isNextDisabled}>
+      <Input
+        id="schoolName"
+        label={t('education_form.schoolName_input_label')}
+        placeholder={t('education_form.schoolName_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={schoolName}
+        shortWidth
+        type="text"
+        labelRef={schoolLabelRef}
+      />
 
-        <Input
-          id="studyName"
-          label={t('education_form.studyName_input_label')}
-          placeholder={t('education_form.studyName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={studyName}
-          shortWidth
-          type="text"
-        />
+      <Input
+        id="studyName"
+        label={t('education_form.studyName_input_label')}
+        placeholder={t('education_form.studyName_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={studyName}
+        shortWidth
+        type="text"
+      />
 
-        <Textarea
-          id="passionDescription"
-          label={t('education_form.passionDescription_input_label')}
-          placeholder={t('education_form.passionDescription_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={passionDescription}
-          rows={3}
-        />
-      </FormContainer>
-
-      <FlowNavigation isNextDisabled={isNextDisabled} />
-    </ContentContainer>
+      <Textarea
+        id="passionDescription"
+        label={t('education_form.passionDescription_input_label')}
+        placeholder={t('education_form.passionDescription_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={passionDescription}
+        rows={3}
+      />
+    </FormFlowContainer>
   );
 }
 

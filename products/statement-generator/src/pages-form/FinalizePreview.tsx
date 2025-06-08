@@ -10,8 +10,7 @@ import VisibilityRoundedIcon from '@material-ui/icons/VisibilityRounded';
 
 import InfoBlock from 'components/InfoBlock';
 
-import ContentContainer from 'components-layout/ContentContainer';
-import FlowNavigation from 'components-layout/FlowNavigation';
+import FormFlowContainer from 'components-layout/FormFlowContainer';
 import Download from 'pages-form/Download';
 import DoneImg from 'assets/done-img.svg';
 
@@ -60,7 +59,22 @@ function FinalizeStep() {
   }, []);
 
   return (
-    <ContentContainer ref={contentContainerRef} tabIndex={-1}>
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={disableNext}
+      nextButtonLabel="RETURN HOME"
+      onNavClick={() =>
+        updateAffirmationData({
+          isActive: true,
+          titleText: 'affirmation_popup.done.titleText',
+          description: 'affirmation_popup.done.description',
+          buttonText: 'button.returnHome',
+          backButtonText: 'button.back',
+          image: DoneImg,
+        })
+      }
+    >
       <div className={classes.purpleTitle}>
         <VisibilityRoundedIcon className={classes.purpleIcon} />
         {t('finalize_preview.header_title')}
@@ -95,22 +109,7 @@ function FinalizeStep() {
       <Download
         onDownloadAgreementCheck={(isChecked) => setDisableNext(!isChecked)}
       />
-
-      <FlowNavigation
-        isNextDisabled={disableNext}
-        onNext={() =>
-          updateAffirmationData({
-            isActive: true,
-            titleText: 'affirmation_popup.done.titleText',
-            description: 'affirmation_popup.done.description',
-            buttonText: 'button.returnHome',
-            backButtonText: 'button.back',
-            image: DoneImg,
-          })
-        }
-        nextButtonLabel="RETURN HOME"
-      />
-    </ContentContainer>
+    </FormFlowContainer>
   );
 }
 
