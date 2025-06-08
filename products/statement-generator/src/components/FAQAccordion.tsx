@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, createStyles, Typography } from '@material-ui/core';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -8,6 +8,8 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from '@material-ui/core/AccordionSummary';
 import { styled } from '@material-ui/core/styles';
+
+import TextWithLink from './TextWithLink';
 
 interface CustomAccordionProps {
   title: string;
@@ -94,9 +96,9 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
         <div className={classes.accordionDetailsContainer}>
           {content &&
             content.map((paragraph) => (
-              // disabling -- lint is not recognizing that hrefs are being dynamically pulled from i18n translations 
+              // disabling -- lint is not recognizing that hrefs are being dynamically pulled from i18n translations
               // eslint-disable-next-line jsx-a11y/anchor-is-valid 
-              <Trans i18nKey={paragraph} components={{ Link: <a>text</a> }} />
+              <TextWithLink i18nkey={paragraph}/>
             ))}
           {children && children}
         </div>
