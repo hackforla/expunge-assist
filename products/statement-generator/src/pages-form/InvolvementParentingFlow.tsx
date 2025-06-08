@@ -47,24 +47,24 @@ function InvolvementParentingFlow() {
 
   return (
     <FormFlowContainer isNextDisabled={isNextDisabled}>
-        <Input
-          id="numberChildren"
-          label={t('parenting_form.parentChildren_number_label')}
-          type="number"
-          placeholder="0"
-          handleChange={onInputChange}
-          defaultValue={numberChildren}
-          labelRef={parentLabelRef}
-        />
+      <Input
+        id="numberChildren"
+        label={t('parenting_form.parentChildren_number_label')}
+        type="number"
+        placeholder="0"
+        handleChange={onInputChange}
+        defaultValue={numberChildren}
+        labelRef={parentLabelRef}
+      />
 
-        <Textarea
-          id="parentDescription"
-          label={t('parenting_form.parentDescription_input_label')}
-          placeholder={t('parenting_form.parentDescription_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={parentDescription}
-          rows={3}
-        />
+      <Textarea
+        id="parentDescription"
+        label={t('parenting_form.parentDescription_input_label')}
+        placeholder={t('parenting_form.parentDescription_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={parentDescription}
+        rows={3}
+      />
     </FormFlowContainer>
   );
 }

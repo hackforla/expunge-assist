@@ -45,7 +45,11 @@ function WhyStep() {
   }, []);
 
   return (
-    <FormFlowContainer ref={contentContainerRef} tabIndex={-1} isNextDisabled={isNextDisabled}>
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={isNextDisabled}
+    >
       <Textarea
         ref={whyRef}
         id="clearRecordWhy"

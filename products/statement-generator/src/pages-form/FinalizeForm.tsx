@@ -91,7 +91,11 @@ function FinalizeForm() {
   }, []);
 
   return (
-    <FormFlowContainer ref={contentContainerRef} tabIndex={-1} isNextDisabled={false}>
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={false}
+    >
       <div className={classes.purpleTitle} tabIndex={-1}>
         <VisibilityRoundedIcon className={classes.purpleIcon} />
         Editing final letter

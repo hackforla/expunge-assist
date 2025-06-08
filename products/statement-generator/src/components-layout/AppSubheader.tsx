@@ -55,7 +55,7 @@ const AppSubheader = () => {
 
   return (
     <div className={classes.subheaderContainer}>
-      { showSubheader && <FormHeader />}
+      {showSubheader && <FormHeader />}
     </div>
   );
 };

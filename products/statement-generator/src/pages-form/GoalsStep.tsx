@@ -53,7 +53,11 @@ function GoalsStep() {
   }, []);
 
   return (
-    <FormFlowContainer ref={contentContainerRef} tabIndex={-1} isNextDisabled={isNextDisabled}>
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={isNextDisabled}
+    >
       <Textarea
         ref={goalsRef}
         id="goals"

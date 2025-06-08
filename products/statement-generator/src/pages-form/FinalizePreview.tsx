@@ -59,15 +59,22 @@ function FinalizeStep() {
   }, []);
 
   return (
-    <FormFlowContainer ref={contentContainerRef} tabIndex={-1} isNextDisabled={disableNext} nextButtonLabel="RETURN HOME" onNavClick={() =>
-      updateAffirmationData({
-        isActive: true,
-        titleText: 'affirmation_popup.done.titleText',
-        description: 'affirmation_popup.done.description',
-        buttonText: 'button.returnHome',
-        backButtonText: 'button.back',
-        image: DoneImg,
-      })}>
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={disableNext}
+      nextButtonLabel="RETURN HOME"
+      onNavClick={() =>
+        updateAffirmationData({
+          isActive: true,
+          titleText: 'affirmation_popup.done.titleText',
+          description: 'affirmation_popup.done.description',
+          buttonText: 'button.returnHome',
+          backButtonText: 'button.back',
+          image: DoneImg,
+        })
+      }
+    >
       <div className={classes.purpleTitle}>
         <VisibilityRoundedIcon className={classes.purpleIcon} />
         {t('finalize_preview.header_title')}

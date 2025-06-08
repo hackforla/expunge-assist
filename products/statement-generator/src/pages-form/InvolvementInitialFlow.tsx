@@ -68,67 +68,71 @@ function InvolvementInitialFlow() {
   };
 
   return (
-    <FormFlowContainer ref={contentContainerRef} tabIndex={-1} isNextDisabled={!isNextEnabled}>
-        <FormControl className={classes.checkboxGroup}>
-          <FormLabel htmlFor="involvement-checkboxes">
-            {t('involvement_form.checkboxgroup_label')}
-          </FormLabel>
-          <FormGroup id="involvement-checkboxes">
-            <Checkbox
-              useTeal
-              id="isJobChecked"
-              checked={isJobChecked}
-              onChange={onCheckboxChange}
-              label={t('sections.job')}
-            />
-            <Checkbox
-              useTeal
-              id="isUnemploymentChecked"
-              checked={isUnemploymentChecked}
-              onChange={onCheckboxChange}
-              label={t('sections.unemployment')}
-            />
-            <Checkbox
-              useTeal
-              id="isRecoveryChecked"
-              checked={isRecoveryChecked}
-              onChange={onCheckboxChange}
-              label={t('sections.self_improvement')}
-            />
+    <FormFlowContainer
+      ref={contentContainerRef}
+      tabIndex={-1}
+      isNextDisabled={!isNextEnabled}
+    >
+      <FormControl className={classes.checkboxGroup}>
+        <FormLabel htmlFor="involvement-checkboxes">
+          {t('involvement_form.checkboxgroup_label')}
+        </FormLabel>
+        <FormGroup id="involvement-checkboxes">
+          <Checkbox
+            useTeal
+            id="isJobChecked"
+            checked={isJobChecked}
+            onChange={onCheckboxChange}
+            label={t('sections.job')}
+          />
+          <Checkbox
+            useTeal
+            id="isUnemploymentChecked"
+            checked={isUnemploymentChecked}
+            onChange={onCheckboxChange}
+            label={t('sections.unemployment')}
+          />
+          <Checkbox
+            useTeal
+            id="isRecoveryChecked"
+            checked={isRecoveryChecked}
+            onChange={onCheckboxChange}
+            label={t('sections.self_improvement')}
+          />
 
-            <Checkbox
-              useTeal
-              id="isSchoolChecked"
-              checked={isSchoolChecked}
-              onChange={onCheckboxChange}
-              label={t('sections.education')}
-            />
+          <Checkbox
+            useTeal
+            id="isSchoolChecked"
+            checked={isSchoolChecked}
+            onChange={onCheckboxChange}
+            label={t('sections.education')}
+          />
 
-            <Checkbox
-              useTeal
-              id="isParentingChecked"
-              checked={isParentingChecked}
-              onChange={onCheckboxChange}
-              label={t('sections.parenting')}
-            />
+          <Checkbox
+            useTeal
+            id="isParentingChecked"
+            checked={isParentingChecked}
+            onChange={onCheckboxChange}
+            label={t('sections.parenting')}
+          />
 
-            <Checkbox
-              useTeal
-              id="isCommunityChecked"
-              checked={isCommunityChecked}
-              onChange={onCheckboxChange}
-              label={t('sections.community_service')}
-            />
+          <Checkbox
+            useTeal
+            id="isCommunityChecked"
+            checked={isCommunityChecked}
+            onChange={onCheckboxChange}
+            label={t('sections.community_service')}
+          />
 
-            <Checkbox
-              useTeal
-              id="isSomethingElseChecked"
-              checked={isSomethingElseChecked}
-              onChange={onCheckboxChange}
-              label={t('sections.something_else')}
-            />
-          </FormGroup>
-        </FormControl>
+          <Checkbox
+            useTeal
+            id="isSomethingElseChecked"
+            checked={isSomethingElseChecked}
+            onChange={onCheckboxChange}
+            label={t('sections.something_else')}
+          />
+        </FormGroup>
+      </FormControl>
     </FormFlowContainer>
   );
 }

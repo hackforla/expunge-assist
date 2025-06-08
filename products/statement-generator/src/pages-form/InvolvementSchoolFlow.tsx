@@ -52,35 +52,35 @@ function InvolvementSchoolFlow() {
 
   return (
     <FormFlowContainer isNextDisabled={isNextDisabled}>
-        <Input
-          id="schoolName"
-          label={t('education_form.schoolName_input_label')}
-          placeholder={t('education_form.schoolName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={schoolName}
-          shortWidth
-          type="text"
-          labelRef={schoolLabelRef}
-        />
+      <Input
+        id="schoolName"
+        label={t('education_form.schoolName_input_label')}
+        placeholder={t('education_form.schoolName_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={schoolName}
+        shortWidth
+        type="text"
+        labelRef={schoolLabelRef}
+      />
 
-        <Input
-          id="studyName"
-          label={t('education_form.studyName_input_label')}
-          placeholder={t('education_form.studyName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={studyName}
-          shortWidth
-          type="text"
-        />
+      <Input
+        id="studyName"
+        label={t('education_form.studyName_input_label')}
+        placeholder={t('education_form.studyName_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={studyName}
+        shortWidth
+        type="text"
+      />
 
-        <Textarea
-          id="passionDescription"
-          label={t('education_form.passionDescription_input_label')}
-          placeholder={t('education_form.passionDescription_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={passionDescription}
-          rows={3}
-        />
+      <Textarea
+        id="passionDescription"
+        label={t('education_form.passionDescription_input_label')}
+        placeholder={t('education_form.passionDescription_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={passionDescription}
+        rows={3}
+      />
     </FormFlowContainer>
   );
 }

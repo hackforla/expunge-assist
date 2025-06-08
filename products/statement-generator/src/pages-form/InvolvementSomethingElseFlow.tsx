@@ -49,26 +49,26 @@ function InvolvementSomethingElseFlow() {
 
   return (
     <FormFlowContainer isNextDisabled={isNextDisabled}>
-        <Input
-          id="activityName"
-          label={t('something_else_form.activityName_input_label')}
-          placeholder={t('something_else_form.activityName_input_placeholder')}
-          handleChange={onInputChange}
-          defaultValue={activityName}
-          type="text"
-          labelRef={somethingElseLabelRef}
-        />
+      <Input
+        id="activityName"
+        label={t('something_else_form.activityName_input_label')}
+        placeholder={t('something_else_form.activityName_input_placeholder')}
+        handleChange={onInputChange}
+        defaultValue={activityName}
+        type="text"
+        labelRef={somethingElseLabelRef}
+      />
 
-        <Textarea
-          id="activityDescription"
-          label={t('something_else_form.activityDescription_input_label')}
-          placeholder={t(
-            'something_else_form.activityDescription_input_placeholder'
-          )}
-          handleChange={onInputChange}
-          defaultValue={activityDescription}
-          rows={3}
-        />
+      <Textarea
+        id="activityDescription"
+        label={t('something_else_form.activityDescription_input_label')}
+        placeholder={t(
+          'something_else_form.activityDescription_input_placeholder'
+        )}
+        handleChange={onInputChange}
+        defaultValue={activityDescription}
+        rows={3}
+      />
     </FormFlowContainer>
   );
 }

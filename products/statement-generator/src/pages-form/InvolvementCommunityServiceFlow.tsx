@@ -75,7 +75,6 @@ function InvolvementCommunityServiceFlow() {
         defaultValue={serviceDescription}
         rows={3}
       />
-
     </FormFlowContainer>
   );
 }
