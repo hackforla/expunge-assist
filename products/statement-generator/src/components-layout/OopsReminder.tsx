@@ -10,7 +10,7 @@ import { LinkButtonComponent } from 'components/Button';
 import OopsReminderImage from 'assets/oopsReminder.svg';
 import useUtilityStyles from 'styles/utilityStyles';
 
-const useStyles = makeStyles<Theme>(({ spacing, globals }) => createStyles({
+const useStyles = makeStyles<Theme>(({ spacing }) => createStyles({
   outerOopsWrap: {
     padding: spacing(2),
     display: 'flex',
