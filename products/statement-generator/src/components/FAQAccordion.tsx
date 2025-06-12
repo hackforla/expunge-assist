@@ -95,9 +95,7 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
       <AccordionDetails style={{ padding: 0, width: '100%' }}>
         <div className={classes.accordionDetailsContainer}>
           {content &&
-            content.map((paragraph) => (
-              <DynamicText i18nkey={paragraph}/>
-            ))}
+            content.map((paragraph) => <DynamicText i18nkey={paragraph} />)}
           {children && children}
         </div>
       </AccordionDetails>

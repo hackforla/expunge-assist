@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, createStyles, Link } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ButtonComponent from 'components/Button';
 import DynamicText from 'components/DynamicText';

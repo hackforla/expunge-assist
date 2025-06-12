@@ -15,8 +15,8 @@ const useStyles = makeStyles(() =>
       verticalAlign: 'middle',
     },
     link: {
-      color: '#25003F'
-    }
+      color: '#25003F',
+    },
   })
 );
 
@@ -27,10 +27,14 @@ const DynamicLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
 
   return (
     <>
-      <a className={classes.link} {...rest}>{children}</a>
-      {isExternalLink && <LaunchOutlined fontSize="small" className={classes.externalLinkIcon} />}
+      <a className={classes.link} {...rest}>
+        {children}
+      </a>
+      {isExternalLink && (
+        <LaunchOutlined fontSize="small" className={classes.externalLinkIcon} />
+      )}
     </>
-  )
+  );
 };
 
 export default function DynamicText({ i18nkey }: any) {

@@ -20,7 +20,7 @@ import {
   FileCopyRounded,
   MenuRounded,
   VisibilityRounded,
-  Launch
+  Launch,
 } from '@material-ui/icons';
 
 import useUtilityStyles from 'styles/utilityStyles';
@@ -608,7 +608,11 @@ export const Filter: React.FC = () => {
                 <p>Used on: {credit.usedIn}</p>
                 <p>Artist: {credit.artist}</p>
                 <p>
-                  Provider: <a href={credit.providerLink}>{credit.provider}</a> <Launch className={utilityClasses.externalLinkIcon} fontSize="small" />
+                  Provider: <a href={credit.providerLink}>{credit.provider}</a>{' '}
+                  <Launch
+                    className={utilityClasses.externalLinkIcon}
+                    fontSize="small"
+                  />
                 </p>
               </div>
               {credit.img && (
@@ -618,14 +622,16 @@ export const Filter: React.FC = () => {
               )}
               {credit.icon && (
                 <div className={classes.creditIconContainer}>
-                  <credit.icon style={{ color: credit.iconColor || 'inherit' }} />
+                  <credit.icon
+                    style={{ color: credit.iconColor || 'inherit' }}
+                  />
                 </div>
               )}
             </div>
           </div>
         ))}
       </div>
-    )
+    );
   };
 
   const FilterButton = ({ name }: FilterButtonProps) => (

@@ -113,15 +113,15 @@ const BeforeYouBegin = () => {
 
       <h6>{t('before_you_begin_page.sectionTitle1')}</h6>
       <p>
-        <DynamicText i18nkey='before_you_begin_page.sectionParagraph1' />
+        <DynamicText i18nkey="before_you_begin_page.sectionParagraph1" />
       </p>
       <h6>{t('before_you_begin_page.sectionTitle2')}</h6>
       <p>
-        <DynamicText i18nkey='before_you_begin_page.sectionParagraph2' />
+        <DynamicText i18nkey="before_you_begin_page.sectionParagraph2" />
       </p>
       <h6>{t('before_you_begin_page.sectionTitle3')}</h6>
       <p>
-        <DynamicText i18nkey='before_you_begin_page.sectionParagraph3' />
+        <DynamicText i18nkey="before_you_begin_page.sectionParagraph3" />
       </p>
       <div className={classes.alert}>
         <span>
@@ -129,7 +129,7 @@ const BeforeYouBegin = () => {
         </span>
         <h6>{t('before_you_begin_page.sectionTitle4')}</h6>
         <p>
-          <DynamicText i18nkey='before_you_begin_page.sectionParagraph4' />
+          <DynamicText i18nkey="before_you_begin_page.sectionParagraph4" />
         </p>
       </div>
       <FlowNavigation />
