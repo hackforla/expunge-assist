@@ -20,7 +20,10 @@ import {
   FileCopyRounded,
   MenuRounded,
   VisibilityRounded,
+  Launch
 } from '@material-ui/icons';
+
+import useUtilityStyles from 'styles/utilityStyles';
 
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/group-chat.jpg';
@@ -593,34 +596,37 @@ export const Filter: React.FC = () => {
     return obj;
   });
 
-  const FilterCards: React.FC = () => (
-    <div className={classes.CreditContainer}>
-      {filteredCredits.map((credit) => (
-        <div className={classes.CreditBox} key={credit.name}>
-          <div className={classes.creditFlex}>
-            <div className={classes.creditText}>
-              <h2>{credit.name}</h2>
-              <p>Used on: {credit.usedIn}</p>
-              <p>Artist: {credit.artist}</p>
-              <p>
-                Provider: <a href={credit.providerLink}>{credit.provider}</a>
-              </p>
+  const FilterCards: React.FC = () => {
+    const utilityClasses = useUtilityStyles();
+    return (
+      <div className={classes.CreditContainer}>
+        {filteredCredits.map((credit) => (
+          <div className={classes.CreditBox} key={credit.name}>
+            <div className={classes.creditFlex}>
+              <div className={classes.creditText}>
+                <h2>{credit.name}</h2>
+                <p>Used on: {credit.usedIn}</p>
+                <p>Artist: {credit.artist}</p>
+                <p>
+                  Provider: <a href={credit.providerLink}>{credit.provider}</a> <Launch className={utilityClasses.externalLinkIcon} fontSize="small" />
+                </p>
+              </div>
+              {credit.img && (
+                <div className={classes.creditImgContainer}>
+                  <img src={credit.img} alt={credit.altText} />
+                </div>
+              )}
+              {credit.icon && (
+                <div className={classes.creditIconContainer}>
+                  <credit.icon style={{ color: credit.iconColor || 'inherit' }} />
+                </div>
+              )}
             </div>
-            {credit.img && (
-              <div className={classes.creditImgContainer}>
-                <img src={credit.img} alt={credit.altText} />
-              </div>
-            )}
-            {credit.icon && (
-              <div className={classes.creditIconContainer}>
-                <credit.icon style={{ color: credit.iconColor || 'inherit' }} />
-              </div>
-            )}
           </div>
-        </div>
-      ))}
-    </div>
-  );
+        ))}
+      </div>
+    )
+  };
 
   const FilterButton = ({ name }: FilterButtonProps) => (
     <button
