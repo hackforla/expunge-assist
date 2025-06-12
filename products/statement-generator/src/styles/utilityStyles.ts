@@ -125,6 +125,10 @@ const useUtilityStyles = makeStyles<Theme>(
           marginTop: spacing(1),
         },
       },
+      externalLinkIcon: {
+        marginLeft: '2px',
+        verticalAlign: 'middle',
+      },
     })
 );
 

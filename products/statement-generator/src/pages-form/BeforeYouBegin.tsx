@@ -4,6 +4,8 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import ContentContainer from 'components-layout/ContentContainer';
 import FlowNavigation from 'components-layout/FlowNavigation';
+import DynamicText from 'components/DynamicText';
+
 import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
 
 const useStyles = makeStyles(({ palette, breakpoints }) =>
@@ -110,37 +112,25 @@ const BeforeYouBegin = () => {
       </h3>
 
       <h6>{t('before_you_begin_page.sectionTitle1')}</h6>
-      <p
-        /* eslint-disable-next-line  react/no-danger */
-        dangerouslySetInnerHTML={{
-          __html: t('before_you_begin_page.sectionParagraph1'),
-        }}
-      />
+      <p>
+        <DynamicText i18nkey="before_you_begin_page.sectionParagraph1" />
+      </p>
       <h6>{t('before_you_begin_page.sectionTitle2')}</h6>
-      <p
-        /* eslint-disable-next-line  react/no-danger */
-        dangerouslySetInnerHTML={{
-          __html: t('before_you_begin_page.sectionParagraph2'),
-        }}
-      />
+      <p>
+        <DynamicText i18nkey="before_you_begin_page.sectionParagraph2" />
+      </p>
       <h6>{t('before_you_begin_page.sectionTitle3')}</h6>
-      <p
-        /* eslint-disable-next-line  react/no-danger */
-        dangerouslySetInnerHTML={{
-          __html: t('before_you_begin_page.sectionParagraph3'),
-        }}
-      />
+      <p>
+        <DynamicText i18nkey="before_you_begin_page.sectionParagraph3" />
+      </p>
       <div className={classes.alert}>
         <span>
           <ErrorRoundedIcon style={{ color: '#2F6FED' }} />
         </span>
         <h6>{t('before_you_begin_page.sectionTitle4')}</h6>
-        <p
-          /* eslint-disable-next-line  react/no-danger */
-          dangerouslySetInnerHTML={{
-            __html: t('before_you_begin_page.sectionParagraph4'),
-          }}
-        />
+        <p>
+          <DynamicText i18nkey="before_you_begin_page.sectionParagraph4" />
+        </p>
       </div>
       <FlowNavigation />
     </ContentContainer>

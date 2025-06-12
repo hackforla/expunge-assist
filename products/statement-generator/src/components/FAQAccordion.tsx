@@ -9,6 +9,8 @@ import MuiAccordionSummary, {
 } from '@material-ui/core/AccordionSummary';
 import { styled } from '@material-ui/core/styles';
 
+import DynamicText from './DynamicText';
+
 interface CustomAccordionProps {
   title: string;
   content?: string[];
@@ -43,9 +45,7 @@ const useStyles = makeStyles(({ palette }) =>
       transform: 'rotate(270deg)',
     },
     accordionDetailsContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '1rem',
+      display: 'inline',
       padding: 0,
       width: '100%',
       paddingLeft: '40px',
@@ -95,9 +95,7 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
       <AccordionDetails style={{ padding: 0, width: '100%' }}>
         <div className={classes.accordionDetailsContainer}>
           {content &&
-            content.map((paragraph) => (
-              <Typography dangerouslySetInnerHTML={{ __html: t(paragraph) }} />
-            ))}
+            content.map((paragraph) => <DynamicText i18nkey={paragraph} />)}
           {children && children}
         </div>
       </AccordionDetails>
