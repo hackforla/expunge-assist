@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles, createStyles, Link } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ButtonComponent from 'components/Button';
+import DynamicText from 'components/DynamicText';
+
 import collaboraton from '../assets/aboutUs/collaboration.svg';
 import mobile from '../assets/aboutUs/mobile.svg';
 import teamwork from '../assets/aboutUs/teamwork.svg';
@@ -223,27 +225,7 @@ export default function AboutUs() {
           <p className={classes.text}>{t('about_us_page.paragraph1')}</p>
           <p className={classes.text}>
             <span className={`${classes.text}`}>
-              {t('about_us_page.paragraph1b_a')}
-            </span>
-            <Link
-              href="https://www.hackforla.org/"
-              target="_blank"
-              className={classes.link}
-            >
-              {t('about_us_page.paragraph1b_li1')}
-            </Link>
-            <span className={`${classes.text}`}>
-              {t('about_us_page.paragraph1b_b')}
-            </span>
-            <Link
-              href="https://www.civictechstructure.org/"
-              target="_blank"
-              className={classes.link}
-            >
-              {t('about_us_page.paragraph1b_li2')}
-            </Link>
-            <span className={`${classes.text}`}>
-              {t('about_us_page.paragraph1b_c')}
+              <DynamicText i18nkey="about_us_page.paragraph1b" />
             </span>
           </p>
           <p className={classes.text}>{t('about_us_page.paragraph1c')}</p>
@@ -298,32 +280,18 @@ export default function AboutUs() {
           <ul className={classes.ulStyle}>
             <li>
               <span className={`${classes.text}`}>
-                {t('about_us_page.paragraph3_li1')}
-              </span>
-              <Link
-                href="https://safeandjust.org/interactivereport/repairing-the-road-to-redemption-in-california/#:~:text=Based%20on%20the%20experiences%20of,increase%20legal%20remedies%20and%20remove"
-                target="_blank"
-                className={classes.link}
-              >
-                {t('about_us_page.paragraph3_li1_link')}
-              </Link>
-            </li>
-            <li>
-              <span className={`${classes.text}`}>
-                {t('about_us_page.paragraph3_li2')}
+                <DynamicText i18nkey="about_us_page.paragraph3_li1" />
               </span>
             </li>
             <li>
               <span className={`${classes.text}`}>
-                {t('about_us_page.paragraph3_li3')}
+                <DynamicText i18nkey="about_us_page.paragraph3_li2" />
               </span>
-              <Link
-                href="https://asj.allianceforsafetyandjustice.org/people-with-records-survey/"
-                target="_blank"
-                className={classes.link}
-              >
-                {t('about_us_page.paragraph3_li3_link')}
-              </Link>
+            </li>
+            <li>
+              <span className={`${classes.text}`}>
+                <DynamicText i18nkey="about_us_page.paragraph3_li3" />
+              </span>
             </li>
           </ul>
         </div>
