@@ -9,7 +9,7 @@ import MuiAccordionSummary, {
 } from '@material-ui/core/AccordionSummary';
 import { styled } from '@material-ui/core/styles';
 
-import TextWithLink from './TextWithLink';
+import DynamicText from './DynamicText';
 
 interface CustomAccordionProps {
   title: string;
@@ -96,9 +96,7 @@ export const FAQAccordion: React.FC<CustomAccordionProps> = ({
         <div className={classes.accordionDetailsContainer}>
           {content &&
             content.map((paragraph) => (
-              // disabling -- lint is not recognizing that hrefs are being dynamically pulled from i18n translations
-              // eslint-disable-next-line jsx-a11y/anchor-is-valid 
-              <TextWithLink i18nkey={paragraph}/>
+              <DynamicText i18nkey={paragraph}/>
             ))}
           {children && children}
         </div>
