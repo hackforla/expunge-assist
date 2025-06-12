@@ -8,12 +8,15 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import { LaunchOutlined } from '@material-ui/icons';
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles(({ palette }) =>
   createStyles({
     externalLinkIcon: {
       marginLeft: '2px',
       verticalAlign: 'middle',
     },
+    link: {
+      color: '#25003F'
+    }
   })
 );
 
@@ -24,12 +27,12 @@ const DynamicLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
 
   return (
     <>
-      <a {...rest}>{children}</a>
+      <a className={classes.link} {...rest}>{children}</a>
       {isExternalLink && <LaunchOutlined fontSize="small" className={classes.externalLinkIcon} />}
     </>
   )
 };
 
 export default function DynamicText({ i18nkey }: any) {
-  return <Trans i18nKey={i18nkey} components={{ Link: <DynamicLink  /> }} />;
+  return <Trans i18nKey={i18nkey} components={{ Link: <DynamicLink /> }} />;
 }
