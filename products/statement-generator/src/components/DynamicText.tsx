@@ -8,7 +8,7 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import { LaunchOutlined } from '@material-ui/icons';
 
-const useStyles = makeStyles(({ palette }) =>
+const useStyles = makeStyles(() =>
   createStyles({
     externalLinkIcon: {
       marginLeft: '2px',
