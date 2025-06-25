@@ -89,19 +89,19 @@
   "affirmation_popup": {
     "step2": {
       "titleText": "Thank you",
-      "description": "Now that you have introduced yourself, it’s time to start writing your letter."
+      "description": "Now that you have introduced yourself, it’s time to start writing your declaration."
     },
     "step3": {
       "titleText": "Well done",
-      "description": "Now that you have completed the first section of your letter, it’s time to write the next section."
+      "description": "Now that you have completed the first section of your declaration, it’s time to write the next section."
     },
     "step4": {
       "titleText": "Keep going",
-      "description": "Now that you have completed the second section of your letter, it’s time to write the final section."
+      "description": "Now that you have completed the second section of your declaration, it’s time to write the final section."
     },
     "step5": {
       "titleText": "Almost done",
-      "description": "Just one more step. Next, you can preview your entire letter and make changes.\n\nWhen you are done, email or download a copy of your letter."
+      "description": "Just one more step. Next, you can preview your entire declaration and make changes.\n\nWhen you are done, email or download a copy of your declaration."
     },
     "done": {
       "titleText": "Return home?",
