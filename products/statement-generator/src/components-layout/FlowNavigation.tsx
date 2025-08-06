@@ -3,6 +3,10 @@ import { makeStyles, createStyles } from '@material-ui/core';
 
 import FormStateContext from 'contexts/FormStateContext';
 import RoutingContext from 'contexts/RoutingContext';
+import {
+  AffirmationContext,
+  AFFIRMATION_DATA,
+} from 'contexts/AffirmationContext';
 
 import Button from 'components/Button';
 
@@ -38,9 +42,15 @@ export default function FlowNavigation({
   showBack = true,
   showNext = true,
 }: IFlowNavigation) {
-  const { goNextStep, goBackStep } = useContext(FormStateContext);
-  const { appTheme } = useContext(RoutingContext);
-
+  const { goNextStep, goBackStep, getNextStep } = useContext(FormStateContext);
+  const { appTheme, currentStep, canShowAffirmation } = useContext(
+    RoutingContext
+  );
+  const {
+    updateAffirmationData,
+    affirmationShown,
+    setAffirmationShown,
+  } = useContext(AffirmationContext);
   const backButtonRef = useRef<HTMLButtonElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -59,8 +69,23 @@ export default function FlowNavigation({
   };
 
   const handleNext = () => {
+    const nextStep = getNextStep(currentStep);
+    const newData = AFFIRMATION_DATA[nextStep as string];
     if (onNext) {
       onNext();
+    } else if (
+      newData &&
+      canShowAffirmation &&
+      !affirmationShown[currentStep]
+    ) {
+      updateAffirmationData({
+        ...newData,
+        isActive: true,
+      });
+      setAffirmationShown((prev: Record<string, boolean>) => ({
+        ...prev,
+        [currentStep as string]: true,
+      }));
     } else {
       goNextStep();
     }
