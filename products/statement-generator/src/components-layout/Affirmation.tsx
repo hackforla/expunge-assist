@@ -46,7 +46,7 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
 
 const Affirmation = () => {
   const { currentStep, appTheme } = useContext(RoutingContext);
-  const { updateStepToForm } = useContext(FormStateContext);
+  const { updateStepToForm, goNextStep } = useContext(FormStateContext);
   const history = useHistory();
   const { t } = useTranslation();
   const { affirmationData, updateAffirmationData } = useContext(
@@ -57,6 +57,14 @@ const Affirmation = () => {
     updateAffirmationData({ isActive: false });
     updateStepToForm(defaultStepState);
     history.push(path);
+  };
+  const handleAffirmationNext = () => {
+    if (AppUrl.FinalizePreview === currentStep) {
+      returnHome();
+    } else {
+      updateAffirmationData({ isActive: false });
+      goNextStep();
+    }
   };
 
   const utilityClasses = useUtilityStyles({
@@ -128,11 +136,7 @@ const Affirmation = () => {
         )}
         <Button
           hasForwardArrow
-          onClick={() =>
-            AppUrl.FinalizePreview === currentStep
-              ? returnHome()
-              : updateAffirmationData({ isActive: false })
-          }
+          onClick={handleAffirmationNext}
           buttonText={t(affirmationData.buttonText)}
         />
       </div>
