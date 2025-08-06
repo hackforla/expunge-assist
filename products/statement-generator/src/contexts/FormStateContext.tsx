@@ -146,6 +146,7 @@ export const FormStateContextProvider = ({
         updateStepToForm,
         goNextStep,
         goBackStep,
+        getNextStep,
         stepShown,
         setStepShown,
         showOopsReminder,

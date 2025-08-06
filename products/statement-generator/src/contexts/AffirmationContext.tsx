@@ -1,12 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AppUrl } from 'contexts/RoutingProps';
-import RoutingContext from 'contexts/RoutingContext';
 
 import FutureGoalsImg from 'assets/future-goals-img.svg';
 import WhyImg from 'assets/why-img.svg';
 import AlmostThereImg from 'assets/almost-there-img.svg';
 
-const AFFIRMATION_DATA = {
+export const AFFIRMATION_DATA = {
   [AppUrl.Involvement as string]: {
     titleText: 'affirmation_popup.step2.titleText',
     description: 'affirmation_popup.step2.description',
@@ -48,7 +47,6 @@ interface AffirmationProps {
 export const AffirmationContext = React.createContext<any>(undefined);
 
 const AffirmationContextProvider = ({ children }: AffirmationProviderProps) => {
-  const { currentStep, canShowAffirmation } = useContext(RoutingContext);
   const [affirmationData, setAffirmationData] = useState<AffirmationProps>({
     isActive: false,
     titleText: 'affirmation_popup.step2.titleText',
@@ -64,28 +62,14 @@ const AffirmationContextProvider = ({ children }: AffirmationProviderProps) => {
     setAffirmationData((prevState) => ({ ...prevState, ...newState }));
   };
 
-  useEffect(() => {
-    const newData = AFFIRMATION_DATA[currentStep as string];
-
-    if (newData && canShowAffirmation && !affirmationShown[currentStep]) {
-      updateAffirmationData({
-        ...newData,
-        isActive: true,
-      });
-      setAffirmationShown((prev) => ({ ...prev, [currentStep]: true }));
-    } else {
-      updateAffirmationData({
-        isActive: false,
-      });
-    }
-  }, [currentStep, canShowAffirmation]);
-
   return (
     <AffirmationContext.Provider
       value={{
         affirmationData,
         setAffirmationData,
         updateAffirmationData,
+        affirmationShown,
+        setAffirmationShown,
       }}
     >
       {children}
