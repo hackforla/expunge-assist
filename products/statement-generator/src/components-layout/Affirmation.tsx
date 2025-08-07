@@ -2,6 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Dialog from '@material-ui/core/Dialog';
+import Fade from '@material-ui/core/Fade';
 import { useHistory } from 'react-router-dom';
 import AffirmationImage from 'assets/affirmation-img.svg';
 import { defaultStepState } from 'contexts/FormStateProps';
@@ -63,7 +64,6 @@ const Affirmation = () => {
       returnHome();
     } else {
       updateAffirmationData({ isActive: false });
-      goNextStep();
     }
   };
 
@@ -85,14 +85,17 @@ const Affirmation = () => {
 
   return (
     <Dialog
+      TransitionComponent={Fade}
+      transitionDuration={500}
+      TransitionProps={{
+        onExited: () => {
+          goNextStep();
+        },
+      }}
       classes={
         AppUrl.FinalizePreview === currentStep
-          ? {
-              paper: classes.doneAffirmationContainer,
-            }
-          : {
-              paper: classes.affirmationContainer,
-            }
+          ? { paper: classes.doneAffirmationContainer }
+          : { paper: classes.affirmationContainer }
       }
       fullWidth
       open={affirmationData.isActive}
