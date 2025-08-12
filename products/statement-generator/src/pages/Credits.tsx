@@ -10,6 +10,8 @@ import {
 
 import useUtilityStyles from 'styles/utilityStyles';
 
+import DynamicText from 'components/DynamicText';
+
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/group-chat.jpg';
 import sharingKnowledge from '../assets/faqDesktop.svg';
@@ -23,7 +25,7 @@ import multitasking from '../assets/landingWorkImg.svg';
 import support101 from '../assets/affirmation-img.svg';
 import report from '../assets/future-goals-img.svg';
 
-const useStyles = makeStyles(({ palette, breakpoints }) =>
+const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
     Header: {
       width: '100vw',
@@ -104,7 +106,7 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       maxWidth: '59rem',
       display: 'flex',
       flexDirection: 'column',
-      margin: '45px auto 54.64px',
+      margin: '0 auto 54.64px',
       [breakpoints.down('md')]: {
         width: '100%',
         margin: '45px auto 54.64px',
@@ -214,6 +216,10 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         display: 'none',
       },
     },
+    iconAttribution: {
+      textAlign: 'center',
+      margin: spacing(4, 0)
+    }
   })
 );
 
@@ -443,7 +449,7 @@ export const Filter: React.FC = () => {
   return (
     <div className={classes.Filter}>
       <div className={classes.FilterContent}>
-        <p>{t('credits_page.icon_attribution')}</p>
+        <p className={classes.iconAttribution}><DynamicText i18nkey={t('credits_page.icon_attribution')}/></p>
         <FilterCards />
       </div>
     </div>
