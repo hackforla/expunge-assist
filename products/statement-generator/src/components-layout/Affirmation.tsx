@@ -50,9 +50,8 @@ const Affirmation = () => {
   const { updateStepToForm, goNextStep } = useContext(FormStateContext);
   const history = useHistory();
   const { t } = useTranslation();
-  const { affirmationData, updateAffirmationData } = useContext(
-    AffirmationContext
-  );
+  const { affirmationData, updateAffirmationData } =
+    useContext(AffirmationContext);
   const returnHome = () => {
     const path = AppUrl.Landing;
     updateAffirmationData({ isActive: false });

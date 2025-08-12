@@ -16,11 +16,8 @@ import {
 function InvolvementJobFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
-  const {
-    companyName,
-    jobTitle,
-    jobDescription,
-  } = formState.involvementJobState;
+  const { companyName, jobTitle, jobDescription } =
+    formState.involvementJobState;
 
   const companyNameValid = companyName !== '';
   const jobTitleValid = jobTitle !== '';

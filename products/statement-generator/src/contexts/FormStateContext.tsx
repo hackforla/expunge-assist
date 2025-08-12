@@ -24,12 +24,8 @@ export const FormStateContextProvider = ({
   const updateStepToForm = (stepState: any) =>
     setFormState({ ...formState, ...stepState });
 
-  const {
-    currentStep,
-    goNextPage,
-    goBackPage,
-    setCanShowAffirmation,
-  } = useContext(RoutingContext);
+  const { currentStep, goNextPage, goBackPage, setCanShowAffirmation } =
+    useContext(RoutingContext);
 
   function getNextStep(givenUrl: AppUrl): AppUrl {
     const suggestedNext = getNextFormUrl(givenUrl);
