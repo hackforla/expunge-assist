@@ -109,8 +109,8 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
       margin: '0 auto 54.64px',
       [breakpoints.down('md')]: {
         width: '100%',
-        margin: '45px auto 54.64px',
-        padding: '16px',
+        margin: '0 auto 54.64px',
+        padding: '0 16px 16px',
       },
     },
     FilterLink: {
@@ -218,7 +218,11 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
     },
     iconAttribution: {
       textAlign: 'center',
-      margin: spacing(4, 0)
+      margin: spacing(4, 0),
+
+      [breakpoints.down('md')]: {
+        margin: spacing(3, 0),
+      }
     }
   })
 );
