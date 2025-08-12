@@ -3,10 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles } from '@material-ui/core';
 
-import {
-  SvgIconComponent,
-  Launch,
-} from '@material-ui/icons';
+import { SvgIconComponent, Launch } from '@material-ui/icons';
 
 import useUtilityStyles from 'styles/utilityStyles';
 
@@ -222,8 +219,8 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
 
       [breakpoints.down('md')]: {
         margin: spacing(3, 0),
-      }
-    }
+      },
+    },
   })
 );
 
@@ -361,7 +358,8 @@ export const CreditObjects: CreditsObject[] = [
     imgSize: 75,
     usedIn: 'Landing Page',
     artist: 'N/A',
-    providerLink: 'https://storyset.com/illustration/mobile-login/cuate#default&hide=&hide=false',
+    providerLink:
+      'https://storyset.com/illustration/mobile-login/cuate#default&hide=&hide=false',
     provider: 'Storyset',
     altText: '',
   },
@@ -420,10 +418,15 @@ export const Filter: React.FC = () => {
             <div className={classes.creditFlex}>
               <div className={classes.creditText}>
                 <h2>{credit.name}</h2>
-                <p>{t('credits_page.card_text.used_on')}: {credit.usedIn}</p>
-                <p>{t('credits_page.card_text.artist')}: {credit.artist}</p>
                 <p>
-                  {t('credits_page.card_text.provider')}: <a href={credit.providerLink}>{credit.provider}</a>{' '}
+                  {t('credits_page.card_text.used_on')}: {credit.usedIn}
+                </p>
+                <p>
+                  {t('credits_page.card_text.artist')}: {credit.artist}
+                </p>
+                <p>
+                  {t('credits_page.card_text.provider')}:{' '}
+                  <a href={credit.providerLink}>{credit.provider}</a>{' '}
                   <Launch
                     className={utilityClasses.externalLinkIcon}
                     fontSize="small"
@@ -449,11 +452,12 @@ export const Filter: React.FC = () => {
     );
   };
 
-
   return (
     <div className={classes.Filter}>
       <div className={classes.FilterContent}>
-        <p className={classes.iconAttribution}><DynamicText i18nkey={t('credits_page.icon_attribution')}/></p>
+        <p className={classes.iconAttribution}>
+          <DynamicText i18nkey={t('credits_page.icon_attribution')} />
+        </p>
         <FilterCards />
       </div>
     </div>
