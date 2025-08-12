@@ -267,7 +267,8 @@
   },
   "credits_page": {
     "page_header": "Image credits",
-    "page_subheader": "Check out the illustrations and icons used on Expunge Assist."
+    "page_subheader": "A list of sources for all iconography and imagery used on the Expunge Assist website.",
+    "icon_attribution": "All icons are attributed to Google's <Link href=\"https://fonts.google.com/icons\" target='_blank' rel='noreferrer'>Material Symbols</Link>."
   },
   "oops_reminder": {
     "header": "The Page Refreshed",
