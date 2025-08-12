@@ -1,29 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles } from '@material-ui/core';
 
-import {
-  SvgIconComponent,
-  ArrowForwardRounded,
-  ArrowBackRounded,
-  CancelRounded,
-  CheckCircleRounded,
-  CloseRounded,
-  CreateRounded,
-  EmailRounded,
-  ErrorRounded,
-  ExpandMoreRounded,
-  GetAppRounded,
-  HelpRounded,
-  InfoRounded,
-  FileCopyRounded,
-  MenuRounded,
-  VisibilityRounded,
-  Launch,
-} from '@material-ui/icons';
+import { SvgIconComponent, Launch } from '@material-ui/icons';
 
 import useUtilityStyles from 'styles/utilityStyles';
+
+import DynamicText from 'components/DynamicText';
 
 import creditsHeader from '../assets/creditsHeader.svg';
 import groupChat from '../assets/group-chat.jpg';
@@ -38,7 +22,7 @@ import multitasking from '../assets/landingWorkImg.svg';
 import support101 from '../assets/affirmation-img.svg';
 import report from '../assets/future-goals-img.svg';
 
-const useStyles = makeStyles(({ palette, breakpoints }) =>
+const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
     Header: {
       width: '100vw',
@@ -119,11 +103,11 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
       maxWidth: '59rem',
       display: 'flex',
       flexDirection: 'column',
-      margin: '45px auto 54.64px',
+      margin: '0 auto 54.64px',
       [breakpoints.down('md')]: {
         width: '100%',
-        margin: '45px auto 54.64px',
-        padding: '16px',
+        margin: '0 auto 54.64px',
+        padding: '0 16px 16px',
       },
     },
     FilterLink: {
@@ -229,6 +213,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) =>
         display: 'none',
       },
     },
+    iconAttribution: {
+      textAlign: 'center',
+      margin: spacing(4, 0),
+
+      [breakpoints.down('md')]: {
+        margin: spacing(3, 0),
+      },
+    },
   })
 );
 
@@ -257,27 +249,6 @@ export const CreditObjects: CreditsObject[] = [
     providerLink: 'https://storyset.com/illustration/on-the-office/pana',
     provider: 'Storyset',
     altText: '',
-  },
-  {
-    name: 'Back Arrow',
-    icon: ArrowBackRounded,
-    class: 3,
-    usedIn: 'Buttons',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Go back',
-  },
-  {
-    name: 'Success',
-    icon: CheckCircleRounded,
-    iconColor: '#0AEBA0',
-    class: 3,
-    usedIn: 'Advice Page and Letter Generator',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Correct',
   },
   {
     name: 'Sharing Knowledge',
@@ -312,16 +283,6 @@ export const CreditObjects: CreditsObject[] = [
       'https://www.freepik.com/free-vector/multi-device-targeting-concept-illustration_19949448.htm#&position=1&from_view=search&track=ais',
     provider: 'Storyset',
     altText: '',
-  },
-  {
-    name: 'Copy',
-    icon: FileCopyRounded,
-    class: 3,
-    usedIn: 'Download Page',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Copy to clipboard',
   },
   {
     name: 'Data Secure',
@@ -369,16 +330,6 @@ export const CreditObjects: CreditsObject[] = [
     altText: '',
   },
   {
-    name: 'Email',
-    icon: EmailRounded,
-    class: 3,
-    usedIn: 'Download Page',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Send in an email',
-  },
-  {
     name: 'Report',
     img: report,
     class: 2,
@@ -390,71 +341,6 @@ export const CreditObjects: CreditsObject[] = [
     altText: '',
   },
   {
-    name: 'Cancel',
-    icon: CancelRounded,
-    iconColor: '#E87461',
-    class: 3,
-    usedIn: 'Advice Page',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Not correct',
-  },
-  {
-    name: 'Pencil',
-    icon: CreateRounded,
-    class: 3,
-    usedIn: 'Letter Generator',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Edit',
-  },
-  {
-    name: 'Eye',
-    class: 3,
-    icon: VisibilityRounded,
-    iconColor: '#9903FF',
-    usedIn: 'Letter Generator',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Preview pages',
-  },
-  {
-    name: 'Information Alert',
-    icon: InfoRounded,
-    class: 3,
-    iconColor: '#2F6FED',
-    usedIn: 'Download Page',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Information Alert',
-  },
-  {
-    name: 'Error Alert',
-    icon: ErrorRounded,
-    class: 3,
-    iconColor: '#2F6FED',
-    usedIn: 'Before You Begin',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Error Alert',
-  },
-  {
-    name: 'Help',
-    icon: HelpRounded,
-    class: 3,
-    iconColor: '#2F6FED',
-    usedIn: 'Letter Generator Popups',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Help',
-  },
-  {
     name: 'MultiTasking',
     img: multitasking,
     class: 2,
@@ -464,56 +350,6 @@ export const CreditObjects: CreditsObject[] = [
     providerLink: 'https://storyset.com/illustration/multitasking/cuate',
     provider: 'Storyset',
     altText: '',
-  },
-  {
-    name: 'Next Arrow',
-    class: 3,
-    icon: ArrowForwardRounded,
-    usedIn: 'Buttons',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Go forward',
-  },
-  {
-    name: 'Open Menu',
-    class: 3,
-    icon: MenuRounded,
-    usedIn: 'Mobile Menu',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Open menu',
-  },
-  {
-    name: 'Close Menu',
-    class: 3,
-    icon: CloseRounded,
-    usedIn: 'Mobile Menu',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Close menu',
-  },
-  {
-    name: 'Expand',
-    class: 3,
-    icon: ExpandMoreRounded,
-    usedIn: 'Landing Page and FAQ',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Expand section',
-  },
-  {
-    name: 'Download',
-    icon: GetAppRounded,
-    class: 3,
-    usedIn: 'Download Page',
-    artist: 'Material Design',
-    providerLink: 'https://pictogrammers.com/library/mdi/',
-    provider: 'Pictogrammers',
-    altText: 'Download',
   },
   {
     name: 'EA Mobile',
@@ -567,48 +403,30 @@ export const CreditsHeader: React.FC = () => {
 
 export const Filter: React.FC = () => {
   const classes = useStyles();
-  interface FilterButtonProps {
-    name: string;
-  }
-
-  const [filter, setFilter] = useState<number>(1);
-  const handleFilterClick = (e: any) => {
-    if (e.target.value === 'All') {
-      setFilter(1);
-    } else if (e.target.value === 'Illustrations') {
-      setFilter(2);
-    } else if (e.target.value === 'Icons') {
-      setFilter(3);
-    }
-  };
+  const { t } = useTranslation();
 
   const alphabetizedCredits = CreditObjects.sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 
-  const filteredCredits = alphabetizedCredits.filter((obj) => {
-    if (filter === 2) {
-      return obj.class === 2;
-    }
-    if (filter === 3) {
-      return obj.class === 3;
-    }
-    return obj;
-  });
-
   const FilterCards: React.FC = () => {
     const utilityClasses = useUtilityStyles();
     return (
       <div className={classes.CreditContainer}>
-        {filteredCredits.map((credit) => (
+        {alphabetizedCredits.map((credit) => (
           <div className={classes.CreditBox} key={credit.name}>
             <div className={classes.creditFlex}>
               <div className={classes.creditText}>
                 <h2>{credit.name}</h2>
-                <p>Used on: {credit.usedIn}</p>
-                <p>Artist: {credit.artist}</p>
                 <p>
-                  Provider: <a href={credit.providerLink}>{credit.provider}</a>{' '}
+                  {t('credits_page.card_text.used_on')}: {credit.usedIn}
+                </p>
+                <p>
+                  {t('credits_page.card_text.artist')}: {credit.artist}
+                </p>
+                <p>
+                  {t('credits_page.card_text.provider')}:{' '}
+                  <a href={credit.providerLink}>{credit.provider}</a>{' '}
                   <Launch
                     className={utilityClasses.externalLinkIcon}
                     fontSize="small"
@@ -634,27 +452,12 @@ export const Filter: React.FC = () => {
     );
   };
 
-  const FilterButton = ({ name }: FilterButtonProps) => (
-    <button
-      className={classes.FilterLink}
-      value={name}
-      onClick={handleFilterClick}
-    >
-      {name}
-    </button>
-  );
-
   return (
     <div className={classes.Filter}>
       <div className={classes.FilterContent}>
-        <div className={classes.FilterHeader}>
-          <p>Filter:</p>
-          <FilterButton name="All" />
-          <span>|</span>
-          <FilterButton name="Illustrations" />
-          <span>|</span>
-          <FilterButton name="Icons" />
-        </div>
+        <p className={classes.iconAttribution}>
+          <DynamicText i18nkey={t('credits_page.icon_attribution')} />
+        </p>
         <FilterCards />
       </div>
     </div>
