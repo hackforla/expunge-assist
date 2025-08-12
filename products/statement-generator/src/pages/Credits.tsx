@@ -1,25 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { createStyles, makeStyles } from '@material-ui/core';
 
 import {
   SvgIconComponent,
-  ArrowForwardRounded,
-  ArrowBackRounded,
-  CancelRounded,
-  CheckCircleRounded,
-  CloseRounded,
-  CreateRounded,
-  EmailRounded,
-  ErrorRounded,
-  ExpandMoreRounded,
-  GetAppRounded,
-  HelpRounded,
-  InfoRounded,
-  FileCopyRounded,
-  MenuRounded,
-  VisibilityRounded,
   Launch,
 } from '@material-ui/icons';
 
@@ -366,8 +351,7 @@ export const CreditObjects: CreditsObject[] = [
     imgSize: 75,
     usedIn: 'Landing Page',
     artist: 'N/A',
-    providerLink:
-      'https://storyset.com/illustration/mobile-login/cuate#default&hide=&hide=false',
+    providerLink: 'https://storyset.com/illustration/mobile-login/cuate#default&hide=&hide=false',
     provider: 'Storyset',
     altText: '',
   },
@@ -411,48 +395,25 @@ export const CreditsHeader: React.FC = () => {
 
 export const Filter: React.FC = () => {
   const classes = useStyles();
-  interface FilterButtonProps {
-    name: string;
-  }
-
-  const [filter, setFilter] = useState<number>(1);
-  const handleFilterClick = (e: any) => {
-    if (e.target.value === 'All') {
-      setFilter(1);
-    } else if (e.target.value === 'Illustrations') {
-      setFilter(2);
-    } else if (e.target.value === 'Icons') {
-      setFilter(3);
-    }
-  };
+  const { t } = useTranslation();
 
   const alphabetizedCredits = CreditObjects.sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 
-  const filteredCredits = alphabetizedCredits.filter((obj) => {
-    if (filter === 2) {
-      return obj.class === 2;
-    }
-    if (filter === 3) {
-      return obj.class === 3;
-    }
-    return obj;
-  });
-
   const FilterCards: React.FC = () => {
     const utilityClasses = useUtilityStyles();
     return (
       <div className={classes.CreditContainer}>
-        {filteredCredits.map((credit) => (
+        {alphabetizedCredits.map((credit) => (
           <div className={classes.CreditBox} key={credit.name}>
             <div className={classes.creditFlex}>
               <div className={classes.creditText}>
                 <h2>{credit.name}</h2>
-                <p>Used on: {credit.usedIn}</p>
-                <p>Artist: {credit.artist}</p>
+                <p>{t('credits_page.card_text.used_on')}: {credit.usedIn}</p>
+                <p>{t('credits_page.card_text.artist')}: {credit.artist}</p>
                 <p>
-                  Provider: <a href={credit.providerLink}>{credit.provider}</a>{' '}
+                  {t('credits_page.card_text.provider')}: <a href={credit.providerLink}>{credit.provider}</a>{' '}
                   <Launch
                     className={utilityClasses.externalLinkIcon}
                     fontSize="small"
@@ -478,27 +439,11 @@ export const Filter: React.FC = () => {
     );
   };
 
-  const FilterButton = ({ name }: FilterButtonProps) => (
-    <button
-      className={classes.FilterLink}
-      value={name}
-      onClick={handleFilterClick}
-    >
-      {name}
-    </button>
-  );
 
   return (
     <div className={classes.Filter}>
       <div className={classes.FilterContent}>
-        <div className={classes.FilterHeader}>
-          <p>Filter:</p>
-          <FilterButton name="All" />
-          <span>|</span>
-          <FilterButton name="Illustrations" />
-          <span>|</span>
-          <FilterButton name="Icons" />
-        </div>
+        <p>{t('credits_page.icon_attribution')}</p>
         <FilterCards />
       </div>
     </div>
