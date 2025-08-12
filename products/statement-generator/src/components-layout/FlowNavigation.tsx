@@ -43,14 +43,10 @@ export default function FlowNavigation({
   showNext = true,
 }: IFlowNavigation) {
   const { goNextStep, goBackStep, getNextStep } = useContext(FormStateContext);
-  const { appTheme, currentStep, canShowAffirmation } = useContext(
-    RoutingContext
-  );
-  const {
-    updateAffirmationData,
-    affirmationShown,
-    setAffirmationShown,
-  } = useContext(AffirmationContext);
+  const { appTheme, currentStep, canShowAffirmation } =
+    useContext(RoutingContext);
+  const { updateAffirmationData, affirmationShown, setAffirmationShown } =
+    useContext(AffirmationContext);
   const backButtonRef = useRef<HTMLButtonElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
 
