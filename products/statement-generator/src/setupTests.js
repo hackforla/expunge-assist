@@ -12,3 +12,15 @@ console.warn = (...args) => {
     originalWarn(...args);
   }
 };
+
+jest.mock('react-i18next', () => {
+  const actual = jest.requireActual('react-i18next');
+  return {
+    ...actual,
+    useTranslation: () => ({
+      t: (key) => key,
+      i18n: { changeLanguage: jest.fn(), language: 'en' },
+    }),
+    Trans: ({ children, i18nKey }) => children || i18nKey || null,
+  };
+});
