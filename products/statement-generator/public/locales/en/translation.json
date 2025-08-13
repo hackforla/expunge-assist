@@ -124,6 +124,15 @@
     "finalize": "My declaration letter",
     "completed": "Completed"
   },
+  "sections_helper_text": {
+    "job": "Current job(s) full-time, part-time, or self-employed",
+    "unemployment": "Looking for work and/or difficulty finding work",
+    "self_improvement": "Counseling, musical/art therapies, health and fitness, or treatment programs",
+    "education": "School, college, or certification",
+    "parenting": "Raising a child or children",
+    "community_service": "Volunteer work at a community organization",
+    "something_else": "Anything else you want to include"
+  },
   "introduction_form": {
     "fullName_input_label": "What is your full name?",
     "fullName_input_placeholder": "Firstname Lastname",
@@ -132,7 +141,7 @@
     "isVeteran_label": "Are you a veteran of the United States of America?"
   },
   "involvement_form": {
-    "checkboxgroup_label": "What have you been involved with since your conviction?\n\nCheck all that apply:",
+    "checkboxgroup_label": "What have you been involved with since your conviction?\n\nCheck all that apply. You will be able to add more details later.",
     "none_above": "None of the above"
   },
   "job_form": {
