@@ -84,6 +84,7 @@ function InvolvementInitialFlow() {
             checked={isJobChecked}
             onChange={onCheckboxChange}
             label={t('sections.job')}
+            helperText={t('sections_helper_text.job')}
           />
           <Checkbox
             useTeal
@@ -91,6 +92,7 @@ function InvolvementInitialFlow() {
             checked={isUnemploymentChecked}
             onChange={onCheckboxChange}
             label={t('sections.unemployment')}
+            helperText={t('sections_helper_text.unemployment')}
           />
           <Checkbox
             useTeal
@@ -98,6 +100,7 @@ function InvolvementInitialFlow() {
             checked={isRecoveryChecked}
             onChange={onCheckboxChange}
             label={t('sections.self_improvement')}
+            helperText={t('sections_helper_text.self_improvement')}
           />
 
           <Checkbox
@@ -106,6 +109,7 @@ function InvolvementInitialFlow() {
             checked={isSchoolChecked}
             onChange={onCheckboxChange}
             label={t('sections.education')}
+            helperText={t('sections_helper_text.education')}
           />
 
           <Checkbox
@@ -114,6 +118,7 @@ function InvolvementInitialFlow() {
             checked={isParentingChecked}
             onChange={onCheckboxChange}
             label={t('sections.parenting')}
+            helperText={t('sections_helper_text.parenting')}
           />
 
           <Checkbox
@@ -122,6 +127,7 @@ function InvolvementInitialFlow() {
             checked={isCommunityChecked}
             onChange={onCheckboxChange}
             label={t('sections.community_service')}
+            helperText={t('sections_helper_text.community_service')}
           />
 
           <Checkbox
@@ -130,6 +136,7 @@ function InvolvementInitialFlow() {
             checked={isSomethingElseChecked}
             onChange={onCheckboxChange}
             label={t('sections.something_else')}
+            helperText={t('sections_helper_text.something_else')}
           />
         </FormGroup>
       </FormControl>
