@@ -2,7 +2,6 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Dialog from '@material-ui/core/Dialog';
-import Fade from '@material-ui/core/Fade';
 import { useHistory } from 'react-router-dom';
 import AffirmationImage from 'assets/affirmation-img.svg';
 import { defaultStepState } from 'contexts/FormStateProps';
@@ -52,18 +51,29 @@ const Affirmation = () => {
   const { t } = useTranslation();
   const { affirmationData, updateAffirmationData } =
     useContext(AffirmationContext);
-  const returnHome = () => {
-    const path = AppUrl.Landing;
-    updateAffirmationData({ isActive: false });
-    updateStepToForm(defaultStepState);
-    history.push(path);
-  };
+
+  // Guard: only route on user-initiated close; ignore onExited fired during unmount after navigating home.
+  const userExited = useRef(false);
+
   const handleAffirmationNext = () => {
+    updateAffirmationData({ isActive: false });
+    userExited.current = true;
+  };
+
+  const handleExited = () => {
+    if (!userExited.current) return;
     if (AppUrl.FinalizePreview === currentStep) {
       returnHome();
     } else {
-      updateAffirmationData({ isActive: false });
+      goNextStep();
     }
+    userExited.current = false; // Reset
+  };
+
+  const returnHome = () => {
+    const path = AppUrl.Landing;
+    updateStepToForm(defaultStepState);
+    history.push(path);
   };
 
   const utilityClasses = useUtilityStyles({
@@ -84,12 +94,9 @@ const Affirmation = () => {
 
   return (
     <Dialog
-      TransitionComponent={Fade}
       transitionDuration={500}
       TransitionProps={{
-        onExited: () => {
-          goNextStep();
-        },
+        onExited: handleExited,
       }}
       classes={
         AppUrl.FinalizePreview === currentStep
