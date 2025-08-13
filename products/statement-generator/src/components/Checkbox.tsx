@@ -3,6 +3,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core';
 import { teal } from '@material-ui/core/colors';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 interface ICheckboxStyle {
   theme?: string;
@@ -61,24 +62,27 @@ const InnerCheckbox = React.forwardRef<HTMLInputElement, IInnerCheckboxProps>(
 
 interface IWrapperCheckboxProps extends IInnerCheckboxProps {
   label: string;
+  helperText?: string;
 }
 
 const CheckboxLabels = React.forwardRef<
   HTMLInputElement,
   IWrapperCheckboxProps
->(({ label, checked, onChange, id, useTeal = false }, ref) => (
-  <FormControlLabel
-    control={
-      <InnerCheckbox
-        useTeal={useTeal}
-        id={id}
-        checked={checked}
-        onChange={onChange}
-        ref={ref}
-      />
-    }
-    label={label}
-  />
+>(({ label, helperText = '', checked, onChange, id, useTeal = false }, ref) => (
+  <>
+    <FormControlLabel
+      control={
+        <InnerCheckbox
+          useTeal={useTeal}
+          id={id}
+          checked={checked}
+          onChange={onChange}
+          ref={ref}
+        />
+      }
+      label={label}
+    />
+    {helperText && <FormHelperText>{helperText}</FormHelperText>}
+  </>
 ));
-
 export default CheckboxLabels;
