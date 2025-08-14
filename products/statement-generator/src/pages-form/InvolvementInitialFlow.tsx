@@ -10,18 +10,18 @@ import FormStateContext from 'contexts/FormStateContext';
 import Checkbox from 'components/Checkbox';
 import FormFlowContainer from 'components-layout/FormFlowContainer';
 
-const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
+const useStyles = makeStyles<Theme>(({ palette }) =>
   createStyles({
     checkboxGroup: {
+      gap: 24,
       '& .MuiFormLabel-root': {
         color: palette.common.black,
       },
       '& .MuiFormLabel-root.Mui-focused': {
         color: palette.common.black,
       },
-
-      '& .MuiFormLabel-root + .MuiFormGroup-root': {
-        marginTop: spacing(1),
+      '& .MuiFormGroup-root': {
+        gap: 16,
       },
     },
   })
