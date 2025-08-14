@@ -1,16 +1,11 @@
 import React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core';
-import { teal } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
-interface ICheckboxStyle {
-  theme?: string;
-}
-
-const useStyles = makeStyles<Theme, ICheckboxStyle>(({ palette }) =>
+const useStyles = makeStyles<Theme>(({ palette }) =>
   createStyles({
     root: {
       display: 'grid',
@@ -18,30 +13,19 @@ const useStyles = makeStyles<Theme, ICheckboxStyle>(({ palette }) =>
 
       '& .MuiFormControlLabel-root': {
         marginLeft: 0, // Undo default -11px styling
-      },
+        color: palette.primary.darker,
 
-      '& .MuiCheckbox-root': {
-        padding: '0px 8px 0px 0px', // 8px right padding on checkbox
-        color: ({ theme }) => {
-          switch (theme) {
-            case 'teal':
-              return teal.A400;
-            case 'black':
-            default:
-              return palette.common.black;
-          }
-        },
+        '& .MuiCheckbox-root': {
+          padding: '0px 8px 0px 0px', // 8px right padding on checkbox
 
-        // hacky because the component is adding the colorSecondary for some reason
-        '&.MuiCheckbox-colorSecondary.Mui-checked': {
-          color: ({ theme }) => {
-            switch (theme) {
-              case 'teal':
-                return teal.A400;
-              case 'black':
-              default:
-                return palette.common.black;
-            }
+          // MUI v4 checkboxes default to secondary
+          '&.MuiCheckbox-colorSecondary': {
+            color: palette.primary.darker,
+            opacity: 0.3,
+            '&.Mui-checked': {
+              color: palette.success.main,
+              opacity: 1,
+            },
           },
         },
       },
@@ -50,6 +34,9 @@ const useStyles = makeStyles<Theme, ICheckboxStyle>(({ palette }) =>
         marginTop: 0,
         marginLeft: 32, // Padding to align with checkbox label
         fontSize: '0.875rem',
+        lineHeight: '1rem',
+        color: palette.primary.darker,
+        opacity: 0.75,
       },
     },
   })
@@ -69,15 +56,14 @@ const InnerCheckbox = React.forwardRef<HTMLInputElement, IInnerCheckboxProps>(
 
 interface IWrapperCheckboxProps extends IInnerCheckboxProps {
   label: string;
-  useTeal?: boolean;
   helperText?: string;
 }
 
 const CheckboxLabels = React.forwardRef<
   HTMLInputElement,
   IWrapperCheckboxProps
->(({ label, helperText = '', checked, onChange, id, useTeal = false }, ref) => {
-  const classes = useStyles({ theme: useTeal ? 'teal' : 'black' });
+>(({ label, helperText = '', checked, onChange, id }, ref) => {
+  const classes = useStyles();
   return (
     <Box className={classes.root}>
       <FormControlLabel

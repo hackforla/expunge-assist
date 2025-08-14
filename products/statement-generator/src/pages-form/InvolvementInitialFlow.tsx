@@ -15,10 +15,10 @@ const useStyles = makeStyles<Theme>(({ palette }) =>
     checkboxGroup: {
       gap: 24,
       '& .MuiFormLabel-root': {
-        color: palette.common.black,
+        color: palette.primary.darker,
       },
       '& .MuiFormLabel-root.Mui-focused': {
-        color: palette.common.black,
+        color: palette.primary.darker,
       },
       '& .MuiFormGroup-root': {
         gap: 16,
@@ -79,7 +79,6 @@ function InvolvementInitialFlow() {
         </FormLabel>
         <FormGroup id="involvement-checkboxes">
           <Checkbox
-            useTeal
             id="isJobChecked"
             checked={isJobChecked}
             onChange={onCheckboxChange}
@@ -87,7 +86,6 @@ function InvolvementInitialFlow() {
             helperText={t('sections_helper_text.job')}
           />
           <Checkbox
-            useTeal
             id="isUnemploymentChecked"
             checked={isUnemploymentChecked}
             onChange={onCheckboxChange}
@@ -95,43 +93,34 @@ function InvolvementInitialFlow() {
             helperText={t('sections_helper_text.unemployment')}
           />
           <Checkbox
-            useTeal
             id="isRecoveryChecked"
             checked={isRecoveryChecked}
             onChange={onCheckboxChange}
             label={t('sections.self_improvement')}
             helperText={t('sections_helper_text.self_improvement')}
           />
-
           <Checkbox
-            useTeal
             id="isSchoolChecked"
             checked={isSchoolChecked}
             onChange={onCheckboxChange}
             label={t('sections.education')}
             helperText={t('sections_helper_text.education')}
           />
-
           <Checkbox
-            useTeal
             id="isParentingChecked"
             checked={isParentingChecked}
             onChange={onCheckboxChange}
             label={t('sections.parenting')}
             helperText={t('sections_helper_text.parenting')}
           />
-
           <Checkbox
-            useTeal
             id="isCommunityChecked"
             checked={isCommunityChecked}
             onChange={onCheckboxChange}
             label={t('sections.community_service')}
             helperText={t('sections_helper_text.community_service')}
           />
-
           <Checkbox
-            useTeal
             id="isSomethingElseChecked"
             checked={isSomethingElseChecked}
             onChange={onCheckboxChange}
