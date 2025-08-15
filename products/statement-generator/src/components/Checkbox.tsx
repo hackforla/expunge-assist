@@ -8,8 +8,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 const useStyles = makeStyles<Theme>(({ palette }) =>
   createStyles({
     root: {
-      display: 'grid',
-      gridGap: 4,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 4,
 
       '& .MuiFormControlLabel-root': {
         marginLeft: 0, // Undo default -11px styling
