@@ -26,7 +26,7 @@ Navigating through a lot of information can be overwhelming at first, but it's p
 
 ### Questions?
 
-If you have questions, don't hesitate to mention @jyehllow or @anitadesigns (Design Co-leads), @vanessaavviles (Product Design Manager) You can also reach out to team members in the [`#expunge-assist-design-and-content` Slack channel](https://hackforla.slack.com/archives/C02T3EB0N77).
+If you have questions, don't hesitate to mention @jyehllow or @anitadesigns (Design Co-leads), @shraddhasaraf  (Product Design Manager) You can also reach out to team members in the [`#expunge-assist-design-and-content` Slack channel](https://hackforla.slack.com/archives/C02T3EB0N77).
 
 ## Set-up
 
@@ -55,15 +55,14 @@ If you have questions, don't hesitate to mention @jyehllow or @anitadesigns (Des
 - [ ] Ensure you have edit access to tools
   - [ ] Add yourself to the [Google Drive Team Roster](https://docs.google.com/spreadsheets/d/12sAwYiQJP4fmEONF6-oUVYFVupTwSkci/edit)
   - [ ] Reach out to the Design team leadership (lead or PM) to get Github, Drive, and Figma access
-    - Check the [Wiki Roster](https://github.com/hackforla/expunge-assist/wiki/The-Current-Team) to find leadership
+    - Check the [Wiki Roster](https://github.com/hackforla/expunge-assist/wiki/Expunge-Assist-Team) to find leadership
     - Slack is often the easiest way to contact them
   - [ ] Ensure you have edit access to [Figma](https://www.figma.com/files/project/27345011?fuid=874019376796639084)
     - Sign-up for a Figma account if you don't have one
   - [ ] Ensure you have edit access to [Google Drive](https://drive.google.com/drive/u/0/folders/1qR-5gm7a-3h-Zm6Tu8IxDQ6yL488kf1n)
-  - [ ] Ensure you have edit access to [GitHub](https://github.com/hackforla/expunge-assist/projects/1)
+  - [ ] Ensure you have edit access to [GitHub](https://github.com/orgs/hackforla/projects/77)
   - [ ] Ensure you have Google calendar invites to the following meetings:
     - [ ] Design meetings
-    - [ ] Design/Content/ Research meetings
     - [ ] All-Team meetings
 
 ## Project Familiarization
@@ -83,8 +82,8 @@ If you have questions, don't hesitate to mention @jyehllow or @anitadesigns (Des
   - [ ] Make notes/screenshots of areas of improvements/bugs that the team can address
   - [ ] Bring suggestions to Design team meeting or share with a Design Lead
 - [ ] Attend your first meetings
-  - [ ] Wednesdays 5 pm - 6 pm PST (Design meeting)
-  - [ ] Fridays 9:30am - 10:30 am PST (Content/Design/Research meeting)
+  - [ ] Thursday 5 pm - 6 pm PST (Design meeting)
+  - [ ] Thursday 6 pm - 7 pm PST (EA All Teams meeting) (1st Week/month only for Leads & PMs and next all weeks for Team)
   - if you are unable to make either meeting, reach out to a design lead to work out a solution
 
 ## GitHub 101
@@ -96,16 +95,16 @@ GitHub is a web-based and open-source platform used for version control and coll
 - [ ] Review markdown and learn as best you can - language GitHub uses
   - [ ] [Tutorial ](https://www.markdowntutorial.com/)
   - [ ] [Cheatsheet](https://greenido.wordpress.com/2015/09/08/markdown-cheatsheet-101/)
-- [ ] Familiarize yourself with using a [Kanban board](https://docs.google.com/document/d/11Fe7mNdmPBP5bD_yLJ1C0_I1TmoK47AuHHrdhdDyWCs/edit#heading=h.nl3p4nf4eqb4)
 - [ ] Review [how our team uses GitHub](https://docs.google.com/document/d/1KuNrH_yKli4gvjdSF7DkPi0GtUArh2axYMJip6LlPFA/edit)
 - [ ] Read the About Section of [How To Create Issues](https://github.com/hackforla/expunge-assist/wiki/How-to-Create-Issues#About) to get an understanding of our how our issues are built
 - [ ] Learn [How to add an image file on GitHub](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/attaching-files)
+- [ ]  Read and Sign the [Team Charter]( https://docs.google.com/document/d/1wdqbY_f67lsDrvIEnyupjWNonEXVTQqvjBGZtpV0EVU/edit?tab=t.0#heading=h.o5zn67cjjc5e )
 
 ## Your first issue
 
 Now that you are familiar with our project and learned a bit about using our tools, it's time to work on your first Issue. I
 
-t's important to note to practice the following:
+It's important to note to practice the following:
 
 - Most of our issues are 1pt, but do occasionally get higher than that. Start small and work your way up
 - Frequently add updates to all issues you are assigned to or providing input to
@@ -136,8 +135,8 @@ t's important to note to practice the following:
 
 - [Expunge Assist Figma](https://www.figma.com/file/hYqRxmBVtJbDv9DJXV6nra/Expunge-Assist-Main-Figma?type=design&node-id=2-21&mode=design&t=gp9ORTk5A0xuk3TF-0)
 - [Expunge Assist Google Drive](https://drive.google.com/drive/folders/1qR-5gm7a-3h-Zm6Tu8IxDQ6yL488kf1n?usp=sharing)
-- [GitHub Project Board](https://github.com/hackforla/expunge-assist/projects/1) - No filter
-- [GitHub Project Board ](https://github.com/hackforla/expunge-assist/projects/1?card_filter_query=label:%22role:+design%22)- Role: design filter
+- [GitHub Project Board](https://github.com/orgs/hackforla/projects/77) - No filter
+- [GitHub Project Board ](https://github.com/orgs/hackforla/projects/77/views/2?filterQuery=label%3A%22role%3A+design%22%2C)- Role: design filter
 - GitHub Issues Assigned to you
   - Visit [Filter page](https://github.com/hackforla/UI-UX/issues)
   - Under 'Assignees', click your name
