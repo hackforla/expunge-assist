@@ -43,19 +43,7 @@ const useStyles = makeStyles<Theme>(({ palette }) =>
   })
 );
 
-interface IInnerCheckboxProps extends CheckboxProps {
-  checked: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  id?: string;
-}
-
-const InnerCheckbox = React.forwardRef<HTMLInputElement, IInnerCheckboxProps>(
-  ({ checked, onChange, id }, ref) => (
-    <Checkbox checked={checked} onChange={onChange} id={id} inputRef={ref} />
-  )
-);
-
-interface IWrapperCheckboxProps extends IInnerCheckboxProps {
+interface IWrapperCheckboxProps extends CheckboxProps {
   label: string;
   helperText?: string;
 }
@@ -69,11 +57,11 @@ const CheckboxLabels = React.forwardRef<
     <Box className={classes.root}>
       <FormControlLabel
         control={
-          <InnerCheckbox
+          <Checkbox
             id={id}
             checked={checked}
             onChange={onChange}
-            ref={ref}
+            inputRef={ref}
           />
         }
         label={label}
