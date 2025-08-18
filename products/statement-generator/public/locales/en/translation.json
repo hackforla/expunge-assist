@@ -65,10 +65,10 @@
   },
   "welcome_page": {
     "titleText": "Welcome",
-    "description": "This tool will guide you through writing your declaration letter. You can preview your letter and make changes at the end of each section."
+    "description": "This tool will guide you through writing your declaration. You can preview your declaration and make changes at the end of each section."
   },
   "advice_page": {
-    "header": "Advice for a successful declaration letter",
+    "header": "Advice for a successful declaration",
     "point1": {
       "content": "Remember to avoid using informal language, such as abbreviations, slang and profanity:",
       "no": "Dude, gig, DOJ",
