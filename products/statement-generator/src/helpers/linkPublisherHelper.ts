@@ -1,6 +1,6 @@
 import { TFunction } from 'i18next';
 
-export function getHost(href: string): string | null {
+export function getNormalizedHost(href: string): string | null {
   try {
     const u = new URL(href, window.location.origin);
     return u.host.toLowerCase().replace(/^www\./, '');
