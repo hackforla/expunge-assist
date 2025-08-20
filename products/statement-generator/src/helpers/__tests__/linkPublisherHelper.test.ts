@@ -1,6 +1,8 @@
-// src/__tests__/linkPublisherHelper.test.ts
 import { TFunction } from 'i18next';
-import { getHost, getPublisherName } from 'helpers/linkPublisherHelper';
+import {
+  getNormalizedHost,
+  getPublisherName,
+} from 'helpers/linkPublisherHelper';
 
 const PUBLISHERS: Record<string, string> = {
   'selfhelp.courts.ca.gov': 'Judicial Branch of California',
@@ -17,8 +19,8 @@ const createMockT = (publishers: Record<string, string>): TFunction =>
 
 const t = createMockT(PUBLISHERS);
 
-// --- getHost ---
-describe('getHost', () => {
+// --- getNormalizedHost ---
+describe('getNormalizedHost', () => {
   it.each([
     [
       'https://selfhelp.courts.ca.gov/clean-your-record',
@@ -36,13 +38,13 @@ describe('getHost', () => {
     ['https://EXAMPLE.COM/path', 'example.com'], // lowercased
     ['https://example.com/path?query=value#fragment', 'example.com'],
   ])('extracts host from %s → %s', (url, expected) => {
-    expect(getHost(url)).toBe(expected);
+    expect(getNormalizedHost(url)).toBe(expected);
   });
 
   it.each([[''], ['not-a-valid-url'], ['http://']])(
     'returns null for invalid/hostless input "%s"',
     (input) => {
-      expect(getHost(input)).toBeNull();
+      expect(getNormalizedHost(input)).toBeNull();
     }
   );
 });
@@ -79,7 +81,7 @@ describe('integration: URL → host → publisher', () => {
   ])(
     'pipes %s → host %p → publisher %p',
     (url, hostExpected, publisherExpected) => {
-      const host = getHost(url);
+      const host = getNormalizedHost(url);
       const publisher = getPublisherName(t, host);
       expect(host).toBe(hostExpected);
       expect(publisher).toBe(publisherExpected);
