@@ -25,6 +25,7 @@ const useStyles = makeStyles<Theme>((theme) =>
       fontSize: theme.typography.fontSize,
       padding: theme.spacing(0.75, 1.5), // 6px 12px with 8px base
       boxShadow: '0px 4px 8px rgba(0,0,0,0.25)',
+      textAlign: 'center',
     },
   })
 );
@@ -57,7 +58,10 @@ const DynamicLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   );
 
   return showTooltip ? (
-    <Tooltip title={publisher} classes={{ tooltip: classes.tooltip }}>
+    <Tooltip
+      title={`Publisher: ${publisher}`}
+      classes={{ tooltip: classes.tooltip }}
+    >
       <span>{linkContent}</span>
     </Tooltip>
   ) : (
