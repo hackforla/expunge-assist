@@ -121,7 +121,7 @@ function InvolvementJobFlow() {
           placeholder={t('job_form.otherJobDescription_input_placeholder')}
           handleChange={onInputChange}
           defaultValue={otherJobDescription}
-          rows={3}
+          rows={4}
         />
       )}
     </FormFlowContainer>

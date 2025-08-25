@@ -29,7 +29,12 @@ export function generateIntroduction(formState: IStepState): string {
  */
 export function generateInvolvementJob(formState: IStepState): string {
   const {
-    involvementJobState: { companyName, jobTitle, jobDescription },
+    involvementJobState: {
+      companyName,
+      jobTitle,
+      jobDescription,
+      otherJobDescription,
+    },
   } = formState;
 
   if (!formState.involvement.isJobChecked) {
@@ -43,7 +48,13 @@ export function generateInvolvementJob(formState: IStepState): string {
   // Determine the correct article "a" or "an" based on the first letter of the jobTitle
   const article = generateArticle(jobTitle);
 
-  return `I have been working at ${companyName} as ${article} ${jobTitle}. At ${companyName}, ${jobDescription}`;
+  let result = `I have been working at ${companyName} as ${article} ${jobTitle}. At ${companyName}, ${jobDescription}`;
+
+  if (otherJobDescription) {
+    result += ` ${otherJobDescription}`;
+  }
+
+  return result;
 }
 
 /**
