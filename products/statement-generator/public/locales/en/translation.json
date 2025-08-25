@@ -141,7 +141,10 @@
     "jobTitle_input_label": "What is your current job title?",
     "jobTitle_input_placeholder": "Job title",
     "jobDescription_input_label": "What do you do at this job? How has your role at work impacted your life for the better?\n(2-3 complete sentences)",
-    "jobDescription_input_placeholder": ""
+    "jobDescription_input_placeholder": "",
+    "otherJob_label": "Do you have another job (or jobs) you would like to talk about?",
+    "otherJobDescription_input_label": "Add information about your job (or jobs). Be sure to include the company's name and your job title. (3-5 complete sentences)",
+    "otherJobDescription_input_placeholder": ""
   },
   "something_else_form": {
     "activityName_input_label": "What else have you been involved in?",

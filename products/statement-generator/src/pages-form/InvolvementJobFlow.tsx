@@ -5,6 +5,7 @@ import FormStateContext from 'contexts/FormStateContext';
 
 import Input from 'components/Input';
 import Textarea from 'components/Textarea';
+import RadioGroup from 'components/RadioGroup';
 import FormFlowContainer from 'components-layout/FormFlowContainer';
 
 import {
@@ -20,13 +21,22 @@ function InvolvementJobFlow() {
     companyName,
     jobTitle,
     jobDescription,
+    isOtherJobChecked,
+    otherJobDescription,
   } = formState.involvementJobState;
 
   const companyNameValid = companyName !== '';
   const jobTitleValid = jobTitle !== '';
-  const jobDescriptionValid = jobDescription !== '';
+  const jobDescriptionValid = /\w/.test(jobDescription || ''); // Check if contains any word character
+  const otherJobDescriptionValid =
+    isOtherJobChecked === t('button.no') ||
+    (isOtherJobChecked === t('button.yes') &&
+      /\w/.test(otherJobDescription || '')); // Check if contains any word character
   const isNextDisabled =
-    !companyNameValid || !jobTitleValid || !jobDescriptionValid;
+    !companyNameValid ||
+    !jobTitleValid ||
+    !jobDescriptionValid ||
+    !otherJobDescriptionValid;
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = evt.currentTarget;
@@ -34,7 +44,7 @@ function InvolvementJobFlow() {
 
     if (id === 'companyName' || id === 'jobTitle') {
       formattedValue = capitalizeEachWord(value);
-    } else if (id === 'jobDescription') {
+    } else if (id === 'jobDescription' || id === 'otherJobDescription') {
       formattedValue = capitalizeSentences(value);
     }
 
@@ -43,6 +53,17 @@ function InvolvementJobFlow() {
     const changes = { [id]: formattedValue };
     updateStepToForm({
       involvementJobState: { ...formState.involvementJobState, ...changes },
+    });
+  };
+
+  const onOtherJobChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = evt.currentTarget.value === t('button.yes');
+    updateStepToForm({
+      involvementJobState: {
+        ...formState.involvementJobState,
+        isOtherJobChecked: evt.currentTarget.value,
+        ...(isChecked ? {} : { otherJobDescription: '' }),
+      },
     });
   };
 
@@ -84,6 +105,25 @@ function InvolvementJobFlow() {
         defaultValue={jobDescription}
         rows={3}
       />
+
+      <RadioGroup
+        id="otherJob"
+        label={t('job_form.otherJob_label')}
+        choices={[t('button.yes'), t('button.no')]}
+        value={isOtherJobChecked}
+        handleChange={onOtherJobChange}
+      />
+
+      {isOtherJobChecked === t('button.yes') && (
+        <Textarea
+          id="otherJobDescription"
+          label={t('job_form.otherJobDescription_input_label')}
+          placeholder={t('job_form.otherJobDescription_input_placeholder')}
+          handleChange={onInputChange}
+          defaultValue={otherJobDescription}
+          rows={4}
+        />
+      )}
     </FormFlowContainer>
   );
 }
