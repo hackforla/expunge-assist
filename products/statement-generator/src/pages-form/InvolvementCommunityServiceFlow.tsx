@@ -16,8 +16,10 @@ import Input from '../components/Input';
 function InvolvementCommunityServiceFlow() {
   const { t } = useTranslation();
   const { formState, updateStepToForm } = useContext(FormStateContext);
-  const { organizationName, serviceDescription } =
-    formState.communityServiceState;
+  const {
+    organizationName,
+    serviceDescription,
+  } = formState.communityServiceState;
 
   const organizationNameValid = organizationName !== '';
   const serviceDescriptionValid = serviceDescription !== '';

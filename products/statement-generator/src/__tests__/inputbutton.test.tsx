@@ -12,13 +12,14 @@ const TestComponent = () => {
     input2: '',
   });
 
-  const handleInputChange =
-    (inputId: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormValues((prev) => ({
-        ...prev,
-        [inputId]: e.target.value,
-      }));
-    };
+  const handleInputChange = (inputId: string) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFormValues((prev) => ({
+      ...prev,
+      [inputId]: e.target.value,
+    }));
+  };
 
   // Button is disabled unless both inputs have values
   const isButtonDisabled = !formValues.input1 || !formValues.input2;
