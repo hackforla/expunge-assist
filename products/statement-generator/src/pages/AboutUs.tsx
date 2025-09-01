@@ -288,11 +288,6 @@ export default function AboutUs() {
                 <DynamicText i18nkey="about_us_page.paragraph3_li2" />
               </span>
             </li>
-            <li>
-              <span className={`${classes.text}`}>
-                <DynamicText i18nkey="about_us_page.paragraph3_li3" />
-              </span>
-            </li>
           </ul>
         </div>
         <div className={classes.imgContainer}>
