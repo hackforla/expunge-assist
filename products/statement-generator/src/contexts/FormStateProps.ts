@@ -37,6 +37,8 @@ export const defaultStepState = {
     companyName: '',
     jobTitle: '',
     jobDescription: '',
+    isOtherJobChecked: '',
+    otherJobDescription: '',
   },
   communityServiceState: {
     organizationName: '',
@@ -107,6 +109,8 @@ export interface IInvolvementJobState {
   companyName: string;
   jobTitle: string;
   jobDescription: string;
+  isOtherJobChecked: string;
+  otherJobDescription: string;
 }
 // step 2b
 export interface ICommunityServiceState {
@@ -182,6 +186,8 @@ export const sampleStepState = {
     companyName: process.env.REACT_APP_COMPANY_NAME,
     jobTitle: process.env.REACT_APP_JOB_TITLE,
     jobDescription: process.env.REACT_APP_JOB_DESCRIPTION,
+    isOtherJobChecked: process.env.REACT_APP_IS_OTHER_JOB_CHECKED,
+    otherJobDescription: process.env.REACT_APP_OTHER_JOB_DESCRIPTION,
   },
   communityServiceState: {
     organizationName: process.env.REACT_APP_ORGANIZATION_NAME,
