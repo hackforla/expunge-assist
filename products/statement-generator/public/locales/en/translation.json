@@ -290,5 +290,11 @@
     "paragraph_2": "To avoid this, do not use your browser's forward and back buttons.",
     "button_text": "START AGAIN",
     "image_alt_text": "Someone with their hands on their head in frustration standing in front of a computer that says 'NO REFRESHING'"
+  },
+  "publishers": {
+    "selfhelp.courts.ca.gov": "Judicial Branch of California",
+    "courts.ca.gov": "Los Angeles County Neighborhood Legal Services",
+    "leginfo.legislature.ca.gov": "California Legislative Counsel",
+    "roadmap.rootandrebound.org": "Root & Rebound"
   }
 }
