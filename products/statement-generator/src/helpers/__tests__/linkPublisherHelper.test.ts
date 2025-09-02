@@ -12,10 +12,10 @@ const PUBLISHERS: Record<string, string> = {
 };
 
 const createMockT = (publishers: Record<string, string>): TFunction =>
-  (((key: string, options?: { returnObjects?: boolean }) =>
+  ((key: string, options?: { returnObjects?: boolean }) =>
     key === 'publishers' && options?.returnObjects
       ? publishers
-      : key) as unknown) as TFunction;
+      : key) as unknown as TFunction;
 
 const t = createMockT(PUBLISHERS);
 

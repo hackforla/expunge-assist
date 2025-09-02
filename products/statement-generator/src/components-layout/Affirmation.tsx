@@ -46,15 +46,32 @@ const useStyles = makeStyles<Theme, CustomStyleProps>(({ palette, spacing }) =>
 
 const Affirmation = () => {
   const { currentStep, appTheme } = useContext(RoutingContext);
-  const { updateStepToForm } = useContext(FormStateContext);
+  const { updateStepToForm, goNextStep } = useContext(FormStateContext);
   const history = useHistory();
   const { t } = useTranslation();
-  const { affirmationData, updateAffirmationData } = useContext(
-    AffirmationContext
-  );
+  const { affirmationData, updateAffirmationData } =
+    useContext(AffirmationContext);
+
+  // Guard: only route on user-initiated close; ignore onExited fired during unmount after navigating home.
+  const userExited = useRef(false);
+
+  const handleAffirmationNext = () => {
+    updateAffirmationData({ isActive: false });
+    userExited.current = true;
+  };
+
+  const handleExited = () => {
+    if (!userExited.current) return;
+    if (AppUrl.FinalizePreview === currentStep) {
+      returnHome();
+    } else {
+      goNextStep();
+    }
+    userExited.current = false; // Reset
+  };
+
   const returnHome = () => {
     const path = AppUrl.Landing;
-    updateAffirmationData({ isActive: false });
     updateStepToForm(defaultStepState);
     history.push(path);
   };
@@ -77,14 +94,14 @@ const Affirmation = () => {
 
   return (
     <Dialog
+      transitionDuration={500}
+      TransitionProps={{
+        onExited: handleExited,
+      }}
       classes={
         AppUrl.FinalizePreview === currentStep
-          ? {
-              paper: classes.doneAffirmationContainer,
-            }
-          : {
-              paper: classes.affirmationContainer,
-            }
+          ? { paper: classes.doneAffirmationContainer }
+          : { paper: classes.affirmationContainer }
       }
       fullWidth
       open={affirmationData.isActive}
@@ -128,11 +145,7 @@ const Affirmation = () => {
         )}
         <Button
           hasForwardArrow
-          onClick={() =>
-            AppUrl.FinalizePreview === currentStep
-              ? returnHome()
-              : updateAffirmationData({ isActive: false })
-          }
+          onClick={handleAffirmationNext}
           buttonText={t(affirmationData.buttonText)}
         />
       </div>
