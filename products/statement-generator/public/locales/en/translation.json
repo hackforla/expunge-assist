@@ -121,7 +121,7 @@
     "something_else": "Something else",
     "goals": "Future goals",
     "why": "Why",
-    "finalize": "My declaration letter",
+    "finalize": "My declaration",
     "completed": "Completed"
   },
   "sections_helper_text": {
@@ -197,18 +197,18 @@
     "goalsHow_input_placeholder": ""
   },
   "why_form": {
-    "clearRecordWhy_input_label": "Why do you want to clear your record? Why is it important to you?\n(2-3 complete sentences)",
+    "clearRecordWhy_input_label": "Why do you want an expungement? Why is it important to you?\n(2-3 complete sentences)",
     "clearRecordWhy_input_placeholder": "",
     "clearRecordHow_input_label": "How is your criminal record preventing you from achieving your goals?\n(2-3 complete sentences)",
     "clearRecordHow_input_placeholder": ""
   },
   "finalize_preview": {
-    "header_title": "Previewing final letter",
-    "review_info_title": "Review your completed declaration letter",
-    "review_info_content": "If you want to make edits after downloading your completed letter, you can edit it with a text editor such as Microsoft Word, Google Docs, or Pages."
+    "header_title": "Previewing final declaration",
+    "review_info_title": "Review your completed declaration",
+    "review_info_content": "If you want to make edits after downloading your declaration, you can edit it with a text editor such as Microsoft Word, Google Docs, or Pages."
   },
   "download_page": {
-    "agreement_checkbox_label": "By checking this box you take full responsibility in this declaration letter, and release all association with Hack for LA. We recommend that you have a lawyer or legal clinic review this letter before you submit your application.",
+    "agreement_checkbox_label": "By checking this box you take full responsibility in this declaration, and release all association with Hack for LA. We recommend that you have a lawyer or legal clinic review this letter before you submit your application.",
     "email_btn": "send in an email",
     "clipboard_btn": "copy to clipboard",
     "txt_btn": "download .txt",
