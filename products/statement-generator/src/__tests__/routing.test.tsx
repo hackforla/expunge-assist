@@ -2,16 +2,36 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter as Router } from 'react-router-dom';
+import { act } from 'react-dom/test-utils';
 import App from '../App';
 import LocationDisplay from '../App';
 
+const MODAL_FADE_MS = 500;
+
+/** Helpers */
+// Click the modal confirmation button and advance timers to simulate the fade-out finishing
+const confirmModalAndFFW = (text = 'continue', ms = MODAL_FADE_MS) => {
+  fireEvent.click(screen.getByText(new RegExp(text, 'i')));
+  act(() => {
+    jest.advanceTimersByTime(ms);
+  });
+};
+
 describe('Routing Tests', () => {
-  // mock the scrollTo component
-  beforeEach(() => {
-    window.scrollTo = jest.fn();
+  beforeAll(() => {
+    // Control time so we can fastforward MUI transition durations
+    jest.useFakeTimers();
+    console.warn = jest.fn();
   });
 
-  console.warn = jest.fn();
+  afterAll(() => {
+    jest.useRealTimers();
+  });
+
+  beforeEach(() => {
+    // mock the scrollTo component
+    window.scrollTo = jest.fn();
+  });
 
   test('it can render a component that uses useLocation', () => {
     const route = '/';
@@ -30,31 +50,28 @@ describe('Routing Tests', () => {
   test('the static pre-form pages route correctly', async () => {
     render(<App />, { wrapper: Router });
 
-    // tests that the start now button the landing page navigates to welcome
+    // Landing page -> Welcome
     const startNowButton = screen.getByTestId('start-now-button');
     fireEvent.click(startNowButton);
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/welcome'
     );
 
-    // tests that the welcome page navigates to BYB
-    const welcomeNextButton = screen.getByText(/next/i);
-    fireEvent.click(welcomeNextButton);
+    // Welcome -> Before You Begin
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/before-you-begin'
     );
 
-    // tests that the BYB navigates to advice
-    const bybNextButton = screen.getByText(/next/i);
-    fireEvent.click(bybNextButton);
+    // Before You Begin -> Advice
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent('/advice');
 
-    // tests that the advice page navigates to intro
-    const adviceNextButton = screen.getByText(/next/i);
-    fireEvent.click(adviceNextButton);
+    // Advice -> Introduction
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent('/intro');
 
-    // tests that intro page navigates to intro preview
+    // Fill out introduction form
     const fullNameInput = screen.getByPlaceholderText(
       'introduction_form.fullName_input_placeholder'
     );
@@ -65,31 +82,31 @@ describe('Routing Tests', () => {
     fireEvent.change(ageInput, { target: { value: 30 } });
     fireEvent.click(radioButtons[0]);
 
-    const introNextButton = screen.getByText(/next/i);
-    fireEvent.click(introNextButton);
+    // Introduction -> Introduction Preview
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/introduction/preview'
     );
 
-    // tests that the intro preview navigates to involvement
-    const introPreview = screen.getByText(/next/i);
-    expect(introPreview).toBeInTheDocument();
-    fireEvent.click(introPreview);
+    // Introduction Preview -> Modal -> Involvement
+    fireEvent.click(screen.getByText(/next/i));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByTestId('location-display')).toHaveTextContent(
+      '/introduction/preview'
+    );
+
+    confirmModalAndFFW();
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/involvement'
     );
 
-    const popupButton = screen.getByText(/continue/i);
-    fireEvent.click(popupButton);
-
-    // tests that the involvement page navigates to future goals
+    // Select job checkbox and navigate to job form
     const jobCheckbox = screen.getByLabelText(/job/i);
     fireEvent.click(jobCheckbox);
-    const involvementNext = screen.getByText(/next/i);
-    fireEvent.click(involvementNext);
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent('/job');
 
-    // tests that the involvement page navigates to employment
+    // Fill out job form
     const companyName = screen.getByPlaceholderText(
       'job_form.companyName_input_placeholder'
     );
@@ -106,21 +123,23 @@ describe('Routing Tests', () => {
       target: { value: 'This is a job description' },
     });
 
-    const jobNext = screen.getByText(/next/i);
-    fireEvent.click(jobNext);
+    // Job -> Job Preview
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/job/preview'
     );
 
-    // tests that the involvement second step navigates to goals
-    const secondInvolvementButton = screen.getByText(/next/i);
-    fireEvent.click(secondInvolvementButton);
+    // Job Preview -> Modal -> Goals
+    fireEvent.click(screen.getByText(/next/i));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByTestId('location-display')).toHaveTextContent(
+      '/job/preview'
+    );
+
+    confirmModalAndFFW();
     expect(screen.getByTestId('location-display')).toHaveTextContent('/goals');
 
-    const involvementPopupButton = screen.getByText(/continue/i);
-    fireEvent.click(involvementPopupButton);
-
-    // tests that future goals navigates to goals preview
+    // Fill out goals form
     const goals = screen.getByPlaceholderText(
       'goals_form.goals_input_placeholder'
     );
@@ -131,21 +150,23 @@ describe('Routing Tests', () => {
     fireEvent.change(goals, { target: { value: 'Goals' } });
     fireEvent.change(steps, { target: { value: 'Steps' } });
 
-    const goalsButton = screen.getByText(/next/i);
-    fireEvent.click(goalsButton);
+    // Goals -> Goals Preview
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/goals/preview'
     );
 
-    // tests goals preview navigates to why
-    const goalsPreviewButton = screen.getByText(/next/i);
-    fireEvent.click(goalsPreviewButton);
+    // Goals Preview -> Modal -> Why
+    fireEvent.click(screen.getByText(/next/i));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByTestId('location-display')).toHaveTextContent(
+      '/goals/preview'
+    );
+
+    confirmModalAndFFW();
     expect(screen.getByTestId('location-display')).toHaveTextContent('/why');
 
-    const whyPopupButton = screen.getByText(/continue/i);
-    fireEvent.click(whyPopupButton);
-
-    // tests why navigates to
+    // Fill out why form
     const whyClear = screen.getByPlaceholderText(
       'why_form.clearRecordWhy_input_placeholder'
     );
@@ -156,24 +177,36 @@ describe('Routing Tests', () => {
     fireEvent.change(whyClear, { target: { value: 'The why' } });
     fireEvent.change(clearHow, { target: { value: 'The how' } });
 
-    const whyButton = screen.getByText(/next/i);
-    fireEvent.click(whyButton);
+    // Why -> Why Preview
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/why/preview'
     );
 
-    // tests why preview navigates to finalize
-    const whyPreviewButton = screen.getByText(/next/i);
-    fireEvent.click(whyPreviewButton);
+    // Why Preview -> Modal -> Finalize
+    fireEvent.click(screen.getByText(/next/i));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByTestId('location-display')).toHaveTextContent(
+      '/why/preview'
+    );
+
+    confirmModalAndFFW();
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/finalize'
     );
 
-    // tests finalize navigates to finalize preview
-    const finalizeButton = screen.getByText(/next/i);
-    fireEvent.click(finalizeButton);
+    // Finalize -> Finalize Preview
+    fireEvent.click(screen.getByText(/next/i));
     expect(screen.getByTestId('location-display')).toHaveTextContent(
       '/finalize/preview'
     );
+
+    // Finalize Preview -> Modal -> Home
+    fireEvent.click(screen.getByRole('checkbox'));
+    fireEvent.click(screen.getByText(/return home/i));
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+
+    confirmModalAndFFW('return home');
+    expect(screen.getByTestId('location-display')).toHaveTextContent('/');
   });
 });
