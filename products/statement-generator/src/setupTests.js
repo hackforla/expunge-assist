@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 // Override console.warn to suppress specific warnings
 const originalWarn = console.warn;
@@ -13,13 +13,13 @@ console.warn = (...args) => {
   }
 };
 
-jest.mock('react-i18next', () => {
-  const actual = jest.requireActual('react-i18next');
+vi.mock(import('react-i18next'), async (importOriginal) => {
+  const actual = await importOriginal();
   return {
     ...actual,
     useTranslation: () => ({
       t: (key) => key,
-      i18n: { changeLanguage: jest.fn(), language: 'en' },
+      i18n: { changeLanguage: vi.fn(), language: 'en' },
     }),
     Trans: ({ children, i18nKey }) => children || i18nKey || null,
   };
