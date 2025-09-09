@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import ButtonComponent from 'components/Button';
 import userEvent from '@testing-library/user-event';
 
@@ -16,7 +15,7 @@ describe('Button component', () => {
 
   // Test that clicking the button triggers the onClick function (if provided)
   test('Button click triggers onClick function', () => {
-    const mockOnClick = jest.fn();
+    const mockOnClick = vi.fn();
 
     const { getByText } = render(
       <ButtonComponent buttonText="Click Me" onClick={mockOnClick} />
