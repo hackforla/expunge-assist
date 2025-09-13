@@ -49,6 +49,7 @@ export enum AppUrl {
   Credits = '/credits',
   FAQ = '/faq',
   AboutUs = '/about-us',
+  ContactUs = '/contact-us',
 }
 
 export type AppUrlOrString = AppUrl | string;
