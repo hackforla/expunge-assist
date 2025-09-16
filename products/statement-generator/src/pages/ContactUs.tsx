@@ -1,21 +1,18 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation, Trans } from 'react-i18next';
+import useUtilityStyles from 'styles/utilityStyles';
 
+import contactIllustration from 'assets/contact.svg';
 import { DynamicLink } from '../components/DynamicText';
 
 const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
   createStyles({
-    // pageContainer: {
-    //   width: '100%',
-    //   margin: 'auto',
-    //   display: 'flex',
-    //   flex: '1 0 auto',
-    //   flexDirection: 'column',
-    //   backgroundColor: '#FFFFFF',
-    // },
-    heroBg: {
-      // width: '100%',
+    pageContainer: {
+      flex: '1 0 auto',
+      flexDirection: 'column',
+    },
+    fullBleedBg: {
       backgroundColor: palette.primary.lighter,
       paddingTop: spacing(3),
       paddingBottom: spacing(4),
@@ -24,101 +21,119 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
         paddingBottom: spacing(9),
       },
     },
-    hero: {
-      maxWidth: 980,
+    flexRow: {
       margin: '0 auto',
       padding: '0 16px',
       display: 'flex',
       flexDirection: 'column',
-      color: palette.primary.darker,
+      [breakpoints.up('md')]: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 50,
+      },
     },
-    pageTitle: {
-      fontWeight: 500,
-      margin: '0 0 12px 0',
+    textGroup: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: '1 1 60%',
     },
-    heroTitle: {
+    title: {
+      fontSize: 'clamp(1.5rem, 1.2rem + 1vw, 2rem)',
       fontWeight: 600,
-      margin: '16px 0 8px 0',
+      margin: spacing(0, 0, 3, 0),
     },
-    heroText: {
+    subTitle: {
+      fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.15rem)',
+      fontWeight: 600,
+      margin: spacing(0, 0, 3, 0),
+    },
+    descrip: {
       margin: '0 0 12px 0',
       lineHeight: 1.5,
-      fontWeight: 200,
+      fontWeight: 400,
     },
-    infoSection: {
-      backgroundColor: '#FFFFFF',
+
+    heroImgContainer: {
+      marginTop: spacing(3),
+
+      [breakpoints.up('md')]: {
+        marginTop: 0,
+        flex: '1 1 40%',
+      },
+    },
+    heroImg: {
+      width: '100%',
+      maxWidth: 420,
+      height: 'auto',
+    },
+    contactSection: {
       padding: spacing(3, 0, 5, 0),
       [breakpoints.up('md')]: {
         padding: spacing(5, 0, 8, 0),
       },
-    },
-    infoInner: {
-      maxWidth: 980,
-      margin: '0 auto',
-      padding: '0 16px',
-      color: palette.common.black,
-    },
-    infoTitle: {
-      color: palette.primary.darker,
-      fontWeight: 600,
-      margin: '0 0 8px 0',
-    },
-    infoText: {
-      margin: '0 0 12px 0',
-      lineHeight: 1.5,
-      fontWeight: 200,
     },
   })
 );
 
 export default function ContactUs() {
   const classes = useStyles();
+  const utilityClasses = useUtilityStyles();
   const { t } = useTranslation();
   const contactEmail = t('contact_email');
 
   return (
-    // <div className={classes.pageContainer}>
-    <div>
+    <main className={`${classes.pageContainer}`}>
       {/* Hero Block */}
-      <div className={classes.heroBg}>
-        <div className={classes.hero}>
-          <h2 className={classes.pageTitle}>
-            {t('contact_us_page.page_header')}
-          </h2>
-          <h3 className={classes.heroTitle}>
-            {t('contact_us_page.hero_title')}
-          </h3>
-          <p className={classes.heroText}>
-            {t('contact_us_page.hero_paragraph1')}
-          </p>
-          <p className={classes.heroText}>
-            {t('contact_us_page.hero_paragraph2', {
-              contact_email: contactEmail,
-            })}
-          </p>
-        </div>
-      </div>
-
-      {/* Info Block */}
-      <div className={classes.infoSection}>
-        <div className={classes.infoInner}>
-          <h3 className={classes.infoTitle}>
-            {t('contact_us_page.info_title')}
-          </h3>
-          <p className={classes.infoText}>
-            <Trans
-              i18nKey="contact_us_page.info_paragraph1"
-              values={{ contact_email: contactEmail }}
-              components={{ Link: <DynamicLink /> }}
+      <div className={classes.fullBleedBg}>
+        <div className={`${classes.flexRow} ${utilityClasses.widePage}`}>
+          <div className={classes.textGroup}>
+            <h2 className={classes.title}>
+              {t('contact_us_page.page_header')}
+            </h2>
+            <h3 className={classes.subTitle}>
+              {t('contact_us_page.hero_title')}
+            </h3>
+            <p className={classes.descrip}>
+              {t('contact_us_page.hero_paragraph1')}
+            </p>
+            <p className={classes.descrip}>
+              {t('contact_us_page.hero_paragraph2', {
+                contact_email: contactEmail,
+              })}
+            </p>
+          </div>
+          <div className={classes.heroImgContainer}>
+            <img
+              className={classes.heroImg}
+              src={contactIllustration}
+              alt={t('contact_us_page.page_header')}
             />
-          </p>
-          <p className={classes.infoText}>
-            {t('contact_us_page.info_paragraph2_sla')}
-          </p>
+          </div>
         </div>
       </div>
 
-      {/* Form section will be added in a subsequent step */}
-    </div>
+      {/* Contact Block */}
+      <div className={classes.contactSection}>
+        <div className={`${classes.flexRow} ${utilityClasses.widePage}`}>
+          <div className={`${classes.textGroup}`}>
+            <h2 className={classes.title}>{t('contact_us_page.info_title')}</h2>
+            <p className={classes.descrip}>
+              <Trans
+                i18nKey="contact_us_page.info_paragraph1"
+                values={{ contact_email: contactEmail }}
+                components={{ Link: <DynamicLink /> }}
+              />
+            </p>
+            <p className={classes.descrip}>
+              {t('contact_us_page.info_paragraph2_sla')}
+            </p>
+          </div>
+          {/* Form section will be added in a subsequent step */}
+          <div>
+            Thank you! Your message has been sent. We will be in touch shortly.
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
