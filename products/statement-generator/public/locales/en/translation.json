@@ -19,6 +19,16 @@
     "terms_of_use": "Terms of Use",
     "credits": "Credits"
   },
+  "contact_email": "expungeassist@hackforla.org",
+  "contact_us_page": {
+    "page_header": "Contact Us",
+    "hero_title": "Questions? Comments? Feedback?",
+    "hero_paragraph1": "We would love to hear from you. Please complete the form below to get in touch with the Expunge Assist team.",
+    "hero_paragraph2": "You can also reach us by email at {{contact_email}}",
+    "info_title": "Questions? Comments? Feedback?",
+    "info_paragraph1": "Fill out the form or email us directly at <Link href=\"mailto:{{contact_email}}\">{{contact_email}}</Link>",
+    "info_paragraph2_sla": "We’ll get back to you within 5 business days."
+  },
   "landing_page": {
     "sectionTitle1": "A writing tool for people seeking expungement",
     "sectionParagraph1": "Expunge Assist helps you write a letter to a judge (a “declaration”). If you are applying to have your record expunged, a declaration can help.",
