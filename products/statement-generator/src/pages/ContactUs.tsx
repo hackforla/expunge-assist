@@ -1,80 +1,124 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
+import { useTranslation, Trans } from 'react-i18next';
 
-import ContentContainer from 'components-layout/ContentContainer';
+import { DynamicLink } from '../components/DynamicText';
 
-const useStyles = makeStyles(({ spacing, breakpoints }) =>
+const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
   createStyles({
-    pageContainer: {
-      width: '100%',
-      paddingBottom: spacing(12),
-      margin: 'auto',
-      display: 'flex',
-      flex: '1 0 auto',
-      flexDirection: 'column',
-
-      [breakpoints.down('sm')]: {
-        paddingBottom: spacing(7),
-      },
-    },
+    // pageContainer: {
+    //   width: '100%',
+    //   margin: 'auto',
+    //   display: 'flex',
+    //   flex: '1 0 auto',
+    //   flexDirection: 'column',
+    //   backgroundColor: '#FFFFFF',
+    // },
     heroBg: {
-      width: '100%',
-      backgroundColor: '#F7EBFF',
-      paddingTop: spacing(9),
-      paddingBottom: spacing(9),
-
-      [breakpoints.down('md')]: {
-        paddingTop: spacing(2),
-        paddingBottom: spacing(3),
+      // width: '100%',
+      backgroundColor: palette.primary.lighter,
+      paddingTop: spacing(3),
+      paddingBottom: spacing(4),
+      [breakpoints.up('md')]: {
+        paddingTop: spacing(9),
+        paddingBottom: spacing(9),
       },
     },
-    headerSection: {
+    hero: {
       maxWidth: 980,
-      margin: 'auto',
+      margin: '0 auto',
+      padding: '0 16px',
       display: 'flex',
       flexDirection: 'column',
-      padding: '0 16px',
+      color: palette.primary.darker,
     },
-    sectionTitle: {
+    pageTitle: {
       fontWeight: 500,
+      margin: '0 0 12px 0',
+    },
+    heroTitle: {
+      fontWeight: 600,
+      margin: '16px 0 8px 0',
+    },
+    heroText: {
+      margin: '0 0 12px 0',
+      lineHeight: 1.5,
+      fontWeight: 200,
+    },
+    infoSection: {
+      backgroundColor: '#FFFFFF',
+      padding: spacing(3, 0, 5, 0),
+      [breakpoints.up('md')]: {
+        padding: spacing(5, 0, 8, 0),
+      },
+    },
+    infoInner: {
+      maxWidth: 980,
+      margin: '0 auto',
+      padding: '0 16px',
+      color: palette.common.black,
+    },
+    infoTitle: {
+      color: palette.primary.darker,
+      fontWeight: 600,
       margin: '0 0 8px 0',
     },
-    subtitle: {
-      fontWeight: 200,
+    infoText: {
+      margin: '0 0 12px 0',
       lineHeight: 1.5,
-      margin: 0,
-    },
-    placeholder: {
-      maxWidth: 980,
-      margin: '32px auto 0',
-      padding: '16px',
-      borderRadius: 8,
-      border: '1px dashed #adadad',
-      color: '#25003F',
+      fontWeight: 200,
     },
   })
 );
 
 export default function ContactUs() {
   const classes = useStyles();
+  const { t } = useTranslation();
+  const contactEmail = t('contact_email');
 
   return (
-    <div className={classes.pageContainer}>
+    // <div className={classes.pageContainer}>
+    <div>
+      {/* Hero Block */}
       <div className={classes.heroBg}>
-        <div className={classes.headerSection}>
-          <h2 className={classes.sectionTitle}>Contact Us</h2>
-          <p className={classes.subtitle}>
-            We’d love to hear from you. Please use the form below.
+        <div className={classes.hero}>
+          <h2 className={classes.pageTitle}>
+            {t('contact_us_page.page_header')}
+          </h2>
+          <h3 className={classes.heroTitle}>
+            {t('contact_us_page.hero_title')}
+          </h3>
+          <p className={classes.heroText}>
+            {t('contact_us_page.hero_paragraph1')}
+          </p>
+          <p className={classes.heroText}>
+            {t('contact_us_page.hero_paragraph2', {
+              contact_email: contactEmail,
+            })}
           </p>
         </div>
       </div>
 
-      <ContentContainer>
-        <div className={classes.placeholder}>
-          Placeholder: form goes here (temporary dummy component)
+      {/* Info Block */}
+      <div className={classes.infoSection}>
+        <div className={classes.infoInner}>
+          <h3 className={classes.infoTitle}>
+            {t('contact_us_page.info_title')}
+          </h3>
+          <p className={classes.infoText}>
+            <Trans
+              i18nKey="contact_us_page.info_paragraph1"
+              values={{ contact_email: contactEmail }}
+              components={{ Link: <DynamicLink /> }}
+            />
+          </p>
+          <p className={classes.infoText}>
+            {t('contact_us_page.info_paragraph2_sla')}
+          </p>
         </div>
-      </ContentContainer>
+      </div>
+
+      {/* Form section will be added in a subsequent step */}
     </div>
   );
 }
-
