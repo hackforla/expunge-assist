@@ -52,10 +52,8 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
       lineHeight: 1.5,
       fontWeight: 400,
     },
-
     heroImgContainer: {
       marginTop: spacing(3),
-
       [breakpoints.up('md')]: {
         marginTop: 0,
         flex: '1 1 40%',
@@ -72,6 +70,17 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
         padding: spacing(5, 0, 8, 0),
       },
     },
+    srOnly: {
+      position: 'absolute',
+      width: 1,
+      height: 1,
+      padding: 0,
+      margin: -1,
+      overflow: 'hidden',
+      clip: 'rect(0, 0, 0, 0)',
+      whiteSpace: 'nowrap',
+      border: 0,
+    },
   })
 );
 
@@ -82,17 +91,21 @@ export default function ContactUs() {
   const contactEmail = t('contact_email');
 
   return (
-    <main className={`${classes.pageContainer}`}>
-      {/* Hero Block */}
-      <div className={classes.fullBleedBg}>
+    <main className={classes.pageContainer}>
+      {/* Hero */}
+      <section
+        className={classes.fullBleedBg}
+        role="banner"
+        aria-labelledby="contact-page-heading"
+      >
         <div className={`${classes.flexRow} ${utilityClasses.widePage}`}>
           <div className={classes.textGroup}>
-            <h2 className={classes.title}>
+            <h1 id="contact-page-heading" className={classes.title}>
               {t('contact_us_page.page_header')}
-            </h2>
-            <h3 className={classes.subTitle}>
+            </h1>
+            <h2 className={classes.subTitle}>
               {t('contact_us_page.hero_title')}
-            </h3>
+            </h2>
             <p className={classes.descrip}>
               {t('contact_us_page.hero_paragraph1')}
             </p>
@@ -102,21 +115,31 @@ export default function ContactUs() {
               })}
             </p>
           </div>
-          <div className={classes.heroImgContainer}>
+
+          <figure className={classes.heroImgContainer}>
             <img
               className={classes.heroImg}
               src={contactIllustration}
               alt={t('contact_us_page.page_header')}
             />
-          </div>
+            {/* Visually hidden caption */}
+            <figcaption className={classes.srOnly}>
+              {t('contact_us_page.hero_title')}
+            </figcaption>
+          </figure>
         </div>
-      </div>
+      </section>
 
-      {/* Contact Block */}
-      <div className={classes.contactSection}>
+      {/* Contact */}
+      <section
+        className={classes.contactSection}
+        aria-labelledby="contact-info-heading"
+      >
         <div className={`${classes.flexRow} ${utilityClasses.widePage}`}>
-          <div className={`${classes.textGroup}`}>
-            <h2 className={classes.title}>{t('contact_us_page.info_title')}</h2>
+          <div className={classes.textGroup}>
+            <h2 id="contact-info-heading" className={classes.title}>
+              {t('contact_us_page.info_title')}
+            </h2>
             <p className={classes.descrip}>
               <Trans
                 i18nKey="contact_us_page.info_paragraph1"
@@ -128,12 +151,24 @@ export default function ContactUs() {
               {t('contact_us_page.info_paragraph2_sla')}
             </p>
           </div>
-          {/* Form section will be added in a subsequent step */}
-          <div>
-            Thank you! Your message has been sent. We will be in touch shortly.
-          </div>
+
+          {/* Placeholder for form section */}
+          <aside
+            aria-live="polite"
+            role="status"
+            aria-atomic="true"
+            className={classes.textGroup}
+          >
+            {/* Replace this with conditional rendering after submit */}
+            <p>
+              {t(
+                'contact_us_page.thank_you_message',
+                'Thank you! Your message has been sent. We will be in touch shortly.'
+              )}
+            </p>
+          </aside>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
