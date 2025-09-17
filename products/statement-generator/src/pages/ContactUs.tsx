@@ -4,6 +4,7 @@ import { useTranslation, Trans } from 'react-i18next';
 import useUtilityStyles from 'styles/utilityStyles';
 
 import contactIllustration from 'assets/contact.svg';
+import ContactForm from 'components/ContactForm';
 import { DynamicLink } from '../components/DynamicText';
 
 const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
@@ -37,6 +38,29 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
       flexDirection: 'column',
       flex: '1 1 60%',
     },
+    heroImgContainer: {
+      marginTop: spacing(3),
+      [breakpoints.up('md')]: {
+        marginTop: 0,
+        flex: '1 1 40%',
+      },
+    },
+    heroImg: {
+      width: '100%',
+      maxWidth: 420,
+      height: 'auto',
+    },
+    srOnly: {
+      position: 'absolute',
+      width: 1,
+      height: 1,
+      padding: 0,
+      margin: -1,
+      overflow: 'hidden',
+      clip: 'rect(0, 0, 0, 0)',
+      whiteSpace: 'nowrap',
+      border: 0,
+    },
     title: {
       fontSize: 'clamp(1.5rem, 1.2rem + 1vw, 2rem)',
       fontWeight: 600,
@@ -69,34 +93,16 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
       lineHeight: 1.5,
       fontWeight: 400,
     },
-    heroImgContainer: {
-      marginTop: spacing(3),
-      [breakpoints.up('md')]: {
-        marginTop: 0,
-        flex: '1 1 40%',
-      },
-    },
-    heroImg: {
-      width: '100%',
-      maxWidth: 420,
-      height: 'auto',
-    },
     contactSection: {
       padding: spacing(4, 0, 5, 0),
       [breakpoints.up('md')]: {
         padding: spacing(5, 0, 8, 0),
       },
     },
-    srOnly: {
-      position: 'absolute',
-      width: 1,
-      height: 1,
-      padding: 0,
-      margin: -1,
-      overflow: 'hidden',
-      clip: 'rect(0, 0, 0, 0)',
-      whiteSpace: 'nowrap',
-      border: 0,
+    formContainer: {
+      [breakpoints.up('md')]: {
+        flex: '1 1 50%',
+      },
     },
   })
 );
@@ -186,27 +192,15 @@ const Info: React.FC = () => {
           </p>
         </div>
 
-        {/* Placeholder for form section */}
-        <aside
-          aria-live="polite"
-          role="status"
-          aria-atomic="true"
-          className={classes.textGroup}
-        >
-          {/* Replace this with conditional rendering after submit */}
-          <p>
-            {t(
-              'contact_us_page.thank_you_message',
-              'Thank you! Your message has been sent. We will be in touch shortly.'
-            )}
-          </p>
-        </aside>
+        <div className={classes.formContainer}>
+          <ContactForm />
+        </div>
       </div>
     </section>
   );
 };
 
-const ContactUs = () => {
+const ContactUs: React.FC = () => {
   const classes = useStyles();
 
   return (
