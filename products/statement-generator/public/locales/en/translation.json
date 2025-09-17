@@ -17,7 +17,8 @@
     "faq": "FAQ",
     "privacy_policy": "Privacy Policy",
     "terms_of_use": "Terms of Use",
-    "credits": "Credits"
+    "credits": "Credits",
+    "contact_us": "Contact Us"
   },
   "contact_email": "expungeassist@hackforla.org",
   "contact_us_page": {
@@ -28,7 +29,15 @@
     "hero_paragraph1_md": "Get in touch with the Expunge Assist team. We'd love to hear from you.",
     "info_title": "Questions? Comments? Feedback?",
     "info_paragraph1": "Fill out the form or email us directly at <Link href=\"mailto:{{contact_email}}\">{{contact_email}}</Link>",
-    "info_paragraph2_sla": "We’ll get back to you within 5 business days."
+    "info_paragraph2_sla": "We’ll get back to you within 5 business days.",
+    "form_title": "Contact Form",
+    "name_label": "Name",
+    "name_placeholder": "Firstname Lastname",
+    "email_label": "Email",
+    "email_placeholder": "email@mail.com",
+    "message_label": "Message",
+    "message_placeholder": "Write your message here...",
+    "submit_button": "Send Message"
   },
   "landing_page": {
     "sectionTitle1": "A writing tool for people seeking expungement",
