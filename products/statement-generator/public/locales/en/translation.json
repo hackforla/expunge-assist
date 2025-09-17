@@ -25,6 +25,7 @@
     "hero_title": "Questions? Comments? Feedback?",
     "hero_paragraph1": "We would love to hear from you. Please complete the form below to get in touch with the Expunge Assist team.",
     "hero_paragraph2": "You can also reach us by email at {{contact_email}}",
+    "hero_paragraph1_md": "Get in touch with the Expunge Assist team. We'd love to hear from you.",
     "info_title": "Questions? Comments? Feedback?",
     "info_paragraph1": "Fill out the form or email us directly at <Link href=\"mailto:{{contact_email}}\">{{contact_email}}</Link>",
     "info_paragraph2_sla": "We’ll get back to you within 5 business days."
