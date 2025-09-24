@@ -10,6 +10,8 @@ import useUtilityStyles from 'styles/utilityStyles';
 interface StyleProps {
   disabled?: boolean;
   useShort?: boolean;
+  outlineColor?: string;
+  placeholderColor?: string;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>(
@@ -35,7 +37,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
 
         // -- outline
         '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#adadad',
+          borderColor: ({ outlineColor }) => outlineColor ?? '#adadad',
           borderWidth: '1px',
         },
         '&:hover .MuiOutlinedInput-notchedOutline': {
@@ -57,9 +59,10 @@ const useStyles = makeStyles<Theme, StyleProps>(
 
           '&::placeholder': {
             opacity: 1,
-            color: palette.common.grey,
+            color: ({ placeholderColor }) =>
+              placeholderColor ?? palette.common.grey,
           },
-        },
+      },
 
         '& .MuiInputAdornment-root': {
           pointerEvents: 'none',
@@ -89,6 +92,10 @@ interface InputFieldProps {
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
   labelRef?: React.Ref<HTMLLabelElement>;
+  customStyles?: {
+    outlineColor?: string;
+    placeholderColor?: string;
+  };
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -103,11 +110,14 @@ const InputArea: React.FC<InputFieldProps> = ({
   className = '',
   shortWidth = false,
   labelRef,
+  customStyles,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
     disabled,
     useShort: shortWidth || type === 'number',
+    outlineColor: customStyles?.outlineColor,
+    placeholderColor: customStyles?.placeholderColor,
   });
 
   const [valid, isValid] = useState(false);

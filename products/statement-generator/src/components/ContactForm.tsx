@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { createStyles, makeStyles } from '@material-ui/core';
+import { createStyles, makeStyles, darken } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import MailIcon from '@material-ui/icons/Mail';
 import Input from './Input';
 import Textarea from './Textarea';
 import Button from './Button';
@@ -26,6 +26,13 @@ const useStyles = makeStyles(({ palette }) =>
     },
     button: {
       minWidth: 200,
+      color: palette.primary.darker,
+      backgroundColor: palette.primary.dark,
+      border: `1px solid ${palette.primary.dark}`,
+      fontWeight: 400,
+      '&:hover': {
+        backgroundColor: darken(palette.primary.dark, 0.12),
+      },
     },
     textColor: {
       '& .MuiFormLabel-root': {
@@ -57,6 +64,7 @@ const ContactForm: React.FC = () => {
         handleChange={(e) => setName(e.target.value)}
         defaultValue={name}
         className={classes.textColor}
+        customStyles={{ outlineColor: '#9903FF', placeholderColor: '#8b30c9' }}
       />
 
       <Input
@@ -81,7 +89,7 @@ const ContactForm: React.FC = () => {
         <Button
           className={classes.button}
           theme="dark"
-          icon={<MailOutlineIcon style={{ marginRight: 8 }} />}
+          icon={<MailIcon style={{ marginRight: 8 }} />}
           buttonText={t('contact_us_page.submit_button')}
         />
       </div>
