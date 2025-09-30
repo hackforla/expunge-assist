@@ -50,6 +50,7 @@ const ContactForm: React.FC = () => {
     '--outline-color': theme.palette.primary.darker,
     '--placeholder-color': theme.palette.primary.dark,
     '--label-color': theme.palette.primary.darker,
+    '--hover-color': darken(theme.palette.primary.main, 0.2),
   };
 
   return (

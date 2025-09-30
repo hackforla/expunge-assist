@@ -45,7 +45,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
           borderWidth: '1px',
         },
         '&:hover .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#8f8f8f',
+          borderColor: 'var(--hover-color)',
           borderWidth: '1px',
         },
         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -87,12 +87,14 @@ export type CSSVars = {
   ['--outline-color']?: string;
   ['--placeholder-color']?: string;
   ['--label-color']?: string;
+  ['--hover-color']?: string;
 };
 
 export const defaultStyles: CSSVars = {
   '--outline-color': '#adadad',
   '--placeholder-color': customMuiTheme.palette.common.grey,
   '--label-color': customMuiTheme.palette.common.black,
+  '--hover-color': '#8f8f8f',
 };
 
 interface InputFieldProps {

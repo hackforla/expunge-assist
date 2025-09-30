@@ -23,11 +23,11 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
       },
       // Change outline color when the input root is hovered (target the root, not the fieldset)
       '& .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#8f8f8f',
+        borderColor: 'var(--hover-color)',
         borderWidth: '1px',
       },
       '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#8f8f8f',
+        borderColor: 'var(--hover-color)',
         borderWidth: '1px',
       },
       '& .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
