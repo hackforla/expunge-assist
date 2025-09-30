@@ -4,11 +4,16 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import useUtilityStyles from 'styles/utilityStyles';
-import type { CSSVarColor } from './Input';
-import { defaultColor } from './Input';
+import type { CSSVars } from './Input';
+import { defaultStyles } from './Input';
 
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
+    labelWrapper: {
+      '& .MuiFormLabel-root': {
+        color: 'var(--label-color)',
+      },
+    },
     textfieldComponent: {
       // -- outline
       '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
@@ -88,7 +93,7 @@ interface TextFieldProps {
   value?: string;
   rows?: number;
   labelRef?: React.Ref<HTMLLabelElement>;
-  customColor?: CSSVarColor;
+  customStyles?: CSSVars;
 }
 
 const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
@@ -103,7 +108,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
       value,
       rows,
       labelRef,
-      customColor = defaultColor,
+      customStyles = defaultStyles,
     },
     ref
   ) => {
@@ -112,8 +117,8 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
 
     return (
       <div
-        className={utilityClasses.formInput}
-        style={customColor as React.CSSProperties}
+        className={`${utilityClasses.formInput} ${classes.labelWrapper}`}
+        style={customStyles as React.CSSProperties}
       >
         {label && (
           <InputLabel

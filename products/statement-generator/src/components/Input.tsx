@@ -16,6 +16,11 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(
   ({ breakpoints, palette, spacing }) =>
     createStyles({
+      labelWrapper: {
+        '& .MuiFormLabel-root': {
+          color: 'var(--label-color)',
+        },
+      },
       inputComponent: {
         borderRadius: '16px',
 
@@ -78,14 +83,16 @@ const useStyles = makeStyles<Theme, StyleProps>(
     })
 );
 
-export type CSSVarColor = {
+export type CSSVars = {
   ['--outline-color']?: string;
   ['--placeholder-color']?: string;
+  ['--label-color']?: string;
 };
 
-export const defaultColor: CSSVarColor = {
+export const defaultStyles: CSSVars = {
   '--outline-color': '#adadad',
   '--placeholder-color': customMuiTheme.palette.common.grey,
+  '--label-color': customMuiTheme.palette.common.black,
 };
 
 interface InputFieldProps {
@@ -100,7 +107,7 @@ interface InputFieldProps {
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
   labelRef?: React.Ref<HTMLLabelElement>;
-  customColor?: CSSVarColor;
+  customStyles?: CSSVars;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -115,7 +122,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   className = '',
   shortWidth = false,
   labelRef,
-  customColor = defaultColor,
+  customStyles = defaultStyles,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
@@ -130,8 +137,8 @@ const InputArea: React.FC<InputFieldProps> = ({
 
   return (
     <div
-      className={`${utilityClasses.formInput} ${className}`}
-      style={customColor as React.CSSProperties}
+      className={`${utilityClasses.formInput} ${classes.labelWrapper} ${className}`}
+      style={customStyles as React.CSSProperties}
     >
       <InputLabel
         tabIndex={0}

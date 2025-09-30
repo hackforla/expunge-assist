@@ -34,11 +34,6 @@ const useStyles = makeStyles(({ palette }) =>
         backgroundColor: darken(palette.primary.dark, 0.12),
       },
     },
-    textColor: {
-      '& .MuiFormLabel-root': {
-        color: palette.primary.darker,
-      },
-    },
   })
 );
 
@@ -50,6 +45,12 @@ const ContactForm: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+
+  const styleVars = {
+    '--outline-color': theme.palette.primary.darker,
+    '--placeholder-color': theme.palette.primary.dark,
+    '--label-color': theme.palette.primary.darker,
+  };
 
   return (
     <section aria-labelledby="contact-form-title" className={classes.card}>
@@ -64,11 +65,7 @@ const ContactForm: React.FC = () => {
         type="text"
         handleChange={(e) => setName(e.target.value)}
         defaultValue={name}
-        className={classes.textColor}
-        customColor={{
-          '--outline-color': theme.palette.primary.darker,
-          '--placeholder-color': theme.palette.primary.dark,
-        }}
+        customStyles={styleVars}
       />
 
       <Input
@@ -78,10 +75,7 @@ const ContactForm: React.FC = () => {
         type="email"
         handleChange={(e) => setEmail(e.target.value)}
         defaultValue={email}
-        customColor={{
-          '--outline-color': theme.palette.primary.darker,
-          '--placeholder-color': theme.palette.primary.dark,
-        }}
+        customStyles={styleVars}
       />
 
       <Textarea
@@ -91,10 +85,7 @@ const ContactForm: React.FC = () => {
         handleChange={(e) => setMessage(e.target.value as any)}
         defaultValue={message}
         rows={6}
-        customColor={{
-          '--outline-color': theme.palette.primary.darker,
-          '--placeholder-color': theme.palette.primary.dark,
-        }}
+        customStyles={styleVars}
       />
 
       <div className={classes.buttonWrap}>
