@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createStyles, makeStyles, darken } from '@material-ui/core';
+import { createStyles, makeStyles, darken, useTheme } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 import MailIcon from '@material-ui/icons/Mail';
@@ -44,6 +44,7 @@ const useStyles = makeStyles(({ palette }) =>
 
 const ContactForm: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
   const { t } = useTranslation();
 
   const [name, setName] = useState('');
@@ -64,7 +65,10 @@ const ContactForm: React.FC = () => {
         handleChange={(e) => setName(e.target.value)}
         defaultValue={name}
         className={classes.textColor}
-        customStyles={{ outlineColor: '#9903FF', placeholderColor: '#8b30c9' }}
+        customColor={{
+          '--outline-color': theme.palette.primary.darker,
+          '--placeholder-color': theme.palette.primary.dark,
+        }}
       />
 
       <Input
@@ -74,6 +78,10 @@ const ContactForm: React.FC = () => {
         type="email"
         handleChange={(e) => setEmail(e.target.value)}
         defaultValue={email}
+        customColor={{
+          '--outline-color': theme.palette.primary.darker,
+          '--placeholder-color': theme.palette.primary.dark,
+        }}
       />
 
       <Textarea
@@ -83,6 +91,10 @@ const ContactForm: React.FC = () => {
         handleChange={(e) => setMessage(e.target.value as any)}
         defaultValue={message}
         rows={6}
+        customColor={{
+          '--outline-color': theme.palette.primary.darker,
+          '--placeholder-color': theme.palette.primary.dark,
+        }}
       />
 
       <div className={classes.buttonWrap}>

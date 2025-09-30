@@ -4,6 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import useUtilityStyles from 'styles/utilityStyles';
+import type { CSSVarColor } from './Input';
+import { defaultColor } from './Input';
 
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
@@ -11,10 +13,15 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
       // -- outline
       '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
         borderRadius: '15px',
-        borderColor: '#adadad',
+        borderColor: 'var(--outline-color)',
         borderWidth: '1px',
       },
-      '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline:hover': {
+      // Change outline color when the input root is hovered (target the root, not the fieldset)
+      '& .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: '#8f8f8f',
+        borderWidth: '1px',
+      },
+      '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
         borderColor: '#8f8f8f',
         borderWidth: '1px',
       },
@@ -31,11 +38,15 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
       // -- text field
       '& .MuiOutlinedInput-multiline': {
         padding: spacing(2),
-
-        '&::placeholder': {
-          opacity: 1,
-          color: palette.common.grey,
-        },
+      },
+      '& .MuiOutlinedInput-input::placeholder': {
+        opacity: 1,
+        color: 'var(--placeholder-color)',
+      },
+      // fallback for input base placeholder class
+      '& .MuiInputBase-input::placeholder': {
+        opacity: 1,
+        color: 'var(--placeholder-color)',
       },
       '& .MuiInputAdornment-root': {
         pointerEvents: 'none',
@@ -77,6 +88,7 @@ interface TextFieldProps {
   value?: string;
   rows?: number;
   labelRef?: React.Ref<HTMLLabelElement>;
+  customColor?: CSSVarColor;
 }
 
 const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
@@ -91,6 +103,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
       value,
       rows,
       labelRef,
+      customColor = defaultColor,
     },
     ref
   ) => {
@@ -98,7 +111,10 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
     const classes = useStyles();
 
     return (
-      <div className={utilityClasses.formInput}>
+      <div
+        className={utilityClasses.formInput}
+        style={customColor as React.CSSProperties}
+      >
         {label && (
           <InputLabel
             ref={labelRef}

@@ -6,12 +6,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 
 import useUtilityStyles from 'styles/utilityStyles';
+import customMuiTheme from 'styles/customMuiTheme';
 
 interface StyleProps {
   disabled?: boolean;
   useShort?: boolean;
-  outlineColor?: string;
-  placeholderColor?: string;
 }
 
 const useStyles = makeStyles<Theme, StyleProps>(
@@ -37,7 +36,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
 
         // -- outline
         '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: ({ outlineColor }) => outlineColor ?? '#adadad',
+          borderColor: 'var(--outline-color)',
           borderWidth: '1px',
         },
         '&:hover .MuiOutlinedInput-notchedOutline': {
@@ -59,10 +58,9 @@ const useStyles = makeStyles<Theme, StyleProps>(
 
           '&::placeholder': {
             opacity: 1,
-            color: ({ placeholderColor }) =>
-              placeholderColor ?? palette.common.grey,
+            color: 'var(--placeholder-color)',
           },
-      },
+        },
 
         '& .MuiInputAdornment-root': {
           pointerEvents: 'none',
@@ -80,6 +78,16 @@ const useStyles = makeStyles<Theme, StyleProps>(
     })
 );
 
+export type CSSVarColor = {
+  ['--outline-color']?: string;
+  ['--placeholder-color']?: string;
+};
+
+export const defaultColor: CSSVarColor = {
+  '--outline-color': '#adadad',
+  '--placeholder-color': customMuiTheme.palette.common.grey,
+};
+
 interface InputFieldProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id: string;
@@ -92,10 +100,7 @@ interface InputFieldProps {
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
   labelRef?: React.Ref<HTMLLabelElement>;
-  customStyles?: {
-    outlineColor?: string;
-    placeholderColor?: string;
-  };
+  customColor?: CSSVarColor;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -110,14 +115,12 @@ const InputArea: React.FC<InputFieldProps> = ({
   className = '',
   shortWidth = false,
   labelRef,
-  customStyles,
+  customColor = defaultColor,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
     disabled,
     useShort: shortWidth || type === 'number',
-    outlineColor: customStyles?.outlineColor,
-    placeholderColor: customStyles?.placeholderColor,
   });
 
   const [valid, isValid] = useState(false);
@@ -126,7 +129,10 @@ const InputArea: React.FC<InputFieldProps> = ({
   };
 
   return (
-    <div className={`${utilityClasses.formInput} ${className}`}>
+    <div
+      className={`${utilityClasses.formInput} ${className}`}
+      style={customColor as React.CSSProperties}
+    >
       <InputLabel
         tabIndex={0}
         disabled={disabled}
