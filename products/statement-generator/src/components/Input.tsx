@@ -18,7 +18,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
     createStyles({
       labelWrapper: {
         '& .MuiFormLabel-root': {
-          color: 'var(--label-color)',
+          color: 'var(--text-color)',
         },
       },
       inputComponent: {
@@ -28,6 +28,9 @@ const useStyles = makeStyles<Theme, StyleProps>(
           width: ({ useShort }) => (useShort ? 320 : undefined),
         },
 
+        '& .MuiInputBase-input': {
+          color: 'var(--text-color)',
+        },
         '&.Mui-focused': {
           boxShadow: '0 0 10px 2px #F7EBFF',
         },
@@ -86,7 +89,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
 export type CSSVars = {
   ['--outline-color']: string;
   ['--placeholder-color']: string;
-  ['--label-color']: string;
+  ['--text-color']: string;
   ['--hover-color']: string;
 };
 
@@ -95,7 +98,7 @@ export type CSSVarsPartial = Partial<CSSVars>;
 export const defaultStyles: CSSVars = {
   '--outline-color': '#adadad',
   '--placeholder-color': customMuiTheme.palette.common.grey,
-  '--label-color': customMuiTheme.palette.common.black,
+  '--text-color': customMuiTheme.palette.common.black,
   '--hover-color': '#8f8f8f',
 };
 

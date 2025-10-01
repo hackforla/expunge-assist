@@ -49,7 +49,7 @@ const ContactForm: React.FC = () => {
   const styleVars = {
     '--outline-color': theme.palette.primary.darker,
     '--placeholder-color': theme.palette.primary.dark,
-    '--label-color': theme.palette.primary.darker,
+    '--text-color': theme.palette.primary.darker,
     '--hover-color': theme.palette.primary.darker,
   };
 

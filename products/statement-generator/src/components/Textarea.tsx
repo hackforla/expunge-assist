@@ -11,10 +11,13 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
     labelWrapper: {
       '& .MuiFormLabel-root': {
-        color: 'var(--label-color)',
+        color: 'var(--text-color)',
       },
     },
     textfieldComponent: {
+      '& .MuiInputBase-input': {
+        color: 'var(--text-color)',
+      },
       // -- outline
       '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
         borderRadius: '15px',
