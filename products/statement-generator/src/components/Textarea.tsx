@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import useUtilityStyles from 'styles/utilityStyles';
-import type { CSSVars } from './Input';
+import type { CSSVarsPartial, CSSVars } from './Input';
 import { defaultStyles } from './Input';
 
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
@@ -93,7 +93,7 @@ interface TextFieldProps {
   value?: string;
   rows?: number;
   labelRef?: React.Ref<HTMLLabelElement>;
-  customStyles?: CSSVars;
+  customStyles?: CSSVarsPartial;
 }
 
 const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
@@ -115,10 +115,15 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
     const utilityClasses = useUtilityStyles();
     const classes = useStyles();
 
+    const mergedStyles: React.CSSProperties & CSSVars = {
+      ...defaultStyles,
+      ...customStyles,
+    };
+
     return (
       <div
         className={`${utilityClasses.formInput} ${classes.labelWrapper}`}
-        style={customStyles as React.CSSProperties}
+        style={mergedStyles as React.CSSProperties}
       >
         {label && (
           <InputLabel

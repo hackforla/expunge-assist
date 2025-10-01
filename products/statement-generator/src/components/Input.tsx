@@ -84,11 +84,13 @@ const useStyles = makeStyles<Theme, StyleProps>(
 );
 
 export type CSSVars = {
-  ['--outline-color']?: string;
-  ['--placeholder-color']?: string;
-  ['--label-color']?: string;
-  ['--hover-color']?: string;
+  ['--outline-color']: string;
+  ['--placeholder-color']: string;
+  ['--label-color']: string;
+  ['--hover-color']: string;
 };
+
+export type CSSVarsPartial = Partial<CSSVars>;
 
 export const defaultStyles: CSSVars = {
   '--outline-color': '#adadad',
@@ -109,7 +111,7 @@ interface InputFieldProps {
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
   labelRef?: React.Ref<HTMLLabelElement>;
-  customStyles?: CSSVars;
+  customStyles?: CSSVarsPartial;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -132,6 +134,11 @@ const InputArea: React.FC<InputFieldProps> = ({
     useShort: shortWidth || type === 'number',
   });
 
+  const mergedStyles: React.CSSProperties & CSSVars = {
+    ...defaultStyles,
+    ...customStyles,
+  };
+
   const [valid, isValid] = useState(false);
   const checkValid = (e: string) => {
     isValid(e.length > 0);
@@ -140,7 +147,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   return (
     <div
       className={`${utilityClasses.formInput} ${classes.labelWrapper} ${className}`}
-      style={customStyles as React.CSSProperties}
+      style={mergedStyles as React.CSSProperties}
     >
       <InputLabel
         tabIndex={0}
