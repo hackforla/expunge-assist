@@ -37,7 +37,14 @@
     "email_placeholder": "email@mail.com",
     "message_label": "Message",
     "message_placeholder": "Write your message here...",
-    "submit_button": "Send Message"
+    "submit_button": "Send Message",
+    "errors": {
+      "name_required": "Name is required",
+      "name_too_long": "Name is too long",
+      "invalid_email": "Invalid email address",
+      "message_too_short": "Message is too short",
+      "message_too_long": "Message is too long"
+    }
   },
   "landing_page": {
     "sectionTitle1": "A writing tool for people seeking expungement",

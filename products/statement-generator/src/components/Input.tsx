@@ -115,6 +115,8 @@ interface InputFieldProps {
   shortWidth?: boolean; // if true, element will have a set width
   labelRef?: React.Ref<HTMLLabelElement>;
   customStyles?: CSSVarsPartial;
+  error?: boolean;
+  helperText?: string;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -130,6 +132,8 @@ const InputArea: React.FC<InputFieldProps> = ({
   shortWidth = false,
   labelRef,
   customStyles = defaultStyles,
+  error,
+  helperText,
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
@@ -166,10 +170,14 @@ const InputArea: React.FC<InputFieldProps> = ({
         label={label}
         id={id}
         className={classes.inputComponent}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          checkValid(e.currentTarget.value);
-          handleChange(e);
-        }}
+        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        //   checkValid(e.currentTarget.value);
+        //   handleChange(e);
+        // }}
+        // onChange={(e) => {
+        //   checkValid(e.currentTarget.value);
+        //   handleChange?.(e); // only call if provided
+        // }}
         defaultValue={defaultValue}
         placeholder={placeholder}
         disabled={disabled}
@@ -191,6 +199,9 @@ const InputArea: React.FC<InputFieldProps> = ({
         }
         autoComplete="off"
       />
+      {helperText && (
+        <p style={{ color: error ? 'red' : 'inherit' }}>{helperText}</p>
+      )}
     </div>
   );
 };
