@@ -50,12 +50,16 @@ const ContactForm: React.FC = () => {
     handleSubmit,
     control,
     formState: { errors, isValid, isSubmitting },
+    register,
   } = useForm<ContactFormData>({
-    resolver: zodResolver(createContactFormSchema(t)),
-    mode: 'onBlur',
-    reValidateMode: 'onChange',
+    // resolver: zodResolver(createContactFormSchema(t)),
+    resolver: zodResolver(createContactFormSchema),
+    // mode: 'onBlur',
+    // reValidateMode: 'onChange',
     defaultValues: { name: '', email: '', message: '' },
   });
+
+  // console.log('schema', createContactFormSchema(t));
 
   const onSubmit = (data: ContactFormData) => console.log(data);
 
@@ -75,7 +79,25 @@ const ContactForm: React.FC = () => {
       <h3 id="contact-form-title" className={classes.title}>
         {t('contact_us_page.form_title')}
       </h3>
+
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>Invoice Generator</h1>
+
+        <div>
+          <input {...register('name')} />
+          {errors.name && <p style={{ color: 'red' }}>{errors.name.message}</p>}
+          <input {...register('email')} />
+          {errors.email && (
+            <p style={{ color: 'red' }}>{errors.email.message}</p>
+          )}
+          <input {...register('message')} />
+          {errors.message && (
+            <p style={{ color: 'red' }}>{errors.message.message}</p>
+          )}
+        </div>
+        <button type="submit">Generate Invoice</button>
+      </form>
+      {/* <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="name"
           control={control}
@@ -94,7 +116,7 @@ const ContactForm: React.FC = () => {
             />
           )}
         />
-        {/* <Input
+        <Input
           id="contact-email"
           label={t('contact_us_page.email_label')}
           placeholder={t('contact_us_page.email_placeholder')}
@@ -102,8 +124,8 @@ const ContactForm: React.FC = () => {
           // handleChange={(e) => setEmail(e.target.value)}
           // defaultValue={email}
           customStyles={styleVars}
-        /> */}
-        {/* 
+        />
+
         <Textarea
           id="contact-message"
           label={t('contact_us_page.message_label')}
@@ -112,7 +134,7 @@ const ContactForm: React.FC = () => {
           defaultValue={message}
           rows={6}
           customStyles={styleVars as any}
-        /> */}
+        />
 
         <div className={classes.buttonWrap}>
           <Button
@@ -121,9 +143,12 @@ const ContactForm: React.FC = () => {
             icon={<MailIcon style={{ marginRight: 8 }} />}
             buttonText={t('contact_us_page.submit_button')}
             disabled={!isValid || isSubmitting}
+            // onClick={() => handleSubmit(onSubmit)()}
+            onClick={handleSubmit(onSubmit)}
+            // type="submit"
           />
         </div>
-      </form>
+      </form> */}
     </section>
   );
 };
