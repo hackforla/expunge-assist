@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { createStyles, makeStyles, darken, useTheme } from '@material-ui/core';
+import {
+  createStyles,
+  makeStyles,
+  darken,
+  useTheme,
+  TextField,
+} from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import MailIcon from '@material-ui/icons/Mail';
 import { createContactFormSchema, ContactFormData } from './schema';
-
 import Input from '../Input';
 import Textarea from '../Textarea';
 import Button from '../Button';
@@ -52,9 +57,8 @@ const ContactForm: React.FC = () => {
     formState: { errors, isValid, isSubmitting },
     register,
   } = useForm<ContactFormData>({
-    // resolver: zodResolver(createContactFormSchema(t)),
-    resolver: zodResolver(createContactFormSchema),
-    // mode: 'onBlur',
+    resolver: zodResolver(createContactFormSchema(t)),
+    mode: 'onBlur',
     // reValidateMode: 'onChange',
     defaultValues: { name: '', email: '', message: '' },
   });
@@ -81,28 +85,14 @@ const ContactForm: React.FC = () => {
       </h3>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>Invoice Generator</h1>
-
-        <div>
-          <input {...register('name')} />
-          {errors.name && <p style={{ color: 'red' }}>{errors.name.message}</p>}
-          <input {...register('email')} />
-          {errors.email && (
-            <p style={{ color: 'red' }}>{errors.email.message}</p>
-          )}
-          <input {...register('message')} />
-          {errors.message && (
-            <p style={{ color: 'red' }}>{errors.message.message}</p>
-          )}
-        </div>
-        <button type="submit">Generate Invoice</button>
-      </form>
-      {/* <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="name"
           control={control}
-          render={({ field }) => (
-            <Input
+          render={({ field }) => <TextField {...field} error={!!errors.name} />}
+        />
+        {errors.name && <p>This is required</p>}
+
+        {/* <Input
               {...field}
               id="contact-name"
               label={t('contact_us_page.name_label')}
@@ -110,13 +100,12 @@ const ContactForm: React.FC = () => {
               type="text"
               // handleChange={(e) => setName(e.target.value)}
               // defaultValue={name}
+              handleChange={field.onChange}
               customStyles={styleVars}
               error={!!errors.name}
               helperText={errors.name?.message as string | undefined}
-            />
-          )}
-        />
-        <Input
+            /> */}
+        {/* <Input
           id="contact-email"
           label={t('contact_us_page.email_label')}
           placeholder={t('contact_us_page.email_placeholder')}
@@ -134,7 +123,7 @@ const ContactForm: React.FC = () => {
           defaultValue={message}
           rows={6}
           customStyles={styleVars as any}
-        />
+        /> */}
 
         <div className={classes.buttonWrap}>
           <Button
@@ -148,7 +137,7 @@ const ContactForm: React.FC = () => {
             // type="submit"
           />
         </div>
-      </form> */}
+      </form>
     </section>
   );
 };
