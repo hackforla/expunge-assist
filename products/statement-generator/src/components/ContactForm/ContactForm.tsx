@@ -89,46 +89,43 @@ const ContactForm: React.FC = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
+          name="name"
+          control={control}
+          render={({ field, fieldState }) => (
+            <Input
+              id="contact-name"
+              label={t('contact_us_page.name_label')}
+              placeholder={t('contact_us_page.name_placeholder')}
+              type="text"
+              handleChange={field.onChange}
+              customStyles={styleVars}
+              {...field}
+              isExternallyControlled
+              isExternallyValid={fieldState.isTouched && !fieldState.error}
+            />
+          )}
+        />
+        {errors.name && <p>{errors.name.message}</p>}
+        <Controller
           name="email"
           control={control}
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <Input
               id="contact-email"
               label={t('contact_us_page.email_label')}
               placeholder={t('contact_us_page.email_placeholder')}
               type="email"
-              handleChange={() => {}}
-              // defaultValue={email}
+              handleChange={field.onChange}
               customStyles={styleVars}
               {...field}
               isExternallyControlled
-              // isExternallyValid={fieldState.isTouched && !fieldState.error}
+              isExternallyValid={fieldState.isTouched && !fieldState.error}
             />
           )}
         />
         {errors.email && <p>{errors.email.message}</p>}
-        {/* <Input
-              {...field}
-              id="contact-name"
-              label={t('contact_us_page.name_label')}
-              placeholder={t('contact_us_page.name_placeholder')}
-              type="text"
-              // handleChange={(e) => setName(e.target.value)}
-              // defaultValue={name}
-              handleChange={field.onChange}
-              customStyles={styleVars}
-              error={!!errors.name}
-              helperText={errors.name?.message as string | undefined}
-            /> */}
-        {/* <Input
-          id="contact-email"
-          label={t('contact_us_page.email_label')}
-          placeholder={t('contact_us_page.email_placeholder')}
-          type="email"
-          // handleChange={(e) => setEmail(e.target.value)}
-          // defaultValue={email}
-          customStyles={styleVars}
-        />
+
+        {/*
 
         <Textarea
           id="contact-message"

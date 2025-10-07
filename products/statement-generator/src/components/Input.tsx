@@ -116,6 +116,7 @@ interface InputFieldProps {
   labelRef?: React.Ref<HTMLLabelElement>;
   customStyles?: CSSVarsPartial;
   isExternallyControlled?: boolean; // if true, onChange, value, etc are controlled by RHF
+  isExternallyValid?: boolean;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -131,11 +132,8 @@ const InputArea: React.FC<InputFieldProps> = ({
   shortWidth = false,
   labelRef,
   customStyles = defaultStyles,
-  // @ts-ignore
-  onChange,
   isExternallyControlled = false,
-  // @ts-ignore
-  // isExternallyValid,
+  isExternallyValid = false,
   ...field
 }) => {
   const utilityClasses = useUtilityStyles();
@@ -155,11 +153,9 @@ const InputArea: React.FC<InputFieldProps> = ({
   };
 
   const onLocalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (isExternallyControlled) {
-      onChange(e);
-    } else {
+    handleChange(e);
+    if (!isExternallyControlled) {
       checkValid(e.target.value);
-      handleChange(e);
     }
   };
 
@@ -195,7 +191,7 @@ const InputArea: React.FC<InputFieldProps> = ({
           <InputAdornment position="end">
             {adornment !== undefined && <span>{adornment}</span>}
 
-            {valid ? (
+            {valid || isExternallyValid ? (
               <CheckCircleRoundedIcon
                 className={classes.icon}
                 data-testid="valid-icon"
