@@ -91,7 +91,20 @@ const ContactForm: React.FC = () => {
         <Controller
           name="email"
           control={control}
-          render={({ field }) => <Test {...field} />}
+          render={({ field }) => (
+            <Input
+              id="contact-email"
+              label={t('contact_us_page.email_label')}
+              placeholder={t('contact_us_page.email_placeholder')}
+              type="email"
+              handleChange={() => {}}
+              // defaultValue={email}
+              customStyles={styleVars}
+              {...field}
+              isExternallyControlled
+              // isExternallyValid={fieldState.isTouched && !fieldState.error}
+            />
+          )}
         />
         {errors.email && <p>{errors.email.message}</p>}
         {/* <Input

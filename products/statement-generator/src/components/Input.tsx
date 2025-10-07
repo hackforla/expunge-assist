@@ -115,8 +115,7 @@ interface InputFieldProps {
   shortWidth?: boolean; // if true, element will have a set width
   labelRef?: React.Ref<HTMLLabelElement>;
   customStyles?: CSSVarsPartial;
-  error?: boolean;
-  helperText?: string;
+  isExternallyControlled?: boolean; // if true, onChange, value, etc are controlled by RHF
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -132,8 +131,12 @@ const InputArea: React.FC<InputFieldProps> = ({
   shortWidth = false,
   labelRef,
   customStyles = defaultStyles,
-  error,
-  helperText,
+  // @ts-ignore
+  onChange,
+  isExternallyControlled = false,
+  // @ts-ignore
+  // isExternallyValid,
+  ...field
 }) => {
   const utilityClasses = useUtilityStyles();
   const classes = useStyles({
@@ -149,6 +152,15 @@ const InputArea: React.FC<InputFieldProps> = ({
   const [valid, isValid] = useState(false);
   const checkValid = (e: string) => {
     isValid(e.length > 0);
+  };
+
+  const onLocalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isExternallyControlled) {
+      onChange(e);
+    } else {
+      checkValid(e.target.value);
+      handleChange(e);
+    }
   };
 
   return (
@@ -167,17 +179,11 @@ const InputArea: React.FC<InputFieldProps> = ({
       </InputLabel>
 
       <OutlinedInput
+        {...field}
         label={label}
         id={id}
         className={classes.inputComponent}
-        // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-        //   checkValid(e.currentTarget.value);
-        //   handleChange(e);
-        // }}
-        // onChange={(e) => {
-        //   checkValid(e.currentTarget.value);
-        //   handleChange?.(e); // only call if provided
-        // }}
+        onChange={onLocalChange}
         defaultValue={defaultValue}
         placeholder={placeholder}
         disabled={disabled}
@@ -199,9 +205,6 @@ const InputArea: React.FC<InputFieldProps> = ({
         }
         autoComplete="off"
       />
-      {helperText && (
-        <p style={{ color: error ? 'red' : 'inherit' }}>{helperText}</p>
-      )}
     </div>
   );
 };
