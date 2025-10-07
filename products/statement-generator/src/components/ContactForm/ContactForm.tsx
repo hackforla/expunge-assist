@@ -61,7 +61,7 @@ const ContactForm: React.FC = () => {
     register,
   } = useForm<ContactFormData>({
     resolver: zodResolver(createContactFormSchema(t)),
-    mode: 'onBlur',
+    mode: 'onTouched',
     // reValidateMode: 'onChange',
     defaultValues: { name: '', email: '', message: '' },
   });
@@ -89,11 +89,11 @@ const ContactForm: React.FC = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
-          name="name"
+          name="email"
           control={control}
           render={({ field }) => <Test {...field} />}
         />
-        {errors.name && <p>{errors.name.message}</p>}
+        {errors.email && <p>{errors.email.message}</p>}
         {/* <Input
               {...field}
               id="contact-name"
