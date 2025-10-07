@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import MailIcon from '@material-ui/icons/Mail';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import { createContactFormSchema, ContactFormData } from './schema';
 import Input from '../Input';
 import Textarea from '../Textarea';
@@ -45,6 +46,8 @@ const useStyles = makeStyles(({ palette }) =>
     },
   })
 );
+// @ts-ignore
+const Test = (props) => <OutlinedInput {...props} />;
 
 const ContactForm: React.FC = () => {
   const classes = useStyles();
@@ -88,10 +91,9 @@ const ContactForm: React.FC = () => {
         <Controller
           name="name"
           control={control}
-          render={({ field }) => <TextField {...field} error={!!errors.name} />}
+          render={({ field }) => <Test {...field} />}
         />
-        {errors.name && <p>This is required</p>}
-
+        {errors.name && <p>{errors.name.message}</p>}
         {/* <Input
               {...field}
               id="contact-name"
