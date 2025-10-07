@@ -1,24 +1,27 @@
 {
   "compilerOptions": {
-    "target": "ES2020", // default: "ES2020" CRA: "es5"
-    // "useDefineForClassFields": true, // not in CRA
-    "module": "ESnext", // default: "ESNext" CRA: "esnext"
-    "lib": ["ES2020", "DOM", "DOM.Iterable"], // default: ["ES2020", "DOM", "DOM.Iterable"], CRA: ["dom", "dom.iterable", "esnext"]
+    // Should keep es5 and for older browser support
+    "target": "es5", // vite default: "ES2020", - ES5 better for older browser support
+    "module": "ESnext", 
+    "lib": ["dom", "dom.iterable", "esnext"], // vite default: ["ES2020", "DOM", "DOM.Iterable"] -- Esnext better for older broswer support
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "node", // default: "bundler" CRA: "node"
-    "allowImportingTsExtensions": true, // not in CRA
+    "moduleResolution": "node", // vite default: "bundler" 
     "isolatedModules": true,
-    "moduleDetection": "force", // not in CRA
     "noEmit": true,
 
     /* Linting */
     "strict": true,
-    // "noUnusedLocals": true, // not in CRA
-    // "noUnusedParameters": true, // not in CRA
     "noFallthroughCasesInSwitch": true,
+
+    /* Items in vite default but not CRA */
     // "noUncheckedSideEffectImports": true, // not in CRA
+    // "noUnusedLocals": true, // not in CRA - Error on local variables that are never read
+    // "noUnusedParameters": true, // not in CRA - Error on function params that are never used
+    // "moduleDetection": "force", // not in CRA 
+    // "allowImportingTsExtensions": true, // not in CRA - permit import "./file.ts" style paths — allows imports using .ts extensions, which mirrors native ESM resolution during dev in Vite.
+    // "useDefineForClassFields": true, // not in CRA
 
     /* In CRA tsconfig but not in default */
     "allowJs": true,
@@ -28,7 +31,6 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "resolveJsonModule": true,
-    
   },
   "include": ["src"]
 }
