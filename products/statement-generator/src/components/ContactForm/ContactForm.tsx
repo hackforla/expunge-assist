@@ -124,18 +124,22 @@ const ContactForm: React.FC = () => {
           )}
         />
         {errors.email && <p>{errors.email.message}</p>}
-
-        {/*
-
-        <Textarea
-          id="contact-message"
-          label={t('contact_us_page.message_label')}
-          placeholder={t('contact_us_page.message_placeholder')}
-          handleChange={(e) => setMessage(e.target.value as any)}
-          defaultValue={message}
-          rows={6}
-          customStyles={styleVars as any}
-        /> */}
+        <Controller
+          name="message"
+          control={control}
+          render={({ field }) => (
+            <Textarea
+              id="contact-message"
+              label={t('contact_us_page.message_label')}
+              placeholder={t('contact_us_page.message_placeholder')}
+              handleChange={field.onChange}
+              rows={6}
+              customStyles={styleVars as any}
+              {...field}
+            />
+          )}
+        />
+        {errors.message && <p>{errors.message.message}</p>}
 
         <div className={classes.buttonWrap}>
           <Button

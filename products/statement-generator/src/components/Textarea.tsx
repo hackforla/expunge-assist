@@ -97,6 +97,8 @@ interface TextFieldProps {
   rows?: number;
   labelRef?: React.Ref<HTMLLabelElement>;
   customStyles?: CSSVarsPartial;
+  isExternallyControlled?: boolean;
+  isExternallyValid?: boolean;
 }
 
 const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
@@ -112,6 +114,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
       rows,
       labelRef,
       customStyles = defaultStyles,
+      ...field
     },
     ref
   ) => {
@@ -157,6 +160,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
           }}
           inputRef={ref}
           autoComplete="off"
+          {...field}
         />
       </div>
     );
