@@ -165,6 +165,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
     },
     creditFlex: {
       display: 'flex',
+      gap: '1rem',
       flexDirection: 'row',
       height: '100%',
       width: '100%',
@@ -173,19 +174,16 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
       objectFit: 'contain',
     },
     creditImgContainer: {
-      maxWidth: '10rem',
-      minWidth: '10rem',
-      maxHeight: '12rem',
-      objectFit: 'contain',
-      display: 'block',
-      margin: 'auto',
+      flex: '1 0 10rem',
+
+      height: '10rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       '& img': {
-        alignItems: 'center',
         maxWidth: '100%',
         maxHeight: '100%',
         objectFit: 'contain',
-        display: 'block',
-        margin: 'auto',
       },
     },
     creditIconContainer: {
@@ -201,6 +199,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
       },
     },
     creditText: {
+      flex: '0 1 max-content',
       '& h2': {
         fontWeight: 'bold',
         [breakpoints.down('md')]: {
