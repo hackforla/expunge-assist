@@ -47,16 +47,6 @@ const useStyles = makeStyles(({ palette }) =>
       display: 'flex',
       justifyContent: 'center',
     },
-    button: {
-      minWidth: 200,
-      color: palette.primary.darker,
-      backgroundColor: palette.primary.dark,
-      border: `1px solid ${palette.primary.dark}`,
-      fontWeight: 400,
-      '&:hover': {
-        backgroundColor: darken(palette.primary.dark, 0.12),
-      },
-    },
   })
 );
 
@@ -80,6 +70,8 @@ const ErrorMessage: React.FC<ErrMsgProps> = ({
   );
 };
 
+const sleep = (ms: any) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const ContactForm: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -95,7 +87,14 @@ const ContactForm: React.FC = () => {
     defaultValues: { name: '', email: '', message: '' },
   });
 
-  const onSubmit = () => undefined;
+  const onSubmit = async (data: any) => {
+    try {
+      await sleep(2000);
+      alert(JSON.stringify(data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const styleVars = {
     '--outline-color': theme.palette.primary.darker,
@@ -110,7 +109,7 @@ const ContactForm: React.FC = () => {
         {t('contact_us_page.form_title')}
       </h3>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <Controller
           name="name"
           control={control}
@@ -183,14 +182,11 @@ const ContactForm: React.FC = () => {
 
         <div className={classes.buttonWrap}>
           <Button
-            className={classes.button}
             theme="dark"
             icon={<MailIcon style={{ marginRight: 8 }} />}
             buttonText={t('contact_us_page.submit_button')}
             disabled={!isValid || isSubmitting}
-            // onClick={() => handleSubmit(onSubmit)()}
             onClick={handleSubmit(onSubmit)}
-            // type="submit"
           />
         </div>
       </form>
