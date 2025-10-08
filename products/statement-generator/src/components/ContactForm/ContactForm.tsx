@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   createStyles,
   makeStyles,
   darken,
   useTheme,
-  TextField,
+  FormHelperText,
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import MailIcon from '@material-ui/icons/Mail';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+
 import { createContactFormSchema, ContactFormData } from './schema';
 import Input from '../Input';
 import Textarea from '../Textarea';
@@ -31,8 +31,16 @@ const useStyles = makeStyles(({ palette }) =>
     },
     error: {
       color: palette.error.main,
-      marginTop: 4,
-      marginBottom: 8,
+      lineHeight: 1,
+      visibility: 'hidden',
+      opacity: 0,
+      marginTop: 0,
+      transition: 'opacity 0.2s ease, margin-top 0.2s ease',
+    },
+    showError: {
+      visibility: 'visible',
+      opacity: 1,
+      marginTop: 5,
     },
     buttonWrap: {
       marginTop: 24,
@@ -51,14 +59,32 @@ const useStyles = makeStyles(({ palette }) =>
     },
   })
 );
-// @ts-ignore
-const Test = (props) => <OutlinedInput {...props} />;
+
+type ErrMsgProps = {
+  errorMessage: string | undefined;
+  classError: string;
+  classShowError: string;
+};
+
+const ErrorMessage: React.FC<ErrMsgProps> = ({
+  errorMessage,
+  classError,
+  classShowError,
+}) => {
+  const mergedClass = `${classError} ${errorMessage ? classShowError : ''}`;
+
+  return (
+    <FormHelperText className={mergedClass} aria-live="polite">
+      {errorMessage || ' '}
+    </FormHelperText>
+  );
+};
 
 const ContactForm: React.FC = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const { t } = useTranslation();
 
+  const { t } = useTranslation();
   const {
     handleSubmit,
     control,
@@ -66,17 +92,10 @@ const ContactForm: React.FC = () => {
   } = useForm<ContactFormData>({
     resolver: zodResolver(createContactFormSchema(t)),
     mode: 'onTouched',
-    // reValidateMode: 'onChange',
     defaultValues: { name: '', email: '', message: '' },
   });
 
-  // console.log('schema', createContactFormSchema(t));
-
-  const onSubmit = (data: ContactFormData) => console.log(data);
-
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [message, setMessage] = useState('');
+  const onSubmit = () => undefined;
 
   const styleVars = {
     '--outline-color': theme.palette.primary.darker,
@@ -110,7 +129,12 @@ const ContactForm: React.FC = () => {
             />
           )}
         />
-        {errors.name && <p className={classes.error}>{errors.name.message}</p>}
+        <ErrorMessage
+          errorMessage={errors.name?.message}
+          classError={classes.error}
+          classShowError={classes.showError}
+        />
+
         <Controller
           name="email"
           control={control}
@@ -129,9 +153,12 @@ const ContactForm: React.FC = () => {
             />
           )}
         />
-        {errors.email && (
-          <p className={classes.error}>{errors.email.message}</p>
-        )}
+        <ErrorMessage
+          errorMessage={errors.email?.message}
+          classError={classes.error}
+          classShowError={classes.showError}
+        />
+
         <Controller
           name="message"
           control={control}
@@ -148,9 +175,11 @@ const ContactForm: React.FC = () => {
             />
           )}
         />
-        {errors.message && (
-          <p className={classes.error}>{errors.message.message}</p>
-        )}
+        <ErrorMessage
+          errorMessage={errors.message?.message}
+          classError={classes.error}
+          classShowError={classes.showError}
+        />
 
         <div className={classes.buttonWrap}>
           <Button

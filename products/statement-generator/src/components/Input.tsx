@@ -47,7 +47,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
           borderColor: 'var(--outline-color)',
           borderWidth: '1px',
         },
-        '&:hover .MuiOutlinedInput-notchedOutline': {
+        '&:hover:not(.Mui-error) .MuiOutlinedInput-notchedOutline': {
           borderColor: 'var(--hover-color)',
           borderWidth: '1px',
         },
