@@ -29,6 +29,11 @@ const useStyles = makeStyles(({ palette }) =>
       fontWeight: 600,
       margin: '0 0 16px 0',
     },
+    error: {
+      color: palette.error.main,
+      marginTop: 4,
+      marginBottom: 8,
+    },
     buttonWrap: {
       marginTop: 24,
       display: 'flex',
@@ -58,7 +63,6 @@ const ContactForm: React.FC = () => {
     handleSubmit,
     control,
     formState: { errors, isValid, isSubmitting },
-    register,
   } = useForm<ContactFormData>({
     resolver: zodResolver(createContactFormSchema(t)),
     mode: 'onTouched',
@@ -102,10 +106,11 @@ const ContactForm: React.FC = () => {
               {...field}
               isExternallyControlled
               isExternallyValid={fieldState.isTouched && !fieldState.error}
+              errorBorder={fieldState.invalid}
             />
           )}
         />
-        {errors.name && <p>{errors.name.message}</p>}
+        {errors.name && <p className={classes.error}>{errors.name.message}</p>}
         <Controller
           name="email"
           control={control}
@@ -119,15 +124,18 @@ const ContactForm: React.FC = () => {
               customStyles={styleVars}
               {...field}
               isExternallyControlled
-              isExternallyValid={fieldState.isTouched && !fieldState.error}
+              isExternallyValid={fieldState.isTouched && !fieldState.invalid}
+              errorBorder={fieldState.invalid}
             />
           )}
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && (
+          <p className={classes.error}>{errors.email.message}</p>
+        )}
         <Controller
           name="message"
           control={control}
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <Textarea
               id="contact-message"
               label={t('contact_us_page.message_label')}
@@ -136,10 +144,13 @@ const ContactForm: React.FC = () => {
               rows={6}
               customStyles={styleVars as any}
               {...field}
+              errorBorder={fieldState.invalid}
             />
           )}
         />
-        {errors.message && <p>{errors.message.message}</p>}
+        {errors.message && (
+          <p className={classes.error}>{errors.message.message}</p>
+        )}
 
         <div className={classes.buttonWrap}>
           <Button

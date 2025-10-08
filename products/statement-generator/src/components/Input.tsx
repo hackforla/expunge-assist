@@ -117,6 +117,7 @@ interface InputFieldProps {
   customStyles?: CSSVarsPartial;
   isExternallyControlled?: boolean; // if true, onChange, value, etc are controlled by RHF
   isExternallyValid?: boolean;
+  errorBorder?: boolean;
 }
 
 const InputArea: React.FC<InputFieldProps> = ({
@@ -134,6 +135,7 @@ const InputArea: React.FC<InputFieldProps> = ({
   customStyles = defaultStyles,
   isExternallyControlled = false,
   isExternallyValid = false,
+  errorBorder = false,
   ...field
 }) => {
   const utilityClasses = useUtilityStyles();
@@ -187,6 +189,7 @@ const InputArea: React.FC<InputFieldProps> = ({
         inputProps={{ min: 0 }}
         notched={false}
         fullWidth
+        error={errorBorder}
         endAdornment={
           <InputAdornment position="end">
             {adornment !== undefined && <span>{adornment}</span>}

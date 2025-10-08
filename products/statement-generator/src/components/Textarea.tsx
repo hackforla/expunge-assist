@@ -42,6 +42,10 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
         borderColor: '#a1a1a1',
         borderWidth: '1px',
       },
+      '& .MuiInputBase-root.Mui-error .MuiOutlinedInput-notchedOutline': {
+        borderColor: palette.error.main,
+        borderWidth: '1px',
+      },
 
       // -- text field
       '& .MuiOutlinedInput-multiline': {
@@ -97,8 +101,7 @@ interface TextFieldProps {
   rows?: number;
   labelRef?: React.Ref<HTMLLabelElement>;
   customStyles?: CSSVarsPartial;
-  isExternallyControlled?: boolean;
-  isExternallyValid?: boolean;
+  errorBorder?: boolean;
 }
 
 const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
@@ -114,6 +117,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
       rows,
       labelRef,
       customStyles = defaultStyles,
+      errorBorder = false,
       ...field
     },
     ref
@@ -151,7 +155,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
           defaultValue={defaultValue}
           disabled={disabled}
           value={value}
-          rows={rows}
+          minRows={rows}
           multiline
           fullWidth
           variant="outlined"
@@ -160,6 +164,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
           }}
           inputRef={ref}
           autoComplete="off"
+          error={errorBorder}
           {...field}
         />
       </div>
