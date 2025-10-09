@@ -38,6 +38,9 @@
     "message_label": "Message",
     "message_placeholder": "Write your message here...",
     "submit_button": "Send Message",
+    "return_button": "Return to form",
+    "success_header": "Thank you!",
+    "success_message": "Your message has been sent. We will be in touch shortly.",
     "errors": {
       "name_required": "Name is required",
       "name_too_long": "Name is too long",

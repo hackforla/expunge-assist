@@ -18,8 +18,8 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
       paddingTop: spacing(4),
       paddingBottom: spacing(1),
       [breakpoints.up('md')]: {
-        paddingTop: spacing(9),
-        paddingBottom: spacing(9),
+        paddingTop: spacing(6),
+        paddingBottom: spacing(6),
       },
     },
     flexRow: {
@@ -30,20 +30,20 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
       [breakpoints.up('md')]: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 50,
+      },
+    },
+    utGap: {
+      [breakpoints.up('md')]: {
+        gap: 30,
       },
     },
     textGroup: {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: '1 1 60%',
+      [breakpoints.down('md')]: {
+        marginBottom: spacing(3),
+      },
     },
     heroImgContainer: {
       marginTop: spacing(3),
-      [breakpoints.up('md')]: {
-        marginTop: 0,
-        flex: '1 1 40%',
-      },
     },
     heroImg: {
       width: '100%',
@@ -61,17 +61,20 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
       whiteSpace: 'nowrap',
       border: 0,
     },
-    title: {
+    h1: {
       fontSize: 'clamp(1.5rem, 1.2rem + 1vw, 2rem)',
       fontWeight: 600,
       margin: spacing(0, 0, 3, 0),
       [breakpoints.up('md')]: {
-        fontSize: `
-        clamp(
-          1.5rem,
-          calc(1.5rem + (2rem - 1.5rem) * ((100vw - 768px) / (1440 - 768))),
-          2rem
-        )`,
+        fontSize: '2.5rem',
+      },
+    },
+    h2: {
+      fontSize: 'clamp(1.5rem, 1.2rem + 1vw, 2rem)',
+      fontWeight: 600,
+      margin: spacing(0, 0, 3, 0),
+      [breakpoints.up('md')]: {
+        fontSize: '1.5rem',
       },
     },
     subTitle: {
@@ -82,12 +85,7 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
     descrip: {
       fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.15rem)',
       [breakpoints.up('md')]: {
-        fontSize: `
-        clamp(
-          1.25rem, 
-          calc(1.25rem + (1.5rem - 1.25rem) * ((100vw - 960px) / (1920 - 960))),
-          1.5rem
-        )`,
+        fontSize: 'clamp(1.25rem, calc(1.25rem + 0.026vw), 1.5rem)',
       },
       margin: '0 0 12px 0',
       lineHeight: 1.5,
@@ -102,6 +100,7 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
     formContainer: {
       [breakpoints.up('md')]: {
         flex: '1 1 50%',
+        minWidth: 300,
       },
     },
   })
@@ -142,7 +141,7 @@ const Hero: React.FC = () => {
     >
       <div className={`${classes.flexRow} ${utilityClasses.widePage}`}>
         <div className={classes.textGroup}>
-          <h1 id="contact-page-heading" className={classes.title}>
+          <h1 id="contact-page-heading" className={classes.h1}>
             {t('contact_us_page.page_header')}
           </h1>
           {isMedUp ? mdUpIntro : smIntro}
@@ -175,9 +174,11 @@ const Info: React.FC = () => {
       className={classes.contactSection}
       aria-labelledby="contact-info-heading"
     >
-      <div className={`${classes.flexRow} ${utilityClasses.widePage}`}>
+      <div
+        className={`${classes.flexRow} ${classes.utGap} ${utilityClasses.widePage}`}
+      >
         <div className={classes.textGroup}>
-          <h2 id="contact-info-heading" className={classes.title}>
+          <h2 id="contact-info-heading" className={classes.h2}>
             {t('contact_us_page.info_title')}
           </h2>
           <p className={classes.descrip}>
