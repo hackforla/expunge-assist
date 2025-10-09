@@ -120,92 +120,101 @@ interface InputFieldProps {
   errorBorder?: boolean;
 }
 
-const InputArea: React.FC<InputFieldProps> = ({
-  handleChange,
-  label,
-  id,
-  placeholder,
-  type,
-  defaultValue,
-  disabled,
-  adornment,
-  className = '',
-  shortWidth = false,
-  labelRef,
-  customStyles = defaultStyles,
-  isExternallyControlled = false,
-  isExternallyValid = false,
-  errorBorder = false,
-  ...field
-}) => {
-  const utilityClasses = useUtilityStyles();
-  const classes = useStyles({
-    disabled,
-    useShort: shortWidth || type === 'number',
-  });
+const InputArea = React.forwardRef<HTMLInputElement, InputFieldProps>(
+  (
+    {
+      handleChange,
+      label,
+      id,
+      placeholder,
+      type,
+      defaultValue,
+      disabled,
+      adornment,
+      className = '',
+      shortWidth = false,
+      labelRef,
+      customStyles = defaultStyles,
+      isExternallyControlled = false,
+      isExternallyValid = false,
+      errorBorder = false,
+      ...field
+    },
+    ref
+  ) => {
+    const utilityClasses = useUtilityStyles();
+    const classes = useStyles({
+      disabled,
+      useShort: shortWidth || type === 'number',
+    });
 
-  const mergedStyles: React.CSSProperties & CSSVars = {
-    ...defaultStyles,
-    ...customStyles,
-  };
+    const mergedStyles: React.CSSProperties & CSSVars = {
+      ...defaultStyles,
+      ...customStyles,
+    };
 
-  const [valid, isValid] = useState(false);
-  const checkValid = (e: string) => {
-    isValid(e.length > 0);
-  };
+    const [valid, isValid] = useState(false);
+    const checkValid = (e: string) => {
+      isValid(e.length > 0);
+    };
 
-  const onLocalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleChange(e);
-    if (!isExternallyControlled) {
-      checkValid(e.target.value);
-    }
-  };
+    const onLocalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      handleChange(e);
+      if (!isExternallyControlled) {
+        checkValid(e.target.value);
+      }
+    };
 
-  return (
-    <div
-      className={`${utilityClasses.formInput} ${classes.labelWrapper} ${className}`}
-      style={mergedStyles as React.CSSProperties}
-    >
-      <InputLabel
-        tabIndex={0}
-        disabled={disabled}
-        ref={labelRef}
-        aria-label={label}
-        htmlFor={id}
+    return (
+      <div
+        className={`${utilityClasses.formInput} ${classes.labelWrapper} ${className}`}
+        style={mergedStyles as React.CSSProperties}
       >
-        {label}
-      </InputLabel>
+        <InputLabel
+          tabIndex={0}
+          disabled={disabled}
+          ref={labelRef}
+          aria-label={label}
+          htmlFor={id}
+        >
+          {label}
+        </InputLabel>
 
-      <OutlinedInput
-        {...field}
-        label={label}
-        id={id}
-        className={classes.inputComponent}
-        onChange={onLocalChange}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        disabled={disabled}
-        type={type}
-        inputProps={{ min: 0 }}
-        notched={false}
-        fullWidth
-        error={errorBorder}
-        endAdornment={
-          <InputAdornment position="end">
-            {adornment !== undefined && <span>{adornment}</span>}
+        <OutlinedInput
+          {...field}
+          label={label}
+          id={id}
+          className={classes.inputComponent}
+          onChange={onLocalChange}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          disabled={disabled}
+          type={type}
+          inputProps={{ min: 0 }}
+          inputRef={ref}
+          notched={false}
+          fullWidth
+          error={errorBorder}
+          endAdornment={
+            <InputAdornment position="end">
+              {adornment !== undefined && <span>{adornment}</span>}
 
-            {valid || isExternallyValid ? (
-              <CheckCircleRoundedIcon
-                className={classes.icon}
-                data-testid="valid-icon"
-              />
-            ) : null}
-          </InputAdornment>
-        }
-        autoComplete="off"
-      />
-    </div>
-  );
-};
+              {valid || isExternallyValid ? (
+                <CheckCircleRoundedIcon
+                  className={classes.icon}
+                  data-testid="valid-icon"
+                />
+              ) : null}
+            </InputAdornment>
+          }
+          autoComplete="off"
+        />
+      </div>
+    );
+  }
+);
+
+// set a displayName to help with debugging in React DevTools
+(InputArea as any).displayName = 'InputArea';
 
 export default InputArea;

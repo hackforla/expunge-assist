@@ -140,9 +140,11 @@ describe('ContactUs contact form', () => {
       ).toBeInTheDocument()
     );
 
-    await userEvent.click(
-      screen.getByRole('button', { name: 'contact_us_page.return_button' })
-    );
+    await act(async () => {
+      await userEvent.click(
+        screen.getByRole('button', { name: 'contact_us_page.return_button' })
+      );
+    });
 
     expect(
       screen.getByRole('button', { name: 'contact_us_page.submit_button' })
