@@ -156,11 +156,10 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
     },
     CreditBox: {
       boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
-      borderRadius: '8px',
-      padding: '16px',
+      borderRadius: '24px',
+      padding: '1rem',
       width: '29rem',
       maxHeight: '13.606rem',
-      minHeight: '13.606rem',
       alignContent: 'center',
     },
     creditFlex: {
@@ -174,8 +173,8 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
       objectFit: 'contain',
     },
     creditImgContainer: {
-      flex: '1 0 10rem',
-
+      flex: '1 1 10rem',
+      minWidth: '7rem',
       height: '10rem',
       display: 'flex',
       alignItems: 'center',
@@ -200,11 +199,15 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
     },
     creditText: {
       flex: '0 1 max-content',
+      minWidth: '10rem',
       '& h2': {
         fontWeight: 'bold',
         [breakpoints.down('md')]: {
-          fontSize: '16px',
+          fontSize: '1.7rem',
         },
+      },
+      '& h2 + p': {
+        marginTop: '1rem',
       },
     },
     line: {
@@ -264,11 +267,11 @@ export const CreditObjects: CreditsObject[] = [
     provider: 'unDraw',
   },
   {
-    name: '404 Error',
+    name: '404 error',
     img: error,
     class: 2,
     imgSize: 200,
-    usedIn: '404 page',
+    usedIn: '404 Page',
     artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/404-error/cuate',
     provider: 'Storyset',
@@ -291,7 +294,7 @@ export const CreditObjects: CreditsObject[] = [
     img: privacyPolicy,
     class: 2,
     imgSize: 75,
-    usedIn: 'Home page',
+    usedIn: 'Home Page',
     artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/security/cuate',
     provider: 'Storyset',
@@ -302,7 +305,7 @@ export const CreditObjects: CreditsObject[] = [
     img: collaboration,
     class: 2,
     imgSize: 75,
-    usedIn: 'Preview and edit',
+    usedIn: 'Preview and Edit',
     artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/collaboration/rafiki',
     provider: 'Storyset',
@@ -336,7 +339,7 @@ export const CreditObjects: CreditsObject[] = [
     img: report,
     class: 2,
     imgSize: 75,
-    usedIn: 'Future goals',
+    usedIn: 'Future Goals',
     artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/report/pana',
     provider: 'Storyset',
@@ -347,7 +350,7 @@ export const CreditObjects: CreditsObject[] = [
     img: multitasking,
     class: 2,
     imgSize: 75,
-    usedIn: 'Home page',
+    usedIn: 'Home Page',
     artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/multitasking/cuate',
     provider: 'Storyset',
@@ -358,7 +361,7 @@ export const CreditObjects: CreditsObject[] = [
     img: eaImage,
     class: 2,
     imgSize: 75,
-    usedIn: 'Home page',
+    usedIn: 'Home Page',
     artist: 'Unknown',
     providerLink:
       'https://storyset.com/illustration/mobile-login/cuate#default&hide=&hide=false',
