@@ -49,7 +49,7 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) =>
   })
 );
 
-const sleep = (ms: any) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const ContactForm: React.FC = () => {
   const classes = useStyles();
