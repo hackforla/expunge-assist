@@ -180,6 +180,7 @@ const ContactForm: React.FC = () => {
             <div className={classes.buttonWrap}>
               <Button
                 theme="dark"
+                fullWidth
                 icon={<MailIcon style={{ marginRight: 8 }} />}
                 buttonText={t('contact_us_page.submit_button')}
                 disabled={!isValid || isSubmitting}

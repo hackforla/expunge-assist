@@ -37,6 +37,11 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
         gap: 30,
       },
     },
+    utItemsStart: {
+      [breakpoints.up('md')]: {
+        alignItems: 'flex-start',
+      },
+    },
     textGroup: {
       [breakpoints.down('md')]: {
         marginBottom: spacing(3),
@@ -61,7 +66,7 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
       whiteSpace: 'nowrap',
       border: 0,
     },
-    h1: {
+    pageHeading: {
       fontSize: 'clamp(1.5rem, 1.2rem + 1vw, 2rem)',
       fontWeight: 600,
       margin: spacing(0, 0, 3, 0),
@@ -69,10 +74,12 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
         fontSize: '2.5rem',
       },
     },
-    h2: {
+    infoHeading: {
       fontSize: 'clamp(1.5rem, 1.2rem + 1vw, 2rem)',
       fontWeight: 600,
       margin: spacing(0, 0, 3, 0),
+      maxWidth: '300px',
+      lineHeight: 1.5,
       [breakpoints.up('md')]: {
         fontSize: '1.5rem',
       },
@@ -94,13 +101,13 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) =>
     contactSection: {
       padding: spacing(4, 0, 5, 0),
       [breakpoints.up('md')]: {
-        padding: spacing(5, 0, 8, 0),
+        padding: spacing(8, 0, 8, 0),
       },
     },
     formContainer: {
       [breakpoints.up('md')]: {
         flex: '1 1 50%',
-        minWidth: 300,
+        minWidth: 420,
       },
     },
   })
@@ -141,7 +148,7 @@ const Hero: React.FC = () => {
     >
       <div className={`${classes.flexRow} ${utilityClasses.widePage}`}>
         <div className={classes.textGroup}>
-          <h1 id="contact-page-heading" className={classes.h1}>
+          <h1 id="contact-page-heading" className={classes.pageHeading}>
             {t('contact_us_page.page_header')}
           </h1>
           {isMedUp ? mdUpIntro : smIntro}
@@ -175,10 +182,10 @@ const Info: React.FC = () => {
       aria-labelledby="contact-info-heading"
     >
       <div
-        className={`${classes.flexRow} ${classes.utGap} ${utilityClasses.widePage}`}
+        className={`${classes.flexRow} ${classes.utGap} ${utilityClasses.widePage} ${classes.utItemsStart}`}
       >
         <div className={classes.textGroup}>
-          <h2 id="contact-info-heading" className={classes.h2}>
+          <h2 id="contact-info-heading" className={classes.infoHeading}>
             {t('contact_us_page.info_title')}
           </h2>
           <p className={classes.descrip}>
