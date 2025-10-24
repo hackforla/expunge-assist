@@ -30,19 +30,14 @@ const useStyles = makeStyles(({ palette, spacing, breakpoints }) =>
     },
     error: {
       color: palette.error.main,
+      fontSize: '0.875rem',
       lineHeight: 1,
-      visibility: 'hidden',
-      opacity: 0,
-      marginTop: 0,
+      marginTop: spacing(1),
       transition: 'opacity 0.2s ease, margin-top 0.2s ease',
     },
-    showError: {
-      visibility: 'visible',
-      opacity: 1,
-      marginTop: 5,
-    },
+
     buttonWrap: {
-      marginTop: 24,
+      marginTop: spacing(3),
       display: 'flex',
       justifyContent: 'center',
     },
@@ -124,7 +119,6 @@ const ContactForm: React.FC = () => {
             <ErrorMessage
               errorMessage={errors.name?.message}
               classError={classes.error}
-              classShowError={classes.showError}
             />
 
             <Controller
@@ -151,7 +145,6 @@ const ContactForm: React.FC = () => {
             <ErrorMessage
               errorMessage={errors.email?.message}
               classError={classes.error}
-              classShowError={classes.showError}
             />
 
             <Controller
@@ -174,7 +167,6 @@ const ContactForm: React.FC = () => {
             <ErrorMessage
               errorMessage={errors.message?.message}
               classError={classes.error}
-              classShowError={classes.showError}
             />
 
             <div className={classes.buttonWrap}>

@@ -1,24 +1,20 @@
 import React from 'react';
 import { FormHelperText } from '@material-ui/core';
+import { error } from 'console';
 
 export type ErrMsgProps = {
   errorMessage: string | undefined;
   classError: string;
-  classShowError: string;
 };
 
-const ErrorMessage: React.FC<ErrMsgProps> = ({
-  errorMessage,
-  classError,
-  classShowError,
-}) => {
-  const mergedClass = `${classError} ${errorMessage ? classShowError : ''}`;
+const ErrorMessage: React.FC<ErrMsgProps> = ({ errorMessage, classError }) => {
+  const mergedClass = `${classError} ${errorMessage}`;
 
-  return (
-    <FormHelperText className={mergedClass} aria-live="polite">
-      {errorMessage || ' '}
+  return errorMessage ? (
+    <FormHelperText className={mergedClass} error>
+      {errorMessage}
     </FormHelperText>
-  );
+  ) : null;
 };
 
 export default ErrorMessage;
