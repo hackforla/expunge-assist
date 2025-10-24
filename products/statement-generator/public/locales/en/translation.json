@@ -32,21 +32,21 @@
     "info_paragraph2_sla": "We’ll get back to you within 5 business days.",
     "form_title": "Contact Form",
     "name_label": "Name",
-    "name_placeholder": "Firstname Lastname",
+    "name_placeholder": "Full Name",
     "email_label": "Email",
-    "email_placeholder": "email@mail.com",
+    "email_placeholder": "email@example.com",
     "message_label": "Message",
-    "message_placeholder": "Write your message here...",
+    "message_placeholder": "Type your message here.",
     "submit_button": "Send Message",
     "return_button": "Return to form",
     "success_header": "Thank you!",
     "success_message": "Your message has been sent. We will be in touch shortly.",
     "errors": {
-      "name_required": "Name is required",
-      "name_too_long": "Name is too long",
-      "invalid_email": "Invalid email address",
-      "message_too_short": "Message is too short",
-      "message_too_long": "Message is too long"
+      "name_required": "Enter your name.",
+      "name_too_long": "Names can be up to 100 characters.",
+      "invalid_email": "Enter your email (e.g., example@domain.com).",
+      "message_too_short": "Include your message.",
+      "message_too_long": "Please keep your message under 2,000 characters."
     }
   },
   "landing_page": {
