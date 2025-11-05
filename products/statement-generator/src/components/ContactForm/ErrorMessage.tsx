@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormHelperText } from '@material-ui/core';
-import { error } from 'console';
 
 export type ErrMsgProps = {
   errorMessage: string | undefined;
