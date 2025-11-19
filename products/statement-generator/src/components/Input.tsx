@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 
 import useUtilityStyles from 'styles/utilityStyles';
+import customMuiTheme from 'styles/customMuiTheme';
 
 interface StyleProps {
   disabled?: boolean;
@@ -15,6 +16,11 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>(
   ({ breakpoints, palette, spacing }) =>
     createStyles({
+      labelWrapper: {
+        '& .MuiFormLabel-root': {
+          color: 'var(--text-color)',
+        },
+      },
       inputComponent: {
         borderRadius: '16px',
 
@@ -22,6 +28,9 @@ const useStyles = makeStyles<Theme, StyleProps>(
           width: ({ useShort }) => (useShort ? 320 : undefined),
         },
 
+        '& .MuiInputBase-input': {
+          color: 'var(--text-color)',
+        },
         '&.Mui-focused': {
           boxShadow: '0 0 10px 2px #F7EBFF',
         },
@@ -35,11 +44,11 @@ const useStyles = makeStyles<Theme, StyleProps>(
 
         // -- outline
         '& .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#adadad',
+          borderColor: 'var(--outline-color)',
           borderWidth: '1px',
         },
-        '&:hover .MuiOutlinedInput-notchedOutline': {
-          borderColor: '#8f8f8f',
+        '&:hover:not(.Mui-error) .MuiOutlinedInput-notchedOutline': {
+          borderColor: 'var(--hover-color)',
           borderWidth: '1px',
         },
         '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -57,7 +66,7 @@ const useStyles = makeStyles<Theme, StyleProps>(
 
           '&::placeholder': {
             opacity: 1,
-            color: palette.common.grey,
+            color: 'var(--placeholder-color)',
           },
         },
 
@@ -77,6 +86,22 @@ const useStyles = makeStyles<Theme, StyleProps>(
     })
 );
 
+export type CSSVars = {
+  ['--outline-color']: string;
+  ['--placeholder-color']: string;
+  ['--text-color']: string;
+  ['--hover-color']: string;
+};
+
+export type CSSVarsPartial = Partial<CSSVars>;
+
+export const defaultStyles: CSSVars = {
+  '--outline-color': '#adadad',
+  '--placeholder-color': customMuiTheme.palette.common.grey,
+  '--text-color': customMuiTheme.palette.common.black,
+  '--hover-color': '#8f8f8f',
+};
+
 interface InputFieldProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id: string;
@@ -89,75 +114,107 @@ interface InputFieldProps {
   className?: string;
   shortWidth?: boolean; // if true, element will have a set width
   labelRef?: React.Ref<HTMLLabelElement>;
+  customStyles?: CSSVarsPartial;
+  isExternallyControlled?: boolean; // if true, onChange, value, etc are controlled by RHF
+  isExternallyValid?: boolean;
+  errorBorder?: boolean;
 }
 
-const InputArea: React.FC<InputFieldProps> = ({
-  handleChange,
-  label,
-  id,
-  placeholder,
-  type,
-  defaultValue,
-  disabled,
-  adornment,
-  className = '',
-  shortWidth = false,
-  labelRef,
-}) => {
-  const utilityClasses = useUtilityStyles();
-  const classes = useStyles({
-    disabled,
-    useShort: shortWidth || type === 'number',
-  });
+const InputArea = React.forwardRef<HTMLInputElement, InputFieldProps>(
+  (
+    {
+      handleChange,
+      label,
+      id,
+      placeholder,
+      type,
+      defaultValue,
+      disabled,
+      adornment,
+      className = '',
+      shortWidth = false,
+      labelRef,
+      customStyles = defaultStyles,
+      isExternallyControlled = false,
+      isExternallyValid = false,
+      errorBorder = false,
+      ...field
+    },
+    ref
+  ) => {
+    const utilityClasses = useUtilityStyles();
+    const classes = useStyles({
+      disabled,
+      useShort: shortWidth || type === 'number',
+    });
 
-  const [valid, isValid] = useState(false);
-  const checkValid = (e: string) => {
-    isValid(e.length > 0);
-  };
+    const mergedStyles: React.CSSProperties & CSSVars = {
+      ...defaultStyles,
+      ...customStyles,
+    };
 
-  return (
-    <div className={`${utilityClasses.formInput} ${className}`}>
-      <InputLabel
-        tabIndex={0}
-        disabled={disabled}
-        ref={labelRef}
-        aria-label={label}
-        htmlFor={id}
+    const [valid, isValid] = useState(false);
+    const checkValid = (e: string) => {
+      isValid(e.length > 0);
+    };
+
+    const onLocalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      handleChange(e);
+      if (!isExternallyControlled) {
+        checkValid(e.target.value);
+      }
+    };
+
+    return (
+      <div
+        className={`${utilityClasses.formInput} ${classes.labelWrapper} ${className}`}
+        style={mergedStyles as React.CSSProperties}
       >
-        {label}
-      </InputLabel>
+        <InputLabel
+          tabIndex={0}
+          disabled={disabled}
+          ref={labelRef}
+          aria-label={label}
+          htmlFor={id}
+        >
+          {label}
+        </InputLabel>
 
-      <OutlinedInput
-        label={label}
-        id={id}
-        className={classes.inputComponent}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          checkValid(e.currentTarget.value);
-          handleChange(e);
-        }}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        disabled={disabled}
-        type={type}
-        inputProps={{ min: 0 }}
-        notched={false}
-        fullWidth
-        endAdornment={
-          <InputAdornment position="end">
-            {adornment !== undefined && <span>{adornment}</span>}
+        <OutlinedInput
+          {...field}
+          label={label}
+          id={id}
+          className={classes.inputComponent}
+          onChange={onLocalChange}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          disabled={disabled}
+          type={type}
+          inputProps={{ min: 0 }}
+          inputRef={ref}
+          notched={false}
+          fullWidth
+          error={errorBorder}
+          endAdornment={
+            <InputAdornment position="end">
+              {adornment !== undefined && <span>{adornment}</span>}
 
-            {valid ? (
-              <CheckCircleRoundedIcon
-                className={classes.icon}
-                data-testid="valid-icon"
-              />
-            ) : null}
-          </InputAdornment>
-        }
-        autoComplete="off"
-      />
-    </div>
-  );
-};
+              {valid || isExternallyValid ? (
+                <CheckCircleRoundedIcon
+                  className={classes.icon}
+                  data-testid="valid-icon"
+                />
+              ) : null}
+            </InputAdornment>
+          }
+          autoComplete="off"
+        />
+      </div>
+    );
+  }
+);
+
+// set a displayName to help with debugging in React DevTools
+(InputArea as any).displayName = 'InputArea';
 
 export default InputArea;

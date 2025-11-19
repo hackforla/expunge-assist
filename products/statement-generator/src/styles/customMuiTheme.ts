@@ -25,6 +25,9 @@ const customMuiTheme = createMuiTheme({
       lightgrey: '#cbcbcb',
       grey: '#adadad',
     },
+    error: {
+      main: '#f44336',
+    },
     warning: {
       main: '#E87461',
     },

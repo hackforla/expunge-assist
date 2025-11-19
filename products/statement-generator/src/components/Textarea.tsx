@@ -4,18 +4,33 @@ import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import useUtilityStyles from 'styles/utilityStyles';
+import type { CSSVarsPartial, CSSVars } from './Input';
+import { defaultStyles } from './Input';
 
 const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
   createStyles({
+    labelWrapper: {
+      '& .MuiFormLabel-root': {
+        color: 'var(--text-color)',
+      },
+    },
     textfieldComponent: {
+      '& .MuiInputBase-input': {
+        color: 'var(--text-color)',
+      },
       // -- outline
       '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline': {
         borderRadius: '15px',
-        borderColor: '#adadad',
+        borderColor: 'var(--outline-color)',
         borderWidth: '1px',
       },
-      '& .MuiInputBase-root .MuiOutlinedInput-notchedOutline:hover': {
-        borderColor: '#8f8f8f',
+      // Change outline color when the input root is hovered (target the root, not the fieldset)
+      '& .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'var(--hover-color)',
+        borderWidth: '1px',
+      },
+      '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: 'var(--hover-color)',
         borderWidth: '1px',
       },
       '& .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -27,15 +42,23 @@ const useStyles = makeStyles<Theme>(({ palette, spacing }) =>
         borderColor: '#a1a1a1',
         borderWidth: '1px',
       },
+      '& .MuiInputBase-root.Mui-error .MuiOutlinedInput-notchedOutline': {
+        borderColor: palette.error.main,
+        borderWidth: '1px',
+      },
 
       // -- text field
       '& .MuiOutlinedInput-multiline': {
         padding: spacing(2),
-
-        '&::placeholder': {
-          opacity: 1,
-          color: palette.common.grey,
-        },
+      },
+      '& .MuiOutlinedInput-input::placeholder': {
+        opacity: 1,
+        color: 'var(--placeholder-color)',
+      },
+      // fallback for input base placeholder class
+      '& .MuiInputBase-input::placeholder': {
+        opacity: 1,
+        color: 'var(--placeholder-color)',
       },
       '& .MuiInputAdornment-root': {
         pointerEvents: 'none',
@@ -77,6 +100,8 @@ interface TextFieldProps {
   value?: string;
   rows?: number;
   labelRef?: React.Ref<HTMLLabelElement>;
+  customStyles?: CSSVarsPartial;
+  errorBorder?: boolean;
 }
 
 const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
@@ -91,14 +116,25 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
       value,
       rows,
       labelRef,
+      customStyles = defaultStyles,
+      errorBorder = false,
+      ...field
     },
     ref
   ) => {
     const utilityClasses = useUtilityStyles();
     const classes = useStyles();
 
+    const mergedStyles: React.CSSProperties & CSSVars = {
+      ...defaultStyles,
+      ...customStyles,
+    };
+
     return (
-      <div className={utilityClasses.formInput}>
+      <div
+        className={`${utilityClasses.formInput} ${classes.labelWrapper}`}
+        style={mergedStyles as React.CSSProperties}
+      >
         {label && (
           <InputLabel
             ref={labelRef}
@@ -119,7 +155,7 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
           defaultValue={defaultValue}
           disabled={disabled}
           value={value}
-          rows={rows}
+          minRows={rows}
           multiline
           fullWidth
           variant="outlined"
@@ -128,6 +164,8 @@ const MultilineTextFields = React.forwardRef<HTMLDivElement, TextFieldProps>(
           }}
           inputRef={ref}
           autoComplete="off"
+          error={errorBorder}
+          {...field}
         />
       </div>
     );
