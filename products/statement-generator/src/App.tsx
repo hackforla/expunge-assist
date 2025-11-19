@@ -44,6 +44,7 @@ import TermsOfUse from 'pages/TermsOfUse';
 import FAQ from 'pages/FAQ';
 import AboutUs from 'pages/AboutUs';
 import Credits from 'pages/Credits';
+import ContactUs from 'pages/ContactUs';
 
 import 'styles/App.css';
 import customMuiTheme from 'styles/customMuiTheme';
@@ -194,6 +195,7 @@ const App: React.FC = () => {
                   />
                   <Route path={AppUrl.TermsOfUse} component={TermsOfUse} />
                   <Route path={AppUrl.Credits} component={Credits} />
+                  <Route path={AppUrl.ContactUs} component={ContactUs} />
                   <Route path={AppUrl.FAQ} component={FAQ} />
                   <Route path={AppUrl.AboutUs} component={AboutUs} />
 

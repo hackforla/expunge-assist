@@ -126,6 +126,7 @@ const useStyles = makeStyles<Theme, StyleProps>(({ palette }) =>
 
 interface ComponentProps {
   className?: string;
+  fullWidth?: boolean;
   theme?: string;
   hasBackArrow?: boolean;
   hasForwardArrow?: boolean;
@@ -141,6 +142,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ComponentProps>(
   (
     {
       className = '',
+      fullWidth = false,
       theme,
       hasBackArrow,
       hasForwardArrow,
@@ -161,6 +163,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ComponentProps>(
         disabled={disabled}
         type="button"
         className={`${classes.root} ${className}`}
+        fullWidth={fullWidth}
         onClick={onClick}
         tabIndex={tabIndex}
         onKeyDown={onKeyDown}

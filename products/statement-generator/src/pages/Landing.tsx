@@ -9,7 +9,7 @@ import screenshotExample from 'assets/screenshotExample.svg';
 import completeLetter from 'assets/completeLetter.svg';
 import privacyPolicy from 'assets/privacyPolicy.png';
 import Timeline from 'components/Timeline';
-import ButtonComponent, { LinkButtonComponent } from 'components/Button';
+import { LinkButtonComponent } from 'components/Button';
 
 import LandingAccordions from '../components/LandingAccordions';
 
@@ -131,9 +131,11 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       justifyContent: 'center',
       textAlign: 'center',
       margin: '0 auto',
-      '& button': {
+      '& a': {
         width: '170px',
         margin: `${spacing(2)}px auto 0px auto`,
+        display: 'inline-flex',
+        justifyContent: 'center',
       },
       '& h3': {
         fontSize: '20pt',
@@ -432,17 +434,13 @@ function LandingSection8() {
   const { t } = useTranslation();
   const classes = useStyles();
 
-  const handleContactUs = () => {
-    window.open('mailto:expungeassist@hackforla.org');
-  };
-
   return (
     <section className={`${classes.section}`} style={{ marginBottom: '24px' }}>
       <div className={classes.opportunitySection}>
         <h3>{t('landing_page.sectionTitle8')}</h3>
         <p>{t('landing_page.sectionParagraph8')}</p>
-        <ButtonComponent
-          onClick={() => handleContactUs()}
+        <LinkButtonComponent
+          to={AppUrl.ContactUs}
           buttonText={t('CONTACT US')}
         />
       </div>
