@@ -24,6 +24,7 @@ import clearance from '../assets/aboutUs/courtroom.svg';
 import teamwork from '../assets/aboutUs/teamwork.svg';
 import partnership from '../assets/aboutUs/handshake.svg';
 import colaboration from '../assets/aboutUs/collaboration.svg';
+import contact from '../assets/contact.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
@@ -174,7 +175,6 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
     },
     creditImgContainer: {
       flex: '1 1 10rem',
-      minWidth: '7rem',
       height: '10rem',
       display: 'flex',
       alignItems: 'center',
@@ -198,8 +198,7 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
       },
     },
     creditText: {
-      flex: '0 1 max-content',
-      minWidth: '10rem',
+      flex: '1 0 10rem',
       '& h2': {
         fontWeight: 'bold',
         [breakpoints.down('md')]: {
@@ -413,6 +412,17 @@ export const CreditObjects: CreditsObject[] = [
     provider: 'Storyset',
     providerLink:
       'https://www.freepik.com/premium-vector/collab-concept-illustration_10791990.htm#fromView=search&page=1&position=35&uuid=f6e593bf-f9a1-47aa-b4e0-9904d4669537',
+    altText: '',
+  },
+  {
+    name: 'Communication',
+    img: contact,
+    class: 2,
+    imgSize: 75,
+    usedIn: 'Contact Form',
+    artist: 'Unknown',
+    provider: 'Storyset',
+    providerLink: 'https://storyset.com/illustration/brand-communication/cuate',
     altText: '',
   },
 ];
