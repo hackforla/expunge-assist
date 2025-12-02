@@ -98,7 +98,7 @@ function FinalizeForm() {
     >
       <div className={classes.purpleTitle} tabIndex={-1}>
         <VisibilityRoundedIcon className={classes.purpleIcon} />
-        Editing final letter
+        Editing final declaration
       </div>
 
       <div ref={previewsContainerRef}>{previewComponents}</div>
