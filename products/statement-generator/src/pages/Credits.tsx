@@ -10,7 +10,6 @@ import useUtilityStyles from 'styles/utilityStyles';
 import DynamicText from 'components/DynamicText';
 
 import creditsHeader from '../assets/creditsHeader.svg';
-import groupChat from '../assets/group-chat.jpg';
 import sharingKnowledge from '../assets/faqDesktop.svg';
 import error from '../assets/notFound.svg';
 import editorial from '../assets/why-img.svg';
@@ -21,6 +20,11 @@ import eaImage from '../assets/eaImage.png';
 import multitasking from '../assets/landingWorkImg.svg';
 import support101 from '../assets/affirmation-img.svg';
 import report from '../assets/future-goals-img.svg';
+import clearance from '../assets/aboutUs/courtroom.svg';
+import teamwork from '../assets/aboutUs/teamwork.svg';
+import partnership from '../assets/aboutUs/handshake.svg';
+import colaboration from '../assets/aboutUs/collaboration.svg';
+import contact from '../assets/contact.svg';
 
 const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
   createStyles({
@@ -153,15 +157,15 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
     },
     CreditBox: {
       boxShadow: '0 4px 4px rgb(0 0 0 / 25%)',
-      borderRadius: '8px',
-      padding: '16px',
+      borderRadius: '24px',
+      padding: '1rem',
       width: '29rem',
       maxHeight: '13.606rem',
-      minHeight: '13.606rem',
       alignContent: 'center',
     },
     creditFlex: {
       display: 'flex',
+      gap: '1rem',
       flexDirection: 'row',
       height: '100%',
       width: '100%',
@@ -170,19 +174,15 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
       objectFit: 'contain',
     },
     creditImgContainer: {
-      maxWidth: '10rem',
-      minWidth: '10rem',
-      maxHeight: '12rem',
-      objectFit: 'contain',
-      display: 'block',
-      margin: 'auto',
+      flex: '1 1 10rem',
+      height: '10rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       '& img': {
-        alignItems: 'center',
         maxWidth: '100%',
         maxHeight: '100%',
         objectFit: 'contain',
-        display: 'block',
-        margin: 'auto',
       },
     },
     creditIconContainer: {
@@ -198,11 +198,15 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) =>
       },
     },
     creditText: {
+      flex: '1 0 10rem',
       '& h2': {
         fontWeight: 'bold',
         [breakpoints.down('md')]: {
-          fontSize: '16px',
+          fontSize: '1.7rem',
         },
+      },
+      '& h2 + p': {
+        marginTop: '1rem',
       },
     },
     line: {
@@ -245,52 +249,52 @@ export const CreditObjects: CreditsObject[] = [
     class: 2,
     imgSize: 75,
     usedIn: 'Credits Page',
-    artist: 'N/A',
+    artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/on-the-office/pana',
     provider: 'Storyset',
     altText: '',
   },
   {
-    name: 'Sharing Knowledge',
+    name: 'Sharing knowledge',
     img: sharingKnowledge,
     class: 2,
     imgSize: 144,
     usedIn: 'FAQ',
-    artist: 'M/A',
-    providerLink: 'https://undraw.co/search',
+    artist: 'Katerina Limpitsouni',
+    providerLink: 'https://undraw.co/search/sharing-knowledge',
     altText: '',
-    provider: 'Undraw',
+    provider: 'unDraw',
   },
   {
-    name: '404 Error',
+    name: '404 error',
     img: error,
     class: 2,
     imgSize: 200,
-    usedIn: '404 page',
-    artist: 'Cuate',
+    usedIn: '404 Page',
+    artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/404-error/cuate',
     provider: 'Storyset',
     altText: '404 error',
   },
   {
-    name: 'Multi-device targeting concept illustration',
+    name: 'Confirmation',
     img: confirmation,
     class: 2,
     imgSize: 75,
-    usedIn: 'Last Page Pop-Up',
-    artist: 'Storyset',
+    usedIn: 'Download',
+    artist: 'Unknown',
     providerLink:
       'https://www.freepik.com/free-vector/multi-device-targeting-concept-illustration_19949448.htm#&position=1&from_view=search&track=ais',
     provider: 'Storyset',
     altText: '',
   },
   {
-    name: 'Data Secure',
+    name: 'Data secure',
     img: privacyPolicy,
     class: 2,
     imgSize: 75,
-    usedIn: 'Landing Page',
-    artist: 'N/A',
+    usedIn: 'Home Page',
+    artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/security/cuate',
     provider: 'Storyset',
     altText: '',
@@ -300,30 +304,30 @@ export const CreditObjects: CreditsObject[] = [
     img: collaboration,
     class: 2,
     imgSize: 75,
-    usedIn: 'Almost There Pop-Up',
-    artist: 'N/A',
+    usedIn: 'Preview and Edit',
+    artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/collaboration/rafiki',
     provider: 'Storyset',
     altText: '',
   },
   {
-    name: 'Support',
+    name: 'Support 101',
     img: support101,
     class: 2,
     imgSize: 75,
-    usedIn: 'Landing Page',
-    artist: 'N/A',
+    usedIn: 'Welcome',
+    artist: 'Ola Maciejewska',
     providerLink: 'https://www.whoooa.rocks/',
     provider: 'Whoooa',
     altText: '',
   },
   {
-    name: 'Research',
+    name: 'Editorial',
     img: editorial,
     class: 2,
     imgSize: 75,
-    usedIn: 'Why Pop-Up',
-    artist: 'N/A',
+    usedIn: 'Why',
+    artist: 'Unknown',
     providerLink:
       'https://storyset.com/illustration/editorial-commision/rafiki',
     provider: 'Storyset',
@@ -334,46 +338,92 @@ export const CreditObjects: CreditsObject[] = [
     img: report,
     class: 2,
     imgSize: 75,
-    usedIn: 'Future Goals Pop-Up',
-    artist: 'N/A',
+    usedIn: 'Future Goals',
+    artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/report/pana',
     provider: 'Storyset',
     altText: '',
   },
   {
-    name: 'MultiTasking',
+    name: 'Multitasking',
     img: multitasking,
     class: 2,
     imgSize: 75,
-    usedIn: 'Landing Page',
-    artist: 'N/A',
+    usedIn: 'Home Page',
+    artist: 'Unknown',
     providerLink: 'https://storyset.com/illustration/multitasking/cuate',
     provider: 'Storyset',
     altText: '',
   },
   {
-    name: 'EA Mobile',
+    name: 'EA mobile',
     img: eaImage,
     class: 2,
     imgSize: 75,
-    usedIn: 'Landing Page',
-    artist: 'N/A',
+    usedIn: 'Home Page',
+    artist: 'Unknown',
     providerLink:
       'https://storyset.com/illustration/mobile-login/cuate#default&hide=&hide=false',
     provider: 'Storyset',
     altText: '',
   },
   {
-    name: 'Group Chat',
-    img: groupChat,
+    name: 'Clearance',
+    img: clearance,
     class: 2,
-    imgSize: 200,
-    usedIn: 'FAQ',
-    artist: 'N/A',
-    provider: 'Freepik',
+    imgSize: 75,
+    usedIn: 'About Us',
+    artist: 'Unknown',
+    provider: 'Storyset',
     providerLink:
-      'https://www.freepik.com/free-vector/characters-people-chatting-through-smartphones_3226068.htm#query=people%20chatting&position=11&from_view=search&track=ais#position=11&query=people%20chatting',
-    altText: 'People group chatting through smart phones',
+      'https://www.freepik.com/premium-vector/lawyer-court-concept-illustration_35105574.htm#fromView=search&page=1&position=31&uuid=bfe51bc0-1a04-4c0c-8ff0-0c0147d736ba&new_detail=true&query=justice',
+    altText: 'Lawyer addressing seated judge in court',
+  },
+  {
+    name: 'Our team',
+    img: teamwork,
+    class: 2,
+    imgSize: 75,
+    usedIn: 'About Us',
+    artist: 'Unknown',
+    provider: 'Storyset',
+    providerLink:
+      'https://www.freepik.com/premium-vector/team-page-concept-illustration_10118067.htm#fromView=search&page=3&position=14&uuid=7d30ef21-b45d-4291-9c1a-c9eca8b3b904&query=team+page',
+    altText: 'Group discussion in front of screen with in-work webpage',
+  },
+  {
+    name: 'Partnership',
+    img: partnership,
+    class: 2,
+    imgSize: 75,
+    usedIn: 'About Us',
+    artist: 'Unknown',
+    provider: 'Storyset',
+    providerLink: 'https://storyset.com/illustration/partnership/amico',
+    altText: 'Two professionals shaking hands while standing on puzzle pieces',
+  },
+  {
+    name: 'Team',
+    img: colaboration,
+    class: 2,
+    imgSize: 75,
+    usedIn: 'About Us',
+    artist: 'Unknown',
+    provider: 'Storyset',
+    providerLink:
+      'https://www.freepik.com/premium-vector/collab-concept-illustration_10791990.htm#fromView=search&page=1&position=35&uuid=f6e593bf-f9a1-47aa-b4e0-9904d4669537',
+    altText: '',
+  },
+  {
+    name: 'Communication',
+    img: contact,
+    class: 2,
+    imgSize: 75,
+    usedIn: 'Contact Form',
+    artist: 'Unknown',
+    provider: 'Storyset',
+    providerLink: 'https://storyset.com/illustration/brand-communication/cuate',
+    altText: '',
   },
 ];
 
@@ -456,7 +506,7 @@ export const Filter: React.FC = () => {
     <div className={classes.Filter}>
       <div className={classes.FilterContent}>
         <p className={classes.iconAttribution}>
-          <DynamicText i18nkey={t('credits_page.icon_attribution')} />
+          <DynamicText i18nkey="credits_page.icon_attribution" />
         </p>
         <FilterCards />
       </div>
