@@ -9,7 +9,8 @@
     "cancel": "Cancel",
     "save": "Save",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "contact": "CONTACT US"
   },
   "links": {
     "home": "Home",
@@ -17,7 +18,37 @@
     "faq": "FAQ",
     "privacy_policy": "Privacy Policy",
     "terms_of_use": "Terms of Use",
-    "credits": "Credits"
+    "credits": "Credits",
+    "contact_us": "Contact Us"
+  },
+  "contact_email": "expungeassist@hackforla.org",
+  "contact_us_page": {
+    "page_header": "Contact Us",
+    "hero_title": "Questions? Comments? Feedback?",
+    "hero_paragraph1": "We would love to hear from you. Please complete the form below to get in touch with the Expunge Assist team.",
+    "hero_paragraph2": "You can also reach us by email at {{contact_email}}",
+    "hero_paragraph1_md": "Get in touch with the Expunge Assist team. We'd love to hear from you.",
+    "info_title": "Questions? Comments? Feedback?",
+    "info_paragraph1": "Fill out the form or email us directly at <Link href=\"mailto:{{contact_email}}\">{{contact_email}}</Link>",
+    "info_paragraph2_sla": "We’ll get back to you within 5 business days.",
+    "form_title": "Contact Form",
+    "name_label": "Name",
+    "name_placeholder": "Full Name",
+    "email_label": "Email",
+    "email_placeholder": "email@example.com",
+    "message_label": "Message",
+    "message_placeholder": "Type your message here.",
+    "submit_button": "Send Message",
+    "return_button": "Return to form",
+    "success_header": "Thank you!",
+    "success_message": "Your message has been sent. We will be in touch shortly.",
+    "errors": {
+      "name_required": "Enter your name.",
+      "name_too_long": "Names can be up to 100 characters.",
+      "invalid_email": "Enter your email (e.g., example@domain.com).",
+      "message_too_short": "Include your message.",
+      "message_too_long": "Please keep your message under 2,000 characters."
+    }
   },
   "landing_page": {
     "sectionTitle1": "A writing tool for people seeking expungement",
@@ -277,7 +308,7 @@
     "liability_description": "Hack for LA takes no accountability or responsibility for any damages caused due to the generation and submission of this application, and not limited to just these cases. The laws of the State of California, excluding its conflicts of law rules, govern this license agreement."
   },
   "credits_page": {
-    "page_header": "Image credits",
+    "page_header": "Credits",
     "page_subheader": "A list of sources for all iconography and imagery used on the Expunge Assist website.",
     "icon_attribution": "All icons are attributed to Google's <Link href=\"https://fonts.google.com/icons\" target='_blank' rel='noreferrer'>Material Symbols</Link>.",
     "card_text": {

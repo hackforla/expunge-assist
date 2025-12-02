@@ -30,7 +30,9 @@ const useStyles = makeStyles<Theme>((theme) =>
   })
 );
 
-const DynamicLink = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+export const DynamicLink = (
+  props: React.AnchorHTMLAttributes<HTMLAnchorElement>
+) => {
   const { children, href, ...rest } = props;
   const classes = useStyles();
   const { t } = useTranslation();

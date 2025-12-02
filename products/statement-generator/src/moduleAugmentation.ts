@@ -1,6 +1,6 @@
 import { PaletteColorOptions } from '@material-ui/core/styles/createPalette';
 
-declare module '@material-ui/core/styles/createTheme' {
+declare module '@material-ui/core/styles' {
   export interface Theme {
     globals: {
       contentWidth: number;

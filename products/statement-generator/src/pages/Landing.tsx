@@ -9,7 +9,7 @@ import screenshotExample from 'assets/screenshotExample.svg';
 import completeLetter from 'assets/completeLetter.svg';
 import privacyPolicy from 'assets/privacyPolicy.png';
 import Timeline from 'components/Timeline';
-import ButtonComponent, { LinkButtonComponent } from 'components/Button';
+import { LinkButtonComponent } from 'components/Button';
 
 import LandingAccordions from '../components/LandingAccordions';
 
@@ -131,9 +131,11 @@ const useStyles = makeStyles(({ globals, palette, breakpoints, spacing }) =>
       justifyContent: 'center',
       textAlign: 'center',
       margin: '0 auto',
-      '& button': {
+      '& a': {
         width: '170px',
         margin: `${spacing(2)}px auto 0px auto`,
+        display: 'inline-flex',
+        justifyContent: 'center',
       },
       '& h3': {
         fontSize: '20pt',
@@ -305,7 +307,10 @@ function LandingSection2() {
           <p>{t('landing_page.sectionParagraph2')}</p>
         </div>
         <div className={classes.sectionButton}>
-          <LinkButtonComponent to={AppUrl.AboutUs} buttonText={t('ABOUT US')} />
+          <LinkButtonComponent
+            to={AppUrl.AboutUs}
+            buttonText={t('links.about_us')}
+          />
         </div>
       </div>
     </section>
@@ -396,7 +401,7 @@ function LandingSection6() {
           <div className={classes.sectionButton}>
             <LinkButtonComponent
               to={AppUrl.PrivacyPolicy}
-              buttonText={t('VIEW PRIVACY POLICY')}
+              buttonText={t('links.privacy_policy')}
             />
           </div>
         </div>
@@ -421,7 +426,7 @@ function LandingSection7() {
       <div className={classes.sectionContent}>
         <LandingAccordions />
         <div className={classes.sectionButton}>
-          <LinkButtonComponent to={AppUrl.FAQ} buttonText={t('READ OUR FAQ')} />
+          <LinkButtonComponent to={AppUrl.FAQ} buttonText={t('links.faq')} />
         </div>
       </div>
     </section>
@@ -432,17 +437,13 @@ function LandingSection8() {
   const { t } = useTranslation();
   const classes = useStyles();
 
-  const handleContactUs = () => {
-    window.open('mailto:expungeassist@hackforla.org');
-  };
-
   return (
     <section className={`${classes.section}`} style={{ marginBottom: '24px' }}>
       <div className={classes.opportunitySection}>
         <h3>{t('landing_page.sectionTitle8')}</h3>
         <p>{t('landing_page.sectionParagraph8')}</p>
-        <ButtonComponent
-          onClick={() => handleContactUs()}
+        <LinkButtonComponent
+          to={AppUrl.ContactUs}
           buttonText={t('CONTACT US')}
         />
       </div>

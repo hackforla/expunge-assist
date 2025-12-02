@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import ButtonComponent from 'components/Button';
+import ButtonComponent, { LinkButtonComponent } from 'components/Button';
 import DynamicText from 'components/DynamicText';
 
 import collaboraton from '../assets/aboutUs/collaboration.svg';
@@ -185,9 +185,6 @@ export default function AboutUs() {
     window.open('https://www.hackforla.org/projects/expunge-assist');
   };
 
-  const handleContactUs = () => {
-    window.open('mailto:expungeassist@hackforla.org');
-  };
   return (
     <div className={classes.pageContainer}>
       <div className={classes.heroBg}>
@@ -319,10 +316,11 @@ export default function AboutUs() {
           </div>
           <p className={classes.text}>{t('about_us_page.paragraph4')}</p>
           <p className={classes.text}>{t('about_us_page.paragraph4b')}</p>
-          <ButtonComponent
-            onClick={() => handleContactUs()}
-            buttonText={t('Contact Us')}
+          <LinkButtonComponent
+            buttonText={t('CONTACT US')}
             className={`${classes.buttonStyle} ${classes.contactButton}`}
+            to="/contact-us"
+            dataTestId="contact-us-button"
           />
         </div>
       </div>
