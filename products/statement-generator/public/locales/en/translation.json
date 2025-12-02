@@ -9,7 +9,8 @@
     "cancel": "Cancel",
     "save": "Save",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "contact": "CONTACT US"
   },
   "links": {
     "home": "Home",
@@ -307,7 +308,7 @@
     "liability_description": "Hack for LA takes no accountability or responsibility for any damages caused due to the generation and submission of this application, and not limited to just these cases. The laws of the State of California, excluding its conflicts of law rules, govern this license agreement."
   },
   "credits_page": {
-    "page_header": "Image credits",
+    "page_header": "Credits",
     "page_subheader": "A list of sources for all iconography and imagery used on the Expunge Assist website.",
     "icon_attribution": "All icons are attributed to Google's <Link href=\"https://fonts.google.com/icons\" target='_blank' rel='noreferrer'>Material Symbols</Link>.",
     "card_text": {

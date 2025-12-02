@@ -307,7 +307,10 @@ function LandingSection2() {
           <p>{t('landing_page.sectionParagraph2')}</p>
         </div>
         <div className={classes.sectionButton}>
-          <LinkButtonComponent to={AppUrl.AboutUs} buttonText={t('ABOUT US')} />
+          <LinkButtonComponent
+            to={AppUrl.AboutUs}
+            buttonText={t('links.about_us')}
+          />
         </div>
       </div>
     </section>
@@ -398,7 +401,7 @@ function LandingSection6() {
           <div className={classes.sectionButton}>
             <LinkButtonComponent
               to={AppUrl.PrivacyPolicy}
-              buttonText={t('VIEW PRIVACY POLICY')}
+              buttonText={t('links.privacy_policy')}
             />
           </div>
         </div>
@@ -423,7 +426,7 @@ function LandingSection7() {
       <div className={classes.sectionContent}>
         <LandingAccordions />
         <div className={classes.sectionButton}>
-          <LinkButtonComponent to={AppUrl.FAQ} buttonText={t('READ OUR FAQ')} />
+          <LinkButtonComponent to={AppUrl.FAQ} buttonText={t('links.faq')} />
         </div>
       </div>
     </section>
