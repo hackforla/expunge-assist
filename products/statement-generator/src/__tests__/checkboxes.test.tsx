@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 import Checkbox from '../components/Checkbox';
@@ -11,7 +10,7 @@ interface CheckboxProps {
   label: string;
 }
 
-const checkboxMock = jest.fn();
+const checkboxMock = vi.fn();
 
 const TestCheckbox: React.FC<CheckboxProps> = ({ id, label }) => {
   const [checked, setChecked] = React.useState(false);

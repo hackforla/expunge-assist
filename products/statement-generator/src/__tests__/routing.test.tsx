@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
 import App from '../App';
@@ -13,24 +12,24 @@ const MODAL_FADE_MS = 500;
 const confirmModalAndFFW = (text = 'continue', ms = MODAL_FADE_MS) => {
   fireEvent.click(screen.getByText(new RegExp(text, 'i')));
   act(() => {
-    jest.advanceTimersByTime(ms);
+    vi.advanceTimersByTime(ms);
   });
 };
 
 describe('Routing Tests', () => {
   beforeAll(() => {
     // Control time so we can fastforward MUI transition durations
-    jest.useFakeTimers();
-    console.warn = jest.fn();
+    vi.useFakeTimers();
+    console.warn = vi.fn();
   });
 
   afterAll(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   beforeEach(() => {
     // mock the scrollTo component
-    window.scrollTo = jest.fn();
+    window.scrollTo = vi.fn();
   });
 
   test('it can render a component that uses useLocation', () => {

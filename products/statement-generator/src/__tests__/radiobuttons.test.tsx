@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -16,7 +15,7 @@ export interface TestRadioGroupProps {
   label: string;
 }
 
-const radioButtonMock = jest.fn();
+const radioButtonMock = vi.fn();
 
 const TestRadioGroup: React.FC<TestRadioGroupProps> = ({ id, label }) => {
   const [selected, setSelected] = React.useState<Choice | null>(null);
