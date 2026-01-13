@@ -12,6 +12,8 @@ import Button from '../Button';
 import type { CSSVarsPartial } from '../Input';
 import ErrorMessage from './ErrorMessage';
 import ThankYou from './ThankYou';
+// import { resolve } from 'path';
+// import { set } from 'zod';
 
 const useStyles = makeStyles(({ palette, spacing, breakpoints }) =>
   createStyles({
@@ -64,16 +66,38 @@ const ContactForm: React.FC = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = async () => {
-    try {
-      // Mock POST request
-      await sleep(1000);
+  // const onSubmit = async () => {
+  //   try {
+  //     // Mock POST request
+  //     await sleep(1000);
+  //     setSubmitted(true);
+  //   } catch (error) {
+  //     // swallow errors for this demo; keep form visible
+  //     setSubmitted(false);
+  //   }
+  // };
+
+  const onSubmit = async (event:any) => {
+    const formData:any = new FormData();
+    formData.append("access_key", "INSERT KEY HERE" );
+
+    Object.entries(event).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if(data.success) {
       setSubmitted(true);
-    } catch (error) {
-      // swallow errors for this demo; keep form visible
+    } else {
       setSubmitted(false);
     }
-  };
+  }
 
   const handleReturnToForm = () => {
     reset({ name: '', email: '', message: '' });
@@ -92,11 +116,12 @@ const ContactForm: React.FC = () => {
       {submitted ? (
         <ThankYou onReturn={handleReturnToForm} />
       ) : (
+      
         <section aria-labelledby="contact-form-title" className={classes.card}>
           <h3 id="contact-form-title" className={classes.title}>
             {t('contact_us_page.form_title')}
           </h3>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Controller
               name="name"
               control={control}
